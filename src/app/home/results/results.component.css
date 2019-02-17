@@ -1,0 +1,101 @@
+#header {
+    vertical-align: middle;
+    height: 50pt;
+    color: rgb(30, 39, 46);
+}
+    #header.white {
+        background: linear-gradient(to right, #C85CA2 , #F0A587);
+        color: #fff;
+    }
+    .title {
+        font-family: "AvenirNext-Medium";
+        font-size: 18pt;
+    }
+    .header-right-icon {
+        vertical-align: middle;
+        font-size: 20pt;
+    }
+
+
+#preview-image {
+    width: 100%;
+}
+
+#user-selection {
+    background-color: #fff;
+}
+
+.hash-title {
+    font-size: 16pt;
+}
+
+.tag-title {
+    font-size: 14pt;
+}
+
+.hash-title, .tag-title {
+    font-family: "AvenirNext-Medium";
+}
+
+.selectall {
+    font-size: 12pt;
+    font-family: "AvenirNext-Medium";
+    height: 20pt;
+    text-align: center;
+    margin: 0;
+}
+
+.input {
+    width: 100%;
+}
+/* 
+#top-shadow {
+    height: 100%;    
+    background-image: url("~/app/assets/images/top-shadow.png");
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    background-position: top;
+} */
+
+#bottom-shadow {
+    height: 100%;    
+    background-image: url("~/app/assets/images/bottom-shadow.png");
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    background-position: bottom;
+}
+
+.footer {
+    background-color: #FAFAFA;
+}
+
+.footer StackLayout {
+    padding-top: 8;
+}
+
+@keyframes show {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.dialogOpen .page {
+    opacity: 0.2;
+}
+.dialogOpen .dialog-wrapper {
+    visibility: visible;
+    animation-name: show;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+.dialog-wrapper {    
+    visibility: collapse;
+    opacity: 0;
+}
+
+.dialog {
+    border-radius: 10;
+    width: 60%;
+    margin-top: 200;
+    background-color: #fafafa;
+    padding: 20;
+}

@@ -1,0 +1,55 @@
+#header {
+    vertical-align: middle;
+    height: 50pt;
+    background: linear-gradient(to right, #C85CA2 , #F0A587);
+    padding: 10pt 20pt 10pt 20pt;
+}
+    #header Label {
+        vertical-align: middle;
+        color: #fff;
+    }
+
+.title, .skip {
+    font-family: "AvenirNext-Medium";
+}
+
+.title {    
+    font-size: 18pt;
+    color: rgb(30, 39, 46);
+    text-align: center;
+}
+
+.skip {
+    font-size: 17pt;
+    color: rgb(46, 55, 77);
+}
+
+.status Image {
+    width: 24pt;
+    height: 24pt;
+}
+
+.status StackLayout {    
+    width: 100%;
+    padding: 10;
+    text-align: center;
+    background: rgb(237, 240, 242);
+    border-radius: 5;
+}
+
+.status StackLayout.active {
+    /* background-color: transparent; */
+    background: linear-gradient(to right, #C85CA2 , #F0A587);
+}
+
+.status .active Label {
+    color: white;
+}
+
+.btn {
+    height: 50pt;
+}
+
+.btn-main {
+    color: white;
+}

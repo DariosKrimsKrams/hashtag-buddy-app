@@ -1,0 +1,18 @@
+<GridLayout class="big-header">
+    <Image src="~/app/assets/images/header/home.jpg" stretch="aspectFill"></Image>
+    <GridLayout rows="*,auto" id="header-content">
+        <StackLayout row="0">
+            <GridLayout rows="50" columns="40,*,40">
+                <Image src="~/app/assets/images/icons/menu_bar_white.png" col="0" class="m-l-20" (tap)="openMenu()"></Image>
+                <GridLayout col="1" horizontalAlignment="center">
+                    <Image src="~/app/assets/images/logo.png" height="30"></Image>            
+                </GridLayout>
+                <Label col="2"></Label>
+            </GridLayout>
+            <Label text="{{ 'home_welcome' | L }}" class="p-t-20 p-b-15" id="title"></Label>
+            <Label text="{{ 'home_desc_1' | L }}" class="subtitle"></Label>
+            <Label text="{{ 'home_desc_2' | L }}" class="subtitle"></Label>
+        </StackLayout>
+        <Image row="1" src="~/app/assets/images/header_shadow.png"></Image>
+    </GridLayout>
+</GridLayout>

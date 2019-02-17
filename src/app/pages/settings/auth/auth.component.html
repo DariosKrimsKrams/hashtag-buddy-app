@@ -1,0 +1,47 @@
+<GridLayout class="Auth" [class.dialogOpen]="dialogOpen">
+    <StackLayout orientation="vertical" class="main m-l-20 m-r-20">
+        <GridLayout verticalAlignment="middle" columns="20,*,20" class="m-t-10 m-b-10">
+            <Image col="0" src="~/app/assets/images/icons/arrowLeft.png" (tap)="goPrevPage()"></Image>
+            <Label col="1" text="Instagram authorization" class="text-center font-reg-medium"></Label>
+            <Label col="2" text=""></Label>
+        </GridLayout>
+
+        <!-- If user is signed in -->
+        <StackLayout *ngIf="signin">
+            <GridLayout rows="auto,auto" class="p-10 auth-name">
+                <Label row="0" text="Currently authorized as" class="text-muted m-10"></Label>
+                <Label row="1" text="Jakub Jiricka" class="m-10"></Label>
+            </GridLayout>
+            <StackLayout class="p-l-20 p-r-20">
+                <Button text="Sign Out" class="btn btn-outline btn-rounded-lg signout" (tap)="showDialog()"></Button>
+            </StackLayout>
+        </StackLayout>
+
+        <!-- If user is not signed in -->
+        <StackLayout *ngIf="!signin">
+            <GridLayout rows="auto" columns="50,*" class="p-10 auth-name" verticalAlignment="middle" horizontalAlignment="center">
+                <Label text="&#xf06a;" col="0" class="fas" fontSize="20" verticalAlignment="middle" horizontalAlignment="center"></Label>
+                <Label col="1" text="You haven't authrozed with your Instagram account yet" class="m-10" textWrap="true"></Label>
+            </GridLayout>
+            <StackLayout class="m-t-20">
+                <Button text="Sign in with Instagram" class="btn btn-rounded-lg btn-normal" width="100%" (tap)="showDialog()"></Button>                
+            </StackLayout>
+        </StackLayout>
+        
+    </StackLayout>
+
+    <AbsoluteLayout class="dialog-wrapper" *ngIf="dialogOpen" horizontalAlignment="center">
+        <!-- If user is signed in -->
+        <StackLayout class="dialog" *ngIf="signin" horizontalAlignment="center">
+            <Label class="h3 text-center" textWrap="true" text="Are you sure want sign out?"></Label>
+            <Button class="btn btn-rounded-lg btn-normal" text="Sign out" (tap)="goHome()"></Button>
+            <Button class="btn btn-outline btn-rounded-lg border-color-normal color-normal" text="Cancel" (tap)="closeDialog()"></Button>
+        </StackLayout>
+        <!-- If user is not signed in -->
+        <StackLayout class="dialog" *ngIf="!signin" horizontalAlignment="center">
+            <Label class="h3 text-center" textWrap="true" text="Continue as Jakub Jiricka?"></Label>
+            <Button class="btn btn-rounded-lg btn-normal" text="Continue" (tap)="goSignIn()"></Button>
+            <Button class="btn btn-outline btn-rounded-lg border-color-normal color-normal" text="Cancel" (tap)="closeDialog()"></Button>
+        </StackLayout>
+    </AbsoluteLayout>
+</GridLayout>

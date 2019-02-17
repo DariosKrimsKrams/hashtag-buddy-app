@@ -1,0 +1,30 @@
+GridLayout {
+    width: 240;
+    height: 240;
+}
+
+.bg {
+    width: 210;
+    height: 210;
+}
+
+.bar {
+    width: 225;
+    height: 225;
+    transform: rotate(45deg);
+
+    animation-name: rotate;
+    animation-duration: 2;
+    animation-iteration-count: 100;
+    animation-timing-function: ease;
+}
+
+@keyframes rotate {
+    from { transform: rotate(45deg); }
+    to { transform: rotate(405deg); }
+}
+
+Label {
+    font-size: 30;
+    color: #C85CA2;
+}

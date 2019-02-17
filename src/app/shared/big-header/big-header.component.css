@@ -1,0 +1,18 @@
+#title {
+    font-size: 28pt;
+    font-family: "AvenirNext-Medium, Avenir Next Medium";
+    margin-bottom: 18pt;
+    text-align: center;
+    color: #fff;
+}
+
+.subtitle {
+    font-size: 16pt;
+    font-family: "AvenirNext-Medium, Avenir Next Medium";
+    text-align: center;
+    color: #fff;
+}
+
+#header-content {
+    background: linear-gradient(to right, rgba(207,105,157,0.8) , rgba(236,157,139,0.8));
+}

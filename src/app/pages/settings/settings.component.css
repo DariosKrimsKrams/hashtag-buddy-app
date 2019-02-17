@@ -1,0 +1,16 @@
+.Settings Label {
+	vertical-align: middle;
+}
+
+.bottom Image {
+	width: 52;
+	height: 52;
+}
+
+#footer {
+	background: linear-gradient(to right, #C85CA2 , #F0A587);
+}
+
+#footer-shadow {
+	width: 100%;
+}

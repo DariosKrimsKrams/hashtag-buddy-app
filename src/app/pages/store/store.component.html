@@ -1,0 +1,35 @@
+<StackLayout tkMainContent>
+    <GridLayout rows="130,*" class="Settings">
+        <ns-small-header (OpenMenu)="openMenu()" [image]="'store.jpg'" [title]="'menu_store' | L"></ns-small-header>
+        <StackLayout row="1" class="plans">
+            
+            <ScrollView sdkExampleTitle sdkToggleNavButton>
+
+                <StackLayout class="p-l-15 p-r-15 p-b-20">
+                    <Label textWrap="true" [text]="'store_intro' | L" class="p-b-10"></Label>
+
+                    <StackLayout *ngFor="let plan of plans; let i = index;" class="item" [class.highlight]="plan.isHighlight">
+                        <GridLayout rows="80,50">
+                            <GridLayout row="0" columns="80,*" verticalAlignment="middle" class="plan-header">
+                                <Image [src]="plan.image" col="0" class="m-r-10" stretch="aspectFill"></Image>
+                                <GridLayout col="1" rows="auto,auto">
+                                    <Label row="0" [text]="plan.title" class="plan-title font-demi-bold"></Label>
+                                    <Label row="1" [text]="plan.content" textWrap="true" class="font-reg-small"></Label>
+                                </GridLayout>
+                            </GridLayout>
+                            <GridLayout row="1" columns="*,150" verticalAlignment="middle" class="plan-footer">
+                                <Label col="0" [text]="plan.cost + ' ' + plan.plan" class="font-demi-bold" verticalAlignment="middle"></Label>
+                                <Button col="1" text="Enjoy" class="btn btn-rounded-lg btn-normal font-demi-bold" color="white" verticalAlignment="middle"></Button>
+                            </GridLayout>
+                        </GridLayout>
+                    </StackLayout>
+
+                    <Label textWrap="true" [text]="'store_outro' | L" class="p-b-10"></Label>
+
+                    <Button [text]="'store_restore' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal"></Button>
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout> 
+    </GridLayout>
+</StackLayout>

@@ -1,0 +1,28 @@
+.home-panel {
+    width: 100%;
+    height: 100%;
+    vertical-align: center;
+    background-color: rgb(94, 117, 137);
+    padding: 20;
+}
+
+.title Label {
+    font-family: "AvenirNext-DemiBold";
+    font-size: 28pt;
+    color: white;
+}
+
+.content {
+    margin: 35pt 0 35pt 0;
+}
+
+    .content Label {
+        font-size: 16pt;
+        color: white;
+    }
+
+.footer Label {
+    font-size: 18pt;
+    text-align: center;
+    color: #EB9C8B;
+}

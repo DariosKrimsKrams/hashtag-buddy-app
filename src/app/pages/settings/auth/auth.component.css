@@ -1,0 +1,66 @@
+.auth-name {
+    background-color: rgb(237, 240, 242);
+    border-radius: 10;
+    margin-top: 30;
+}
+
+.main .btn-outline {
+    margin-top: 80;
+}
+
+/* .header Image {
+    width: 16pt;
+    height: 12pt;
+    float: left;
+} */
+
+.main .btn {
+    font-family: "AvenirNext-DemiBold";
+    font-size: 16pt;
+    text-transform: none;
+}
+
+
+@keyframes show {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.dialogOpen .main {
+    opacity: 0.2;
+    background-color: gray;
+}
+.dialogOpen .dialog-wrapper {
+    visibility: visible;
+    animation-name: show;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+.dialog-wrapper {
+    visibility: collapse;
+    opacity: 0;
+}
+
+.dialog {
+    border-radius: 10;
+    background-color: white;
+    width: 90%;
+    margin-top: 100;
+    padding: 20;
+}
+
+.dialog Button {
+    font-size: 16pt;
+    text-transform: none;
+}
+
+.dialog Button, .dialog Label {
+    font-family: "AvenirNext-DemiBold";
+}
+
+.signout {
+    font-family: "AvenirNext-DemiBold";
+    font-size: 16pt;
+    color: rgb(30, 39, 46);
+    border-color: rgb(30, 39, 46);
+}

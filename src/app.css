@@ -1,0 +1,137 @@
+/*
+In NativeScript, the app.css file is where you place CSS rules that
+you would like to apply to your entire application. Check out
+http://docs.nativescript.org/ui/styling for a full list of the CSS
+selectors and properties you can use to style UI components.
+
+/*
+In many cases you may want to use the NativeScript core theme instead
+of writing your own CSS rules. For a full list of class names in the theme
+refer to http://docs.nativescript.org/ui/theme.
+*/
+@import '~nativescript-theme-core/css/core.light.css';
+
+/*
+For example, the following CSS rule changes the font size of all UI
+components that have the btn class name.
+*/
+
+Label, Button, Span {
+    font-family: "AvenirNext-Regular";
+}
+
+.btn {
+    font-size: 18pt;
+}
+
+.btn-normal {
+    background: linear-gradient(to right, #C85CA2 , #F0A587);
+    color: white;
+    text-transform: none;
+    font-size: 16pt;
+}
+
+.border-color-normal {
+    border-color: #C85CA2;
+}
+
+.color-normal {
+    color: #C85CA2;
+    text-transform: none;
+    font-size: 16pt;
+}
+
+.far {
+    font-family: Font Awesome 5 Free, fa-regular-400;
+    font-weight: 400; 
+}
+
+.fab {
+    font-family: Font Awesome 5 Brands, fa-brands-400;
+    font-weight: 400; 
+}
+
+.fas {
+    font-family: Font Awesome 5 Free, fa-solid-900;
+    font-weight: 900; 
+}
+
+.font-reg-small {
+    font-family: "AvenirNext-Regular";
+    font-size: 14pt;
+    color: rgb(30, 39, 46);
+}
+
+.font-reg-medium {
+    font-family: "AvenirNext-Medium, Avenir Next Medium";
+    font-size: 18pt;
+    color: rgb(30, 39, 46);
+}
+
+.font-medium-small {
+    font-family: "AvenirNext-Medium, Avenir Next Medium";
+    font-size: 14pt;
+    color: rgb(36, 40, 51);
+}
+
+.font-medium-xs {
+    font-family: "AvenirNext-Medium, Avenir Next Medium";
+    font-size: 12pt;
+    color: rgb(30, 39, 46);
+}
+
+.font-muted {
+    color: rgb(90, 98, 104);
+}
+
+.font-demi-bold {
+    font-family: "AvenirNext-DemiBold";
+    text-transform: none;
+    font-size: 16pt;
+    color: rgb(30, 39, 46);
+}
+
+.menu-active {
+    font-family: "AvenirNext-DemiBold";
+    color: #C85CA2;
+    font-weight: bold;
+}
+
+.menu {
+    background-image: url("~/app/assets/images/menu.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    height: 100%;
+    background-size: cover;
+    padding: 20;
+}
+
+.menu .item {
+    margin-top: 50pt;
+}
+
+.menu .item Image {
+    width: 18pt;
+    height: 20pt;
+}
+
+.menu .item Label {
+    font-size: 18pt;
+    font-family: "AvenirNext-DemiBold";
+    vertical-align: middle;
+    margin-left: 27pt;
+}
+
+.tag {
+    /* background-color: #EFEFEF;
+    border-radius: 5;
+    padding: 5; */
+}
+
+.top-shadow {
+    height: 100%;    
+    background-image: url("~/app/assets/images/top-shadow.png");
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    background-position: top;
+}

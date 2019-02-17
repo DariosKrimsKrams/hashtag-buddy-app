@@ -1,0 +1,16 @@
+<StackLayout class="home-panel">
+    <StackLayout class="title">
+        <Label text="{{ 'loading_headline' | L }}" class="text-center"></Label>
+    </StackLayout>
+    <StackLayout class="content">
+        <Label textWrap="true" text="{{ 'loading_desc1' | L }}" class="font-reg-small text-center"></Label>
+    </StackLayout>
+    <StackLayout>
+        <circularProgressBar [size]="185" [progress]="100"></circularProgressBar>
+        <!-- <WebView [src]="loading"></WebView> -->
+    </StackLayout>
+    <StackLayout class="footer m-t-10">
+        <Label text="Analyzing your photo..." class="font-reg-small text-center"></Label>
+        <!-- <Label text="." *ngFor="countDots"></Label> -->
+    </StackLayout>
+</StackLayout>

@@ -1,0 +1,21 @@
+<GridLayout class="Language">
+    <StackLayout orientation="vertical" class="main">
+        <GridLayout verticalAlignment="middle" class="header p-20" columns="20,*,20">
+            <Image col="0" src="~/app/assets/images/icons/arrowLeft.png" (tap)="goPrevPage()"></Image>
+            <Label col="1" text="Choose language" class="text-center font-reg-medium"></Label>
+            <Label col="2" text=""></Label>
+        </GridLayout>
+        <ScrollView sdkExampleTitle sdkToggleNavButton>
+            <StackLayout class="p-r-20 p-l-20">
+                <StackLayout *ngFor="let country of countries; let i = index;" class="item">
+                    <GridLayout columns="auto, *, auto" verticalAlignment="middle" (tap)="selectLanguage(country)">
+                        <Image height="40" col="0" [src]="getImageName(country)"></Image>
+                        <Label col="1" [text]="country" class="p-l-20" fontSize="20" verticalAlignment="middle"></Label>
+                        <Label col="2" text="&#xf00c;" class="fas" fontSize="15" color="blue" verticalAlignment="middle" *ngIf="current===country"></Label>
+                    </GridLayout>
+                    <StackLayout class="hr-light m-10"></StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</GridLayout>

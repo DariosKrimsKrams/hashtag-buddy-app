@@ -1,0 +1,22 @@
+<StackLayout tkMainContent>
+    <GridLayout rows="130,*" class="FAQ">
+        <ns-small-header row="0" (OpenMenu)="openMenu()" [image]="'store.jpg'" [title]="'menu_faq' | L"></ns-small-header>
+        <GridLayout row="1">
+            <ScrollView sdkExampleTitle sdkToggleNavButton>
+                <StackLayout class="p-r-20 p-l-20">
+                    <StackLayout *ngFor="let item of faq; let i = index;" class="p-t-10 p-b-10 item">
+                        <GridLayout columns="*,20" verticalAlignment="middle" (tap)="expandToggle(i)">
+                            <Label col="0" [text]="item.title" class="h3" verticalAlignment="middle" textWrap="true"></Label>
+                            <Label col="1" [text]="item.expand ? '&#xf068;' : '&#xf067;'" fontSize="15" class="fas"></Label>
+                        </GridLayout>
+                        <WrapLayout class="p-10" *ngIf="item.expand">
+                            <Label [text]="item.content" textWrap="true" class="content"></Label>
+                        </WrapLayout>
+                        <StackLayout class="hr-light m-10"></StackLayout>
+                    </StackLayout>
+                    <Label text="{{'faq_outro' | L}}" textWrap="true"></Label>
+                </StackLayout>
+            </ScrollView>
+        </GridLayout>    
+    </GridLayout>
+</StackLayout>

@@ -1,0 +1,13 @@
+<GridLayout class="small-header">
+    <Image src="~/app/assets/images/header/{{image}}" stretch="aspectFill"></Image>
+    <GridLayout rows="*,auto" id="header-content">
+        <GridLayout row="0" rows="50" columns="40,*,40" class="m-b-10">
+            <Image src="~/app/assets/images/icons/menu_bar_white.png" col="0" class="m-l-20" (tap)="openMenu()"></Image>
+            <GridLayout col="1" horizontalAlignment="center" verticalAlignment="middle">
+                <Label [text]="title" class="title"></Label>
+            </GridLayout>
+            <Label col="2"></Label>
+        </GridLayout>
+        <Image row="1" src="~/app/assets/images/header_shadow.png" id="shadow"></Image>
+    </GridLayout>
+</GridLayout>

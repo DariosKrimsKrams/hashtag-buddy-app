@@ -1,0 +1,51 @@
+<StackLayout>
+    <GridLayout columns="20,*,20" id="header">
+        <Image col="0" src="~/app/assets/images/icons/arrowLeft_white.png" (tap)="goPrevPage()"></Image>
+        <Label col="1" text="{{ 'leave_feedback_headline' | L }}" class="title"></Label>
+        <StackLayout col="2"></StackLayout>
+    </GridLayout>
+
+    <GridLayout>
+        <StackLayout class="top-shadow" isUserInteractionEnabled="false"></StackLayout>
+        <ScrollView sdkExampleTitle sdkToggleNavButton>
+            <StackLayout>
+
+                <StackLayout class="m-l-20 m-r-20 m-t-10">
+                    <Label [text]="'leave_feedback_rating' | L" class="font-demi-bold"></Label>
+                </StackLayout>
+
+                <GridLayout class="status m-l-20 m-r-5 m-t-10" columns="*,*,*" rows="auto">
+                    <GridLayout [col]="i" class="p-r-15" *ngFor="let item of emoji; let i = index;" (tap)="selected=[];selected[i]=true;">
+                        <StackLayout horizontalAlignment="center" class="p-t-5 p-b-5" [class.active]="selected[i]">
+                            <Image [src]="'~/app/assets/images/icons/' + item + '.png'" *ngIf="!selected[i]"></Image>
+                            <Image [src]="'~/app/assets/images/icons/' + item + '_white.png'" *ngIf="selected[i]"></Image>
+                            <Label [text]="item" class="font-reg-small"></Label>
+                        </StackLayout>
+                    </GridLayout>
+                </GridLayout>
+            
+                <StackLayout class="m-l-15 m-r-15">
+                    <Label text="{{ 'leave_feedback_good_hashtags' | L }}" class="font-demi-bold m-t-20 m-l-5 m-b-5"></Label>
+                    <WrapLayout>
+                        <ns-hashtag *ngFor="let tag of userSelectedHashtags; let i = index;" (onClick)="tag1[i]=!tag1[i];" [isActive]="tag1[i]" [name]="tag.title"></ns-hashtag>
+                    </WrapLayout>
+                    <Label text="{{ 'leave_feedback_bad_hashtags' | L }}" class="font-demi-bold m-t-20 m-l-5 m-b-5"></Label>
+                    <WrapLayout>
+                        <ns-hashtag *ngFor="let tag of userNotSelectedHashtags; let i = index;" (onClick)="tag2[i]=!tag2[i];" [isActive]="tag2[i]" [name]="tag.title"></ns-hashtag>
+                    </WrapLayout>
+                </StackLayout>
+            
+                <StackLayout class="m-l-20 m-r-20">
+                    <FloatLabel placeholder="{{ 'leave_feedback_missing_hashtags' | L }}"></FloatLabel>
+                    <FloatLabel placeholder="{{ 'leave_feedback_comments' | L }}"></FloatLabel>
+                </StackLayout>
+            
+                <StackLayout class="m-t-20 m-l-20 m-r-20">
+                    <Button text="{{ 'leave_feedback_send_feedback' | L }}" class="btn btn-main btn-normal btn-rounded-lg font-demi-bold" (tap)="send()"></Button>
+                    <Button text="{{ 'leave_feedback_skip_no_send' | L }}" class="btn btn-outline btn-rounded-lg border-color-normal color-normal" (tap)="skip()"></Button>
+                </StackLayout>
+                
+            </StackLayout> 
+        </ScrollView>   
+    </GridLayout>
+</StackLayout>

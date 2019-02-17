@@ -1,0 +1,28 @@
+<StackLayout tkMainContent>
+    <GridLayout rows="200,*" class="Error">
+        <GridLayout row="0">
+            <Image src="~/app/assets/images/big-header.png" stretch="fill"></Image>
+            <StackLayout>
+                <GridLayout rows="50" columns="40,*,40" class="m-b-10">
+                    <Image src="~/app/assets/images/icons/menu_bar_white.png" col="0" class="m-l-20" (tap)="openMenu()"></Image>
+                    <GridLayout col="1" horizontalAlignment="center">
+                        <Image src="~/app/assets/images/logo.png" height="30"></Image>            
+                    </GridLayout>
+                    <Label col="2"></Label>
+                </GridLayout>
+                <Label text="Ooops..." color="white" class="text-center title"></Label>
+                <Label text="Something went wrong :(" color="white" class="text-center"></Label>
+            </StackLayout>
+        </GridLayout>
+        <StackLayout row="1" class="p-20 m-t-20">
+            <GridLayout rows="auto" columns="50,*" class="info p-10">
+                <Image src="~/app/assets/images/icons/info.png" row="0" col="0" width="22pt" height="22pt"></Image>
+                <Label text="Something went wrong and we can’t handle your request" textWrap="true" row="0" col="1"></Label>
+            </GridLayout>
+            <StackLayout class="m-t-30">
+                <Button text="Try again" class="btn btn-normal btn-rounded-lg"></Button>
+                <Button text="Go to main page" class="btn btn-rounded-lg btn-outline border-color-normal color-normal"></Button>
+            </StackLayout>            
+        </StackLayout>
+    </GridLayout>
+</StackLayout>

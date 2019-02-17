@@ -1,0 +1,35 @@
+#dialog {
+    border-radius: 10;
+    width: 80%;
+    background-color: #fafafa;
+    padding: 20;
+    padding-bottom: 0;
+
+    opacity: 0;
+    animation-name: show;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes show {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#dialog Label {
+    font-family: "AvenirNext-DemiBold";
+    font-size: 16pt;
+    color: rgb(30, 39, 46);
+}
+
+#dialog .btn {
+    font-family: "AvenirNext-DemiBold";
+    font-size: 16pt;
+    text-transform: none;
+    height: 50pt;
+    margin-bottom: 10pt;
+}
+
+#dialog .btn:first-child {
+    margin-top: 20pt;
+}

@@ -1,0 +1,34 @@
+.item {
+	border-radius: 8;
+	margin: 0 0 10 0;
+	padding: 3;
+}
+
+.item.highlight {
+    background: linear-gradient(to right, #C85CA2 , #F0A587);
+}
+
+.plan-header {
+	background-color: rgb(237, 240, 242);
+	border-radius: 5 5 0 0;
+	padding: 5;
+}
+
+.plan-header Image {
+	border-radius: 5;
+}
+
+.highlight .plan-title {
+	font-weight: bold;
+	color: #C85CA2;
+}
+
+.plan-footer {
+	background-color: rgb(250, 250, 250);
+	border-radius: 0 0 5 5;
+	padding: 5;
+}
+
+Label {
+	text-transform: none;
+}

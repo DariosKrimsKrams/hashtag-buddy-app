@@ -1,0 +1,30 @@
+.tag * {
+    height: 30pt;
+    left: 0;
+    top: 0;
+}
+    .tag-left {
+        width: 8pt;
+        background-image: url("~/app/assets/images/shadow_left.png");
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .tag-text {
+        background-image: url("~/app/assets/images/shadow_center_right.png");
+        background-repeat: repeat-x;
+        background-position: right center;
+        background-size: cover;
+        font-size: 13pt;
+        padding: 2pt 10pt 0 10pt;
+    }
+    .tag .tag-text-active {
+        left: 4pt;
+        top: 0;
+        font-size: 13pt;
+        background: linear-gradient(to right, #C85CA2 , #F0A587);
+        border-radius: 3pt;
+        padding: 2pt 6pt 0 6pt;
+        height: 24pt;
+        color: white;
+    }

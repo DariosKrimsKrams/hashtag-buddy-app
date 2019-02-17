@@ -1,0 +1,71 @@
+<StackLayout tkMainContent>
+        <GridLayout [class.dialogOpen]="dialogOpen">
+            <GridLayout rows="50,*" class="page">
+                <GridLayout id="header" [class.white]="currentScrollingY >= parallaxHeight" row="0" columns="40,*,60">
+                    <StackLayout col="0" class="m-l-20" (tap)="openMenu()" verticalAlignment="middle">
+                        <Image src="~/app/assets/images/icons/menu_bar_black.png" *ngIf="parallaxHeight > currentScrollingY"></Image>
+                        <Image src="~/app/assets/images/icons/menu_bar_white.png" *ngIf="currentScrollingY >= parallaxHeight"></Image>
+                    </StackLayout>
+                    <GridLayout col="1" horizontalAlignment="center" verticalAlignment="middle">
+                        <Label text="Results" class="text-center font-reg-medium" class="title"></Label>
+                    </GridLayout>        
+                    <Label col="2" text="&#xf059;" class="fas pull-right m-r-20 header-right-icon"></Label>
+                </GridLayout>
+                <GridLayout row="1" rows="*,50" tkMainContent>
+                    <GridLayout row="0">
+                        <ScrollView #scrollView (scroll)="onScroll($event, scrollView, topView)">
+                            <StackLayout>
+                                <GridLayout id="preview-image" (tap)="dismissSoftKeybaord()" [height]="parallaxHeight" #topView>
+                                    <Image [src]="photo" stretch="aspectFill"></Image>
+                                </GridLayout>       
+                                <StackLayout id="user-selection" class="p-l-15 p-r-15 p-b-20 p-b-20">
+                                    <Label class="m-l-5 m-r-5 m-t-10 m-b-5 font-demi-bold" text="{{ 'results_category_user_hashtags' | L }}"></Label>
+                                    <WrapLayout class="m-t-5">
+                                        <ns-hashtag *ngFor="let tag of selected_hashtags; let i = index" (onClick)="removeHashtag(tag.title_id, tag.tag_id)" [name]="tag.name.title + ' X'" [isActive]="true"></ns-hashtag>
+                                    </WrapLayout>  
+                                    <Label class="m-l-5 m-r-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="selected_hashtags.length == 0"></Label>
+                                    <GridLayout columns="*,60" class="m-t-10 m-l-5 m-r-5">
+                                        <FloatLabel [placeholder]="'results_hashtags_input' | L"></FloatLabel>
+                                        <Label class="font-demi-bold text-muted add" [text]="'results_hashtags_add' | L" col="1"></Label>
+                                    </GridLayout>
+                                </StackLayout>   
+                                <StackLayout orientation="vertical" class="list-group-item" *ngFor="let hashtag of hashtags; let i = index;">
+                                    <GridLayout columns="*,60" class="hash-title m-l-20 m-r-20">
+                                        <Label [text]="hashtag.title | L" class="font-demi-bold" col="0"></Label>
+                                        <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal selectall" (tap)="selectAll(hashtag, i)" *ngIf="!areAllHashtagSelected(hashtag, i)"></Button>
+                                        <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal selectall" (tap)="selectAll(hashtag, i)" *ngIf="areAllHashtagSelected(hashtag, i)"></Button>
+                                    </GridLayout>
+                                    <Label text="{{'results_recommented_amount' | L}} {{hashtag.recommendedAmount}}" class="font-reg-small-muted m-l-20 m-r-20"></Label>
+                                    <WrapLayout class="m-t-5 m-l-15 m-r-15 m-b-20 tag-title">
+                                        <ns-hashtag *ngFor="let tag of hashtag.tags; let j = index;" (onClick)="selectHashtag(tag, i, j)" [name]="tag.title" [isActive]="hightlightStatus[i + '_' + j]"></ns-hashtag>
+                                    </WrapLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+                        <StackLayout class="top-shadow" isUserInteractionEnabled="false" *ngIf="currentScrollingY >= parallaxHeight - 3"></StackLayout>
+                        <StackLayout id="bottom-shadow" isUserInteractionEnabled="false"></StackLayout>
+                    </GridLayout>
+                    <GridLayout row="1" columns="*,*" class="footer">
+                        <!-- <StackLayout col="0" horizontalAliginment="center" (tap)="copyTop20()">
+                            <Label text="&#xf0a6;" class="far text-center" fontSize="20"></Label>
+                            <Label text="{{ 'results_copy_top' | L }}" class="text-center font-medium-xs"></Label>
+                        </StackLayout> -->
+                        <StackLayout col="0" horizontalAliginment="center" (tap)="copySelected()">
+                            <Label text="&#xf0ea;" class="fas text-center" fontSize="20"></Label>
+                            <Label text="{{ 'results_copy_selected' | L }}" class="text-center font-medium-xs"></Label>
+                        </StackLayout>
+                        <StackLayout col="1" horizontalAliginment="center" (tap)="goLeaveFeedback()" class="open-instagram">
+                            <Label text="&#xf16d;" class="fab text-center" fontSize="20"></Label>
+                            <Label text="{{ 'results_copy_to_instagram' | L }}" class="text-center font-medium-xs"></Label>
+                        </StackLayout>
+                    </GridLayout>
+                </GridLayout>                         
+            </GridLayout>  
+            <AbsoluteLayout class="dialog-wrapper" *ngIf="dialogOpen" horizontalAlignment="center">
+                <StackLayout class="dialog" horizontalAlignment="center">            
+                    <Image src="~/app/assets/images/copied.png" width="60" height="50"></Image>
+                    <Label text="Copied to clipboard" class="m-t-20 text-center"></Label>
+                </StackLayout>
+            </AbsoluteLayout>
+        </GridLayout>              
+    </StackLayout>

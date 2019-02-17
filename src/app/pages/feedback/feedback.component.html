@@ -1,0 +1,15 @@
+<StackLayout tkMainContent>
+    <GridLayout>
+        <GridLayout rows="130,*" class="Settings">
+            <ns-small-header (OpenMenu)="openMenu()" [image]="'feedback.jpg'" [title]="'menu_feedback' | L"></ns-small-header>
+            <StackLayout class="input-field p-l-30 p-r-30" row="1">
+                <Label textWrap="true" text="{{'feedback_intro' | L}}" (tap)="dismissSoftKeybaord()"></Label>
+                <FloatLabel placeholder="{{ 'feedback_email' | L }}" #clearTextfieldClear></FloatLabel>
+                <FloatLabel placeholder="{{ 'feedback_message' | L }}" #clearTextfieldClear></FloatLabel>
+                <StackLayout class="m-t-10">
+                    <Button text="{{ 'feedback_send' | L }}" class="btn btn-rounded-lg btn-normal feedback" width="100%" [class.bg-muted]="email=='' && message==''" (tap)="leaveFeedback()"></Button>
+                </StackLayout>
+            </StackLayout>        
+        </GridLayout>
+    </GridLayout>
+</StackLayout>

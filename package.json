@@ -1,0 +1,51 @@
+{
+    "nativescript": {
+        "id": "org.nativescript.Instaq",
+        "tns-android": {
+            "version": "5.1.0"
+        },
+        "tns-ios": {
+            "version": "5.1.0"
+        }
+    },
+    "description": "NativeScript Application",
+    "license": "SEE LICENSE IN <your-license-filename>",
+    "repository": "<fill-your-repository-here>",
+    "dependencies": {
+        "@angular/animations": "~7.1.0",
+        "@angular/common": "~7.1.0",
+        "@angular/compiler": "~7.1.0",
+        "@angular/core": "~7.1.0",
+        "@angular/forms": "~7.1.0",
+        "@angular/http": "~7.1.0",
+        "@angular/platform-browser": "~7.1.0",
+        "@angular/platform-browser-dynamic": "~7.1.0",
+        "@angular/router": "~7.1.0",
+        "nativescript-angular": "~7.1.0",
+        "nativescript-emoji": "^1.1.1",
+        "nativescript-imagepicker": "^6.0.6",
+        "nativescript-localize": "^4.1.0",
+        "nativescript-ngx-fonticon": "^4.2.0",
+        "nativescript-social-share": "^1.5.1",
+        "nativescript-theme-core": "~1.0.4",
+        "nativescript-ui-autocomplete": "^3.11.0",
+        "nativescript-ui-calendar": "^3.10.0",
+        "nativescript-ui-chart": "^3.11.1",
+        "nativescript-ui-dataform": "^3.10.0",
+        "nativescript-ui-gauge": "^3.8.0",
+        "nativescript-ui-listview": "^5.1.0",
+        "nativescript-ui-sidedrawer": "^5.1.0",
+        "reflect-metadata": "~0.1.10",
+        "rxjs": "~6.3.0",
+        "tns-core-modules": "~5.1.0",
+        "zone.js": "~0.8.18"
+    },
+    "devDependencies": {
+        "@nativescript/schematics": "~0.4.0",
+        "nativescript-dev-typescript": "~0.7.0",
+        "nativescript-dev-webpack": "~0.18.0",
+        "@angular/compiler-cli": "~7.1.0",
+        "@ngtools/webpack": "~7.1.0"
+    },
+    "readme": "NativeScript Application"
+}

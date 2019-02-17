@@ -1,0 +1,16 @@
+.title, .title + Label {
+    font-size: 28pt;
+    font-family: "AvenirNext-Medium";
+    margin-bottom: 18pt;
+}
+
+Button {
+    text-transform: unset;
+    font-family: "AvenirNext-DemiBold";
+    font-size: 16pt;
+}
+
+.info {
+    background-color: rgb(237, 240, 242);
+    border-radius: 5;
+}
