@@ -3,8 +3,7 @@
     height: 50pt;
     color: rgb(30, 39, 46);
 }
-    #header.white {
-        background: linear-gradient(to right, #C85CA2 , #F0A587);
+    #header.gradient {
         color: #fff;
     }
     .title {

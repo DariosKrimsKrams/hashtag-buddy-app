@@ -24,8 +24,13 @@ Label, Button, Span {
     font-size: 18pt;
 }
 
-.btn-normal {
+.gradient, .btn-normal {
     background: linear-gradient(to right, #C85CA2 , #F0A587);
+}
+.gradientTrans {
+    background: linear-gradient(to right, rgba(207,105,157,0.8) , rgba(236,157,139,0.8));
+}
+.btn-normal {
     color: white;
     text-transform: none;
     font-size: 16pt;

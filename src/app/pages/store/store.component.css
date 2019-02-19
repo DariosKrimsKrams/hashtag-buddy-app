@@ -4,10 +4,6 @@
 	padding: 3;
 }
 
-.item.highlight {
-    background: linear-gradient(to right, #C85CA2 , #F0A587);
-}
-
 .plan-header {
 	background-color: rgb(237, 240, 242);
 	border-radius: 5 5 0 0;
@@ -18,7 +14,7 @@
 	border-radius: 5;
 }
 
-.highlight .plan-title {
+.gradient .plan-title {
 	font-weight: bold;
 	color: #C85CA2;
 }

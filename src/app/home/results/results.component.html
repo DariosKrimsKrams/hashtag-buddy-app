@@ -1,7 +1,7 @@
 <StackLayout tkMainContent>
         <GridLayout [class.dialogOpen]="dialogOpen">
             <GridLayout rows="50,*" class="page">
-                <GridLayout id="header" [class.white]="currentScrollingY >= parallaxHeight" row="0" columns="40,*,60">
+                <GridLayout id="header" [class.gradient]="currentScrollingY >= parallaxHeight" row="0" columns="40,*,60">
                     <StackLayout col="0" class="m-l-20" (tap)="openMenu()" verticalAlignment="middle">
                         <Image src="~/app/assets/images/icons/menu_bar_black.png" *ngIf="parallaxHeight > currentScrollingY"></Image>
                         <Image src="~/app/assets/images/icons/menu_bar_white.png" *ngIf="currentScrollingY >= parallaxHeight"></Image>

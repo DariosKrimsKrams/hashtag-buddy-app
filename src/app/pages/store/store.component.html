@@ -8,7 +8,7 @@
                 <StackLayout class="p-l-15 p-r-15 p-b-20">
                     <Label textWrap="true" [text]="'store_intro' | L" class="p-b-10"></Label>
 
-                    <StackLayout *ngFor="let plan of plans; let i = index;" class="item" [class.highlight]="plan.isHighlight">
+                    <StackLayout *ngFor="let plan of plans; let i = index;" class="item" [class.gradient]="plan.isHighlight">
                         <GridLayout rows="80,50">
                             <GridLayout row="0" columns="80,*" verticalAlignment="middle" class="plan-header">
                                 <Image [src]="plan.image" col="0" class="m-r-10" stretch="aspectFill"></Image>
