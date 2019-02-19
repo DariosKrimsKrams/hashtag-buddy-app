@@ -26,7 +26,7 @@ class ScreenInfo {
 })
 export class HomeComponent implements OnInit {
 
-  isHistoryOpen: number;
+  isHistoryOpen: boolean;
   public screenInformation: ScreenInfo;
 
   constructor(
@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.isHistoryOpen = 0;
   }
 
   clickUpload() {
@@ -87,8 +86,8 @@ export class HomeComponent implements OnInit {
     sideDrawer.closeDrawer();
   }
 
-  clickHistory() {
-    this.isHistoryOpen = this.isHistoryOpen != 1 ? 1 : 2;
+  showHistory() {
+    this.isHistoryOpen = true;
   }
 
 }

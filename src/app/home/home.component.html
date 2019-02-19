@@ -1,44 +1,30 @@
-<!-- <StackLayout tkMainContent> -->
-    <GridLayout tkMainContent>
-        <GridLayout rows="240,*" class="Home">
-            <!-- <ns-big-header row="0" (OpenMenu)="openMenu()"></ns-big-header> -->
-            <GridLayout row="1">
-                <GridLayout rows="*,130" verticalAlignment="middle">
-                    <GridLayout row="0" rows="*,70">
-                        <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient" id="upload-button" text="{{ 'home_upload' | L }}" row="0" (tap)="clickUpload()"></Button>
-                        <!-- <GridLayout row="2" rows="*" class="center" horizontalAlignment="center"> -->
-                            <!-- <Label textWrap="true" class="font-reg-small">
-                                <FormattedString>
-                                    <Span text="By using this app, you agree to our "></Span>
-                                    <Span text="Terms and Conditions"></Span>
-                                </FormattedString>
-                            </Label> -->
-                        <!-- </GridLayout> -->
-                    </GridLayout>
-                </GridLayout>
-
+<StackLayout tkMainContent>
+    <GridLayout rows="240,*" class="Home">
+        <ns-big-header row="0" (OpenMenu)="openMenu()"></ns-big-header>
+        <GridLayout row="1" rows="*,130" verticalAlignment="middle">
+            <GridLayout row="0" rows="*,70">
+                <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient" id="upload-button" text="{{ 'home_upload' | L }}" row="0" (tap)="clickUpload()"></Button>
+                <!-- <GridLayout row="2" rows="*" class="center" horizontalAlignment="center"> -->
+                    <!-- <Label textWrap="true" class="font-reg-small">
+                        <FormattedString>
+                            <Span text="By using this app, you agree to our "></Span>
+                            <Span text="Terms and Conditions"></Span>
+                        </FormattedString>
+                    </Label> -->
+                <!-- </GridLayout> -->
             </GridLayout>
-        </GridLayout>
-        
-        <AbsoluteLayout class="text-center" verticalAlignment="bottom">
-            <GridLayout id="history" [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" top="0" left="0" (tap)="clickHistory()">
-                <Image src="~/app/assets/images/home_footer_shadow.png" id="history_shadow" verticalAlignment="top"></Image>
-                <GridLayout columns="auto,auto,auto" horizontalAlignment="center" verticalAlignment="top" id="history_header">
+            <GridLayout row="1" class="text-center" id="home_footer">
+                <Image src="~/app/assets/images/home_footer_shadow.png" verticalAlignment="top"></Image>
+                <GridLayout columns="auto,auto,auto" horizontalAlignment="center" verticalAlignment="middle" class="m-t-30">
                     <Image src="~/app/assets/images/icons/history.png" col="0" class="m-r-10" width="20pt" height="18pt"></Image>
                     <Label text="{{ 'history_title' | L }}" fontSize="16" class="font-weight-bold" col="1"></Label>
                     <Image src="~/app/assets/images/icons/up.png" *ngIf="!isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
                     <Image src="~/app/assets/images/icons/down.png" *ngIf="isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
                 </GridLayout>
+                <!-- <ns-history [(isHistoryOpen)]="isHistoryOpen"></ns-history> -->
             </GridLayout>
-        <!-- <ns-history [(isHistoryOpen)]="isHistoryOpen"></ns-history> -->
-        </AbsoluteLayout>
-
-        <StackLayout height="240" verticalAlignment="top">
-            <ns-big-header (OpenMenu)="openMenu()"></ns-big-header>
-        </StackLayout>
-
-
+        </GridLayout>
     </GridLayout>
-<!-- </StackLayout> -->
+</StackLayout>
 
 
