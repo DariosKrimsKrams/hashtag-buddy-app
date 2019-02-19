@@ -8,14 +8,14 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class BigHeaderComponent implements OnInit {
 
-  @Output() OpenMenu = new EventEmitter<string>();
+  // @Output() OpenMenu = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
   }
 
-  openMenu() {
-    this.OpenMenu.emit();
-  }
+  // openMenu() {
+  //   this.OpenMenu.emit();
+  // }
 
 }

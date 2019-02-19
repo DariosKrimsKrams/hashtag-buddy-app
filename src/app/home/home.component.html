@@ -21,20 +21,18 @@
         </GridLayout>
         
         <AbsoluteLayout class="text-center" verticalAlignment="bottom">
-            <GridLayout id="history" [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" top="0" left="0" (tap)="clickHistory()">
+            <GridLayout id="history" [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" top="0" left="0">
                 <Image src="~/app/assets/images/home_footer_shadow.png" id="history_shadow" verticalAlignment="top"></Image>
-                <GridLayout columns="auto,auto,auto" horizontalAlignment="center" verticalAlignment="top" id="history_header">
-                    <Image src="~/app/assets/images/icons/history.png" col="0" class="m-r-10" width="20pt" height="18pt"></Image>
-                    <Label text="{{ 'history_title' | L }}" fontSize="16" class="font-weight-bold" col="1"></Label>
-                    <Image src="~/app/assets/images/icons/up.png" *ngIf="!isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
-                    <Image src="~/app/assets/images/icons/down.png" *ngIf="isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
-                </GridLayout>
+                <ns-history [isHistoryOpen]="isHistoryOpen === 1" (openCloseHistory)="clickHistory()"></ns-history>
             </GridLayout>
-        <!-- <ns-history [(isHistoryOpen)]="isHistoryOpen"></ns-history> -->
         </AbsoluteLayout>
 
-        <StackLayout height="240" verticalAlignment="top">
-            <ns-big-header (OpenMenu)="openMenu()"></ns-big-header>
+        <StackLayout id="big_header" [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" verticalAlignment="top">
+            <ns-big-header></ns-big-header>
+        </StackLayout>
+
+        <StackLayout height="50" width="40" horizontalAlignment="left" verticalAlignment="top">
+            <Image src="~/app/assets/images/icons/menu_bar_white.png" width="20" class="m-l-20 m-t-20" (tap)="openMenu()"></Image>
         </StackLayout>
 
 

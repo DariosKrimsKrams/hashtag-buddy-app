@@ -1,11 +1,9 @@
-.history,
-.list-group-item {
-    background-color: red;
+#history_header {
+    margin: 70pt 0 0 0;
 }
 
-.history {
-    left: 0;
-    top: 50pt;
+#history_content {
+    margin: 120pt 0 20pt 0;
 }
 
 .trash {
@@ -16,5 +14,5 @@
 
 .left-blackbar {
     height: 80pt;
-    background-color: black;
+    background-color: #fff;
 }
