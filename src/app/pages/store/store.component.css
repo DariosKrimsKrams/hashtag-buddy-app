@@ -24,7 +24,17 @@
 	border-radius: 0 0 5 5;
 	padding: 5;
 }
+	.plan-footer Label {
+		color: #C85CA2;
+	}
+	.plan-footer Button {
+		color: #fff;
+		font-weight: bold;
+	}
 
 Label {
 	text-transform: none;
+}
+.headline {
+	font-size: 18pt;
 }

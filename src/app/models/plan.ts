@@ -6,4 +6,6 @@ export class Plan {
     plan?: string;
     cost?: string;
     isHighlight?: boolean;
+    isAbo?: boolean;
+    savings?: number;
 }
