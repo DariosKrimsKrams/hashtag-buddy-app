@@ -1,7 +1,7 @@
 <GridLayout class="small-header">
     <Image src="~/app/assets/images/header/{{image}}" stretch="aspectFill"></Image>
     <GridLayout rows="*,auto" id="header-content" class="gradientTrans">
-        <GridLayout row="0" rows="50" columns="40,*,40" class="m-b-10">
+        <GridLayout row="0" rows="50" columns="40,*,40" class="m-b-10 m-t-20">
             <Image src="~/app/assets/images/icons/menu_bar_white.png" col="0" class="m-l-20" (tap)="openMenu()"></Image>
             <GridLayout col="1" horizontalAlignment="center" verticalAlignment="middle">
                 <Label [text]="title" class="title"></Label>

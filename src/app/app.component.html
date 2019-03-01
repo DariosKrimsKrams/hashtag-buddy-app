@@ -6,7 +6,7 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
 <RadSideDrawer toggleNavButton [drawerTransition]="sideDrawerTransition">
     <StackLayout tkDrawerContent>
         <StackLayout rows="auto, *" class="menu">
-            <GridLayout rows="30" columns="20" horizontalAlignment="left">
+            <GridLayout rows="30" columns="20" horizontalAlignment="left" class="m-t-20">
                 <Image col="0" src="~/app/assets/images/icons/arrowLeft.png" (tap)="closeMenu()" width="16pt" height="12pt"></Image>
             </GridLayout> 
             <GridLayout rows="30" columns="20,auto" (tap)="openPage(i)" class="item" *ngFor="let menu of menus; let i = index;">

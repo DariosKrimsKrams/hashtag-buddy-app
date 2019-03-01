@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import * as app from "application";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
-import { AppService } from "~/app/app.service";
 
 @Component({
     moduleId: module.id,
@@ -17,7 +16,6 @@ export class AppComponent implements OnInit {
 
     constructor(
         private router: RouterExtensions,
-        // public appservice: AppService
     ) {
     }
 
@@ -36,9 +34,9 @@ export class AppComponent implements OnInit {
         this.closeMenu();
         this.router.navigate(["/" + this.menus[index]], {
             transition: {
-            name: "fadeIn",
-            duration: 500,
-            curve: "easeOut"
+                name: "fadeIn",
+                duration: 500,
+                curve: "easeOut"
             }
         });
     }
@@ -46,20 +44,6 @@ export class AppComponent implements OnInit {
     closeMenu() {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.closeDrawer();
-    }
-
-    onDrawerOpened() {
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-        // if(this.appservice.drawerLocation == "Left") {
-            // sideDrawer.gesturesEnabled = true;
-        // }else {
-            // sideDrawer.gesturesEnabled = false;
-        // }        
-    }
-
-    onDrawerClosed() {
-        const sideDrawer = <RadSideDrawer>app.getRootView();
-        // sideDrawer.gesturesEnabled = true;
     }
 
 }

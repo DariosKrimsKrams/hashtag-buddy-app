@@ -61,26 +61,7 @@ export class HomeComponent implements OnInit {
 
   setProgressbarWidth(percent) {
     this.columns = percent + "*," + (100 - percent) + "*";
-  }  
-
-//   onLoaded(args: EventData) {
-//     console.log("BLAAAAA");
-//     this.page = <Page>args.object;
-//     this.page.bindingContext = this;
-//     var myView = <View>this.page.getViewById("mainContainer");
-//     var test = myView.getMeasuredHeight();
-//     console.log(test);
-// }
-  
-  // checkIfViewRendered() {
-  //     setTimeout(function() {
-  //       this.historyHeight = this.mainContainerElement.nativeElement.getMeasuredHeight()
-  //     }, 100);
-  //     if (this.historyHeight === 0) {
-  //       this.checkIfViewRendered()
-  //     }
-  //     else console.log('rendered height is', this.historyHeight);
-  // }
+  }
 
   clickUpload() {
     let that = this;
@@ -124,20 +105,13 @@ export class HomeComponent implements OnInit {
 
   clickHistory() {
     this.isHistoryOpen = this.isHistoryOpen != 1 ? 1 : 2;
-
-    if(this.isHistoryOpen === 1) {
-      this.historyElement.nativeElement.animate({
-        translate: { x: 0, y: 0},
-        backgroundColor: '#fff',
-        duration: 600
-      });
-    } else {
-      this.historyElement.nativeElement.animate({
-        translate: { x: 0, y: this.historyDefaultTransform},
-        backgroundColor: '#fcfcfc',
-        duration: 600
-      });
-    }
+    var posY = this.isHistoryOpen === 1 ? 0 : this.historyDefaultTransform;
+    var bgColor = this.isHistoryOpen === 1 ? '#fff' :'#fcfcfc';
+    this.historyElement.nativeElement.animate({
+      translate: { x: 0, y: posY},
+      backgroundColor: bgColor,
+      duration: 600
+    });
   }
 
 }

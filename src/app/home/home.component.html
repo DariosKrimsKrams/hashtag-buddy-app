@@ -1,46 +1,41 @@
-<!-- <StackLayout tkMainContent> -->
-    <GridLayout tkMainContent #mainContainer>
-        <GridLayout rows="240,*" class="Home">
-            <!-- <ns-big-header row="0" (OpenMenu)="openMenu()"></ns-big-header> -->
-            <GridLayout row="1">
-                <GridLayout rows="*,130" verticalAlignment="middle">
-                    <StackLayout row="0">
-                        <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient" id="upload-button" text="{{ 'home_upload' | L }}" row="0" (tap)="clickUpload()"></Button>
-                        <!-- <GridLayout row="2" rows="*" class="center" horizontalAlignment="center"> -->
-                            <!-- <Label textWrap="true" class="font-reg-small">
-                                <FormattedString>
-                                    <Span text="By using this app, you agree to our "></Span>
-                                    <Span text="Terms and Conditions"></Span>
-                                </FormattedString>
-                            </Label> -->
-                        <!-- </GridLayout> -->
-                        <GridLayout [columns]="columns" class="progressbar">
-                            <StackLayout col="0" class="progressbar-value"></StackLayout>
-                        </GridLayout>
-                        <Label text="5 unlocked photos left" horizontalAlignment="center"></Label>
-                    </StackLayout>
-                </GridLayout>
-
+<GridLayout tkMainContent #mainContainer>
+    <GridLayout rows="240,*" class="Home">
+        <GridLayout row="1">
+            <GridLayout rows="*,130" verticalAlignment="middle">
+                <StackLayout row="0">
+                    <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient" id="upload-button" text="{{ 'home_upload' | L }}" row="0" (tap)="clickUpload()"></Button>
+                    <!-- <GridLayout row="2" rows="*" class="center" horizontalAlignment="center"> -->
+                        <!-- <Label textWrap="true" class="font-reg-small">
+                            <FormattedString>
+                                <Span text="By using this app, you agree to our "></Span>
+                                <Span text="Terms and Conditions"></Span>
+                            </FormattedString>
+                        </Label> -->
+                    <!-- </GridLayout> -->
+                    <GridLayout [columns]="columns" class="progressbar">
+                        <StackLayout col="0" class="progressbar-value"></StackLayout>
+                    </GridLayout>
+                    <Label text="5 unlocked photos left" horizontalAlignment="center"></Label>
+                </StackLayout>
             </GridLayout>
         </GridLayout>
-        
-        <AbsoluteLayout class="text-center" verticalAlignment="bottom">
-            <GridLayout id="history" [height]="historyHeight" [translateY]="historyDefaultTransform" #history [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" top="0" left="0">
-                <Image src="~/app/assets/images/home_footer_shadow.png" id="history_shadow" verticalAlignment="top"></Image>
-                <ns-history [isHistoryOpen]="isHistoryOpen === 1" (openCloseHistory)="clickHistory()"></ns-history>
-            </GridLayout>
-        </AbsoluteLayout>
-
-        <StackLayout id="big_header" [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" verticalAlignment="top">
-            <ns-big-header></ns-big-header>
-        </StackLayout>
-
-        <StackLayout height="50" width="40" horizontalAlignment="left" verticalAlignment="top">
-            <Image src="~/app/assets/images/icons/menu_bar_white.png" width="20" class="m-l-20 m-t-20" (tap)="openMenu()"></Image>
-        </StackLayout>
-
-
     </GridLayout>
-<!-- </StackLayout> -->
+    
+    <AbsoluteLayout class="text-center" verticalAlignment="bottom">
+        <GridLayout id="history" [height]="historyHeight" [translateY]="historyDefaultTransform" #history [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" top="0" left="0">
+            <Image src="~/app/assets/images/home_footer_shadow.png" id="history_shadow" verticalAlignment="top"></Image>
+            <ns-history [isHistoryOpen]="isHistoryOpen === 1" (openCloseHistory)="clickHistory()"></ns-history>
+        </GridLayout>
+    </AbsoluteLayout>
+
+    <StackLayout id="big_header" [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" verticalAlignment="top">
+        <ns-big-header></ns-big-header>
+    </StackLayout>
+
+    <StackLayout height="50" width="40" horizontalAlignment="left" verticalAlignment="top" class="m-t-20">
+        <Image src="~/app/assets/images/icons/menu_bar_white.png" width="20" class="m-l-20 m-t-20" (tap)="openMenu()"></Image>
+    </StackLayout>
+
+</GridLayout>
 
 

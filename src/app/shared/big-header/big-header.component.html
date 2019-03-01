@@ -1,14 +1,12 @@
 <GridLayout class="big-header">
     <Image src="~/app/assets/images/header/home.jpg" stretch="aspectFill"></Image>
-    <GridLayout rows="*,auto" id="header-content" class="gradientTrans">
+    <GridLayout rows="*,auto" id="header-content" class="gradientTrans p-t-20">
         <StackLayout row="0">
-            <GridLayout rows="50" columns="40,*,40">
-                <GridLayout col="1" horizontalAlignment="center">
-                    <Image src="~/app/assets/images/logo.png" height="30"></Image>            
-                </GridLayout>
+            <GridLayout rows="40" columns="*,auto,auto,*" class="m-t-15 m-b-20">
+                <Image col="1" src="~/app/assets/images/logotext.png" height="40" class="m-r-15"></Image>
+                <Image col="2" src="~/app/assets/images/logo_white.png" height="30" verticalAlignment="top"></Image>
             </GridLayout>
-            <Label text="{{ 'home_welcome' | L }}" class="p-t-20 p-b-15" id="title"></Label>
-            <Label text="{{ 'home_desc_1' | L }}" class="subtitle"></Label>
+            <Label text="{{ 'home_desc_1' | L }}" class="subtitle p-t-20"></Label>
             <Label text="{{ 'home_desc_2' | L }}" class="subtitle"></Label>
         </StackLayout>
         <Image row="1" src="~/app/assets/images/header_shadow.png"></Image>

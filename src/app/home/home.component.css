@@ -1,5 +1,5 @@
 #big_header {
-    height: 240pt;
+    height: 260pt;
 }
     #big_header.active {
         animation-name: showHeader;
