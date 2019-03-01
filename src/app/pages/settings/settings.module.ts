@@ -10,6 +10,8 @@ import { LegalComponent } from './legal/legal.component';
 import { TermsComponent } from './terms/terms.component';
 import { AboutComponent } from './about/about.component';
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
+import { setStatusBarColors } from "~/app/shared/status-bar-util";
+setStatusBarColors();
 
 
 @NgModule({

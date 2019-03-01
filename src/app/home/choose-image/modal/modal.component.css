@@ -33,3 +33,14 @@
 #dialog .btn:first-child {
     margin-top: 20pt;
 }
+
+.progressbar {
+    height: 5;
+    width: 60%;
+    border-radius: 5;
+    background: #ECEFF1;
+}
+.progressbar-value {
+    background: #F0A587;
+    border-radius: 5;
+}

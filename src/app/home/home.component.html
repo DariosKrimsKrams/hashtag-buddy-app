@@ -4,7 +4,7 @@
             <!-- <ns-big-header row="0" (OpenMenu)="openMenu()"></ns-big-header> -->
             <GridLayout row="1">
                 <GridLayout rows="*,130" verticalAlignment="middle">
-                    <GridLayout row="0" rows="*,70">
+                    <StackLayout row="0">
                         <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient" id="upload-button" text="{{ 'home_upload' | L }}" row="0" (tap)="clickUpload()"></Button>
                         <!-- <GridLayout row="2" rows="*" class="center" horizontalAlignment="center"> -->
                             <!-- <Label textWrap="true" class="font-reg-small">
@@ -14,7 +14,11 @@
                                 </FormattedString>
                             </Label> -->
                         <!-- </GridLayout> -->
-                    </GridLayout>
+                        <GridLayout [columns]="columns" class="progressbar">
+                            <StackLayout col="0" class="progressbar-value"></StackLayout>
+                        </GridLayout>
+                        <Label text="5 unlocked photos left" horizontalAlignment="center"></Label>
+                    </StackLayout>
                 </GridLayout>
 
             </GridLayout>
