@@ -1,6 +1,6 @@
 #title {
     font-size: 28pt;
-    font-family: "AvenirNext-Medium, Avenir Next Medium";
+    font-family: "AvenirNext-Medium", "Avenir Next Medium", "Avenir Next Medium";
     margin-bottom: 18pt;
     text-align: center;
     color: #fff;
@@ -8,7 +8,7 @@
 
 .subtitle {
     font-size: 16pt;
-    font-family: "AvenirNext-Medium, Avenir Next Medium";
+    font-family: "AvenirNext-Medium", "Avenir Next Medium", "Avenir Next Medium";
     text-align: center;
     color: #fff;
 }

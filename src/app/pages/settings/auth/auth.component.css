@@ -15,7 +15,7 @@
 } */
 
 .main .btn {
-    font-family: "AvenirNext-DemiBold";
+    font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
     font-size: 16pt;
     text-transform: none;
 }
@@ -55,11 +55,11 @@
 }
 
 .dialog Button, .dialog Label {
-    font-family: "AvenirNext-DemiBold";
+    font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
 }
 
 .signout {
-    font-family: "AvenirNext-DemiBold";
+    font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
     font-size: 16pt;
     color: rgb(30, 39, 46);
     border-color: rgb(30, 39, 46);

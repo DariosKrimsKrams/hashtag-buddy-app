@@ -7,7 +7,7 @@
         color: #fff;
     }
     .title {
-        font-family: "AvenirNext-Medium";
+        font-family: "AvenirNext-Medium", "Avenir Next Medium";
         font-size: 18pt;
     }
     .header-right-icon {
@@ -33,12 +33,12 @@
 }
 
 .hash-title, .tag-title {
-    font-family: "AvenirNext-Medium";
+    font-family: "AvenirNext-Medium", "Avenir Next Medium";
 }
 
 .selectall {
     font-size: 12pt;
-    font-family: "AvenirNext-Medium";
+    font-family: "AvenirNext-Medium", "Avenir Next Medium";
     height: 20pt;
     text-align: center;
     margin: 0;
