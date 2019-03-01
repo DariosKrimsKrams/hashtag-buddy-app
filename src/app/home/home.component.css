@@ -47,9 +47,7 @@
 
 #history {
     background-color: #fcfcfc;
-    height: 690pt; /* 130 + 450 content + 110 header */
     width: 100%;
-    transform: translate(0, 560);
 }
     #history.active {
         animation-name: show;
@@ -63,21 +61,17 @@
     }
     @keyframes show {
         from {
-            transform: translate(0, 560);
             background-color: #fcfcfc;
         }
         to {
-            transform: translate(0, 0);
             background-color: #fff;
         }
     }
     @keyframes hide {
         from {
-            transform: translate(0, 0);
             background-color: #fff;
         }
         to {
-            transform: translate(0, 560);
             background-color: #fcfcfc;
         }
     }

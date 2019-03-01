@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
 import * as app from "application";
@@ -7,6 +7,7 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
 import * as imagepicker from "nativescript-imagepicker";
 import { DeviceService } from "../services/device-photos.service";
+import {AnimationCurve} from "tns-core-modules/ui/enums";
 
 class ScreenInfo {
   constructor(
@@ -27,7 +28,10 @@ class ScreenInfo {
 export class HomeComponent implements OnInit {
 
   isHistoryOpen: number;
-  public screenInformation: ScreenInfo;
+  screenInformation: ScreenInfo;
+  historyHeight: number;
+  historyDefaultTransform: number;
+  @ViewChild("history") historyElement: ElementRef;
 
   constructor(
     private page: Page,
@@ -44,7 +48,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.isHistoryOpen = 0;
+    console.log(this.screenInformation.heightDIPs);
+
+    this.historyHeight = this.screenInformation.heightDIPs - 90;
+    this.historyDefaultTransform = this.historyHeight - 130;
   }
 
   clickUpload() {
@@ -89,6 +96,20 @@ export class HomeComponent implements OnInit {
 
   clickHistory() {
     this.isHistoryOpen = this.isHistoryOpen != 1 ? 1 : 2;
+
+    if(this.isHistoryOpen === 1) {
+      this.historyElement.nativeElement.animate({
+        translate: { x: 0, y: 0},
+        duration: 600
+      });
+    } else if(this.isHistoryOpen === 2) {
+      this.historyElement.nativeElement.animate({
+        translate: { x: 0, y: this.historyHeight-130},
+        duration: 600
+      });
+    }
+    
+
   }
 
 }
