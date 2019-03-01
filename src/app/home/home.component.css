@@ -49,32 +49,6 @@
     background-color: #fcfcfc;
     width: 100%;
 }
-    #history.active {
-        animation-name: show;
-        animation-duration: 0.6s;
-        animation-fill-mode: forwards;
-    }
-    #history.inactive {
-        animation-name: hide;
-        animation-duration: 0.6s;
-        animation-fill-mode: forwards;
-    }
-    @keyframes show {
-        from {
-            background-color: #fcfcfc;
-        }
-        to {
-            background-color: #fff;
-        }
-    }
-    @keyframes hide {
-        from {
-            background-color: #fff;
-        }
-        to {
-            background-color: #fcfcfc;
-        }
-    }
 
 #history.active #history_shadow {
     animation-name: hideShadow;

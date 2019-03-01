@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
-import { Page } from "ui/page";
+import { Page, EventData, View } from "ui/page";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 // import { AppService } from "~/app/app.service";
@@ -28,10 +28,10 @@ class ScreenInfo {
 export class HomeComponent implements OnInit {
 
   isHistoryOpen: number;
-  screenInformation: ScreenInfo;
   historyHeight: number;
   historyDefaultTransform: number;
   @ViewChild("history") historyElement: ElementRef;
+  @ViewChild("mainContainer") mainContainerElement: ElementRef;
 
   constructor(
     private page: Page,
@@ -39,20 +39,31 @@ export class HomeComponent implements OnInit {
     private deviceService: DeviceService
   ) {
     this.page.actionBarHidden = true;
-    this.screenInformation = new ScreenInfo(
-      screen.mainScreen.heightDIPs,
-      screen.mainScreen.heightPixels,
-      screen.mainScreen.scale,
-      screen.mainScreen.widthDIPs,
-      screen.mainScreen.widthPixels);
   }
 
   ngOnInit() {
-    console.log(this.screenInformation.heightDIPs);
-
-    this.historyHeight = this.screenInformation.heightDIPs - 90;
+    this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
   }
+
+//   onLoaded(args: EventData) {
+//     console.log("BLAAAAA");
+//     this.page = <Page>args.object;
+//     this.page.bindingContext = this;
+//     var myView = <View>this.page.getViewById("mainContainer");
+//     var test = myView.getMeasuredHeight();
+//     console.log(test);
+// }
+  
+  // checkIfViewRendered() {
+  //     setTimeout(function() {
+  //       this.historyHeight = this.mainContainerElement.nativeElement.getMeasuredHeight()
+  //     }, 100);
+  //     if (this.historyHeight === 0) {
+  //       this.checkIfViewRendered()
+  //     }
+  //     else console.log('rendered height is', this.historyHeight);
+  // }
 
   clickUpload() {
     let that = this;
@@ -100,16 +111,16 @@ export class HomeComponent implements OnInit {
     if(this.isHistoryOpen === 1) {
       this.historyElement.nativeElement.animate({
         translate: { x: 0, y: 0},
+        backgroundColor: '#fff',
         duration: 600
       });
-    } else if(this.isHistoryOpen === 2) {
+    } else {
       this.historyElement.nativeElement.animate({
-        translate: { x: 0, y: this.historyHeight-130},
+        translate: { x: 0, y: this.historyDefaultTransform},
+        backgroundColor: '#fcfcfc',
         duration: 600
       });
     }
-    
-
   }
 
 }
