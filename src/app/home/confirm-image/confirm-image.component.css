@@ -10,13 +10,13 @@
 #close-button { 
     font-size: 32pt;
     color: rgb(46, 55, 77);
-    font-family: "AvenirNext-Medium";
+    font-family: "AvenirNext-Medium", "Avenir Next Medium";
 }
 
 .title {
     font-size: 18pt;
     color: rgb(30, 39, 46);
-    font-family: "AvenirNext-Medium";
+    font-family: "AvenirNext-Medium", "Avenir Next Medium";
 }
 
 #dialog {
@@ -27,7 +27,7 @@
 }
 
 #dialog Label {
-    font-family: "AvenirNext-DemiBold";
+    font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
     font-size: 16pt;
     color: rgb(30, 39, 46);
 }
@@ -45,7 +45,7 @@
     }
 
 #dialog .btn {
-    font-family: "AvenirNext-DemiBold";
+    font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
     font-size: 16pt;
     text-transform: none;
     height: 50pt;
