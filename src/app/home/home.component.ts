@@ -54,14 +54,14 @@ export class HomeComponent implements OnInit {
         clearInterval(intervalId);
       }
     }, 5);
+
+    this.historyHeight = screen.mainScreen.heightDIPs - 90;
+    this.historyDefaultTransform = this.historyHeight - 130;
   }
 
   setProgressbarWidth(percent) {
     this.columns = percent + "*," + (100 - percent) + "*";
-  }
-
-  this.historyHeight = screen.mainScreen.heightDIPs - 90;
-  this.historyDefaultTransform = this.historyHeight - 130;
+  }  
 
 //   onLoaded(args: EventData) {
 //     console.log("BLAAAAA");
