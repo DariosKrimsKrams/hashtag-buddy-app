@@ -1,6 +1,6 @@
 {
     "nativescript": {
-        "id": "org.nativescript.Instaq",
+        "id": "com.innocliq.instaq",
         "tns-android": {
             "version": "5.1.0"
         },
@@ -8,7 +8,7 @@
             "version": "5.1.0"
         }
     },
-    "description": "NativeScript Application",
+    "description": "Instaq",
     "license": "SEE LICENSE IN <your-license-filename>",
     "repository": "<fill-your-repository-here>",
     "dependencies": {
@@ -48,5 +48,5 @@
         "nativescript-dev-typescript": "~0.7.0",
         "nativescript-dev-webpack": "~0.18.0"
     },
-    "readme": "NativeScript Application"
+    "readme": "Instaq"
 }
