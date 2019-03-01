@@ -17,7 +17,7 @@ components that have the btn class name.
 */
 
 Label, Button, Span {
-    font-family: "AvenirNext-Regular";
+    font-family: "AvenirNext", "AvenirNext-Regular";
 }
 
 .btn {
@@ -62,25 +62,25 @@ Label, Button, Span {
 }
 
 .font-reg-small {
-    font-family: "AvenirNext-Regular";
+    font-family: "AvenirNext", "AvenirNext-Regular";
     font-size: 14pt;
     color: rgb(30, 39, 46);
 }
 
 .font-reg-medium {
-    font-family: "AvenirNext-Medium, Avenir Next Medium";
+    font-family: "AvenirNext", "AvenirNext-Medium";
     font-size: 18pt;
     color: rgb(30, 39, 46);
 }
 
 .font-medium-small {
-    font-family: "AvenirNext-Medium, Avenir Next Medium";
+    font-family: "AvenirNext", "AvenirNext-Medium";
     font-size: 14pt;
     color: rgb(36, 40, 51);
 }
 
 .font-medium-xs {
-    font-family: "AvenirNext-Medium, Avenir Next Medium";
+    font-family: "AvenirNext", "AvenirNext-Medium";
     font-size: 12pt;
     color: rgb(30, 39, 46);
 }
@@ -90,14 +90,14 @@ Label, Button, Span {
 }
 
 .font-demi-bold {
-    font-family: "AvenirNext-DemiBold";
+    font-family: "Avenir Next Demi Bold";
     text-transform: none;
     font-size: 16pt;
     color: rgb(30, 39, 46);
 }
 
 .menu-active {
-    font-family: "AvenirNext-DemiBold";
+    font-family: "AvenirNext", "AvenirNext-DemiBold";
     color: #C85CA2;
     font-weight: bold;
 }
@@ -122,7 +122,7 @@ Label, Button, Span {
 
 .menu .item Label {
     font-size: 18pt;
-    font-family: "AvenirNext-DemiBold";
+    font-family: "AvenirNext", "AvenirNext-DemiBold";
     vertical-align: middle;
     margin-left: 27pt;
 }
