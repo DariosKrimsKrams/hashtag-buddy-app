@@ -44,8 +44,22 @@ export class HomeComponent implements OnInit {
       screen.mainScreen.widthPixels);
   }
 
+  columns;
+
   ngOnInit() {
     // this.isHistoryOpen = 0;
+    let percent = 0;
+    let intervalId = setInterval(() => {
+      this.setProgressbarWidth(percent);
+      percent++;
+      if (percent > 100) {
+        clearInterval(intervalId);
+      }
+    }, 5);
+  }
+
+  setProgressbarWidth(percent) {
+    this.columns = percent + "*," + (100 - percent) + "*";
   }
 
   clickUpload() {

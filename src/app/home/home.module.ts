@@ -26,7 +26,7 @@ import { LoadingHashtagsComponent } from './loading-hashtags/loading-hashtags.co
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { ConfirmImageComponent } from './confirm-image/confirm-image.component';
 import { HashtagModule } from "../shared/hashtag/hashtag.module";
-import { setStatusBarColors } from "../shared/status-bar-util";
+import { setStatusBarColors } from "~/app/shared/status-bar-util";
 setStatusBarColors();
 
 

@@ -7,6 +7,8 @@ import { FeedbackComponent } from "~/app/pages/feedback/feedback.component";
 import { ModalComponent } from './modal/modal.component';
 import { FloatLabelModule } from "~/app/shared/float-label/float-label.module";
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
+import { setStatusBarColors } from "~/app/shared/status-bar-util";
+setStatusBarColors();
 
 @NgModule({
   declarations: [
