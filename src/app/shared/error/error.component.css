@@ -1,12 +1,12 @@
 .title, .title + Label {
     font-size: 28pt;
-    font-family: "AvenirNext-Medium";
+    font-family: "AvenirNext-Medium", "Avenir Next Medium";
     margin-bottom: 18pt;
 }
 
 Button {
     text-transform: unset;
-    font-family: "AvenirNext-DemiBold";
+    font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
     font-size: 16pt;
 }
 

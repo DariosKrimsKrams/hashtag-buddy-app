@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page, EventData, View } from "ui/page";
 import * as app from "application";
+import * as frame from "ui/frame";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 // import { AppService } from "~/app/app.service";
 import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
