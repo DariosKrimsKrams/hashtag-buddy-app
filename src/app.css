@@ -25,10 +25,10 @@ Label, Button, Span {
 }
 
 .gradient, .btn-normal {
-    background: linear-gradient(to right, #C85CA2 , #F0A587);
+    background: linear-gradient(to right, #C95DA1 , #EEA188);
 }
 .gradientTrans {
-    background: linear-gradient(to right, rgba(207,105,157,0.8) , rgba(236,157,139,0.8));
+    background: linear-gradient(to right, rgba(201,93,161,0.8) , rgba(236,157,139,0.8));
 }
 .btn-normal {
     color: white;
@@ -37,11 +37,11 @@ Label, Button, Span {
 }
 
 .border-color-normal {
-    border-color: #C85CA2;
+    border-color: #C95DA1;
 }
 
 .color-normal {
-    color: #C85CA2;
+    color: #C95DA1;
     text-transform: none;
     font-size: 16pt;
 }
@@ -98,7 +98,7 @@ Label, Button, Span {
 
 .menu-active {
     font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
-    color: #C85CA2;
+    color: #C95DA1;
     font-weight: bold;
 }
 
