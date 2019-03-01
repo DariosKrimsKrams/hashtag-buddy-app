@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
-import { FAQ } from "~/app/pages/mock-data/faq";
+import { FAQ } from "~/app/pages/data/faq";
 import * as app from "application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HASHTAGS } from "~/app/home/mock-data/hashtags";
+import { HASHTAGS } from "~/app/home/data/hashtags";
 import { HashtagCategory } from "~/app/models/hashtag-category";
 import { Hashtag } from "~/app/models/hashtag";
 

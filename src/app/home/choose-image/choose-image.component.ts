@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewContainerRef } from "@angular/core";
 import { RouterExtensions } from 'nativescript-angular/router';
 import { Page } from "ui/page";
-import { IMAGES } from './../mock-data/upload-images';
+import { IMAGES } from './../data/upload-images';
 import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/modal-dialog";
 import { ModalComponent } from "./modal/modal.component";
 
