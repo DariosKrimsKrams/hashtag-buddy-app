@@ -1,9 +1,14 @@
 <StackLayout id="container">
-    <GridLayout verticalAlignment="middle" class="m-b-10">
+    <GridLayout columns="20,*,20" id="header">
+        <Label text="&times;" col="0" (tap)="goPrevPage()"></Label>
+        <Label col="1" text="{{ 'selection_title' | L }}" class="title"></Label>
+        <!-- <StackLayout col="2"></StackLayout> -->
+    </GridLayout>
+    <!-- <GridLayout verticalAlignment="middle" class="m-b-10">
         <StackLayout [nsRouterLink]="['/home']" id="close-container" class="pull-left">
             <Label text="&times;" id="close-button" class="p-l-15"></Label>
         </StackLayout>
-    </GridLayout>
+    </GridLayout> -->
 
     <StackLayout id="dialog" class="m-t-100">
         <Label class="text-center" textWrap="true" text="{{ 'selection_popup_title' | L }}"></Label> 

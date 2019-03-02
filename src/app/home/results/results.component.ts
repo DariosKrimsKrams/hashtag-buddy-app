@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef, Input } from '@angular/core';
 import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { HashtagCategory } from "~/app/models/hashtag-category";
@@ -34,6 +34,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   selected = [];
   photo: any;
   currentScrollingY: number;
+  @Input() customUserHashtagsText: string = "";
 
   constructor(
     private page: Page,
@@ -158,6 +159,12 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     if (isAndroid) {
       utils.ad.dismissSoftInput();
     }
+  }
+
+  addCustomHashtags() {
+    var text = this.customUserHashtagsText;
+    var hashtag = new Hashtag({title: text});
+    this.selected_hashtags.push({name: hashtag, title_id: 0, tag_id: 0});
   }
 
 }

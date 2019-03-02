@@ -42,14 +42,13 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   goPrevPage() {
-    // this.router.navigate(["/home/results/1"], {
-    //   transition: {
-    //     name: "slideRight",
-    //     duration: 500,
-    //     curve: "easeOut"
-    //   }
-    // });
-    // ToDo do backButton action
+    this.router.navigate(["/home/results/1"], {
+      transition: {
+        name: "slideRight",
+        duration: 500,
+        curve: "easeOut"
+      }
+    });
   }
 
 }

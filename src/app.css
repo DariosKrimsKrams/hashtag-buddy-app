@@ -127,12 +127,6 @@ Label, Button, Span {
     margin-left: 27pt;
 }
 
-.tag {
-    /* background-color: #EFEFEF;
-    border-radius: 5;
-    padding: 5; */
-}
-
 .top-shadow {
     height: 100%;    
     background-image: url("~/app/assets/images/top-shadow.png");
@@ -140,3 +134,20 @@ Label, Button, Span {
     background-attachment: fixed;
     background-position: top;
 }
+
+#header {
+    vertical-align: middle;
+    height: 70pt;
+    padding: 20pt 20pt 0 20pt;
+}
+    #header Label {
+        vertical-align: middle;
+    }
+    #header,
+    #header Label {
+        color: rgb(30, 39, 46);
+    }
+    /* #header.gradient, */
+    #header.gradient Label {
+        color: #fff;
+    }
