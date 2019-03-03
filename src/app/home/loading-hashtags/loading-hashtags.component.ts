@@ -11,13 +11,14 @@ import { Page } from "ui/page";
 export class LoadingHashtagsComponent implements OnInit {
 
   public loading = "~/app/assets/loading.html";
+  countDots: number = 0;
 
   constructor(
     private page: Page,
     private router: RouterExtensions,
-    ) {
-      this.page.actionBarHidden = true;
-    }
+  ) {
+    this.page.actionBarHidden = true;
+  }
 
   ngOnInit() {    
     setTimeout (() => { 
@@ -28,11 +29,20 @@ export class LoadingHashtagsComponent implements OnInit {
           curve: "easeOut"
         }
       });
-     }, 3000);
+     }, 6000);
+
+     this.animateDots();
   }
 
   random(min = 50, max = 150) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  animateDots() {
+    var that = this;
+    setInterval(() => {
+      that.countDots = that.countDots >= 3 ? 0 : that.countDots + 1;
+    }, 600);
   }
 
 }

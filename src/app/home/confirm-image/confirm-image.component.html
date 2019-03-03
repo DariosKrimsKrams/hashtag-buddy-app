@@ -1,9 +1,9 @@
 <StackLayout id="container">
-    <GridLayout columns="20,*,20" id="header">
-        <Label text="&times;" col="0" (tap)="goPrevPage()"></Label>
+    <Label text="&times;" id="close-button" class="m-l-20 m-t-30" (tap)="goPrevPage()"></Label>
+    <!-- <GridLayout columns="20,*,20" id="header">
         <Label col="1" text="{{ 'selection_title' | L }}" class="title"></Label>
-        <!-- <StackLayout col="2"></StackLayout> -->
-    </GridLayout>
+       <StackLayout col="2"></StackLayout> -->
+    <!-- </GridLayout> -->
     <!-- <GridLayout verticalAlignment="middle" class="m-b-10">
         <StackLayout [nsRouterLink]="['/home']" id="close-container" class="pull-left">
             <Label text="&times;" id="close-button" class="p-l-15"></Label>
