@@ -42,6 +42,9 @@ export class HomeComponent implements OnInit {
     this.page.actionBarHidden = true;
   }
 
+  width = "40%";
+  text = "5 unlocked photos left";
+  
   ngOnInit() {
     // this.isHistoryOpen = 0;
 

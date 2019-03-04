@@ -11,6 +11,8 @@ export class ProgressBarComponent {
   constructor() { }
 
   columns;
+  @Input() width: string;
+  @Input() text: string;
 
   ngOnInit() {
     // this.isHistoryOpen = 0;

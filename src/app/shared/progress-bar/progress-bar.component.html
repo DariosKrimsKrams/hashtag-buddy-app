@@ -1,4 +1,4 @@
-<GridLayout [columns]="columns" class="progressbar">
+<GridLayout [columns]="columns" [width]="width" class="progressbar">
     <StackLayout col="0" class="progressbar-value"></StackLayout>
 </GridLayout>
-<Label text="5 unlocked photos left" horizontalAlignment="center"></Label>
+<Label [text]="text" horizontalAlignment="center"></Label>

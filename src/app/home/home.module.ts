@@ -5,6 +5,7 @@ registerElement("Emoji", () => require("nativescript-emoji").Emoji);
 
 import { HomeRoutingModule } from "./home-routing.module";
 import { BigHeaderModule } from "~/app/shared/big-header/big-header.module";
+import { ProgressBarModule } from "~/app/shared/progress-bar/progress-bar.module";
 import { FloatLabelModule } from "~/app/shared/float-label/float-label.module";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
@@ -22,7 +23,6 @@ import { ResultsComponent } from './results/results.component';
 import { LeaveFeedbackComponent } from './leave-feedback/leave-feedback.component';
 import { ModalComponent } from './choose-image/modal/modal.component';
 import { CircularProgressBarComponent } from '~/app/shared/circular-progress-bar/circular-progress-bar.component';
-import { ProgressBarComponent } from '~/app/shared/progress-bar/progress-bar.component';
 import { LoadingHashtagsComponent } from './loading-hashtags/loading-hashtags.component';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { ConfirmImageComponent } from './confirm-image/confirm-image.component';
@@ -36,6 +36,7 @@ setStatusBarColors();
         NativeScriptCommonModule,
         HomeRoutingModule,
         BigHeaderModule,
+        ProgressBarModule,
         FloatLabelModule,
         NativeScriptUISideDrawerModule,
         NativeScriptUIListViewModule,
@@ -56,7 +57,6 @@ setStatusBarColors();
         LeaveFeedbackComponent,
         ModalComponent,
         CircularProgressBarComponent,
-        ProgressBarComponent,
         LoadingHashtagsComponent,
         ConfirmImageComponent
     ],

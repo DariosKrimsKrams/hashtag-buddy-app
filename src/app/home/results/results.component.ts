@@ -34,6 +34,9 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   selected = [];
   photo: any;
   currentScrollingY: number;
+
+  width = "80%";
+  text = "Instaq Free: 3 of 5 photos left with full potential.";
   @Input() customUserHashtagsText: string = "";
 
   constructor(
