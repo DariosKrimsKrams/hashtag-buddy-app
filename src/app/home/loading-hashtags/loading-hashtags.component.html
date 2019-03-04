@@ -2,15 +2,27 @@
     <StackLayout class="title">
         <Label text="{{ 'loading_headline' | L }}" class="text-center"></Label>
     </StackLayout>
-    <StackLayout class="content">
-        <Label textWrap="true" text="{{ 'loading_desc1' | L }}" class="font-reg-small text-center"></Label>
-    </StackLayout>
+    <!-- <StackLayout class=""> -->
+        <!-- <Label text="{{ 'loading_desc1' | L }}..." class="font-reg-small text-center"></Label>
+        <Label textWrap="true" text="{{ 'diduknow_fact18' | L }}" class="font-reg-small text-center"></Label> -->
+        <Label textWrap="true" class="content font-reg-small text-center">
+            <FormattedString>
+                <Span text="{{ 'loading_desc1' | L }} "></Span>
+                <Span text="{{ 'diduknow_fact18' | L }}"></Span>
+                <Span text="?"></Span>
+            </FormattedString>
+        </Label>
+
+    <!-- </StackLayout> -->
     <StackLayout>
         <circularProgressBar [size]="185" [progress]="100"></circularProgressBar>
-        <!-- <WebView [src]="loading"></WebView> -->
     </StackLayout>
-    <StackLayout class="footer m-t-10">
-        <Label text="Analyzing your photo..." class="font-reg-small text-center"></Label>
-        <!-- <Label text="." *ngFor="countDots"></Label> -->
-    </StackLayout>
+
+    <GridLayout columns="*,auto,auto,auto,auto,*" rows="auto" class="footer m-t-10">
+        <Label col="1" text="   {{'loading_status2' | L}}"></Label>
+        <Label col="2" text="{{countDots >= 1 ? '.' : ' '}}"></Label>
+        <Label col="3" text="{{countDots >= 2 ? '.' : ' '}}"></Label>
+        <Label col="4" text="{{countDots >= 3 ? '.' : ' '}}"></Label>
+    </GridLayout>
+
 </StackLayout>

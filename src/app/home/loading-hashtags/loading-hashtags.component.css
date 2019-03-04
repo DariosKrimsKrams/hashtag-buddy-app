@@ -13,16 +13,13 @@
 }
 
 .content {
-    margin: 35pt 0 35pt 0;
+    margin: 35pt 30pt 35pt 30pt;
+    font-size: 16pt;
+    color: white;
 }
 
-    .content Label {
-        font-size: 16pt;
-        color: white;
-    }
-
 .footer Label {
+    font-family: "AvenirNext-Regular", "Avenir Next";
     font-size: 18pt;
-    text-align: center;
-    color: #F0A587;
+    color: #EB9C8B;
 }

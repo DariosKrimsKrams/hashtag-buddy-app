@@ -1,11 +1,7 @@
 #header {
-    vertical-align: middle;
-    height: 50pt;
-    color: rgb(30, 39, 46);
+    /* vertical-align: middle; */
+    /* padding: 20pt 20pt 0 20pt; */
 }
-    #header.gradient {
-        color: #fff;
-    }
     .title {
         font-family: "AvenirNext-Medium", "Avenir Next Medium";
         font-size: 18pt;
@@ -32,29 +28,35 @@
     font-size: 14pt;
 }
 
-.hash-title, .tag-title {
+.hash-title, .tag-title, .btn-selectall, .btn-add {
     font-family: "AvenirNext-Medium", "Avenir Next Medium";
 }
 
-.selectall {
+.btn-selectall {
     font-size: 12pt;
-    font-family: "AvenirNext-Medium", "Avenir Next Medium";
     height: 20pt;
-    text-align: center;
+    /* text-align: center; */
     margin: 0;
+}
+
+.btn-add {
+    font-size: 14pt;
+    border-radius: 10pt;
+    border-width: 2pt;
+    border-color: #cec8c8;
+    color: #A5A2A2;
+    height: 30pt;
+    margin: 0 0 0 5pt;
+}
+.btn-add.active {
+    /* border-width: 1pt; */
+    border-color: #EEA188;
+    color: #EEA188;
 }
 
 .input {
     width: 100%;
 }
-/* 
-#top-shadow {
-    height: 100%;    
-    background-image: url("~/app/assets/images/top-shadow.png");
-    background-repeat: repeat-x;
-    background-attachment: fixed;
-    background-position: top;
-} */
 
 #bottom-shadow {
     height: 100%;    
@@ -65,7 +67,7 @@
 }
 
 .footer {
-    background-color: #FAFAFA;
+    background-color: #fafafa;
 }
 
 .footer StackLayout {

@@ -1,11 +1,11 @@
 #header {
-    vertical-align: middle;
-    height: 50pt;
-    padding: 10pt 20pt 10pt 20pt;
+    /* vertical-align: middle;
+    height: 50pt; */
+    /* padding: 30pt 20pt 0 20pt; */
 }
     #header Label {
-        vertical-align: middle;
-        color: #fff;
+        /* vertical-align: middle; */
+        /* color: #fff; */
     }
 
 .title, .skip {

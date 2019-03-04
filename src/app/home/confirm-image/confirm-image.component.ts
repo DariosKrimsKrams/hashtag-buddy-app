@@ -62,4 +62,14 @@ export class ConfirmImageComponent implements OnInit {
       });
   }
 
+  goPrevPage() {
+    this.router.navigate(["/home"], {
+      transition: {
+        name: "slideRight",
+        duration: 500,
+        curve: "easeOut"
+      }
+    });
+  }
+
 }

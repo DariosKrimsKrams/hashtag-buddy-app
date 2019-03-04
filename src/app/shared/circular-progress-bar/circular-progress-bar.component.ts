@@ -9,22 +9,28 @@ import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 })
 export class CircularProgressBarComponent {
   
-  @Input() size = 185;
+  // @Input() size = 185;
+  percentValue: number = 11;
+  timeMax: number = 20;
 
   constructor() { }
 
   ngOnInit() {
+    this.animate();
   }
-
-  get height() {
-    return this.size;
-  };
-
-  get value() {
-      return 100;
-  };
 
   get text() {
-    return `${this.value.toFixed()} %`;
+    return `${this.percentValue.toFixed()} %`;
   }
+
+  animate(): any {
+    var that = this;
+    let intervalId = setInterval(() => {
+      that.percentValue++;
+      if (that.percentValue == 99) {
+        clearInterval(intervalId);
+      }
+    }, this.timeMax * 1000 / 99);
+  }
+  
 }

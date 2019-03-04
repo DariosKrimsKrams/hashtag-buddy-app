@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, ViewChild, Output, EventEmitter } from "@angular/core";
 import { Color } from "tns-core-modules/color";
+import { TextField } from "tns-core-modules/ui/text-field";
 
 @Component({
     selector: "FloatLabel",
@@ -7,7 +8,7 @@ import { Color } from "tns-core-modules/color";
     template: `
         <GridLayout rows="30, auto">
             <Label #label row="1" [text]="placeholder" opacity="0.4" fontSize="14" class="input"></Label>
-            <TextField #textField [secure]="secure" row="1"  (focus)="onFocus()" (blur)="onBlur()" borderBottomWidth="2" borderBottomColor="#cec8c8" padding="2"></TextField>
+            <TextField #textField [secure]="secure" row="1" (focus)="onFocus()" (blur)="onBlur()" (textChange)="onChange($event)" color="#EEA188" fontSize="14"  borderBottomWidth="2" borderBottomColor="#cec8c8" padding="2"></TextField>
         </GridLayout>
     `
 })
@@ -16,6 +17,7 @@ export class FloatLabel {
     @Input() secure: boolean;
     @ViewChild("label") label: ElementRef;
     @ViewChild("textField") textField: ElementRef;
+    @Output() userTextEmitter = new EventEmitter();
 
     constructor() {
     }
@@ -27,28 +29,30 @@ export class FloatLabel {
         const label = this.label.nativeElement;
         const textField = this.textField.nativeElement;
 
-        // animate the label sliding up and less transparent.
         label.animate({
             translate: { x: 0, y: - 25 },
             opacity: 1,
         }).then(() => { }, () => { });
 
-        // set the border bottom color to green to indicate focus
-        textField.borderBottomColor = new Color('#00b47e');
+        textField.borderBottomColor = new Color('#EEA188');
     }
 
     onBlur() {
         const label = this.label.nativeElement;
         const textField = this.textField.nativeElement;
 
-        // if there is text in our input then don't move the label back to its initial position.
         if (!textField.text) {
             label.animate({
                 translate: { x: 0, y: 0 },
                 opacity: 0.4
             }).then(() => { }, () => { });
         }
-        // reset border bottom color.
         textField.borderBottomColor = new Color('#cec8c8');
     }
+
+    onChange(args) {
+        let textField = <TextField>args.object;
+        this.userTextEmitter.emit(textField.text);
+    }
+
 }
