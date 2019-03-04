@@ -22,6 +22,7 @@ import { ResultsComponent } from './results/results.component';
 import { LeaveFeedbackComponent } from './leave-feedback/leave-feedback.component';
 import { ModalComponent } from './choose-image/modal/modal.component';
 import { CircularProgressBarComponent } from '~/app/shared/circular-progress-bar/circular-progress-bar.component';
+import { ProgressBarComponent } from '~/app/shared/progress-bar/progress-bar.component';
 import { LoadingHashtagsComponent } from './loading-hashtags/loading-hashtags.component';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { ConfirmImageComponent } from './confirm-image/confirm-image.component';
@@ -55,6 +56,7 @@ setStatusBarColors();
         LeaveFeedbackComponent,
         ModalComponent,
         CircularProgressBarComponent,
+        ProgressBarComponent,
         LoadingHashtagsComponent,
         ConfirmImageComponent
     ],

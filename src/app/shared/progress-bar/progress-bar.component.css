@@ -1,0 +1,10 @@
+.progressbar {
+    height: 5;
+    width: 40%;
+    border-radius: 5;
+    background: #ECEFF1;
+}
+.progressbar-value {
+    background: #F0A587;
+    border-radius: 5;
+}
