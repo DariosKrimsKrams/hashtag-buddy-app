@@ -11,6 +11,8 @@ import * as utils from "utils/utils";
 import { isIOS, isAndroid } from "platform";
 import * as frame from "ui/frame";
 
+import { FeedbackService } from "~/app/services/feedback.service";
+
 @Component({
   selector: 'ns-feedback',
   templateUrl: './feedback.component.html',
@@ -29,6 +31,7 @@ export class FeedbackComponent implements OnInit {
     private router: RouterExtensions,
     private modalService: ModalDialogService, 
     private viewContainerRef: ViewContainerRef,
+    private feedbackService: FeedbackService,
     ) {
     this.page.actionBarHidden = true;
   }
@@ -48,10 +51,10 @@ export class FeedbackComponent implements OnInit {
   }
 
   leaveFeedback() {
-    // if(this.email === "" && this.message === ""){
-    //   console.log('empty');
-    //   return false;
-    // }  
+    if(this.email === "" && this.message === ""){
+      console.log('empty');
+      return false;
+    }
     this.showModal();
   }
 
@@ -81,6 +84,14 @@ export class FeedbackComponent implements OnInit {
     if (isAndroid) {
       utils.ad.dismissSoftInput();
     }
+  }
+
+  emailChange(text: string) {
+    this.email = text;
+  }
+
+  messageChange(text: string) {
+    this.message = text;
   }
 
 }

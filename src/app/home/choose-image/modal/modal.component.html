@@ -1,7 +1,6 @@
 <StackLayout id="dialog">
     <Label class="text-center" textWrap="true" text="{{ 'selection_popup_title' | L }}"></Label>    
-    <Image src="~/app/assets/images/1.png" height="200" stretch="fill" class="m-t-20"></Image> 
-    <ProgressBar></ProgressBar>
+    <Image src="~/app/assets/images/1.png" height="200" stretch="fill" class="m-t-20"></Image>
     <Button class="btn btn-rounded-lg btn-normal" text="{{ 'selection_popup_button_ok' | L }}" (tap)="uploadImage()"></Button>
     <Button class="btn btn-outline btn-rounded-lg border-color-normal color-normal" text="{{ 'selection_popup_button_deny' | L }}" (tap)="close()"></Button>
 </StackLayout>

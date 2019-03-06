@@ -11,7 +11,7 @@
                 <GridLayout rows="auto" columns="*,*,*,*" *ngFor="let i of numbers" class="content p-l-10 p-r-10 p-b-5">
                     <Image [src]="image.url" col="{{i}}" *ngFor="let image of images; let i = index" height="78" (tap)="showModal()" stretch="aspectFill">
                     </Image>
-                </GridLayout>            
+                </GridLayout>
             </StackLayout>
         </ScrollView>
     </StackLayout>

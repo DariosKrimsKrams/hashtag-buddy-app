@@ -14,6 +14,8 @@ import * as imagepicker from "nativescript-imagepicker";
 export class ConfirmImageComponent implements OnInit {
 
   photo: ImageAsset;
+  width = "80%";
+  text = "5 unlocked photos left";
 
   constructor(
     private page: Page,
