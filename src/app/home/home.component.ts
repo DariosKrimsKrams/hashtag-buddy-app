@@ -43,7 +43,11 @@ export class HomeComponent implements OnInit {
   }
 
   width = "40%";
-  text = "5 unlocked photos left";
+  page_name = "home";
+  countPhotoLeft = 0;
+  countPhotosOverall = 0;
+  timeStart = 3600;
+  timeOverall = 86400;
   
   ngOnInit() {
     // this.isHistoryOpen = 0;

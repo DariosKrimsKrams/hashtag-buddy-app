@@ -36,7 +36,11 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   currentScrollingY: number;
 
   width = "80%";
-  text = "Instaq Free: 3 of 5 photos left with full potential.";
+  page_name = "results";
+  countPhotoLeft = 3;
+  countPhotosOverall = 5;
+  timeStart = 0;
+  timeOverall = 0;
   @Input() customUserHashtagsText: string = "";
 
   constructor(

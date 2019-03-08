@@ -1,4 +1,15 @@
-<GridLayout [columns]="columns" [width]="width" class="progressbar">
+<GridLayout [columns]="columns" [width]="width" class="progressbar" *ngIf="page === 'home'">
     <StackLayout col="0" class="progressbar-value"></StackLayout>
 </GridLayout>
-<Label [text]="text" horizontalAlignment="center"></Label>
+
+<GridLayout [columns]="columns" [width]="width" class="progressbar" *ngIf="page === 'confirm' && countPhotoLeft > 0">
+    <StackLayout col="0" class="progressbar-value"></StackLayout>
+</GridLayout>
+
+<GridLayout [columns]="columns" [width]="width" class="progressbar" *ngIf="page === 'results' && countPhotoLeft > 0">
+    <StackLayout col="0" class="progressbar-value"></StackLayout>
+</GridLayout>
+
+<Label [text]="text1" horizontalAlignment="center" *ngIf="countPhotoLeft!=0"></Label>
+<Label [text]="text2" horizontalAlignment="center" *ngIf="countPhotoLeft==0"></Label>
+<Label [text]="text3" horizontalAlignment="center" *ngIf="countPhotoLeft==0"></Label>

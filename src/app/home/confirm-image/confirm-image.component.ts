@@ -15,7 +15,11 @@ export class ConfirmImageComponent implements OnInit {
 
   photo: ImageAsset;
   width = "80%";
-  text = "5 unlocked photos left";
+  page_name = "confirm";
+  countPhotoLeft = 3;
+  countPhotosOverall = 5;
+  timeStart = 0;
+  timeOverall = 0;
 
   constructor(
     private page: Page,

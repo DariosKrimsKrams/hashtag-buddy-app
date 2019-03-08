@@ -18,7 +18,7 @@
                                 <GridLayout class="m-b-10" id="preview-image" (tap)="dismissSoftKeybaord()" [height]="parallaxHeight" #topView>
                                     <Image [src]="photo" stretch="aspectFill"></Image>
                                 </GridLayout>
-                                <ProgressBar [width]="width" [text]="text"></ProgressBar>
+                                <ProgressBar [page]="page_name" [width]="width" [countPhotoLeft]="countPhotoLeft" [countPhotosOverall]="countPhotosOverall" [timeStart]="timeStart" [timeOverall]="timeOverall"></ProgressBar>
                                 <StackLayout id="user-selection" class="p-l-15 p-r-15 p-b-20 p-b-20">
                                     <Label class="m-l-5 m-r-5 m-t-10 m-b-5">
                                         <FormattedString>
