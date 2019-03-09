@@ -14,6 +14,8 @@ export class ProgressBarComponent {
   text1;
   text2;
   text3;
+  text4;
+  text5;
   @Input() page: string;
   @Input() width: string;
   @Input() countPhotoLeft: number;
@@ -26,7 +28,8 @@ export class ProgressBarComponent {
 
     if(this.page === "home") {
       this.text1 = this.countPhotoLeft + " unlocked photos left";
-      this.text2 = "Unlimited photos with free-mode.";
+      this.text2 = "Free mode: Some hashtags are censored.";
+      // this.text5 = "(You cann still upload unlimited photos)";
     }
     
     if(this.page === "confirm") {
@@ -46,7 +49,7 @@ export class ProgressBarComponent {
     let min = (this.timeOverall - this.timeStart - hour*3600) / 60;
     let sec = this.timeOverall - this.timeStart - hour*3600 - min*60;
 
-    this.text3 = this.setTimer(hour, min, sec);
+    this.text4 = this.setTimer(hour, min, sec);
 
     if(this.countPhotoLeft > 0) {
       percent = this.countPhotoLeft / this.countPhotosOverall * 100;
@@ -72,13 +75,13 @@ export class ProgressBarComponent {
               sec = 59;
             }else {
               hour = 0; min = 0; sec = 0;
-              this.text3 = this.setTimer(hour, min, sec);
+              this.text4 = this.setTimer(hour, min, sec);
               clearInterval(intervalId);
             }
           }
         }else {
           sec--;
-          this.text3 = this.setTimer(hour, min, sec);
+          this.text4 = this.setTimer(hour, min, sec);
         }
       }, 1000);
     }    
@@ -108,6 +111,6 @@ export class ProgressBarComponent {
       s = sec;
     }
 
-    return ("Only " + h + ":" + m + ":" + s + " left to receive a present.");
+    return ("Wait " + h + ":" + m + ":" + s + " to receive a unlocked photo.");
   }
 }
