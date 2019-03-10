@@ -11,7 +11,7 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
             </GridLayout> 
             <GridLayout rows="30" columns="20,auto" (tap)="openPage(i)" class="item" *ngFor="let menu of menus; let i = index;">
                 <Image col="0" [src]="'~/app/assets/images/icons/' + menu + '.png'"></Image>
-                <Label col="1" text="{{ 'menu_' + menu | L }}" [class.menu-active]="selected[i]" fontAttribute="bold"></Label>
+                <Label col="1" text="{{ 'menu_' + menu | L }}" class="" [class.menu-active]="selected[i]"></Label>
             </GridLayout>
         </StackLayout>
     </StackLayout>

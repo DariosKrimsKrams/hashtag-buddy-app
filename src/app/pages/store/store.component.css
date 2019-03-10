@@ -14,9 +14,12 @@
 	border-radius: 5;
 }
 
-.gradient .plan-title {
+.plan-title {
 	font-weight: bold;
 	color: #C95DA1;
+}
+.plan-content {
+	font-size: 15pt;
 }
 
 .plan-footer {
