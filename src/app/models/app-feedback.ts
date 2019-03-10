@@ -1,4 +1,4 @@
-export class Feedback {
+export class AppFeedback {
 	customerId: string;
 	email: string;
 	message: string;

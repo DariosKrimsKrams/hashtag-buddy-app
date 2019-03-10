@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Feedback } from '~/app/models/feedback';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { AppFeedback } from '~/app/models/app-feedback';
+import { ResultFeedback } from '~/app/models/result-feedback';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,10 +19,15 @@ export class FeedbackService {
     private http: HttpClient,
   ) { }
 
-  private url = "/Feedback/App";
+  private AppFeedbackUrl = "http://instaq-api.innocliq.de/Feedback/App";
+  private ResultFeedbackUrl = "http://instaq-api.innocliq.de/Feedback/Results";
 
-  addFeedback (feedback: Feedback): Observable<Feedback> {
-    return this.http.post<Feedback>(this.url, feedback, httpOptions);
+  addAppFeedback (feedback: AppFeedback): Observable<AppFeedback> {
+    return this.http.post<AppFeedback>(this.AppFeedbackUrl, feedback, httpOptions);
+  }
+
+  addResultFeedback (feedback: ResultFeedback): Observable<ResultFeedback> {
+    return this.http.post<ResultFeedback>(this.ResultFeedbackUrl, feedback, httpOptions);
   }
 
 }
