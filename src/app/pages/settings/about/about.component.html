@@ -12,7 +12,7 @@
             <ScrollView sdkExampleTitle sdkToggleNavButton>
                 <StackLayout class="p-l-20 p-r-20 p-t-20 p-b-20">
 
-                    <Label textWrap="true" [text]="'about_desc' | L"></Label>
+                    <Label [text]="'about_desc' | L" textWrap="true"></Label>
 
                     <Label [text]="'about_headline_credits' | L" class="headline"></Label>
                     <Label class="list-entry" [text]="'about_credits_1' | L" textWrap="true"></Label>
@@ -35,7 +35,7 @@
                     <Label class="list-entry" text="{{'about_infos_user_id' | L}}: xyz"></Label>
 
                     <Label [text]="'about_headline_opensource' | L" class="headline"></Label>
-                    <Label [text]="'about_opensource_intro' | L"></Label>
+                    <Label [text]="'about_opensource_intro' | L" textWrap="true"></Label>
                     <Label class="list-entry" [text]="'about_opensource_ns' | L"></Label>
                     <Label class="list-entry" [text]="'about_opensource_bla' | L"></Label>
                     
