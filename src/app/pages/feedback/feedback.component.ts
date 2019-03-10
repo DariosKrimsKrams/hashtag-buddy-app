@@ -12,6 +12,7 @@ import { isIOS, isAndroid } from "platform";
 import * as frame from "ui/frame";
 
 import { FeedbackService } from "~/app/services/feedback.service";
+import { Feedback } from '~/app/models/feedback';
 
 @Component({
   selector: 'ns-feedback',
@@ -51,11 +52,14 @@ export class FeedbackComponent implements OnInit {
   }
 
   leaveFeedback() {
-    if(this.email === "" && this.message === ""){
+    if(this.email === "" || this.message === ""){
       console.log('empty');
       return false;
     }
-    this.showModal();
+    this.feedbackService.addFeedback({ customerId: "0317a2e8e1bbae79184524ea1322c152407a0bc1e7f4837571ee3517e9360da4", email: this.email, message: this.message } as Feedback)
+    .subscribe(feedback => {
+      this.showModal();
+    });    
   }
 
   goHome() {
