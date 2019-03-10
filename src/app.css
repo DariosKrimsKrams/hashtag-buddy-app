@@ -63,7 +63,7 @@ Label, Button, Span {
 
 .font-reg-small {
     font-family: "AvenirNext-Regular", "Avenir Next";
-    font-size: 14pt;
+    font-size: 15pt;
     color: rgb(30, 39, 46);
 }
 
@@ -75,7 +75,7 @@ Label, Button, Span {
 
 .font-medium-small {
     font-family: "AvenirNext-Medium", "Avenir Next Medium";
-    font-size: 14pt;
+    font-size: 15pt;
     color: rgb(36, 40, 51);
 }
 
@@ -96,12 +96,6 @@ Label, Button, Span {
     color: rgb(30, 39, 46);
 }
 
-.menu-active {
-    font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
-    color: #C95DA1;
-    font-weight: bold;
-}
-
 .menu {
     background-image: url("~/app/assets/images/menu.png");
     background-repeat: no-repeat;
@@ -110,22 +104,24 @@ Label, Button, Span {
     background-size: cover;
     padding: 20;
 }
-
-.menu .item {
-    margin-top: 50pt;
-}
-
-.menu .item Image {
-    width: 18pt;
-    height: 20pt;
-}
-
-.menu .item Label {
-    font-size: 18pt;
-    font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
-    vertical-align: middle;
-    margin-left: 27pt;
-}
+    .menu .item {
+        margin-top: 50pt;
+    }
+    .menu .item Image {
+        width: 18pt;
+        height: 20pt;
+    }
+    .menu .item Label {
+        font-size: 18pt;
+        font-family: "AvenirNext-Medium", "Avenir Next Medium";
+        vertical-align: middle;
+        margin-left: 18pt;
+        color: #737373;
+    }
+        .menu .item .menu-active {
+            font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
+            color: #C95DA1;
+        }
 
 .top-shadow {
     height: 100%;    
