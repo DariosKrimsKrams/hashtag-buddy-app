@@ -1,4 +1,4 @@
-<StackLayout id="container">
+<StackLayout id="container" *ngIf="launched">
     <Label text="&times;" id="close-button" class="m-l-20 m-t-30" (tap)="goPrevPage()"></Label>
     <!-- <GridLayout columns="20,*,20" id="header">
         <Label col="1" text="{{ 'selection_title' | L }}" class="title"></Label>
@@ -20,4 +20,6 @@
         <Button class="btn btn-outline btn-rounded-lg border-color-normal color-normal" text="{{ 'selection_popup_button_deny' | L }}" (tap)="chooseImage()"></Button>
     </StackLayout>
 
-</StackLayout> 
+</StackLayout>
+
+<ns-loading-hashtags *ngIf="!launched"></ns-loading-hashtags>

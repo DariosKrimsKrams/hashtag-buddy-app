@@ -22,8 +22,11 @@ export class LeaveFeedbackComponent implements OnInit {
   selected = [];
   tag1 = [];
   tag2 = [];
-  public email = '';
-  public message = '';
+  rating_number = 3;
+  good_hashtags = '';
+  bad_hashtags = '';
+  public missinghashtags = '';
+  public comment = '';
 
   constructor(
     private page: Page,
@@ -40,18 +43,53 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   send() {
-    if(this.email === "" || this.message === ""){
+    if(this.missinghashtags === "" || this.comment === ""){
       console.log('empty');
       return false;
     }
+    let rating = 'none';
+    if(this.rating_number === 0) {
+      rating = 'great';
+    }else if(this.rating_number === 1) {
+      rating = 'satisfied';
+    }else if(this.rating_number === 2) {
+      rating = 'bad';
+    }
+    let k = 0;
+    for(let i = 0; i < this.userSelectedHashtags.length ; i++) {
+      if(this.tag1[i]) {
+        if(k === 0){
+          this.good_hashtags = '{';
+          k++;
+        }
+        if(k > 1) this.good_hashtags += ",";
+        this.good_hashtags += "'" + this.userSelectedHashtags[i] + "'";
+      }
+    }
+    if(k > 0) this.good_hashtags += "}";
+
+    k = 0;
+
+    for(let i = 0; i < this.userNotSelectedHashtags.length ; i++) {
+      if(this.tag2[i]) {
+        if(k === 0){
+          this.bad_hashtags = '{';
+          k++;
+        }
+        if(k > 1) this.bad_hashtags += ",";
+        this.bad_hashtags += "'" + this.userNotSelectedHashtags[i] + "'";
+      }
+    }
+    if(k > 0) this.bad_hashtags += "}";
+  
     let feedback = { 
       customerId: "0317a2e8e1bbae79184524ea1322c152407a0bc1e7f4837571ee3517e9360da4", 
       photoId: '', 
-      rating: '', 
-      goodHashtags: '', 
-      badHashtags: '', 
-      missingHashtags: '', 
-      comment: this.message 
+      rating: rating, 
+      goodHashtags: this.good_hashtags, 
+      badHashtags: this.bad_hashtags, 
+      missingHashtags: this.missinghashtags, 
+      comment: this.comment 
     }
     this.feedbackService.addResultFeedback(feedback as ResultFeedback)
     .subscribe(feedback => {
@@ -72,12 +110,12 @@ export class LeaveFeedbackComponent implements OnInit {
     });
   }
 
-  emailChange(text: string) {
+  missingHashtags(text: string) {
     this.email = text;
   }
 
-  messageChange(text: string) {
-    this.message = text;
+  commentChange(text: string) {
+    this.comment = text;
   }
 
 }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
 import { AppFeedback } from '~/app/models/app-feedback';
 import { ResultFeedback } from '~/app/models/result-feedback';
 

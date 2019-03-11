@@ -4,6 +4,7 @@ import { DeviceService } from '~/app/services/device-photos.service';
 import { ImageAsset } from 'tns-core-modules/image-asset/image-asset';
 import { Page } from 'tns-core-modules/ui/page/page';
 import * as imagepicker from "nativescript-imagepicker";
+import { Evaluation } from '~/app/models/evaluation';
 
 @Component({
   selector: 'ns-confirm-image',
@@ -20,6 +21,7 @@ export class ConfirmImageComponent implements OnInit {
   countPhotosOverall = 5;
   timeStart = 0;
   timeOverall = 0;
+  launched = 0;
 
   constructor(
     private page: Page,
@@ -39,7 +41,12 @@ export class ConfirmImageComponent implements OnInit {
 
   confirmImage(): void {
     // ToDo do Request
-    this.router.navigate(["/home/loading-hashtags"]);
+    this.deviceService.Evaluation({customerId: '0317a2e8e1bbae79184524ea1322c152407a0bc1e7f4837571ee3517e9360da4'} as Evaluation)
+    .subscribe(feedback => {
+      this.launched = 1;
+      this.router.navigate(["/home/results/1"]);
+    });
+    //this.router.navigate(["/home/loading-hashtags"]);
   }
 
   chooseImage(): void {

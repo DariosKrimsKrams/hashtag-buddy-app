@@ -15,7 +15,7 @@
                 </StackLayout>
 
                 <GridLayout class="status m-l-20 m-r-5 m-t-10" columns="*,*,*" rows="auto">
-                    <GridLayout [col]="i" class="p-r-15" *ngFor="let item of emoji; let i = index;" (tap)="selected=[];selected[i]=true;">
+                    <GridLayout [col]="i" class="p-r-15" *ngFor="let item of emoji; let i = index;" (tap)="selected=[];selected[i]=true; rating_number = i;">
                         <StackLayout horizontalAlignment="center" class="p-t-5 p-b-5" [class.gradient]="selected[i]">
                             <Image [src]="'~/app/assets/images/icons/' + item + '.png'" *ngIf="!selected[i]"></Image>
                             <Image [src]="'~/app/assets/images/icons/' + item + '_white.png'" *ngIf="selected[i]"></Image>
@@ -36,8 +36,8 @@
                 </StackLayout>
             
                 <StackLayout class="m-l-20 m-r-20">
-                    <FloatLabel placeholder="{{ 'leave_feedback_missing_hashtags' | L }}" (userTextEmitter)="emailChange($event)"></FloatLabel>
-                    <FloatLabel placeholder="{{ 'leave_feedback_comments' | L }}" (userTextEmitter)="messageChange($event)"></FloatLabel>
+                    <FloatLabel placeholder="{{ 'leave_feedback_missing_hashtags' | L }}" (userTextEmitter)="missingHashtags($event)"></FloatLabel>
+                    <FloatLabel placeholder="{{ 'leave_feedback_comments' | L }}" (userTextEmitter)="commentChange($event)"></FloatLabel>
                 </StackLayout>
             
                 <StackLayout class="m-t-20 m-l-20 m-r-20">
