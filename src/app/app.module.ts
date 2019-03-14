@@ -10,6 +10,7 @@ import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 // import { AppService } from "./app.service";
 
 import { HistoryModule } from "~/app/home/history/history.module";
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HistoryModule } from "~/app/home/history/history.module";
         }),
         CoreModule,
         NativeScriptLocalizeModule,
-        HistoryModule
+        HistoryModule,
+        HttpClientModule 
     ],
     declarations: [
         AppComponent,
