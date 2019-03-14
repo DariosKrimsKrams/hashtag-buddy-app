@@ -4,7 +4,7 @@ export const PLAN: Plan[] = [
     {
         id: 0,
         image: "~/app/assets/images/1.png",
-        title: "Standard offer",
+        title: "Standard Offer",
         content: "- 5 unlocked photos\n- 0,30 € per photo",
         plan: "once",
         cost: "1,50 €",
@@ -26,7 +26,7 @@ export const PLAN: Plan[] = [
     {
         id: 2,
         image: "~/app/assets/images/1.png",
-        title: "Welcome offer",
+        title: "Welcome Offer",
         content: "- 20 unlocked photos\n- 0,20 € per photo",
         plan: "once",
         cost: "4,00 €",

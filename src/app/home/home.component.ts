@@ -50,10 +50,17 @@ export class HomeComponent implements OnInit {
   timeOverall = 86400;
   
   ngOnInit() {
-    // this.isHistoryOpen = 0;
-
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
+
+    // ToDo
+    // if(!userRepoService.checkUserIdExists)
+    // userRepoService.requestUserId
+    
+    // StorageService.CheckExistingData
+    // var history = data.GetHistory()
+    // HistoryStorageService.setHistory(history)
+
   }
 
   clickUpload() {

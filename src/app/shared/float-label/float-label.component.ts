@@ -8,7 +8,7 @@ import { TextField } from "tns-core-modules/ui/text-field";
     template: `
         <GridLayout rows="30, auto">
             <Label #label row="1" [text]="placeholder" opacity="0.4" fontSize="14" class="input"></Label>
-            <TextField #textField [secure]="secure" row="1" (focus)="onFocus()" (blur)="onBlur()" (textChange)="onChange($event)" color="#EEA188" fontSize="14"  borderBottomWidth="2" borderBottomColor="#cec8c8" padding="2"></TextField>
+            <TextField #textField [secure]="secure" row="1" (focus)="onFocus()" (blur)="onBlur()" (textChange)="onChange($event)" color="#000" fontSize="15" borderBottomWidth="2" borderBottomColor="#cec8c8" padding="2"></TextField>
         </GridLayout>
     `
 })

@@ -13,13 +13,13 @@
   <string name="store_outro">"Keep in mind that Google takes 30 %% off every transaction."</string>
   <string name="store_headline_abo">"Subscriptions"</string>
   <string name="store_headline_once">"One-time payments"</string>
-  <string name="store_intro">"Buy photos to get uncensored hashtag results. All packages include an lifelong unlimited history."</string>
+  <string name="store_intro">"Buy unlocked photos to get uncensored hashtag results for your uploads. All packages include an lifelong unlimited history."</string>
   <string name="menu_feedback">"Improve me"</string>
   <string name="menu_settings">"More"</string>
   <string name="menu_faq">"Tips and Tricks"</string>
   <string name="menu_store">"Upgrade"</string>
   <string name="menu_home">"Home"</string>
-  <string name="about_opensource_bla">"Bla"</string>
+  <string name="about_opensource_bla">"..."</string>
   <string name="about_opensource_ns">"NativeScript"</string>
   <string name="about_opensource_intro">"Thanks for the following software to be open source :)"</string>
   <string name="about_headline_opensource">"Open Source"</string>
@@ -33,7 +33,7 @@
   <string name="about_platforms_3">"Freelancer.com for contests"</string>
   <string name="about_platforms_2">"Upwork for outsourcing"</string>
   <string name="about_platforms_1">"SurveyMoney for user feedback"</string>
-  <string name="about_headline_platforms">"Further help"</string>
+  <string name="about_headline_platforms">"Platforms"</string>
   <string name="about_credits_6">"Christan und Paul from Germany for kickstarting this Idea"</string>
   <string name="about_credits_5">"Aditia Kurniawan from Indonesia for Logo"</string>
   <string name="about_credits_4">"Nazar Nastin from Ukraine for UI/UX Design"</string>
@@ -47,7 +47,7 @@
   <string name="feedback_send">"Leave feedback"</string>
   <string name="feedback_message">"Your message"</string>
   <string name="feedback_email">"Your e-mail"</string>
-  <string name="feedback_intro">"We wish you had a great experience. To build an ever better experience, we want to include you in the process of making it. If you like Instaq, you can present your support by sharing your insights with us, ask for a feature or write us an e-mail to instaq@innocliq.me."</string>
+  <string name="feedback_intro">"We wish you had a great experience. To build an ever better one, we want to include you in the process of making it. What do you like about this app? What do you disable? How would you improve it? Please sharing your insights with us and tell us what ever you want. You can also write an e-mail us: instaq@innocliq.me"</string>
   <string name="diduknow_fact23">"Engagement increases with each hashtag as you go up to 11"</string>
   <string name="diduknow_fact22">"30%% of users bought a product they discovered on Instagram"</string>
   <string name="diduknow_fact21">"There are 400 million users watching Stories on a daily basis"</string>

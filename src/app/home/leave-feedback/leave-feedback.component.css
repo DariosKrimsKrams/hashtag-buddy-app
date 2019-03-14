@@ -28,11 +28,15 @@
     height: 24pt;
 }
 
-.status StackLayout {    
+.status GridLayout {
+    border-radius: 5;
+    background: rgb(237, 240, 242);
+}
+
+.status GridLayout StackLayout {    
     width: 100%;
     padding: 10;
     text-align: center;
-    background: rgb(237, 240, 242);
     border-radius: 5;
 }
 

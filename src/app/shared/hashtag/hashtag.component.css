@@ -15,13 +15,14 @@
         background-repeat: repeat-x;
         background-position: right center;
         background-size: cover;
-        font-size: 13pt;
+        font-size: 14pt;
         padding: 2pt 10pt 0 10pt;
+        color: rgba(30, 39, 46, 0.8);
     }
     .tag .tag-text-active {
         left: 4pt;
         top: 0;
-        font-size: 13pt;
+        font-size: 14pt;
         border-radius: 3pt;
         padding: 2pt 6pt 0 6pt;
         height: 24pt;
