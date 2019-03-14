@@ -2,7 +2,6 @@
     <GridLayout columns="20,*,20" class="gradient" id="header">
         <Image col="0" src="~/app/assets/images/icons/arrowLeft_white.png" (tap)="goPrevPage()"></Image>
         <Label col="1" text="{{ 'leave_feedback_headline' | L }}" class="title"></Label>
-        <!-- <StackLayout col="2"></StackLayout> -->
     </GridLayout>
 
     <GridLayout>
@@ -15,7 +14,7 @@
                 </StackLayout>
 
                 <GridLayout class="status m-l-20 m-r-5 m-t-10" columns="*,*,*" rows="auto">
-                    <GridLayout [col]="i" class="p-r-15" *ngFor="let item of emoji; let i = index;" (tap)="selected=[];selected[i]=true; rating_number = i;">
+                    <GridLayout [col]="i" class="m-r-15" *ngFor="let item of emoji; let i = index;" (tap)="selected=[];selected[i]=true; rating_number = i;">
                         <StackLayout horizontalAlignment="center" class="p-t-5 p-b-5" [class.gradient]="selected[i]">
                             <Image [src]="'~/app/assets/images/icons/' + item + '.png'" *ngIf="!selected[i]"></Image>
                             <Image [src]="'~/app/assets/images/icons/' + item + '_white.png'" *ngIf="selected[i]"></Image>
@@ -41,8 +40,8 @@
                 </StackLayout>
             
                 <StackLayout class="m-t-20 m-l-20 m-r-20">
-                    <Button text="{{ 'leave_feedback_send_feedback' | L }}" class="btn btn-main btn-normal btn-rounded-lg font-demi-bold" (tap)="send()"></Button>
-                    <Button text="{{ 'leave_feedback_skip_no_send' | L }}" class="btn btn-outline btn-rounded-lg border-color-normal color-normal" (tap)="skip()"></Button>
+                    <Button text="{{ 'leave_feedback_send_feedback' | L }}" class="btn btn-main btn-normal btn-rounded-lg font-demi-bold" (tap)="sendFeedback()"></Button>
+                    <Button text="{{ 'leave_feedback_skip_no_send' | L }}" class="btn btn-outline btn-rounded-lg border-color-normal color-normal" (tap)="continueWithoutFeedback()"></Button>
                 </StackLayout>
                 
             </StackLayout> 

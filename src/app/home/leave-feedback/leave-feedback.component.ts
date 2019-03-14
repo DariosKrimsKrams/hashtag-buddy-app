@@ -22,7 +22,7 @@ export class LeaveFeedbackComponent implements OnInit {
   selected = [];
   tag1 = [];
   tag2 = [];
-  rating_number = 3;
+  rating_number = 3; // what does "3" mean? 3=none?
   good_hashtags = '';
   bad_hashtags = '';
   public missingHashtags = '';
@@ -42,23 +42,35 @@ export class LeaveFeedbackComponent implements OnInit {
     this.userNotSelectedHashtags = this.userStorage.getUserNotSelectedHashtags(1);
   }
 
-  send() {
-    if(this.missingHashtags === "" || this.comment === ""){
+  sendFeedback() {
+    if(this.missingHashtags === ""
+      && this.comment === ""
+      && this.rating_number === undefined
+      // ToDo if all fields are empty
+    ){
       console.log('empty');
-      return false;
+      this.continueWithoutFeedback();
+      return;
     }
+
     let rating = 'none';
-    if(this.rating_number === 0) {
-      rating = 'great';
-    }else if(this.rating_number === 1) {
-      rating = 'satisfied';
-    }else if(this.rating_number === 2) {
-      rating = 'bad';
+    switch(this.rating_number) {
+      case 0:
+        rating = 'great';
+        break;
+      case 1:
+        rating = 'satisfied';
+        break;
+      case 2:
+        rating = 'bad';
+        break;
     }
+
     let k = 0;
     for(let i = 0; i < this.userSelectedHashtags.length ; i++) {
       if(this.tag1[i]) {
         if(k === 0){
+          // ToDo why does some variables are snake_case and some have CamelCase style
           this.good_hashtags = '{';
           k++;
         }
@@ -66,10 +78,11 @@ export class LeaveFeedbackComponent implements OnInit {
         this.good_hashtags += "'" + this.userSelectedHashtags[i] + "'";
       }
     }
-    if(k > 0) this.good_hashtags += "}";
+    if(k > 0) {
+      this.good_hashtags += "}";
+    }
 
     k = 0;
-
     for(let i = 0; i < this.userNotSelectedHashtags.length ; i++) {
       if(this.tag2[i]) {
         if(k === 0){
@@ -80,11 +93,14 @@ export class LeaveFeedbackComponent implements OnInit {
         this.bad_hashtags += "'" + this.userNotSelectedHashtags[i] + "'";
       }
     }
-    if(k > 0) this.bad_hashtags += "}";
+    if(k > 0) {
+      this.bad_hashtags += "}";
+    }
+    // ToDo server receives: goodHashtags":"{'[object Object]'}","badHashtags":"{'[object Object]'}"
   
     let feedback = { 
       customerId: "0317a2e8e1bbae79184524ea1322c152407a0bc1e7f4837571ee3517e9360da4", 
-      photoId: '', 
+      photoId: '123', 
       rating: rating, 
       goodHashtags: this.good_hashtags, 
       badHashtags: this.bad_hashtags, 
@@ -93,11 +109,22 @@ export class LeaveFeedbackComponent implements OnInit {
     }
     this.feedbackService.addResultFeedback(feedback as ResultFeedback)
     .subscribe(feedback => {
-    });   
+      // this is null, is that correct?
+      console.log(feedback);
+    });
+    this.openInstagram();
+
+    // ToDo there is the possibility to click on Send-Button twice / multiple times.
+    // Even with OpenInstagram logic coming soon, it should be able to double-send without any changes between the sendings
+    // (that means: if the user change some value, another sending should be allowed)
   }
 
-  skip() {
+  continueWithoutFeedback() {
+    this.openInstagram();
+  }
 
+  openInstagram() {
+    // ToDo here transfer-to-instagram logic
   }
 
   goPrevPage() {
