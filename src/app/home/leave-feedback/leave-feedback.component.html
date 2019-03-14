@@ -36,7 +36,7 @@
                 </StackLayout>
             
                 <StackLayout class="m-l-20 m-r-20">
-                    <FloatLabel placeholder="{{ 'leave_feedback_missing_hashtags' | L }}" (userTextEmitter)="missingHashtags($event)"></FloatLabel>
+                    <FloatLabel placeholder="{{ 'leave_feedback_missing_hashtags' | L }}" (userTextEmitter)="setMissingHashtags($event)"></FloatLabel>
                     <FloatLabel placeholder="{{ 'leave_feedback_comments' | L }}" (userTextEmitter)="commentChange($event)"></FloatLabel>
                 </StackLayout>
             

@@ -25,7 +25,7 @@ export class LeaveFeedbackComponent implements OnInit {
   rating_number = 3;
   good_hashtags = '';
   bad_hashtags = '';
-  public missinghashtags = '';
+  public missingHashtags = '';
   public comment = '';
 
   constructor(
@@ -43,7 +43,7 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   send() {
-    if(this.missinghashtags === "" || this.comment === ""){
+    if(this.missingHashtags === "" || this.comment === ""){
       console.log('empty');
       return false;
     }
@@ -88,7 +88,7 @@ export class LeaveFeedbackComponent implements OnInit {
       rating: rating, 
       goodHashtags: this.good_hashtags, 
       badHashtags: this.bad_hashtags, 
-      missingHashtags: this.missinghashtags, 
+      missingHashtags: this.missingHashtags, 
       comment: this.comment 
     }
     this.feedbackService.addResultFeedback(feedback as ResultFeedback)
@@ -110,8 +110,8 @@ export class LeaveFeedbackComponent implements OnInit {
     });
   }
 
-  missingHashtags(text: string) {
-    this.email = text;
+  setMissingHashtags(text: string) {
+    this.missingHashtags = text;
   }
 
   commentChange(text: string) {
