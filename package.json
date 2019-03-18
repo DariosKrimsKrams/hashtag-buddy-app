@@ -25,6 +25,7 @@
         "nativescript-emoji": "^1.1.1",
         "nativescript-imagepicker": "^6.0.6",
         "nativescript-localize": "^4.1.0",
+        "nativescript-localstorage": "^2.0.0",
         "nativescript-ngx-fonticon": "^4.2.0",
         "nativescript-purchase": "^2.0.5",
         "nativescript-social-share": "^1.5.1",
