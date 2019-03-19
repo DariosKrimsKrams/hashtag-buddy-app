@@ -20,28 +20,68 @@ export class UserStorageService {
     init() {
     }
 
+    public clearAll(): void {
+        LocalStorage.removeItem('photos');
+        LocalStorage.removeItem('userId');
+    }
+
     private isEmpty(): boolean {
         return LocalStorage.length == 0;
     }
 
-    public hasUserId(): string {
-        return LocalStorage.getItem('x');
+    public getUserId(): string {
+        return LocalStorage.getItem('userId') || undefined;
     }
 
-    public setUserId(value: string): void {
-        LocalStorage.setItem('x', value);
+    public hasUserId(): boolean {
+        return this.getUserId() !== undefined;
     }
 
-    public setPhoto(Pho) {
+    public setUserId(userId: string): void {
+        var value = JSON.stringify(userId);
+        LocalStorage.setItem('userId', value);
+    }
+
+    public setPhoto(photo: Photo) {
+        // check if exists
+        var photos = this.getPhotos();
+        photos[photos.length] = photo;
+        this.savePhotos(photos);
+    }
+
+    public updatePhoto(photo: Photo) {
         
     }
 
+    private savePhotos(photos: Photo[]) {
+        var value = JSON.stringify(photos);
+        LocalStorage.setItem('photos', value);
+    }
+
     public getPhoto(id: number): Photo {
-        return null;
+        var photos = this.getPhotos();
+        for(let i = 0; i < photos.length ; i++) {
+            var photo = photos[i];
+            if(photo.id == id) {
+                return photo;
+            }
+        }
+        return undefined;
     }
 
     public getPhotos(): Photo[] {
-        return null;
+        var json = LocalStorage.getItem('photos') || undefined;
+        if(json == undefined) {
+            return [];
+        }
+        var jsonAsObj = JSON.parse(json);
+        var photos: Photo[] = [];
+        for(let i = 0; i < jsonAsObj.length ; i++) {
+            let photo = new Photo();
+            Object.assign(photo, jsonAsObj[i]);
+            photos[i] = photo;
+        }
+        return photos;
     }
 
     public getUser() {

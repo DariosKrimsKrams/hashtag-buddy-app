@@ -9,6 +9,7 @@ import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
 import * as imagepicker from "nativescript-imagepicker";
 import { DeviceService } from "../services/device-photos.service";
 import {AnimationCurve} from "tns-core-modules/ui/enums";
+import { UserStorageService } from "../storages/user-storage.service";
 
 class ScreenInfo {
   constructor(
@@ -37,8 +38,9 @@ export class HomeComponent implements OnInit {
   constructor(
     private page: Page,
     private router: RouterExtensions,
-    private deviceService: DeviceService
-  ) {
+    private deviceService: DeviceService,
+    private userStorageService: UserStorageService,
+    ) {
     this.page.actionBarHidden = true;
   }
 
@@ -60,6 +62,15 @@ export class HomeComponent implements OnInit {
     // StorageService.CheckExistingData
     // var history = data.GetHistory()
     // HistoryStorageService.setHistory(history)
+
+    // this.userStorageService.clearAll();
+    console.log("HasUserId: " + this.userStorageService.hasUserId())
+    console.log("UserId: " + this.userStorageService.getUserId())
+    console.log("Photos: ");
+    var photos = this.userStorageService.getPhotos();
+    photos.forEach(photo => {
+      console.log(photo);
+    });
 
   }
 

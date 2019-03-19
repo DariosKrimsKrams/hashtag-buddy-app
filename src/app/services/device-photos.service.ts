@@ -23,19 +23,9 @@ export class DeviceService {
 
     private EvaluationUrl = "http://instaq-api.innocliq.de/Evaluation/File/";
 
-    getPhotos() {
-    
-        // knownFolders.
-
-        // var path = android.os.Environment.DIRECTORY_DCIM).getAbsolutePath();
-        // var filename = "20160719_155053.jpg";
-        // var tempPicturePath = path.join(android.os.Environment.getExternalStoragePublicDirectory(path, filename);
-        // console.log("extr storage "+tempPicturePath);
-    }
-
     Evaluation (feedback: Evaluation): Observable<Evaluation> {
         return this.http.post<Evaluation>(this.EvaluationUrl, feedback);
-      }
+    }
 
     setSelectedPhoto(photo: ImageAsset): void {
         this.selectedPhoto = photo;

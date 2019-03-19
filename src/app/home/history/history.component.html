@@ -2,25 +2,25 @@
 
 <GridLayout columns="auto,auto,auto" horizontalAlignment="center" verticalAlignment="top" id="history_header" (tap)="clickOpenCloseHistory()">
     <Image src="~/app/assets/images/icons/history.png" col="0" class="m-r-10" width="20pt" height="18pt"></Image>
-    <Label text="{{ 'history_title' | L }} ({{histories.length}})" fontSize="16" class="font-weight-bold" col="1"></Label>
+    <Label text="{{ 'history_title' | L }} ({{photos.length}})" fontSize="16" class="font-weight-bold" col="1"></Label>
     <Image src="~/app/assets/images/icons/up.png" *ngIf="!isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
     <Image src="~/app/assets/images/icons/down.png" *ngIf="isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
 </GridLayout>
 <ScrollView id="history_content" orientation="vertical" sdkExampleTitle sdkToggleNavButton>
     <StackLayout>
-        <StackLayout orientation="horizontal" class="list-group-item" (longPress)="selected[i]=!selected[i]" *ngFor="let history of histories; let i = index;">
+        <StackLayout orientation="horizontal" class="list-group-item" (longPress)="selected[i]=!selected[i]" *ngFor="let photo of photos; let i = index;">
             <GridLayout rows="*" [columns]="selected[i] ? '5,*,78' : '78,*,0'" verticalAlignment="top">
-                <Image [src]="history.image_url" col="0" *ngIf="!selected[i]" class="m-l-10 m-r-10"></Image>
+                <Image [src]="photo.image" col="0" *ngIf="!selected[i]" class="m-l-10 m-r-10" stretch="aspectFill"></Image>
                 <StackLayout class="left-blackbar" col="0" *ngIf="selected[i]"></StackLayout>
                 <StackLayout col="1" class="m-t-5 m-b-5">
                     <Label class="m-l-5">
                         <FormattedString>
-                            <Span [text]="history.date" fontAttributes="bold"></Span>
-                            <Span text=" {{'history_date_at' | L }} {{history.time}}"></Span>
+                            <Span [text]="photo.date" fontAttributes="bold"></Span>
+                            <Span text=" {{'history_date_at' | L }} {{photo.time}}"></Span>
                         </FormattedString>
                     </Label>
                     <WrapLayout>
-                        <ns-hashtag *ngFor="let tag of history.tags" [name]="tag"></ns-hashtag>
+                        <ns-hashtag *ngFor="let tag of photo.getHashtags()" [name]="tag"></ns-hashtag>
                         <ns-hashtag name="+38 more"></ns-hashtag>
                     </WrapLayout>
                 </StackLayout>

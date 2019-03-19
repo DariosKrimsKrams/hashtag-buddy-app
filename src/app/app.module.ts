@@ -11,6 +11,7 @@ import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 
 import { HistoryModule } from "~/app/home/history/history.module";
 import { HttpClientModule } from "@angular/common/http";
+import { DeviceService } from "./services/device-photos.service";
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { HttpClientModule } from "@angular/common/http";
         NO_ERRORS_SCHEMA
     ],
     providers: [
+        DeviceService,
         UserStorageService,
         // AppService
     ],
