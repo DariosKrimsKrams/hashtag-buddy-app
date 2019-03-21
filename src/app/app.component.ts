@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import * as app from "application";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
+import { UserService } from "./storages/user.service";
 
 @Component({
     moduleId: module.id,
@@ -16,19 +17,20 @@ export class AppComponent implements OnInit {
 
     constructor(
         private router: RouterExtensions,
-    ) {
-    }
+        private userService: UserService
+    ) { }
 
     ngOnInit(): void {
         this._sideDrawerTransition = new SlideInOnTopTransition();
         this.selected[0] = true;
+        this.userService.onStartup();
     }
 
     get sideDrawerTransition(): DrawerTransitionBase {
         return this._sideDrawerTransition;
     }
 
-    openPage(index: number) {
+    public openPage(index: number): void {
         this.selected = [];
         this.selected[index] = true;
         this.closeMenu();
@@ -41,7 +43,7 @@ export class AppComponent implements OnInit {
         });
     }
 
-    closeMenu() {
+    public closeMenu(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.closeDrawer();
     }

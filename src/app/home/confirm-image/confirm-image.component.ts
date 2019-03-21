@@ -45,16 +45,22 @@ export class ConfirmImageComponent implements OnInit {
 
   confirmImage(): void {
     // ToDo do Request
-    var userId = this.userService.getUserId();
-    this.deviceService.UploadPhoto({customerId: userId} as Evaluation)
+    var customerId = this.userService.getUserId();
+    this.deviceService.UploadPhoto({customerId: customerId} as Evaluation)
     .subscribe(x => {
-      var photo = this.getPhoto();
-      var photoId = this.userService.setPhoto(photo);
+      // NOTHING happens
+      // var photo = this.getPhoto();
+      // var photoId = this.userService.setPhoto(photo);
 
-      this.launched = true;
-      this.goNextPage(photoId);
+      // this.launched = true;
+      // this.goNextPage(photoId);
     });
-    //this.router.navigate(["/home/loading-hashtags"]);
+
+    
+    var photo = this.getPhoto();
+    var photoId = this.userService.setPhoto(photo);
+    this.launched = true;
+    this.goNextPage(photoId);
   }
 
   private getPhoto(): Photo {

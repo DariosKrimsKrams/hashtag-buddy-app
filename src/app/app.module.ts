@@ -39,8 +39,8 @@ import { DeviceService } from "./services/device-photos.service";
     ],
     providers: [
         DeviceService,
-        UserService,
-        DataService,
+        // UserService,
+        // DataService,
     ],
     exports: [
         NativeScriptLocalizeModule,

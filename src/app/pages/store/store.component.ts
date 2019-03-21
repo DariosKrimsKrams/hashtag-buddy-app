@@ -28,31 +28,31 @@ export class StoreComponent implements OnInit {
   }
 
   ngOnInit() {
-    var products = [
-      "com.sample.purchase.coolproduct1",
-      "com.sample.purchase.coolproduct2"
-    ];
+    // var products = [
+    //   "com.sample.purchase.coolproduct1",
+    //   "com.sample.purchase.coolproduct2"
+    // ];
 
-    (global as any).purchaseInitPromise = purchase.init(products);
+    // (global as any).purchaseInitPromise = purchase.init(products);
 
-    purchase.on(purchase.transactionUpdatedEvent, (transaction: Transaction) => {
-      if (transaction.transactionState === TransactionState.Purchased) {
-          alert(`Congratulations you just bought ${transaction.productIdentifier}!`);
-          console.log(transaction.transactionDate);
-          console.log(transaction.transactionIdentifier);
-          applicationSettings.setBoolean(transaction.productIdentifier, true);
-      }
-      else if (transaction.transactionState === TransactionState.Restored) {
-          console.log(`Purchase of ${transaction.productIdentifier} restored.`);
-          console.log(transaction.transactionDate);
-          console.log(transaction.transactionIdentifier);
-          console.log(transaction.originalTransaction.transactionDate);
-          applicationSettings.setBoolean(transaction.productIdentifier, true);
-      }
-      else if (transaction.transactionState === TransactionState.Failed) {
-          alert(`Purchase of ${transaction.productIdentifier} failed!`);
-      }    
-    });
+    // purchase.on(purchase.transactionUpdatedEvent, (transaction: Transaction) => {
+    //   if (transaction.transactionState === TransactionState.Purchased) {
+    //       alert(`Congratulations you just bought ${transaction.productIdentifier}!`);
+    //       console.log(transaction.transactionDate);
+    //       console.log(transaction.transactionIdentifier);
+    //       applicationSettings.setBoolean(transaction.productIdentifier, true);
+    //   }
+    //   else if (transaction.transactionState === TransactionState.Restored) {
+    //       console.log(`Purchase of ${transaction.productIdentifier} restored.`);
+    //       console.log(transaction.transactionDate);
+    //       console.log(transaction.transactionIdentifier);
+    //       console.log(transaction.originalTransaction.transactionDate);
+    //       applicationSettings.setBoolean(transaction.productIdentifier, true);
+    //   }
+    //   else if (transaction.transactionState === TransactionState.Failed) {
+    //       alert(`Purchase of ${transaction.productIdentifier} failed!`);
+    //   }    
+    // });
   }
 
   openMenu(): void {

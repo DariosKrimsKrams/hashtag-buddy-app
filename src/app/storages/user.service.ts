@@ -13,21 +13,18 @@ import { Photo } from "../models/photo";
 export class UserService {
 
     private keyUserId: string = 'userId';
-    private keyPhotos: string = 'userId';
+    private keyPhotos: string = 'photos';
 
     constructor(
         private dataService: DataService,
         private customerRepositoryService: CustomerRepositoryService
     ) { }
 
-    init() {
-        this.onStartup();
-        console.log("UserService init");
-    }
-
     public onStartup(): void {
+        console.log("UserService onStartup");
         this.createUserIdIfNotExist();
 
+        console.log("UserId: " + this.getUserId());
         console.log("Photos: ");
         var photos = this.getPhotos();
         photos.forEach(photo => {
@@ -63,6 +60,7 @@ export class UserService {
         if(json == undefined) {
             return [];
         }
+        
         var jsonAsObj = JSON.parse(json);
         var photos: Photo[] = [];
         for(let i = 0; i < jsonAsObj.length ; i++) {
@@ -77,9 +75,8 @@ export class UserService {
         if(this.dataService.has(this.keyUserId)) {
             return;
         }
-        var that = this;
-        this.customerRepositoryService.createCustomer().subscribe(customerId => {
-            that.dataService.set(this.keyUserId, customerId);
+        this.customerRepositoryService.createCustomer().subscribe(result => {
+            this.dataService.set(this.keyUserId, result.customerId);
         });
     }
 

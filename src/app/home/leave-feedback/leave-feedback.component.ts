@@ -14,8 +14,8 @@ import { FeedbackRepositoryService } from '~/app/services/feedback-repository.se
 })
 export class LeaveFeedbackComponent implements OnInit {
 
-  userSelectedHashtags: Hashtag[];
-  userNotSelectedHashtags: Hashtag[];
+  userSelectedHashtags: Hashtag[] = [];
+  userNotSelectedHashtags: Hashtag[] = [];
   
   emoji = ['great', 'satisfied', 'bad'];
   selected = [];

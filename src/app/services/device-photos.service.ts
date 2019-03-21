@@ -18,7 +18,7 @@ export class DeviceService {
         this.selectedPhoto = null;
     }
 
-    private EvaluationUrl = environment + "/Evaluation/File/";
+    private EvaluationUrl = environment.apiUrl + "/Evaluation/File/";
 
     public UploadPhoto(feedback: Evaluation): Observable<Evaluation> {
         return this.http.post<Evaluation>(this.EvaluationUrl, feedback);

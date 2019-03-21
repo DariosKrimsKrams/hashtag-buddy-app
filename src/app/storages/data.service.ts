@@ -9,9 +9,6 @@ export class DataService {
     constructor(
     ) { }
 
-    init() {
-    }
-
     public clearAll(): void {
         LocalStorage.removeItem('photos');
         LocalStorage.removeItem('userId');
@@ -22,7 +19,7 @@ export class DataService {
     }
 
     public set(key: string, value: any) {
-        LocalStorage.setUserId(key, value);
+        LocalStorage.setItem(key, value);
     }
 
     public has(key: string): boolean {

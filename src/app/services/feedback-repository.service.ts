@@ -19,15 +19,15 @@ export class FeedbackRepositoryService {
     private http: HttpClient,
   ) { }
 
-  private AppFeedbackUrl = environment + "/Feedback/App";
-  private ResultFeedbackUrl = environment + "/Feedback/Results";
+  private appFeedbackUrl = environment.apiUrl + "/Feedback/App";
+  private resultFeedbackUrl = environment.apiUrl + "/Feedback/Results";
 
   addAppFeedback (feedback: AppFeedback): Observable<AppFeedback> {
-    return this.http.post<AppFeedback>(this.AppFeedbackUrl, feedback, httpOptions);
+    return this.http.post<AppFeedback>(this.appFeedbackUrl, feedback, httpOptions);
   }
 
   addResultFeedback (feedback: ResultFeedback): Observable<ResultFeedback> {
-    return this.http.post<ResultFeedback>(this.ResultFeedbackUrl, feedback, httpOptions);
+    return this.http.post<ResultFeedback>(this.resultFeedbackUrl, feedback, httpOptions);
   }
 
 }

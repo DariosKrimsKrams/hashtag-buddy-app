@@ -14,14 +14,12 @@ import { DataService } from "../../storages/data.service";
 export class HistoryComponent implements OnInit {
 
   selected: Array<boolean> = [];
-  photos: Photo[];
+  photos: Photo[] = [];
 
   @Input() isHistoryOpen: boolean;
   @Output() openCloseHistory = new EventEmitter();
 
   constructor(
-    private page: Page,
-    private router: RouterExtensions,
     private userService: UserService,
   ) { }
 

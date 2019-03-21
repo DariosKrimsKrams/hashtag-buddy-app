@@ -17,10 +17,10 @@ export class CustomerRepositoryService {
     private http: HttpClient,
   ) { }
 
-  private CreateCustomerUrl = environment + "/Customer/Create";
+  private createCustomerUrl = environment.apiUrl + "/Customer/Create";
 
-  createCustomer(): Observable<string> {
-    return this.http.post<string>(this.CreateCustomerUrl, undefined);
+  createCustomer(): Observable<any> {
+    return this.http.post<any>(this.createCustomerUrl, null);
   }
 
 }
