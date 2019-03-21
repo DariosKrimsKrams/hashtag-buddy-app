@@ -34,7 +34,7 @@ export class FloatLabel {
             opacity: 1,
         }).then(() => { }, () => { });
 
-        textField.borderBottomColor = new Color('#EEA188');
+        textField.borderBottomColor = new Color('#FFB184');
     }
 
     onBlur() {

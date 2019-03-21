@@ -16,7 +16,6 @@
 
 .plan-title {
 	font-weight: bold;
-	color: #C95DA1;
 }
 .plan-content {
 	font-size: 15pt;
@@ -27,8 +26,9 @@
 	border-radius: 0 0 5 5;
 	padding: 5;
 }
+	.plan-title,
 	.plan-footer Label {
-		color: #C95DA1;
+		color: #E067A9;
 	}
 	.plan-footer Button {
 		color: #fff;
