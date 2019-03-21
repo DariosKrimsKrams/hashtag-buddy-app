@@ -16,7 +16,7 @@
                         <ScrollView #scrollView (scroll)="onScroll($event, scrollView, topView)">
                             <StackLayout>
                                 <GridLayout class="m-b-10" id="preview-image" (tap)="dismissSoftKeybaord()" [height]="parallaxHeight" #topView>
-                                    <Image [src]="photo" stretch="aspectFill"></Image>
+                                    <Image [src]="photo.image" stretch="aspectFill"></Image>
                                 </GridLayout>
                                 <StackLayout id="user-selection" class="p-l-15 p-r-15 p-b-20 p-b-20">
                                     <ProgressBar [page]="page_name" [width]="width" [countPhotoLeft]="countPhotoLeft" [countPhotosOverall]="countPhotosOverall" [timeStart]="timeStart" [timeOverall]="timeOverall"></ProgressBar>
@@ -35,7 +35,7 @@
                                         <Button col="1" text="+ {{'results_hashtags_add' | L}}" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="customUserHashtagsText !== ''" (tap)="addCustomHashtags()" verticalAlignment="bottom" horizontalAlignment="right"></Button>
                                     </GridLayout>
                                 </StackLayout>   
-                                <StackLayout orientation="vertical" class="list-group-item" *ngFor="let hashtag of hashtags; let i = index;">
+                                <StackLayout orientation="vertical" class="list-group-item" *ngFor="let hashtag of photo.hashtags; let i = index;">
                                     <GridLayout columns="*,60" class="hash-title m-l-20 m-r-20">
                                         <Label [text]="hashtag.title | L" class="font-demi-bold" col="0"></Label>
                                         <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(hashtag, i)" *ngIf="!areAllHashtagSelected(hashtag, i)"></Button>

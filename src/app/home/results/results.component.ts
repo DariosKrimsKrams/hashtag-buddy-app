@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, AfterViewInit, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef, Input } from '@angular/core';
 import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { HashtagCategory } from "~/app/models/hashtag-category";
@@ -11,9 +11,10 @@ import { Hashtag } from '~/app/models/hashtag';
 import * as utils from "utils/utils";
 import { isIOS, isAndroid } from "platform";
 import * as frame from "ui/frame";
-import { DeviceService } from '~/app/services/device-photos.service';
 import * as app from "application";
 import { UserService } from '../../storages/user.service';
+import { Photo } from '../../models/photo';
+import { DeviceService } from '../../services/device-photos.service';
 
 @Component({
   selector: 'ns-results',
@@ -27,12 +28,13 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   parallaxHeight = 250;
 
   hashtags: HashtagCategory[];
+  photo: Photo;
   dialogOpen: boolean;
   openmenu: boolean;
   selected_hashtags: SelectedHashtag[];
   hightlightStatus: Array<boolean> = [];
-  selected = [];
-  photo: any;
+  // selected = [];
+  // photo: ImageAsset; // any?
   currentScrollingY: number;
 
   width = "80%";
@@ -49,8 +51,8 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     private router: RouterExtensions,
     private userStorage: UserService,
     private route: ActivatedRoute,
+    private deviceService: DeviceService,
     private _changeDetectionRef: ChangeDetectorRef,
-    private deviceService: DeviceService
   ) {
     this.page.actionBarHidden = true;
   }
@@ -63,10 +65,12 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     this.selected_hashtags = [];
 
     const id = Number(this.route.snapshot.params['id']);
-    this.hashtags = this.userStorage.getHashtags(id);
-    this.selected[0] = true;
+    this.photo = this.userStorage.getPhoto(id);
+    this.photo.image = this.deviceService.getSelectedPhoto();
 
-    this.photo = this.deviceService.getSelectedPhoto();
+    // this.hashtags = this.userStorage.getHashtags(id);
+    // this.hashtags = this.photo.categories;
+    // this.selected[0] = true;
   }
 
   onScroll(event: ScrollEventData, scrollView: ScrollView, topView: View) {
@@ -137,18 +141,18 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     sideDrawer.closeDrawer();
   }
 
-  openPage(index: number) {
-    this.selected = [];
-    this.selected[index] = true;
-    this.closeMenu();
-    this.router.navigate(["/" + this.menus[index]], {
-      transition: {
-        name: "fadeIn",
-        duration: 500,
-        curve: "easeOut"
-      }
-    });
-  }
+  // openPage(index: number) {
+  //   this.selected = [];
+  //   this.selected[index] = true;
+  //   this.closeMenu();
+  //   this.router.navigate(["/" + this.menus[index]], {
+  //     transition: {
+  //       name: "fadeIn",
+  //       duration: 500,
+  //       curve: "easeOut"
+  //     }
+  //   });
+  // }
 
   goLeaveFeedback() {
     this.router.navigate(["/home/leavefeedback"], {

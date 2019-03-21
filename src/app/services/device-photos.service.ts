@@ -1,9 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ImageAsset } from "tns-core-modules/image-asset/image-asset";
-// import { path } from "file-system";
-// import { android } from "tns-core-modules/application/application";
-// import {Folder, path, knownFolders} from "tns-core-modules/file-system";
-
+import { environment } from '../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Evaluation } from '~/app/models/evaluation';
@@ -21,17 +18,17 @@ export class DeviceService {
         this.selectedPhoto = null;
     }
 
-    private EvaluationUrl = "http://instaq-api.innocliq.de/Evaluation/File/";
+    private EvaluationUrl = environment + "/Evaluation/File/";
 
-    Evaluation (feedback: Evaluation): Observable<Evaluation> {
+    public UploadPhoto(feedback: Evaluation): Observable<Evaluation> {
         return this.http.post<Evaluation>(this.EvaluationUrl, feedback);
     }
 
-    setSelectedPhoto(photo: ImageAsset): void {
+    public setSelectedPhoto(photo: ImageAsset): void {
         this.selectedPhoto = photo;
     }
 
-    getSelectedPhoto(): ImageAsset {
+    public getSelectedPhoto(): ImageAsset {
         return this.selectedPhoto;
     }
 

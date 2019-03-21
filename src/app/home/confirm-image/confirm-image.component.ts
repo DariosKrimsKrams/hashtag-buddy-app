@@ -5,6 +5,9 @@ import { ImageAsset } from 'tns-core-modules/image-asset/image-asset';
 import { Page } from 'tns-core-modules/ui/page/page';
 import * as imagepicker from "nativescript-imagepicker";
 import { Evaluation } from '~/app/models/evaluation';
+import { UserService } from '../../storages/user.service';
+import { isIOS, isAndroid } from "platform";
+import { Photo } from '~/app/models/photo';
 
 @Component({
   selector: 'ns-confirm-image',
@@ -21,12 +24,13 @@ export class ConfirmImageComponent implements OnInit {
   countPhotosOverall = 5;
   timeStart = 0;
   timeOverall = 0;
-  launched = 0;
+  launched: boolean;
 
   constructor(
     private page: Page,
     private router: RouterExtensions,
-    private deviceService: DeviceService
+    private deviceService: DeviceService,
+    private userService: UserService
   ) {
     this.page.actionBarHidden = true;
   }
@@ -41,12 +45,24 @@ export class ConfirmImageComponent implements OnInit {
 
   confirmImage(): void {
     // ToDo do Request
-    this.deviceService.Evaluation({customerId: '0317a2e8e1bbae79184524ea1322c152407a0bc1e7f4837571ee3517e9360da4'} as Evaluation)
-    .subscribe(feedback => {
-      this.launched = 1;
-      this.router.navigate(["/home/results/1"]);
+    var userId = this.userService.getUserId();
+    this.deviceService.UploadPhoto({customerId: userId} as Evaluation)
+    .subscribe(x => {
+      var photo = this.getPhoto();
+      var photoId = this.userService.setPhoto(photo);
+
+      this.launched = true;
+      this.goNextPage(photoId);
     });
     //this.router.navigate(["/home/loading-hashtags"]);
+  }
+
+  private getPhoto(): Photo {
+    var photo = new Photo();
+    var image = this.deviceService.getSelectedPhoto();
+    var photoPath = isIOS ? image.ios : image.android;
+    photo.image = photoPath;
+    return photo;
   }
 
   chooseImage(): void {
@@ -75,10 +91,21 @@ export class ConfirmImageComponent implements OnInit {
       });
   }
 
-  goPrevPage() {
+  public goPrevPage(): void {
     this.router.navigate(["/home"], {
       transition: {
         name: "slideRight",
+        duration: 500,
+        curve: "easeOut"
+      }
+    });
+  }
+
+  private goNextPage(id: number): void {
+
+    this.router.navigate([`/home/results/${id}`], {
+      transition: {
+        name: "FadeIn",
         duration: 500,
         curve: "easeOut"
       }

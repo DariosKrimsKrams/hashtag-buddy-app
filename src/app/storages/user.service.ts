@@ -36,10 +36,26 @@ export class UserService {
     }
 
     public setPhoto(photo: Photo) {
-        // check if exists
         var photos = this.getPhotos();
+        photo.id = photos.length + 1;
         photos[photos.length] = photo;
         this.dataService.set(this.keyPhotos, photos);
+        return photo.id;
+    }
+
+    public getPhoto(id: number): Photo {
+        var json = this.dataService.get(this.keyPhotos) || undefined;
+        if(json == undefined) {
+            return undefined;
+        }
+        var jsonAsObj = JSON.parse(json);
+        var key = id - 1;
+        if(jsonAsObj.length < key) {
+            return undefined;
+        }
+        let photo = new Photo();
+        Object.assign(photo, jsonAsObj[key]);
+        return photo;
     }
 
     public getPhotos(): Photo[] {

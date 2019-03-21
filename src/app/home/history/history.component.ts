@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
-import { HISTORIES } from "~/app/home/data/histories";
 import { Photo } from "~/app/models/photo";
 import { UserService } from "../../storages/user.service";
 import { DataService } from "../../storages/data.service";

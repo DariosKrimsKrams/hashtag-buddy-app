@@ -6,10 +6,10 @@ export class Photo {
 	id: number;
 	imageUrl?: string;
 	categories?: HashtagCategory[];
-	selected?: Hashtag[];
+	selectedHashtags?: Hashtag[];
     date?: string;
     time?: string;
-	image?: string;
+	image?: ImageAsset;
 	
 	public getHashtags(): any[] {
 		return ["ad", "asdasd"];
