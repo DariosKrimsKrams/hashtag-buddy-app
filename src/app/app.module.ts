@@ -4,7 +4,8 @@ import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angul
 import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { UserStorageService } from "./storages/user-storage.service";
+import { UserService } from "./storages/user.service";
+import { DataService } from "./storages/data.service";
 import { CoreModule } from "./core.module";
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 // import { AppService } from "./app.service";
@@ -38,8 +39,8 @@ import { DeviceService } from "./services/device-photos.service";
     ],
     providers: [
         DeviceService,
-        UserStorageService,
-        // AppService
+        UserService,
+        DataService,
     ],
     exports: [
         NativeScriptLocalizeModule,

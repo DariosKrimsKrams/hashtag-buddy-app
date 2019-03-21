@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from "@angular/core";
 import { RouterExtensions } from 'nativescript-angular/router';
 import { Page } from "ui/page";
-import { IMAGES } from './../data/upload-images';
 import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/modal-dialog";
 import { ModalComponent } from "./modal/modal.component";
 
@@ -22,7 +21,7 @@ export class ChooseImageComponent implements OnInit {
     this.page.actionBarHidden = true;
   }
 
-  images = IMAGES;
+  // images = IMAGES;
   numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   dialogOpen = false;
   currentImage = "";

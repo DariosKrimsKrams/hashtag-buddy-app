@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { Page } from "ui/page";
-import { UserStorageService } from '~/app/storages/user-storage.service';
+import { UserService } from '~/app/storages/user.service';
 import { Hashtag } from '~/app/models/hashtag';
-
-import { FeedbackService } from "~/app/services/feedback.service";
 import { ResultFeedback } from '~/app/models/result-feedback';
+import { FeedbackRepositoryService } from '~/app/services/feedback-repository.service';
 
 @Component({
   selector: 'ns-leave-feedback',
@@ -31,8 +30,8 @@ export class LeaveFeedbackComponent implements OnInit {
   constructor(
     private page: Page,
     private router: RouterExtensions,
-    private userStorage: UserStorageService,
-    private feedbackService: FeedbackService,
+    private userStorage: UserService,
+    private feedbackRepositoryService: FeedbackRepositoryService,
   ) {
     this.page.actionBarHidden = true;
   }
@@ -107,7 +106,7 @@ export class LeaveFeedbackComponent implements OnInit {
       missingHashtags: this.missingHashtags, 
       comment: this.comment 
     }
-    this.feedbackService.addResultFeedback(feedback as ResultFeedback)
+    this.feedbackRepositoryService.addResultFeedback(feedback as ResultFeedback)
     .subscribe(feedback => {
       // this is null, is that correct?
       console.log(feedback);

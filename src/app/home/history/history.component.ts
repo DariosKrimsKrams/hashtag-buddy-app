@@ -3,7 +3,8 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "ui/page";
 import { HISTORIES } from "~/app/home/data/histories";
 import { Photo } from "~/app/models/photo";
-import { UserStorageService } from "~/app/storages/user-storage.service";
+import { UserService } from "../../storages/user.service";
+import { DataService } from "../../storages/data.service";
 
 @Component({
   selector: "ns-history",
@@ -13,7 +14,6 @@ import { UserStorageService } from "~/app/storages/user-storage.service";
 })
 export class HistoryComponent implements OnInit {
 
-  histories = HISTORIES;
   selected: Array<boolean> = [];
   photos: Photo[];
 
@@ -23,12 +23,11 @@ export class HistoryComponent implements OnInit {
   constructor(
     private page: Page,
     private router: RouterExtensions,
-    private userStorageService: UserStorageService
-    ) {
-  }
+    private userService: UserService,
+  ) { }
 
   ngOnInit() {
-    this.photos = this.userStorageService.getPhotos();
+    this.photos = this.userService.getPhotos();
   }
 
   deleteHistory(i) {

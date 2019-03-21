@@ -5,7 +5,6 @@ import { HashtagCategory } from "~/app/models/hashtag-category";
 import { SelectedHashtag } from "~/app/models/selected_hashtag";
 import { View } from 'tns-core-modules/ui/core/view';
 import { Page } from "ui/page";
-import { UserStorageService } from '~/app/storages/user-storage.service';
 import { ActivatedRoute } from '@angular/router';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { Hashtag } from '~/app/models/hashtag';
@@ -14,6 +13,7 @@ import { isIOS, isAndroid } from "platform";
 import * as frame from "ui/frame";
 import { DeviceService } from '~/app/services/device-photos.service';
 import * as app from "application";
+import { UserService } from '../../storages/user.service';
 
 @Component({
   selector: 'ns-results',
@@ -41,12 +41,13 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   countPhotosOverall = 5;
   timeStart = 0;
   timeOverall = 0;
+  
   @Input() customUserHashtagsText: string = "";
 
   constructor(
     private page: Page,
     private router: RouterExtensions,
-    private userStorage: UserStorageService,
+    private userStorage: UserService,
     private route: ActivatedRoute,
     private _changeDetectionRef: ChangeDetectorRef,
     private deviceService: DeviceService

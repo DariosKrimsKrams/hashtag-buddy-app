@@ -11,8 +11,8 @@ import * as utils from "utils/utils";
 import { isIOS, isAndroid } from "platform";
 import * as frame from "ui/frame";
 
-import { FeedbackService } from "~/app/services/feedback.service";
 import { AppFeedback } from '~/app/models/app-feedback';
+import { FeedbackRepositoryService } from '../../services/feedback-repository.service';
 
 @Component({
   selector: 'ns-feedback',
@@ -32,7 +32,7 @@ export class FeedbackComponent implements OnInit {
     private router: RouterExtensions,
     private modalService: ModalDialogService, 
     private viewContainerRef: ViewContainerRef,
-    private feedbackService: FeedbackService,
+    private feedbackRepositoryService: FeedbackRepositoryService,
     ) {
     this.page.actionBarHidden = true;
   }
@@ -61,7 +61,7 @@ export class FeedbackComponent implements OnInit {
       email: this.email, 
       message: this.message
     }
-    this.feedbackService.addAppFeedback(feedback as AppFeedback)
+    this.feedbackRepositoryService.addAppFeedback(feedback as AppFeedback)
     .subscribe(feedback => {
       this.showModal();
     });    

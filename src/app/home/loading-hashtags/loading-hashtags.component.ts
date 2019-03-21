@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { Page } from "ui/page";
-import { UserStorageService } from '~/app/storages/user-storage.service';
+import { UserService } from '~/app/storages/user.service';
 import { DeviceService } from '~/app/services/device-photos.service';
 import { Photo } from '~/app/models/photo';
 import { isIOS, isAndroid } from "platform";
+import { DataService } from '../../storages/data.service';
 
 @Component({
   selector: 'ns-loading-hashtags',
@@ -20,7 +21,7 @@ export class LoadingHashtagsComponent implements OnInit {
   constructor(
     private page: Page,
     private router: RouterExtensions,
-    private userStorageService: UserStorageService,
+    private userService: UserService,
     private deviceService: DeviceService
   ) {
     this.page.actionBarHidden = true;
@@ -34,7 +35,7 @@ export class LoadingHashtagsComponent implements OnInit {
     var photoPath = isIOS ? image.ios : image.android;
     photo.image = photoPath;
 
-    this.userStorageService.setPhoto(photo);
+    this.userService.setPhoto(photo);
     
     setTimeout (() => { 
       this.requestFinished();

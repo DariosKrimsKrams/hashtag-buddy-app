@@ -9,7 +9,7 @@ import { ModalComponent } from './modal/modal.component';
 import { FloatLabelModule } from "~/app/shared/float-label/float-label.module";
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
 import { setStatusBarColors } from "~/app/shared/status-bar-util";
-import { FeedbackService } from "~/app/services/feedback.service";
+import { FeedbackRepositoryService } from "~/app/services/feedback-repository.service";
 setStatusBarColors();
 
 @NgModule({
@@ -26,7 +26,7 @@ setStatusBarColors();
     NativeScriptLocalizeModule
   ],
   providers: [
-    FeedbackService
+    FeedbackRepositoryService
   ],
   schemas: [NO_ERRORS_SCHEMA],
   entryComponents: [

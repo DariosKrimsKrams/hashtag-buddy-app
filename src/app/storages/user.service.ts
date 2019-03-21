@@ -1,76 +1,49 @@
 import { Injectable } from "@angular/core";
+import { DataService } from "./data.service";
+import { CustomerRepositoryService } from "../services/customer-repository.service";
 import { HASHTAGS } from "~/app/home/data/hashtags";
 import { HashtagCategory } from "~/app/models/hashtag-category";
 import { Hashtag } from "~/app/models/hashtag";
 import { User } from "../models/user";
 import { Photo } from "../models/photo";
-let LocalStorage = require( "nativescript-localstorage" );
  
 @Injectable({
     providedIn: "root"
 })
-export class UserStorageService {
+export class UserService {
 
-    // currentIndex = 0;
-    // currentPhotos;
+    private keyUserId: string = 'userId';
+    private keyPhotos: string = 'userId';
 
     constructor(
+        private dataService: DataService,
+        private customerRepositoryService: CustomerRepositoryService
     ) { }
 
     init() {
+        this.onStartup();
+        console.log("UserService init");
     }
 
-    public clearAll(): void {
-        LocalStorage.removeItem('photos');
-        LocalStorage.removeItem('userId');
-    }
+    public onStartup(): void {
+        this.createUserIdIfNotExist();
 
-    private isEmpty(): boolean {
-        return LocalStorage.length == 0;
-    }
-
-    public getUserId(): string {
-        return LocalStorage.getItem('userId') || undefined;
-    }
-
-    public hasUserId(): boolean {
-        return this.getUserId() !== undefined;
-    }
-
-    public setUserId(userId: string): void {
-        var value = JSON.stringify(userId);
-        LocalStorage.setItem('userId', value);
+        console.log("Photos: ");
+        var photos = this.getPhotos();
+        photos.forEach(photo => {
+            console.log(photo);
+        });
     }
 
     public setPhoto(photo: Photo) {
         // check if exists
         var photos = this.getPhotos();
         photos[photos.length] = photo;
-        this.savePhotos(photos);
-    }
-
-    public updatePhoto(photo: Photo) {
-        
-    }
-
-    private savePhotos(photos: Photo[]) {
-        var value = JSON.stringify(photos);
-        LocalStorage.setItem('photos', value);
-    }
-
-    public getPhoto(id: number): Photo {
-        var photos = this.getPhotos();
-        for(let i = 0; i < photos.length ; i++) {
-            var photo = photos[i];
-            if(photo.id == id) {
-                return photo;
-            }
-        }
-        return undefined;
+        this.dataService.set(this.keyPhotos, photos);
     }
 
     public getPhotos(): Photo[] {
-        var json = LocalStorage.getItem('photos') || undefined;
+        var json = this.dataService.get(this.keyPhotos) || undefined;
         if(json == undefined) {
             return [];
         }
@@ -84,17 +57,25 @@ export class UserStorageService {
         return photos;
     }
 
-    public getUser() {
-        var user = new User();
-        user.photos = this.getPhotos();
-        return user;
+    private createUserIdIfNotExist(): void {
+        if(this.dataService.has(this.keyUserId)) {
+            return;
+        }
+        var that = this;
+        this.customerRepositoryService.createCustomer().subscribe(customerId => {
+            that.dataService.set(this.keyUserId, customerId);
+        });
     }
 
-    getHashtags(id: number): HashtagCategory[] {
+    public getUserId(): string {
+        return this.dataService.get(this.keyUserId);
+    }
+
+    public getHashtags(id: number): HashtagCategory[] {
         return HASHTAGS;
     }
 
-    getUserSelectedHashtags(id: number): Hashtag[] {
+    public getUserSelectedHashtags(id: number): Hashtag[] {
         return [
             new Hashtag({ title: "#bike" }),
             new Hashtag({ title: "#urban" }),
@@ -109,7 +90,7 @@ export class UserStorageService {
         ];
     }
 
-    getUserNotSelectedHashtags(id: number): Hashtag[] {
+    public getUserNotSelectedHashtags(id: number): Hashtag[] {
         var allHashtags = this.getHashtags(id);
         var userSelectedHashtags = this.getUserSelectedHashtags(id);
         // get allHashtags that not contain userSelectedHashtags
