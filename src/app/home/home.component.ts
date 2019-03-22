@@ -58,12 +58,13 @@ export class HomeComponent implements OnInit {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
 
-    let imageSrc: this.getImageSource();
-    shareInstagram(imageSrc).then((r)=>{
+    let image = this.getImageSource();
+    shareInstagram(image).then((r)=>{
         console.log("instagram open succcessfully");
     }).catch((e)=>{
         console.log("instagram is not installed");
     });
+    // ToDo change to putExtra(img, text)
     
   }
 
