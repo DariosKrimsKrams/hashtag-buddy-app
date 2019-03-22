@@ -10,6 +10,9 @@ import * as imagepicker from "nativescript-imagepicker";
 import { DeviceService } from "../services/device-photos.service";
 import {AnimationCurve} from "tns-core-modules/ui/enums";
 import { DataService } from "../storages/data.service";
+import { shareInstagram } from 'nativescript-instagram-share';
+import { ImageSource, fromFile, fromResource } from "tns-core-modules/image-source";
+import { UserService } from "../storages/user.service";
 
 class ScreenInfo {
   constructor(
@@ -39,7 +42,7 @@ export class HomeComponent implements OnInit {
     private page: Page,
     private router: RouterExtensions,
     private deviceService: DeviceService,
-    private userService: DataService,
+    private userService: UserService,
     ) {
     this.page.actionBarHidden = true;
   }
@@ -50,21 +53,25 @@ export class HomeComponent implements OnInit {
   countPhotosOverall = 0;
   timeStart = 3600;
   timeOverall = 86400;
-  
+
   ngOnInit() {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
 
-    // ToDo
-    // if(!userRepoService.checkUserIdExists)
-    // userRepoService.requestUserId
+    let imageSrc: this.getImageSource();
+    shareInstagram(imageSrc).then((r)=>{
+        console.log("instagram open succcessfully");
+    }).catch((e)=>{
+        console.log("instagram is not installed");
+    });
     
-    // StorageService.CheckExistingData
-    // var history = data.GetHistory()
-    // HistoryStorageService.setHistory(history)
+  }
 
-    // this.userStorageService.clearAll();
-
+  private getImageSource(): ImageSource {
+    var photo = this.userService.getPhoto(1);
+    var path = photo.imageUrl;
+    const image = <ImageSource>fromFile(path);
+    return image;
   }
 
   clickUpload() {

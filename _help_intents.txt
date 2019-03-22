@@ -1,0 +1,68 @@
+Uri uri = Uri.parse("http://instagram.com/_u/xxx");
+Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+likeIng.setPackage("com.instagram.android");
+try {
+	startActivity(likeIng);
+} catch (ActivityNotFoundException e) {
+	startActivity(new Intent(Intent.ACTION_VIEW,
+	Uri.parse("http://instagram.com/xxx")));
+}
+	
+__________________
+	
+Uri uri = Uri.parse("http://instagram.com/_u/xxx");
+Intent insta = new Intent(Intent.ACTION_VIEW, uri);
+insta.setPackage("com.instagram.android");
+if (isIntentAvailable(mContext, insta)){
+	startActivity(insta);
+} else{
+	startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://instagram.com/xxx")));
+}
+private boolean isIntentAvailable(Context ctx, Intent intent) {
+	final PackageManager packageManager = ctx.getPackageManager();
+	List<ResolveInfo> list = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+	return list.size() > 0;
+}
+
+__________________
+
+http://instagram.com/_p/PICTURE
+
+__________________
+
+String type = "image/*";
+String filename = "/myPhoto.jpg";
+String mediaPath = Environment.getExternalStorageDirectory() + filename;
+
+createInstagramIntent(type, mediaPath);
+
+private void createInstagramIntent(String type, String mediaPath){
+
+    // Create the new Intent using the 'Send' action.
+    Intent share = new Intent(Intent.ACTION_SEND);
+
+    // Set the MIME type
+    share.setType(type);
+
+    // Create the URI from the media
+    File media = new File(mediaPath);
+    Uri uri = Uri.fromFile(media);
+
+    // Add the URI to the Intent.
+    share.putExtra(Intent.EXTRA_STREAM, uri);
+	share.putExtra(Intent.EXTRA_TITLE, Html.fromHtml("This is the text shared.")); // oder EXTRA_TEXT
+
+    // Broadcast the Intent.
+    startActivity(Intent.createChooser(share, "Share to"));
+}
+__________________
+
+Uri file = Uri.parse("android.resource://com.code2care.thebuddhaquotes/"+R.drawable.YOUR_IMAGE_HERE);
+Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+shareIntent.setPackage("com.instagram.android");
+
+shareIntent.setType("image/*");
+shareIntent.putExtra(Intent.EXTRA_STREAM,file);
+shareIntent.putExtra(Intent.EXTRA_TITLE, "YOUR TEXT HERE");
+
+startActivity(shareIntent);
