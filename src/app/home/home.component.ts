@@ -1,17 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
-import { Page, EventData, View } from "ui/page";
+import { Page } from "ui/page";
 import * as app from "application";
-import * as frame from "ui/frame";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-// import { AppService } from "~/app/app.service";
-import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
+import { screen } from "tns-core-modules/platform";
 import * as imagepicker from "nativescript-imagepicker";
 import { DeviceService } from "../services/device-photos.service";
-import {AnimationCurve} from "tns-core-modules/ui/enums";
-import { DataService } from "../storages/data.service";
 import { shareInstagram } from 'nativescript-instagram-share';
-import { ImageSource, fromFile, fromResource } from "tns-core-modules/image-source";
+import { ImageSource, fromFile } from "tns-core-modules/image-source";
 import { UserService } from "../storages/user.service";
 
 class ScreenInfo {
@@ -38,15 +34,6 @@ export class HomeComponent implements OnInit {
   @ViewChild("history") historyElement: ElementRef;
   @ViewChild("mainContainer") mainContainerElement: ElementRef;
 
-  constructor(
-    private page: Page,
-    private router: RouterExtensions,
-    private deviceService: DeviceService,
-    private userService: UserService,
-    ) {
-    this.page.actionBarHidden = true;
-  }
-
   width = "40%";
   page_name = "home";
   countPhotoLeft = 0;
@@ -54,9 +41,21 @@ export class HomeComponent implements OnInit {
   timeStart = 3600;
   timeOverall = 86400;
 
+  constructor(
+    private page: Page,
+    private router: RouterExtensions,
+    private deviceService: DeviceService,
+    private userService: UserService,
+  ) {
+    this.page.actionBarHidden = true;
+  }
+
   ngOnInit() {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
+  }
+
+  private sharePhoto() {
 
     let image = this.getImageSource();
     shareInstagram(image).then((r)=>{
@@ -69,13 +68,18 @@ export class HomeComponent implements OnInit {
   }
 
   private getImageSource(): ImageSource {
-    var photo = this.userService.getPhoto(1);
+    var photo = this.userService.getPhoto(0);
+    console.log("photo", photo)
     var path = photo.imageUrl;
     const image = <ImageSource>fromFile(path);
     return image;
   }
 
   clickUpload() {
+
+    // this.sharePhoto();
+    // return;
+
     let that = this;
 
     let context = imagepicker.create({
