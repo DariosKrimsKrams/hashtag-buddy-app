@@ -24,7 +24,7 @@ export class ConfirmImageComponent implements OnInit {
   countPhotosOverall = 5;
   timeStart = 0;
   timeOverall = 0;
-  launched: boolean;
+  // launched: boolean;
 
   constructor(
     private page: Page,
@@ -59,7 +59,7 @@ export class ConfirmImageComponent implements OnInit {
     
     var photo = this.getPhoto();
     var photoId = this.userService.setPhoto(photo);
-    this.launched = true;
+    // this.launched = true;
     this.goNextPage(photoId);
   }
 
