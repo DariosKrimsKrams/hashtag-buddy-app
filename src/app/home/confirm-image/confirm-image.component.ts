@@ -24,7 +24,6 @@ export class ConfirmImageComponent implements OnInit {
   countPhotosOverall = 5;
   timeStart = 0;
   timeOverall = 0;
-  // launched: boolean;
 
   constructor(
     private page: Page,
@@ -46,20 +45,19 @@ export class ConfirmImageComponent implements OnInit {
   confirmImage(): void {
     // ToDo do Request
     var customerId = this.userService.getUserId();
-    this.deviceService.UploadPhoto({customerId: customerId} as Evaluation)
-    .subscribe(x => {
+    // this.deviceService.UploadPhoto({customerId: customerId} as Evaluation)
+    // .subscribe(x => {
       // NOTHING happens
       // var photo = this.getPhoto();
       // var photoId = this.userService.setPhoto(photo);
 
       // this.launched = true;
       // this.goNextPage(photoId);
-    });
+    // });
 
     
     var photo = this.getPhoto();
     var photoId = this.userService.setPhoto(photo);
-    // this.launched = true;
     this.goNextPage(photoId);
   }
 

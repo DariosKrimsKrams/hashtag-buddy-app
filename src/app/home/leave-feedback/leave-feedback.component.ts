@@ -106,11 +106,11 @@ export class LeaveFeedbackComponent implements OnInit {
       missingHashtags: this.missingHashtags, 
       comment: this.comment 
     }
-    this.feedbackRepositoryService.addResultFeedback(feedback as ResultFeedback)
-    .subscribe(feedback => {
-      // this is null, is that correct?
-      console.log(feedback);
-    });
+    this.feedbackRepositoryService.addResultFeedback(feedback as ResultFeedback);
+    // .subscribe(feedback => {
+    //   // this is null, is that correct?
+    //   console.log(feedback);
+    // });
     this.openInstagram();
 
     // ToDo there is the possibility to click on Send-Button twice / multiple times.

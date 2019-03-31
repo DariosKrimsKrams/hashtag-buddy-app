@@ -11,7 +11,7 @@ import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 // import { AppService } from "./app.service";
 
 import { HistoryModule } from "~/app/home/history/history.module";
-import { HttpClientModule } from "@angular/common/http";
+// import { HttpClientModule } from "@angular/common/http";
 import { DeviceService } from "./services/device-photos.service";
 
 
@@ -29,7 +29,7 @@ import { DeviceService } from "./services/device-photos.service";
         CoreModule,
         NativeScriptLocalizeModule,
         HistoryModule,
-        HttpClientModule 
+        // HttpClientModule 
     ],
     declarations: [
         AppComponent,

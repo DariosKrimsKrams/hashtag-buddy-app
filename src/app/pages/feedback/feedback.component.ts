@@ -56,15 +56,15 @@ export class FeedbackComponent implements OnInit {
       console.log('empty');
       return false;
     }
-    let feedback = {
+    let feedback: AppFeedback = {
       customerId: "0317a2e8e1bbae79184524ea1322c152407a0bc1e7f4837571ee3517e9360da4", 
       email: this.email, 
       message: this.message
     }
-    this.feedbackRepositoryService.addAppFeedback(feedback as AppFeedback)
-    .subscribe(feedback => {
-      this.showModal();
-    });    
+    this.feedbackRepositoryService.addAppFeedback(feedback);
+    // .subscribe(feedback => {
+    //   this.showModal();
+    // });    
   }
 
   goHome() {

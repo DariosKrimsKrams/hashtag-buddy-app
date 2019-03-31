@@ -1,6 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
-import { HttpClientModule } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 import { FeedbackRoutingModule } from "./feedback-routing.module";
 import { SmallHeaderModule } from "~/app/shared/small-header/small-header.module";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
@@ -19,7 +19,7 @@ setStatusBarColors();
   ],
   imports: [
     NativeScriptCommonModule,
-    HttpClientModule,
+    // HttpClientModule,
     FeedbackRoutingModule,
     SmallHeaderModule,
     FloatLabelModule,
