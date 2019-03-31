@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this._sideDrawerTransition = new SlideInOnTopTransition();
         this.selected[0] = true;
-        this.userService.onStartup();
+        this.userService.createUserIdIfNotExist();
+        this.userService.debug();
     }
 
     get sideDrawerTransition(): DrawerTransitionBase {

@@ -35,15 +35,15 @@
                                         <Button col="1" text="+ {{'results_hashtags_add' | L}}" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="customUserHashtagsText !== ''" (tap)="addCustomHashtags()" verticalAlignment="bottom" horizontalAlignment="right"></Button>
                                     </GridLayout>
                                 </StackLayout>   
-                                <StackLayout orientation="vertical" class="list-group-item" *ngFor="let hashtag of photo.hashtags; let i = index;">
+                                <StackLayout orientation="vertical" class="list-group-item" *ngFor="let category of photo.categories; let i = index;">
                                     <GridLayout columns="*,60" class="hash-title m-l-20 m-r-20">
-                                        <Label [text]="hashtag.title | L" class="font-demi-bold" col="0"></Label>
-                                        <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(hashtag, i)" *ngIf="!areAllHashtagSelected(hashtag, i)"></Button>
-                                        <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(hashtag, i)" *ngIf="areAllHashtagSelected(hashtag, i)"></Button>
+                                        <Label [text]="category.title | L" class="font-demi-bold" col="0"></Label>
+                                        <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category, i)" *ngIf="!areAllHashtagSelected(category, i)"></Button>
+                                        <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category, i)" *ngIf="areAllHashtagSelected(category, i)"></Button>
                                     </GridLayout>
-                                    <Label text="{{'results_recommented_amount' | L}} {{hashtag.recommendedAmount}}" class="font-reg-small-muted m-l-20 m-r-20"></Label>
+                                    <Label text="{{'results_recommented_amount' | L}} {{category.recommendedAmount}}" class="font-reg-small-muted m-l-20 m-r-20"></Label>
                                     <WrapLayout class="m-t-5 m-l-15 m-r-15 m-b-20 tag-title">
-                                        <ns-hashtag *ngFor="let tag of hashtag.tags; let j = index;" (onClick)="selectHashtag(tag, i, j)" [name]="tag.title" [isActive]="hightlightStatus[i + '_' + j]"></ns-hashtag>
+                                        <ns-hashtag *ngFor="let tag of category.tags; let j = index;" (onClick)="selectHashtag(tag, i, j)" [name]="tag.title" [isActive]="hightlightStatus[i + '_' + j]"></ns-hashtag>
                                     </WrapLayout>
                                 </StackLayout>
                             </StackLayout>

@@ -64,10 +64,18 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.selected_hashtags = [];
 
-    const id = Number(this.route.snapshot.params['id']);
-    this.photo = this.userStorage.getPhoto(id);
-    this.photo.image = this.deviceService.getSelectedPhoto();
+    console.log("get photo");
 
+    const id = Number(this.route.snapshot.params['id']);
+    console.log("id", id);
+    this.photo = this.userStorage.getPhoto(id);
+
+    console.log(this.photo);
+    console.log(this.photo.id);
+    console.log(this.photo.categories);
+
+    this.photo.image = this.deviceService.getSelectedPhoto();
+    
     // this.hashtags = this.userStorage.getHashtags(id);
     // this.hashtags = this.photo.categories;
     // this.selected[0] = true;

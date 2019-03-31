@@ -8,6 +8,8 @@ import { Evaluation } from '~/app/models/evaluation';
 import { UserService } from '../../storages/user.service';
 import { isIOS, isAndroid } from "platform";
 import { Photo } from '~/app/models/photo';
+import { HashtagCategory } from '~/app/models/hashtag-category';
+import { HASHTAGS } from '../data/hashtags';
 
 @Component({
   selector: 'ns-confirm-image',
@@ -43,22 +45,27 @@ export class ConfirmImageComponent implements OnInit {
   }
 
   confirmImage(): void {
-    // ToDo do Request
-    var customerId = this.userService.getUserId();
-    // this.deviceService.UploadPhoto({customerId: customerId} as Evaluation)
-    // .subscribe(x => {
-      // NOTHING happens
-      // var photo = this.getPhoto();
-      // var photoId = this.userService.setPhoto(photo);
-
-      // this.launched = true;
-      // this.goNextPage(photoId);
-    // });
-
     
     var photo = this.getPhoto();
-    var photoId = this.userService.setPhoto(photo);
-    this.goNextPage(photoId);
+    var photoId = this.userService.addPhoto(photo);
+    this.goLoadingPage();
+
+    
+    var customerId = this.userService.getUserId();
+    console.log("customerId = ", customerId);
+    // ToDo do Request
+    // this.deviceService.UploadPhoto({customerId: customerId} as Evaluation)
+    // .subscribe(x => {
+      // ...
+    // });
+
+    setTimeout(() => {
+      photo.categories = HASHTAGS;
+      this.userService.updatePhoto(photo);
+      this.goResultsPage(photoId);
+    }, 1000);
+    
+
   }
 
   private getPhoto(): Photo {
@@ -105,7 +112,17 @@ export class ConfirmImageComponent implements OnInit {
     });
   }
 
-  private goNextPage(id: number): void {
+  private goLoadingPage(): void {
+    this.router.navigate([`/home/loading-hashtags`], {
+      transition: {
+        name: "FadeIn",
+        duration: 500,
+        curve: "easeOut"
+      }
+    });
+  }
+
+  private goResultsPage(id: number): void {
 
     this.router.navigate([`/home/results/${id}`], {
       transition: {

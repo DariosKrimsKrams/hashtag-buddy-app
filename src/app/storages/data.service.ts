@@ -18,8 +18,13 @@ export class DataService {
         return LocalStorage.getItem(key) || undefined;
     }
 
-    public set(key: string, value: any) {
+    public setString(key: string, value: string) {
         LocalStorage.setItem(key, value);
+    }
+
+    public setObject(key: string, value: object) {
+        var json = JSON.stringify(value);
+        LocalStorage.setItem(key, json);
     }
 
     public has(key: string): boolean {

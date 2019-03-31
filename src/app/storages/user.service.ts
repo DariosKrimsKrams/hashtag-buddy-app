@@ -20,29 +20,38 @@ export class UserService {
         private customerRepositoryService: CustomerRepositoryService
     ) { }
 
-    public onStartup(): void {
-        console.log("UserService onStartup");
-        this.createUserIdIfNotExist();
+    public debug(): void {
+        console.log("UserService debug()");
+        this.dataService.clearAll();
 
         console.log("UserId: " + this.getUserId());
-        console.log("Photos: ");
         var photos = this.getPhotos();
         photos.forEach(photo => {
             console.log(photo);
         });
+        console.log("Photos end");
     }
 
-    public setPhoto(photo: Photo) {
+    public addPhoto(photo: Photo): number {
+        console.log("addPhoto");
         var photos = this.getPhotos();
         photo.id = photos.length + 1;
-        photos[photos.length] = photo;
-        this.dataService.set(this.keyPhotos, photos);
+        photos.push(photo);
+        this.dataService.setObject(this.keyPhotos, photos);
         return photo.id;
     }
 
+    public updatePhoto(photo: Photo): void {
+        console.log("updatePhoto");
+        var photos = this.getPhotos();
+        photos[photo.id] = photo;
+        this.dataService.setObject(this.keyPhotos, photos);
+    }
+
     public getPhoto(id: number): Photo {
+        console.log("getPhoto");
         var json = this.dataService.get(this.keyPhotos) || undefined;
-        if(json == undefined) {
+        if(json === undefined) {
             return undefined;
         }
         var jsonAsObj = JSON.parse(json);
@@ -56,11 +65,11 @@ export class UserService {
     }
 
     public getPhotos(): Photo[] {
+        console.log("getPhotos");
         var json = this.dataService.get(this.keyPhotos) || undefined;
-        if(json == undefined) {
+        if(json === undefined) {
             return [];
         }
-        
         var jsonAsObj = JSON.parse(json);
         var photos: Photo[] = [];
         for(let i = 0; i < jsonAsObj.length ; i++) {
@@ -71,16 +80,18 @@ export class UserService {
         return photos;
     }
 
-    private createUserIdIfNotExist(): void {
+    public createUserIdIfNotExist(): void {
+        console.log("createUserIdIfNotExist");
         if(this.dataService.has(this.keyUserId)) {
             return;
         }
         this.customerRepositoryService.createCustomer().subscribe(result => {
-            this.dataService.set(this.keyUserId, result.customerId);
+            this.dataService.setString(this.keyUserId, result.customerId);
         });
     }
 
     public getUserId(): string {
+        console.log("getUserId")
         return this.dataService.get(this.keyUserId);
     }
 

@@ -20,8 +20,8 @@ export class CustomerRepositoryService {
 
   private createCustomerUrl = environment.apiUrl + "/Customer/Create";
 
-  public createCustomer(): Observable<string> {
-    const observable = new Observable<string>(observer => {
+  public createCustomer(): Observable<any> {
+    const observable = new Observable<any>(observer => {
       getJSON(this.createCustomerUrl).then((result: any) => {
         console.log("result", result);
         observer.next(result);
