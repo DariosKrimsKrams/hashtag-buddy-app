@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: "choose-image", component: ChooseImageComponent },
     { path: "history", component: HistoryComponent },
     { path: "results/:id", component: ResultsComponent },
-    { path: "leavefeedback", component: LeaveFeedbackComponent },
+    { path: "leavefeedback/:id", component: LeaveFeedbackComponent },
     { path: "loading-hashtags", component: LoadingHashtagsComponent },
     { path: "confirm-image", component: ConfirmImageComponent },
 ];

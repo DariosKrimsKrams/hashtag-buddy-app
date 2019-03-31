@@ -26,10 +26,11 @@ export class UserService {
 
         console.log("UserId: " + this.getUserId());
         var photos = this.getPhotos();
-        photos.forEach(photo => {
-            console.log(photo);
-        });
-        console.log("Photos end");
+        console.log("Photos Count: ", photos.length);
+        // photos.forEach(photo => {
+        //     console.log(photo);
+        // });
+        // console.log("Photos end");
     }
 
     public addPhoto(photo: Photo): number {

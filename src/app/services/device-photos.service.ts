@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ImageAsset } from "tns-core-modules/image-asset/image-asset";
 import { environment } from '../environments/environment';
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { request } from "tns-core-modules/http";
 import { Observable, of } from 'rxjs';
 import { Evaluation } from '~/app/models/evaluation';
@@ -15,7 +14,6 @@ export class DeviceService {
     selectedPhoto: ImageAsset;
 
     constructor(
-        // private http: HttpClient,
     ) {
         this.selectedPhoto = null;
     }
@@ -34,11 +32,10 @@ export class DeviceService {
                 observer.next(result);
                 observer.complete();
             }, (e) => {
+                console.log("error: ", e)
             });
         });
         return observable;
-
-        // return this.http.post<Evaluation>(this.EvaluationUrl, feedback);
     }
 
     public setSelectedPhoto(photo: ImageAsset): void {

@@ -53,32 +53,33 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
+
+    this.sharePhoto();
   }
 
   private sharePhoto() {
 
     let image = this.getImageSource();
     shareInstagram(image).then((r)=>{
-        console.log("instagram open succcessfully");
+        console.log("instagram open succcessfully", r);
     }).catch((e)=>{
         console.log("instagram is not installed");
+        console.log("error", e);
     });
     // ToDo change to putExtra(img, text)
     
   }
 
   private getImageSource(): ImageSource {
-    var photo = this.userService.getPhoto(0);
-    console.log("photo", photo)
-    var path = photo.imageUrl;
+    var photo = this.userService.getPhoto(1);
+    var path = photo.image;
+    console.log("path", path)
+
     const image = <ImageSource>fromFile(path);
     return image;
   }
 
   clickUpload() {
-
-    // this.sharePhoto();
-    // return;
 
     let that = this;
 

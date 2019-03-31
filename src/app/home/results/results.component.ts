@@ -49,7 +49,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   constructor(
     private page: Page,
     private router: RouterExtensions,
-    private userStorage: UserService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private deviceService: DeviceService,
     private _changeDetectionRef: ChangeDetectorRef,
@@ -64,18 +64,12 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.selected_hashtags = [];
 
-
     const id = Number(this.route.snapshot.params['id']);
     console.log("got photo with id", id);
-    this.photo = this.userStorage.getPhoto(id);
-
+    this.photo = this.userService.getPhoto(id);
     console.log(this.photo);
 
     this.photo.image = this.deviceService.getSelectedPhoto();
-
-    // this.hashtags = this.userStorage.getHashtags(id);
-    // this.hashtags = this.photo.categories;
-    // this.selected[0] = true;
   }
 
   onScroll(event: ScrollEventData, scrollView: ScrollView, topView: View) {
@@ -106,7 +100,6 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     } else {
       this.addHashtag(tag, title_id, tag_id);
     }
-
   }
 
   removeHashtag(title_id, tag_id) {
@@ -146,21 +139,9 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     sideDrawer.closeDrawer();
   }
 
-  // openPage(index: number) {
-  //   this.selected = [];
-  //   this.selected[index] = true;
-  //   this.closeMenu();
-  //   this.router.navigate(["/" + this.menus[index]], {
-  //     transition: {
-  //       name: "fadeIn",
-  //       duration: 500,
-  //       curve: "easeOut"
-  //     }
-  //   });
-  // }
-
   goLeaveFeedback() {
-    this.router.navigate(["/home/leavefeedback"], {
+    var id = this.photo.id;
+    this.router.navigate([`/home/leavefeedback/${id}`], {
       transition: {
         name: "slideLeft",
         duration: 500,

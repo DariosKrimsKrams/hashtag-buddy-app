@@ -5,9 +5,14 @@ import { UserService } from '~/app/storages/user.service';
 import { Hashtag } from '~/app/models/hashtag';
 import { ResultFeedback } from '~/app/models/result-feedback';
 import { FeedbackRepositoryService } from '~/app/services/feedback-repository.service';
+import { fromFile, ImageSource } from 'tns-core-modules/image-source/image-source';
+import { shareInstagram } from 'nativescript-instagram-share';
+import { Photo } from '~/app/models/photo';
+import { DeviceService } from '~/app/services/device-photos.service';
+import { ActivatedRoute } from '@angular/router';
+import { Folder, knownFolders, path } from 'tns-core-modules/file-system/file-system';
 
 @Component({
-  selector: 'ns-leave-feedback',
   templateUrl: './leave-feedback.component.html',
   styleUrls: ['./leave-feedback.component.css'],
   moduleId: module.id,
@@ -16,7 +21,6 @@ export class LeaveFeedbackComponent implements OnInit {
 
   userSelectedHashtags: Hashtag[] = [];
   userNotSelectedHashtags: Hashtag[] = [];
-  
   emoji = ['great', 'satisfied', 'bad'];
   selected = [];
   tag1 = [];
@@ -24,21 +28,28 @@ export class LeaveFeedbackComponent implements OnInit {
   rating_number = 3; // what does "3" mean? 3=none?
   good_hashtags = '';
   bad_hashtags = '';
-  public missingHashtags = '';
-  public comment = '';
+  missingHashtags = '';
+  comment = '';
+  private photo: Photo;
 
   constructor(
     private page: Page,
+    private route: ActivatedRoute,
     private router: RouterExtensions,
-    private userStorage: UserService,
+    private userService: UserService,
     private feedbackRepositoryService: FeedbackRepositoryService,
-  ) {
+    private deviceService: DeviceService,
+    ) {
     this.page.actionBarHidden = true;
   }
 
   ngOnInit() {
-    this.userSelectedHashtags = this.userStorage.getUserSelectedHashtags(1);
-    this.userNotSelectedHashtags = this.userStorage.getUserNotSelectedHashtags(1);
+    const id = Number(this.route.snapshot.params['id']);
+    this.photo = this.userService.getPhoto(id);
+    this.photo.image = this.deviceService.getSelectedPhoto();
+
+    this.userSelectedHashtags = this.userService.getUserSelectedHashtags(1);
+    this.userNotSelectedHashtags = this.userService.getUserNotSelectedHashtags(1);
   }
 
   sendFeedback() {
@@ -122,10 +133,6 @@ export class LeaveFeedbackComponent implements OnInit {
     this.openInstagram();
   }
 
-  openInstagram() {
-    // ToDo here transfer-to-instagram logic
-  }
-
   goPrevPage() {
     this.router.navigate(["/home/results/1"], {
       transition: {
@@ -142,6 +149,25 @@ export class LeaveFeedbackComponent implements OnInit {
 
   commentChange(text: string) {
     this.comment = text;
+  }
+
+  private openInstagram(): void {
+
+    let image = this.getImageSource();
+    // let image = this.photo.image;
+    shareInstagram(image).then((r)=>{
+      console.log("instagram open succcessfully", r);
+  }).catch((e)=>{
+      console.log("instagram is not installed");
+      console.log("error", e);
+  });
+    // ToDo change to putExtra(img, text)
+    
+  }
+
+  private getImageSource(): ImageSource {
+    const image = <ImageSource>fromFile(this.photo.image);
+    return image;
   }
 
 }
