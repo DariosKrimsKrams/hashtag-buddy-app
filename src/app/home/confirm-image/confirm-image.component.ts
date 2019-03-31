@@ -48,7 +48,9 @@ export class ConfirmImageComponent implements OnInit {
     
     var photo = this.getPhoto();
     var photoId = this.userService.addPhoto(photo);
-    this.goLoadingPage();
+    this.openLoadingPage();
+    // console.log("saved photo");
+    // console.log(photo);
 
     
     var customerId = this.userService.getUserId();
@@ -59,10 +61,18 @@ export class ConfirmImageComponent implements OnInit {
       // ...
     // });
 
+    var that = this;
     setTimeout(() => {
+      var photo = that.userService.getPhoto(photoId);
       photo.categories = HASHTAGS;
-      this.userService.updatePhoto(photo);
-      this.goResultsPage(photoId);
+      // console.log("updated photo");
+      // console.log(photo);
+      that.userService.updatePhoto(photo);
+      // var testPhotos = that.userService.getPhotos();
+      // console.log("all photos");
+      // console.log(testPhotos);
+
+      that.openResultsPage(photoId);
     }, 1000);
     
 
@@ -112,7 +122,7 @@ export class ConfirmImageComponent implements OnInit {
     });
   }
 
-  private goLoadingPage(): void {
+  private openLoadingPage(): void {
     this.router.navigate([`/home/loading-hashtags`], {
       transition: {
         name: "FadeIn",
@@ -122,7 +132,7 @@ export class ConfirmImageComponent implements OnInit {
     });
   }
 
-  private goResultsPage(id: number): void {
+  private openResultsPage(id: number): void {
 
     this.router.navigate([`/home/results/${id}`], {
       transition: {

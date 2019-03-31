@@ -22,7 +22,7 @@ export class UserService {
 
     public debug(): void {
         console.log("UserService debug()");
-        this.dataService.clearAll();
+        // this.clearAll();
 
         console.log("UserId: " + this.getUserId());
         var photos = this.getPhotos();
@@ -33,7 +33,7 @@ export class UserService {
     }
 
     public addPhoto(photo: Photo): number {
-        console.log("addPhoto");
+        console.log("addPhoto()");
         var photos = this.getPhotos();
         photo.id = photos.length + 1;
         photos.push(photo);
@@ -42,14 +42,14 @@ export class UserService {
     }
 
     public updatePhoto(photo: Photo): void {
-        console.log("updatePhoto");
+        console.log("updatePhoto()");
         var photos = this.getPhotos();
-        photos[photo.id] = photo;
+        photos[photo.id-1] = photo;
         this.dataService.setObject(this.keyPhotos, photos);
     }
 
     public getPhoto(id: number): Photo {
-        console.log("getPhoto");
+        console.log("getPhoto()");
         var json = this.dataService.get(this.keyPhotos) || undefined;
         if(json === undefined) {
             return undefined;
@@ -65,7 +65,7 @@ export class UserService {
     }
 
     public getPhotos(): Photo[] {
-        console.log("getPhotos");
+        console.log("getPhotos()");
         var json = this.dataService.get(this.keyPhotos) || undefined;
         if(json === undefined) {
             return [];
@@ -81,7 +81,7 @@ export class UserService {
     }
 
     public createUserIdIfNotExist(): void {
-        console.log("createUserIdIfNotExist");
+        console.log("createUserIdIfNotExist()");
         if(this.dataService.has(this.keyUserId)) {
             return;
         }
@@ -91,9 +91,17 @@ export class UserService {
     }
 
     public getUserId(): string {
-        console.log("getUserId")
+        console.log("getUserId()")
         return this.dataService.get(this.keyUserId);
     }
+
+    public clearAll(): void {
+        console.log("clearAll()")
+        this.dataService.remove(this.keyPhotos);
+        this.dataService.remove(this.keyUserId);
+    }
+
+    /***********/
 
     public getHashtags(id: number): HashtagCategory[] {
         return HASHTAGS;

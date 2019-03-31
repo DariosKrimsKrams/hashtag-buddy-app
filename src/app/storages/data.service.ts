@@ -9,12 +9,11 @@ export class DataService {
     constructor(
     ) { }
 
-    public clearAll(): void {
-        LocalStorage.removeItem('photos');
-        LocalStorage.removeItem('userId');
+    public remove(key: string): void {
+        LocalStorage.removeItem(key);
     }
 
-    public get(key: string): any {
+    public get(key: string): string {
         return LocalStorage.getItem(key) || undefined;
     }
 
@@ -29,10 +28,6 @@ export class DataService {
 
     public has(key: string): boolean {
         return this.get(key) !== undefined;
-    }
-
-    private isEmpty(): boolean {
-        return LocalStorage.length == 0;
     }
     
 }
