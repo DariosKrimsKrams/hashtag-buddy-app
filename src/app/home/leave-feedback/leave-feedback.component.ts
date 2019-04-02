@@ -4,7 +4,7 @@ import { Page } from "ui/page";
 import { UserService } from '~/app/storages/user.service';
 import { Hashtag } from '~/app/models/hashtag';
 import { ResultFeedback } from '~/app/models/result-feedback';
-import { FeedbackRepositoryService } from '~/app/services/feedback-repository.service';
+import { FeedbackRepository } from '~/app/services/feedback-repository.service';
 import { fromFile, ImageSource } from 'tns-core-modules/image-source/image-source';
 import { shareInstagram } from 'nativescript-instagram-share';
 import { Photo } from '~/app/models/photo';
@@ -37,7 +37,7 @@ export class LeaveFeedbackComponent implements OnInit {
     private route: ActivatedRoute,
     private router: RouterExtensions,
     private userService: UserService,
-    private feedbackRepositoryService: FeedbackRepositoryService,
+    private feedbackRepositoryService: FeedbackRepository,
     private deviceService: DeviceService,
     ) {
     this.page.actionBarHidden = true;
@@ -46,7 +46,7 @@ export class LeaveFeedbackComponent implements OnInit {
   ngOnInit() {
     const id = Number(this.route.snapshot.params['id']);
     this.photo = this.userService.getPhoto(id);
-    this.photo.image = this.deviceService.getSelectedPhoto();
+    // this.photo.image = this.deviceService.getSelectedPhoto();
 
     this.userSelectedHashtags = this.userService.getUserSelectedHashtags(1);
     this.userNotSelectedHashtags = this.userService.getUserNotSelectedHashtags(1);

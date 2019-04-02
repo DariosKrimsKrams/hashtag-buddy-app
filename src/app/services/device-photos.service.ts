@@ -1,10 +1,5 @@
 import { Injectable } from "@angular/core";
 import { ImageAsset } from "tns-core-modules/image-asset/image-asset";
-import { environment } from '../environments/environment';
-import { request } from "tns-core-modules/http";
-import { Observable, of } from 'rxjs';
-import { Evaluation } from '~/app/models/evaluation';
-import { EvaluationRequest } from "../models/request/evaluation-request";
 
 @Injectable({
     providedIn: "root"
@@ -16,26 +11,6 @@ export class DeviceService {
     constructor(
     ) {
         this.selectedPhoto = null;
-    }
-
-    private EvaluationUrl = environment.apiUrl + "/Evaluation/File/";
-
-    public UploadPhoto(feedback: Evaluation): Observable<EvaluationRequest> {
-        const observable = new Observable<EvaluationRequest>(observer => {
-            request({
-                url: this.EvaluationUrl,
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                content: JSON.stringify(feedback)
-            }).then((response) => {
-                const result = response.content.toJSON();
-                observer.next(result);
-                observer.complete();
-            }, (e) => {
-                console.log("error: ", e)
-            });
-        });
-        return observable;
     }
 
     public setSelectedPhoto(photo: ImageAsset): void {

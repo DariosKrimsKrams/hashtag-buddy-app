@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
   providedIn: 'root',
 })
 
-export class FeedbackRepositoryService {
+export class FeedbackRepository {
 
   constructor(
     // private http: HttpClient,
@@ -18,6 +18,23 @@ export class FeedbackRepositoryService {
   private resultFeedbackUrl = environment.apiUrl + "/Feedback/Results";
 
   addAppFeedback (feedback: AppFeedback): void {
+    
+      // const observable = new Observable<EvaluationRequest>(observer => {
+      //     request({
+      //         url: this.EvaluationUrl,
+      //         method: "POST",
+      //         headers: { "Content-Type": "application/json" },
+      //         content: JSON.stringify(feedback)
+      //     }).then((response) => {
+      //         const result = response.content.toJSON();
+      //         observer.next(result);
+      //         observer.complete();
+      //     }, (e) => {
+      //         console.log("error: ", e)
+      //     });
+      // });
+      // return observable;
+      
     // ToDo CHANGE TO POST
     getJSON(this.appFeedbackUrl).then((result: any) => {
       console.log("result", result);

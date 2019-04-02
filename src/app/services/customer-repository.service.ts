@@ -7,7 +7,7 @@ import { getJSON, getString, request } from "tns-core-modules/http";
   providedIn: 'root',
 })
 
-export class CustomerRepositoryService {
+export class CustomerRepository {
 
   constructor(
   ) { }

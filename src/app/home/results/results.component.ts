@@ -69,7 +69,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     this.photo = this.userService.getPhoto(id);
     console.log(this.photo);
 
-    this.photo.image = this.deviceService.getSelectedPhoto();
+    // this.photo.image = this.deviceService.getSelectedPhoto();
   }
 
   onScroll(event: ScrollEventData, scrollView: ScrollView, topView: View) {

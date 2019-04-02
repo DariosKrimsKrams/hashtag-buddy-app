@@ -13,6 +13,7 @@ import { HashtagCategory } from '~/app/models/hashtag-category';
 import { HASHTAGS } from '../data/hashtags';
 import { ImageSource, fromFile, fromAsset } from "tns-core-modules/image-source";
 import { knownFolders, path } from 'tns-core-modules/file-system/file-system';
+import { EvaluationRepository } from '~/app/services/evaluation-repository.service';
 
 @Component({
   selector: 'ns-confirm-image',
@@ -34,7 +35,8 @@ export class ConfirmImageComponent implements OnInit {
     private page: Page,
     private router: RouterExtensions,
     private deviceService: DeviceService,
-    private userService: UserService
+    private userService: UserService,
+    private evaluationRepository: EvaluationRepository
   ) {
     this.page.actionBarHidden = true;
   }
@@ -54,20 +56,20 @@ export class ConfirmImageComponent implements OnInit {
 
       var customerId = this.userService.getUserId();
       console.log("customerId = ", customerId);
+      var photo = this.userService.getPhoto(photoId);
 
       // ToDo do Request
-      // this.deviceService.UploadPhoto({customerId: customerId} as Evaluation)
-      // .subscribe(x => {
-      //   // ...
-      // });
-  
-      // var that = this;
-      setTimeout.bind(this)(() => {
-        var photo = this.userService.getPhoto(photoId);
+      this.evaluationRepository.UploadPhoto(photo.image, customerId)
+      .subscribe(x => {
+        // ...
+        console.log(x);
+      });
+      
+      var that = this;
+      setTimeout(() => {
         photo.categories = HASHTAGS;
-        this.userService.updatePhoto(photo);
-  
-        this.openResultsPage(photoId);
+        that.userService.updatePhoto(photo);
+        that.openResultsPage(photoId);
       }, 1000);
     });
     
@@ -77,8 +79,8 @@ export class ConfirmImageComponent implements OnInit {
     return new Observable<number>(observer => {
       var photo = new Photo();
       photo.timestamp = new Date().getTime();
-      var image = this.deviceService.getSelectedPhoto();
-      this.storePhoto(image).subscribe(path => {
+      // var image = this.deviceService.getSelectedPhoto();
+      this.storePhoto(this.photo).subscribe(path => {
         photo.image = path;
         var photoId = this.userService.addPhoto(photo);
         observer.next(photoId);

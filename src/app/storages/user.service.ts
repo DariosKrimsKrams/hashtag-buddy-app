@@ -1,10 +1,9 @@
 import { Injectable } from "@angular/core";
 import { DataService } from "./data.service";
-import { CustomerRepositoryService } from "../services/customer-repository.service";
+import { CustomerRepository } from "../services/customer-repository.service";
 import { HASHTAGS } from "~/app/home/data/hashtags";
 import { HashtagCategory } from "~/app/models/hashtag-category";
 import { Hashtag } from "~/app/models/hashtag";
-import { User } from "../models/user";
 import { Photo } from "../models/photo";
  
 @Injectable({
@@ -17,7 +16,7 @@ export class UserService {
 
     constructor(
         private dataService: DataService,
-        private customerRepositoryService: CustomerRepositoryService
+        private customerRepositoryService: CustomerRepository
     ) { }
 
     public debug(): void {
