@@ -7,8 +7,9 @@ export class Photo {
 	image: string;
 	categories?: HashtagCategory[];
 	selectedHashtags?: Hashtag[];
-    date?: string;
-    time?: string;
+    // date?: string;
+    // time?: string;
+    timestamp?: number;
 	
 	public getHashtags(): any[] {
 		return ["ad", "asdasd"];

@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
 
-    this.sharePhoto();
+    // this.sharePhoto();
   }
 
   private sharePhoto() {

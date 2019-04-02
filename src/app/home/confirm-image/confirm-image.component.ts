@@ -3,6 +3,7 @@ import { RouterExtensions } from 'nativescript-angular/router';
 import { DeviceService } from '~/app/services/device-photos.service';
 import { ImageAsset } from 'tns-core-modules/image-asset/image-asset';
 import { Page } from 'tns-core-modules/ui/page/page';
+import { Observable, of } from 'rxjs';
 import * as imagepicker from "nativescript-imagepicker";
 import { Evaluation } from '~/app/models/evaluation';
 import { UserService } from '../../storages/user.service';
@@ -10,6 +11,8 @@ import { isIOS, isAndroid } from "platform";
 import { Photo } from '~/app/models/photo';
 import { HashtagCategory } from '~/app/models/hashtag-category';
 import { HASHTAGS } from '../data/hashtags';
+import { ImageSource, fromFile, fromAsset } from "tns-core-modules/image-source";
+import { knownFolders, path } from 'tns-core-modules/file-system/file-system';
 
 @Component({
   selector: 'ns-confirm-image',
@@ -46,44 +49,55 @@ export class ConfirmImageComponent implements OnInit {
 
   confirmImage(): void {
     
-    var photo = this.getPhoto();
-    var photoId = this.userService.addPhoto(photo);
     this.openLoadingPage();
-    // console.log("saved photo");
-    // console.log(photo);
+    this.savePhoto().subscribe(photoId => {
 
+      var customerId = this.userService.getUserId();
+      console.log("customerId = ", customerId);
+
+      // ToDo do Request
+      // this.deviceService.UploadPhoto({customerId: customerId} as Evaluation)
+      // .subscribe(x => {
+      //   // ...
+      // });
+  
+      // var that = this;
+      setTimeout.bind(this)(() => {
+        var photo = this.userService.getPhoto(photoId);
+        photo.categories = HASHTAGS;
+        this.userService.updatePhoto(photo);
+  
+        this.openResultsPage(photoId);
+      }, 1000);
+    });
     
-    var customerId = this.userService.getUserId();
-    console.log("customerId = ", customerId);
-    // ToDo do Request
-    // this.deviceService.UploadPhoto({customerId: customerId} as Evaluation)
-    // .subscribe(x => {
-      // ...
-    // });
-
-    var that = this;
-    setTimeout(() => {
-      var photo = that.userService.getPhoto(photoId);
-      photo.categories = HASHTAGS;
-      // console.log("updated photo");
-      // console.log(photo);
-      that.userService.updatePhoto(photo);
-      // var testPhotos = that.userService.getPhotos();
-      // console.log("all photos");
-      // console.log(testPhotos);
-
-      that.openResultsPage(photoId);
-    }, 1000);
-    
-
   }
 
-  private getPhoto(): Photo {
-    var photo = new Photo();
-    var image = this.deviceService.getSelectedPhoto();
-    var photoPath = isIOS ? image.ios : image.android;
-    photo.image = photoPath;
-    return photo;
+  private savePhoto(): Observable<number> {
+    return new Observable<number>(observer => {
+      var photo = new Photo();
+      photo.timestamp = new Date().getTime();
+      var image = this.deviceService.getSelectedPhoto();
+      this.storePhoto(image).subscribe(path => {
+        photo.image = path;
+        var photoId = this.userService.addPhoto(photo);
+        observer.next(photoId);
+        observer.complete();
+      })
+    });
+  }
+
+  private storePhoto(image: ImageAsset): Observable<string> {
+    return new Observable<string>(observer => {
+      fromAsset(image).then(imageSource => {
+        var targetFilename = 'img_' + new Date().getTime() + '.jpg';
+        const tempPath = knownFolders.documents().path;
+        const localFullPath = path.join(tempPath, targetFilename);
+        var saved = imageSource.saveToFile(localFullPath, "jpg");
+        observer.next(localFullPath);
+        observer.complete();
+      });
+    });
   }
 
   chooseImage(): void {
