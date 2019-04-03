@@ -84,14 +84,9 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     }
   }
 
-  copyTop20() {    
-    this.dialogOpen = true;
-    setTimeout (() => { this.dialogOpen = false; }, 1000);
-  }
-
   copySelected() {
     this.dialogOpen = true;
-    setTimeout (() => { this.dialogOpen = false; }, 1000);
+    setTimeout.bind(this)(() => { this.dialogOpen = false; }, 1000);
   }
 
   selectHashtag(tag: Hashtag, title_id, tag_id) {

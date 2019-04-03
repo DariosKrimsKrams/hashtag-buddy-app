@@ -18,10 +18,8 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { HistoryModule } from "./history/history.module";
 
 import { HomeComponent } from "./home.component";
-import { ChooseImageComponent } from './choose-image/choose-image.component';
 import { ResultsComponent } from './results/results.component';
 import { LeaveFeedbackComponent } from './leave-feedback/leave-feedback.component';
-import { ModalComponent } from './choose-image/modal/modal.component';
 import { CircularProgressBarComponent } from '~/app/shared/circular-progress-bar/circular-progress-bar.component';
 import { LoadingHashtagsComponent } from './loading-hashtags/loading-hashtags.component';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
@@ -52,10 +50,8 @@ setStatusBarColors();
     ],
     declarations: [
         HomeComponent,
-        ChooseImageComponent,
         ResultsComponent,
         LeaveFeedbackComponent,
-        ModalComponent,
         CircularProgressBarComponent,
         LoadingHashtagsComponent,
         ConfirmImageComponent
@@ -64,7 +60,6 @@ setStatusBarColors();
         NO_ERRORS_SCHEMA
     ],
     entryComponents: [
-        ModalComponent
     ]
 })
 export class HomeModule { }

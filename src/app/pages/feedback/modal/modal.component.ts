@@ -23,7 +23,7 @@ export class ModalComponent implements OnInit {
 
   goHome() {
     this.close();
-    setTimeout (() => { 
+    setTimeout.bind(this)(() => { 
       this.router.navigate(["/home"], {
         transition: {
           name: "slideLeft",

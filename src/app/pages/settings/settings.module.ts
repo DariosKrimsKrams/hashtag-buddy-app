@@ -5,7 +5,6 @@ import { SmallHeaderModule } from "~/app/shared/small-header/small-header.module
 
 import { SettingsComponent } from "./settings.component";
 import { AuthComponent } from './auth/auth.component';
-import { LanguageComponent } from './language/language.component';
 import { LegalComponent } from './legal/legal.component';
 import { TermsComponent } from './terms/terms.component';
 import { AboutComponent } from './about/about.component';
@@ -18,7 +17,6 @@ setStatusBarColors();
   declarations: [
     SettingsComponent,
     AuthComponent,
-    LanguageComponent,
     LegalComponent,
     TermsComponent,
     AboutComponent,
