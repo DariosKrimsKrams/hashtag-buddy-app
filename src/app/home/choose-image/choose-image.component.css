@@ -1,0 +1,23 @@
+.content Image {
+    margin: 5;
+    margin-top: 0;
+    border-radius: 5;
+}
+
+#close-container {
+    width: 40;
+    height: 40;
+}
+    #close-button { 
+        font-size: 32pt;
+        color: rgb(46, 55, 77);
+    }
+
+.title {
+    font-size: 18pt;
+    color: rgb(30, 39, 46);
+}
+
+.title, #close-button {
+    font-family: "AvenirNext-Medium", "Avenir Next Medium", "Avenir Next Medium";
+}

@@ -1,0 +1,18 @@
+<GridLayout class="page" [class.dialogOpen]="dialogOpen">
+    <StackLayout class="choose-image" orientation="vertical">
+        <GridLayout verticalAlignment="middle" class="m-b-10">
+            <StackLayout [nsRouterLink]="['/home']" id="close-container" class="pull-left">
+                <Label text="&times;" id="close-button" class="p-l-15"></Label>
+            </StackLayout>
+            <Label text="{{ 'selection_headline' | L }}" class="text-center title m-t-10"></Label>
+        </GridLayout>
+        <ScrollView sdkExampleTitle sdkToggleNavButton>
+            <StackLayout>
+                <GridLayout rows="auto" columns="*,*,*,*" *ngFor="let i of numbers" class="content p-l-10 p-r-10 p-b-5">
+                    <Image [src]="image.url" col="{{i}}" *ngFor="let image of images; let i = index" height="78" (tap)="showModal()" stretch="aspectFill">
+                    </Image>
+                </GridLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</GridLayout>
