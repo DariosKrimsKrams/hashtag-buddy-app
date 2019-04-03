@@ -5,13 +5,10 @@ import { ImageAsset } from 'tns-core-modules/image-asset/image-asset';
 import { Page } from 'tns-core-modules/ui/page/page';
 import { Observable, of } from 'rxjs';
 import * as imagepicker from "nativescript-imagepicker";
-import { Evaluation } from '~/app/models/evaluation';
 import { UserService } from '../../storages/user.service';
-import { isIOS, isAndroid } from "platform";
 import { Photo } from '~/app/models/photo';
-import { HashtagCategory } from '~/app/models/hashtag-category';
 import { HASHTAGS } from '../data/hashtags';
-import { ImageSource, fromFile, fromAsset } from "tns-core-modules/image-source";
+import { fromAsset } from "tns-core-modules/image-source";
 import { knownFolders, path } from 'tns-core-modules/file-system/file-system';
 import { EvaluationRepository } from '~/app/services/evaluation-repository.service';
 

@@ -1,16 +1,14 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
-import { Page } from "ui/page";
+import { Page } from "tns-core-modules/ui/page";
 import { View } from "tns-core-modules/ui/core/view";
 import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/modal-dialog";
 import { ModalComponent } from './modal/modal.component';
-import * as app from "application";
+import * as app from "tns-core-modules/application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-
-import * as utils from "utils/utils";
-import { isIOS, isAndroid } from "platform";
-import * as frame from "ui/frame";
-
+import * as utils from "tns-core-modules/utils/utils";
+import { isIOS, isAndroid } from "tns-core-modules/platform";
+import * as frame from "tns-core-modules/ui/frame";
 import { AppFeedback } from '~/app/models/app-feedback';
 import { FeedbackRepository } from '../../services/feedback-repository.service';
 

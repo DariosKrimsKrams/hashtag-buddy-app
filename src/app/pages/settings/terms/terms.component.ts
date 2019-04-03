@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
-import { Page } from "ui/page";
-import { View } from "tns-core-modules/ui/core/view";
+import { Page } from "tns-core-modules/ui/page";
 
 @Component({
   selector: 'ns-terms',

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
-import { Page } from "ui/page";
+import { Page } from "tns-core-modules/ui/page";
 import { PLAN } from "~/app/pages/data/plans";
-import * as app from "application";
+import * as app from "tns-core-modules/application";
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import *  as purchase from "nativescript-purchase";
 import { Product } from "nativescript-purchase/product";
 import { Transaction, TransactionState } from "nativescript-purchase/transaction";
-import * as applicationSettings from "application-settings";
+import * as applicationSettings from "tns-core-modules/application-settings";
 
 @Component({
   selector: 'ns-store',

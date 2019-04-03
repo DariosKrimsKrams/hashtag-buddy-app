@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
-import { Page } from "ui/page";
+import { Page } from "tns-core-modules/ui/page";
 import { UserService } from '~/app/storages/user.service';
 import { Hashtag } from '~/app/models/hashtag';
 import { ResultFeedback } from '~/app/models/result-feedback';

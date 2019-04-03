@@ -1,6 +1,6 @@
-import * as application from "application";
-import * as platform from "platform";
-import * as utils from "utils/utils";
+import * as application from "tns-core-modules/application";
+import * as platform from "tns-core-modules/platform";
+import * as utils from "tns-core-modules/utils/utils";
 
 declare var android: any;
 declare var UIResponder: any; 

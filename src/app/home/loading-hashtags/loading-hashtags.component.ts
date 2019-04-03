@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Page } from "ui/page";
-import { bind } from '@angular/core/src/render3';
+import { Page } from "tns-core-modules/ui/page";
 
 @Component({
   selector: 'ns-loading-hashtags',

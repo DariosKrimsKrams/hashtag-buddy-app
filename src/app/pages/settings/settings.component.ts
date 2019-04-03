@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
-import { Page } from "ui/page";
-import { openUrl } from "utils/utils";
-import * as app from "application";
+import { Page } from "tns-core-modules/ui/page";
+import { openUrl } from "tns-core-modules/utils/utils";
+import * as app from "tns-core-modules/application";
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import * as SocialShare from "nativescript-social-share";
-import { ImageSource, fromFile, fromResource } from "tns-core-modules/image-source";
-import {Folder, path, knownFolders} from "tns-core-modules/file-system";
 import { localize } from 'nativescript-localize/angular';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
-import { Page } from "ui/page";
-import * as app from "application";
+import { Page } from "tns-core-modules/ui/page";
+import * as app from "tns-core-modules/application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { screen } from "tns-core-modules/platform";
 import * as imagepicker from "nativescript-imagepicker";
