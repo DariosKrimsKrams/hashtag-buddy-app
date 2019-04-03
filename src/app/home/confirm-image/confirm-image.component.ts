@@ -62,7 +62,7 @@ export class ConfirmImageComponent implements OnInit {
       this.evaluationRepository.UploadPhoto(photo.image, customerId)
       .subscribe(x => {
         // ...
-        console.log(x);
+        console.log("UploadPhoto-> ", x);
       });
       
       var that = this;

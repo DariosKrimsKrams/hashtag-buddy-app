@@ -1,86 +1,85 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
-import { Observable } from 'rxjs';
-var bghttp = require("nativescript-background-http");
+import { Observable, Observer, Subscriber } from 'rxjs';
+import * as bgHttp from "nativescript-background-http";
+
+
+interface HttpResponse {
+  status: string;
+  code: number;
+  message: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class EvaluationRepository {
+
+  public tasks: bgHttp.Task[] = [];
+  private session: any;
+  private observer: Subscriber<any>;
+  private file: string;
+  private customerId: string;
 
   constructor(
   ) { }
 
   private evaluationUrl = environment.apiUrl + "/Evaluation/File/";
 
-    public UploadPhoto(path: string, customerId: string): any {
-        // file path and url
-        // var file =  "/some/local/file/path/and/file/name.jpg";
-        // var url = "https://some.remote.service.com/path";
-        var filename = path.substr(path.lastIndexOf("/") + 1);
+    public UploadPhoto(path: string, customerId: string): Observable<HttpResponse> {
+        this.file = path.substr(path.lastIndexOf("/") + 1);
+        this.customerId = customerId;
+        this.session = bgHttp.session("image-upload");
+        return new Observable<HttpResponse>(this.uploadLogic);
+    }
+
+    private uploadLogic(observer): void {
+
+        this.observer = observer;
+
 
         // upload configuration
-        var session = bghttp.session("image-upload");
         var request = {
             url: this.evaluationUrl,
             method: "POST",
             headers: {
                 "Content-Type": "application/octet-stream"
-            },
-            description: "Uploading " + filename
+            }
+            // androidAutoDeleteAfterUpload: false,
         };
 
-        var task = session.uploadFile("file", request);
+        var task = this.session.uploadFile(this.file, request);
 
-        task.on("progress", this.progressHandler);
-        task.on("error", this.errorHandler);
-        task.on("responded", this.respondedHandler);
-        task.on("complete", this.completeHandler);
-        task.on("cancelled", this.cancelledHandler); // Android only
-      
+        task.on("error", this.errorHandler.bind(this));
+        task.on("responded", this.respondedHandler.bind(this));
+        task.on("complete", this.completeHandler.bind(this));
+        this.tasks.push(task);
     }
 
-    // event arguments:
-    // task: Task
-    // currentBytes: number
-    // totalBytes: number
-    private progressHandler(e) {
-        alert("uploaded " + e.currentBytes + " / " + e.totalBytes);
+    private errorHandler(e): void {
+        console.log("received " + e.responseCode + " code.");
+
+        var httpStatus = {status: 'error', code: e.responseCode, message: e.response};
+        this.observer.next(httpStatus);
+        // this.observer.complete();
     }
 
-    // event arguments:
-    // task: Task
-    // responseCode: number
-    // error: java.lang.Exception (Android) / NSError (iOS)
-    // response: net.gotev.uploadservice.ServerResponse (Android) / NSHTTPURLResponse (iOS)
-    private errorHandler(e) {
-        alert("received " + e.responseCode + " code.");
+
+    private respondedHandler(e): void {
+        console.log("received " + e.responseCode + " code. Server sent: " + e.data);
+        
+        var httpStatus = {status: 'successful', code: e.responseCode, message: e.data};
+        this.observer.next(httpStatus);
+        // this.observer.complete();
+    }
+
+    private completeHandler(e): void {
+        console.log("received " + e.responseCode + " code");
         var serverResponse = e.response;
-    }
 
-
-    // event arguments:
-    // task: Task
-    // responseCode: number
-    // data: string
-    private respondedHandler(e) {
-        alert("received " + e.responseCode + " code. Server sent: " + e.data);
-    }
-
-    // event arguments:
-    // task: Task
-    // responseCode: number
-    // response: net.gotev.uploadservice.ServerResponse (Android) / NSHTTPURLResponse (iOS)
-    private completeHandler(e) {
-        alert("received " + e.responseCode + " code");
-        var serverResponse = e.response;
-    }
-
-    // event arguments:
-    // task: Task
-    private cancelledHandler(e) {
-        alert("upload cancelled");
+        var httpStatus = {status: 'complete', code: e.responseCode, message: e.response};
+        this.observer.next(httpStatus);
+        this.observer.complete();
     }
 
 
