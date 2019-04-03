@@ -40,7 +40,7 @@ export const PLAN: Plan[] = [
         title: "Unlimited Magic",
         content: "- Subscription period: 1 month\n- Unlimited photos\n",
         plan: "abo",
-        cost: "9,50 €",
+        cost: "12,50 €",
         isHighlight: false,
         isAbo: true,
         savings: 0
@@ -54,6 +54,6 @@ export const PLAN: Plan[] = [
         cost: "6,50 €",
         isHighlight: false,
         isAbo: true,
-        savings: 32
+        savings: 48
     },
 ];
