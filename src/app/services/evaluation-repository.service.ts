@@ -30,17 +30,16 @@ export class EvaluationRepository {
         this.file = path.substr(path.lastIndexOf("/") + 1);
         this.customerId = customerId;
         this.session = bgHttp.session("image-upload");
-        return new Observable<HttpResponse>(this.uploadLogic);
+        console.log(this);
+        return new Observable<HttpResponse>(observer => this.uploadLogic.bind(this)(observer));
     }
 
     private uploadLogic(observer): void {
-
         this.observer = observer;
-
 
         // upload configuration
         var request = {
-            url: this.evaluationUrl,
+            url: this.evaluationUrl + this.customerId,
             method: "POST",
             headers: {
                 "Content-Type": "application/octet-stream"
