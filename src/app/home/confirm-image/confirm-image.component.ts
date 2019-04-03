@@ -70,7 +70,7 @@ export class ConfirmImageComponent implements OnInit {
         photo.categories = HASHTAGS;
         that.userService.updatePhoto(photo);
         that.openResultsPage(photoId);
-      }, 1000);
+      }, 5000);
     });
     
   }

@@ -22,7 +22,7 @@ export class LoadingHashtagsComponent implements OnInit {
 
   ngOnInit() {
      this.animateDots();
-     this.animateProgess();
+    //  this.animateProgess();
      this.animateTips();
   }
 
@@ -32,7 +32,7 @@ export class LoadingHashtagsComponent implements OnInit {
     }, 600);
   }
 
-  // private animateProgess(): void {
+  // private animateProgess(): void { 
   //   var overallSec = 20;
   //   var maxProgress = 99;
   //   var interval = overallSec*1000/maxProgress;
@@ -42,7 +42,7 @@ export class LoadingHashtagsComponent implements OnInit {
   // }
 
   private animateTips(): void {
-    this.tipI18nKey = "";
+    this.tipI18nKey = "diduknow_fact1";
   }
 
 }
