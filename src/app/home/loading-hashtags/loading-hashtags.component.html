@@ -4,7 +4,7 @@
     </StackLayout>
     <!-- <StackLayout class=""> -->
         <Label text="{{ 'loading_desc1' | L }}" class="font-demi-bold text-center"></Label>
-        <Label textWrap="true" text="...{{ 'diduknow_fact18' | L }}." class="font-reg-small text-center"></Label>
+        <Label textWrap="true" text="...{{ tipI18nKey | L }}." class="font-reg-small text-center"></Label>
         <!-- <Label textWrap="true" class="content font-reg-small text-center">
             <FormattedString>
                 <Span text="{{ 'loading_desc1' | L }} "></Span>
@@ -15,7 +15,7 @@
 
     <!-- </StackLayout> -->
     <StackLayout>
-        <circularProgressBar [size]="185" [progress]="100"></circularProgressBar>
+        <circularProgressBar [size]="185"></circularProgressBar>
     </StackLayout>
 
     <GridLayout columns="*,auto,auto,auto,auto,*" rows="auto" class="footer m-t-10">

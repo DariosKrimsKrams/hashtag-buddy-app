@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from "ui/page";
+import { bind } from '@angular/core/src/render3';
 
 @Component({
   selector: 'ns-loading-hashtags',
@@ -10,6 +11,8 @@ import { Page } from "ui/page";
 export class LoadingHashtagsComponent implements OnInit {
 
   countDots: number = 0;
+  progress: number = 0;
+  tipI18nKey: string;
 
   constructor(
     private page: Page,
@@ -19,13 +22,27 @@ export class LoadingHashtagsComponent implements OnInit {
 
   ngOnInit() {
      this.animateDots();
+     this.animateProgess();
+     this.animateTips();
   }
 
   private animateDots(): void {
-    var that = this;
-    setInterval(() => {
-      that.countDots = that.countDots >= 3 ? 0 : that.countDots + 1;
+    setInterval.bind(this)(() => {
+      this.countDots = this.countDots >= 3 ? 0 : this.countDots + 1;
     }, 600);
+  }
+
+  // private animateProgess(): void {
+  //   var overallSec = 20;
+  //   var maxProgress = 99;
+  //   var interval = overallSec*1000/maxProgress;
+  //   setInterval.bind(this)(() => {
+  //     this.progress++;
+  //   }, interval);
+  // }
+
+  private animateTips(): void {
+    this.tipI18nKey = "";
   }
 
 }

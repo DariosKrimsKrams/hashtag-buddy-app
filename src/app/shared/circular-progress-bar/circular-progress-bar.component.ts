@@ -9,9 +9,10 @@ import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 })
 export class CircularProgressBarComponent {
   
-  // @Input() size = 185;
+  // @Input() progress: number;
   percentValue: number = 11;
   timeMax: number = 20;
+  text: string;
 
   constructor() { }
 
@@ -19,15 +20,16 @@ export class CircularProgressBarComponent {
     this.animate();
   }
 
-  get text() {
-    return `${this.percentValue.toFixed()} %`;
+  private setText(): void {
+    this.text = `${this.percentValue.toFixed()} %`;
   }
 
-  animate(): any {
-    var that = this;
-    let intervalId = setInterval(() => {
-      that.percentValue++;
-      if (that.percentValue == 99) {
+  private animate(): void {
+    let intervalId = setInterval.bind(this)(() => {
+      this.percentValue++;
+      console.log("ProgessChanged", this.percentValue);
+      this.setText();
+      if (this.percentValue >= 99) {
         clearInterval(intervalId);
       }
     }, this.timeMax * 1000 / 99);
