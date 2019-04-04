@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { Hashtag } from '~/app/models/hashtag';
 import * as utils from "tns-core-modules/utils/utils";
-import { isIOS, isAndroid } from "platform";
+import { isIOS, isAndroid } from "tns-core-modules/platform";
 import * as frame from "tns-core-modules/ui/frame";
 import * as app from "tns-core-modules/application";
 import { UserService } from '../../storages/user.service';

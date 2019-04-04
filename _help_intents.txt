@@ -19,7 +19,7 @@ if (isIntentAvailable(mContext, insta)){
 	startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://instagram.com/xxx")));
 }
 private boolean isIntentAvailable(Context ctx, Intent intent) {
-	final PackageManager packageManager = ctx.getPackageManager();
+	PackageManager packageManager = ctx.getPackageManager();
 	List<ResolveInfo> list = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
 	return list.size() > 0;
 }
