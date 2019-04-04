@@ -93,6 +93,9 @@ export class ConfirmImageComponent implements OnInit {
         const tempPath = knownFolders.documents().path;
         const localFullPath = path.join(tempPath, targetFilename);
         var saved = imageSource.saveToFile(localFullPath, "jpg");
+        if(!saved) {
+          console.log("Failed to save :'(");
+        }
         observer.next(localFullPath);
         observer.complete();
       });

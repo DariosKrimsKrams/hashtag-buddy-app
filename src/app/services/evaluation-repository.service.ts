@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
-import { Observable, Observer, Subscriber } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 import * as bgHttp from "nativescript-background-http";
-
 
 interface HttpResponse {
   status: string;
@@ -19,6 +18,7 @@ export class EvaluationRepository {
   private session: any;
   private observer: Subscriber<any>;
   private file: string;
+  private filename: string;
   private customerId: string;
 
   constructor(
@@ -26,28 +26,30 @@ export class EvaluationRepository {
 
   private evaluationUrl = environment.apiUrl + "/Evaluation/File/";
 
-    public UploadPhoto(path: string, customerId: string): Observable<HttpResponse> {
-        this.file = path.substr(path.lastIndexOf("/") + 1);
+    public UploadPhoto(filepath: string, customerId: string): Observable<HttpResponse> {
+        this.file = filepath;
+        this.filename = filepath.substr(filepath.lastIndexOf("/") + 1);
         this.customerId = customerId;
         this.session = bgHttp.session("image-upload");
-        console.log(this);
         return new Observable<HttpResponse>(observer => this.uploadLogic.bind(this)(observer));
     }
 
     private uploadLogic(observer): void {
         this.observer = observer;
+        console.log(this);
 
-        // upload configuration
-        var request = {
+        var config = {
             url: this.evaluationUrl + this.customerId,
             method: "POST",
             headers: {
-                "Content-Type": "application/octet-stream"
-            }
-            // androidAutoDeleteAfterUpload: false,
+                "Content-Type": "application/octet-stream",
+                "File-Name": this.filename
+            },
+            description: `Uploading ${this.filename}`,
+            androidAutoDeleteAfterUpload: false,
         };
 
-        var task = this.session.uploadFile(this.file, request);
+        var task = this.session.uploadFile(this.file, config);
 
         task.on("error", this.errorHandler.bind(this));
         task.on("responded", this.respondedHandler.bind(this));
