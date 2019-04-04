@@ -65,9 +65,9 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     this.selected_hashtags = [];
 
     const id = Number(this.route.snapshot.params['id']);
-    console.log("got photo with id", id);
+    console.log("Results -> got photo with id", id);
     this.photo = this.userService.getPhoto(id);
-    console.log(this.photo);
+    // console.log(this.photo);
 
     // this.photo.image = this.deviceService.getSelectedPhoto();
   }

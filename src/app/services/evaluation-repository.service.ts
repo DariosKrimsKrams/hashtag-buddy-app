@@ -36,49 +36,34 @@ export class EvaluationRepository {
 
     private uploadLogic(observer): void {
         this.observer = observer;
-        console.log(this);
-
         var config = {
             url: this.evaluationUrl + this.customerId,
             method: "POST",
             headers: {
-                "Content-Type": "application/octet-stream",
+                "Content-Type": "multipart/form-data; boundary",
                 "File-Name": this.filename
             },
             description: `Uploading ${this.filename}`,
             androidAutoDeleteAfterUpload: false,
         };
-
-        var task = this.session.uploadFile(this.file, config);
-
+        var params = [
+            { name: "file", filename: this.file, mimeType: "image/jpeg" }
+        ];
+        var task = this.session.multipartUpload(params, config);
         task.on("error", this.errorHandler.bind(this));
         task.on("responded", this.respondedHandler.bind(this));
-        task.on("complete", this.completeHandler.bind(this));
         this.tasks.push(task);
     }
 
     private errorHandler(e): void {
-        console.log("received " + e.responseCode + " code.");
-
-        var httpStatus = {status: 'error', code: e.responseCode, message: e.response};
+        var httpStatus: HttpResponse = {status: 'error', code: e.responseCode, message: e.response};
         this.observer.next(httpStatus);
-        // this.observer.complete();
+        this.observer.complete();
     }
 
 
     private respondedHandler(e): void {
-        console.log("received " + e.responseCode + " code. Server sent: " + e.data);
-        
-        var httpStatus = {status: 'successful', code: e.responseCode, message: e.data};
-        this.observer.next(httpStatus);
-        // this.observer.complete();
-    }
-
-    private completeHandler(e): void {
-        console.log("received " + e.responseCode + " code");
-        var serverResponse = e.response;
-
-        var httpStatus = {status: 'complete', code: e.responseCode, message: e.response};
+        var httpStatus: HttpResponse = {status: 'successful', code: e.responseCode, message: e.data};
         this.observer.next(httpStatus);
         this.observer.complete();
     }
