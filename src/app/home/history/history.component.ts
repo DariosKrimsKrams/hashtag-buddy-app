@@ -3,6 +3,7 @@ import { Photo } from "~/app/models/photo";
 import { UserService } from "../../storages/user.service";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Hashtag } from "~/app/models/hashtag";
+import { DeviceService } from "~/app/services/device-photos.service";
 
 @Component({
   selector: "ns-history",
@@ -21,9 +22,10 @@ export class HistoryComponent implements OnInit {
   @Output() openCloseHistory = new EventEmitter();
 
   constructor(
-    private userService: UserService,
-    private router: RouterExtensions,
-    private cd: ChangeDetectorRef
+    private readonly userService: UserService,
+    private readonly router: RouterExtensions,
+    private readonly cd: ChangeDetectorRef,
+    private readonly deviceService: DeviceService
     ) { }
 
   ngOnInit() {
@@ -47,7 +49,7 @@ export class HistoryComponent implements OnInit {
       return;
     }
     var successful = this.userService.deletePhoto(this.photos[this.selected]);
-    // ToDo remove image from disk
+    this.deviceService.deletePhoto(this.photos[this.selected].image);
     // this.photos = this.userService.getPhotos();
     if(successful) {
       this.photos.splice(this.selected, 1);

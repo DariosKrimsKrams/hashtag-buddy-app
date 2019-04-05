@@ -7,8 +7,6 @@ import { Observable, of } from 'rxjs';
 import * as imagepicker from "nativescript-imagepicker";
 import { UserService } from '../../storages/user.service';
 import { Photo } from '~/app/models/photo';
-import { fromAsset } from "tns-core-modules/image-source";
-import { knownFolders, path } from 'tns-core-modules/file-system/file-system';
 import { EvaluationRepository } from '~/app/services/evaluation-repository.service';
 import { HashtagCategory } from '../../models/hashtag-category';
 import { Hashtag } from '../../models/hashtag';
@@ -80,8 +78,7 @@ export class ConfirmImageComponent implements OnInit {
     return new Observable<number>(observer => {
       var photo = new Photo();
       photo.timestamp = new Date().getTime();
-      // var image = this.deviceService.getSelectedPhoto();
-      this.storePhoto(this.photo).subscribe(path => {
+      this.deviceService.copyPhotoToAppFolder(this.photo).subscribe(path => {
         photo.image = path;
         var photoId = this.userService.addPhoto(photo);
         observer.next(photoId);
@@ -115,22 +112,6 @@ export class ConfirmImageComponent implements OnInit {
       category.tags.push(hashtag);
     }
     return category;
-  }
-
-  private storePhoto(image: ImageAsset): Observable<string> {
-    return new Observable<string>(observer => {
-      fromAsset(image).then(imageSource => {
-        var targetFilename = 'img_' + new Date().getTime() + '.jpg';
-        const tempPath = knownFolders.documents().path;
-        const localFullPath = path.join(tempPath, targetFilename);
-        var saved = imageSource.saveToFile(localFullPath, "jpg");
-        if(!saved) {
-          console.log("Failed to save :'(");
-        }
-        observer.next(localFullPath);
-        observer.complete();
-      });
-    });
   }
 
   chooseImage(): void {
