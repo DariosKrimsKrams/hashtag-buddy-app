@@ -25,7 +25,7 @@ export class EvaluationRepository {
         this.file = filepath;
         this.filename = filepath.substr(filepath.lastIndexOf("/") + 1);
         this.customerId = customerId;
-        this.session = bgHttp.session("image-upload");
+        this.session = bgHttp.session(`image-upload_${this.filename}`);
         return new Observable<IHttpResponse>(observer => this.uploadLogic.bind(this)(observer));
     }
 

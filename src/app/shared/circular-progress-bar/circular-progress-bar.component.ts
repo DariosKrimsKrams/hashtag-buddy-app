@@ -10,7 +10,7 @@ import { Component, Input, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } 
 export class CircularProgressBarComponent implements OnInit {
   
   private percentValue: number = 0;
-  private timeSec: number = 20;
+  private timeSec: number = 30;
 
   constructor(
     private cd: ChangeDetectorRef

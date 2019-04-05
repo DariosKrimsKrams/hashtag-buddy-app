@@ -12,6 +12,7 @@ import { knownFolders, path } from 'tns-core-modules/file-system/file-system';
 import { EvaluationRepository } from '~/app/services/evaluation-repository.service';
 import { HashtagCategory } from '../../models/hashtag-category';
 import { Hashtag } from '../../models/hashtag';
+import { IHttpResponse } from '~/app/models/request/http-response';
 
 interface HashtagResult {
   name: string;
@@ -65,6 +66,7 @@ export class ConfirmImageComponent implements OnInit {
       // ToDo do Request
       this.evaluationRepository.UploadPhoto(photo.image, customerId)
       .subscribe((httpResponse: IHttpResponse) => {
+        console.log(httpResponse);
         if(httpResponse.code == 200) {
           this.parseSuccessfulReponse(photoId, httpResponse);
         } else {
@@ -75,7 +77,8 @@ export class ConfirmImageComponent implements OnInit {
   }
 
   private parseSuccessfulReponse(photoId: number, httpResponse: IHttpResponse): void {
-    var data = httpResponse.message;
+    var data = JSON.parse(httpResponse.message);
+    console.log(data);
     var mostRelevantTags: HashtagResult[] = data.mostRelevantHTags;
     var trendingTags: HashtagResult[] = data.trendingHTags;
     var categories: HashtagCategory[] = [];
