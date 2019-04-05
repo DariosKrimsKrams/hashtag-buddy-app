@@ -41,7 +41,7 @@
                                         <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category, i)" *ngIf="!areAllHashtagSelected(category, i)"></Button>
                                         <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category, i)" *ngIf="areAllHashtagSelected(category, i)"></Button>
                                     </GridLayout>
-                                    <Label text="{{'results_recommented_amount' | L}} {{category.recommendedAmount}}" class="font-reg-small-muted m-l-20 m-r-20"></Label>
+                                    <Label text="{{'results_recommented_amount' | L}} {{ getRecommendedAmount(category.title) }}" class="font-reg-small-muted m-l-20 m-r-20"></Label>
                                     <WrapLayout class="m-t-5 m-l-15 m-r-15 m-b-20 tag-title">
                                         <ns-hashtag *ngFor="let tag of category.tags; let j = index;" (onClick)="selectHashtag(tag, i, j)" [name]="tag.title" [isActive]="hightlightStatus[i + '_' + j]"></ns-hashtag>
                                     </WrapLayout>

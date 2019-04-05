@@ -14,7 +14,6 @@ import * as frame from "tns-core-modules/ui/frame";
 import * as app from "tns-core-modules/application";
 import { UserService } from '../../storages/user.service';
 import { Photo } from '../../models/photo';
-import { DeviceService } from '../../services/device-photos.service';
 
 @Component({
   selector: 'ns-results',
@@ -26,53 +25,42 @@ export class ResultsComponent implements AfterViewInit, OnInit {
 
   menus = ["home", "settings", "store", "faq", "feedback"];
   parallaxHeight = 250;
-
   hashtags: HashtagCategory[];
   photo: Photo;
   dialogOpen: boolean;
   openmenu: boolean;
   selected_hashtags: SelectedHashtag[];
   hightlightStatus: Array<boolean> = [];
-  // selected = [];
-  // photo: ImageAsset; // any?
   currentScrollingY: number;
-
   width = "80%";
   page_name = "results";
   countPhotoLeft = 3;
   countPhotosOverall = 5;
   timeStart = 0;
   timeOverall = 0;
-  
-  @Input() customUserHashtagsText: string = "";
+  @Input() public customUserHashtagsText: string = "";
 
   constructor(
     private page: Page,
     private router: RouterExtensions,
     private userService: UserService,
     private route: ActivatedRoute,
-    private deviceService: DeviceService,
     private _changeDetectionRef: ChangeDetectorRef,
   ) {
     this.page.actionBarHidden = true;
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this._changeDetectionRef.detectChanges();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.selected_hashtags = [];
-
     const id = Number(this.route.snapshot.params['id']);
-    console.log("Results -> got photo with id", id);
     this.photo = this.userService.getPhoto(id);
-    // console.log(this.photo);
-
-    // this.photo.image = this.deviceService.getSelectedPhoto();
   }
 
-  onScroll(event: ScrollEventData, scrollView: ScrollView, topView: View) {
+  public onScroll(event: ScrollEventData, scrollView: ScrollView, topView: View): void {
     this.currentScrollingY = scrollView.verticalOffset;
     if (scrollView.verticalOffset <= this.parallaxHeight) {
       const offset = scrollView.verticalOffset / 2;
@@ -84,57 +72,57 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     }
   }
 
-  copySelected() {
+  public copySelected(): void {
     this.dialogOpen = true;
     setTimeout.bind(this)(() => { this.dialogOpen = false; }, 1000);
   }
 
-  selectHashtag(tag: Hashtag, title_id, tag_id) {
-    if(this.hightlightStatus[title_id + '_' + tag_id] === true) {
-      this.removeHashtag(title_id, tag_id)
+  public selectHashtag(tag: Hashtag, titleId, tagId): void {
+    if(this.hightlightStatus[titleId + '_' + tagId] === true) {
+      this.removeHashtag(titleId, tagId)
     } else {
-      this.addHashtag(tag, title_id, tag_id);
+      this.addHashtag(tag, titleId, tagId);
     }
   }
 
-  removeHashtag(title_id, tag_id) {
+  public removeHashtag(titleId, tagId): void {
     for(var i = 0; i < this.selected_hashtags.length; i++) {
       var element = this.selected_hashtags[i];
-      if(element.tag_id == tag_id) {
+      if(element.tag_id == tagId) {
         this.selected_hashtags.splice(i, 1);
-        this.hightlightStatus[title_id + '_' + tag_id]=false;
+        this.hightlightStatus[titleId + '_' + tagId]=false;
         return;
       }
     }
   }
 
-  addHashtag(tag: Hashtag, title_id, tag_id) {
-    this.selected_hashtags.push({name: tag, title_id: title_id, tag_id: tag_id});
-    this.hightlightStatus[title_id + '_' + tag_id] = true;
+  public addHashtag(tag: Hashtag, titleId, tagId): void {
+    this.selected_hashtags.push({name: tag, title_id: titleId, tag_id: tagId});
+    this.hightlightStatus[titleId + '_' + tagId] = true;
   }
 
-  selectAll(hashtag: HashtagCategory, title_id) {
+  public selectAll(hashtag: HashtagCategory, title_id): void {
     // Todo only not already added
     hashtag.tags.map((tag, tag_id) => {
       this.addHashtag(tag, title_id, tag_id);
     });
   }
 
-  areAllHashtagSelected(hashtag: HashtagCategory, title_id) {
+  public areAllHashtagSelected(hashtag: HashtagCategory, title_id): boolean {
     return false;
   }
 
-  openMenu(): void {
+  public openMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
   }
 
-  closeMenu() {
+  public closeMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.closeDrawer();
   }
 
-  goLeaveFeedback() {
+  public goLeaveFeedback(): void {
     var id = this.photo.id;
     this.router.navigate([`/home/leavefeedback/${id}`], {
       transition: {
@@ -145,7 +133,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     });
   }
 
-  dismissSoftKeybaord() {
+  public dismissSoftKeybaord(): void {
     if (isIOS) {
       frame.topmost().nativeView.endEditing(true);
     }
@@ -154,10 +142,21 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     }
   }
 
-  addCustomHashtags() {
+  public addCustomHashtags(): void {
     var text = this.customUserHashtagsText;
     var hashtag = new Hashtag({title: text});
     this.selected_hashtags.push({name: hashtag, title_id: 0, tag_id: 0});
+  }
+
+  public getRecommendedAmount(title: string): number {
+    switch(title) {
+      case 'results_category_niche_hashtags':
+        return 2;
+      case 'results_category_generic_hashtags':
+        return 2;
+      default:
+        return 0;
+    }
   }
 
 }

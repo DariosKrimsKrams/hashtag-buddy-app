@@ -2,12 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { Observable, Subscriber } from 'rxjs';
 import * as bgHttp from "nativescript-background-http";
-
-interface HttpResponse {
-  status: string;
-  code: number;
-  message: string;
-}
+import { IHttpResponse } from '../models/request/http-response';
 
 @Injectable({
   providedIn: 'root',
@@ -26,12 +21,12 @@ export class EvaluationRepository {
 
   private evaluationUrl = environment.apiUrl + "/Evaluation/File/";
 
-    public UploadPhoto(filepath: string, customerId: string): Observable<HttpResponse> {
+    public UploadPhoto(filepath: string, customerId: string): Observable<IHttpResponse> {
         this.file = filepath;
         this.filename = filepath.substr(filepath.lastIndexOf("/") + 1);
         this.customerId = customerId;
         this.session = bgHttp.session("image-upload");
-        return new Observable<HttpResponse>(observer => this.uploadLogic.bind(this)(observer));
+        return new Observable<IHttpResponse>(observer => this.uploadLogic.bind(this)(observer));
     }
 
     private uploadLogic(observer): void {
@@ -56,14 +51,14 @@ export class EvaluationRepository {
     }
 
     private errorHandler(e): void {
-        var httpStatus: HttpResponse = {status: 'error', code: e.responseCode, message: e.response};
+        var httpStatus: IHttpResponse = {status: 'error', code: e.responseCode, message: e.response};
         this.observer.next(httpStatus);
         this.observer.complete();
     }
 
 
     private respondedHandler(e): void {
-        var httpStatus: HttpResponse = {status: 'successful', code: e.responseCode, message: e.data};
+        var httpStatus: IHttpResponse = {status: 'successful', code: e.responseCode, message: e.data};
         this.observer.next(httpStatus);
         this.observer.complete();
     }

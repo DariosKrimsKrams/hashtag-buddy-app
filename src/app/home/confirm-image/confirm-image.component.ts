@@ -7,10 +7,17 @@ import { Observable, of } from 'rxjs';
 import * as imagepicker from "nativescript-imagepicker";
 import { UserService } from '../../storages/user.service';
 import { Photo } from '~/app/models/photo';
-import { HASHTAGS } from '../data/hashtags';
 import { fromAsset } from "tns-core-modules/image-source";
 import { knownFolders, path } from 'tns-core-modules/file-system/file-system';
 import { EvaluationRepository } from '~/app/services/evaluation-repository.service';
+import { HashtagCategory } from '../../models/hashtag-category';
+import { Hashtag } from '../../models/hashtag';
+
+interface HashtagResult {
+  name: string;
+  refCount: number;
+  posts: number;
+}
 
 @Component({
   selector: 'ns-confirm-image',
@@ -57,19 +64,40 @@ export class ConfirmImageComponent implements OnInit {
 
       // ToDo do Request
       this.evaluationRepository.UploadPhoto(photo.image, customerId)
-      .subscribe(x => {
-        // ...
-        console.log("UploadPhoto-> ", x);
+      .subscribe((httpResponse: IHttpResponse) => {
+        if(httpResponse.code == 200) {
+          this.parseSuccessfulReponse(photoId, httpResponse);
+        } else {
+            // ToDo
+        }
       });
-      
-      var that = this;
-      setTimeout(() => {
-        photo.categories = HASHTAGS;
-        that.userService.updatePhoto(photo);
-        that.openResultsPage(photoId);
-      }, 5000);
     });
+  }
+
+  private parseSuccessfulReponse(photoId: number, httpResponse: IHttpResponse): void {
+    var data = httpResponse.message;
+    var mostRelevantTags: HashtagResult[] = data.mostRelevantHTags;
+    var trendingTags: HashtagResult[] = data.trendingHTags;
+    var categories: HashtagCategory[] = [];
+    categories.push(this.toHashtagCategory(mostRelevantTags, "results_category_generic_hashtags"));
+    categories.push(this.toHashtagCategory(trendingTags, "results_category_niche_hashtags"));
+
+    var photo = this.userService.getPhoto(photoId);
+    photo.categories = categories;
     
+    this.userService.updatePhoto(photo);
+    this.openResultsPage(photoId);
+  }
+
+  private toHashtagCategory(hashtags: HashtagResult[], title: string) {
+    var category = new HashtagCategory();
+    category.title = title;
+    category.tags = [];
+    for(let i = 0; i < hashtags.length; i++) {
+      var hashtag = new Hashtag({title: hashtags[i].name});
+      category.tags.push(hashtag);
+    }
+    return category;
   }
 
   private savePhoto(): Observable<number> {
