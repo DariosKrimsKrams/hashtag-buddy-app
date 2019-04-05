@@ -68,7 +68,7 @@ export class ConfirmImageComponent implements OnInit {
       .subscribe((httpResponse: IHttpResponse) => {
         console.log(httpResponse);
         if(httpResponse.code == 200) {
-          this.parseSuccessfulReponse(photoId, httpResponse);
+          this.parseSuccessfulResponse(photoId, httpResponse);
         } else {
             // ToDo
         }
@@ -76,7 +76,21 @@ export class ConfirmImageComponent implements OnInit {
     });
   }
 
-  private parseSuccessfulReponse(photoId: number, httpResponse: IHttpResponse): void {
+  private savePhoto(): Observable<number> {
+    return new Observable<number>(observer => {
+      var photo = new Photo();
+      photo.timestamp = new Date().getTime();
+      // var image = this.deviceService.getSelectedPhoto();
+      this.storePhoto(this.photo).subscribe(path => {
+        photo.image = path;
+        var photoId = this.userService.addPhoto(photo);
+        observer.next(photoId);
+        observer.complete();
+      })
+    });
+  }
+
+  private parseSuccessfulResponse(photoId: number, httpResponse: IHttpResponse): void {
     var data = JSON.parse(httpResponse.message);
     console.log(data);
     var mostRelevantTags: HashtagResult[] = data.mostRelevantHTags;
@@ -101,20 +115,6 @@ export class ConfirmImageComponent implements OnInit {
       category.tags.push(hashtag);
     }
     return category;
-  }
-
-  private savePhoto(): Observable<number> {
-    return new Observable<number>(observer => {
-      var photo = new Photo();
-      photo.timestamp = new Date().getTime();
-      // var image = this.deviceService.getSelectedPhoto();
-      this.storePhoto(this.photo).subscribe(path => {
-        photo.image = path;
-        var photoId = this.userService.addPhoto(photo);
-        observer.next(photoId);
-        observer.complete();
-      })
-    });
   }
 
   private storePhoto(image: ImageAsset): Observable<string> {

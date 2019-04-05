@@ -8,7 +8,7 @@
 </GridLayout>
 <ScrollView id="history_content" orientation="vertical" sdkExampleTitle sdkToggleNavButton>
     <StackLayout>
-        <StackLayout orientation="horizontal" class="list-group-item" (longPress)="selected[i]=!selected[i]" *ngFor="let photo of photos; let i = index;">
+        <StackLayout orientation="horizontal" class="list-group-item" (tap)="selectElement(photo)" (longPress)="selected[i]=!selected[i]" *ngFor="let photo of photos; let i = index;">
             <GridLayout rows="*" [columns]="selected[i] ? '5,*,78' : '78,*,0'" verticalAlignment="top">
                 <Image [src]="photo.image" col="0" *ngIf="!selected[i]" class="m-l-10 m-r-10" stretch="aspectFill"></Image>
                 <StackLayout class="left-blackbar" col="0" *ngIf="selected[i]"></StackLayout>
