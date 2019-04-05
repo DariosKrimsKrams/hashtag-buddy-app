@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 import { Photo } from "~/app/models/photo";
 import { UserService } from "../../storages/user.service";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -8,11 +8,12 @@ import { Hashtag } from "~/app/models/hashtag";
   selector: "ns-history",
   templateUrl: "./history.component.html",
   styleUrls: ["./history.component.css"],
-  moduleId: module.id
+  moduleId: module.id,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HistoryComponent implements OnInit {
 
-  selected: Array<boolean> = [];
+  selected: number = -1;
   photos: Photo[] = [];
   hashtagAmount = 7;
 
@@ -22,15 +23,39 @@ export class HistoryComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: RouterExtensions,
+    private cd: ChangeDetectorRef
     ) { }
 
   ngOnInit() {
     this.photos = this.userService.getPhotos();
   }
 
-  public deleteHistory(i): void {
-    this.selected[i] = false;
-    this.photos.splice(i, 1);
+  public selectItem(index: number): void {
+    if(index == this.selected) {
+      this.selected = -1;
+    } else {
+      this.selected = index;
+    }
+  }
+
+  public isSelected(index: number): boolean {
+    return index == this.selected;
+  }
+
+  public deleteHistoryItem(): void {
+    if(this.selected == -1) {
+      return;
+    }
+    var successful = this.userService.deletePhoto(this.photos[this.selected]);
+    // ToDo remove image from disk
+    // this.photos = this.userService.getPhotos();
+    if(successful) {
+      this.photos.splice(this.selected, 1);
+      this.selected = -1;
+      // ToDo show toast "delete successful"
+    } else {
+      // ToDo show toast "delete failed"
+    }
   }
 
   public clickOpenCloseHistory(): void {

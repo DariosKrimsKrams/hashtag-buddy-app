@@ -8,11 +8,11 @@
 </GridLayout>
 <ScrollView id="history_content" orientation="vertical" sdkExampleTitle sdkToggleNavButton>
     <StackLayout>
-        <StackLayout orientation="horizontal" class="list-group-item" (tap)="selectElement(photo)" (longPress)="selected[i]=!selected[i]" *ngFor="let photo of photos; let i = index;">
-            <GridLayout rows="*" [columns]="selected[i] ? '5,*,78' : '78,*,0'" verticalAlignment="top">
-                <Image [src]="photo.image" col="0" *ngIf="!selected[i]" stretch="aspectFill"></Image>
-                <StackLayout class="left-blackbar" col="0" *ngIf="selected[i]"></StackLayout>
-                <StackLayout col="1" class="m-b-5">
+        <StackLayout orientation="horizontal" class="list-group-item" (longPress)="selectItem(i)" *ngFor="let photo of photos; let i = index;">
+            <GridLayout rows="*" [columns]="isSelected(i) ? '20,*,78' : '78,*,0'" verticalAlignment="top">
+                <Image [src]="photo.image" col="0" *ngIf="!isSelected(i)" stretch="aspectFill" (tap)="selectElement(photo)"></Image>
+                <StackLayout class="left-blackbar" col="0" *ngIf="isSelected(i)"></StackLayout>
+                <StackLayout col="1" class="m-b-5" (tap)="selectElement(photo)">
                     <Label class="m-l-5">
                         <FormattedString>
                             <Span [text]="photo.timestamp" fontAttributes="bold"></Span>
@@ -24,7 +24,7 @@
                         <ns-hashtag name="+{{countFurtherHashtags(photo)}} more"></ns-hashtag>
                     </WrapLayout>
                 </StackLayout>
-                <StackLayout row="0" col="2" class="trash" *ngIf="selected[i]" verticalAlignment="middle" horizontalAlignment="center" (tap)="deleteHistory(i)">
+                <StackLayout col="2" class="trash" *ngIf="isSelected(i)" verticalAlignment="middle" horizontalAlignment="center" (tap)="deleteHistoryItem()">
                     <Image src="~/app/assets/images/icons/trash.png" width="27pt" height="30pt"></Image>
                 </StackLayout>                        
             </GridLayout>         

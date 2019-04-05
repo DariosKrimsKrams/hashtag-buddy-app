@@ -41,6 +41,20 @@ export class UserService {
         return photo.id;
     }
 
+    public deletePhoto(deletePhoto: Photo): boolean {
+        console.log("deletePhoto()");
+        var photos = this.getPhotos();
+        for(let i = 0; i < photos.length; i++) {
+            var photo = photos[i];
+            if(photo.id == deletePhoto.id) {
+                photos.splice(i, 1);
+                this.dataService.setObject(this.keyPhotos, photos);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public updatePhoto(photo: Photo): void {
         console.log("updatePhoto()");
         var photos = this.getPhotos();
