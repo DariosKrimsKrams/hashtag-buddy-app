@@ -16,3 +16,10 @@
     height: 80pt;
     background-color: #fff;
 }
+
+.list-group-item Image {
+    width: 60pt;
+    height: 60pt;
+    margin: 0 10pt 10pt 10pt;
+    border-radius: 5pt;
+}
