@@ -105,7 +105,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     return this.hightlightStatus[titleId + '_' + tagId];
   }
 
-  public selectAll(category: HashtagCategory, titleId): void {
+  public selectAll(category: HashtagCategory, titleId: number): void {
     category.tags.map((tag, tagId) => {
       if(!this.isHashtagSelected(titleId, tagId)) {
         this.selectHashtag(tag, titleId, tagId);
@@ -113,18 +113,26 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     });
   }
   
-  public deselectAll(category: HashtagCategory, titleId): void {
-    // Todo deselect all selected
-    category.tags.map((tag, tagId) => {
-      this.selectHashtag(tag, titleId, tagId);
+  public deselectAll(category: HashtagCategory, titleId: number): void {
+    category.tags.map((_tag, tagId) => {
+      this.deselectHashtag(titleId, tagId);
     });
   }
 
-  public areAllHashtagSelected(category: HashtagCategory, titleId): boolean {
-    // Todo logic
+  public areAllHashtagSelected(category: HashtagCategory, titleId: number): boolean {
+    for(var i = 0; i < category.tags.length; i++) {
+      var tagId = i;
+      if(!this.isHashtagSelected(titleId, tagId)) {
+        return false;
+      }
+    }
+    return true;
+  }
 
-
-    return false;
+  public addCustomHashtags(): void {
+    var text = this.customUserHashtagsText;
+    var hashtag = new Hashtag({title: text});
+    this.selected_hashtags.push({name: hashtag, titleId: 0, tagId: 0});
   }
 
   public openMenu(): void {
@@ -155,12 +163,6 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     if (isAndroid) {
       utils.ad.dismissSoftInput();
     }
-  }
-
-  public addCustomHashtags(): void {
-    var text = this.customUserHashtagsText;
-    var hashtag = new Hashtag({title: text});
-    this.selected_hashtags.push({name: hashtag, titleId: 0, tagId: 0});
   }
 
   public getRecommendedAmount(title: string): number {
