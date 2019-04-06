@@ -39,7 +39,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public timeStart = 0;
   public timeOverall = 0;
   @Input() public customUserHashtagsText: string = "";
-
+  
   private customerHashtagsTagId = 0;
 
   constructor(
@@ -134,9 +134,17 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   public addCustomHashtags(): void {
-    var text = this.customUserHashtagsText;
-    var hashtag = new Hashtag({title: text});
-    this.selected_hashtags.push({name: hashtag, titleId: -1, tagId: this.customerHashtagsTagId++});
+    var input = this.customUserHashtagsText;
+    input.split(' ').map(word => {
+      if(word.length != 0) {
+        word.split('#').map(word2 => {
+          if(word2.length != 0) {
+            var hashtag = new Hashtag({title: word2});
+            this.selected_hashtags.push({name: hashtag, titleId: -1, tagId: this.customerHashtagsTagId++});
+          }
+        });
+      }
+    });
   }
 
   public openMenu(): void {
