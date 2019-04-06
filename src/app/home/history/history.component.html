@@ -24,7 +24,7 @@
                         <ns-hashtag name="+{{countFurtherHashtags(photo)}} more"></ns-hashtag>
                     </WrapLayout>
                 </StackLayout>
-                <StackLayout col="2" class="trash" *ngIf="isSelected(i)" verticalAlignment="middle" horizontalAlignment="center" (tap)="deleteHistoryItem()">
+                <StackLayout col="2" class="trash" *ngIf="isSelected(i)" verticalAlignment="middle" horizontalAlignment="center" (tap)="deleteHistoryItem(photo)">
                     <Image src="~/app/assets/images/icons/trash.png" width="27pt" height="30pt"></Image>
                 </StackLayout>                        
             </GridLayout>         

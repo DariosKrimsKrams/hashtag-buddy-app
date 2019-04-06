@@ -69,13 +69,14 @@ export class UserService {
             return undefined;
         }
         var jsonAsObj = JSON.parse(json);
-        var key = id - 1;
-        if(jsonAsObj.length < key) {
-            return undefined;
+        for(let i = 0; i < jsonAsObj.length ; i++) {
+            let photo = new Photo();
+            Object.assign(photo, jsonAsObj[i]);
+            if(photo.id == id) {
+                return photo;
+            }
         }
-        let photo = new Photo();
-        Object.assign(photo, jsonAsObj[key]);
-        return photo;
+        return undefined;
     }
 
     public getPhotos(): Photo[] {

@@ -44,12 +44,12 @@ export class HistoryComponent implements OnInit {
     return index == this.selected;
   }
 
-  public deleteHistoryItem(): void {
+  public deleteHistoryItem(photo): void {
     if(this.selected == -1) {
       return;
     }
-    var successful = this.userService.deletePhoto(this.photos[this.selected]);
-    this.deviceService.deletePhoto(this.photos[this.selected].image);
+    var successful = this.userService.deletePhoto(photo);
+    this.deviceService.deletePhoto(photo.image);
     // this.photos = this.userService.getPhotos();
     if(successful) {
       this.photos.splice(this.selected, 1);
@@ -65,8 +65,7 @@ export class HistoryComponent implements OnInit {
   }
 
   public selectElement(photo: Photo): void {
-    var id = photo.id;
-    this.router.navigate([`/home/results/${id}`], {
+    this.router.navigate([`/home/results/${photo.id}`], {
       transition: {
         name: "FadeIn",
         duration: 500,
