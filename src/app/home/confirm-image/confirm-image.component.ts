@@ -58,17 +58,15 @@ export class ConfirmImageComponent implements OnInit {
     this.savePhoto().subscribe(photoId => {
 
       var customerId = this.userService.getUserId();
-      console.log("customerId = ", customerId);
       var photo = this.userService.getPhoto(photoId);
 
-      // ToDo do Request
       this.evaluationRepository.UploadPhoto(photo.image, customerId)
       .subscribe((httpResponse: IHttpResponse) => {
         console.log(httpResponse);
         if(httpResponse.code == 200) {
           this.parseSuccessfulResponse(photoId, httpResponse);
         } else {
-            // ToDo
+          // ToDo
         }
       });
     });

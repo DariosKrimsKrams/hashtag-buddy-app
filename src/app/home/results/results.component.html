@@ -26,7 +26,7 @@
                                         </FormattedString>
                                     </Label>
                                     <WrapLayout class="m-t-5">
-                                        <ns-hashtag *ngFor="let tag of selected_hashtags; let i = index" (onClick)="removeHashtag(tag.title_id, tag.tag_id)" [name]="tag.name.title + ' X'" [isActive]="true"></ns-hashtag>
+                                        <ns-hashtag *ngFor="let tag of selected_hashtags; let i = index" (onClick)="deselectHashtag(tag.titleId, tag.tagId)" [name]="'#' + tag.name.title + '   &times;'" [isActive]="true"></ns-hashtag>
                                     </WrapLayout>  
                                     <Label class="m-l-5 m-r-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="selected_hashtags.length == 0"></Label>
                                     <GridLayout columns="*,60" class="m-t-5 m-l-5 m-r-5">
@@ -38,11 +38,11 @@
                                     <GridLayout columns="*,60" class="hash-title m-l-20 m-r-20">
                                         <Label [text]="category.title | L" class="font-demi-bold" col="0"></Label>
                                         <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category, i)" *ngIf="!areAllHashtagSelected(category, i)"></Button>
-                                        <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category, i)" *ngIf="areAllHashtagSelected(category, i)"></Button>
+                                        <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="deselectAll(category, i)" *ngIf="areAllHashtagSelected(category, i)"></Button>
                                     </GridLayout>
                                     <Label text="{{'results_recommented_amount' | L}} {{ getRecommendedAmount(category.title) }}" class="font-reg-small-muted m-l-20 m-r-20"></Label>
                                     <WrapLayout class="m-t-5 m-l-15 m-r-15 m-b-20 tag-title">
-                                        <ns-hashtag *ngFor="let tag of category.tags; let j = index;" (onClick)="selectHashtag(tag, i, j)" [name]="tag.title" [isActive]="hightlightStatus[i + '_' + j]"></ns-hashtag>
+                                        <ns-hashtag *ngFor="let tag of category.tags; let j = index;" (onClick)="toggleHashtag(tag, i, j)" [name]="'#' + tag.title" [isActive]="hightlightStatus[i + '_' + j]"></ns-hashtag>
                                     </WrapLayout>
                                 </StackLayout>
                             </StackLayout>

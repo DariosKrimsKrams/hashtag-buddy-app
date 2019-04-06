@@ -2,6 +2,10 @@ import { Hashtag } from "./hashtag";
 
 export class SelectedHashtag {
 	name: Hashtag;
-	title_id?: number;
-	tag_id?: number;
+	titleId: number;
+	tagId: number;
+
+    public constructor(init?: Partial<SelectedHashtag>) {
+      Object.assign(this, init);
+    }
 }

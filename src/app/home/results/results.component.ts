@@ -77,38 +77,53 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     setTimeout.bind(this)(() => { this.dialogOpen = false; }, 1000);
   }
 
-  public selectHashtag(tag: Hashtag, titleId, tagId): void {
-    if(this.hightlightStatus[titleId + '_' + tagId] === true) {
-      this.removeHashtag(titleId, tagId)
+  public toggleHashtag(tag: Hashtag, titleId: number, tagId: number): void {
+    if(this.hightlightStatus[titleId + '_' + tagId]) {
+      this.deselectHashtag(titleId, tagId)
     } else {
-      this.addHashtag(tag, titleId, tagId);
+      this.selectHashtag(tag, titleId, tagId);
     }
   }
 
-  public removeHashtag(titleId, tagId): void {
+  public deselectHashtag(titleId: number, tagId: number): void {
     for(var i = 0; i < this.selected_hashtags.length; i++) {
       var element = this.selected_hashtags[i];
-      if(element.tag_id == tagId) {
+      if(element.tagId == tagId) {
         this.selected_hashtags.splice(i, 1);
-        this.hightlightStatus[titleId + '_' + tagId]=false;
+        this.hightlightStatus[titleId + '_' + tagId] = false;
         return;
       }
     }
   }
 
-  public addHashtag(tag: Hashtag, titleId, tagId): void {
-    this.selected_hashtags.push({name: tag, title_id: titleId, tag_id: tagId});
+  private selectHashtag(tag: Hashtag, titleId: number, tagId: number): void {
+    this.selected_hashtags.push(new SelectedHashtag({name: tag, titleId: titleId, tagId: tagId}));
     this.hightlightStatus[titleId + '_' + tagId] = true;
   }
 
-  public selectAll(hashtag: HashtagCategory, title_id): void {
-    // Todo only not already added
-    hashtag.tags.map((tag, tag_id) => {
-      this.addHashtag(tag, title_id, tag_id);
+  private isHashtagSelected(titleId: number, tagId: number) {
+    return this.hightlightStatus[titleId + '_' + tagId];
+  }
+
+  public selectAll(category: HashtagCategory, titleId): void {
+    category.tags.map((tag, tagId) => {
+      if(!this.isHashtagSelected(titleId, tagId)) {
+        this.selectHashtag(tag, titleId, tagId);
+      }
+    });
+  }
+  
+  public deselectAll(category: HashtagCategory, titleId): void {
+    // Todo deselect all selected
+    category.tags.map((tag, tagId) => {
+      this.selectHashtag(tag, titleId, tagId);
     });
   }
 
-  public areAllHashtagSelected(hashtag: HashtagCategory, title_id): boolean {
+  public areAllHashtagSelected(category: HashtagCategory, titleId): boolean {
+    // Todo logic
+
+
     return false;
   }
 
@@ -145,7 +160,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public addCustomHashtags(): void {
     var text = this.customUserHashtagsText;
     var hashtag = new Hashtag({title: text});
-    this.selected_hashtags.push({name: hashtag, title_id: 0, tag_id: 0});
+    this.selected_hashtags.push({name: hashtag, titleId: 0, tagId: 0});
   }
 
   public getRecommendedAmount(title: string): number {
