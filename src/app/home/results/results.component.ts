@@ -23,22 +23,24 @@ import { Photo } from '../../models/photo';
 })
 export class ResultsComponent implements AfterViewInit, OnInit {
 
-  menus = ["home", "settings", "store", "faq", "feedback"];
-  parallaxHeight = 250;
-  hashtags: HashtagCategory[];
-  photo: Photo;
-  dialogOpen: boolean;
-  openmenu: boolean;
-  selected_hashtags: SelectedHashtag[];
-  hightlightStatus: Array<boolean> = [];
-  currentScrollingY: number;
-  width = "80%";
-  page_name = "results";
-  countPhotoLeft = 3;
-  countPhotosOverall = 5;
-  timeStart = 0;
-  timeOverall = 0;
+  public menus = ["home", "settings", "store", "faq", "feedback"];
+  public parallaxHeight = 250;
+  public hashtags: HashtagCategory[];
+  public photo: Photo;
+  public dialogOpen: boolean;
+  public openmenu: boolean;
+  public selected_hashtags: SelectedHashtag[];
+  public hightlightStatus: Array<boolean> = [];
+  public currentScrollingY: number;
+  public width = "80%";
+  public page_name = "results";
+  public countPhotoLeft = 3;
+  public countPhotosOverall = 5;
+  public timeStart = 0;
+  public timeOverall = 0;
   @Input() public customUserHashtagsText: string = "";
+
+  private customerHashtagsTagId = 0;
 
   constructor(
     private page: Page,
@@ -90,7 +92,9 @@ export class ResultsComponent implements AfterViewInit, OnInit {
       var element = this.selected_hashtags[i];
       if(element.tagId == tagId) {
         this.selected_hashtags.splice(i, 1);
-        this.hightlightStatus[titleId + '_' + tagId] = false;
+        if(titleId != -1 && tagId != -1) {
+          this.hightlightStatus[titleId + '_' + tagId] = false;
+        }
         return;
       }
     }
@@ -132,7 +136,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public addCustomHashtags(): void {
     var text = this.customUserHashtagsText;
     var hashtag = new Hashtag({title: text});
-    this.selected_hashtags.push({name: hashtag, titleId: 0, tagId: 0});
+    this.selected_hashtags.push({name: hashtag, titleId: -1, tagId: this.customerHashtagsTagId++});
   }
 
   public openMenu(): void {
