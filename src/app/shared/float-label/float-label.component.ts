@@ -1,6 +1,7 @@
-import { Component, ElementRef, Input, ViewChild, Output, EventEmitter } from "@angular/core";
+import { Component, ElementRef, Input, ViewChild, Output, EventEmitter, OnInit, OnDestroy } from "@angular/core";
 import { Color } from "tns-core-modules/color";
 import { TextField } from "tns-core-modules/ui/text-field";
+import { Subscription } from "rxjs";
 
 @Component({
     selector: "FloatLabel",
@@ -8,13 +9,17 @@ import { TextField } from "tns-core-modules/ui/text-field";
     template: `
         <GridLayout rows="30, auto">
             <Label #label row="1" [text]="placeholder" opacity="0.4" fontSize="14" class="input"></Label>
-            <TextField #textField [secure]="secure" row="1" (focus)="onFocus()" (blur)="onBlur()" (textChange)="onChange($event)" color="#000" fontSize="15" borderBottomWidth="2" borderBottomColor="#cec8c8" padding="2"></TextField>
+            <TextField #textField [secure]="secure" row="1" (focus)="onFocus()" (blur)="onBlur()" (textChange)="onChange()" color="#000" fontSize="15" borderBottomWidth="2" borderBottomColor="#cec8c8" padding="2"></TextField>
         </GridLayout>
     `
 })
-export class FloatLabel {
+export class FloatLabel implements OnInit, OnDestroy {
+    
+    private resetSubscription: Subscription;
+
     @Input() placeholder: string;
     @Input() secure: boolean;
+    @Input() reset: EventEmitter<void>;
     @ViewChild("label") label: ElementRef;
     @ViewChild("textField") textField: ElementRef;
     @Output() userTextEmitter = new EventEmitter();
@@ -23,9 +28,18 @@ export class FloatLabel {
     }
 
     ngOnInit(): void {
+        if(this.reset !== undefined) {
+            this.resetSubscription = this.reset.subscribe(() => this.resetText());
+        }
+    }
+    
+    ngOnDestroy() {
+        if(this.resetSubscription !== undefined) {
+            this.resetSubscription.unsubscribe();
+        }
     }
 
-    onFocus() {
+    public onFocus(): void {
         const label = this.label.nativeElement;
         const textField = this.textField.nativeElement;
 
@@ -37,7 +51,7 @@ export class FloatLabel {
         textField.borderBottomColor = new Color('#FFB184');
     }
 
-    onBlur() {
+    public onBlur(): void {
         const label = this.label.nativeElement;
         const textField = this.textField.nativeElement;
 
@@ -50,9 +64,12 @@ export class FloatLabel {
         textField.borderBottomColor = new Color('#cec8c8');
     }
 
-    onChange(args) {
-        let textField = <TextField>args.object;
-        this.userTextEmitter.emit(textField.text);
+    public onChange(): void {
+        this.userTextEmitter.emit(this.textField.nativeElement.text);
+    }
+
+    public resetText(): void {
+        this.textField.nativeElement.text = '';
     }
 
 }

@@ -30,7 +30,7 @@
                                     </WrapLayout>  
                                     <Label class="m-l-5 m-r-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="selected_hashtags.length == 0"></Label>
                                     <GridLayout columns="*,60" class="m-t-5 m-l-5 m-r-5">
-                                        <FloatLabel col="0" [placeholder]="'results_hashtags_input' | L" (userTextEmitter)="customUserHashtagsText = $event"></FloatLabel>
+                                        <FloatLabel col="0" [placeholder]="'results_hashtags_input' | L" (userTextEmitter)="customUserHashtagsText = $event" [reset]="resetInput"></FloatLabel>
                                         <Button col="1" text="+ {{'results_hashtags_add' | L}}" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="customUserHashtagsText !== ''" (tap)="addCustomHashtags()" verticalAlignment="bottom" horizontalAlignment="right"></Button>
                                     </GridLayout>
                                 </StackLayout>   

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef, Input, Output, EventEmitter } from '@angular/core';
 import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { HashtagCategory } from "~/app/models/hashtag-category";
@@ -39,6 +39,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public timeStart = 0;
   public timeOverall = 0;
   @Input() public customUserHashtagsText: string = "";
+  @Output() resetInput: EventEmitter<void> = new EventEmitter();
   
   private customerHashtagsTagId = 0;
 
@@ -145,6 +146,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
         });
       }
     });
+    this.resetInput.emit();
   }
 
   public openMenu(): void {
