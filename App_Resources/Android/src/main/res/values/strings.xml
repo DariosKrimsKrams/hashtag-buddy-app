@@ -82,9 +82,9 @@
   <string name="leave_feedback_bad_hashtags">"Inappropriate hashtags?"</string>
   <string name="leave_feedback_good_hashtags">"Particularly matching hashtags?"</string>
   <string name="leave_feedback_rating">"Impression of hashtags?"</string>
-  <string name="leave_feedback_star1">"Bad"</string>
-  <string name="leave_feedback_star2">"Satisfied"</string>
-  <string name="leave_feedback_star3">"Great!"</string>
+  <string name="leave_feedback_star1">"Bad :\'("</string>
+  <string name="leave_feedback_star2">"Satisfied :/"</string>
+  <string name="leave_feedback_star3">"Great :D"</string>
   <string name="leave_feedback_headline">"Improve Results"</string>
   <string name="leave_feedback_skip">"Skip"</string>
   <string name="results_copy_to_instagram">"Transfer to Instagram"</string>
@@ -93,7 +93,7 @@
   <string name="results_hashtags_add">"Add"</string>
   <string name="results_hashtags_input">"add your own #hashtags"</string>
   <string name="results_recommented_amount">"Best to choose at least"</string>
-  <string name="results_no_hashtags_selected">"Select hashtags to begin..."</string>
+  <string name="results_no_hashtags_selected">"Select hashtags from below..."</string>
   <string name="results_deselect_all">"Deselect all"</string>
   <string name="results_select_all">"Select all"</string>
   <string name="results_category_location_based_hashtags">"Location-based hashtags"</string>
@@ -106,7 +106,7 @@
   <string name="selection_popup_title">"Let Instaq help you to find Instagram\'s most relevant hashtags for this wonderful photo"</string>
   <string name="selection_headline">"Which one is your best photo?"</string>
   <string name="selection_title">"Confirm Image"</string>
-  <string name="history_date_at">"at"</string>
+  <string name="history_no_content">"No photos uploaded yet :o"</string>
   <string name="history_title">"History"</string>
   <string name="home_upload">"Pick your best photo"</string>
   <string name="home_desc_2">"Instagram #hashtags!"</string>

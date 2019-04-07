@@ -23,5 +23,6 @@
                 </StackLayout>                        
             </GridLayout>         
         </StackLayout>
+        <Label class="no-content" [text]="'history_no_content' | L" *ngIf="photos.length === 0"></Label>
     </StackLayout>            
 </ScrollView>

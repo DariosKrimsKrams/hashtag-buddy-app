@@ -31,3 +31,7 @@
 .history-item Label {
     text-align: left;
 }
+
+Label.no-content {
+    margin-top: 100pt;
+}
