@@ -20,7 +20,7 @@ export class UserService {
     ) { }
 
     public debug(): void {
-        // console.log("UserService debug()");
+        console.log("UserService debug()");
         // this.clearAll();
 
         // console.log("UserId: " + this.getUserId());
@@ -34,7 +34,7 @@ export class UserService {
 
     public addPhoto(photo: Photo): number {
         var photos = this.getPhotos();
-        photo.id = photos[photos.length-1].id + 1;
+        photo.id = photos.length == 0 ? 1 : photos[photos.length-1].id + 1;
         photos.push(photo);
         this.dataService.setObject(this.keyPhotos, photos);
         this.photoAdded.emit(photos);
