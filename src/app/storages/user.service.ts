@@ -35,7 +35,7 @@ export class UserService {
     public addPhoto(photo: Photo): number {
         console.log("addPhoto()");
         var photos = this.getPhotos();
-        photo.id = photos.length + 1;
+        photo.id = photos[photos.length-1].id + 1;
         photos.push(photo);
         this.dataService.setObject(this.keyPhotos, photos);
         return photo.id;
@@ -58,7 +58,12 @@ export class UserService {
     public updatePhoto(photo: Photo): void {
         console.log("updatePhoto()");
         var photos = this.getPhotos();
-        photos[photo.id-1] = photo;
+        for(let i = 0; i < photos.length ; i++) {
+            if(photos[i].id == photo.id) {
+                photos[i] = photo;
+                break;
+            }
+        }
         this.dataService.setObject(this.keyPhotos, photos);
     }
 
