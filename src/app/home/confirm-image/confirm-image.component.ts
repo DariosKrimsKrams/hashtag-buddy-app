@@ -87,7 +87,6 @@ export class ConfirmImageComponent implements OnInit {
 
   private parseSuccessfulResponse(photoId: number, httpResponse: IHttpResponse): void {
     var data = JSON.parse(httpResponse.message);
-    console.log(data);
     var mostRelevantTags: HashtagResult[] = data.mostRelevantHTags;
     var trendingTags: HashtagResult[] = data.trendingHTags;
     var categories: HashtagCategory[] = [];

@@ -1,11 +1,10 @@
-import { Component, Input, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: 'circularProgressBar',
   templateUrl: './circular-progress-bar.component.html',
   styleUrls: ['./circular-progress-bar.component.css'],
-  moduleId: module.id,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  moduleId: module.id
 })
 export class CircularProgressBarComponent implements OnInit {
   
@@ -13,7 +12,6 @@ export class CircularProgressBarComponent implements OnInit {
   private timeSec: number = 30;
 
   constructor(
-    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -27,7 +25,6 @@ export class CircularProgressBarComponent implements OnInit {
   private animate(): void {
     let intervalId = setInterval.bind(this)(() => {
       this.percentValue++;
-      this.cd.detectChanges();
       if (this.percentValue >= 99) {
         clearInterval(intervalId);
       }

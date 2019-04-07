@@ -1,35 +1,42 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from "@angular/core";
 import { Photo } from "~/app/models/photo";
 import { UserService } from "../../storages/user.service";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Hashtag } from "~/app/models/hashtag";
 import { DeviceService } from "~/app/services/device-photos.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "ns-history",
   templateUrl: "./history.component.html",
   styleUrls: ["./history.component.css"],
   moduleId: module.id,
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent implements OnInit, OnDestroy {
 
   selected: number = -1;
   photos: Photo[] = [];
   hashtagAmount = 7;
-
+  private photoAddedSubscription: Subscription;
+  
   @Input() isHistoryOpen: boolean;
   @Output() openCloseHistory = new EventEmitter();
 
   constructor(
     private readonly userService: UserService,
     private readonly router: RouterExtensions,
-    private readonly cd: ChangeDetectorRef,
-    private readonly deviceService: DeviceService
-    ) { }
+    private readonly deviceService: DeviceService,
+  ) { }
 
   ngOnInit() {
     this.photos = this.userService.getPhotos();
+    this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos) => {
+      this.photos = photos;
+    });
+  }
+    
+  ngOnDestroy() {
+      this.photoAddedSubscription.unsubscribe();
   }
 
   public selectItem(index: number): void {
@@ -62,6 +69,7 @@ export class HistoryComponent implements OnInit {
 
   public clickOpenCloseHistory(): void {
     this.openCloseHistory.emit();
+    // this.photos = this.userService.getPhotos();
   }
 
   public selectElement(photo: Photo): void {
@@ -76,7 +84,6 @@ export class HistoryComponent implements OnInit {
 	
 	public getHashtags(photo: Photo): Hashtag[] {
     var count = this.hashtagAmount;
-
 		var hashtags: Hashtag[] = [];
 		if(photo.selectedHashtags !== undefined && photo.selectedHashtags.length !== 0) {
 			var selectedAmount = photo.selectedHashtags.length >= count ? count : photo.selectedHashtags.length;

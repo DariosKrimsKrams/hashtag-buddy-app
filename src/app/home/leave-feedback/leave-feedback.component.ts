@@ -48,8 +48,40 @@ export class LeaveFeedbackComponent implements OnInit {
     this.photo = this.userService.getPhoto(id);
     // this.photo.image = this.deviceService.getSelectedPhoto();
 
-    this.userSelectedHashtags = this.userService.getUserSelectedHashtags(1);
-    this.userNotSelectedHashtags = this.userService.getUserNotSelectedHashtags(1);
+    this.userSelectedHashtags = this.getUserSelectedHashtags(1);
+    this.userNotSelectedHashtags = this.getUserNotSelectedHashtags(1);
+  }
+
+  public getUserSelectedHashtags(id: number): Hashtag[] {
+      return [
+          new Hashtag({ title: "#bike" }),
+          new Hashtag({ title: "#urban" }),
+          new Hashtag({ title: "#art" }),
+          new Hashtag({ title: "#street" }),
+          new Hashtag({ title: "#bike" }),
+          new Hashtag({ title: "#urban" }),
+          new Hashtag({ title: "#bike" }),
+          new Hashtag({ title: "#hello" }),
+          new Hashtag({ title: "#universe" }),
+          new Hashtag({ title: "#whatsup" }),
+      ];
+  }
+
+  public getUserNotSelectedHashtags(id: number): Hashtag[] {
+      // var allHashtags = this.getHashtags(id);
+      // var userSelectedHashtags = this.getUserSelectedHashtags(id);
+      // get allHashtags that not contain userSelectedHashtags
+
+      // mock -->
+      return  [
+          new Hashtag({ title: "#bike" }),
+          new Hashtag({ title: "#urban" }),
+          new Hashtag({ title: "#art" }),
+          new Hashtag({ title: "#bike" }),
+          new Hashtag({ title: "#hello" }),
+          new Hashtag({ title: "#universe" }),
+          new Hashtag({ title: "#whatsup" }),
+      ];
   }
 
   sendFeedback() {

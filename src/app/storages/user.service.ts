@@ -1,7 +1,6 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Output, EventEmitter } from "@angular/core";
 import { DataService } from "./data.service";
 import { CustomerRepository } from "../services/customer-repository.service";
-import { HASHTAGS } from "~/app/home/data/hashtags";
 import { HashtagCategory } from "~/app/models/hashtag-category";
 import { Hashtag } from "~/app/models/hashtag";
 import { Photo } from "../models/photo";
@@ -13,6 +12,7 @@ export class UserService {
 
     private keyUserId: string = 'userId';
     private keyPhotos: string = 'photos';
+    @Output() public photoAdded: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
 
     constructor(
         private dataService: DataService,
@@ -20,12 +20,12 @@ export class UserService {
     ) { }
 
     public debug(): void {
-        console.log("UserService debug()");
+        // console.log("UserService debug()");
         // this.clearAll();
 
-        console.log("UserId: " + this.getUserId());
-        var photos = this.getPhotos();
-        console.log("Photos Count: ", photos.length);
+        // console.log("UserId: " + this.getUserId());
+        // var photos = this.getPhotos();
+        // console.log("Photos Count: ", photos.length);
         // photos.forEach(photo => {
         //     console.log(photo);
         // });
@@ -33,16 +33,15 @@ export class UserService {
     }
 
     public addPhoto(photo: Photo): number {
-        console.log("addPhoto()");
         var photos = this.getPhotos();
         photo.id = photos[photos.length-1].id + 1;
         photos.push(photo);
         this.dataService.setObject(this.keyPhotos, photos);
+        this.photoAdded.emit(photos);
         return photo.id;
     }
 
     public deletePhoto(deletePhoto: Photo): boolean {
-        console.log("deletePhoto()");
         var photos = this.getPhotos();
         for(let i = 0; i < photos.length; i++) {
             var photo = photos[i];
@@ -56,7 +55,6 @@ export class UserService {
     }
 
     public updatePhoto(photo: Photo): void {
-        console.log("updatePhoto()");
         var photos = this.getPhotos();
         for(let i = 0; i < photos.length ; i++) {
             if(photos[i].id == photo.id) {
@@ -68,7 +66,6 @@ export class UserService {
     }
 
     public getPhoto(id: number): Photo {
-        console.log("getPhoto()");
         var json = this.dataService.get(this.keyPhotos) || undefined;
         if(json === undefined) {
             return undefined;
@@ -85,7 +82,6 @@ export class UserService {
     }
 
     public getPhotos(): Photo[] {
-        console.log("getPhotos()");
         var json = this.dataService.get(this.keyPhotos) || undefined;
         if(json === undefined) {
             return [];
@@ -101,7 +97,6 @@ export class UserService {
     }
 
     public createUserIdIfNotExist(): void {
-        console.log("createUserIdIfNotExist()");
         if(this.dataService.has(this.keyUserId)) {
             return;
         }
@@ -111,67 +106,12 @@ export class UserService {
     }
 
     public getUserId(): string {
-        console.log("getUserId()")
         return this.dataService.get(this.keyUserId);
     }
 
     public clearAll(): void {
-        console.log("clearAll()")
         this.dataService.remove(this.keyPhotos);
         this.dataService.remove(this.keyUserId);
     }
-
-    /***********/
-
-    public getHashtags(id: number): HashtagCategory[] {
-        return HASHTAGS;
-    }
-
-    public getUserSelectedHashtags(id: number): Hashtag[] {
-        return [
-            new Hashtag({ title: "#bike" }),
-            new Hashtag({ title: "#urban" }),
-            new Hashtag({ title: "#art" }),
-            new Hashtag({ title: "#street" }),
-            new Hashtag({ title: "#bike" }),
-            new Hashtag({ title: "#urban" }),
-            new Hashtag({ title: "#bike" }),
-            new Hashtag({ title: "#hello" }),
-            new Hashtag({ title: "#universe" }),
-            new Hashtag({ title: "#whatsup" }),
-        ];
-    }
-
-    public getUserNotSelectedHashtags(id: number): Hashtag[] {
-        var allHashtags = this.getHashtags(id);
-        var userSelectedHashtags = this.getUserSelectedHashtags(id);
-        // get allHashtags that not contain userSelectedHashtags
-
-        // mock -->
-        return  [
-            new Hashtag({ title: "#bike" }),
-            new Hashtag({ title: "#urban" }),
-            new Hashtag({ title: "#art" }),
-            new Hashtag({ title: "#bike" }),
-            new Hashtag({ title: "#hello" }),
-            new Hashtag({ title: "#universe" }),
-            new Hashtag({ title: "#whatsup" }),
-        ];
-    }
-
-    /*
-    onStartup()
-        loadStorage()
-
-    onChange()
-        saveStorage()
-    
-    getHashtags()
-
-    getPhoto()
-
-    getDetailsLikeDate()
-
-    */
     
 }

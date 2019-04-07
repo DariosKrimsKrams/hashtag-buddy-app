@@ -5,7 +5,7 @@ export class SelectedHashtag {
 	titleId: number;
 	tagId: number;
 
-    public constructor(init?: Partial<SelectedHashtag>) {
-      Object.assign(this, init);
-    }
+  public constructor(init?: Partial<SelectedHashtag>) {
+    Object.assign(this, init);
+  }
 }

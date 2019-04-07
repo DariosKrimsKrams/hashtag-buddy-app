@@ -48,13 +48,13 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     private router: RouterExtensions,
     private userService: UserService,
     private route: ActivatedRoute,
-    private _changeDetectionRef: ChangeDetectorRef,
+    // private _changeDetectionRef: ChangeDetectorRef,
   ) {
     this.page.actionBarHidden = true;
   }
 
   ngAfterViewInit(): void {
-    this._changeDetectionRef.detectChanges();
+    // this._changeDetectionRef.detectChanges();
   }
 
   ngOnInit(): void {
