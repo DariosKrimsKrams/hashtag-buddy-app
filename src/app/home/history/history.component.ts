@@ -5,6 +5,8 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { Hashtag } from "~/app/models/hashtag";
 import { DeviceService } from "~/app/services/device-photos.service";
 import { Subscription } from "rxjs";
+import { device } from "tns-core-modules/platform";
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: "ns-history",
@@ -14,9 +16,11 @@ import { Subscription } from "rxjs";
 })
 export class HistoryComponent implements OnInit, OnDestroy {
 
-  selected: number = -1;
-  photos: Photo[] = [];
-  hashtagAmount = 7;
+  public selected: number = -1;
+  public photos: Photo[] = [];
+  public hashtagAmount = 7;
+  // public language: string;
+
   private photoAddedSubscription: Subscription;
   
   @Input() isHistoryOpen: boolean;
@@ -33,6 +37,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
     this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos) => {
       this.photos = photos;
     });
+    // this.language = device.language;
   }
     
   ngOnDestroy() {
@@ -112,6 +117,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
     var count = this.hashtagAmount;
     var result = amount - count;
 		return result >= 0 ? result : 0;
-	}
+  }
 
 }

@@ -15,7 +15,7 @@
                 <StackLayout col="1" class="m-b-5" (tap)="selectElement(photo)">
                     <Label class="m-l-5">
                         <FormattedString>
-                            <Span [text]="photo.timestamp" fontAttributes="bold"></Span>
+                            <Span [text]="photo.timestamp | date: 'dd/MM/yyyy'" fontAttributes="bold"></Span>
                             <Span text=" {{'history_date_at' | L }} {{photo.time}}"></Span>
                         </FormattedString>
                     </Label>
