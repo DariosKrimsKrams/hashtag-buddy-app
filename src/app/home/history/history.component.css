@@ -20,6 +20,14 @@
 .list-group-item Image {
     width: 60pt;
     height: 60pt;
-    margin: 0 10pt 10pt 10pt;
+    margin: 5pt 5pt 10pt 5pt;
     border-radius: 5pt;
+}
+
+.date-bold {
+    font-family: "AvenirNext-Medium", "Avenir Next Medium";
+}
+
+.history-item Label {
+    text-align: left;
 }
