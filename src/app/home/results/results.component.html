@@ -17,9 +17,9 @@
                                 <GridLayout id="preview-image" (tap)="dismissSoftKeybaord()" [height]="parallaxHeight" #topView>
                                     <Image [src]="photo.image" stretch="aspectFill"></Image>
                                 </GridLayout>
-                                <StackLayout id="user-selection" class="p-l-15 p-r-15 p-b-20 p-t-10">
+                                <StackLayout id="user-selection" class="p-l-10 p-r-10 p-b-20 p-t-10">
                                     <ProgressBar [page]="page_name" [width]="width" [countPhotoLeft]="countPhotoLeft" [countPhotosOverall]="countPhotosOverall" [timeStart]="timeStart" [timeOverall]="timeOverall"></ProgressBar>
-                                    <Label class="m-l-5 m-r-5 m-t-10 m-b-5">
+                                    <Label class="m-t-10 m-b-5">
                                         <FormattedString>
                                             <Span class="font-demi-bold" text="{{ 'results_category_user_hashtags' | L }}"></Span>
                                             <Span text="  ({{selected_hashtags.length}} / 30)" fontSize="12"></Span>
@@ -28,20 +28,20 @@
                                     <WrapLayout class="m-t-5">
                                         <ns-hashtag *ngFor="let tag of selected_hashtags; let i = index" (onClick)="deselectHashtag(tag.titleId, tag.tagId)" [name]="'#' + tag.name.title + '   &times;'" [isActive]="true"></ns-hashtag>
                                     </WrapLayout>  
-                                    <Label class="m-l-5 m-r-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="selected_hashtags.length == 0"></Label>
-                                    <GridLayout columns="*,60" class="m-t-5 m-l-5 m-r-5">
+                                    <Label class="m-r-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="selected_hashtags.length == 0"></Label>
+                                    <GridLayout columns="*,60" class="m-t-5 m-r-10">
                                         <FloatLabel col="0" [placeholder]="'results_hashtags_input' | L" (userTextEmitter)="customUserHashtagsText = $event" [reset]="resetInput"></FloatLabel>
                                         <Button col="1" text="+ {{'results_hashtags_add' | L}}" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="customUserHashtagsText !== ''" (tap)="addCustomHashtags()" verticalAlignment="bottom" horizontalAlignment="right"></Button>
                                     </GridLayout>
                                 </StackLayout>   
                                 <StackLayout orientation="vertical" class="list-group-item" *ngFor="let category of photo.categories; let i = index;">
-                                    <GridLayout columns="*,60" class="hash-title m-l-20 m-r-20">
+                                    <GridLayout columns="*,60" class="hash-title m-l-10 m-r-20">
                                         <Label [text]="category.title | L" class="font-demi-bold" col="0"></Label>
                                         <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category, i)" *ngIf="!areAllHashtagSelected(category, i)"></Button>
                                         <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="deselectAll(category, i)" *ngIf="areAllHashtagSelected(category, i)"></Button>
                                     </GridLayout>
-                                    <Label text="{{'results_recommented_amount' | L}} {{ getRecommendedAmount(category.title) }}" class="font-reg-small-muted m-l-20 m-r-20"></Label>
-                                    <WrapLayout class="m-t-5 m-l-15 m-r-15 m-b-20 tag-title">
+                                    <Label text="{{'results_recommented_amount' | L}} {{ getRecommendedAmount(category.title) }}" class="font-reg-small-muted m-l-10 m-r-5"></Label>
+                                    <WrapLayout class="m-t-5 m-l-5 m-b-20 tag-title">
                                         <ns-hashtag *ngFor="let tag of category.tags; let j = index;" (onClick)="toggleHashtag(tag, i, j)" [name]="'#' + tag.title" [isActive]="hightlightStatus[i + '_' + j]"></ns-hashtag>
                                     </WrapLayout>
                                 </StackLayout>

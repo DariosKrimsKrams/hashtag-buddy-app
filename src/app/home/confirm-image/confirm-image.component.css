@@ -34,14 +34,14 @@
 
 #main-image {
     height: 200;
-    border-color: rgb(57, 73, 86);
-    background-color: rgb(57, 73, 86);
-    border-width: 1;
-    border-radius: 11;
+    /* border-color: rgb(57, 73, 86); */
+    /* background-color: rgb(57, 73, 86); */
+    /* border-width: 1; */
+    /* border-radius: 5; */
 }
 
     #main-image Image {
-        border-radius: 10;
+        border-radius: 5;
     }
 
 #dialog .btn {
