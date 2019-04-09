@@ -22,13 +22,13 @@
                                     <Label class="m-t-10 m-b-5">
                                         <FormattedString>
                                             <Span class="font-demi-bold" text="{{ 'results_category_user_hashtags' | L }}"></Span>
-                                            <Span text="  ({{selected_hashtags.length}} / 30)" fontSize="12"></Span>
+                                            <Span text="  ({{selectedHashtags.length}} / 30)" fontSize="12"></Span>
                                         </FormattedString>
                                     </Label>
                                     <WrapLayout class="m-t-5">
-                                        <ns-hashtag *ngFor="let tag of selected_hashtags; let i = index" (onClick)="deselectHashtag(tag.titleId, tag.tagId)" [name]="'#' + tag.name.title + '   &times;'" [isActive]="true"></ns-hashtag>
+                                        <ns-hashtag *ngFor="let tag of selectedHashtags; let i = index" (onClick)="deselectHashtag(tag.titleId, tag.tagId)" [name]="'#' + tag.hashtag.title + '   &times;'" [isActive]="true"></ns-hashtag>
                                     </WrapLayout>  
-                                    <Label class="m-r-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="selected_hashtags.length == 0"></Label>
+                                    <Label class="m-r-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="selectedHashtags.length == 0"></Label>
                                     <GridLayout columns="*,60" class="m-t-5 m-r-10">
                                         <FloatLabel col="0" [placeholder]="'results_hashtags_input' | L" (userTextEmitter)="customUserHashtagsText = $event" [reset]="resetInput"></FloatLabel>
                                         <Button col="1" text="+ {{'results_hashtags_add' | L}}" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="customUserHashtagsText !== ''" (tap)="addCustomHashtags()" verticalAlignment="bottom" horizontalAlignment="right"></Button>

@@ -1,8 +1,8 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectorRef, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { HashtagCategory } from "~/app/models/hashtag-category";
-import { SelectedHashtag } from "~/app/models/selected_hashtag";
+import { ResultSelectionHashtag } from "~/app/models/result-selection-hashtag";
 import { View } from 'tns-core-modules/ui/core/view';
 import { Page } from "tns-core-modules/ui/page";
 import { ActivatedRoute } from '@angular/router';
@@ -14,6 +14,7 @@ import * as frame from "tns-core-modules/ui/frame";
 import * as app from "tns-core-modules/application";
 import { UserService } from '../../storages/user.service';
 import { Photo } from '../../models/photo';
+import { SelectedHashtag } from '~/app/models/selected-hashtag';
 
 @Component({
   selector: 'ns-results',
@@ -29,7 +30,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public photo: Photo;
   public dialogOpen: boolean;
   public openmenu: boolean;
-  public selected_hashtags: SelectedHashtag[];
+  public selectedHashtags: ResultSelectionHashtag[];
   public hightlightStatus: Array<boolean> = [];
   public currentScrollingY: number;
   public width = "80%";
@@ -48,17 +49,15 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     private router: RouterExtensions,
     private userService: UserService,
     private route: ActivatedRoute,
-    // private _changeDetectionRef: ChangeDetectorRef,
   ) {
     this.page.actionBarHidden = true;
   }
 
   ngAfterViewInit(): void {
-    // this._changeDetectionRef.detectChanges();
   }
 
   ngOnInit(): void {
-    this.selected_hashtags = [];
+    this.selectedHashtags = [];
     const id = Number(this.route.snapshot.params['id']);
     this.photo = this.userService.getPhoto(id);
   }
@@ -89,21 +88,23 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   public deselectHashtag(titleId: number, tagId: number): void {
-    for(var i = 0; i < this.selected_hashtags.length; i++) {
-      var element = this.selected_hashtags[i];
+    for(var i = 0; i < this.selectedHashtags.length; i++) {
+      var element = this.selectedHashtags[i];
       if(element.tagId == tagId) {
-        this.selected_hashtags.splice(i, 1);
+        this.selectedHashtags.splice(i, 1);
         if(titleId != -1 && tagId != -1) {
           this.hightlightStatus[titleId + '_' + tagId] = false;
         }
+        this.selectionChanged();
         return;
       }
     }
   }
 
   private selectHashtag(tag: Hashtag, titleId: number, tagId: number): void {
-    this.selected_hashtags.push(new SelectedHashtag({name: tag, titleId: titleId, tagId: tagId}));
+    this.selectedHashtags.push(new ResultSelectionHashtag({hashtag: tag, titleId: titleId, tagId: tagId}));
     this.hightlightStatus[titleId + '_' + tagId] = true;
+    this.selectionChanged();
   }
 
   private isHashtagSelected(titleId: number, tagId: number) {
@@ -141,7 +142,8 @@ export class ResultsComponent implements AfterViewInit, OnInit {
         word.split('#').map(word2 => {
           if(word2.length != 0) {
             var hashtag = new Hashtag({title: word2});
-            this.selected_hashtags.push({name: hashtag, titleId: -1, tagId: this.customerHashtagsTagId++});
+            this.selectedHashtags.push({hashtag: hashtag, titleId: -1, tagId: this.customerHashtagsTagId++});
+            this.selectionChanged();
           }
         });
       }
@@ -188,6 +190,18 @@ export class ResultsComponent implements AfterViewInit, OnInit {
       default:
         return 0;
     }
+  }
+
+  private selectionChanged(): void {
+    var selectedHashtags = [];
+    for(var i = 0; i < this.selectedHashtags.length; i++) {
+      var selectedHashtag = this.selectedHashtags[i];
+      var tag = new SelectedHashtag({title: selectedHashtag.hashtag.title, categoryId: selectedHashtag.titleId});
+      selectedHashtags.push(tag);
+    }
+    this.photo.selectedHashtags = selectedHashtags;
+    console.log(selectedHashtags);
+    this.userService.updatePhoto(this.photo);
   }
 
 }
