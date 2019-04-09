@@ -26,7 +26,7 @@
                                         </FormattedString>
                                     </Label>
                                     <WrapLayout class="m-t-5">
-                                        <ns-hashtag *ngFor="let tag of selectedHashtags; let i = index" (onClick)="deselectHashtag(tag.titleId, tag.tagId)" [name]="'#' + tag.hashtag.title + '   &times;'" [isActive]="true"></ns-hashtag>
+                                        <ns-hashtag *ngFor="let tag of selectedHashtags.hashtags; let i = index" (onClick)="deselectHashtag(tag.titleId, tag.tagId)" [name]="'#' + tag.hashtag.title + '   &times;'" [isActive]="true"></ns-hashtag>
                                     </WrapLayout>  
                                     <Label class="m-r-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="selectedHashtags.length == 0"></Label>
                                     <GridLayout columns="*,60" class="m-t-5 m-r-10">

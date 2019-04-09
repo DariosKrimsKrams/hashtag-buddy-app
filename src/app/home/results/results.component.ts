@@ -15,6 +15,7 @@ import * as app from "tns-core-modules/application";
 import { UserService } from '../../storages/user.service';
 import { Photo } from '../../models/photo';
 import { SelectedHashtag } from '~/app/models/selected-hashtag';
+import { ResultSelectionHashtags } from '~/app/models/result-selection-hashtags';
 
 @Component({
   selector: 'ns-results',
@@ -30,7 +31,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public photo: Photo;
   public dialogOpen: boolean;
   public openmenu: boolean;
-  public selectedHashtags: ResultSelectionHashtag[];
+  public selectedHashtags: ResultSelectionHashtags;
   public hightlightStatus: Array<boolean> = [];
   public currentScrollingY: number;
   public width = "80%";
@@ -57,9 +58,13 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.selectedHashtags = [];
+    this.selectedHashtags = new ResultSelectionHashtags();
     const id = Number(this.route.snapshot.params['id']);
     this.photo = this.userService.getPhoto(id);
+    // this.selectedHashtags.fromPhoto(this.photo);
+    // console.log("loaded selectedHashtags");
+    // console.log(this.selectedHashtags);
+    // ToDo tagId undefiend? :o
   }
 
   public onScroll(event: ScrollEventData, scrollView: ScrollView, topView: View): void {
@@ -193,14 +198,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   private selectionChanged(): void {
-    var selectedHashtags = [];
-    for(var i = 0; i < this.selectedHashtags.length; i++) {
-      var selectedHashtag = this.selectedHashtags[i];
-      var tag = new SelectedHashtag({title: selectedHashtag.hashtag.title, categoryId: selectedHashtag.titleId});
-      selectedHashtags.push(tag);
-    }
-    this.photo.selectedHashtags = selectedHashtags;
-    console.log(selectedHashtags);
+    this.photo.selectedHashtags = this.selectedHashtags.toSelectedHashtags();
     this.userService.updatePhoto(this.photo);
   }
 
