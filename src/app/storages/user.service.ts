@@ -12,7 +12,9 @@ export class UserService {
 
     private keyUserId: string = 'userId';
     private keyPhotos: string = 'photos';
+    private photosCache: Photo[];
     @Output() public photoAdded: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
+    @Output() public photoUpdated: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
 
     constructor(
         private dataService: DataService,

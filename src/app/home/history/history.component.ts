@@ -19,6 +19,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   public hashtagAmount = 7;
 
   private photoAddedSubscription: Subscription;
+  private photoUpdatedSubscription: Subscription;
   
   @Input() isHistoryOpen: boolean;
   @Output() openCloseHistory = new EventEmitter();
@@ -34,10 +35,15 @@ export class HistoryComponent implements OnInit, OnDestroy {
     this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos) => {
       this.photos = photos;
     });
+    this.photos = this.userService.getPhotos();
+    this.photoUpdatedSubscription = this.userService.photoUpdated.subscribe((photos) => {
+      this.photos = photos;
+    });
   }
     
   ngOnDestroy() {
       this.photoAddedSubscription.unsubscribe();
+      this.photoUpdatedSubscription.unsubscribe();
   }
 
   public selectItem(index: number): void {
@@ -58,7 +64,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
     }
     var successful = this.userService.deletePhoto(photo);
     this.deviceService.deletePhoto(photo.image);
-    // this.photos = this.userService.getPhotos();
     if(successful) {
       this.photos.splice(this.selected, 1);
       this.selected = -1;
@@ -70,7 +75,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   public clickOpenCloseHistory(): void {
     this.openCloseHistory.emit();
-    // this.photos = this.userService.getPhotos();
+    this.photos = this.userService.getPhotos();
   }
 
   public selectElement(photo: Photo): void {
