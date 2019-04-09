@@ -38,7 +38,7 @@ export class UserService {
         var photos = this.getPhotos();
         photo.id = photos.length == 0 ? 1 : photos[photos.length-1].id + 1;
         photos.push(photo);
-        this.dataService.setObject(this.keyPhotos, photos);
+        this.setPhotos(photos);
         this.photoAdded.emit(photos);
         return photo.id;
     }
@@ -49,7 +49,7 @@ export class UserService {
             var photo = photos[i];
             if(photo.id == deletePhoto.id) {
                 photos.splice(i, 1);
-                this.dataService.setObject(this.keyPhotos, photos);
+                this.setPhotos(photos);
                 return true;
             }
         }
@@ -64,18 +64,14 @@ export class UserService {
                 break;
             }
         }
-        this.dataService.setObject(this.keyPhotos, photos);
+        this.setPhotos(photos);
+        this.photoUpdated.emit(photos);
     }
 
     public getPhoto(id: number): Photo {
-        var json = this.dataService.get(this.keyPhotos) || undefined;
-        if(json === undefined) {
-            return undefined;
-        }
-        var jsonAsObj = JSON.parse(json);
-        for(let i = 0; i < jsonAsObj.length ; i++) {
-            let photo = new Photo();
-            Object.assign(photo, jsonAsObj[i]);
+        var photos = this.getPhotos();
+        for(let i = 0; i < photos.length ; i++) {
+            let photo = photos[i];
             if(photo.id == id) {
                 return photo;
             }
@@ -83,9 +79,18 @@ export class UserService {
         return undefined;
     }
 
+    private setPhotos(photos: Photo[]) {
+        this.dataService.set(this.keyPhotos, photos);
+        this.photosCache = photos;
+    }
+
     public getPhotos(): Photo[] {
+        if(this.photosCache !== undefined) {
+            return this.photosCache;
+        }
         var json = this.dataService.get(this.keyPhotos) || undefined;
         if(json === undefined) {
+            this.photosCache = [];
             return [];
         }
         var jsonAsObj = JSON.parse(json);
@@ -95,6 +100,7 @@ export class UserService {
             Object.assign(photo, jsonAsObj[i]);
             photos[i] = photo;
         }
+        this.photosCache = photos;
         return photos;
     }
 
@@ -103,7 +109,7 @@ export class UserService {
             return;
         }
         this.customerRepositoryService.createCustomer().subscribe(result => {
-            this.dataService.setString(this.keyUserId, result.customerId);
+            this.dataService.set(this.keyUserId, result.customerId);
         });
     }
 
@@ -114,6 +120,7 @@ export class UserService {
     public clearAll(): void {
         this.dataService.remove(this.keyPhotos);
         this.dataService.remove(this.keyUserId);
+        this.photosCache = [];
     }
     
 }
