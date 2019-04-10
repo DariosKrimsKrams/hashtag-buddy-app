@@ -20,17 +20,14 @@ import { SelectedHashtag } from '~/app/models/selected-hashtag';
 })
 export class LeaveFeedbackComponent implements OnInit {
 
-  userSelectedHashtags: Hashtag[] = [];
-  userNotSelectedHashtags: Hashtag[] = [];
-  emoji = ['great', 'satisfied', 'bad'];
-  selected = [];
-  tag1: number[] = [];
-  tag2: number[] = [];
-  rating_number = 3; // 0=great, 1=satisfied, 2=bad, 3=none 
-  good_hashtags = '';
-  bad_hashtags = '';
-  missingHashtags = '';
-  comment = '';
+  public userSelectedHashtags: Hashtag[] = [];
+  public userNotSelectedHashtags: Hashtag[] = [];
+  public emoji = ['great', 'satisfied', 'bad'];
+  public tag1: number[] = [];
+  public tag2: number[] = [];
+  public rating_number = 3; // 0=great, 1=satisfied, 2=bad, 3=none 
+  public missingHashtags = '';
+  public comment = '';
   private photo: Photo;
 
   constructor(
@@ -49,6 +46,10 @@ export class LeaveFeedbackComponent implements OnInit {
 
     this.userSelectedHashtags = this.getUserSelectedHashtags();
     this.userNotSelectedHashtags = this.getUserNotSelectedHashtags();
+
+
+    // ToDo load feedback if available
+    //this.photo.feedback
   }
 
   public getUserSelectedHashtags(): SelectedHashtag[] {
@@ -69,7 +70,6 @@ export class LeaveFeedbackComponent implements OnInit {
       for(var j = 0; j < category.tags.length; j++) {
         var hashtag = category.tags[j];
         var exist = this.photo.selectedHashtags.filter(x => x.title == hashtag.title)[0] !== undefined;
-        console.log(hashtag.title, exist);
         if(!exist) {
           hashtags.push(hashtag);
         }
@@ -102,35 +102,37 @@ export class LeaveFeedbackComponent implements OnInit {
         break;
     }
 
+    let good_hashtags = '';
+    let bad_hashtags = '';
     let k = 0;
     for(let i = 0; i < this.userSelectedHashtags.length ; i++) {
       if(this.tag1[i]) {
         if(k === 0){
           // ToDo why does some variables are snake_case and some have CamelCase style
-          this.good_hashtags = '{';
+          good_hashtags = '{';
           k++;
         }
-        if(k > 1) this.good_hashtags += ",";
-        this.good_hashtags += "'" + this.userSelectedHashtags[i] + "'";
+        if(k > 1) good_hashtags += ",";
+        good_hashtags += "'" + this.userSelectedHashtags[i] + "'";
       }
     }
     if(k > 0) {
-      this.good_hashtags += "}";
+      good_hashtags += "}";
     }
 
     k = 0;
     for(let i = 0; i < this.userNotSelectedHashtags.length ; i++) {
       if(this.tag2[i]) {
         if(k === 0){
-          this.bad_hashtags = '{';
+          bad_hashtags = '{';
           k++;
         }
-        if(k > 1) this.bad_hashtags += ",";
-        this.bad_hashtags += "'" + this.userNotSelectedHashtags[i] + "'";
+        if(k > 1) bad_hashtags += ",";
+        bad_hashtags += "'" + this.userNotSelectedHashtags[i] + "'";
       }
     }
     if(k > 0) {
-      this.bad_hashtags += "}";
+      bad_hashtags += "}";
     }
     // ToDo server receives: goodHashtags":"{'[object Object]'}","badHashtags":"{'[object Object]'}"
   
@@ -138,8 +140,8 @@ export class LeaveFeedbackComponent implements OnInit {
       customerId: "0317a2e8e1bbae79184524ea1322c152407a0bc1e7f4837571ee3517e9360da4", 
       photoId: '123', 
       rating: rating, 
-      goodHashtags: this.good_hashtags, 
-      badHashtags: this.bad_hashtags, 
+      goodHashtags: good_hashtags, 
+      badHashtags: bad_hashtags, 
       missingHashtags: this.missingHashtags, 
       comment: this.comment 
     }

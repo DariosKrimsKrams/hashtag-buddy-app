@@ -14,10 +14,10 @@
                 </StackLayout>
 
                 <GridLayout class="status m-l-20 m-r-5 m-t-10" columns="*,*,*" rows="auto">
-                    <GridLayout [col]="i" class="m-r-15" *ngFor="let item of emoji; let i = index;" (tap)="selected=[];selected[i]=true; rating_number = i;">
-                        <StackLayout horizontalAlignment="center" class="p-t-5 p-b-5" [class.gradient]="selected[i]">
-                            <Image [src]="'~/app/assets/images/icons/' + item + '.png'" *ngIf="!selected[i]"></Image>
-                            <Image [src]="'~/app/assets/images/icons/' + item + '_white.png'" *ngIf="selected[i]"></Image>
+                    <GridLayout [col]="i" class="m-r-15" *ngFor="let item of emoji; let i = index;" (tap)="rating_number = i;">
+                        <StackLayout horizontalAlignment="center" class="p-t-5 p-b-5" [class.gradient]="rating_number === i">
+                            <Image [src]="'~/app/assets/images/icons/' + item + '.png'" *ngIf="rating_number !== i"></Image>
+                            <Image [src]="'~/app/assets/images/icons/' + item + '_white.png'" *ngIf="rating_number === i"></Image>
                             <Label [text]="item" class="font-reg-small"></Label>
                         </StackLayout>
                     </GridLayout>
