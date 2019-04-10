@@ -144,14 +144,23 @@ export class ResultsComponent implements AfterViewInit, OnInit {
       if(word.length != 0) {
         word.split('#').map(word2 => {
           if(word2.length != 0) {
-            var hashtag = new Hashtag({title: word2});
-            this.selectedHashtags.push({hashtag: hashtag, titleId: -1, tagId: -1});
-            this.selectionChanged();
+            this.addHashtag(word2);
           }
         });
       }
     });
     this.resetInput.emit();
+  }
+
+  private addHashtag(name: string): void {
+    var exist = this.selectedHashtags.hashtags.filter(x => x.hashtag.title.toLowerCase() == name.toLowerCase())[0] !== undefined;
+    if(exist) {
+      return;
+    }
+
+    var hashtag = new Hashtag({title: name});
+    this.selectedHashtags.push({hashtag: hashtag, titleId: -1, tagId: -1});
+    this.selectionChanged();
   }
 
   public openMenu(): void {
