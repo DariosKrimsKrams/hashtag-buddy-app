@@ -167,12 +167,12 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     for(var i = 0; i < this.photo.categories.length; i++) {
       var category = this.photo.categories[i];
       for(var j = 0; j < category.tags.length; j++) {
-        var tag = category.tags[j]
-        if(tag.title == name.toLowerCase()) {
-          this.selectHashtag(tag, i, j);
+        var hashtag = category.tags[j]
+        if(hashtag.title == name.toLowerCase()) {
+          this.selectHashtag(hashtag, i, j);
           return true;
         }
-      }    
+      }
     }
     return false;
   }

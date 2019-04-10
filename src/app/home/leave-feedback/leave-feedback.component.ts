@@ -11,6 +11,7 @@ import { Photo } from '~/app/models/photo';
 import { DeviceService } from '~/app/services/device-photos.service';
 import { ActivatedRoute } from '@angular/router';
 import { Folder, knownFolders, path } from 'tns-core-modules/file-system/file-system';
+import { SelectedHashtag } from '~/app/models/selected-hashtag';
 
 @Component({
   templateUrl: './leave-feedback.component.html',
@@ -23,9 +24,9 @@ export class LeaveFeedbackComponent implements OnInit {
   userNotSelectedHashtags: Hashtag[] = [];
   emoji = ['great', 'satisfied', 'bad'];
   selected = [];
-  tag1 = [];
-  tag2 = [];
-  rating_number = 3; // what does "3" mean? 3=none?
+  tag1: number[] = [];
+  tag2: number[] = [];
+  rating_number = 3; // 0=great, 1=satisfied, 2=bad, 3=none 
   good_hashtags = '';
   bad_hashtags = '';
   missingHashtags = '';
@@ -38,7 +39,6 @@ export class LeaveFeedbackComponent implements OnInit {
     private router: RouterExtensions,
     private userService: UserService,
     private feedbackRepositoryService: FeedbackRepository,
-    private deviceService: DeviceService,
     ) {
     this.page.actionBarHidden = true;
   }
@@ -46,42 +46,36 @@ export class LeaveFeedbackComponent implements OnInit {
   ngOnInit() {
     const id = Number(this.route.snapshot.params['id']);
     this.photo = this.userService.getPhoto(id);
-    // this.photo.image = this.deviceService.getSelectedPhoto();
 
-    this.userSelectedHashtags = this.getUserSelectedHashtags(1);
-    this.userNotSelectedHashtags = this.getUserNotSelectedHashtags(1);
+    this.userSelectedHashtags = this.getUserSelectedHashtags();
+    this.userNotSelectedHashtags = this.getUserNotSelectedHashtags();
   }
 
-  public getUserSelectedHashtags(id: number): Hashtag[] {
-      return [
-          new Hashtag({ title: "#bike" }),
-          new Hashtag({ title: "#urban" }),
-          new Hashtag({ title: "#art" }),
-          new Hashtag({ title: "#street" }),
-          new Hashtag({ title: "#bike" }),
-          new Hashtag({ title: "#urban" }),
-          new Hashtag({ title: "#bike" }),
-          new Hashtag({ title: "#hello" }),
-          new Hashtag({ title: "#universe" }),
-          new Hashtag({ title: "#whatsup" }),
-      ];
+  public getUserSelectedHashtags(): SelectedHashtag[] {
+    var hashtags: SelectedHashtag[] = [];
+    this.photo.selectedHashtags.forEach(hashtag => {
+      if(hashtag.categoryId != -1) {
+        hashtags.push(hashtag);
+      }
+    });
+    return hashtags;
   }
 
-  public getUserNotSelectedHashtags(id: number): Hashtag[] {
-      // var allHashtags = this.getHashtags(id);
-      // var userSelectedHashtags = this.getUserSelectedHashtags(id);
-      // get allHashtags that not contain userSelectedHashtags
-
-      // mock -->
-      return  [
-          new Hashtag({ title: "#bike" }),
-          new Hashtag({ title: "#urban" }),
-          new Hashtag({ title: "#art" }),
-          new Hashtag({ title: "#bike" }),
-          new Hashtag({ title: "#hello" }),
-          new Hashtag({ title: "#universe" }),
-          new Hashtag({ title: "#whatsup" }),
-      ];
+  public getUserNotSelectedHashtags(): Hashtag[] {
+    var hashtags: Hashtag[] = [];
+    
+    for(var i = 0; i < this.photo.categories.length; i++) {
+      var category = this.photo.categories[i];
+      for(var j = 0; j < category.tags.length; j++) {
+        var hashtag = category.tags[j];
+        var exist = this.photo.selectedHashtags.filter(x => x.title == hashtag.title)[0] !== undefined;
+        console.log(hashtag.title, exist);
+        if(!exist) {
+          hashtags.push(hashtag);
+        }
+      }
+    }
+    return hashtags;
   }
 
   sendFeedback() {

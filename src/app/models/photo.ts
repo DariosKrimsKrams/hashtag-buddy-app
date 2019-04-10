@@ -1,4 +1,3 @@
-import { Hashtag } from "./hashtag";
 import { HashtagCategory } from "./hashtag-category";
 import { SelectedHashtag } from "./selected-hashtag";
 
@@ -7,11 +6,11 @@ export class Photo {
 	image: string;
 	categories: HashtagCategory[];
 	selectedHashtags: SelectedHashtag[];
-    timestamp: number;
+	timestamp: number;
 
-    public constructor() {
+	public constructor() {
 		this.categories = [];
 		this.selectedHashtags = [];
-    }
+	}
 
 }
