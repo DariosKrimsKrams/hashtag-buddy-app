@@ -43,8 +43,6 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   @Input() public customUserHashtagsText: string = "";
   @Output() resetInput: EventEmitter<void> = new EventEmitter();
   
-  private customerHashtagsTagId = 0;
-
   constructor(
     private page: Page,
     private router: RouterExtensions,
@@ -61,10 +59,10 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     this.selectedHashtags = new ResultSelectionHashtags();
     const id = Number(this.route.snapshot.params['id']);
     this.photo = this.userService.getPhoto(id);
-    // this.selectedHashtags.fromPhoto(this.photo);
-    // console.log("loaded selectedHashtags");
-    // console.log(this.selectedHashtags);
-    // ToDo tagId undefiend? :o
+    this.selectedHashtags.fromPhoto(this.photo);
+    this.selectedHashtags.hashtags.forEach(hashtag => {
+      this.hightlightStatus[hashtag.titleId + '_' + hashtag.tagId] = true;
+    });
   }
 
   public onScroll(event: ScrollEventData, scrollView: ScrollView, topView: View): void {
@@ -86,19 +84,19 @@ export class ResultsComponent implements AfterViewInit, OnInit {
 
   public toggleHashtag(tag: Hashtag, titleId: number, tagId: number): void {
     if(this.hightlightStatus[titleId + '_' + tagId]) {
-      this.deselectHashtag(titleId, tagId)
+      this.deselectHashtag(tag.title)
     } else {
       this.selectHashtag(tag, titleId, tagId);
     }
   }
 
-  public deselectHashtag(titleId: number, tagId: number): void {
+  public deselectHashtag(name: string): void {
     for(var i = 0; i < this.selectedHashtags.length; i++) {
-      var element = this.selectedHashtags[i];
-      if(element.tagId == tagId) {
+      var hashtag = this.selectedHashtags.hashtags[i];
+      if(hashtag.hashtag.title == name) {
         this.selectedHashtags.splice(i, 1);
-        if(titleId != -1 && tagId != -1) {
-          this.hightlightStatus[titleId + '_' + tagId] = false;
+        if(hashtag.titleId != -1 && hashtag.tagId != -1) {
+          this.hightlightStatus[hashtag.titleId + '_' + hashtag.tagId] = false;
         }
         this.selectionChanged();
         return;
@@ -125,8 +123,8 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
   
   public deselectAll(category: HashtagCategory, titleId: number): void {
-    category.tags.map((_tag, tagId) => {
-      this.deselectHashtag(titleId, tagId);
+    category.tags.map((tag, tagId) => {
+      this.deselectHashtag(tag.title);
     });
   }
 
@@ -147,7 +145,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
         word.split('#').map(word2 => {
           if(word2.length != 0) {
             var hashtag = new Hashtag({title: word2});
-            this.selectedHashtags.push({hashtag: hashtag, titleId: -1, tagId: this.customerHashtagsTagId++});
+            this.selectedHashtags.push({hashtag: hashtag, titleId: -1, tagId: -1});
             this.selectionChanged();
           }
         });

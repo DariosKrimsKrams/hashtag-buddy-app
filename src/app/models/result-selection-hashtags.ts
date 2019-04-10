@@ -1,6 +1,8 @@
 import { ResultSelectionHashtag } from "./result-selection-hashtag";
 import { SelectedHashtag } from "./selected-hashtag";
 import { Photo } from "./photo";
+import { Hashtag } from "./hashtag";
+import { HashtagCategory } from "./hashtag-category";
 
 export class ResultSelectionHashtags {
   hashtags: ResultSelectionHashtag[];
@@ -32,33 +34,37 @@ export class ResultSelectionHashtags {
   }
 
   public fromPhoto(photo: Photo): void {
-    this.fromSelectedHashtags(photo.selectedHashtags || []);
-
-    // find tagId
-    for(var i = 0; i < this.hashtags.length; i++) {
-        var hashtag = this.hashtags[i];
-        if(hashtag.titleId == -1) {
-            // ToDo funzt das?
-            continue;
-        }
-        var category = photo.categories[hashtag.titleId];
-        for(var j = 0; j < category.tags.length; j++) {
-            var categoryTag = category.tags[j];
-            if(categoryTag.title == hashtag.hashtag.title) {
-                hashtag.tagId = j;
-                // ToDo funzt auch das?
-                break;
-            }
-        }
-    }
-
+    this.hashtags = this.fromSelectedHashtags(photo.selectedHashtags || []);
+    this.addTagIds(photo.categories, this.hashtags);  
   }
-  public fromSelectedHashtags(hashtags: SelectedHashtag[]): void {
-    for(var i = 0; i < this.hashtags.length; i++) {
+
+  private fromSelectedHashtags(hashtags: SelectedHashtag[]): ResultSelectionHashtag[] {
+    var result: ResultSelectionHashtag[] = []
+    for(var i = 0; i < hashtags.length; i++) {
         var hashtag = hashtags[i];
-        // ToDo bei titleId = -1 -> tagId hochzählen
-        var resultSelectionHashtag = new ResultSelectionHashtag({hashtag: hashtag, titleId: hashtag.categoryId, tagId: 0});
-        this.hashtags.push(resultSelectionHashtag);
+        var resultSelectionHashtag = new ResultSelectionHashtag({hashtag: new Hashtag({title: hashtag.title}), titleId: hashtag.categoryId, tagId: -1});
+        result.push(resultSelectionHashtag);
+    }
+    return result;
+  }
+
+  private addTagIds(categories: HashtagCategory[], hashtags: ResultSelectionHashtag[]) {
+    for(var i = 0; i < hashtags.length; i++) {
+      var hashtag = hashtags[i];
+      if(hashtag.titleId == -1) {
+        console.log("continue")
+        continue;
+      }
+      if(hashtag.titleId == -1)
+        console.log("continue FUCK zu weit")
+      var category = categories[hashtag.titleId];
+      for(var j = 0; j < category.tags.length; j++) {
+          var categoryTag = category.tags[j];
+          if(categoryTag.title == hashtag.hashtag.title) {
+              hashtag.tagId = j;
+              break;
+          }
+      }
     }
   }
 
