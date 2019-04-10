@@ -14,7 +14,6 @@ import * as frame from "tns-core-modules/ui/frame";
 import * as app from "tns-core-modules/application";
 import { UserService } from '../../storages/user.service';
 import { Photo } from '../../models/photo';
-import { SelectedHashtag } from '~/app/models/selected-hashtag';
 import { ResultSelectionHashtags } from '~/app/models/result-selection-hashtags';
 
 @Component({
@@ -27,7 +26,6 @@ export class ResultsComponent implements AfterViewInit, OnInit {
 
   public menus = ["home", "settings", "store", "faq", "feedback"];
   public parallaxHeight = 250;
-  public hashtags: HashtagCategory[];
   public photo: Photo;
   public dialogOpen: boolean;
   public openmenu: boolean;
@@ -41,13 +39,13 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public timeStart = 0;
   public timeOverall = 0;
   @Input() public customUserHashtagsText: string = "";
-  @Output() resetInput: EventEmitter<void> = new EventEmitter();
+  @Output() public resetInput: EventEmitter<void> = new EventEmitter();
   
   constructor(
-    private page: Page,
-    private router: RouterExtensions,
-    private userService: UserService,
-    private route: ActivatedRoute,
+    private readonly page: Page,
+    private readonly router: RouterExtensions,
+    private readonly userService: UserService,
+    private readonly route: ActivatedRoute,
   ) {
     this.page.actionBarHidden = true;
   }
@@ -157,10 +155,26 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     if(exist) {
       return;
     }
-
+    if(this.selectHashtagIfExist(name)) {
+      return;
+    }
     var hashtag = new Hashtag({title: name});
     this.selectedHashtags.push({hashtag: hashtag, titleId: -1, tagId: -1});
     this.selectionChanged();
+  }
+
+  private selectHashtagIfExist(name: string): boolean {
+    for(var i = 0; i < this.photo.categories.length; i++) {
+      var category = this.photo.categories[i];
+      for(var j = 0; j < category.tags.length; j++) {
+        var tag = category.tags[j]
+        if(tag.title == name.toLowerCase()) {
+          this.selectHashtag(tag, i, j);
+          return true;
+        }
+      }    
+    }
+    return false;
   }
 
   public openMenu(): void {

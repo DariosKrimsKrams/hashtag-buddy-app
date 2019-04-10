@@ -5,6 +5,7 @@ import { Hashtag } from "./hashtag";
 import { HashtagCategory } from "./hashtag-category";
 
 export class ResultSelectionHashtags {
+  
   hashtags: ResultSelectionHashtag[];
 
   public constructor() {
@@ -15,12 +16,12 @@ export class ResultSelectionHashtags {
     return this.hashtags.length || 0;
   }
 
-  public splice(start, deleteCount): void {
+  public splice(start: number, deleteCount: number): void {
     this.hashtags.splice(start, deleteCount);
   }
 
   public push(hashtag: ResultSelectionHashtag): void {
-      this.hashtags.push(hashtag);
+    this.hashtags.push(hashtag);
   }
 
   public toSelectedHashtags(): SelectedHashtag[] {
@@ -41,9 +42,9 @@ export class ResultSelectionHashtags {
   private fromSelectedHashtags(hashtags: SelectedHashtag[]): ResultSelectionHashtag[] {
     var result: ResultSelectionHashtag[] = []
     for(var i = 0; i < hashtags.length; i++) {
-        var hashtag = hashtags[i];
-        var resultSelectionHashtag = new ResultSelectionHashtag({hashtag: new Hashtag({title: hashtag.title}), titleId: hashtag.categoryId, tagId: -1});
-        result.push(resultSelectionHashtag);
+      var hashtag = hashtags[i];
+      var resultSelectionHashtag = new ResultSelectionHashtag({hashtag: new Hashtag({title: hashtag.title}), titleId: hashtag.categoryId, tagId: -1});
+      result.push(resultSelectionHashtag);
     }
     return result;
   }
@@ -52,18 +53,15 @@ export class ResultSelectionHashtags {
     for(var i = 0; i < hashtags.length; i++) {
       var hashtag = hashtags[i];
       if(hashtag.titleId == -1) {
-        console.log("continue")
         continue;
       }
-      if(hashtag.titleId == -1)
-        console.log("continue FUCK zu weit")
       var category = categories[hashtag.titleId];
       for(var j = 0; j < category.tags.length; j++) {
-          var categoryTag = category.tags[j];
-          if(categoryTag.title == hashtag.hashtag.title) {
-              hashtag.tagId = j;
-              break;
-          }
+        var categoryTag = category.tags[j];
+        if(categoryTag.title == hashtag.hashtag.title) {
+          hashtag.tagId = j;
+          break;
+        }
       }
     }
   }
