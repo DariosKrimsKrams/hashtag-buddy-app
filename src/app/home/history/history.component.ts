@@ -32,11 +32,11 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.photos = this.userService.getPhotos();
-    this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos) => {
+    this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
       this.photos = photos;
     });
     this.photos = this.userService.getPhotos();
-    this.photoUpdatedSubscription = this.userService.photoUpdated.subscribe((photos) => {
+    this.photoUpdatedSubscription = this.userService.photoUpdated.subscribe((photos: Photo[]) => {
       this.photos = photos;
     });
   }
