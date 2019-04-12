@@ -15,7 +15,7 @@ import { Subscription } from "rxjs";
 export class HistoryComponent implements OnInit, OnDestroy {
 
   public selected: number = -1;
-  public photos: Photo[] = [];
+  public photosReverse: Photo[] = [];
   public hashtagAmount = 7;
 
   private photoAddedSubscription: Subscription;
@@ -31,13 +31,12 @@ export class HistoryComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.photos = this.userService.getPhotos();
+    this.setPhotos(this.userService.getPhotos());
     this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
-      this.photos = photos;
+      this.setPhotos(photos);
     });
-    this.photos = this.userService.getPhotos();
     this.photoUpdatedSubscription = this.userService.photoUpdated.subscribe((photos: Photo[]) => {
-      this.photos = photos;
+      this.setPhotos(photos);
     });
   }
     
@@ -65,7 +64,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
     var successful = this.userService.deletePhoto(photo);
     this.deviceService.deletePhoto(photo.image);
     if(successful) {
-      this.photos.splice(this.selected, 1);
+      this.photosReverse.splice(this.selected, 1);
       this.selected = -1;
       // ToDo show toast "delete successful"
     } else {
@@ -75,7 +74,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   public clickOpenCloseHistory(): void {
     this.openCloseHistory.emit();
-    this.photos = this.userService.getPhotos();
+    this.setPhotos(this.userService.getPhotos());
   }
 
   public selectElement(photo: Photo): void {
@@ -118,6 +117,10 @@ export class HistoryComponent implements OnInit, OnDestroy {
     var count = this.hashtagAmount;
     var result = amount - count;
 		return result >= 0 ? result : 0;
+  }
+
+  private setPhotos(photos: Photo[]): void {
+    this.photosReverse = photos.slice().reverse();
   }
 
 }
