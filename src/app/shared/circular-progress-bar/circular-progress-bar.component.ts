@@ -9,7 +9,7 @@ import { Component, OnInit } from "@angular/core";
 export class CircularProgressBarComponent implements OnInit {
   
   private percentValue: number = 0;
-  private timeSec: number = 30;
+  private timeSec: number = 20;
 
   constructor(
   ) { }

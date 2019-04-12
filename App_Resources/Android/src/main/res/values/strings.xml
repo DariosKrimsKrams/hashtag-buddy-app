@@ -19,10 +19,8 @@
   <string name="menu_faq">"Tips and Tricks"</string>
   <string name="menu_store">"Upgrades"</string>
   <string name="menu_home">"Home"</string>
-  <string name="about_opensource_bla">"..."</string>
   <string name="about_opensource_ns">"NativeScript"</string>
-  <string name="about_opensource_intro">"Thanks for the following software to be open source :)"</string>
-  <string name="about_headline_opensource">"Open Source"</string>
+  <string name="about_headline_opensource">"Open Source &lt;3"</string>
   <string name="about_infos_user_id">"User ID"</string>
   <string name="about_infos_be_version">"Backend version"</string>
   <string name="about_infos_app_version">"App version"</string>
@@ -30,9 +28,9 @@
   <string name="about_infos_contact">"Contact us"</string>
   <string name="about_headline_infos">"Infos"</string>
   <string name="about_platforms_4">"xxx"</string>
-  <string name="about_platforms_3">"Freelancer.com for contests"</string>
+  <string name="about_platforms_3">"Freelancer.coa for contests"</string>
   <string name="about_platforms_2">"Upwork for outsourcing"</string>
-  <string name="about_platforms_1">"SurveyMoney for user feedback"</string>
+  <string name="about_platforms_1">"SurveyMonkey for user feedback"</string>
   <string name="about_headline_platforms">"Platforms"</string>
   <string name="about_credits_6">"Christan und Paul from Germany for kickstarting this Idea"</string>
   <string name="about_credits_5">"Aditia Kurniawan from Indonesia for Logo"</string>

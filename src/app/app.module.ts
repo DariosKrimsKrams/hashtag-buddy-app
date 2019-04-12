@@ -8,6 +8,7 @@ import { CoreModule } from "./core.module";
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { HistoryModule } from "~/app/home/history/history.module";
 import { DeviceService } from "./services/device-photos.service";
+import { ApplicationPipesModule } from "./shared/pipes/application-pipes.module";
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { DeviceService } from "./services/device-photos.service";
         CoreModule,
         NativeScriptLocalizeModule,
         HistoryModule,
+        ApplicationPipesModule
     ],
     declarations: [
         AppComponent,

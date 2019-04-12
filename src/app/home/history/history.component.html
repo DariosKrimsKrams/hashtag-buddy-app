@@ -1,5 +1,3 @@
-
-
 <GridLayout columns="auto,auto,auto" horizontalAlignment="center" verticalAlignment="top" id="history_header" (tap)="clickOpenCloseHistory()">
     <Image src="~/app/assets/images/icons/history.png" col="0" class="m-r-10" width="20pt" height="18pt"></Image>
     <Label text="{{ 'history_title' | L }} ({{photos.length}})" fontSize="16" class="font-weight-bold" col="1"></Label>
@@ -8,7 +6,7 @@
 </GridLayout>
 <ScrollView id="history_content" orientation="vertical" sdkExampleTitle sdkToggleNavButton>
     <StackLayout>
-        <StackLayout orientation="horizontal" class="list-group-item" (longPress)="selectItem(i)" *ngFor="let photo of photos; let i = index;">
+        <StackLayout orientation="horizontal" class="list-group-item" (longPress)="selectItem(i)" *ngFor="let photo of photos | reverse; let i = index;">
             <GridLayout rows="*" [columns]="isSelected(i) ? '20,*,70' : '70,*,0'" verticalAlignment="top" class="m-b-10">
                 <Image [src]="photo.image" col="0" *ngIf="!isSelected(i)" stretch="aspectFill" (tap)="selectElement(photo)" verticalAlignment="top"></Image>
                 <StackLayout class="left-blackbar" col="0" *ngIf="isSelected(i)"></StackLayout>

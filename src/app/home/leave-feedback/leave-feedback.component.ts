@@ -49,7 +49,7 @@ export class LeaveFeedbackComponent implements OnInit {
 
 
     // ToDo load feedback if available
-    //this.photo.feedback
+    this.photo.feedback
   }
 
   public getUserSelectedHashtags(): SelectedHashtag[] {

@@ -42,8 +42,8 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
     
   ngOnDestroy() {
-      this.photoAddedSubscription.unsubscribe();
-      this.photoUpdatedSubscription.unsubscribe();
+    this.photoAddedSubscription.unsubscribe();
+    this.photoUpdatedSubscription.unsubscribe();
   }
 
   public selectItem(index: number): void {
