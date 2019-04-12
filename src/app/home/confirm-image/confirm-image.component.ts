@@ -53,13 +53,10 @@ export class ConfirmImageComponent implements OnInit {
   }
 
   confirmImage(): void {
-    
     this.openLoadingPage();
     this.savePhoto().subscribe(photoId => {
-
       var customerId = this.userService.getUserId();
       var photo = this.userService.getPhoto(photoId);
-
       this.evaluationRepository.UploadPhoto(photo.image, customerId)
       .subscribe((httpResponse: IHttpResponse) => {
         console.log(httpResponse);
@@ -95,6 +92,7 @@ export class ConfirmImageComponent implements OnInit {
 
     var photo = this.userService.getPhoto(photoId);
     photo.categories = categories;
+    photo.logId = data.logId;
     
     this.userService.updatePhoto(photo);
     this.openResultsPage(photoId);

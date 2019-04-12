@@ -16,8 +16,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   public selected: number = -1;
   public photosReverse: Photo[] = [];
-  public hashtagAmount = 7;
-
+  private hashtagAmount = 7;
   private photoAddedSubscription: Subscription;
   private photoUpdatedSubscription: Subscription;
   

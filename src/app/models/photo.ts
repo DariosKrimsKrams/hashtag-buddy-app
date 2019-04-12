@@ -9,6 +9,7 @@ export class Photo {
 	selectedHashtags: SelectedHashtag[];
 	feedback: ResultFeedback;
 	timestamp: number;
+	logId: number;
 
 	public constructor() {
 		this.categories = [];

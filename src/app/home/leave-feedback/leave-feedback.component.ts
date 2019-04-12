@@ -8,10 +8,9 @@ import { FeedbackRepository } from '~/app/services/feedback-repository.service';
 import { fromFile, ImageSource } from 'tns-core-modules/image-source/image-source';
 import { shareInstagram } from 'nativescript-instagram-share';
 import { Photo } from '~/app/models/photo';
-import { DeviceService } from '~/app/services/device-photos.service';
 import { ActivatedRoute } from '@angular/router';
-import { Folder, knownFolders, path } from 'tns-core-modules/file-system/file-system';
 import { SelectedHashtag } from '~/app/models/selected-hashtag';
+import { ResultFeedbackRequest } from '~/app/models/request/result-feedback-request';
 
 @Component({
   templateUrl: './leave-feedback.component.html',
@@ -20,14 +19,15 @@ import { SelectedHashtag } from '~/app/models/selected-hashtag';
 })
 export class LeaveFeedbackComponent implements OnInit {
 
+  public rating = 3; // 0=great, 1=satisfied, 2=bad, 3=none 
+  public tag1: any[] = [];
+  public tag2: any[] = [];
+  public missingHashtags = '';
+  public comment = '';
+  
   public userSelectedHashtags: Hashtag[] = [];
   public userNotSelectedHashtags: Hashtag[] = [];
   public emoji = ['great', 'satisfied', 'bad'];
-  public tag1: number[] = [];
-  public tag2: number[] = [];
-  public rating_number = 3; // 0=great, 1=satisfied, 2=bad, 3=none 
-  public missingHashtags = '';
-  public comment = '';
   private photo: Photo;
 
   constructor(
@@ -36,20 +36,25 @@ export class LeaveFeedbackComponent implements OnInit {
     private router: RouterExtensions,
     private userService: UserService,
     private feedbackRepositoryService: FeedbackRepository,
-    ) {
+  ) {
     this.page.actionBarHidden = true;
   }
 
   ngOnInit() {
     const id = Number(this.route.snapshot.params['id']);
     this.photo = this.userService.getPhoto(id);
-
     this.userSelectedHashtags = this.getUserSelectedHashtags();
     this.userNotSelectedHashtags = this.getUserNotSelectedHashtags();
 
+    this.restoreFeedback(this.photo.feedback);
+  }
 
-    // ToDo load feedback if available
-    this.photo.feedback
+  private restoreFeedback(feedback: ResultFeedback): void {
+    this.rating = feedback.rating;
+    this.tag1 = feedback.goodHashtags;
+    this.tag2 = feedback.badHashtags;
+    this.missingHashtags = feedback.missingHashtags;
+    this.comment = feedback.comment;
   }
 
   public getUserSelectedHashtags(): SelectedHashtag[] {
@@ -78,90 +83,76 @@ export class LeaveFeedbackComponent implements OnInit {
     return hashtags;
   }
 
-  sendFeedback() {
+  public sendFeedback(): void {
+    
     if(this.missingHashtags === ""
       && this.comment === ""
-      && this.rating_number === undefined
-      // ToDo if all fields are empty
+      && this.rating === undefined
+      && this.tag1.length == 0
+      && this.tag2.length == 0
     ){
       console.log('empty');
       this.continueWithoutFeedback();
       return;
     }
 
-    let rating = 'none';
-    switch(this.rating_number) {
-      case 0:
-        rating = 'great';
-        break;
-      case 1:
-        rating = 'satisfied';
-        break;
-      case 2:
-        rating = 'bad';
-        break;
-    }
+    // var rating = this.rating_number == 0 ? 'great' : this.rating_number == 1 ? 'satisfied' : rating == 2 ? 'bad' : 'none';
+    // var goodHashtags = this.getHashtagsByIndizes(this.userSelectedHashtags, this.tag1);
+    // var badHashtags = this.getHashtagsByIndizes(this.userNotSelectedHashtags, this.tag2);
+    // var customerId = this.userService.getUserId();
 
-    let good_hashtags = '';
-    let bad_hashtags = '';
-    let k = 0;
-    for(let i = 0; i < this.userSelectedHashtags.length ; i++) {
-      if(this.tag1[i]) {
-        if(k === 0){
-          // ToDo why does some variables are snake_case and some have CamelCase style
-          good_hashtags = '{';
-          k++;
-        }
-        if(k > 1) good_hashtags += ",";
-        good_hashtags += "'" + this.userSelectedHashtags[i] + "'";
-      }
-    }
-    if(k > 0) {
-      good_hashtags += "}";
-    }
-
-    k = 0;
-    for(let i = 0; i < this.userNotSelectedHashtags.length ; i++) {
-      if(this.tag2[i]) {
-        if(k === 0){
-          bad_hashtags = '{';
-          k++;
-        }
-        if(k > 1) bad_hashtags += ",";
-        bad_hashtags += "'" + this.userNotSelectedHashtags[i] + "'";
-      }
-    }
-    if(k > 0) {
-      bad_hashtags += "}";
-    }
-    // ToDo server receives: goodHashtags":"{'[object Object]'}","badHashtags":"{'[object Object]'}"
-  
-    let feedback = { 
-      customerId: "0317a2e8e1bbae79184524ea1322c152407a0bc1e7f4837571ee3517e9360da4", 
-      photoId: '123', 
-      rating: rating, 
-      goodHashtags: good_hashtags, 
-      badHashtags: bad_hashtags, 
+    const feedback: ResultFeedback = { 
+      rating: this.rating, 
+      goodHashtags: this.tag1, 
+      badHashtags: this.tag2, 
       missingHashtags: this.missingHashtags, 
       comment: this.comment 
     }
-    this.feedbackRepositoryService.addResultFeedback(feedback as ResultFeedback);
-    // .subscribe(feedback => {
-    //   // this is null, is that correct?
-    //   console.log(feedback);
-    // });
-    this.openInstagram();
+    this.photo.feedback = feedback;
+    this.userService.updatePhoto(this.photo);
+    this.doRequest(this.photo);
+    // this.openInstagram();
 
     // ToDo there is the possibility to click on Send-Button twice / multiple times.
     // Even with OpenInstagram logic coming soon, it should be able to double-send without any changes between the sendings
     // (that means: if the user change some value, another sending should be allowed)
   }
 
-  continueWithoutFeedback() {
+  private doRequest(photo: Photo): void {
+    var feedback = photo.feedback;
+    var rating = feedback.rating == 0 ? 'great' : feedback.rating == 1 ? 'satisfied' : feedback.rating == 2 ? 'bad' : 'none';
+    var goodHashtags = this.getHashtagsByIndizes(this.userSelectedHashtags, feedback.goodHashtags);
+    var badHashtags = this.getHashtagsByIndizes(this.userNotSelectedHashtags, feedback.badHashtags);
+    var customerId = this.userService.getUserId();
+
+    let feedbackDto: ResultFeedbackRequest = { 
+      customerId: customerId,
+      logId: photo.logId,
+      rating: rating, 
+      goodHashtags: goodHashtags, 
+      badHashtags: badHashtags, 
+      missingHashtags: feedback.missingHashtags, 
+      comment: feedback.comment 
+    }
+    this.feedbackRepositoryService.sendResultFeedback(feedbackDto);
+  }
+
+  private getHashtagsByIndizes(hashtags: Hashtag[], indizes: any[]): string[] {
+    var result: string[] = [];
+    for(let key in indizes) {
+      if(indizes[key]) {
+        var hashtag = hashtags[key];
+        result.push(hashtag.title);
+      }
+    }
+    return result;
+  }
+
+  public continueWithoutFeedback(): void {
     this.openInstagram();
   }
 
-  goPrevPage() {
+  public goPrevPage(): void {
     this.router.navigate(["/home/results/1"], {
       transition: {
         name: "slideRight",
@@ -171,11 +162,11 @@ export class LeaveFeedbackComponent implements OnInit {
     });
   }
 
-  setMissingHashtags(text: string) {
+  public setMissingHashtags(text: string): void {
     this.missingHashtags = text;
   }
 
-  commentChange(text: string) {
+  public commentChange(text: string): void {
     this.comment = text;
   }
 
@@ -185,10 +176,10 @@ export class LeaveFeedbackComponent implements OnInit {
     // let image = this.photo.image;
     shareInstagram(image).then((r)=>{
       console.log("instagram open succcessfully", r);
-  }).catch((e)=>{
+    }).catch((e)=>{
       console.log("instagram is not installed");
       console.log("error", e);
-  });
+    });
     // ToDo change to putExtra(img, text)
     
   }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { getJSON } from "tns-core-modules/http";
+import { request } from "tns-core-modules/http";
 import { AppFeedback } from '~/app/models/app-feedback';
-import { ResultFeedback } from '~/app/models/result-feedback';
 import { environment } from '../environments/environment';
+import { ResultFeedbackRequest } from '../models/request/result-feedback-request';
 
 @Injectable({
   providedIn: 'root',
@@ -11,47 +11,36 @@ import { environment } from '../environments/environment';
 export class FeedbackRepository {
 
   constructor(
-    // private http: HttpClient,
   ) { }
 
   private appFeedbackUrl = environment.apiUrl + "/Feedback/App";
   private resultFeedbackUrl = environment.apiUrl + "/Feedback/Results";
 
-  addAppFeedback (feedback: AppFeedback): void {
-    
-      // const observable = new Observable<EvaluationRequest>(observer => {
-      //     request({
-      //         url: this.EvaluationUrl,
-      //         method: "POST",
-      //         headers: { "Content-Type": "application/json" },
-      //         content: JSON.stringify(feedback)
-      //     }).then((response) => {
-      //         const result = response.content.toJSON();
-      //         observer.next(result);
-      //         observer.complete();
-      //     }, (e) => {
-      //         console.log("error: ", e)
-      //     });
-      // });
-      // return observable;
-      
-    // ToDo CHANGE TO POST
-    getJSON(this.appFeedbackUrl).then((result: any) => {
+  sendAppFeedback (feedback: AppFeedback): void {
+    request({
+      url: this.appFeedbackUrl,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      content: JSON.stringify(feedback)
+    }).then((result) => {
       console.log("result", result);
     }, (e) => {
       console.log("error", e);
     });
-    // return this.http.post<AppFeedback>(this.appFeedbackUrl, feedback, httpOptions);
   }
 
-  addResultFeedback (feedback: ResultFeedback) {
-    // ToDo CHANGE TO POST
-    getJSON(this.resultFeedbackUrl).then((result: any) => {
+  sendResultFeedback (feedback: ResultFeedbackRequest) {
+    console.log("SEND", feedback);
+    request({
+      url: this.resultFeedbackUrl,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      content: JSON.stringify(feedback)
+    }).then((result) => {
       console.log("result", result);
     }, (e) => {
       console.log("error", e);
     });
-    // return this.http.post<ResultFeedback>(this.resultFeedbackUrl, feedback, httpOptions);
   }
 
 }

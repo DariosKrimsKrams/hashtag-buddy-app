@@ -59,7 +59,7 @@ export class FeedbackComponent implements OnInit {
       email: this.email, 
       message: this.message
     }
-    this.feedbackRepositoryService.addAppFeedback(feedback);
+    this.feedbackRepositoryService.sendAppFeedback(feedback);
     // .subscribe(feedback => {
     //   this.showModal();
     // });    

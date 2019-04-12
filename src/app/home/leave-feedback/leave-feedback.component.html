@@ -14,10 +14,10 @@
                 </StackLayout>
 
                 <GridLayout class="status m-l-20 m-r-5 m-t-10" columns="*,*,*" rows="auto">
-                    <GridLayout [col]="i" class="m-r-15" *ngFor="let item of emoji; let i = index;" (tap)="rating_number = i;">
-                        <StackLayout horizontalAlignment="center" class="p-t-5 p-b-5" [class.gradient]="rating_number === i">
-                            <Image [src]="'~/app/assets/images/icons/' + item + '.png'" *ngIf="rating_number !== i"></Image>
-                            <Image [src]="'~/app/assets/images/icons/' + item + '_white.png'" *ngIf="rating_number === i"></Image>
+                    <GridLayout [col]="i" class="m-r-15" *ngFor="let item of emoji; let i = index;" (tap)="rating = i;">
+                        <StackLayout horizontalAlignment="center" class="p-t-5 p-b-5" [class.gradient]="rating === i">
+                            <Image [src]="'~/app/assets/images/icons/' + item + '.png'" *ngIf="rating !== i"></Image>
+                            <Image [src]="'~/app/assets/images/icons/' + item + '_white.png'" *ngIf="rating === i"></Image>
                             <Label [text]="item" class="font-reg-small"></Label>
                         </StackLayout>
                     </GridLayout>
@@ -39,7 +39,7 @@
                     <FloatLabel placeholder="{{ 'leave_feedback_comments' | L }}" (userTextEmitter)="commentChange($event)"></FloatLabel>
                 </StackLayout>
             
-                <StackLayout class="m-t-20 m-l-20 m-r-20">
+                <StackLayout class="m-t-20 m-l-20 m-r-20" style="margin-bottom: 200pt;">
                     <Button text="{{ 'leave_feedback_send_feedback' | L }}" class="btn btn-main btn-normal btn-rounded-lg font-demi-bold" (tap)="sendFeedback()"></Button>
                     <Button text="{{ 'leave_feedback_skip_no_send' | L }}" class="btn btn-outline btn-rounded-lg border-color-normal color-normal" (tap)="continueWithoutFeedback()"></Button>
                 </StackLayout>
