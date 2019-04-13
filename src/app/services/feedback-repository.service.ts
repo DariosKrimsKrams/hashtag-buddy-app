@@ -18,7 +18,6 @@ export class FeedbackRepository {
   private resultFeedbackUrl = environment.apiUrl + "/Feedback/Results";
 
   sendAppFeedback (feedback: AppFeedback): Observable<any> {
-    console.log(JSON.stringify(feedback));
     return new Observable<any>(observer => {
       request({
         url: this.appFeedbackUrl,

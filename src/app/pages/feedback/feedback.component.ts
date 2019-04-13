@@ -63,7 +63,7 @@ export class FeedbackComponent implements OnInit {
     this.feedbackRepositoryService.sendAppFeedback(feedback)
     .subscribe(feedback => {
     });
-    // this.showModal();  
+    this.showModal();  
   }
 
   private showModal(): void {

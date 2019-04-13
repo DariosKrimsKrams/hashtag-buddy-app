@@ -13,7 +13,7 @@ export class ModalComponent implements OnInit {
   constructor(
     private params: ModalDialogParams,
     private router: RouterExtensions,
-    ) {}
+  ) {}
 
   ngOnInit() {}
 

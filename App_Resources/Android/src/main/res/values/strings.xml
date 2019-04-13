@@ -14,7 +14,7 @@
   <string name="store_headline_abo">"Subscriptions"</string>
   <string name="store_headline_once">"One-time payments"</string>
   <string name="store_intro">"Buy unlocked photos to get uncensored hashtag results for your uploads. All packages include an lifelong unlimited history."</string>
-  <string name="menu_feedback">"Improve me"</string>
+  <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"More"</string>
   <string name="menu_faq">"Tips and Tricks"</string>
   <string name="menu_store">"Upgrades"</string>
@@ -42,10 +42,13 @@
   <string name="about_desc">"Thank you for using Instaq.\n\nWe believe in improving the process of choosing Instagram hashtags. To bring the same quality of hashtags used by influencer agengies to everyone, we want to build Instaq empowering with powerful algorithms to analyze Instagram\'s latest, most successful content and build a  great User Experience around it.\n\nDo you agree with our vision? Let us build this dream together. Contribute to Instaq by giving feedback for hashtags or ask for features or improvements."</string>
   <string name="about_title">"About"</string>
   <string name="settings_footer_title">"Follow us"</string>
-  <string name="feedback_send">"Leave feedback"</string>
+  <string name="feedback_successful_desc">"Your feedback has been sent :)"</string>
+  <string name="feedback_successful_headline">"Thank you"</string>
+  <string name="feedback_send">"Send feedback"</string>
   <string name="feedback_message">"Your message"</string>
   <string name="feedback_email">"Your e-mail"</string>
-  <string name="feedback_intro">"We wish you had a great experience. To build an ever better one, we want to include you in the process of making it. What do you like about this app? What do you disable? How would you improve it? Please sharing your insights with us and tell us what ever you want. You can also write an e-mail us: instaq@innocliq.me"</string>
+  <string name="feedback_intro">"We wish you had a great experience. To build an ever better one, we want to include you in the process of making it by saying us what do next. What do you like about this app? And what do you disable?"</string>
+  <string name="feedback_title">"Improve this app"</string>
   <string name="diduknow_fact23">"30 %% of users bought a product they discovered on Instagram"</string>
   <string name="diduknow_fact22">"400 million users are watching instagram Stories on a daily basis"</string>
   <string name="diduknow_fact21">"hashtags with 21-24 characters performa better than shorter hashtags, because they are more specific"</string>

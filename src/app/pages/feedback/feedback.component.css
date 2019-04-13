@@ -1,8 +1,10 @@
-.bg-muted {
-	background-color: #BDC0C3;
+.title {
+	color: rgba(0,0,0,200);
 }
-
 .feedback {
 	height: 50pt;
 	margin-top: 50pt;
+}
+Button.muted {
+	background: #BDC0C3;
 }
