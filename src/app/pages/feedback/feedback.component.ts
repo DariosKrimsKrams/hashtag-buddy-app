@@ -11,6 +11,7 @@ import { isIOS, isAndroid } from "tns-core-modules/platform";
 import * as frame from "tns-core-modules/ui/frame";
 import { AppFeedback } from '~/app/models/app-feedback';
 import { FeedbackRepository } from '../../services/feedback-repository.service';
+import { UserService } from '~/app/storages/user.service';
 
 @Component({
   selector: 'ns-feedback',
@@ -19,8 +20,6 @@ import { FeedbackRepository } from '../../services/feedback-repository.service';
   moduleId: module.id,
 })
 export class FeedbackComponent implements OnInit {
-
-  openmenu = false;
 
   public email = '';
   public message = '';
@@ -31,51 +30,43 @@ export class FeedbackComponent implements OnInit {
     private modalService: ModalDialogService, 
     private viewContainerRef: ViewContainerRef,
     private feedbackRepositoryService: FeedbackRepository,
-    ) {
+    private userService: UserService,
+  ) {
     this.page.actionBarHidden = true;
   }
 
   ngOnInit() {
   }
 
-  openMenu(target: View): void {
+  public openMenu(target: View): void {
     this.dismissSoftKeybaord();
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
   }
 
-  closeMenu() {
+  public closeMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.closeDrawer();
   }
 
-  leaveFeedback() {
-    if(this.email === "" || this.message === ""){
-      console.log('empty');
-      return false;
+  public sendFeedback(): void {
+    if(this.email === "" && this.message === ""){
+      console.log("empty");
+      // ToDo Toast -> no data inserted
+      return;
     }
-    let feedback: AppFeedback = {
-      customerId: "0317a2e8e1bbae79184524ea1322c152407a0bc1e7f4837571ee3517e9360da4", 
+    let feedback: AppFeedback = new AppFeedback({
+      customerId: this.userService.getUserId(), 
       email: this.email, 
       message: this.message
-    }
-    this.feedbackRepositoryService.sendAppFeedback(feedback);
-    // .subscribe(feedback => {
-    //   this.showModal();
-    // });    
+    });
+    this.feedbackRepositoryService.sendAppFeedback(feedback)
+    .subscribe(feedback => {
+    });
+    // this.showModal();  
   }
 
-  goHome() {
-    this.router.navigate(["/home"], {
-      transition: {
-        name: "slideRight",
-        duration: 500,
-        curve: "easeOut"
-      }
-    })
-  }
-
-  showModal() {
+  private showModal(): void {
     const options: ModalDialogOptions = {
         viewContainerRef: this.viewContainerRef,
         fullscreen: false,
@@ -84,7 +75,7 @@ export class FeedbackComponent implements OnInit {
     this.modalService.showModal(ModalComponent, options);
   }
 
-  dismissSoftKeybaord() {
+  private dismissSoftKeybaord(): void {
     if (isIOS) {
       frame.topmost().nativeView.endEditing(true);
     }
@@ -93,11 +84,11 @@ export class FeedbackComponent implements OnInit {
     }
   }
 
-  emailChange(text: string) {
+  public emailChange(text: string): void {
     this.email = text;
   }
 
-  messageChange(text: string) {
+  public messageChange(text: string): void {
     this.message = text;
   }
 

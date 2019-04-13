@@ -7,7 +7,7 @@
                 <FloatLabel placeholder="{{ 'feedback_email' | L }}" #clearTextfieldClear (userTextEmitter)="emailChange($event)"></FloatLabel>
                 <FloatLabel placeholder="{{ 'feedback_message' | L }}" #clearTextfieldClear (userTextEmitter)="messageChange($event)"></FloatLabel>
                 <StackLayout class="m-t-10">
-                    <Button text="{{ 'feedback_send' | L }}" class="btn btn-rounded-lg btn-normal feedback" width="100%" [class.bg-muted]="email=='' && message==''" (tap)="leaveFeedback()"></Button>
+                    <Button text="{{ 'feedback_send' | L }}" class="btn btn-rounded-lg btn-normal feedback" width="100%" [class.bg-muted]="email=='' && message==''" (tap)="sendFeedback()"></Button>
                 </StackLayout>
             </StackLayout>        
         </GridLayout>
