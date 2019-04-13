@@ -30,14 +30,14 @@ export class FeedbackRepository {
   }
 
   sendResultFeedback (feedback: ResultFeedbackRequest) {
-    console.log("SEND", feedback);
     request({
       url: this.resultFeedbackUrl,
       method: "POST",
       headers: { "Content-Type": "application/json" },
       content: JSON.stringify(feedback)
-    }).then((result) => {
-      console.log("result", result);
+    }).then((response) => {
+      // const result = response.content.toJSON();
+      // console.log("result", result);
     }, (e) => {
       console.log("error", e);
     });

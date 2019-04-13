@@ -24,10 +24,10 @@ export class LeaveFeedbackComponent implements OnInit {
   public tag2: any[] = [];
   public missingHashtags = '';
   public comment = '';
-  
   public userSelectedHashtags: Hashtag[] = [];
   public userNotSelectedHashtags: Hashtag[] = [];
   public emoji = ['great', 'satisfied', 'bad'];
+  
   private photo: Photo;
 
   constructor(
@@ -45,7 +45,6 @@ export class LeaveFeedbackComponent implements OnInit {
     this.photo = this.userService.getPhoto(id);
     this.userSelectedHashtags = this.getUserSelectedHashtags();
     this.userNotSelectedHashtags = this.getUserNotSelectedHashtags();
-
     this.restoreFeedback(this.photo.feedback);
   }
 
@@ -69,7 +68,6 @@ export class LeaveFeedbackComponent implements OnInit {
 
   public getUserNotSelectedHashtags(): Hashtag[] {
     var hashtags: Hashtag[] = [];
-    
     for(var i = 0; i < this.photo.categories.length; i++) {
       var category = this.photo.categories[i];
       for(var j = 0; j < category.tags.length; j++) {
@@ -84,7 +82,6 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   public sendFeedback(): void {
-    
     if(this.missingHashtags === ""
       && this.comment === ""
       && this.rating === undefined
@@ -96,26 +93,19 @@ export class LeaveFeedbackComponent implements OnInit {
       return;
     }
 
-    // var rating = this.rating_number == 0 ? 'great' : this.rating_number == 1 ? 'satisfied' : rating == 2 ? 'bad' : 'none';
-    // var goodHashtags = this.getHashtagsByIndizes(this.userSelectedHashtags, this.tag1);
-    // var badHashtags = this.getHashtagsByIndizes(this.userNotSelectedHashtags, this.tag2);
-    // var customerId = this.userService.getUserId();
-
-    const feedback: ResultFeedback = { 
+    const feedback: ResultFeedback = new ResultFeedback({ 
       rating: this.rating, 
       goodHashtags: this.tag1, 
       badHashtags: this.tag2, 
       missingHashtags: this.missingHashtags, 
       comment: this.comment 
-    }
+    });
     this.photo.feedback = feedback;
     this.userService.updatePhoto(this.photo);
     this.doRequest(this.photo);
-    // this.openInstagram();
+    // ToDo Toast "wurde erfolgreich gesendet"
 
-    // ToDo there is the possibility to click on Send-Button twice / multiple times.
-    // Even with OpenInstagram logic coming soon, it should be able to double-send without any changes between the sendings
-    // (that means: if the user change some value, another sending should be allowed)
+    this.openInstagram();
   }
 
   private doRequest(photo: Photo): void {
@@ -125,15 +115,15 @@ export class LeaveFeedbackComponent implements OnInit {
     var badHashtags = this.getHashtagsByIndizes(this.userNotSelectedHashtags, feedback.badHashtags);
     var customerId = this.userService.getUserId();
 
-    let feedbackDto: ResultFeedbackRequest = { 
+    const feedbackDto: ResultFeedbackRequest = new ResultFeedbackRequest({ 
       customerId: customerId,
-      logId: photo.logId,
-      rating: rating, 
+      photoId: photo.logId,
+      rating: rating,
       goodHashtags: goodHashtags, 
       badHashtags: badHashtags, 
       missingHashtags: feedback.missingHashtags, 
       comment: feedback.comment 
-    }
+    });
     this.feedbackRepositoryService.sendResultFeedback(feedbackDto);
   }
 
@@ -171,7 +161,6 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   private openInstagram(): void {
-
     let image = this.getImageSource();
     // let image = this.photo.image;
     shareInstagram(image).then((r)=>{
@@ -181,7 +170,6 @@ export class LeaveFeedbackComponent implements OnInit {
       console.log("error", e);
     });
     // ToDo change to putExtra(img, text)
-    
   }
 
   private getImageSource(): ImageSource {
