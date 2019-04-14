@@ -42,6 +42,7 @@
   <string name="about_desc">"Thank you for using Instaq.\n\nWe believe in improving the process of choosing Instagram hashtags. To bring the same quality of hashtags used by influencer agengies to everyone, we want to build Instaq empowering with powerful algorithms to analyze Instagram\'s latest, most successful content and build a  great User Experience around it.\n\nDo you agree with our vision? Let us build this dream together. Contribute to Instaq by giving feedback for hashtags or ask for features or improvements."</string>
   <string name="about_title">"About"</string>
   <string name="settings_footer_title">"Follow us"</string>
+  <string name="feedback_modal_button">"OK"</string>
   <string name="feedback_successful_desc">"Your feedback has been sent :)"</string>
   <string name="feedback_successful_headline">"Thank you"</string>
   <string name="feedback_send">"Send feedback"</string>

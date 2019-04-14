@@ -8,26 +8,24 @@ import { FloatLabelModule } from "~/app/shared/float-label/float-label.module";
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
 import { setStatusBarColors } from "~/app/shared/status-bar-util";
 import { FeedbackRepository } from "~/app/services/feedback-repository.service";
+import { ModalModule } from './modal/modal.module';
 setStatusBarColors();
 
 @NgModule({
   declarations: [
     FeedbackComponent,
-    ModalComponent
   ],
   imports: [
     NativeScriptCommonModule,
     FeedbackRoutingModule,
     SmallHeaderModule,
     FloatLabelModule,
-    NativeScriptLocalizeModule
+    NativeScriptLocalizeModule,
+    ModalModule
   ],
   providers: [
     FeedbackRepository
   ],
-  schemas: [NO_ERRORS_SCHEMA],
-  entryComponents: [
-    ModalComponent
-  ]
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class FeedbackModule { }

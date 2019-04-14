@@ -9,6 +9,8 @@ import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { HistoryModule } from "~/app/home/history/history.module";
 import { DeviceService } from "./services/device-photos.service";
 import { ApplicationPipesModule } from "./shared/pipes/application-pipes.module";
+import { ModalComponent } from "./pages/feedback/modal/modal.component";
+import { ModalModule } from "./pages/feedback/modal/modal.module";
 
 
 @NgModule({
@@ -19,13 +21,14 @@ import { ApplicationPipesModule } from "./shared/pipes/application-pipes.module"
         NativeScriptModule,
         AppRoutingModule,
         NativeScriptUISideDrawerModule,
-        TNSFontIconModule.forRoot({
-            'fa': './assets/fontawesome-free-5.6.3-web/css/all.min.css'
-        }),
+        // TNSFontIconModule.forRoot({
+        //     'fa': './assets/fontawesome-free-5.6.3-web/css/all.min.css'
+        // }),
         CoreModule,
         NativeScriptLocalizeModule,
         HistoryModule,
-        ApplicationPipesModule
+        ApplicationPipesModule,
+        ModalModule,
     ],
     declarations: [
         AppComponent,

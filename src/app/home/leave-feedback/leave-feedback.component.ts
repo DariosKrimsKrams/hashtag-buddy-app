@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { Page } from "tns-core-modules/ui/page";
 import { UserService } from '~/app/storages/user.service';
@@ -11,6 +11,8 @@ import { Photo } from '~/app/models/photo';
 import { ActivatedRoute } from '@angular/router';
 import { SelectedHashtag } from '~/app/models/selected-hashtag';
 import { ResultFeedbackRequest } from '~/app/models/request/result-feedback-request';
+import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
+import { ModalComponent } from '~/app/pages/feedback/modal/modal.component';
 
 @Component({
   templateUrl: './leave-feedback.component.html',
@@ -36,7 +38,9 @@ export class LeaveFeedbackComponent implements OnInit {
     private router: RouterExtensions,
     private userService: UserService,
     private feedbackRepositoryService: FeedbackRepository,
-  ) {
+    private viewContainerRef: ViewContainerRef,
+    private modalService: ModalDialogService, 
+    ) {
     this.page.actionBarHidden = true;
   }
 
@@ -49,6 +53,9 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   private restoreFeedback(feedback: ResultFeedback): void {
+    if(feedback === undefined) {
+      return;
+    }
     this.rating = feedback.rating;
     this.tag1 = feedback.goodHashtags;
     this.tag2 = feedback.badHashtags;
@@ -82,9 +89,9 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   public sendFeedback(): void {
-    if(this.missingHashtags === ""
-      && this.comment === ""
-      && this.rating === undefined
+    if(this.missingHashtags === ''
+      && this.comment === ''
+      && this.rating === 3
       && this.tag1.length == 0
       && this.tag2.length == 0
     ){
@@ -103,9 +110,21 @@ export class LeaveFeedbackComponent implements OnInit {
     this.photo.feedback = feedback;
     this.userService.updatePhoto(this.photo);
     this.doRequest(this.photo);
-    // ToDo Toast "wurde erfolgreich gesendet"
+    this.showModal();
 
-    this.openInstagram();
+    // this.openInstagram();
+  }
+
+  private showModal(): void {
+    const options: ModalDialogOptions = {
+      viewContainerRef: this.viewContainerRef,
+      fullscreen: false,
+      context: { autoClose: true, button: '' }
+    };
+    this.modalService.showModal(ModalComponent, options).then(result => {
+      console.log(result);
+      // result.close();
+    });
   }
 
   private doRequest(photo: Photo): void {

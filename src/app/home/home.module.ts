@@ -19,13 +19,13 @@ import { HistoryModule } from "./history/history.module";
 
 import { HomeComponent } from "./home.component";
 import { ResultsComponent } from './results/results.component';
-import { LeaveFeedbackComponent } from './leave-feedback/leave-feedback.component';
 import { CircularProgressBarComponent } from '~/app/shared/circular-progress-bar/circular-progress-bar.component';
 import { LoadingHashtagsComponent } from './loading-hashtags/loading-hashtags.component';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { ConfirmImageComponent } from './confirm-image/confirm-image.component';
 import { HashtagModule } from "../shared/hashtag/hashtag.module";
 import { setStatusBarColors } from "~/app/shared/status-bar-util";
+import { LeaveFeedbackModule } from "./leave-feedback/leave-feedback.module";
 setStatusBarColors();
 
 
@@ -46,12 +46,12 @@ setStatusBarColors();
         NativeScriptFormsModule,
         NativeScriptLocalizeModule,
         HistoryModule,
-        HashtagModule
+        HashtagModule,
+        LeaveFeedbackModule,
     ],
     declarations: [
         HomeComponent,
         ResultsComponent,
-        LeaveFeedbackComponent,
         CircularProgressBarComponent,
         LoadingHashtagsComponent,
         ConfirmImageComponent

@@ -10,19 +10,30 @@ import { RouterExtensions } from 'nativescript-angular/router';
 })
 export class ModalComponent implements OnInit {
 
+  public button: string;
+
   constructor(
     private params: ModalDialogParams,
     private router: RouterExtensions,
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    var autoClose = this.params.context.autoClose == true;
+    this.button = this.params.context.button;
 
-  close() {
-    this.params.closeCallback();
+    if(autoClose) {
+      setTimeout.bind(this)(() => { 
+        this.close("autoClose");
+      }, 1000);    
+    }
   }
 
-  goHome() {
-    this.close();
+  public close(reason: string): void {
+    this.params.closeCallback(reason);
+  }
+
+  public ok(): void {
+    this.close("ok");
     setTimeout.bind(this)(() => { 
       this.router.navigate(["/home"], {
         transition: {
@@ -30,7 +41,7 @@ export class ModalComponent implements OnInit {
           duration: 500,
           curve: "easeOut"
         }
-      })
+      });
     }, 100);    
   }
 }

@@ -1,6 +1,6 @@
 <StackLayout class="dialog" horizontalAlignment="center">            
     <Image src="~/app/assets/images/copied.png" width="60" height="50"></Image>
     <Label [text]="'feedback_successful_headline' | L" class="m-t-20 text-center h2"></Label>
-    <Label [text]="'feedback_successful_desc' | L" class="m-t-20 text-center"></Label>
-    <Button class="btn btn-outline btn-rounded-lg border-color-normal color-normal m-t-25" text="OK" (tap)="goHome()"></Button>
+    <Label [text]="'feedback_successful_desc' | L" class="m-t-20 m-b-10 text-center"></Label>
+    <Button class="btn btn-outline btn-rounded-lg border-color-normal color-normal" [text]="button | L" (tap)="ok()" *ngIf="button != ''"></Button>
 </StackLayout>

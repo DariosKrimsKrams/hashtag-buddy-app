@@ -26,7 +26,6 @@ export class FeedbackComponent implements OnInit {
   
   constructor(
     private page: Page,
-    private router: RouterExtensions,
     private modalService: ModalDialogService, 
     private viewContainerRef: ViewContainerRef,
     private feedbackRepositoryService: FeedbackRepository,
@@ -68,9 +67,9 @@ export class FeedbackComponent implements OnInit {
 
   private showModal(): void {
     const options: ModalDialogOptions = {
-        viewContainerRef: this.viewContainerRef,
-        fullscreen: false,
-        context: {}
+      viewContainerRef: this.viewContainerRef,
+      fullscreen: false,
+      context: { autoClose: false, button: 'feedback_modal_button' }
     };
     this.modalService.showModal(ModalComponent, options);
   }
