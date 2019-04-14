@@ -96,23 +96,19 @@ export class LeaveFeedbackComponent implements OnInit {
       && this.tag2.length == 0
     ){
       console.log('empty');
-      this.continueWithoutFeedback();
+      this.continue();
       return;
     }
-
-    const feedback: ResultFeedback = new ResultFeedback({ 
+    this.photo.feedback = new ResultFeedback({ 
       rating: this.rating, 
       goodHashtags: this.tag1, 
       badHashtags: this.tag2, 
       missingHashtags: this.missingHashtags, 
       comment: this.comment 
     });
-    this.photo.feedback = feedback;
     this.userService.updatePhoto(this.photo);
     this.doRequest(this.photo);
-    this.showModal();
-
-    // this.openInstagram();
+    this.continue();
   }
 
   private showModal(): void {
@@ -121,10 +117,7 @@ export class LeaveFeedbackComponent implements OnInit {
       fullscreen: false,
       context: { autoClose: true, button: '' }
     };
-    this.modalService.showModal(ModalComponent, options).then(result => {
-      console.log(result);
-      // result.close();
-    });
+    this.modalService.showModal(ModalComponent, options);
   }
 
   private doRequest(photo: Photo): void {
@@ -157,8 +150,9 @@ export class LeaveFeedbackComponent implements OnInit {
     return result;
   }
 
-  public continueWithoutFeedback(): void {
-    this.openInstagram();
+  public continue(): void {
+    this.showModal();
+    // this.openInstagram();
   }
 
   public goPrevPage(): void {

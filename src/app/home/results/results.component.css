@@ -58,18 +58,6 @@
     width: 100%;
 }
 
-#bottom-shadow {
-    height: 100%;    
-    background-image: url("~/app/assets/images/bottom-shadow.png");
-    background-repeat: repeat-x;
-    background-attachment: fixed;
-    background-position: bottom;
-}
-
-.footer {
-    background-color: #fafafa;
-}
-
 .footer StackLayout {
     padding-top: 8;
 }

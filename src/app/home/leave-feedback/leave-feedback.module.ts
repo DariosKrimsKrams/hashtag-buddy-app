@@ -5,6 +5,7 @@ import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
 import { LeaveFeedbackComponent } from './leave-feedback.component';
 import { HashtagModule } from '~/app/shared/hashtag/hashtag.module';
 import { ModalModule } from '~/app/pages/feedback/modal/modal.module';
+import { FloatLabelModule } from '~/app/shared/float-label/float-label.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ModalModule } from '~/app/pages/feedback/modal/modal.module';
     NativeScriptCommonModule,
     HashtagModule,
     NativeScriptLocalizeModule,
-    ModalModule
+    ModalModule,
+    FloatLabelModule
   ],
   exports: [
     LeaveFeedbackComponent
