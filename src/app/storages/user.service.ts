@@ -1,5 +1,5 @@
 import { Injectable, Output, EventEmitter } from "@angular/core";
-import { DataService } from "./data.service";
+import { LocalStorageService } from "./local-storage.service";
 import { CustomerRepository } from "../services/customer-repository.service";
 import { HashtagCategory } from "~/app/models/hashtag-category";
 import { Hashtag } from "~/app/models/hashtag";
@@ -18,7 +18,7 @@ export class UserService {
     @Output() public photoUpdated: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
 
     constructor(
-        private dataService: DataService,
+        private localStorageService: LocalStorageService,
         private customerRepositoryService: CustomerRepository
     ) { }
 
@@ -68,7 +68,7 @@ export class UserService {
     }
 
     private setPhotos(photos: Photo[]) {
-        this.dataService.set(this.keyPhotos, photos);
+        this.localStorageService.set(this.keyPhotos, photos);
         this.photosCache = photos;
     }
 
@@ -76,7 +76,7 @@ export class UserService {
         if(this.photosCache !== undefined) {
             return this.photosCache;
         }
-        var json = this.dataService.get(this.keyPhotos) || undefined;
+        var json = this.localStorageService.get(this.keyPhotos) || undefined;
         if(json === undefined) {
             this.photosCache = [];
             return [];
@@ -93,21 +93,21 @@ export class UserService {
     }
 
     public createUserIdIfNotExist(): void {
-        if(this.dataService.has(this.keyUserId)) {
+        if(this.localStorageService.has(this.keyUserId)) {
             return;
         }
         this.customerRepositoryService.createCustomer().subscribe(result => {
-            this.dataService.set(this.keyUserId, result.customerId);
+            this.localStorageService.set(this.keyUserId, result.customerId);
         });
     }
 
     public getUserId(): string {
-        return this.dataService.get(this.keyUserId);
+        return this.localStorageService.get(this.keyUserId);
     }
 
     public clearAll(): void {
-        this.dataService.remove(this.keyPhotos);
-        this.dataService.remove(this.keyUserId);
+        this.localStorageService.remove(this.keyPhotos);
+        this.localStorageService.remove(this.keyUserId);
         this.photosCache = [];
     }
     

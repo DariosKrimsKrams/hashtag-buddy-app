@@ -27,17 +27,12 @@
 }
 
 #dialog Label {
-    /* font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold"; */
     font-size: 16pt;
     color: rgb(30, 39, 46);
 }
 
 #main-image {
     height: 200;
-    /* border-color: rgb(57, 73, 86); */
-    /* background-color: rgb(57, 73, 86); */
-    /* border-width: 1; */
-    /* border-radius: 5; */
 }
 
     #main-image Image {

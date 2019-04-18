@@ -2,10 +2,10 @@
     height: 5;
     border-radius: 5;
     background: #ECEFF1;
-    margin: 0;
+    margin: 7pt 0;
     padding: 0;
 }
 .progressbar-value {
-    background: #F0A587;
+    background: #EF8B97;
     border-radius: 5;
 }

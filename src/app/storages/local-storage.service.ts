@@ -4,7 +4,7 @@ let LocalStorage = require( "nativescript-localstorage" );
 @Injectable({
     providedIn: "root"
 })
-export class DataService {
+export class LocalStorageService {
 
     constructor(
     ) { }

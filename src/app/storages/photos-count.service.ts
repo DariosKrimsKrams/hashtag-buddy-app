@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { DataService } from "./data.service";
+import { Injectable, EventEmitter } from "@angular/core";
+import { LocalStorageService } from "./local-storage.service";
 import { environment } from '../environments/environment';
  
 @Injectable({
@@ -9,32 +9,31 @@ export class PhotosCountService {
 
     private keyFreePhotos: string = 'freePhotosAmount';
     private keyFreeDate: string = 'freePhotosDate';
+    public changedData: EventEmitter<void> = new EventEmitter<void>();
 
     constructor(
-        private dataService: DataService,
+        private localStorageService: LocalStorageService,
     ) { }
 
     public initFreePhotos(): void {
-        if(!this.dataService.has(this.keyFreePhotos)) {
+
+        console.log(this.localStorageService.get(this.keyFreePhotos))
+        console.log(this.localStorageService.get(this.keyFreeDate))
+
+        if(this.localStorageService.has(this.keyFreePhotos)) {
             return;
         }
         this.setCount(environment.freePhotosStart);
     }
 
-    private setCount(amount: number): void {
-        this.dataService.set(this.keyFreePhotos, amount);
-        var dateNow = Date.now() / 1000 | 0;
-        this.dataService.set(this.keyFreeDate, dateNow);
-    }
-
     public getCount(): number {
-        var amount = Number(this.dataService.get(this.keyFreePhotos) || 0);
+        var amount = Number(this.localStorageService.get(this.keyFreePhotos) || 0);
         if(amount > 0) {
             return amount;
         }
-        if(this.checkTimeAndIncrease()) {
-            return 1;
-        }
+        // if(this.checkTimeAndIncrease()) {
+        //     return 1;
+        // }
         return 
     }
 
@@ -55,11 +54,18 @@ export class PhotosCountService {
         }
         amount--;
         this.setCount(amount);
+        this.changedData.emit();
         return true;
     }
 
     public getDate(): number {
-        return Number(this.dataService.get(this.keyFreeDate));
+        return Number(this.localStorageService.get(this.keyFreeDate));
+    }
+
+    private setCount(amount: number): void {
+        this.localStorageService.set(this.keyFreePhotos, amount);
+        var dateNow = Date.now() / 1000 | 0;
+        this.localStorageService.set(this.keyFreeDate, dateNow);
     }
     
 }

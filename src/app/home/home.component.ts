@@ -34,13 +34,6 @@ export class HomeComponent implements OnInit {
   @ViewChild("history") historyElement: ElementRef;
   @ViewChild("mainContainer") mainContainerElement: ElementRef;
 
-  width = "40%";
-  page_name = "home";
-  // countPhotoLeft = 0;
-  // countPhotosOverall = 0;
-  // timeStart = 3600;
-  // timeOverall = 86400;
-
   constructor(
     private page: Page,
     private router: RouterExtensions,

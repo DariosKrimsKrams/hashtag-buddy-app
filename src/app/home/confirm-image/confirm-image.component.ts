@@ -12,6 +12,7 @@ import { HashtagCategory } from '../../models/hashtag-category';
 import { Hashtag } from '../../models/hashtag';
 import { IHttpResponse } from '~/app/models/request/http-response';
 import * as Toast from 'nativescript-toast';
+import { PhotosCountService } from '~/app/storages/photos-count.service';
 
 interface HashtagResult {
   name: string;
@@ -27,20 +28,15 @@ interface HashtagResult {
 })
 export class ConfirmImageComponent implements OnInit {
 
-  photo: ImageAsset;
-  width = "80%";
-  page_name = "confirm";
-  countPhotoLeft = 3;
-  countPhotosOverall = 5;
-  timeStart = 0;
-  timeOverall = 0;
+  public photo: ImageAsset;
 
   constructor(
-    private page: Page,
-    private router: RouterExtensions,
-    private deviceService: DeviceService,
-    private userService: UserService,
-    private evaluationRepository: EvaluationRepository
+    private readonly page: Page,
+    private readonly router: RouterExtensions,
+    private readonly deviceService: DeviceService,
+    private readonly userService: UserService,
+    private readonly evaluationRepository: EvaluationRepository,
+    private readonly photosCountService: PhotosCountService
   ) {
     this.page.actionBarHidden = true;
   }
@@ -62,9 +58,13 @@ export class ConfirmImageComponent implements OnInit {
       .subscribe((httpResponse: IHttpResponse) => {
         console.log(httpResponse);
         if(httpResponse.code == 200) {
+          console.log("Upload successful");
           this.parseSuccessfulResponse(photoId, httpResponse);
+          this.photosCountService.decreaseCount();
         } else {
-          Toast.makeText("Upload failed - check your connection").show();
+          console.log("Upload error", httpResponse);
+          Toast.makeText("Upload failed - Connection lost :'(", "long").show();
+          this.goPrevPage();
         }
       });
     });

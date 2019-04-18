@@ -32,12 +32,6 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public selectedHashtags: ResultSelectionHashtags;
   public hightlightStatus: Array<boolean> = [];
   public currentScrollingY: number;
-  public width = "80%";
-  public page_name = "results";
-  public countPhotoLeft = 3;
-  public countPhotosOverall = 5;
-  public timeStart = 0;
-  public timeOverall = 0;
   @Input() public customUserHashtagsText: string = "";
   @Output() public resetInput: EventEmitter<void> = new EventEmitter();
   
