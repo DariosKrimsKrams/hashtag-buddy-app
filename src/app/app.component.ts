@@ -3,6 +3,7 @@ import * as app from "tns-core-modules/application";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
 import { UserService } from "./storages/user.service";
+import { PhotosCountService } from "./storages/photos-count.service";
 
 @Component({
     moduleId: module.id,
@@ -17,14 +18,15 @@ export class AppComponent implements OnInit {
 
     constructor(
         private router: RouterExtensions,
-        private userService: UserService
+        private userService: UserService,
+        private photosCountService: PhotosCountService
     ) { }
 
     ngOnInit(): void {
         this._sideDrawerTransition = new SlideInOnTopTransition();
         this.selected[0] = true;
-        this.userService.debug();
         this.userService.createUserIdIfNotExist();
+        this.photosCountService.initFreePhotos();
     }
 
     get sideDrawerTransition(): DrawerTransitionBase {

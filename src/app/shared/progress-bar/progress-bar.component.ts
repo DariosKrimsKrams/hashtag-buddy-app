@@ -1,4 +1,6 @@
 import { Component, Input} from "@angular/core";
+import { PhotosCountService } from "../../storages/photos-count.service";
+import { environment } from "../../environments/environment";
 
 @Component({
   selector: 'ProgressBar',
@@ -8,8 +10,6 @@ import { Component, Input} from "@angular/core";
 })
 export class ProgressBarComponent {
 
-  constructor() { }
-
   columns;
   text1;
   text2;
@@ -18,20 +18,24 @@ export class ProgressBarComponent {
   text5;
   @Input() page: string;
   @Input() width: string;
-  @Input() countPhotoLeft: number;
-  @Input() countPhotosOverall: number;
-  @Input() timeStart: number;
-  @Input() timeOverall: number;
+  countPhotoLeft: number;
+  countPhotosOverall: number;
+  timeStart: number;
+  timeOverall: number;
+
+  constructor(
+    private readonly photosCountService: PhotosCountService
+  ) { }
 
   ngOnInit() {
-    // this.isHistoryOpen = 0;
+
+    this.updateFreeIndicator();
 
     if(this.page === "home") {
       this.text1 = this.countPhotoLeft + " unlocked photos left";
       this.text2 = "Free mode: Some hashtags are censored.";
-      // this.text5 = "(You cann still upload unlimited photos)";
     }
-    
+
     if(this.page === "confirm") {
       this.text1 = this.countPhotoLeft + " unlocked photos left";
       this.text2 = "Free limit reached: Best hashtags are hidden now.";
@@ -87,6 +91,17 @@ export class ProgressBarComponent {
     }    
   }
 
+  private updateFreeIndicator(): void {
+    this.countPhotoLeft = this.photosCountService.getCount();
+    this.countPhotosOverall = environment.freePhotosStart;
+    if(this.countPhotoLeft == 0) {
+      var date = this.photosCountService.getDate();
+      var dateNow = Date.now() / 1000 | 0;
+      this.timeStart = dateNow - date;
+      this.timeOverall = environment.freePhotosIncreatingTime;
+    }
+  }
+
   setProgressbarWidth(percent) {
     this.columns = percent + "*," + (100 - percent) + "*";
   }
@@ -111,6 +126,6 @@ export class ProgressBarComponent {
       s = sec;
     }
 
-    return ("Wait " + h + ":" + m + ":" + s + " to receive a unlocked photo.");
+    return ("In " + h + ":" + m + ":" + s + " yout receive an unlocked photo.");
   }
 }

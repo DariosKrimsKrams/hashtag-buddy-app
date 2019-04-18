@@ -11,6 +11,7 @@ import { DeviceService } from "./services/device-photos.service";
 import { ApplicationPipesModule } from "./shared/pipes/application-pipes.module";
 import { ModalComponent } from "./pages/feedback/modal/modal.component";
 import { ModalModule } from "./pages/feedback/modal/modal.module";
+import { DataService } from "./storages/data.service";
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { ModalModule } from "./pages/feedback/modal/modal.module";
     ],
     providers: [
         DeviceService,
+        DataService,
     ],
     exports: [
         NativeScriptLocalizeModule,

@@ -4,6 +4,7 @@ import { CustomerRepository } from "../services/customer-repository.service";
 import { HashtagCategory } from "~/app/models/hashtag-category";
 import { Hashtag } from "~/app/models/hashtag";
 import { Photo } from "../models/photo";
+import { environment } from '../environments/environment';
  
 @Injectable({
     providedIn: "root"
@@ -20,19 +21,6 @@ export class UserService {
         private dataService: DataService,
         private customerRepositoryService: CustomerRepository
     ) { }
-
-    public debug(): void {
-        console.log("UserService debug()");
-        // this.clearAll();
-
-        // console.log("UserId: " + this.getUserId());
-        // var photos = this.getPhotos();
-        // console.log("Photos Count: ", photos.length);
-        // photos.forEach(photo => {
-        //     console.log(photo);
-        // });
-        // console.log("Photos end");
-    }
 
     public addPhoto(photo: Photo): number {
         var photos = this.getPhotos();
