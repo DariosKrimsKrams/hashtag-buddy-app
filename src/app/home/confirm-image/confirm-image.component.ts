@@ -11,6 +11,7 @@ import { EvaluationRepository } from '~/app/services/evaluation-repository.servi
 import { HashtagCategory } from '../../models/hashtag-category';
 import { Hashtag } from '../../models/hashtag';
 import { IHttpResponse } from '~/app/models/request/http-response';
+import * as Toast from 'nativescript-toast';
 
 interface HashtagResult {
   name: string;
@@ -63,7 +64,7 @@ export class ConfirmImageComponent implements OnInit {
         if(httpResponse.code == 200) {
           this.parseSuccessfulResponse(photoId, httpResponse);
         } else {
-          // ToDo
+          Toast.makeText("Upload failed - check your connection").show();
         }
       });
     });

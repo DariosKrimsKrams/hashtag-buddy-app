@@ -32,6 +32,7 @@
         "nativescript-purchase": "^2.0.5",
         "nativescript-social-share": "^1.5.1",
         "nativescript-theme-core": "~1.0.4",
+        "nativescript-toast": "^2.0.0",
         "nativescript-ui-autocomplete": "^3.11.0",
         "nativescript-ui-calendar": "^3.10.0",
         "nativescript-ui-chart": "^3.11.1",

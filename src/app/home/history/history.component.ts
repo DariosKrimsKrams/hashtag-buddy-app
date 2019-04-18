@@ -5,6 +5,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { Hashtag } from "~/app/models/hashtag";
 import { DeviceService } from "~/app/services/device-photos.service";
 import { Subscription } from "rxjs";
+import * as Toast from 'nativescript-toast';
 
 @Component({
   selector: "ns-history",
@@ -65,9 +66,9 @@ export class HistoryComponent implements OnInit, OnDestroy {
     if(successful) {
       this.photosReverse.splice(this.selected, 1);
       this.selected = -1;
-      // ToDo show toast "delete successful"
+      Toast.makeText("Delete successful").show();
     } else {
-      // ToDo show toast "delete failed"
+      Toast.makeText("Delete failed").show();
     }
   }
 

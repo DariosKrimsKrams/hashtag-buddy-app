@@ -51,7 +51,6 @@ export class FeedbackComponent implements OnInit {
   public sendFeedback(): void {
     if(this.email === "" && this.message === ""){
       console.log("empty");
-      // ToDo Toast -> no data inserted
       return;
     }
     let feedback: AppFeedback = new AppFeedback({
