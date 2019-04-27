@@ -24,6 +24,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
 
   @Input() page: string;
   @Input() width: string;
+  @Input() onlyFreeMode: boolean;
 
   private oneHour = 3600;
   private photosCountChangeSubscription: Subscription;
@@ -52,9 +53,8 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     this.countPhotoLeft = this.photosCountService.getCount();
     this.countPhotosOverall = environment.freePhotosStart;
     if(this.countPhotoLeft == 0) {
-      var date = this.photosCountService.getDate();
-      var dateNow = Date.now() / 1000 | 0;
-      this.timeStart = dateNow - date;
+      // var date = this.photosCountService.getDate();
+      // this.timeStart = (Date.now() / 1000 | 0) - date;
       this.timeOverall = environment.freePhotosIncreatingTime;
     }
   }
@@ -62,18 +62,18 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   private buildText(): void {
 
     if(this.page === "home") {
-      this.text1 = this.countPhotoLeft + " unlocked photos left";
-      this.text2 = "Free mode: Some hashtags are censored.";
+      this.text1 = this.countPhotoLeft + " photos left";
+      this.text2 = "Free mode: Some hashtags will be hidden.";
     }
 
     if(this.page === "confirm") {
-      this.text1 = this.countPhotoLeft + " unlocked photos left";
-      this.text2 = "Free limit reached: Best hashtags are hidden now.";
-      this.text3 = "But don't worry: Enjoy Instaq Pro for best results.";
+      this.text1 = this.countPhotoLeft + " photos left: Enjoy the best hashtags";
+      this.text2 = "Free limit reached: Best hashtags are hidden now :(";
+      this.text3 = "Enjoy Instaq Pro to get uncensored hashtags.";
     }
 
     if(this.page === "results") {
-      this.text1 = "Instaq Free: " + this.countPhotoLeft + " of " + this.countPhotosOverall + " photos left with full potential.";
+      this.text1 = "";
       this.text2 = "Free limit reached: Best hashtags are hidden.";
       this.text3 = "Use Instaq Pro to unlock the full potential.";
     }
@@ -82,11 +82,9 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
 
   private buildData(): void {
     let percent = 0;
-    let hour = (this.timeOverall - this.timeStart) / this.oneHour;
-    let min = (this.timeOverall - this.timeStart - hour * this.oneHour) / 60;
-    let sec = this.timeOverall - this.timeStart - hour * this.oneHour - min * 60;
+    var result = this.calcTimes();
 
-    this.text4 = this.setTimer(hour, min, sec);
+    this.text4 = this.setUI(result.hour, result.min, result.sec);
 
     if(this.countPhotoLeft > 0) {
       percent = this.countPhotoLeft / this.countPhotosOverall * 100;
@@ -103,60 +101,37 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     this.columns = percent + "*," + (100 - percent) + "*";
   }
 
-  setTimer(hour: number, min: number, sec: number) {
-    let h = "0", m = "0", s = "0";
-    if(hour < 10) {
-      h += hour;
-    } else {
-      h = hour.toString();
-    }
+  setUI(hour: number, min: number, sec: number) {
+    let h = "", m = "", s = "";
+    if(hour < 10) { h = "0"; }
+    if(min < 10) { m = "0"; }
+    if(sec < 10) { s = "0"; }
+    return ("In " + h + hour + ":" + m + min + ":" + s + sec + " you receive a free photo-upload.");
+  }
 
-    if(min < 10) {
-      m += min;
-    } else {
-      m = min.toString();
-    }
-
-    if(sec < 10) {
-      s += sec;
-    } else {
-      s = sec.toString();
-    }
-
-    return ("In " + h + ":" + m + ":" + s + " yout receive an unlocked photo.");
+  private calcTimes(): {hour: number, min: number, sec: number} {
+    var date = this.photosCountService.getDate();
+    this.timeStart = (Date.now() / 1000 | 0) - date;
+    let hour = Math.floor((this.timeOverall - this.timeStart) / this.oneHour);
+    let min = Math.floor((this.timeOverall - this.timeStart - hour * this.oneHour) / 60);
+    let sec = (this.timeOverall - this.timeStart) % 60;
+    return {hour: hour, min: min, sec: sec};
   }
 
   private updateTimer(percent: number) {
-
-    let hour = (this.timeOverall - this.timeStart) / this.oneHour;
-    let min = (this.timeOverall - this.timeStart - hour * this.oneHour) / 60;
-    let sec = this.timeOverall - this.timeStart - hour * this.oneHour - min * 60;
-    
     let intervalId = setInterval(() => {
       this.setProgressbarWidth(percent);
       percent += 1 / this.timeOverall * 100;
       if (percent >= 100) {
         clearInterval(intervalId);
       }
-      if(sec == 0) {
-        if(min > 0) {
-          min--;
-          sec = 59;
-        } else {
-          if(hour > 0) {
-            hour--;
-            min = 59;
-            sec = 59;
-          } else {
-            hour = 0; min = 0; sec = 0;
-            this.text4 = this.setTimer(hour, min, sec);
-            clearInterval(intervalId);
-          }
-        }
-      } else {
-        sec--;
-        this.text4 = this.setTimer(hour, min, sec);
-      }
+
+      var result = this.calcTimes();
+      let hour = result.hour;
+      let min = result.min;
+      let sec = result.sec;
+      this.text4 = this.setUI(hour, min, sec);
+      
     }, 1000);
   }
 
