@@ -11,18 +11,18 @@ GridLayout {
 .bar {
     width: 225;
     height: 225;
-    transform: rotate(45deg);
+    /* transform: rotate(45deg); */
 
-    animation-name: rotate;
+    /* animation-name: rotate;
     animation-duration: 2;
     animation-iteration-count: 100;
-    animation-timing-function: ease;
+    animation-timing-function: ease; */
 }
-
+/* 
 @keyframes rotate {
     from { transform: rotate(45deg); }
     to { transform: rotate(405deg); }
-}
+} */
 
 Label {
     font-size: 34pt;
