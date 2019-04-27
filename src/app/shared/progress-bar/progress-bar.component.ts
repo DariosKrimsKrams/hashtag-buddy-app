@@ -67,15 +67,15 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     }
 
     if(this.page === "confirm") {
-      this.text1 = this.countPhotoLeft + " photos left: Enjoy the best hashtags";
-      this.text2 = "Free limit reached: Best hashtags are hidden now :(";
-      this.text3 = "Enjoy Instaq Pro to get uncensored hashtags.";
+      this.text1 = this.countPhotoLeft + " photos left: Get the best hashtags";
+      this.text2 = "Free limit reached:";
+      this.text3 = "Best hashtags are hidden now :(";
     }
 
     if(this.page === "results") {
       this.text1 = "";
       this.text2 = "Free limit reached: Best hashtags are hidden.";
-      this.text3 = "Use Instaq Pro to unlock the full potential.";
+      this.text3 = "Enjoy Instaq Pro to unlock all hashtags.";
     }
   }
 
@@ -90,14 +90,16 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
       percent = this.countPhotoLeft / this.countPhotosOverall * 100;
       this.setProgressbarWidth(percent);
     } else if(this.page === "home") {
-      this.columns = this.timeStart / this.timeOverall * 100;
-      percent = this.columns;
+      percent = this.timeStart / this.timeOverall * 100;
       this.setProgressbarWidth(percent);
       this.updateTimer(percent);
     }    
   }
 
   setProgressbarWidth(percent: number) {
+    if(percent < 2) {
+      percent = 2
+    }
     this.columns = percent + "*," + (100 - percent) + "*";
   }
 
@@ -106,7 +108,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     if(hour < 10) { h = "0"; }
     if(min < 10) { m = "0"; }
     if(sec < 10) { s = "0"; }
-    return ("In " + h + hour + ":" + m + min + ":" + s + sec + " you receive a free photo-upload.");
+    return ("In " + h + hour + ":" + m + min + ":" + s + sec + " you receive 1 uncensored Upload.");
   }
 
   private calcTimes(): {hour: number, min: number, sec: number} {

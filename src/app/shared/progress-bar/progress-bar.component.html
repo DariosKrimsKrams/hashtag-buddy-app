@@ -1,4 +1,4 @@
-<StackLayout *ngIf="countPhotoLeft == 0 || !onlyFreeMode">
+<StackLayout *ngIf="countPhotoLeft == 0 || !onlyFreeMode" [class.bg]="page != 'home'">
     <GridLayout [columns]="columns" [width]="width" class="progressbar">
         <StackLayout col="0" class="progressbar-value"></StackLayout>
     </GridLayout>
@@ -7,6 +7,6 @@
     
     <Label [text]="text2" horizontalAlignment="center" *ngIf="countPhotoLeft==0"></Label>
     <Label [text]="text3" horizontalAlignment="center" *ngIf="countPhotoLeft==0 && text3 != undefined"></Label>
-    <Label [text]="text4" horizontalAlignment="center" *ngIf="countPhotoLeft==0"></Label>
+    <Label [text]="text4" horizontalAlignment="center" *ngIf="countPhotoLeft==0 && page == 'home'"></Label>
     <Label [text]="text5" horizontalAlignment="center" *ngIf="countPhotoLeft==0 && text5 != undefined"></Label>
 </StackLayout>
