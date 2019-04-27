@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Page } from "tns-core-modules/ui/page";
 
 @Component({
@@ -7,11 +7,13 @@ import { Page } from "tns-core-modules/ui/page";
   styleUrls: ['./loading-hashtags.component.css'],
   moduleId: module.id,
 })
-export class LoadingHashtagsComponent implements OnInit {
+export class LoadingHashtagsComponent implements OnInit, OnDestroy {
 
   countDots: number = 0;
   progress: number = 0;
-  tipI18nKey: string;
+  tipNo: number;
+
+  private tipTimeSec: number = 7;
 
   constructor(
     private page: Page,
@@ -28,6 +30,12 @@ export class LoadingHashtagsComponent implements OnInit {
       // redirect to home
   }
 
+  ngOnDestroy(): void {
+    console.log("LoadingHashtagsComponent On Destroy");
+    // ToDo Cancel Interval
+    // problem: this will not be called
+  }
+
   private animateDots(): void {
     setInterval.bind(this)(() => {
       this.countDots = this.countDots >= 3 ? 0 : this.countDots + 1;
@@ -35,7 +43,11 @@ export class LoadingHashtagsComponent implements OnInit {
   }
 
   private animateTips(): void {
-    this.tipI18nKey = "diduknow_fact1";
+    this.tipNo = Math.floor(Math.random() * 23.99);
+    setInterval.bind(this)(() => {
+      this.tipNo = Math.floor(Math.random() * 23.99);
+      // console.log(this.tipNo)
+    }, this.tipTimeSec * 1000);
   }
 
 }
