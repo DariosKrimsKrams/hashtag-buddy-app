@@ -75,7 +75,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     if(this.page === "results") {
       this.text1 = "";
       this.text2 = "Free limit reached: Best hashtags are hidden.";
-      this.text3 = "Enjoy Instaq Pro to unlock all hashtags.";
+      this.text3 = "Upgrade to Instaq Pro to unlock hashtags.";
     }
   }
 

@@ -15,6 +15,8 @@ import * as app from "tns-core-modules/application";
 import { UserService } from '../../storages/user.service';
 import { Photo } from '../../models/photo';
 import { ResultSelectionHashtags } from '~/app/models/result-selection-hashtags';
+import * as Toast from 'nativescript-toast';
+import { localize } from 'nativescript-localize/angular';
 
 @Component({
   selector: 'ns-results',
@@ -215,6 +217,11 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   private selectionChanged(): void {
     this.photo.selectedHashtags = this.selectedHashtags.toSelectedHashtags();
     this.userService.updatePhoto(this.photo);
+  }
+
+  public clickedCensoredHashtag(): void {
+    // var text = localize('share');
+    Toast.makeText("Hashtag is hidden due to Free-Mode :'(").show();
   }
 
 }

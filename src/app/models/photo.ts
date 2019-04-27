@@ -10,6 +10,7 @@ export class Photo {
 	feedback: ResultFeedback;
 	timestamp: number;
 	logId: number;
+	proMode: boolean;
 
 	public constructor() {
 		this.categories = [];

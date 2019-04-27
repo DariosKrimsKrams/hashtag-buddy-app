@@ -97,6 +97,7 @@ export class ConfirmImageComponent implements OnInit {
     var photo = this.userService.getPhoto(photoId);
     photo.categories = categories;
     photo.logId = data.logId;
+    photo.proMode = this.photosCountService.getCount() > 0;
     
     this.userService.updatePhoto(photo);
     this.openResultsPage(photoId);

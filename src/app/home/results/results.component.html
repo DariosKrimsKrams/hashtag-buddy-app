@@ -42,7 +42,7 @@
                                     </GridLayout>
                                     <Label text="{{'results_recommented_amount' | L}} {{ getRecommendedAmount(category.title) }}" class="font-reg-xs m-l-10 m-r-5"></Label>
                                     <WrapLayout class="m-t-5 m-l-5 m-b-20 tag-title">
-                                        <ns-hashtag *ngFor="let tag of category.tags; let j = index;" (onClick)="toggleHashtag(tag, i, j)" [name]="'#' + tag.title" [isActive]="hightlightStatus[i + '_' + j]"></ns-hashtag>
+                                        <ns-hashtag *ngFor="let tag of category.tags; let j = index;" (onClick)="toggleHashtag(tag, i, j)" (onClickCensored)="clickedCensoredHashtag()" [name]="'#' + tag.title" [isActive]="hightlightStatus[i + '_' + j]" [censored]="!photo.proMode && j < 10 && j*2 < category.tags.length"></ns-hashtag>
                                     </WrapLayout>
                                 </StackLayout>
                             </StackLayout>
