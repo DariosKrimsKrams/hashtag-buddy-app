@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="share">"Hey, I found this app called Instaq. It helped me finding the most relevant instagram hashtags for my photos. Let it help you, too. It\'s free :)\n\nhttp://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
+  <string name="progressbar_freemode_time">"In %1$s you receive 1 uncensored Upload."</string>
+  <string name="progressbar_results_freemode2">"Upgrade to Instaq Pro to unlock hashtags."</string>
+  <string name="progressbar_results_freemode1">"Free limit reached: Best hashtags are hidden."</string>
+  <string name="progressbar_confirm_freemode2">"Best hashtags are hidden now :("</string>
+  <string name="progressbar_confirm_freemode1">"Free limit reached:"</string>
+  <string name="progressbar_confirm_promode">"photos left: Get the best hashtags"</string>
+  <string name="progressbar_home_freemode">"Free mode: Some hashtags will be hidden."</string>
+  <string name="progressbar_home_promode">"photos left"</string>
+  <string name="toast_upload_failed">"Upload failed! Connection lost! :\'("</string>
+  <string name="toast_delete_failed">"Delete failed :\'("</string>
+  <string name="toast_delete_successful">"Delete successful :)"</string>
+  <string name="toast_hashtags_hidden">"Hashtag is hidden due to Free-Mode :\'("</string>
   <string name="settings_rate">"Rate Instaq"</string>
   <string name="settings_share_subline">"Tell your best friends about Instaq"</string>
   <string name="settings_share">"Spread some love!"</string>

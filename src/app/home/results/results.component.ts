@@ -134,6 +134,10 @@ export class ResultsComponent implements AfterViewInit, OnInit {
 
   public addCustomHashtags(): void {
     var input = this.customUserHashtagsText;
+    if(input === undefined) {
+      console.log("error: addCustomHashtags triggered with text=undefined");
+      return;
+    }
     input.split(' ').map(word => {
       if(word.length != 0) {
         word.split('#').map(word2 => {
@@ -220,8 +224,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   public clickedCensoredHashtag(): void {
-    // var text = localize('share');
-    Toast.makeText("Hashtag is hidden due to Free-Mode :'(").show();
+    Toast.makeText(localize('toast_hashtags_hidden')).show();
   }
 
 }

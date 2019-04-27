@@ -116,5 +116,17 @@
   "settings_share": "Spread some love!",
   "settings_share_subline": "Tell your best friends about Instaq",
   "settings_rate": "Rate Instaq",
+  "toast_hashtags_hidden": "Hashtag is hidden due to Free-Mode :'(",
+  "toast_delete_successful": "Delete successful :)",
+  "toast_delete_failed": "Delete failed :'(",
+  "toast_upload_failed": "Upload failed! Connection lost! :'(",
+  "progressbar_home_promode": "photos left",
+  "progressbar_home_freemode": "Free mode: Some hashtags will be hidden.",
+  "progressbar_confirm_promode": "photos left: Get the best hashtags",
+  "progressbar_confirm_freemode1": "Free limit reached:",
+  "progressbar_confirm_freemode2": "Best hashtags are hidden now :(",
+  "progressbar_results_freemode1": "Free limit reached: Best hashtags are hidden.",
+  "progressbar_results_freemode2": "Upgrade to Instaq Pro to unlock hashtags.",
+  "progressbar_freemode_time": "In %s you receive 1 uncensored Upload.",
   "share": "Hey, I found this app called Instaq. It helped me finding the most relevant instagram hashtags for my photos. Let it help you, too. It's free :)\n\nhttp://play.google.com/store/apps/details?id=com.innocliq.instaq"
 }

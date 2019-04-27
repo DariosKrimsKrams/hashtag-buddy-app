@@ -6,6 +6,7 @@ import { Hashtag } from "~/app/models/hashtag";
 import { DeviceService } from "~/app/services/device-photos.service";
 import { Subscription } from "rxjs";
 import * as Toast from 'nativescript-toast';
+import { localize } from 'nativescript-localize/angular';
 
 @Component({
   selector: "ns-history",
@@ -66,9 +67,10 @@ export class HistoryComponent implements OnInit, OnDestroy {
     if(successful) {
       this.photosReverse.splice(this.selected, 1);
       this.selected = -1;
-      Toast.makeText("Delete successful").show();
+      
+      Toast.makeText(localize('toast_delete_successful')).show();
     } else {
-      Toast.makeText("Delete failed").show();
+      Toast.makeText(localize('toast_delete_failed')).show();
     }
   }
 

@@ -13,6 +13,7 @@ import { Hashtag } from '../../models/hashtag';
 import { IHttpResponse } from '~/app/models/request/http-response';
 import * as Toast from 'nativescript-toast';
 import { PhotosCountService } from '~/app/storages/photos-count.service';
+import { localize } from 'nativescript-localize/angular';
 
 interface HashtagResult {
   name: string;
@@ -63,7 +64,7 @@ export class ConfirmImageComponent implements OnInit {
           this.photosCountService.decreaseCount();
         } else {
           console.log("Upload error", httpResponse);
-          Toast.makeText("Upload failed! Connection lost! :'(", "long").show();
+          Toast.makeText(localize('toast_upload_failed'), "long").show();
           var that = this;
           setTimeout(function() {
             that.goPrevPage();

@@ -2,6 +2,7 @@ import { Component, Input, OnInit, OnDestroy} from "@angular/core";
 import { PhotosCountService } from "../../storages/photos-count.service";
 import { environment } from "../../environments/environment";
 import { Subscription } from "rxjs";
+import { localize } from 'nativescript-localize/angular';
 
 @Component({
   selector: 'ProgressBar',
@@ -53,8 +54,6 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     this.countPhotoLeft = this.photosCountService.getCount();
     this.countPhotosOverall = environment.freePhotosStart;
     if(this.countPhotoLeft == 0) {
-      // var date = this.photosCountService.getDate();
-      // this.timeStart = (Date.now() / 1000 | 0) - date;
       this.timeOverall = environment.freePhotosIncreatingTime;
     }
   }
@@ -62,20 +61,20 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   private buildText(): void {
 
     if(this.page === "home") {
-      this.text1 = this.countPhotoLeft + " photos left";
-      this.text2 = "Free mode: Some hashtags will be hidden.";
+      
+      this.text1 = this.countPhotoLeft + " " + localize('progressbar_home_promode');
+      this.text2 = localize('progressbar_home_freemode');
     }
 
     if(this.page === "confirm") {
-      this.text1 = this.countPhotoLeft + " photos left: Get the best hashtags";
-      this.text2 = "Free limit reached:";
-      this.text3 = "Best hashtags are hidden now :(";
+      this.text1 = this.countPhotoLeft + " " + localize('progressbar_confirm_promode');
+      this.text2 = localize('progressbar_confirm_freemode1');
+      this.text3 = localize('progressbar_confirm_freemode2');
     }
 
     if(this.page === "results") {
-      this.text1 = "";
-      this.text2 = "Free limit reached: Best hashtags are hidden.";
-      this.text3 = "Upgrade to Instaq Pro to unlock hashtags.";
+      this.text2 = localize('progressbar_results_freemode1');
+      this.text3 = localize('progressbar_results_freemode2');
     }
   }
 
@@ -108,7 +107,9 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     if(hour < 10) { h = "0"; }
     if(min < 10) { m = "0"; }
     if(sec < 10) { s = "0"; }
-    return ("In " + h + hour + ":" + m + min + ":" + s + sec + " you receive 1 uncensored Upload.");
+    var timeAsText = h + hour + ":" + m + min + ":" + s + sec;
+    return localize('progressbar_freemode_time', timeAsText);
+
   }
 
   private calcTimes(): {hour: number, min: number, sec: number} {

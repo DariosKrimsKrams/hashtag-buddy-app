@@ -19,7 +19,7 @@ export class HashtagComponent implements OnInit {
   ngOnInit() {
     if(this.censored) {
       var length = this.name.length;
-      var trimLength = length > 5 ? 3 : length - 2;
+      var trimLength = length > 5 ? 4 : length - 2;
       this.name = this.name.substr(0, trimLength+1);
       var minAmountOfStars = 4;
       var amountOfStars = length-trimLength >= minAmountOfStars ? length : trimLength + minAmountOfStars;

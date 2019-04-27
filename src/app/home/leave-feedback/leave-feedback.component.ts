@@ -40,7 +40,7 @@ export class LeaveFeedbackComponent implements OnInit {
     private feedbackRepositoryService: FeedbackRepository,
     private viewContainerRef: ViewContainerRef,
     private modalService: ModalDialogService, 
-    ) {
+  ) {
     this.page.actionBarHidden = true;
   }
 
