@@ -28,8 +28,9 @@
     font-family: "AvenirNext-Medium", "Avenir Next Medium";
 }
 
-.history-item Label {
+.history-error-text {
     text-align: left;
+    font-size: 15pt;
 }
 
 Label.no-content {

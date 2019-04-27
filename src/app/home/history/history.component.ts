@@ -78,6 +78,9 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   public selectElement(photo: Photo): void {
+    if(photo.categories.length == 0) {
+      return;
+    }
     this.router.navigate([`/home/results/${photo.id}`], {
       transition: {
         name: "FadeIn",
