@@ -63,8 +63,11 @@ export class ConfirmImageComponent implements OnInit {
           this.photosCountService.decreaseCount();
         } else {
           console.log("Upload error", httpResponse);
-          Toast.makeText("Upload failed - Connection lost :'(", "long").show();
-          this.goPrevPage();
+          Toast.makeText("Upload failed! Connection lost! :'(", "long").show();
+          var that = this;
+          setTimeout(function() {
+            that.goPrevPage();
+          }, 1000);
         }
       });
     });
