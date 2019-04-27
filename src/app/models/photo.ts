@@ -17,4 +17,19 @@ export class Photo {
 		this.selectedHashtags = [];
 	}
 
+	public censorHashtags(): void {
+		if(this.proMode) {
+			return;
+		}
+		for(let i = 0; i < this.categories.length; i++) {
+			var category = this.categories[i];
+			for(let j = 0; j < category.tags.length; j++) {
+				var hashtag = category.tags[j];
+				if(j < 10 && j*2 < category.tags.length) {
+					hashtag.isCensored = true;
+				}
+			}
+		}
+	}
+
 }

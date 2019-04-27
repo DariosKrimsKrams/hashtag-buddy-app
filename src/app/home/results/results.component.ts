@@ -210,9 +210,9 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public getRecommendedAmount(title: string): number {
     switch(title) {
       case 'results_category_niche_hashtags':
-        return 2;
+        return 5;
       case 'results_category_generic_hashtags':
-        return 2;
+        return 15;
       default:
         return 0;
     }

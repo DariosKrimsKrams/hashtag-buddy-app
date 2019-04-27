@@ -80,7 +80,7 @@ export class LeaveFeedbackComponent implements OnInit {
       for(var j = 0; j < category.tags.length; j++) {
         var hashtag = category.tags[j];
         var exist = this.photo.selectedHashtags.filter(x => x.title == hashtag.title)[0] !== undefined;
-        if(!exist) {
+        if(!exist && !hashtag.isCensored) {
           hashtags.push(hashtag);
         }
       }

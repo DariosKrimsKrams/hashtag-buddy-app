@@ -99,6 +99,7 @@ export class ConfirmImageComponent implements OnInit {
     photo.categories = categories;
     photo.logId = data.logId;
     photo.proMode = this.photosCountService.getCount() > 0;
+    photo.censorHashtags();
     
     this.userService.updatePhoto(photo);
     this.openResultsPage(photoId);

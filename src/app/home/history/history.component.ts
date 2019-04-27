@@ -104,7 +104,14 @@ export class HistoryComponent implements OnInit, OnDestroy {
 		if(photo.categories !== undefined && photo.categories.length !== 0) {
 			var categoriesAmount = photo.categories[0].tags.length >= count - hashtags.length ? count - hashtags.length : photo.categories[0].tags.length;
 			for(let i = 0; i < categoriesAmount; i++) {
-				hashtags.push(photo.categories[0].tags[i]);
+        var tag = photo.categories[0].tags[i];
+        if(tag.isCensored) {
+          if(categoriesAmount+1 < photo.categories[0].tags.length-1) {
+            categoriesAmount++;
+          }
+        } else {
+          hashtags.push(tag);
+        }
 			}
 		}
 		return hashtags;

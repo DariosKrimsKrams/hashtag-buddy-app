@@ -1,6 +1,7 @@
 .bg {
     background-color: #F9F9F9;
     padding-bottom: 5pt;
+    border-radius: 5pt;
 }
 .progressbar {
     height: 5;
