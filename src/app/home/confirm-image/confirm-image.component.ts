@@ -65,9 +65,8 @@ export class ConfirmImageComponent implements OnInit {
         } else {
           console.log("Upload error", httpResponse);
           Toast.makeText(localize('toast_upload_failed'), "long").show();
-          var that = this;
-          setTimeout(function() {
-            that.goPrevPage();
+          setTimeout.bind(this)(() => {
+            this.goPrevPage();
           }, 1000);
         }
       });

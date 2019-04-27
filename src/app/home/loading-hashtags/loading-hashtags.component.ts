@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Page } from "tns-core-modules/ui/page";
 
 @Component({
@@ -7,11 +7,11 @@ import { Page } from "tns-core-modules/ui/page";
   styleUrls: ['./loading-hashtags.component.css'],
   moduleId: module.id,
 })
-export class LoadingHashtagsComponent implements OnInit, OnDestroy {
+export class LoadingHashtagsComponent implements OnInit {
 
-  countDots: number = 0;
-  progress: number = 0;
-  tipNo: number;
+  public countDots: number = 0;
+  public progress: number = 0;
+  public tipNo: number;
 
   private tipTimeSec: number = 7;
 
@@ -28,10 +28,7 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
     // event for open this
     // if status Upload not set
       // redirect to home
-  }
-
-  ngOnDestroy(): void {
-    console.log("LoadingHashtagsComponent On Destroy");
+    
     // ToDo Cancel Interval
     // problem: this will not be called
   }

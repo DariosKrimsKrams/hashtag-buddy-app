@@ -71,11 +71,6 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     }
   }
 
-  public copySelected(): void {
-    this.dialogOpen = true;
-    setTimeout.bind(this)(() => { this.dialogOpen = false; }, 1000);
-  }
-
   public toggleHashtag(tag: Hashtag, titleId: number, tagId: number): void {
     if(this.hightlightStatus[titleId + '_' + tagId]) {
       this.deselectHashtag(tag.title)
@@ -187,15 +182,33 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     sideDrawer.closeDrawer();
   }
 
-  public goLeaveFeedback(): void {
-    var id = this.photo.id;
-    this.router.navigate([`/home/leavefeedback/${id}`], {
+  public copySelected(): void {
+    if(this.showToastIfHasNoSelectedHashtags()) {
+      return;
+    }
+    this.dialogOpen = true;
+    setTimeout.bind(this)(() => { this.dialogOpen = false; }, 1000);
+  }
+
+  public transferToInstagram(): void {
+    if(this.showToastIfHasNoSelectedHashtags()) {
+      return;
+    }
+    this.router.navigate([`/home/leavefeedback/${this.photo.id}`], {
       transition: {
         name: "slideLeft",
         duration: 500,
         curve: "easeOut"
       }
     });
+  }
+
+  private showToastIfHasNoSelectedHashtags(): boolean {
+    var hasSelectedHashtags = this.selectedHashtags.length > 0;
+    if(!hasSelectedHashtags) {
+      Toast.makeText(localize('toast_no_hashtags_selected')).show();
+    }
+    return !hasSelectedHashtags;
   }
 
   public dismissSoftKeybaord(): void {

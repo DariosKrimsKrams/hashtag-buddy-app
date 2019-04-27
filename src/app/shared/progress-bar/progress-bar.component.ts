@@ -25,7 +25,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
 
   @Input() page: string;
   @Input() width: string;
-  @Input() onlyFreeMode: boolean;
+  @Input() forceFreeMode: boolean;
 
   private oneHour = 3600;
   private photosCountChangeSubscription: Subscription;
@@ -52,6 +52,9 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
 
   private updateFreeIndicator(): void {
     this.countPhotoLeft = this.photosCountService.getCount();
+    if(this.forceFreeMode) {
+      this.countPhotoLeft = 0;
+    }
     this.countPhotosOverall = environment.freePhotosStart;
     if(this.countPhotoLeft == 0) {
       this.timeOverall = environment.freePhotosIncreatingTime;
@@ -61,7 +64,6 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   private buildText(): void {
 
     if(this.page === "home") {
-      
       this.text1 = this.countPhotoLeft + " " + localize('progressbar_home_promode');
       this.text2 = localize('progressbar_home_freemode');
     }

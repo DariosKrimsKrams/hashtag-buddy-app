@@ -18,7 +18,7 @@
                                     <Image [src]="photo.image" stretch="aspectFill"></Image>
                                 </GridLayout>
                                 <StackLayout id="user-selection" class="p-l-10 p-r-10 p-b-20 p-t-10">
-                                    <ProgressBar page="results" width="80%" onlyFreeMode="true"></ProgressBar>
+                                    <ProgressBar page="results" width="80%" forceFreeMode="true" *ngIf="!photo.proMode"></ProgressBar>
                                     <Label class="m-t-10 m-b-5">
                                         <FormattedString>
                                             <Span class="font-demi-bold" text="{{ 'results_category_user_hashtags' | L }}"></Span>
@@ -40,7 +40,7 @@
                                         <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category, i)" *ngIf="!areAllHashtagSelected(category, i)"></Button>
                                         <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="deselectAll(category, i)" *ngIf="areAllHashtagSelected(category, i)"></Button>
                                     </GridLayout>
-                                    <Label text="{{'results_recommented_amount' | L}} {{ getRecommendedAmount(category.title) }}" class="font-reg-xs m-l-10 m-r-5"></Label>
+                                    <Label text="{{ 'results_recommented_amount' | L }} {{ getRecommendedAmount(category.title) }}" class="font-reg-xs m-l-10 m-r-5"></Label>
                                     <WrapLayout class="m-t-5 m-l-5 m-b-20 tag-title">
                                         <ns-hashtag *ngFor="let tag of category.tags; let j = index;" (onClick)="toggleHashtag(tag, i, j)" (onClickCensored)="clickedCensoredHashtag()" [name]="'#' + tag.title" [isActive]="hightlightStatus[i + '_' + j]" [censored]="tag.isCensored"></ns-hashtag>
                                     </WrapLayout>
@@ -55,7 +55,7 @@
                             <Label text="&#xf0ea;" class="fas text-center" fontSize="20"></Label>
                             <Label text="{{ 'results_copy_selected' | L }}" class="text-center font-medium-xs"></Label>
                         </StackLayout>
-                        <StackLayout col="1" horizontalAliginment="center" (tap)="goLeaveFeedback()" class="open-instagram">
+                        <StackLayout col="1" horizontalAliginment="center" (tap)="transferToInstagram()" class="open-instagram">
                             <Label text="&#xf16d;" class="fab text-center" fontSize="20"></Label>
                             <Label text="{{ 'results_copy_to_instagram' | L }}" class="text-center font-medium-xs"></Label>
                         </StackLayout>

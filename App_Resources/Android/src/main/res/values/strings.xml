@@ -6,12 +6,13 @@
   <string name="progressbar_results_freemode1">"Free limit reached: Best hashtags are hidden."</string>
   <string name="progressbar_confirm_freemode2">"Best hashtags are hidden now :("</string>
   <string name="progressbar_confirm_freemode1">"Free limit reached:"</string>
-  <string name="progressbar_confirm_promode">"photos left: Get the best hashtags"</string>
+  <string name="progressbar_confirm_promode">"photos left: Enjoy the best hashtags."</string>
   <string name="progressbar_home_freemode">"Free mode: Some hashtags will be hidden."</string>
   <string name="progressbar_home_promode">"photos left"</string>
   <string name="toast_upload_failed">"Upload failed! Connection lost! :\'("</string>
   <string name="toast_delete_failed">"Delete failed :\'("</string>
   <string name="toast_delete_successful">"Delete successful :)"</string>
+  <string name="toast_no_hashtags_selected">"Please select hashtags first :)"</string>
   <string name="toast_hashtags_hidden">"Hashtag is hidden due to Free-Mode :\'("</string>
   <string name="settings_rate">"Rate Instaq"</string>
   <string name="settings_share_subline">"Tell your best friends about Instaq"</string>
@@ -56,7 +57,7 @@
   <string name="settings_footer_title">"Follow us"</string>
   <string name="feedback_modal_button">"OK"</string>
   <string name="feedback_successful_desc">"Your feedback has been sent :)"</string>
-  <string name="feedback_successful_headline">"Thank you"</string>
+  <string name="feedback_successful_headline">"Thank you!"</string>
   <string name="feedback_send">"Send feedback"</string>
   <string name="feedback_message">"Your message"</string>
   <string name="feedback_email">"Your e-mail"</string>
@@ -87,7 +88,7 @@
   <string name="diduknow_fact1">"around 95 million photos will be uploaded to Instagram every day"</string>
   <string name="loading_status2">"Analyzing"</string>
   <string name="loading_status1">"Uploading"</string>
-  <string name="loading_desc1">"Did you know?"</string>
+  <string name="loading_desc">"Did you know?"</string>
   <string name="loading_headline">"Building #hashtags"</string>
   <string name="leave_feedback_send_feedback">"Send and transfer to Instagram"</string>
   <string name="leave_feedback_comments">"How can we make it better?"</string>
@@ -119,12 +120,12 @@
   <string name="results_category_user_hashtags">"Your selected hashtags"</string>
   <string name="selection_popup_button_deny">"Choose a better one"</string>
   <string name="selection_popup_button_ok">"Let the Magic begin"</string>
-  <string name="selection_popup_title">"Let Instaq help you to find Instagram\'s most relevant hashtags for this wonderful photo"</string>
+  <string name="selection_popup_title">"Let Instaq help you to find Instagram\'s most relevant hashtags for this wonderful photo:"</string>
   <string name="selection_headline">"Which one is your best photo?"</string>
   <string name="selection_title">"Confirm Image"</string>
   <string name="history_photo_defect2">"Please try to re-upload."</string>
   <string name="history_photo_defect1">"Photo has no results due to an error."</string>
-  <string name="history_no_content">"No photos uploaded yet :o"</string>
+  <string name="history_no_content">"No photos uploaded yet..."</string>
   <string name="history_title">"History"</string>
   <string name="home_upload">"Pick your best photo"</string>
   <string name="home_desc_2">"Instagram #hashtags!"</string>

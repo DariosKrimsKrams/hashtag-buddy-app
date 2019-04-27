@@ -18,9 +18,8 @@ export class CircularProgressBarComponent implements OnInit {
   ngOnInit() {
     this.animate();
     // Need Timeout because of Bug :'(
-    var that = this;
-    setTimeout(function() {
-      that.animateBar();
+    setTimeout.bind(this)(() => {
+      this.animateBar();
     }, 1);
   }
 
