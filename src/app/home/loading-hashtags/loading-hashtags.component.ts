@@ -20,8 +20,12 @@ export class LoadingHashtagsComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.animateDots();
-     this.animateTips();
+    this.animateDots();
+    this.animateTips();
+
+    // event for open this
+    // if status Upload not set
+      // redirect to home
   }
 
   private animateDots(): void {

@@ -16,10 +16,10 @@ export class PhotosCountService {
     ) { }
 
     public initFreePhotos(): void {
-
         console.log(this.localStorageService.get(this.keyFreePhotos))
         console.log(this.localStorageService.get(this.keyFreeDate))
 
+        // this.setCount(0);
         if(this.localStorageService.has(this.keyFreePhotos)) {
             return;
         }
@@ -28,20 +28,17 @@ export class PhotosCountService {
 
     public getCount(): number {
         var amount = Number(this.localStorageService.get(this.keyFreePhotos) || 0);
-        if(amount > 0) {
-            return amount;
+        if(amount == 0 && this.checkTimeOver()) {
+            this.setCount(environment.freePhotosIncreatingAmount);
+            return environment.freePhotosIncreatingAmount;
         }
-        // if(this.checkTimeAndIncrease()) {
-        //     return 1;
-        // }
-        return 
+        return amount;
     }
 
-    public checkTimeAndIncrease(): boolean {
+    public checkTimeOver(): boolean {
         var date = this.getDate();
         var dateNow = Date.now() / 1000 | 0;
-        if(date + environment.freePhotosIncreatingTime >= dateNow) {
-            this.setCount(environment.freePhotosIncreatingAmount);
+        if(date + environment.freePhotosIncreatingTime <= dateNow) {
             return true;
         }
         return false;

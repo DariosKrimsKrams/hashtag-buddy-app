@@ -14,7 +14,8 @@ export class LocalStorageService {
     }
 
     public get(key: string): string {
-        return LocalStorage.getItem(key) || undefined;
+        var value = LocalStorage.getItem(key) || undefined;
+        return value != "null" ? value : undefined;
     }
 
     public set(key: string, value: any) {

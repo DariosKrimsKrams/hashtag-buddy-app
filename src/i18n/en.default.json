@@ -5,6 +5,8 @@
   "home_upload": "Pick your best photo",
   "history_title": "History",
   "history_no_content": "No photos uploaded yet :o",
+  "history_photo_defect1": "Photo has no results due to an error.",
+  "history_photo_defect2": "Please try to re-upload.",
   "selection_title": "Confirm Image",
   "selection_headline": "Which one is your best photo?",
   "selection_popup_title": "Let Instaq help you to find Instagram's most relevant hashtags for this wonderful photo",

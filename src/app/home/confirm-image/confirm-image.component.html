@@ -15,7 +15,7 @@
         <StackLayout id="main-image" class="m-t-15 m-b-15">
             <Image [src]="photo" stretch="aspectFill"></Image> 
         </StackLayout>
-        <ProgressBar page="confirm" width="80%"></ProgressBar>
+        <ProgressBar page="confirm" width="100%"></ProgressBar>
         <Button class="btn btn-rounded-lg btn-normal" text="{{ 'selection_popup_button_ok' | L }}" (tap)="confirmImage()"></Button>
         <Button class="btn btn-outline btn-rounded-lg border-color-normal color-normal" text="{{ 'selection_popup_button_deny' | L }}" (tap)="chooseImage()"></Button>
     </StackLayout>
