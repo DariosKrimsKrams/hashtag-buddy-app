@@ -22,20 +22,11 @@
                     <Label class="list-entry" [text]="'about_credits_5' | L" textWrap="true"></Label>
                     <Label class="list-entry" [text]="'about_credits_6' | L" textWrap="true"></Label>
 
-                    <Label [text]="'about_headline_platforms' | L" class="headline"></Label>
-                    <Label class="list-entry" [text]="'about_platforms_1' | L" textWrap="true"></Label>
-                    <Label class="list-entry" [text]="'about_platforms_2' | L" textWrap="true"></Label>
-                    <Label class="list-entry" [text]="'about_platforms_3' | L" textWrap="true"></Label>
-                    <Label class="list-entry" [text]="'about_platforms_4' | L" textWrap="true"></Label>
-
                     <Label [text]="'about_headline_infos' | L" class="headline"></Label>
-                    <Label class="list-entry" text="{{'about_infos_contact' | L}}: {{'about_infos_email' | L}}"></Label>
+                    <!-- <Label class="list-entry" text="{{'about_infos_contact' | L}}: {{'about_infos_email' | L}}"></Label> -->
                     <Label class="list-entry" text="{{'about_infos_app_version' | L}}: v1.0"></Label>
                     <Label class="list-entry" text="{{'about_infos_be_version' | L}}: v1.0"></Label>
-                    <Label class="list-entry" text="{{'about_infos_user_id' | L}}: xyz"></Label>
-
-                    <Label [text]="'about_headline_opensource' | L" class="headline"></Label>
-                    <Label class="list-entry" [text]="'about_opensource_ns' | L"></Label>
+                    <Label class="list-entry" text="{{'about_infos_user_id' | L}}: {{userId}}"></Label>
                     
                 </StackLayout>
             </ScrollView>

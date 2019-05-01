@@ -16,10 +16,6 @@ export class PhotosCountService {
     ) { }
 
     public initFreePhotos(): void {
-        console.log(this.localStorageService.get(this.keyFreePhotos))
-        console.log(this.localStorageService.get(this.keyFreeDate))
-
-        // this.setCount(0);
         if(this.localStorageService.has(this.keyFreePhotos)) {
             return;
         }

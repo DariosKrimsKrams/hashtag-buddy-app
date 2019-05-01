@@ -29,8 +29,11 @@ export class StoreComponent implements OnInit {
 
   ngOnInit() {
     // var products = [
-    //   "com.sample.purchase.coolproduct1",
-    //   "com.sample.purchase.coolproduct2"
+    //   "com.innocliq.instaq.package1",
+    //   "com.innocliq.instaq.package2",
+    //   "com.innocliq.instaq.package3",
+    //   "com.innocliq.instaq.sub1",
+    //   "com.innocliq.instaq.sub2",
     // ];
 
     // (global as any).purchaseInitPromise = purchase.init(products);

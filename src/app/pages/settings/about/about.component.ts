@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "tns-core-modules/ui/page";
+import { UserService } from '~/app/storages/user.service';
 
 @Component({
   selector: 'ns-about',
@@ -10,11 +11,18 @@ import { Page } from "tns-core-modules/ui/page";
 })
 export class AboutComponent implements OnInit {
 
-  constructor(private page: Page, private router: RouterExtensions) {
+  public userId: string;
+
+  constructor(
+    private readonly page: Page,
+    private readonly router: RouterExtensions,
+    private readonly userService: UserService,
+  ) {
     this.page.actionBarHidden = true;
   }
 
   ngOnInit() {
+    this.userId = this.userService.getUserId().substr(0, 10);
   }
 
   goPrevPage() {
