@@ -8,7 +8,7 @@
   <string name="progressbar_confirm_freemode1">"Free limit reached:"</string>
   <string name="progressbar_confirm_promode">"photos left: Enjoy the best hashtags."</string>
   <string name="progressbar_home_freemode">"Free mode: Some hashtags will be hidden."</string>
-  <string name="progressbar_home_promode">"photos left"</string>
+  <string name="progressbar_home_promode">"free photo uploads left"</string>
   <string name="toast_upload_failed">"Upload failed! Connection lost! :\'("</string>
   <string name="toast_delete_failed">"Delete failed :\'("</string>
   <string name="toast_delete_successful">"Delete successful :)"</string>
@@ -26,7 +26,7 @@
   <string name="store_outro">"Keep in mind that Google takes 30 %% off every transaction."</string>
   <string name="store_headline_abo">"Subscriptions"</string>
   <string name="store_headline_once">"One-time packages"</string>
-  <string name="store_intro">"Get photo uploads with uncensored hashtag results for all your best photos. All packages include a lifelong unlimited history."</string>
+  <string name="store_intro">"Getting hashtags is like Magic. No seriously. Get photo uploads with uncensored hashtag results for all your best photos. All packages include a lifelong unlimited history."</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"More"</string>
   <string name="menu_faq">"Tips and Tricks"</string>
@@ -120,7 +120,7 @@
   <string name="history_no_content">"No photos uploaded yet..."</string>
   <string name="history_title">"History"</string>
   <string name="home_upload">"Pick your best photo"</string>
-  <string name="home_desc_2">"Instagram #hashtags!"</string>
+  <string name="home_desc_2">"Instagram #hashtags..."</string>
   <string name="home_desc_1">"Find the most powerful"</string>
   <string name="_app_name_1k3Sbz">"Instaq"</string>
   <string name="app_name">"Instaq"</string>
