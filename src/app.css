@@ -24,7 +24,7 @@ Label, Button, Span {
 .m-b-50 { margin-bottom: 50pt; }
 .m-b-150 { margin-bottom: 150pt; }
 .gradient, .btn-normal {
-    background: linear-gradient(to right, #E067A9 , #FFB184);
+    background: linear-gradient(to right, #E067A9, #FFB184);
 }
 .gradientTrans {
     background: linear-gradient(to right, rgba(224,103,169,0.8) , rgba(255,177,132,0.8));

@@ -1,11 +1,17 @@
+import { Product } from "nativescript-purchase/product";
+
 export class Plan {
-	id: number;
-	image?: string;
+    
+	id: string;
+	image: string;
 	title?: string;
-    content?: string;
-    plan?: string;
-    cost?: string;
-    isHighlight?: boolean;
-    isAbo?: boolean;
-    savings?: number;
+    amount: number;
+    product?: Product;
+    discount?: number;
+    pricePerPhoto?: number;
+
+    public constructor(init?: Partial<Plan>) {
+      Object.assign(this, init);
+    }
+
 }

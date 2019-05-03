@@ -2,58 +2,28 @@ import { Plan } from '../../models/plan';
 
 export const PLAN: Plan[] = [
     {
-        id: 0,
+        id: "small",
         image: "~/app/assets/images/5.png",
-        title: "Entry Magic",
-        content: "- unlock 5 photo uploads\n- 0,30 € per upload",
-        plan: "once",
-        cost: "1,50 €",
-        isHighlight: true,
-        isAbo: false,
-        savings: 0
+        amount: 5,
     },
     {
-        id: 1,
+        id: "medium",
         image: "~/app/assets/images/10.png",
-        title: "Advanced Magic",
-        content: "- unlock 10 photo uploads\n- 0,25 € per upload",
-        plan: "once",
-        cost: "2,50 €",
-        isHighlight: false,
-        isAbo: false,
-        savings: 17
+        amount: 10,
     },
     {
-        id: 2,
+        id: "large",
         image: "~/app/assets/images/20.png",
-        title: "Professional Magic",
-        content: "- unlock 20 photo uploads\n- 0,20 € per upload",
-        plan: "once",
-        cost: "4,00 €",
-        isHighlight: true,
-        isAbo: false,
-        savings: 33
+        amount: 20,
     },
     {
-        id: 3,
+        id: "unlimited1month",
         image: "~/app/assets/images/inf.png",
-        title: "Unlimited Magic",
-        content: "- Subscription period: 1 month\n- Unlimited photo uploads\n",
-        plan: "abo",
-        cost: "12,50 €",
-        isHighlight: false,
-        isAbo: true,
-        savings: 0
+        amount: 1,
     },
     {
-        id: 4,
+        id: "unlimited3months",
         image: "~/app/assets/images/inf.png",
-        title: "Unlimited Magic",
-        content: "- Subscription period: 3 months\n- Unlimited photo uploads\n",
-        plan: "abo",
-        cost: "7,50 €",
-        isHighlight: false,
-        isAbo: true,
-        savings: 48
+        amount: 3,
     },
 ];
