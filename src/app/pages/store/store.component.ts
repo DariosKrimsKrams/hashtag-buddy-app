@@ -7,8 +7,9 @@ import *  as purchase from "nativescript-purchase";
 import { Product } from "nativescript-purchase/product";
 import { Transaction, TransactionState } from "nativescript-purchase/transaction";
 import * as applicationSettings from "tns-core-modules/application-settings";
-import { platformBrowser } from '@angular/platform-browser';
 import { Plan } from '~/app/models/plan';
+import * as Toast from 'nativescript-toast';
+import { localize } from 'nativescript-localize/angular';
 
 @Component({
   selector: 'ns-store',
@@ -95,6 +96,7 @@ export class StoreComponent implements OnInit {
       if(x.product === undefined) {
         return;
       }
+      x.desc = x.product.localizedDescription;
       if(x.product.productType == "inapp" && (cheapestInApp == undefined || x.product.priceAmount < cheapestInApp.product.priceAmount)) {
         cheapestInApp = x;
       } else if(x.product.productType == "subs" && (cheapestSubs == undefined || x.product.priceAmount * x.amount < cheapestSubs.product.priceAmount)) {
@@ -112,7 +114,7 @@ export class StoreComponent implements OnInit {
         var discount = (1 - (x.pricePerPhoto / cheapestInApp.pricePerPhoto)) * 100;
         x.discount = Math.round(discount);
       } else if(x.product.productType == "subs" && x.id != cheapestSubs.id) {
-        x.pricePerPhoto = x.product.priceAmount / x.amount;
+        x.pricePerPhoto = x.product.priceAmount;
         var discount = (1 - (x.pricePerPhoto / cheapestSubs.pricePerPhoto)) * 100;
         x.discount = Math.round(discount);
       }
@@ -129,28 +131,18 @@ export class StoreComponent implements OnInit {
     sideDrawer.closeDrawer();
   }
 
-  getProducts() {
-    (global as any).purchaseInitPromise.then(() => {
-      purchase.getProducts().then((products: Array<Product>) => {
-          products.forEach((product: Product) => {
-              console.log(product.productIdentifier);
-              console.log(product.localizedTitle);
-              console.log(product.priceFormatted);
-          });
-      });
-    });
-  }
-
-  buyProduct(product: Product) {
+  buyProduct(plan: Plan) {
+    var product = plan.product;
     if (purchase.canMakePayments()) {
       purchase.buyProduct(product);
     } else {
-      alert("Sorry, your account is not eligible to make payments!");
+      Toast.makeText(localize('store_buy_failed')).show();
     }
   }
 
   restore() {
     purchase.restorePurchases();
+    Toast.makeText(localize('store_restored_successful')).show();
   }
 
 }

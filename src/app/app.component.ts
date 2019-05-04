@@ -13,7 +13,7 @@ import { PhotosCountService } from "./storages/photos-count.service";
 export class AppComponent implements OnInit { 
 
     private _sideDrawerTransition: DrawerTransitionBase;
-    menus = ["home", "store", "faq", "feedback", "settings"];
+    menus = ["home", "store", "feedback", "settings"];
     selected = [];
 
     constructor(
