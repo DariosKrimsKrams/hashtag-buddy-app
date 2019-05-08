@@ -40,11 +40,20 @@ export class LoadingHashtagsComponent implements OnInit {
   }
 
   private animateTips(): void {
-    this.tipNo = Math.floor(Math.random() * 23.99);
+    this.tipNo = this.getRandom();
     setInterval.bind(this)(() => {
-      this.tipNo = Math.floor(Math.random() * 23.99);
-      // console.log(this.tipNo)
+      this.tipNo = this.getRandom();
     }, this.tipTimeSec * 1000);
+  }
+
+  private getRandom(): number {
+    // 1. get between 0 and 1
+    // 2. multiple to get between 0.00001 and 22.9999
+    // 3. round off to get between 0 and 22
+    // 4. add 1 to get between 1 and 23
+    const min = 1;
+    const max = 23;
+    return Math.floor(Math.random() * (max - 0.01)) + min;
   }
 
 }

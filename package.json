@@ -23,6 +23,7 @@
         "@angular/router": "~7.1.0",
         "nativescript-angular": "~7.1.0",
         "nativescript-background-http": "^3.4.0",
+        "nativescript-clipboard": "^1.1.7",
         "nativescript-emoji": "^1.1.1",
         "nativescript-imagepicker": "^6.0.6",
         "nativescript-instagram-share": "^1.0.5",

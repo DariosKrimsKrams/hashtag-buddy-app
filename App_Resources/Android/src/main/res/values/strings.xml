@@ -91,13 +91,15 @@
   <string name="leave_feedback_bad_hashtags_title">"Inappropriate hashtags"</string>
   <string name="leave_feedback_good_hashtags_desc">"Which hashtags do you like most?"</string>
   <string name="leave_feedback_good_hashtags_title">"Particularly matching hashtags"</string>
-  <string name="leave_feedback_rating_desc">"Improve hashtags by giving feedback"</string>
+  <string name="leave_feedback_rating_desc">"Improve Instaq by giving feedback"</string>
   <string name="leave_feedback_rating_title">"Impression of hashtags?"</string>
   <string name="leave_feedback_star1">"Bad :\'("</string>
   <string name="leave_feedback_star2">"Satisfied :/"</string>
   <string name="leave_feedback_star3">"Great :D"</string>
   <string name="leave_feedback_headline">"Rate Results"</string>
   <string name="leave_feedback_skip">"Skip"</string>
+  <string name="copy_failed">"Copy Failed"</string>
+  <string name="copy_successful">"Copied to clipboard"</string>
   <string name="results_copy_to_instagram">"Transfer to Instagram"</string>
   <string name="results_copy_selected">"Copy selected"</string>
   <string name="results_copy_top">"Copy Top 20"</string>

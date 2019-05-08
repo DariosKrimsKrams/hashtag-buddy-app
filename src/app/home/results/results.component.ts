@@ -17,6 +17,7 @@ import { Photo } from '../../models/photo';
 import { ResultSelectionHashtags } from '~/app/models/result-selection-hashtags';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
+var clipboard = require("nativescript-clipboard");
 
 @Component({
   selector: 'ns-results',
@@ -186,8 +187,17 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     if(this.showToastIfHasNoSelectedHashtags()) {
       return;
     }
-    this.dialogOpen = true;
-    setTimeout.bind(this)(() => { this.dialogOpen = false; }, 1000);
+    
+    var text = this.selectedHashtags.getHashtagsAsText();
+    clipboard.setText(text).then(() => {
+      this.dialogOpen = true;
+      setTimeout.bind(this)(() => {
+        this.dialogOpen = false;
+      }, 3000);
+    }).catch(function (e) {
+      console.log("Copy failed: " + e);
+      Toast.makeText(localize('copy_failed') + ": " + e, "long").show();
+    });
   }
 
   public transferToInstagram(): void {

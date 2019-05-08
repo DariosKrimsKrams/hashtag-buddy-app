@@ -70,21 +70,29 @@
 .dialogOpen .page {
     opacity: 0.2;
 }
+
 .dialogOpen .dialog-wrapper {
     visibility: visible;
     animation-name: show;
-    animation-duration: 0.3s;
+    animation-duration: 0.6s;
     animation-fill-mode: forwards;
 }
+
 .dialog-wrapper {    
     visibility: collapse;
     opacity: 0;
 }
 
 .dialog {
-    border-radius: 10;
+    border-radius: 15pt;
     width: 60%;
-    margin-top: 200;
-    background-color: #fafafa;
-    padding: 20;
+    margin-top: 290pt;
+    background: linear-gradient(to right, #E067A9, #FFB184);
+    padding: 3pt;
+}
+
+.dialog2 {
+    border-radius: 13pt;
+    background-color: #F4F4F4;
+    padding: 20pt 10pt;
 }

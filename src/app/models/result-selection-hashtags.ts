@@ -66,4 +66,12 @@ export class ResultSelectionHashtags {
     }
   }
 
+  public getHashtagsAsText(): string {
+    var text = "";
+    this.hashtags.forEach(hashtag => {
+      text += `#${hashtag.hashtag.title} `;
+    });
+    return text;
+  }
+
 }

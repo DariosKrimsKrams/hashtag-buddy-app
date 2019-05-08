@@ -63,9 +63,11 @@
                 </GridLayout>                         
             </GridLayout>  
             <AbsoluteLayout class="dialog-wrapper" *ngIf="dialogOpen" horizontalAlignment="center">
-                <StackLayout class="dialog" horizontalAlignment="center">            
-                    <Image src="~/app/assets/images/copied.png" width="60" height="50"></Image>
-                    <Label text="Copied to clipboard" class="m-t-20 text-center"></Label>
+                <StackLayout class="dialog">            
+                    <StackLayout class="dialog2">
+                        <Image src="~/app/assets/images/copied.png" width="60" height="50"></Image>
+                        <Label [text]="'copy_successful' | L" class="m-t-20 text-center"></Label>
+                    </StackLayout>
                 </StackLayout>
             </AbsoluteLayout>
         </GridLayout>              
