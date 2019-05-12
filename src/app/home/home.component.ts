@@ -6,7 +6,7 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { screen } from "tns-core-modules/platform";
 import * as imagepicker from "nativescript-imagepicker";
 import { DeviceService } from "../services/device-photos.service";
-import { shareInstagram } from 'nativescript-instagram-share';
+// import { shareInstagram } from 'nativescript-instagram-share';
 import { ImageSource, fromFile } from "tns-core-modules/image-source";
 import { UserService } from "../storages/user.service";
 
@@ -50,18 +50,18 @@ export class HomeComponent implements OnInit {
     // this.sharePhoto();
   }
 
-  private sharePhoto() {
+  // private sharePhoto() {
 
-    let image = this.getImageSource();
-    shareInstagram(image).then((r)=>{
-        console.log("instagram open succcessfully", r);
-    }).catch((e)=>{
-        console.log("instagram is not installed");
-        console.log("error", e);
-    });
+    // let image = this.getImageSource();
+    // shareInstagram(image).then((r)=>{
+    //     console.log("instagram open succcessfully", r);
+    // }).catch((e)=>{
+    //     console.log("instagram is not installed");
+    //     console.log("error", e);
+    // });
     // ToDo change to putExtra(img, text)
     
-  }
+  // }
 
   private getImageSource(): ImageSource {
     var photo = this.userService.getPhoto(1);
