@@ -152,7 +152,7 @@ export class LeaveFeedbackComponent implements OnInit {
 
   public continue(): void {
     this.showModal();
-    // this.openInstagram();
+    this.openInstagram();
   }
 
   public goPrevPage(): void {
