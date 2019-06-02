@@ -6,9 +6,6 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { screen } from "tns-core-modules/platform";
 import * as imagepicker from "nativescript-imagepicker";
 import { DeviceService } from "../services/device-photos.service";
-// import { shareInstagram } from 'nativescript-instagram-share';
-import { ImageSource, fromFile } from "tns-core-modules/image-source";
-import { UserService } from "../storages/user.service";
 
 class ScreenInfo {
   constructor(
@@ -38,7 +35,6 @@ export class HomeComponent implements OnInit {
     private page: Page,
     private router: RouterExtensions,
     private deviceService: DeviceService,
-    private userService: UserService,
   ) {
     this.page.actionBarHidden = true;
   }
@@ -46,30 +42,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
-
-    // this.sharePhoto();
-  }
-
-  // private sharePhoto() {
-
-    // let image = this.getImageSource();
-    // shareInstagram(image).then((r)=>{
-    //     console.log("instagram open succcessfully", r);
-    // }).catch((e)=>{
-    //     console.log("instagram is not installed");
-    //     console.log("error", e);
-    // });
-    // ToDo change to putExtra(img, text)
-    
-  // }
-
-  private getImageSource(): ImageSource {
-    var photo = this.userService.getPhoto(1);
-    var path = photo.image;
-    console.log("path", path)
-
-    const image = <ImageSource>fromFile(path);
-    return image;
   }
 
   clickUpload() {

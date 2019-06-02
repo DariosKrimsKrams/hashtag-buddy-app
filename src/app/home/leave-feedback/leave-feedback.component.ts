@@ -6,7 +6,7 @@ import { Hashtag } from '~/app/models/hashtag';
 import { ResultFeedback } from '~/app/models/result-feedback';
 import { FeedbackRepository } from '~/app/services/feedback-repository.service';
 import { fromFile, ImageSource } from 'tns-core-modules/image-source/image-source';
-import { shareInstagram } from 'nativescript-instagram-share';
+// import { shareInstagram } from 'nativescript-instagram-share';
 import { Photo } from '~/app/models/photo';
 import { ActivatedRoute } from '@angular/router';
 import { SelectedHashtag } from '~/app/models/selected-hashtag';
@@ -185,9 +185,9 @@ export class LeaveFeedbackComponent implements OnInit {
   //   // ToDo change to putExtra(img, text)
   // }
 
-  private getImageSource(): ImageSource {
-    const image = <ImageSource>fromFile(this.photo.image);
-    return image;
-  }
+  // private getImageSource(): ImageSource {
+  //   const image = <ImageSource>fromFile(this.photo.image);
+  //   return image;
+  // }
 
 }
