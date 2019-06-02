@@ -216,6 +216,7 @@ export class StoreComponent implements OnInit {
   }
 
   private savePurchase(transaction: Transaction): void {
+    console.log("addPurchase");
     this.userService.addPurchase(transaction);
 
     var plan = this.getPlanById(transaction.productIdentifier);

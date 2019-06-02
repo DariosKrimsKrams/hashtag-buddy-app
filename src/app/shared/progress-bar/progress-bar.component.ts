@@ -12,6 +12,7 @@ import { localize } from 'nativescript-localize/angular';
 })
 export class ProgressBarComponent implements OnInit, OnDestroy {
 
+  public isVisible: boolean;
   public columns: any;
   public text1: string;
   public text2: string;
@@ -63,10 +64,16 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
 
   private buildText(): void {
 
+    var hasPayedPhotos = this.photosCountService.hasPayedPhotos();
+
+    if(hasPayedPhotos && this.page !== "home") {
+      this.isVisible = false;
+      return;
+    }
+
+    this.isVisible = true;
     if(this.page === "home") {
-      var hasPayedPhotos = this.photosCountService.hasPayedPhotos();
       var textKey = hasPayedPhotos ? 'progressbar_home_iapmode' : 'progressbar_home_promode';
-      
       this.text1 = this.countPhotoLeft + " " + localize(textKey);
       this.text2 = localize('progressbar_home_freemode');
     }

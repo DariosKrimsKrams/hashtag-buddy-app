@@ -53,7 +53,8 @@ export class PhotosCountService {
             amountPayed--;
             this.setPayedCount(amountPayed);
         } else {
-            var freeAmount = amountTotal - amountPayed - 1;
+            var freeAmount = amountTotal - amountPayed;
+            freeAmount--;
             this.setFreeCount(freeAmount);
         }
         this.changedAmount.emit();
