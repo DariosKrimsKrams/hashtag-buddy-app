@@ -11,6 +11,8 @@ import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
 import * as dialogs from "tns-core-modules/ui/dialogs";
 import { isIOS, isAndroid } from "tns-core-modules/platform";
+import { UserService } from '~/app/storages/user.service';
+import { PhotosCountService } from '~/app/storages/photos-count.service';
 
 @Component({
   selector: 'ns-store',
@@ -24,7 +26,9 @@ export class StoreComponent implements OnInit {
   plans: Plan[] = PLAN;
   
   constructor(
-    private page: Page, 
+    private readonly page: Page, 
+    private readonly userService: UserService,
+    private readonly photosCountService: PhotosCountService,
   ) {
     this.page.actionBarHidden = true;
   }
@@ -173,9 +177,11 @@ export class StoreComponent implements OnInit {
   }
 
   private buyingProductSuccessful(transaction: Transaction): void {
+    this.savePurchase(transaction);
+    this.showBoughtPopup(transaction);
+  }
 
-    // ToDo localStorage set variable
-    
+  private showBoughtPopup(transaction: Transaction): void {
     var plan = this.getPlanById(transaction.productIdentifier);
     var title = localize('iap_purchase_successful_title');
     var msg = localize('iap_purchase_successful_msg', plan.title);
@@ -184,9 +190,11 @@ export class StoreComponent implements OnInit {
   }
 
   private onProductRestored(transaction: Transaction): void {
+    this.savePurchase(transaction);
+    this.showRestorePopup(transaction);
+  }
 
-    // ToDo localStorage set variable
-
+  private showRestorePopup(transaction: Transaction): void {
     var plan = this.getPlanById(transaction.originalTransaction.productIdentifier);
     var title = localize('iap_restored_successful_title');
     var msg = localize('iap_restored_successful_msg', plan.title);
@@ -205,6 +213,18 @@ export class StoreComponent implements OnInit {
       message: msg,
       okButtonText: btn
     });
+  }
+
+  private savePurchase(transaction: Transaction): void {
+    this.userService.addPurchase(transaction);
+
+    var plan = this.getPlanById(transaction.productIdentifier);
+    if(plan.type == "inapp") {
+      var amount = plan.amount;
+      this.photosCountService.addPayedPhotos(amount);
+    } else {
+      // is ABO
+    }
   }
 
 }

@@ -5,6 +5,7 @@ import { HashtagCategory } from "~/app/models/hashtag-category";
 import { Hashtag } from "~/app/models/hashtag";
 import { Photo } from "../models/photo";
 import { environment } from '../environments/environment';
+import { Transaction } from "nativescript-purchase/transaction";
  
 @Injectable({
     providedIn: "root"
@@ -13,13 +14,14 @@ export class UserService {
 
     private keyUserId: string = 'userId';
     private keyPhotos: string = 'photos';
+    private keyPurchases: string = 'purchases';
     private photosCache: Photo[];
     @Output() public photoAdded: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
     @Output() public photoUpdated: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
 
     constructor(
-        private localStorageService: LocalStorageService,
-        private customerRepositoryService: CustomerRepository
+        private readonly localStorageService: LocalStorageService,
+        private readonly customerRepositoryService: CustomerRepository
     ) { }
 
     public addPhoto(photo: Photo): number {
@@ -110,5 +112,26 @@ export class UserService {
         this.localStorageService.remove(this.keyUserId);
         this.photosCache = [];
     }
+
+    public addPurchase(transaction: Transaction): void {
+        var purchases = this.getExistingPurchases();
+        purchases.push(transaction);
+        this.localStorageService.set(this.keyPurchases, purchases);
+    }
+
+    private getExistingPurchases(): Transaction[] {
+        var json = this.localStorageService.get(this.keyPurchases) || undefined;
+        if(json === undefined) {
+            return [];
+        }
+        var jsonAsObj = JSON.parse(json);
+        var result = jsonAsObj as Transaction[];
+        console.log(result);
+        return result;
+    }
+
+    // public hasIapAbo(): boolean {
+
+    // }
     
 }

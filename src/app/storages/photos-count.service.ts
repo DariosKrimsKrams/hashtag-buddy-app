@@ -7,9 +7,10 @@ import { environment } from '../environments/environment';
 })
 export class PhotosCountService {
 
+    private keyPayedPhotos: string = 'payedPhotosAmount';
     private keyFreePhotos: string = 'freePhotosAmount';
     private keyFreeDate: string = 'freePhotosDate';
-    public changedData: EventEmitter<void> = new EventEmitter<void>();
+    public changedAmount: EventEmitter<void> = new EventEmitter<void>();
 
     constructor(
         private localStorageService: LocalStorageService,
@@ -19,16 +20,18 @@ export class PhotosCountService {
         if(this.localStorageService.has(this.keyFreePhotos)) {
             return;
         }
-        this.setCount(environment.freePhotosStart);
+        this.setFreeCount(environment.freePhotosStart);
     }
 
-    public getCount(): number {
-        var amount = Number(this.localStorageService.get(this.keyFreePhotos) || 0);
-        if(amount == 0 && this.checkTimeOver()) {
-            this.setCount(environment.freePhotosIncreatingAmount);
+    public getTotalCount(): number {
+        var amountPayed = this.getPayedCount();
+        var amountFree = this.getFreeCount();
+        var amountTotal = amountPayed + amountFree;
+        if(amountTotal == 0 && this.checkTimeOver()) {
+            this.setFreeCount(environment.freePhotosIncreatingAmount);
             return environment.freePhotosIncreatingAmount;
         }
-        return amount;
+        return amountTotal;
     }
 
     public checkTimeOver(): boolean {
@@ -40,25 +43,55 @@ export class PhotosCountService {
         return false;
     }
 
-    public decreaseCount(): boolean {
-        var amount = this.getCount();
-        if(amount == 0) {
+    public decrease(): boolean {
+        var amountTotal = this.getTotalCount();
+        if(amountTotal == 0) {
             return false;
         }
-        amount--;
-        this.setCount(amount);
-        this.changedData.emit();
+        var amountPayed = this.getPayedCount();
+        if(amountPayed > 1) {
+            amountPayed--;
+            this.setPayedCount(amountPayed);
+        } else {
+            var freeAmount = amountTotal - amountPayed - 1;
+            this.setFreeCount(freeAmount);
+        }
+        this.changedAmount.emit();
         return true;
+    }
+
+    public addPayedPhotos(count: number): void {
+        var amountPayed = this.getPayedCount();
+        console.log("amount", amountPayed);
+        amountPayed += count;
+        this.setPayedCount(amountPayed);
+        this.changedAmount.emit();
+    }
+
+    public hasPayedPhotos(): boolean {
+        return this.getPayedCount() > 0;
     }
 
     public getDate(): number {
         return Number(this.localStorageService.get(this.keyFreeDate));
     }
 
-    private setCount(amount: number): void {
+    private getFreeCount(): number {
+        return Number(this.localStorageService.get(this.keyFreePhotos) || 0);
+    }
+
+    private getPayedCount(): number {
+        return Number(this.localStorageService.get(this.keyPayedPhotos) || 0);
+    }
+
+    private setFreeCount(amount: number): void {
         this.localStorageService.set(this.keyFreePhotos, amount);
         var dateNow = Date.now() / 1000 | 0;
         this.localStorageService.set(this.keyFreeDate, dateNow);
+    }
+
+    private setPayedCount(amount: number): void {
+        this.localStorageService.set(this.keyPayedPhotos, amount);
     }
     
 }

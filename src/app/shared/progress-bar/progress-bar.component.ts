@@ -35,7 +35,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.photosCountChangeSubscription = this.photosCountService.changedData.subscribe(() => {
+    this.photosCountChangeSubscription = this.photosCountService.changedAmount.subscribe(() => {
       this.updateFreeIndicator();
       this.buildText();
       this.buildData();
@@ -51,7 +51,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   }
 
   private updateFreeIndicator(): void {
-    this.countPhotoLeft = this.photosCountService.getCount();
+    this.countPhotoLeft = this.photosCountService.getTotalCount();
     if(this.forceFreeMode) {
       this.countPhotoLeft = 0;
     }
@@ -64,7 +64,10 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   private buildText(): void {
 
     if(this.page === "home") {
-      this.text1 = this.countPhotoLeft + " " + localize('progressbar_home_promode');
+      var hasPayedPhotos = this.photosCountService.hasPayedPhotos();
+      var textKey = hasPayedPhotos ? 'progressbar_home_iapmode' : 'progressbar_home_promode';
+      
+      this.text1 = this.countPhotoLeft + " " + localize(textKey);
       this.text2 = localize('progressbar_home_freemode');
     }
 

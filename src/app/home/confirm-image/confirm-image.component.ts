@@ -61,7 +61,7 @@ export class ConfirmImageComponent implements OnInit {
         if(httpResponse.code == 200) {
           console.log("Upload successful");
           this.parseSuccessfulResponse(photoId, httpResponse);
-          this.photosCountService.decreaseCount();
+          this.photosCountService.decrease();
         } else {
           console.log("Upload error", httpResponse);
           Toast.makeText(localize('toast_upload_failed'), "long").show();
@@ -97,7 +97,7 @@ export class ConfirmImageComponent implements OnInit {
     var photo = this.userService.getPhoto(photoId);
     photo.categories = categories;
     photo.logId = data.logId;
-    photo.proMode = this.photosCountService.getCount() > 0;
+    photo.proMode = this.photosCountService.getTotalCount() > 0;
     photo.censorHashtags();
     
     this.userService.updatePhoto(photo);

@@ -15,10 +15,10 @@ export class LocalStorageService {
 
     public get(key: string): string {
         var value = LocalStorage.getItem(key) || undefined;
-        return value != "null" ? value : undefined;
+        return value != 'null' ? value : undefined;
     }
 
-    public set(key: string, value: any) {
+    public set(key: string, value: string | number | object) {
         if (typeof value === 'string' || value instanceof String) {
             LocalStorage.setItem(key, value);
         } else {
