@@ -23,11 +23,11 @@
                 </GridLayout>
                 <StackLayout class="hr-light m-10"></StackLayout>
 
-                <GridLayout rows="40" columns="*,50" verticalAlignment="middle" (tap)="goNextPage('terms')">
+                <!-- <GridLayout rows="40" columns="*,50" verticalAlignment="middle" (tap)="goNextPage('terms')">
                     <Label col="0" [text]="'settings_terms' | L"></Label>
                     <Label col="1" text="&#xf054;" class="fas"></Label>
                 </GridLayout>
-                <StackLayout class="hr-light m-10"></StackLayout>
+                <StackLayout class="hr-light m-10"></StackLayout> -->
 
                 <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="share()">
                     <Label row="0" text="{{'settings_share' | L}} &#10084;"></Label>
@@ -45,13 +45,13 @@
             <StackLayout row="1" class="text-center gradient" id="footer">
                 <Image src="~/app/assets/images/settings_footer.png" id="footer-shadow"></Image>
                 <GridLayout verticalAlignment="bottom" class="">
-                    <Label [text]="'settings_footer_title' | L" class="bottom-text" fontSize="24" color="white"></Label>
+                    <Label [text]="'settings_footer_title_fallback' | L" class="bottom-text" fontSize="24" color="white"></Label>
                 </GridLayout>
                 <GridLayout columns="60,*,*,*,60" verticalAlignment="bottom" class="p-t-10 bottom">
                     <StackLayout col="0"></StackLayout>
-                    <Image col="1" src="~/app/assets/images/icons/instagram.png" horizontalAlignment="center" (tap)="goNextPage('instagram')"></Image>
-                    <Image col="2" src="~/app/assets/images/icons/facebook.png" horizontalAlignment="center" (tap)="goNextPage('facebook')"></Image>
-                    <Image col="3" src="~/app/assets/images/icons/twitter.png" horizontalAlignment="center" (tap)="goNextPage('twitter')"></Image>
+                    <Image col="1" src="~/app/assets/images/icons/instagram.png" horizontalAlignment="center" (tap)="share()"></Image>
+                    <Image col="2" src="~/app/assets/images/icons/facebook.png" horizontalAlignment="center" (tap)="share()"></Image>
+                    <Image col="3" src="~/app/assets/images/icons/twitter.png" horizontalAlignment="center" (tap)="share()"></Image>
                     <StackLayout col="4"></StackLayout>
                 </GridLayout>
             </StackLayout>

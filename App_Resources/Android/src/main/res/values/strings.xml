@@ -18,7 +18,7 @@
   <string name="settings_share_subline">"Tell your best friends about Instaq"</string>
   <string name="settings_share">"Spread some love!"</string>
   <string name="settings_terms">"Terms and Conditions"</string>
-  <string name="settings_legal">"Legal infos"</string>
+  <string name="settings_legal">"Legal &amp; Privacy"</string>
   <string name="settings_about">"About"</string>
   <string name="faq_outro">"Any improvement ideas? Want to give us feedback or advice? Let us know."</string>
   <string name="store_restored_successful">"Products has been restored :)"</string>
@@ -48,6 +48,7 @@
   <string name="about_headline_credits">"Made by"</string>
   <string name="about_desc">"Thank you for using Instaq.\n\nWe believe in improving the process of finding Instagram hashtags. To bring the same quality of hashtags used by large influencer agencies to everyone, we built Instaq on a base of big data-sets and powerful algorithms to analyze Instagram\'s latest, most successful content and want to form the best possible User Experience around it.\n\nDo you agree with our vision? Let us build this dream together! Contribute to Instaq by giving us your feedback for hashtags or ask for features or improvements."</string>
   <string name="about_title">"About"</string>
+  <string name="settings_footer_title_fallback">"Share"</string>
   <string name="settings_footer_title">"Follow us"</string>
   <string name="feedback_modal_button">"OK"</string>
   <string name="feedback_successful_desc">"Your feedback has been sent :)"</string>
@@ -84,6 +85,7 @@
   <string name="loading_status1">"Uploading"</string>
   <string name="loading_desc">"Did you know?"</string>
   <string name="loading_headline">"Building #hashtags"</string>
+  <string name="leave_feedback_send_feedback_copy">"Send feedback"</string>
   <string name="leave_feedback_send_feedback">"Send and transfer them to Instagram"</string>
   <string name="leave_feedback_comments">"How can we make it better?"</string>
   <string name="leave_feedback_missing_hashtags">"Missing hashtags?"</string>

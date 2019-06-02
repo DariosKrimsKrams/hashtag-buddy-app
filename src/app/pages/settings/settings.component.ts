@@ -39,12 +39,15 @@ export class SettingsComponent implements  OnInit {
   }
 
   goNextPage(route: string) {
-    if(route === 'instagram'){
-      openUrl("https://www.instagram.com/");      
-    } else if(route === 'facebook') {
-      openUrl("https://www.facebook.com/");
-    } else if(route === 'twitter') {
-      openUrl("https://twitter.com/");
+    // if(route === 'instagram'){
+    //   openUrl("https://www.instagram.com/");      
+    // } else if(route === 'facebook') {
+    //   openUrl("https://www.facebook.com/");
+    // } else if(route === 'twitter') {
+    //   openUrl("https://twitter.com/");
+    // } else
+    if(route === 'legal') {
+      openUrl("http://innocliq.de/legal-privacy.html");
     } else {
       this.router.navigate(["/settings/" + route], {
         transition: {
