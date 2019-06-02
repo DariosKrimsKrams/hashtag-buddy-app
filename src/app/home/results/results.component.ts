@@ -187,7 +187,30 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     if(this.showToastIfHasNoSelectedHashtags()) {
       return;
     }
-    
+    this.copyToClipboard();
+    this.navigateToLeaveFeedbackPage();
+  }
+
+  public transferToInstagram(): void {
+    if(this.showToastIfHasNoSelectedHashtags()) {
+      return;
+    }
+    this.navigateToLeaveFeedbackPage();
+  }
+
+  private navigateToLeaveFeedbackPage(): void {
+    setTimeout(() => {
+      this.router.navigate([`/home/leavefeedback/${this.photo.id}`], {
+        transition: {
+          name: "slideLeft",
+          duration: 500,
+          curve: "easeOut"
+        }
+      });
+    }, 1000);
+  }
+
+  private copyToClipboard(): void {
     var text = this.selectedHashtags.getHashtagsAsText();
     clipboard.setText(text).then(() => {
       this.dialogOpen = true;
@@ -197,19 +220,6 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     }).catch(function (e) {
       console.log("Copy failed: " + e);
       Toast.makeText(localize('copy_failed') + ": " + e, "long").show();
-    });
-  }
-
-  public transferToInstagram(): void {
-    if(this.showToastIfHasNoSelectedHashtags()) {
-      return;
-    }
-    this.router.navigate([`/home/leavefeedback/${this.photo.id}`], {
-      transition: {
-        name: "slideLeft",
-        duration: 500,
-        curve: "easeOut"
-      }
     });
   }
 

@@ -50,15 +50,15 @@
                         <StackLayout class="top-shadow" isUserInteractionEnabled="false" *ngIf="currentScrollingY >= parallaxHeight - 3"></StackLayout>
                         <StackLayout class="bottom-shadow" isUserInteractionEnabled="false"></StackLayout>
                     </GridLayout>
-                    <GridLayout row="1" columns="*,*" class="footer">
+                    <GridLayout row="1" columns="*" class="footer">
                         <StackLayout col="0" horizontalAliginment="center" (tap)="copySelected()">
                             <Label text="&#xf0ea;" class="fas text-center" fontSize="20"></Label>
                             <Label text="{{ 'results_copy_selected' | L }}" class="text-center font-medium-xs"></Label>
                         </StackLayout>
-                        <StackLayout col="1" horizontalAliginment="center" (tap)="transferToInstagram()" class="open-instagram">
+                        <!-- <StackLayout col="1" horizontalAliginment="center" (tap)="transferToInstagram()" class="open-instagram">
                             <Label text="&#xf16d;" class="fab text-center" fontSize="20"></Label>
                             <Label text="{{ 'results_copy_to_instagram' | L }}" class="text-center font-medium-xs"></Label>
-                        </StackLayout>
+                        </StackLayout> -->
                     </GridLayout>
                 </GridLayout>                         
             </GridLayout>  

@@ -152,7 +152,7 @@ export class LeaveFeedbackComponent implements OnInit {
 
   public continue(): void {
     this.showModal();
-    this.openInstagram();
+    // this.openInstagram();
   }
 
   public goPrevPage(): void {
@@ -173,17 +173,17 @@ export class LeaveFeedbackComponent implements OnInit {
     this.comment = text;
   }
 
-  private openInstagram(): void {
-    let image = this.getImageSource();
-    // let image = this.photo.image;
-    shareInstagram(image).then((r)=>{
-      console.log("instagram open succcessfully", r);
-    }).catch((e)=>{
-      console.log("instagram is not installed");
-      console.log("error", e);
-    });
-    // ToDo change to putExtra(img, text)
-  }
+  // private openInstagram(): void {
+  //   let image = this.getImageSource();
+  //   // let image = this.photo.image;
+  //   shareInstagram(image).then((r)=>{
+  //     console.log("instagram open succcessfully", r);
+  //   }).catch((e)=>{
+  //     console.log("instagram is not installed");
+  //     console.log("error", e);
+  //   });
+  //   // ToDo change to putExtra(img, text)
+  // }
 
   private getImageSource(): ImageSource {
     const image = <ImageSource>fromFile(this.photo.image);
