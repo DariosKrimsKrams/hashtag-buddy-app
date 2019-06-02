@@ -106,7 +106,13 @@
   "store_restore": "Restore payments",
   "store_save": "Save",
   "store_buy_failed": "Sorry, your account is not eligible to make payments :(",
-  "store_restored_successful": "Products has been restored :)",
+  "iap_purchase_failed": "Purchase was canceled",
+  "iap_purchase_successful_title": "Congratulations",
+  "iap_purchase_successful_msg": "You successfully bought %s :)",
+  "iap_purchase_successful_btn": "Nice",
+  "iap_restored_successful_title": "Restored",
+  "iap_restored_successful_msg": "Product '%s' has been restored :)",
+  "iap_restored_successful_btn": "Perfect",
   "faq_outro": "Any improvement ideas? Want to give us feedback or advice? Let us know.",
   "settings_about": "About",
   "settings_legal": "Legal & Privacy",
@@ -119,7 +125,8 @@
   "toast_delete_successful": "Delete successful :)",
   "toast_delete_failed": "Delete failed :'(",
   "toast_upload_failed": "Upload failed! Connection lost! :'(",
-  "progressbar_home_promode": "Free photo uploads left",
+  "progressbar_home_promode": "free photo uploads left",
+  "progressbar_home_iapmode": "photo uploads left",
   "progressbar_home_freemode": "Free mode: Some hashtags will be hidden.",
   "progressbar_confirm_promode": "photos left: Enjoy the best hashtags.",
   "progressbar_confirm_freemode1": "Free limit reached:",
@@ -127,5 +134,5 @@
   "progressbar_results_freemode1": "Free limit reached: Best hashtags are hidden.",
   "progressbar_results_freemode2": "Upgrade to Instaq Pro to unlock hashtags.",
   "progressbar_freemode_time": "In %s you receive 1 uncensored Upload.",
-  "share": "Hey, I found this app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too. It's free :)\n\nhttp://play.google.com/store/apps/details?id=com.innocliq.instaq"
+  "share": "Hey, I found this free app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too :)\n\nhttp://play.google.com/store/apps/details?id=com.innocliq.instaq"
 }

@@ -69,6 +69,7 @@ export class StoreComponent implements OnInit {
     purchase.on(purchase.transactionUpdatedEvent, (transaction: Transaction) => {
 
       console.log("IAP event: " + transaction.transactionState);
+      console.log(transaction);
 
       switch(transaction.transactionState) {
         case TransactionState.Purchased:
@@ -135,12 +136,7 @@ export class StoreComponent implements OnInit {
   buyProduct(plan: Plan) {
     var product = plan.product;
     if (purchase.canMakePayments()) {
-      try {
-        purchase.buyProduct(product);
-      } catch(e) {
-        console.log("failed to buy");
-        console.log(e);
-      }
+      purchase.buyProduct(product);
     } else {
       Toast.makeText(localize('store_buy_failed')).show();
     }
@@ -151,11 +147,6 @@ export class StoreComponent implements OnInit {
   }
 
   private onProductBought(transaction: Transaction): void {
-
-    
-    console.log("onProductBought");
-    console.log(transaction);
-
     if(isAndroid) {
       var plan = this.getPlanById(transaction.productIdentifier);
       if(plan.type == 'inapp') {
@@ -186,25 +177,26 @@ export class StoreComponent implements OnInit {
     // ToDo localStorage set variable
     
     var plan = this.getPlanById(transaction.productIdentifier);
-    this.showPopup('Congratulations', `You successfully bought '${plan.title}' :)`, 'OK');
+    var title = localize('iap_purchase_successful_title');
+    var msg = localize('iap_purchase_successful_msg', plan.title);
+    var btn = localize('iap_purchase_successful_btn');
+    this.showPopup(title, msg, btn);
   }
 
   private onProductRestored(transaction: Transaction): void {
-    console.log(`onProductRestored`);
-    console.log(transaction);
 
     // ToDo localStorage set variable
 
-    var id = transaction.originalTransaction.productIdentifier;
-    Toast.makeText(`Purchase of Item '${id}' restored.`).show();
-    
-    // Toast.makeText(localize('store_restored_successful')).show();
+    var plan = this.getPlanById(transaction.originalTransaction.productIdentifier);
+    var title = localize('iap_restored_successful_title');
+    var msg = localize('iap_restored_successful_msg', plan.title);
+    var btn = localize('iap_restored_successful_btn');
+    this.showPopup(title, msg, btn);
   }
 
   private onTransactionFailed(transaction: Transaction): void {
     console.log(`Purchase of ${transaction.productIdentifier} was canceled!`);
-    // Toast.makeText(localize('toast_upload_failed'), "long").show();
-    Toast.makeText('Purchase was canceled').show();
+    Toast.makeText(localize('iap_purchase_failed')).show();
   }
 
   private showPopup(title: string, msg: string, btn: string): void {
