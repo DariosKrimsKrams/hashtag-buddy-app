@@ -38,13 +38,13 @@
             <GridLayout col="1" rows="auto,auto">
                 <Label row="0" [text]="plan.title" class="plan-title font-demi-bold"></Label>
                 <Label row="1" [text]="plan.desc" class="m-t-5 plan-content font-reg-s"></Label>
-                <Label row="1" text="- (equals {{plan.pricePerPhoto | currency:plan.product.priceCurrencyCode}} per photo)" class="m-t-25 plan-content font-reg-s" *ngIf="plan.desc2 == undefined && plan.type == 'inapp'"></Label>
+                <Label row="1" text="- (equals {{plan.pricePerPhoto | currency:plan.product.priceCurrencyCode}} per photo)" class="m-t-25 plan-content font-reg-s" *ngIf="plan.desc2 == undefined && plan.type == 'inapp' && plan.product !== undefined"></Label>
                 <Label row="1" [text]="plan.desc2" class="m-t-25 plan-content font-reg-s" *ngIf="plan.desc2 !== undefined"></Label>
             </GridLayout>
         </GridLayout>
         <GridLayout row="1" columns="*,150" verticalAlignment="middle" class="plan-footer">
             <Label col="0" text="{{'store_save' | L}} {{plan.discount}} %" *ngIf="plan.discount != undefined" class="font-demi-bold" verticalAlignment="middle"></Label>
-            <Button col="1" [text]="plan.product.priceFormatted" (tap)="buyProduct(plan)" class="btn btn-rounded-lg btn-normal font-demi-bold" verticalAlignment="middle"></Button>
+            <Button col="1" [text]="plan.product.priceFormatted" (tap)="buyProduct(plan)" class="btn btn-rounded-lg btn-normal font-demi-bold" verticalAlignment="middle" *ngIf="plan.product !== undefined"></Button>
         </GridLayout>
     </GridLayout>
 </ng-template>

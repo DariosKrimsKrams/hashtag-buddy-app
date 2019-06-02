@@ -6,10 +6,11 @@ import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import *  as purchase from "nativescript-purchase";
 import { Product } from "nativescript-purchase/product";
 import { Transaction, TransactionState } from "nativescript-purchase/transaction";
-import * as applicationSettings from "tns-core-modules/application-settings";
 import { Plan } from '~/app/models/plan';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
+import * as dialogs from "tns-core-modules/ui/dialogs";
+import { isIOS, isAndroid } from "tns-core-modules/platform";
 
 @Component({
   selector: 'ns-store',
@@ -40,14 +41,10 @@ export class StoreComponent implements OnInit {
 
     (global as any).purchaseInitPromise = purchase.init(products);
 
-    console.log((global as any).purchaseInitPromise);
-
-    
     (global as any).purchaseInitPromise.then(() => {
       purchase.getProducts().then((products: Array<Product>) => {
-        // console.log(products);
         products.forEach((product: Product) => {
-          var plan = this.plans.filter(x => x.id == product.productIdentifier)[0];
+          var plan = this.getPlanById(product.productIdentifier);
           if(plan !== undefined) {
             plan.product = product;
           } else {
@@ -67,26 +64,30 @@ export class StoreComponent implements OnInit {
     })
     .catch((err) => {
       console.log(err);
-    });;
+    });
 
     purchase.on(purchase.transactionUpdatedEvent, (transaction: Transaction) => {
-      if (transaction.transactionState === TransactionState.Purchased) {
-          alert(`Congratulations you just bought ${transaction.productIdentifier}!`);
-          console.log(transaction.transactionDate);
-          console.log(transaction.transactionIdentifier);
-          applicationSettings.setBoolean(transaction.productIdentifier, true);
+
+      console.log("IAP event: " + transaction.transactionState);
+
+      switch(transaction.transactionState) {
+        case TransactionState.Purchased:
+          this.onProductBought(transaction);
+          break;
+        case TransactionState.Restored:
+          this.onProductRestored(transaction);
+          break;
+        case TransactionState.Failed:
+          this.onTransactionFailed(transaction);
+          break;
+        case TransactionState.Purchasing:
+          break;
       }
-      else if (transaction.transactionState === TransactionState.Restored) {
-          console.log(`Purchase of ${transaction.productIdentifier} restored.`);
-          console.log(transaction.transactionDate);
-          console.log(transaction.transactionIdentifier);
-          console.log(transaction.originalTransaction.transactionDate);
-          applicationSettings.setBoolean(transaction.productIdentifier, true);
-      }
-      else if (transaction.transactionState === TransactionState.Failed) {
-          alert(`Purchase of ${transaction.productIdentifier} failed!`);
-      }    
     });
+  }
+
+  private getPlanById(id: string): Plan {
+    return this.plans.filter(x => x.id == id)[0];
   }
 
   private calcDiscount(): void {
@@ -134,7 +135,12 @@ export class StoreComponent implements OnInit {
   buyProduct(plan: Plan) {
     var product = plan.product;
     if (purchase.canMakePayments()) {
-      purchase.buyProduct(product);
+      try {
+        purchase.buyProduct(product);
+      } catch(e) {
+        console.log("failed to buy");
+        console.log(e);
+      }
     } else {
       Toast.makeText(localize('store_buy_failed')).show();
     }
@@ -142,7 +148,71 @@ export class StoreComponent implements OnInit {
 
   restore() {
     purchase.restorePurchases();
-    Toast.makeText(localize('store_restored_successful')).show();
+  }
+
+  private onProductBought(transaction: Transaction): void {
+
+    
+    console.log("onProductBought");
+    console.log(transaction);
+
+    if(isAndroid) {
+      var plan = this.getPlanById(transaction.productIdentifier);
+      if(plan.type == 'inapp') {
+        purchase.consumePurchase(transaction.transactionReceipt)
+        .then((responseCode) => {
+          console.log("responseCode: " + responseCode); // If responseCode === 0 the purchase has been successfully consumed
+          if(responseCode === 0) {
+            this.buyingProductSuccessful(transaction);
+          } else {
+            console.log(`Failed to consume with code: ${responseCode}`);
+            // alert(`Failed to consume with code: ${responseCode}! :'(`);
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+          alert(`Failed to consume: ${e}`);
+        });
+      } else {
+        this.buyingProductSuccessful(transaction);
+      }
+    } else {
+      this.buyingProductSuccessful(transaction);
+    }
+  }
+
+  private buyingProductSuccessful(transaction: Transaction): void {
+
+    // ToDo localStorage set variable
+    
+    var plan = this.getPlanById(transaction.productIdentifier);
+    this.showPopup('Congratulations', `You successfully bought '${plan.title}' :)`, 'OK');
+  }
+
+  private onProductRestored(transaction: Transaction): void {
+    console.log(`onProductRestored`);
+    console.log(transaction);
+
+    // ToDo localStorage set variable
+
+    var id = transaction.originalTransaction.productIdentifier;
+    Toast.makeText(`Purchase of Item '${id}' restored.`).show();
+    
+    // Toast.makeText(localize('store_restored_successful')).show();
+  }
+
+  private onTransactionFailed(transaction: Transaction): void {
+    console.log(`Purchase of ${transaction.productIdentifier} was canceled!`);
+    // Toast.makeText(localize('toast_upload_failed'), "long").show();
+    Toast.makeText('Purchase was canceled').show();
+  }
+
+  private showPopup(title: string, msg: string, btn: string): void {
+    dialogs.alert({
+      title: title,
+      message: msg,
+      okButtonText: btn
+    });
   }
 
 }

@@ -7,16 +7,16 @@ export class Plan {
 	title: string;
 	desc: string;
 	desc2?: string;
-    type: string;
+  type: string;
 
-    amount: number;
-    product?: Product;
-    discount?: number;
-    pricePerPhoto?: number;
-    priceFallback: string;
+  amount: number;
+  product?: Product;
+  discount?: number;
+  pricePerPhoto?: number;
+  priceFallback: string;
 
-    public constructor(init?: Partial<Plan>) {
-      Object.assign(this, init);
-    }
+  public constructor(init?: Partial<Plan>) {
+    Object.assign(this, init);
+  }
 
 }
