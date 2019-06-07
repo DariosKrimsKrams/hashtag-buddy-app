@@ -14,11 +14,11 @@
                         <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plan}" *ngIf="plan.type == 'inapp'"></ng-container>
                     </StackLayout>
 
-                    <Label [text]="'store_headline_abo' | L" class="headline p-t-10 p-b-10"></Label>
-
+                    <!-- <Label [text]="'store_headline_abo' | L" class="headline p-t-10 p-b-10"></Label>
+  
                     <StackLayout *ngFor="let plan of plans; let i = index;">
                         <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plan}" *ngIf="plan.type == 'subs'"></ng-container>
-                    </StackLayout>
+                    </StackLayout> -->
 
                     <StackLayout class="hr-light m-10"></StackLayout>
                     <Label textWrap="true" [text]="'store_outro' | L" class="p-b-10"></Label>

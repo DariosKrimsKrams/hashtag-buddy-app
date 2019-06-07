@@ -1,7 +1,7 @@
 {
   "app.name": "Instaq",
   "home_desc_1": "Find the most powerful",
-  "home_desc_2": "Instagram #hashtags...",
+  "home_desc_2": "Instagram #hashtags",
   "home_upload": "Pick your best photo",
   "history_title": "History",
   "history_no_content": "No photos uploaded yet...",
@@ -134,5 +134,6 @@
   "progressbar_results_freemode1": "Free limit reached: Best hashtags are hidden.",
   "progressbar_results_freemode2": "Upgrade to Instaq Pro to unlock hashtags.",
   "progressbar_freemode_time": "In %s you receive 1 uncensored Upload.",
-  "share": "Hey, I found this free app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too :)\n\nhttp://play.google.com/store/apps/details?id=com.innocliq.instaq"
+  "share": "Hey, I found this free app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too :)\n\n",
+  "link_playstore": "http://play.google.com/store/apps/details?id=com.innocliq.instaq"
 }

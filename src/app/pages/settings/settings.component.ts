@@ -60,7 +60,7 @@ export class SettingsComponent implements  OnInit {
   }
 
   share() {
-    var text = localize('share');
+    var text = localize('share') + localize('link_playstore');
 
     // const folder: Folder = <Folder> knownFolders.currentApp();
     // const folderPath: string = path.join(folder.path, "assets/images/3.png");
@@ -72,7 +72,8 @@ export class SettingsComponent implements  OnInit {
   }
 
   rate() {
-
+    var text = localize('link_playstore');
+    openUrl(text);
   }
 
 }

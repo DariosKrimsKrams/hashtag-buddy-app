@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="share">"Hey, I found this free app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too :)\n\nhttp://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
+  <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
+  <string name="share">"Hey, I found this free app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too :)\n\n"</string>
   <string name="progressbar_freemode_time">"In %1$s you receive 1 uncensored Upload."</string>
   <string name="progressbar_results_freemode2">"Upgrade to Instaq Pro to unlock hashtags."</string>
   <string name="progressbar_results_freemode1">"Free limit reached: Best hashtags are hidden."</string>
@@ -133,7 +134,7 @@
   <string name="history_no_content">"No photos uploaded yet..."</string>
   <string name="history_title">"History"</string>
   <string name="home_upload">"Pick your best photo"</string>
-  <string name="home_desc_2">"Instagram #hashtags..."</string>
+  <string name="home_desc_2">"Instagram #hashtags"</string>
   <string name="home_desc_1">"Find the most powerful"</string>
   <string name="_app_name_1k3Sbz">"Instaq"</string>
   <string name="app_name">"Instaq"</string>
