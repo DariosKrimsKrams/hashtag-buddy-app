@@ -52,7 +52,7 @@
     "@ngtools/webpack": "8.0.0",
     "nativescript-dev-typescript": "^0.10.0",
     "nativescript-dev-webpack": "^0.24.1",
-    "typescript": "3.1.6"
+    "typescript": "^3.4.5"
   },
   "readme": "Instaq"
 }
