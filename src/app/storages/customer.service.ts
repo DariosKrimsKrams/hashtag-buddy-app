@@ -24,20 +24,24 @@ export class CustomerService {
 
     public createUserIdIfNotExist(): Observable<CustomerCreateStatus> {
         return new Observable<CustomerCreateStatus>(observer => {
-            if(this.localStorageService.has(this.keyCustomerId)) {
+            if(this.hasCustomerId()) {
                 observer.next(CustomerCreateStatus.AlreadyCreated);
                 observer.complete();
-                return;
+            } else {
+                this.customerRepositoryService.createCustomer().subscribe(result => {
+                    this.localStorageService.set(this.keyCustomerId, result.customerId);
+                    observer.next(CustomerCreateStatus.NewlyCreated);
+                    observer.complete();
+                }, (error) => {
+                    observer.next(CustomerCreateStatus.Failed);
+                    observer.complete();
+                });
             }
-            this.customerRepositoryService.createCustomer().subscribe(result => {
-                this.localStorageService.set(this.keyCustomerId, result.customerId);
-                observer.next(CustomerCreateStatus.NewlyCreated);
-                observer.complete();
-            }, (error) => {
-                observer.next(CustomerCreateStatus.Failed);
-                observer.complete();
-            });
         });
+    }
+
+    public hasCustomerId(): boolean {
+        return this.localStorageService.has(this.keyCustomerId);
     }
 
     public getCustomerId(): string {

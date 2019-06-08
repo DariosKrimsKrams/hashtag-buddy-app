@@ -14,7 +14,7 @@ import { IHttpResponse } from '~/app/models/request/http-response';
 import * as Toast from 'nativescript-toast';
 import { PhotosCountService } from '~/app/storages/photos-count.service';
 import { localize } from 'nativescript-localize/angular';
-import { CustomerService } from '~/app/storages/customer.service';
+import { CustomerService, CustomerCreateStatus } from '~/app/storages/customer.service';
 
 interface HashtagResult {
   name: string;
@@ -55,23 +55,42 @@ export class ConfirmImageComponent implements OnInit {
   confirmImage(): void {
     this.openLoadingPage();
     this.savePhoto().subscribe(photoId => {
-      var customerId = this.customerService.getCustomerId();
-      var photo = this.userService.getPhoto(photoId);
-      this.evaluationRepository.UploadPhoto(photo.image, customerId)
-      .subscribe((httpResponse: IHttpResponse) => {
-        console.log(httpResponse);
-        if(httpResponse.code == 200) {
-          console.log("Upload successful");
-          this.parseSuccessfulResponse(photoId, httpResponse);
-          this.photosCountService.decrease();
-        } else {
-          console.log("Upload error", httpResponse);
-          Toast.makeText(localize('toast_upload_failed'), "long").show();
-          setTimeout.bind(this)(() => {
-            this.goPrevPage();
-          }, 1000);
-        }
-      });
+      var hasCustomerId = this.customerService.hasCustomerId();
+      if(!hasCustomerId) {
+        this.customerService.createUserIdIfNotExist().subscribe((status) => {
+          if(status == CustomerCreateStatus.NewlyCreated || status == CustomerCreateStatus.AlreadyCreated) {
+            this.uploadImage(photoId);
+          } else {
+            Toast.makeText(localize('toast_create_customer_at_upload_failed'), "long").show();
+            setTimeout.bind(this)(() => {
+              this.goPrevPage();
+            }, 1000);
+          }
+        }, (error) => {
+
+        });
+      } else {
+        this.uploadImage(photoId);
+      }
+
+    });
+  }
+
+  private uploadImage(photoId: number): void {
+    var customerId = this.customerService.getCustomerId();
+    var photo = this.userService.getPhoto(photoId);
+    this.evaluationRepository.UploadPhoto(photo.image, customerId)
+    .subscribe((httpResponse: IHttpResponse) => {
+      console.log(httpResponse);
+      if(httpResponse.code == 200) {
+        this.parseSuccessfulResponse(photoId, httpResponse);
+        this.photosCountService.decrease();
+      } else {
+        Toast.makeText(localize('toast_upload_failed'), "long").show();
+        setTimeout.bind(this)(() => {
+          this.goPrevPage();
+        }, 1000);
+      }
     });
   }
 
@@ -117,15 +136,12 @@ export class ConfirmImageComponent implements OnInit {
     return category;
   }
 
-  chooseImage(): void {
-
+  public chooseImage(): void {
     let that = this;
-
     let context = imagepicker.create({
       mode: "single",
       mediaType: imagepicker.ImagePickerMediaType.Image
     });
-    
     context
       .authorize()
       .then(function() {
@@ -138,8 +154,8 @@ export class ConfirmImageComponent implements OnInit {
         that.deviceService.setSelectedPhoto(imageSrc);
         that.photo = imageSrc;
       }).catch(function (e) {
-        // process error
         console.log("IMAGE PICKER Failed: " + e);
+        Toast.makeText(localize('toast_imagepicker_failed') + ': ' + e, "long").show();
       });
   }
 
@@ -164,7 +180,6 @@ export class ConfirmImageComponent implements OnInit {
   }
 
   private openResultsPage(id: number): void {
-
     this.router.navigate([`/home/results/${id}`], {
       transition: {
         name: "FadeIn",

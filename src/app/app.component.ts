@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
             if(status == CustomerCreateStatus.Failed) {
                 setTimeout(() => {
                     Toast.makeText(localize('toast_create_customer_failed'), "long").show();
-                }, 1000);
+                }, 2000);
             }
         });
         this.photosCountService.initFreePhotos();
