@@ -28,8 +28,8 @@ export class HomeComponent implements OnInit {
   isHistoryOpen: number;
   historyHeight: number;
   historyDefaultTransform: number;
-  @ViewChild("history") historyElement: ElementRef;
-  @ViewChild("mainContainer") mainContainerElement: ElementRef;
+  @ViewChild("history", { static: false }) historyElement: ElementRef;
+  @ViewChild("mainContainer", { static: false }) mainContainerElement: ElementRef;
 
   constructor(
     private readonly page: Page,
