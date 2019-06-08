@@ -1,6 +1,6 @@
 import { Faq } from '../../models/faq';
 
-export const FAQ: Faq[] = [
+export const FAQs: Faq[] = [
     {
         id: 0,
         expand: false,

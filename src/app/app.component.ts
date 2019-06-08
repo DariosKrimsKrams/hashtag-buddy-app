@@ -15,14 +15,13 @@ import { localize } from 'nativescript-localize/angular';
 export class AppComponent implements OnInit { 
 
     private _sideDrawerTransition: DrawerTransitionBase;
-    menus = ["home", "store", "feedback", "settings"];
+    menus = ["home", "store", "faq", "feedback", "settings"];
     selected = [];
 
     constructor(
         private readonly router: RouterExtensions,
         private readonly photosCountService: PhotosCountService,
         private readonly customerService: CustomerService,
-
     ) { }
 
     ngOnInit(): void {

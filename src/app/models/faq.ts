@@ -3,4 +3,9 @@ export class Faq {
 	expand: boolean;
 	title?: string;
 	content?: string;
+
+	public constructor(init?: Partial<Faq>) {
+	  Object.assign(this, init);
+	}
+
 }
