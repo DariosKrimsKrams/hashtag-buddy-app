@@ -137,7 +137,7 @@
   <string name="selection_popup_title">"Let Instaq help you find Instagram\'s most relevant hashtags for this wonderful photo"</string>
   <string name="history_photo_defect2">"Please try to re-upload."</string>
   <string name="history_photo_defect1">"No results due to an error."</string>
-  <string name="history_no_content">"No photos uploaded yet..."</string>
+  <string name="history_no_content">"No photos uploaded yet"</string>
   <string name="history_title">"History"</string>
   <string name="home_upload">"Pick your best photo"</string>
   <string name="home_desc_2">"Instagram #hashtags"</string>

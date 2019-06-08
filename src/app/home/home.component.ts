@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "tns-core-modules/ui/page";
 import * as app from "tns-core-modules/application";
@@ -6,22 +6,15 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { screen } from "tns-core-modules/platform";
 import * as imagepicker from "nativescript-imagepicker";
 import { DeviceService } from "../services/device-photos.service";
-
-class ScreenInfo {
-  constructor(
-      public heightDIPs: number,
-      public heightPixels: number,
-      public scale: number,
-      public widthDIPs: number,
-      public widthPixels: number
-  ) { }
-}
+import * as Toast from 'nativescript-toast';
+import { localize } from 'nativescript-localize/angular';
 
 @Component({
   selector: "Home",
   moduleId: module.id,
   templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.css"]
+  styleUrls: ["./home.component.css"],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class HomeComponent implements OnInit {
 
@@ -30,13 +23,16 @@ export class HomeComponent implements OnInit {
   historyDefaultTransform: number;
   @ViewChild("history", { static: false }) historyElement: ElementRef;
   @ViewChild("mainContainer", { static: false }) mainContainerElement: ElementRef;
+  private openConfirmImage: boolean;
 
   constructor(
     private readonly page: Page,
     private readonly router: RouterExtensions,
     private readonly deviceService: DeviceService,
+    private readonly changeDetectorRef: ChangeDetectorRef,
   ) {
     this.page.actionBarHidden = true;
+    // this.changeDetectorRef.detach();
   }
 
   ngOnInit() {
@@ -45,30 +41,41 @@ export class HomeComponent implements OnInit {
   }
 
   clickUpload() {
+    // Workaround because of Bug since updating to Angular 8, View will not be refreshed
+    this.watchRedirectToConfirmImagePage();
 
     let that = this;
-
     let context = imagepicker.create({
       mode: "single",
       mediaType: imagepicker.ImagePickerMediaType.Image
     });
-    
     context
       .authorize()
       .then(function() {
-          return context.present();
+        return context.present();
       })
       .then(function(selection) {
         let imageSrc = selection[0];
         imageSrc.options.width = 1000;
         imageSrc.options.height = 1000;
         that.deviceService.setSelectedPhoto(imageSrc);
-        that.router.navigate(["/home/confirm-image"]);
-        
+        that.openConfirmImage = true;
       }).catch(function (e) {
-        // process error
         console.log("IMAGE PICKER Failed: " + e);
+        Toast.makeText(localize('toast_imagepicker_failed') + ': ' + e, "long").show();
       });
+  }
+
+  private watchRedirectToConfirmImagePage(): void {
+    let that = this;
+    var id = setInterval(() => {
+      if(that.openConfirmImage) {
+        that.openConfirmImage = false;
+        that.router.navigate(["/home/confirm-image"]);
+        // that.router.navigate(["/settings"]);
+        clearTimeout(id);
+      }
+    }, 300);
   }
 
   openMenu(): void {

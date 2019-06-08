@@ -12,8 +12,8 @@ import { HashtagCategory } from '../../models/hashtag-category';
 import { Hashtag } from '../../models/hashtag';
 import { IHttpResponse } from '~/app/models/request/http-response';
 import * as Toast from 'nativescript-toast';
-import { PhotosCountService } from '~/app/storages/photos-count.service';
 import { localize } from 'nativescript-localize/angular';
+import { PhotosCountService } from '~/app/storages/photos-count.service';
 import { CustomerService, CustomerCreateStatus } from '~/app/storages/customer.service';
 
 interface HashtagResult {
@@ -66,13 +66,10 @@ export class ConfirmImageComponent implements OnInit {
               this.goPrevPage();
             }, 1000);
           }
-        }, (error) => {
-
         });
       } else {
         this.uploadImage(photoId);
       }
-
     });
   }
 

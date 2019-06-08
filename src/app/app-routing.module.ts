@@ -9,8 +9,7 @@ const routes: Routes = [
     { path: "store", loadChildren: "~/app/pages/store/store.module#StoreModule" },
     { path: "faq", loadChildren: "~/app/pages/faq/faq.module#FaqModule" },
     { path: "feedback", loadChildren: "~/app/pages/feedback/feedback.module#FeedbackModule" },
-    { path: "error", loadChildren: "~/app/shared/error/error.module#ErrorModule" },
-
+    // { path: "error", loadChildren: "~/app/shared/error/error.module#ErrorModule" },
 ];
 
 @NgModule({

@@ -1,6 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
-import { ModalComponent } from '~/app/pages/feedback/modal/modal.component';
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
 import { LeaveFeedbackComponent } from './leave-feedback.component';
 import { HashtagModule } from '~/app/shared/hashtag/hashtag.module';

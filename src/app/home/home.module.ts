@@ -1,8 +1,5 @@
-import { NgModule, NgModuleFactoryLoader, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
-import { registerElement } from "nativescript-angular/element-registry";
-registerElement("Emoji", () => require("nativescript-emoji").Emoji);
-
 import { HomeRoutingModule } from "./home-routing.module";
 import { BigHeaderModule } from "~/app/shared/big-header/big-header.module";
 import { ProgressBarModule } from "~/app/shared/progress-bar/progress-bar.module";
@@ -16,7 +13,6 @@ import { NativeScriptUIAutoCompleteTextViewModule } from "nativescript-ui-autoco
 import { NativeScriptUIGaugeModule } from "nativescript-ui-gauge/angular";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { HistoryModule } from "./history/history.module";
-
 import { HomeComponent } from "./home.component";
 import { ResultsComponent } from './results/results.component';
 import { CircularProgressBarComponent } from '~/app/shared/circular-progress-bar/circular-progress-bar.component';
@@ -27,7 +23,6 @@ import { HashtagModule } from "../shared/hashtag/hashtag.module";
 import { setStatusBarColors } from "~/app/shared/status-bar-util";
 import { LeaveFeedbackModule } from "./leave-feedback/leave-feedback.module";
 setStatusBarColors();
-
 
 @NgModule({
     imports: [

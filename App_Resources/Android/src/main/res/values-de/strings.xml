@@ -133,11 +133,11 @@
   <string name="results_category_niche_hashtags">"Nischen Hashtags"</string>
   <string name="results_category_user_hashtags">"Deine ausgewählten Hashtags"</string>
   <string name="selection_popup_button_deny">"Wähle ein Besseres"</string>
-  <string name="selection_popup_button_ok">"Start"</string>
-  <string name="selection_popup_title">"Lass dir von Instaq dabei helfen, die relevantesten Hashtags für dieses wundervolle Fotos zu finden"</string>
+  <string name="selection_popup_button_ok">"Hochladen"</string>
+  <string name="selection_popup_title">"Lass dir von Instaq helfen, die relevantesten Hashtags für dieses wundervolle Fotos zu finden"</string>
   <string name="history_photo_defect2">"Bitte Foto erneut hochladen."</string>
   <string name="history_photo_defect1">"Keine Ergebnisse wegen eines Fehlers."</string>
-  <string name="history_no_content">"Bisher wurden keine Fotos hochgeladen..."</string>
+  <string name="history_no_content">"Bisher wurden keine Fotos hochgeladen"</string>
   <string name="history_title">"Historie"</string>
   <string name="home_upload">"Wähle dein bestes Foto"</string>
   <string name="home_desc_2">"Instagram #hashtags"</string>
