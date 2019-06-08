@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="email">"dario@innocliq.de"</string>
   <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
   <string name="share">"Hey, I found this free app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too :)\n\n"</string>
   <string name="progressbar_freemode_time">"In %1$s you receive 1 uncensored Upload."</string>
@@ -25,7 +26,11 @@
   <string name="settings_terms">"Terms and Conditions"</string>
   <string name="settings_legal">"Legal &amp; Privacy"</string>
   <string name="settings_about">"About"</string>
-  <string name="faq_outro">"Any improvement ideas? Want to give us feedback or advice? Let us know."</string>
+  <string name="faq_outro">"Improve this page: Any ideas? Want to give us feedback or advice? Let us know via feedback formular."</string>
+  <string name="faq_headline_stats4">"Content"</string>
+  <string name="faq_headline_stats3">"Target Audience"</string>
+  <string name="faq_headline_stats2">"Hashtags"</string>
+  <string name="faq_headline_stats1">"Performance"</string>
   <string name="iap_restored_successful_btn">"Perfect"</string>
   <string name="iap_restored_successful_msg">"Product \'%1$s\' has been restored :)"</string>
   <string name="iap_restored_successful_title">"Restored"</string>
@@ -89,7 +94,7 @@
   <string name="diduknow_fact6">"17 %% of teens say Instagram is the most important social media site"</string>
   <string name="diduknow_fact5">"38 %% of female and 26 %% of male internet users use Instagram"</string>
   <string name="diduknow_fact4">"68 %% of Instagram users are Females"</string>
-  <string name="diduknow_fact3">"Posts with at least one hashtag reach an average of 12.6 %% more engagements"</string>
+  <string name="diduknow_fact3">"Posts with at least one hashtag reach an average of 12.6 %% more engagement"</string>
   <string name="diduknow_fact2">"32 %% of all Internet users are on Instagram"</string>
   <string name="diduknow_fact1">"Around 95 million photos are uploaded on Instagram every day"</string>
   <string name="loading_status2">"Analyzing"</string>

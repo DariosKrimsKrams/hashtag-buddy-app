@@ -14,7 +14,7 @@ import { localize } from 'nativescript-localize/angular';
 export class FaqComponent implements OnInit {
 
   public openmenu = false;
-  public faq: Faq[];
+  public faqs: Faq[];
   public current = 0;
   
   constructor(
@@ -25,18 +25,26 @@ export class FaqComponent implements OnInit {
 
   ngOnInit() {
     // this.faq = FAQ;
-    this.faq = [
+    this.faqs = [
       new Faq({
-        id: 0,
         expand: false,
-        title: "Statistiken",
-        content: this.getMultipleDiduknowText([1,2,3,4,5]),
+        title: localize('faq_headline_stats1'),
+        content: this.getMultipleDiduknowText([3,7,9,10,11]),
       }),
       new Faq({
-        id: 1,
         expand: false,
-        title: "Fun Facts",
-        content: this.getMultipleDiduknowText([11,12,13,14,15]),
+        title: localize('faq_headline_stats2'),
+        content: this.getMultipleDiduknowText([8,13,21,22]),
+      }),
+      new Faq({
+        expand: false,
+        title: localize('faq_headline_stats3'),
+        content: this.getMultipleDiduknowText([1,2,4,5,6,12,23]),
+      }),
+      new Faq({
+        expand: false,
+        title: localize('faq_headline_stats4'),
+        content: this.getMultipleDiduknowText([14,15,16,17,18,19,20]),
       })
     ]
   }
@@ -44,11 +52,21 @@ export class FaqComponent implements OnInit {
   private getMultipleDiduknowText(ids: number[]): string {
     var text = "";
     ids.map(id => text += this.getDiduknowText(id) + ".\n\n");
-    return 
+    return text.slice(0, text.length-2);
   }
 
   private getDiduknowText(id: number): string {
     return localize('diduknow_fact' + id);
+  }
+
+  public expandToggle(index: number) {
+    if(index == this.current){
+      this.faqs[index].expand = !this.faqs[index].expand;
+    }else{
+      this.faqs[this.current].expand = false;
+      this.faqs[index].expand = true;
+      this.current = index;
+    }    
   }
 
   public openMenu(): void {
@@ -61,14 +79,12 @@ export class FaqComponent implements OnInit {
     sideDrawer.closeDrawer();
   }
 
-  public expandToggle(index: number) {
-    if(index == this.current){
-      this.faq[index].expand = !this.faq[index].expand;
-    }else{
-      this.faq[this.current].expand = false;
-      this.faq[index].expand = true;
-      this.current = index;
-    }    
+  public openFeedbackPage(): void {
+    console.log("feedback");
+  }
+
+  public openEmail(): void {
+    console.log("emil");
   }
 
 }

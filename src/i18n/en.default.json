@@ -47,7 +47,7 @@
   "loading_status2": "Analyzing",
   "diduknow_fact1": "Around 95 million photos are uploaded on Instagram every day",
   "diduknow_fact2": "32 % of all Internet users are on Instagram",
-  "diduknow_fact3": "Posts with at least one hashtag reach an average of 12.6 % more engagements",
+  "diduknow_fact3": "Posts with at least one hashtag reach an average of 12.6 % more engagement",
   "diduknow_fact4": "68 % of Instagram users are Females",
   "diduknow_fact5": "38 % of female and 26 % of male internet users use Instagram",
   "diduknow_fact6": "17 % of teens say Instagram is the most important social media site",
@@ -111,7 +111,11 @@
   "iap_restored_successful_title": "Restored",
   "iap_restored_successful_msg": "Product '%s' has been restored :)",
   "iap_restored_successful_btn": "Perfect",
-  "faq_outro": "Any improvement ideas? Want to give us feedback or advice? Let us know.",
+  "faq_headline_stats1": "Performance",
+  "faq_headline_stats2": "Hashtags",
+  "faq_headline_stats3": "Target Audience",
+  "faq_headline_stats4": "Content",
+  "faq_outro": "Improve this page: Any ideas? Want to give us feedback or advice? Let us know via feedback formular.",
   "settings_about": "About",
   "settings_legal": "Legal & Privacy",
   "settings_terms": "Terms and Conditions",
@@ -136,5 +140,6 @@
   "progressbar_results_freemode2": "Upgrade to Instaq Pro to unlock hashtags.",
   "progressbar_freemode_time": "In %s you receive 1 uncensored Upload.",
   "share": "Hey, I found this free app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too :)\n\n",
-  "link_playstore": "http://play.google.com/store/apps/details?id=com.innocliq.instaq"
+  "link_playstore": "http://play.google.com/store/apps/details?id=com.innocliq.instaq",
+  "email": "dario@innocliq.de"
 }
