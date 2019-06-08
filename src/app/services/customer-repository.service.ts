@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
-import { getJSON, getString, request } from "tns-core-modules/http";
+import { request } from "tns-core-modules/http";
 
 @Injectable({
   providedIn: 'root',
@@ -9,13 +9,13 @@ import { getJSON, getString, request } from "tns-core-modules/http";
 
 export class CustomerRepository {
 
+  private createCustomerUrl = environment.apiUrl + "/Customer/Create";
+
   constructor(
   ) { }
 
-  private createCustomerUrl = environment.apiUrl + "/Customer/Create";
-
   public createCustomer(): Observable<any> {
-    const observable = new Observable<any>(observer => {
+    return new Observable<any>(observer => {
       request({
         url: this.createCustomerUrl,
         method: "POST",
@@ -25,11 +25,12 @@ export class CustomerRepository {
           const result = response.content.toJSON();
           observer.next(result);
           observer.complete();
-      }, (e) => {
-        console.log("error", e);
+      }, (error) => {
+        console.log("error", error);
+        observer.error(error);
+        observer.complete();
       });
     });
-    return observable;
   }
 
 }

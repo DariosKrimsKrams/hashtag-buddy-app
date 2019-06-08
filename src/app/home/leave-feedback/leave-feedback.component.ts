@@ -13,6 +13,7 @@ import { SelectedHashtag } from '~/app/models/selected-hashtag';
 import { ResultFeedbackRequest } from '~/app/models/request/result-feedback-request';
 import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/pages/feedback/modal/modal.component';
+import { CustomerService } from '~/app/storages/customer.service';
 
 @Component({
   templateUrl: './leave-feedback.component.html',
@@ -33,14 +34,15 @@ export class LeaveFeedbackComponent implements OnInit {
   private photo: Photo;
 
   constructor(
-    private page: Page,
-    private route: ActivatedRoute,
-    private router: RouterExtensions,
-    private userService: UserService,
-    private feedbackRepositoryService: FeedbackRepository,
-    private viewContainerRef: ViewContainerRef,
-    private modalService: ModalDialogService, 
-  ) {
+    private readonly page: Page,
+    private readonly route: ActivatedRoute,
+    private readonly router: RouterExtensions,
+    private readonly userService: UserService,
+    private readonly feedbackRepositoryService: FeedbackRepository,
+    private readonly viewContainerRef: ViewContainerRef,
+    private readonly modalService: ModalDialogService, 
+    private readonly customerService: CustomerService,
+    ) {
     this.page.actionBarHidden = true;
   }
 
@@ -125,7 +127,7 @@ export class LeaveFeedbackComponent implements OnInit {
     var rating = feedback.rating == 0 ? 'great' : feedback.rating == 1 ? 'satisfied' : feedback.rating == 2 ? 'bad' : 'none';
     var goodHashtags = this.getHashtagsByIndizes(this.userSelectedHashtags, feedback.goodHashtags);
     var badHashtags = this.getHashtagsByIndizes(this.userNotSelectedHashtags, feedback.badHashtags);
-    var customerId = this.userService.getUserId();
+    var customerId = this.customerService.getCustomerId();
 
     const feedbackDto: ResultFeedbackRequest = new ResultFeedbackRequest({ 
       customerId: customerId,

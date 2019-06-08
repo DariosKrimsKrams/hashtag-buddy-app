@@ -14,6 +14,7 @@ import { IHttpResponse } from '~/app/models/request/http-response';
 import * as Toast from 'nativescript-toast';
 import { PhotosCountService } from '~/app/storages/photos-count.service';
 import { localize } from 'nativescript-localize/angular';
+import { CustomerService } from '~/app/storages/customer.service';
 
 interface HashtagResult {
   name: string;
@@ -37,7 +38,8 @@ export class ConfirmImageComponent implements OnInit {
     private readonly deviceService: DeviceService,
     private readonly userService: UserService,
     private readonly evaluationRepository: EvaluationRepository,
-    private readonly photosCountService: PhotosCountService
+    private readonly photosCountService: PhotosCountService,
+    private readonly customerService: CustomerService,
   ) {
     this.page.actionBarHidden = true;
   }
@@ -53,7 +55,7 @@ export class ConfirmImageComponent implements OnInit {
   confirmImage(): void {
     this.openLoadingPage();
     this.savePhoto().subscribe(photoId => {
-      var customerId = this.userService.getUserId();
+      var customerId = this.customerService.getCustomerId();
       var photo = this.userService.getPhoto(photoId);
       this.evaluationRepository.UploadPhoto(photo.image, customerId)
       .subscribe((httpResponse: IHttpResponse) => {

@@ -13,7 +13,10 @@ export class AuthComponent implements OnInit {
   dialogOpen = false;
   signin = false;
 
-  constructor(private page: Page, private router: RouterExtensions) {
+  constructor(
+    private readonly page: Page,
+    private readonly router: RouterExtensions
+  ) {
     this.page.actionBarHidden = true;
   }
 

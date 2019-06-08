@@ -18,8 +18,8 @@ export class SettingsComponent implements  OnInit {
   openmenu = false;
   
   constructor(
-    private page: Page, 
-    private router: RouterExtensions,
+    private readonly page: Page, 
+    private readonly router: RouterExtensions,
   ) {
     this.page.actionBarHidden = true;
   }

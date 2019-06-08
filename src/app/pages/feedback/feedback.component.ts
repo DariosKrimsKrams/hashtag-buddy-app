@@ -12,6 +12,7 @@ import * as frame from "tns-core-modules/ui/frame";
 import { AppFeedback } from '~/app/models/app-feedback';
 import { FeedbackRepository } from '../../services/feedback-repository.service';
 import { UserService } from '~/app/storages/user.service';
+import { CustomerService } from '~/app/storages/customer.service';
 
 @Component({
   selector: 'ns-feedback',
@@ -25,12 +26,13 @@ export class FeedbackComponent implements OnInit {
   public message = '';
   
   constructor(
-    private page: Page,
-    private modalService: ModalDialogService, 
-    private viewContainerRef: ViewContainerRef,
-    private feedbackRepositoryService: FeedbackRepository,
-    private userService: UserService,
-  ) {
+    private readonly page: Page,
+    private readonly modalService: ModalDialogService, 
+    private readonly viewContainerRef: ViewContainerRef,
+    private readonly feedbackRepositoryService: FeedbackRepository,
+    private readonly userService: UserService,
+    private readonly customerService: CustomerService,
+    ) {
     this.page.actionBarHidden = true;
   }
 
@@ -54,7 +56,7 @@ export class FeedbackComponent implements OnInit {
       return;
     }
     let feedback: AppFeedback = new AppFeedback({
-      customerId: this.userService.getUserId(), 
+      customerId: this.customerService.getCustomerId(), 
       email: this.email, 
       message: this.message
     });

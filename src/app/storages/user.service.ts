@@ -1,10 +1,6 @@
 import { Injectable, Output, EventEmitter } from "@angular/core";
 import { LocalStorageService } from "./local-storage.service";
-import { CustomerRepository } from "../services/customer-repository.service";
-import { HashtagCategory } from "~/app/models/hashtag-category";
-import { Hashtag } from "~/app/models/hashtag";
 import { Photo } from "../models/photo";
-import { environment } from '../environments/environment';
 import { Transaction } from "nativescript-purchase/transaction";
  
 @Injectable({
@@ -12,7 +8,6 @@ import { Transaction } from "nativescript-purchase/transaction";
 })
 export class UserService {
 
-    private keyUserId: string = 'userId';
     private keyPhotos: string = 'photos';
     private keyPurchases: string = 'purchases';
     private photosCache: Photo[];
@@ -21,7 +16,6 @@ export class UserService {
 
     constructor(
         private readonly localStorageService: LocalStorageService,
-        private readonly customerRepositoryService: CustomerRepository
     ) { }
 
     public addPhoto(photo: Photo): number {
@@ -94,22 +88,9 @@ export class UserService {
         return photos;
     }
 
-    public createUserIdIfNotExist(): void {
-        if(this.localStorageService.has(this.keyUserId)) {
-            return;
-        }
-        this.customerRepositoryService.createCustomer().subscribe(result => {
-            this.localStorageService.set(this.keyUserId, result.customerId);
-        });
-    }
-
-    public getUserId(): string {
-        return this.localStorageService.get(this.keyUserId);
-    }
-
     public clearAll(): void {
         this.localStorageService.remove(this.keyPhotos);
-        this.localStorageService.remove(this.keyUserId);
+        // this.localStorageService.remove(this.keyUserId);
         this.photosCache = [];
     }
 

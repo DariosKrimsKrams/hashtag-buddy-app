@@ -13,7 +13,7 @@ export class PhotosCountService {
     public changedAmount: EventEmitter<void> = new EventEmitter<void>();
 
     constructor(
-        private localStorageService: LocalStorageService,
+        private readonly localStorageService: LocalStorageService,
     ) { }
 
     public initFreePhotos(): void {

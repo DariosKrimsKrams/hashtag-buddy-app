@@ -32,9 +32,9 @@ export class HomeComponent implements OnInit {
   @ViewChild("mainContainer") mainContainerElement: ElementRef;
 
   constructor(
-    private page: Page,
-    private router: RouterExtensions,
-    private deviceService: DeviceService,
+    private readonly page: Page,
+    private readonly router: RouterExtensions,
+    private readonly deviceService: DeviceService,
   ) {
     this.page.actionBarHidden = true;
   }

@@ -11,6 +11,7 @@
   <string name="progressbar_home_freemode">"Free mode: Some hashtags will be hidden."</string>
   <string name="progressbar_home_iapmode">"photo uploads left"</string>
   <string name="progressbar_home_promode">"free photo uploads left"</string>
+  <string name="toast_create_customer_failed">"You are offline. Please connect to the internet to use this app."</string>
   <string name="toast_upload_failed">"Upload failed! Connection lost! :\'("</string>
   <string name="toast_delete_failed">"Delete failed :\'("</string>
   <string name="toast_delete_successful">"Delete successful :)"</string>

@@ -13,8 +13,8 @@ export class ModalComponent implements OnInit {
   public button: string;
 
   constructor(
-    private params: ModalDialogParams,
-    private router: RouterExtensions,
+    private readonly params: ModalDialogParams,
+    private readonly router: RouterExtensions,
   ) {}
 
   ngOnInit() {
