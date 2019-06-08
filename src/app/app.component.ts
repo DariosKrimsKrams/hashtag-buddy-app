@@ -2,8 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import * as app from "tns-core-modules/application";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
-import { UserService } from "./storages/user.service";
 import { PhotosCountService } from "./storages/photos-count.service";
+import { CustomerService, CustomerCreateStatus } from "./storages/customer.service";
+import * as Toast from 'nativescript-toast';
+import { localize } from 'nativescript-localize/angular';
 
 @Component({
     moduleId: module.id,
@@ -17,15 +19,22 @@ export class AppComponent implements OnInit {
     selected = [];
 
     constructor(
-        private router: RouterExtensions,
-        private userService: UserService,
-        private photosCountService: PhotosCountService
+        private readonly router: RouterExtensions,
+        private readonly photosCountService: PhotosCountService,
+        private readonly customerService: CustomerService,
+
     ) { }
 
     ngOnInit(): void {
         this._sideDrawerTransition = new SlideInOnTopTransition();
         this.selected[0] = true;
-        this.userService.createUserIdIfNotExist();
+        this.customerService.createUserIdIfNotExist().subscribe((status) => {  
+            if(status == CustomerCreateStatus.Failed) {
+                setTimeout(() => {
+                    Toast.makeText(localize('toast_create_customer_failed'), "long").show();
+                }, 1000);
+            }
+        });
         this.photosCountService.initFreePhotos();
     }
 

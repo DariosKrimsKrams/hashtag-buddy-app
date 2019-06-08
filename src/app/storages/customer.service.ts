@@ -34,7 +34,6 @@ export class CustomerService {
                 observer.next(CustomerCreateStatus.NewlyCreated);
                 observer.complete();
             }, (error) => {
-                console.log("error", error);
                 observer.next(CustomerCreateStatus.Failed);
                 observer.complete();
             });
