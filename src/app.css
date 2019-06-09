@@ -2,6 +2,7 @@
 
 Label, Button, Span {
     font-family: "AvenirNext-Regular", "Avenir Next";
+    font-size: 14pt;
 }
 
 .btn { font-size: 18pt; }
@@ -33,47 +34,40 @@ Label, Button, Span {
     font-family: Font Awesome 5 Free, fa-regular-400;
     font-weight: 400; 
 }
-
 .fab {
     font-family: Font Awesome 5 Brands, fa-brands-400;
     font-weight: 400; 
 }
-
 .fas {
     font-family: Font Awesome 5 Free, fa-solid-900;
     font-weight: 900; 
 }
-
 .font-reg-xs {
     font-family: "AvenirNext-Regular", "Avenir Next";
     font-size: 14pt;
     color: rgb(90, 98, 104);
 }
-
 .font-reg-s {
     font-family: "AvenirNext-Regular", "Avenir Next";
     font-size: 15pt;
     color: rgb(30, 39, 46);
 }
 
-.font-reg-medium {
+.font-medium-l {
     font-family: "AvenirNext-Medium", "Avenir Next Medium";
     font-size: 18pt;
     color: rgb(30, 39, 46);
 }
-
 .font-medium-small {
     font-family: "AvenirNext-Medium", "Avenir Next Medium";
     font-size: 15pt;
     color: rgb(36, 40, 51);
 }
-
 .font-medium-xs {
     font-family: "AvenirNext-Medium", "Avenir Next Medium";
     font-size: 12pt;
     color: rgb(30, 39, 46);
 }
-
 .font-demi-bold {
     font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
     text-transform: none;
