@@ -1,16 +1,12 @@
-#header {
-    /* vertical-align: middle; */
-    /* padding: 20pt 20pt 0 20pt; */
+#header .title {
+    font-family: "AvenirNext-Medium", "Avenir Next Medium";
+    font-size: 18pt;
 }
-    .title {
-        font-family: "AvenirNext-Medium", "Avenir Next Medium";
-        font-size: 18pt;
-    }
-    .header-right-icon {
-        vertical-align: middle;
-        font-size: 20pt;
-    }
 
+#header .header-right-icon {
+    vertical-align: middle;
+    font-size: 20pt;
+}
 
 #preview-image {
     width: 100%;
@@ -47,6 +43,7 @@
     height: 30pt;
     margin: 0 0 0 5pt;
 }
+
 .btn-add.active {
     border-color: #FFB184;
     color: #FFB184;

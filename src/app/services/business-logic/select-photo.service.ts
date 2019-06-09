@@ -48,8 +48,11 @@ export class SelectPhotoService {
         observer.next(image);
         observer.complete();
       }).catch(function (e) {
-        console.error("IMAGE PICKER Failed: " + e);
-        Toast.makeText(localize('toast_imagepicker_failed') + ': ' + e, "long").show();
+        e = e.toString();
+        if(e.substr(e.length-13) != "result code 0") {
+          console.error("IMAGE PICKER Failed: " + e);
+          Toast.makeText(localize('toast_imagepicker_failed') + ': ' + e, "long").show();
+        }
         observer.error(e);
         observer.complete();
       });

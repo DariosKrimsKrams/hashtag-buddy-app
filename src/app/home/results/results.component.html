@@ -1,74 +1,73 @@
 <StackLayout tkMainContent>
-        <GridLayout [class.dialogOpen]="dialogOpen">
-            <GridLayout rows="70,*" class="page">
-                <GridLayout id="header" [class.gradient]="currentScrollingY >= parallaxHeight" row="0" columns="20,*,20">
-                    <StackLayout col="0" (tap)="openMenu()" verticalAlignment="middle">
-                        <Image src="~/app/assets/images/icons/menu_bar_black.png" *ngIf="parallaxHeight > currentScrollingY"></Image>
-                        <Image src="~/app/assets/images/icons/menu_bar_white.png" *ngIf="currentScrollingY >= parallaxHeight"></Image>
-                    </StackLayout>
-                    <GridLayout col="1" horizontalAlignment="center" verticalAlignment="middle">
-                        <Label text="Results" class="text-center font-medium-l" class="title"></Label>
-                    </GridLayout>        
-                </GridLayout>
-                <GridLayout row="1" rows="*,50" tkMainContent>
-                    <GridLayout row="0">
-                        <ScrollView #scrollView (scroll)="onScroll($event, scrollView, topView)">
-                            <StackLayout>
-                                <GridLayout id="preview-image" (tap)="dismissSoftKeybaord()" [height]="parallaxHeight" #topView>
-                                    <Image [src]="photo.image" stretch="aspectFill"></Image>
-                                </GridLayout>
-                                <StackLayout id="user-selection" class="p-l-10 p-r-10 p-b-20 p-t-10">
-                                    <ProgressBar page="results" width="80%" forceFreeMode="true" *ngIf="!photo.proMode"></ProgressBar>
-                                    <Label class="m-t-10 m-b-5">
-                                        <FormattedString>
-                                            <Span class="font-demi-bold" text="{{ 'results_category_user_hashtags' | L }}"></Span>
-                                            <Span text="  ({{selectedHashtags.length}} / 30)" fontSize="12"></Span>
-                                        </FormattedString>
-                                    </Label>
-                                    <WrapLayout class="m-t-5">
-                                        <ns-hashtag *ngFor="let tag of selectedHashtags.hashtags; let i = index" (onClick)="deselectHashtag(tag.hashtag.title)" [name]="'#' + tag.hashtag.title + '   &times;'" [isActive]="true"></ns-hashtag>
-                                    </WrapLayout>  
-                                    <Label class="m-r-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="selectedHashtags.length == 0"></Label>
-                                    <GridLayout columns="*,60" class="m-l-5 m-r-10">
-                                        <FloatLabel col="0" [placeholder]="'results_hashtags_input' | L" (userTextEmitter)="customUserHashtagsText = $event" [reset]="resetInput"></FloatLabel>
-                                        <Button col="1" text="+ {{'results_hashtags_add' | L}}" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="customUserHashtagsText !== ''" (tap)="addCustomHashtags()" verticalAlignment="bottom" horizontalAlignment="right"></Button>
-                                    </GridLayout>
-                                </StackLayout>   
-                                <StackLayout orientation="vertical" class="list-group-item" *ngFor="let category of photo.categories; let i = index;">
-                                    <GridLayout columns="*,60" class="hash-title m-l-10 m-r-20">
-                                        <Label [text]="category.title | L" class="font-demi-bold" col="0"></Label>
-                                        <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category, i)" *ngIf="!areAllHashtagSelected(category, i)"></Button>
-                                        <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="deselectAll(category, i)" *ngIf="areAllHashtagSelected(category, i)"></Button>
-                                    </GridLayout>
-                                    <Label text="{{ 'results_recommented_amount' | L }} {{ getRecommendedAmount(category.title) }}" class="font-reg-xs m-l-10 m-r-5"></Label>
-                                    <WrapLayout class="m-t-5 m-l-5 m-b-20 tag-title">
-                                        <ns-hashtag *ngFor="let tag of category.tags; let j = index;" (onClick)="toggleHashtag(tag, i, j)" (onClickCensored)="clickedCensoredHashtag()" [name]="'#' + tag.title" [isActive]="hightlightStatus[i + '_' + j]" [censored]="tag.isCensored"></ns-hashtag>
-                                    </WrapLayout>
-                                </StackLayout>
-                            </StackLayout>
-                        </ScrollView>
-                        <StackLayout class="top-shadow" isUserInteractionEnabled="false" *ngIf="currentScrollingY >= parallaxHeight - 3"></StackLayout>
-                        <StackLayout class="bottom-shadow" isUserInteractionEnabled="false"></StackLayout>
-                    </GridLayout>
-                    <GridLayout row="1" columns="*" class="footer">
-                        <StackLayout col="0" horizontalAliginment="center" (tap)="copySelected()">
-                            <Label text="&#xf0ea;" class="fas text-center" fontSize="20"></Label>
-                            <Label text="{{ 'results_copy_selected' | L }}" class="text-center font-medium-xs"></Label>
-                        </StackLayout>
-                        <!-- <StackLayout col="1" horizontalAliginment="center" (tap)="transferToInstagram()" class="open-instagram">
-                            <Label text="&#xf16d;" class="fab text-center" fontSize="20"></Label>
-                            <Label text="{{ 'results_copy_to_instagram' | L }}" class="text-center font-medium-xs"></Label>
-                        </StackLayout> -->
-                    </GridLayout>
-                </GridLayout>                         
-            </GridLayout>
-            <AbsoluteLayout class="dialog-wrapper" *ngIf="dialogOpen" horizontalAlignment="center">
-                <StackLayout class="dialog">            
-                    <StackLayout class="dialog2">
-                        <Image src="~/app/assets/images/copied.png" width="60" height="50"></Image>
-                        <Label [text]="'copy_successful' | L" class="m-t-20 text-center"></Label>
-                    </StackLayout>
+    <GridLayout [class.dialogOpen]="dialogOpen">
+        <GridLayout rows="70,*" class="page">
+            <GridLayout id="header" [class.gradient]="currentScrollingY >= parallaxHeight" row="0" columns="20,*,20">
+                <StackLayout col="0" (tap)="openMenu()" verticalAlignment="middle">
+                    <Image [src]="parallaxHeight > currentScrollingY ? '~/app/assets/images/icons/menu_bar_black.png' : '~/app/assets/images/icons/menu_bar_white.png'"></Image>
                 </StackLayout>
-            </AbsoluteLayout>
-        </GridLayout>              
-    </StackLayout>
+                <GridLayout col="1" horizontalAlignment="center" verticalAlignment="middle">
+                    <Label [text]="'results_headline' | L"  class="text-center font-medium-l" class="title"></Label>
+                </GridLayout>
+            </GridLayout>
+            <GridLayout row="1" rows="*,50" tkMainContent>
+                <GridLayout row="0">
+                    <ScrollView #scrollView (scroll)="onScroll($event, scrollView, topView)">
+                        <StackLayout>
+                            <GridLayout id="preview-image" (tap)="dismissSoftKeybaord()" [height]="parallaxHeight" #topView>
+                                <Image [src]="photo.image" stretch="aspectFill"></Image>
+                            </GridLayout>
+                            <StackLayout id="user-selection" class="p-l-10 p-r-10 p-b-20 p-t-10">
+                                <ProgressBar page="results" width="80%" forceFreeMode="true" *ngIf="!photo.proMode"></ProgressBar>
+                                <Label class="m-t-10 m-b-5">
+                                    <FormattedString>
+                                        <Span class="font-demi-bold" text="{{ 'results_category_user_hashtags' | L }}"></Span>
+                                        <Span text="  ({{selectedHashtags.length}} / 30)" fontSize="12"></Span>
+                                    </FormattedString>
+                                </Label>
+                                <WrapLayout class="m-t-5">
+                                    <ns-hashtag *ngFor="let tag of selectedHashtags.hashtags; let i = index" (onClick)="deselectHashtag(tag.hashtag.title)" [name]="'#' + tag.hashtag.title + '   &times;'" [isActive]="true"></ns-hashtag>
+                                </WrapLayout>  
+                                <Label class="m-r-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="selectedHashtags.length == 0"></Label>
+                                <GridLayout columns="*,60" class="m-l-5 m-r-10">
+                                    <FloatLabel col="0" [placeholder]="'results_hashtags_input' | L" (userTextEmitter)="customUserHashtagsText = $event" [reset]="resetInput"></FloatLabel>
+                                    <Button col="1" text="+ {{'results_hashtags_add' | L}}" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="customUserHashtagsText !== ''" (tap)="addCustomHashtags()" verticalAlignment="bottom" horizontalAlignment="right"></Button>
+                                </GridLayout>
+                            </StackLayout>   
+                            <StackLayout orientation="vertical" class="list-group-item" *ngFor="let category of photo.categories; let i = index;">
+                                <GridLayout columns="*,60" class="hash-title m-l-10 m-r-20">
+                                    <Label [text]="category.title | L" class="font-demi-bold" col="0"></Label>
+                                    <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category, i)" *ngIf="!areAllHashtagSelected(category, i)"></Button>
+                                    <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="deselectAll(category, i)" *ngIf="areAllHashtagSelected(category, i)"></Button>
+                                </GridLayout>
+                                <Label text="{{ 'results_recommented_amount' | L }} {{ getRecommendedAmount(category.title) }}" class="font-reg-xs m-l-10 m-r-5"></Label>
+                                <WrapLayout class="m-t-5 m-l-5 m-b-20 tag-title">
+                                    <ns-hashtag *ngFor="let tag of category.tags; let j = index;" (onClick)="toggleHashtag(tag, i, j)" (onClickCensored)="clickedCensoredHashtag()" [name]="'#' + tag.title" [isActive]="hightlightStatus[i + '_' + j]" [censored]="tag.isCensored"></ns-hashtag>
+                                </WrapLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                    <StackLayout class="top-shadow" isUserInteractionEnabled="false" *ngIf="currentScrollingY >= parallaxHeight - 3"></StackLayout>
+                    <StackLayout class="bottom-shadow" isUserInteractionEnabled="false"></StackLayout>
+                </GridLayout>
+                <GridLayout row="1" columns="*" class="footer">
+                    <StackLayout col="0" horizontalAliginment="center" (tap)="copySelected()">
+                        <Label text="&#xf0ea;" class="fas text-center" fontSize="20"></Label>
+                        <Label text="{{ 'results_copy_selected' | L }}" class="text-center font-medium-xs"></Label>
+                    </StackLayout>
+                    <!-- <StackLayout col="1" horizontalAliginment="center" (tap)="transferToInstagram()" class="open-instagram">
+                        <Label text="&#xf16d;" class="fab text-center" fontSize="20"></Label>
+                        <Label text="{{ 'results_copy_to_instagram' | L }}" class="text-center font-medium-xs"></Label>
+                    </StackLayout> -->
+                </GridLayout>
+            </GridLayout>                         
+        </GridLayout>
+        <AbsoluteLayout class="dialog-wrapper" *ngIf="dialogOpen" horizontalAlignment="center">
+            <StackLayout class="dialog">            
+                <StackLayout class="dialog2">
+                    <Image src="~/app/assets/images/copied.png" width="60" height="50"></Image>
+                    <Label [text]="'copy_successful' | L" class="m-t-20 text-center"></Label>
+                </StackLayout>
+            </StackLayout>
+        </AbsoluteLayout>
+    </GridLayout>              
+</StackLayout>

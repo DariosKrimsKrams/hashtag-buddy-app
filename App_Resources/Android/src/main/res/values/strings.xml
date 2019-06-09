@@ -131,6 +131,7 @@
   <string name="results_category_generic_hashtags">"Generic hashtags"</string>
   <string name="results_category_niche_hashtags">"Niche hashtags"</string>
   <string name="results_category_user_hashtags">"Your selected hashtags"</string>
+  <string name="results_headline">"Results"</string>
   <string name="selection_popup_button_deny">"Choose a better one"</string>
   <string name="selection_popup_button_ok">"Let the Magic begin"</string>
   <string name="selection_popup_title">"Let Instaq help you find Instagram\'s most relevant hashtags for this wonderful photo"</string>
