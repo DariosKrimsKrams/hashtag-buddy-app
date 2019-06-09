@@ -34,17 +34,17 @@ export class FaqComponent implements OnInit {
       new Faq({
         expand: false,
         title: localize('faq_headline_stats2'),
-        content: this.getMultipleDiduknowText([8,13,21,22]),
+        content: this.getMultipleDiduknowText([8,13,20,21]),
       }),
       new Faq({
         expand: false,
         title: localize('faq_headline_stats3'),
-        content: this.getMultipleDiduknowText([1,2,4,5,6,12,23]),
+        content: this.getMultipleDiduknowText([1,2,4,5,6,12,22]),
       }),
       new Faq({
         expand: false,
         title: localize('faq_headline_stats4'),
-        content: this.getMultipleDiduknowText([14,15,16,17,18,19,20]),
+        content: this.getMultipleDiduknowText([14,15,16,17,18,19]),
       })
     ]
   }

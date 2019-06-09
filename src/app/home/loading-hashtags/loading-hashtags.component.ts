@@ -48,11 +48,11 @@ export class LoadingHashtagsComponent implements OnInit {
 
   private getRandom(): number {
     // 1. get between 0 and 1
-    // 2. multiple to get between 0.00001 and 22.9999
-    // 3. round off to get between 0 and 22
-    // 4. add 1 to get between 1 and 23
+    // 2. multiple to get between 0.00001 and 21.9999
+    // 3. round off to get between 0 and 21
+    // 4. add 1 to get between 1 and 22
     const min = 1;
-    const max = 23;
+    const max = 22;
     return Math.floor(Math.random() * (max - 0.01)) + min;
   }
 
