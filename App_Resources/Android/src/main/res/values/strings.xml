@@ -2,16 +2,16 @@
 <resources>
   <string name="email">"dario@innocliq.de"</string>
   <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
-  <string name="share">"Hey, I found this free app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too :)\n\n"</string>
+  <string name="share">"Hey bro, I found this app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too :)"</string>
   <string name="progressbar_freemode_time">"In %1$s you receive 1 uncensored Upload."</string>
   <string name="progressbar_results_freemode2">"Upgrade to Instaq Pro to unlock hashtags."</string>
   <string name="progressbar_results_freemode1">"Free limit reached: Best hashtags are hidden."</string>
   <string name="progressbar_confirm_freemode2">"Best hashtags are hidden now :("</string>
   <string name="progressbar_confirm_freemode1">"Free limit reached:"</string>
-  <string name="progressbar_confirm_promode">"photos left: Enjoy the best hashtags."</string>
+  <string name="progressbar_confirm_promode">"%1$s photos left: Enjoy the best hashtags."</string>
   <string name="progressbar_home_freemode">"Free mode: Some hashtags will be hidden."</string>
-  <string name="progressbar_home_iapmode">"photo uploads left"</string>
-  <string name="progressbar_home_promode">"free photo uploads left"</string>
+  <string name="progressbar_home_iapmode">"%1$s photo uploads left"</string>
+  <string name="progressbar_home_promode">"%1$s unlimited photo uploads left"</string>
   <string name="toast_imagepicker_failed">"Image Picker failed"</string>
   <string name="toast_create_customer_at_upload_failed">"Request failed! Connection lost :\'("</string>
   <string name="toast_create_customer_failed">"You are offline. Please connect to the internet :)"</string>
@@ -38,7 +38,7 @@
   <string name="iap_purchase_successful_msg">"You successfully bought %1$s :)"</string>
   <string name="iap_purchase_successful_title">"Congratulations"</string>
   <string name="iap_purchase_failed">"Purchase was canceled"</string>
-  <string name="store_buy_failed">"Sorry, your account is not eligible to make payments :("</string>
+  <string name="store_buy_failed">"Sadly, your account seems to not be eligible to make payments :("</string>
   <string name="store_save">"Save"</string>
   <string name="store_restore">"Restore payments"</string>
   <string name="store_outro">"Keep in mind that Google takes 30 %% off for every transaction you make."</string>
@@ -62,7 +62,7 @@
   <string name="about_credits_2">"Tim Wiesenmüller from Germany for Management"</string>
   <string name="about_credits_1">"Dario D. Müller from Germany for Management and Programming"</string>
   <string name="about_headline_credits">"Made by"</string>
-  <string name="about_desc">"Thank you for using Instaq.\n\nWe believe in improving the process of finding Instagram hashtags. To bring the same quality of hashtags used by large influencer agencies to everyone, we built Instaq on a base of big data-sets and powerful algorithms to analyze Instagram\'s latest, most successful content and want to form the best possible User Experience around it.\n\nDo you agree with our vision? Let us build this dream together! Contribute to Instaq by giving us your feedback for hashtags or ask for features or improvements."</string>
+  <string name="about_desc">"Thank you for using Instaq.\n\nWe believe in improving the process of finding Instagram hashtags. To bring the same quality of hashtags used by large influencer agencies to everyone, we built Instaq on a base of big data and powerful algorithms to analyze Instagram\'s latest, most successful content and want to form the best possible User Experience around it.\n\nDo you agree with our vision? Let us build and improve this project together! Contribute to Instaq by giving us your feedback for hashtags or ask for features or improvements."</string>
   <string name="about_title">"About"</string>
   <string name="settings_footer_title_fallback">"Share"</string>
   <string name="settings_footer_title">"Follow us"</string>
@@ -74,17 +74,16 @@
   <string name="feedback_email">"Your e-mail"</string>
   <string name="feedback_intro">"We hope you had a great experience. To build an even better experience, we want to include you in the process of making it by giving us your feedback. What do you like about this app? And what do you dislike about it?"</string>
   <string name="feedback_title">"Improve this app"</string>
-  <string name="diduknow_fact23">"30 %% of users bought a product they discovered on Instagram"</string>
-  <string name="diduknow_fact22">"400 million users watch Instagram Stories on a daily basis"</string>
-  <string name="diduknow_fact21">"Hashtags with 21-24 characters perform better than shorter hashtags because they are more specific"</string>
-  <string name="diduknow_fact20">"60 %% of the top brands use the same filter for every post"</string>
-  <string name="diduknow_fact19">"Images that have blue as the dominant color get 24 %% more likes than images with red as the dominant color"</string>
-  <string name="diduknow_fact18">"Images with more background space (negative or white space) get 29 %% more likes"</string>
-  <string name="diduknow_fact17">"Images with texture have a 79 %% higher engagement rates in likes compared to the ones with low texture"</string>
-  <string name="diduknow_fact16">"Images with a single dominant hue have the best results"</string>
+  <string name="diduknow_fact22">"30 %% of users bought a product they discovered on Instagram"</string>
+  <string name="diduknow_fact21">"400 million users watch Instagram Stories on a daily basis"</string>
+  <string name="diduknow_fact20">"Hashtags with 21 - 24 characters perform better than shorter hashtags because they are more specific"</string>
+  <string name="diduknow_fact19">"60 %% of the top brands use the same filter for every post"</string>
+  <string name="diduknow_fact18">"Photos that have blue as the dominant color get 24 %% more likes than images with red as the dominant color"</string>
+  <string name="diduknow_fact17">"Photos with more background space (negative or white space) get 29 %% more likes"</string>
+  <string name="diduknow_fact16">"Photos with a single dominant hue have the best results"</string>
   <string name="diduknow_fact15">"Posts containing or featuring User-generated content has a 4.5 %% higher conversion rate than non-UGC posts."</string>
   <string name="diduknow_fact14">"Brands post an average of 27.9x per month, meaning they almost post every day"</string>
-  <string name="diduknow_fact13">"The top 5 Instagram hashtags are #love, #instagood, #fashion, #photooftheday, and #style"</string>
+  <string name="diduknow_fact13">"The five most used Instagram hashtags are #love, #instagood, #fashion, #photooftheday and #style"</string>
   <string name="diduknow_fact12">"1.1 billion people use Instagram, but only 500 million of them use it every day"</string>
   <string name="diduknow_fact11">"Posts with a location receive 79 %% more engagement"</string>
   <string name="diduknow_fact10">"Posts that include tagging another handle gain 56 %% more engagement"</string>

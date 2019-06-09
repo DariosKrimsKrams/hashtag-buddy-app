@@ -74,12 +74,12 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     this.isVisible = true;
     if(this.page === "home") {
       var textKey = hasPayedPhotos ? 'progressbar_home_iapmode' : 'progressbar_home_promode';
-      this.text1 = this.countPhotoLeft + " " + localize(textKey);
+      this.text1 = localize(textKey, this.countPhotoLeft.toString());
       this.text2 = localize('progressbar_home_freemode');
     }
 
     if(this.page === "confirm") {
-      this.text1 = this.countPhotoLeft + " " + localize('progressbar_confirm_promode');
+      this.text1 = localize('progressbar_confirm_promode', this.countPhotoLeft.toString());
       this.text2 = localize('progressbar_confirm_freemode1');
       this.text3 = localize('progressbar_confirm_freemode2');
     }
