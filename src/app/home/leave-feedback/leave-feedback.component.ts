@@ -4,7 +4,6 @@ import { Page } from "tns-core-modules/ui/page";
 import { UserService } from '~/app/storages/user.service';
 import { Hashtag } from '~/app/models/hashtag';
 import { ResultFeedback } from '~/app/models/result-feedback';
-import { FeedbackRepository } from '~/app/services/feedback-repository.service';
 import { fromFile, ImageSource } from 'tns-core-modules/image-source/image-source';
 // import { shareInstagram } from 'nativescript-instagram-share';
 import { Photo } from '~/app/models/photo';
@@ -14,6 +13,7 @@ import { ResultFeedbackRequest } from '~/app/models/request/result-feedback-requ
 import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/pages/feedback/modal/modal.component';
 import { CustomerService } from '~/app/storages/customer.service';
+import { FeedbackRepository } from '~/app/services/repositories/feedback-repository.service';
 
 @Component({
   templateUrl: './leave-feedback.component.html',

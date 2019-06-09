@@ -10,9 +10,8 @@ import * as utils from "tns-core-modules/utils/utils";
 import { isIOS, isAndroid } from "tns-core-modules/platform";
 import * as frame from "tns-core-modules/ui/frame";
 import { AppFeedback } from '~/app/models/app-feedback';
-import { FeedbackRepository } from '../../services/feedback-repository.service';
-import { UserService } from '~/app/storages/user.service';
 import { CustomerService } from '~/app/storages/customer.service';
+import { FeedbackRepository } from '~/app/services/repositories/feedback-repository.service';
 
 @Component({
   selector: 'ns-feedback',
@@ -30,7 +29,6 @@ export class FeedbackComponent implements OnInit {
     private readonly modalService: ModalDialogService, 
     private readonly viewContainerRef: ViewContainerRef,
     private readonly feedbackRepositoryService: FeedbackRepository,
-    private readonly userService: UserService,
     private readonly customerService: CustomerService,
     ) {
     this.page.actionBarHidden = true;

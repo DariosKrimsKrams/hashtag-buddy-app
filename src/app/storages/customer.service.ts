@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "./local-storage.service";
-import { CustomerRepository } from "../services/customer-repository.service";
 import { Observable, of } from 'rxjs';
+import { CustomerRepository } from "../services/repositories/customer-repository.service";
  
 export enum CustomerCreateStatus {
     None,
@@ -19,7 +19,7 @@ export class CustomerService {
 
     constructor(
         private readonly localStorageService: LocalStorageService,
-        private readonly customerRepositoryService: CustomerRepository
+        private readonly customerRepositoryService: CustomerRepository,
     ) { }
 
     public createUserIdIfNotExist(): Observable<CustomerCreateStatus> {
