@@ -8,7 +8,7 @@
   <string name="progressbar_results_freemode1">"Kostenfreies Limit erreicht: Hashtags zensiert."</string>
   <string name="progressbar_confirm_freemode2">"Die besten Hashtags sind nun zensiert :("</string>
   <string name="progressbar_confirm_freemode1">"Kostenfreies Limit erreicht:"</string>
-  <string name="progressbar_confirm_promode">"Unzensierte Hashtags für %1$s Fotos"</string>
+  <string name="progressbar_confirm_promode">"Noch %1$s unlimitierte Fotos"</string>
   <string name="progressbar_home_freemode">"Free Modus: Einige Hashtags sind versteckt."</string>
   <string name="progressbar_home_iapmode">"noch %1$s Foto Uploads"</string>
   <string name="progressbar_home_promode">"noch %1$s unlimitierte Foto Uploads"</string>
@@ -118,7 +118,7 @@
   <string name="copy_failed">"Kopieren fehlgeschlagen"</string>
   <string name="copy_successful">"In Zwischenablage kopiert"</string>
   <string name="results_copy_to_instagram">"Transferiere zu Instagram"</string>
-  <string name="results_copy_selected">"Kopiere Ausgewählte"</string>
+  <string name="results_copy_selected">"Kopiere Hashtags"</string>
   <string name="results_copy_top">"Kopiere Top 20"</string>
   <string name="results_hashtags_add">"Hinzu"</string>
   <string name="results_hashtags_input">"Füge eigene #Hashtags"</string>

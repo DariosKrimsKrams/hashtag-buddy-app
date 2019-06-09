@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { ImageAsset } from "tns-core-modules/image-asset/image-asset";
 import { fromAsset } from "tns-core-modules/image-source";
 import { knownFolders, path } from 'tns-core-modules/file-system/file-system';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
     providedIn: "root"

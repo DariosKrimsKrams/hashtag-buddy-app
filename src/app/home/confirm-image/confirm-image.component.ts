@@ -1,26 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { DeviceService } from '~/app/services/device-photos.service';
 import { ImageAsset } from 'tns-core-modules/image-asset/image-asset';
 import { Page } from 'tns-core-modules/ui/page/page';
-import { Observable, of } from 'rxjs';
-import * as imagepicker from "nativescript-imagepicker";
-import { UserService } from '../../storages/user.service';
-import { Photo } from '~/app/models/photo';
-import { EvaluationRepository } from '~/app/services/evaluation-repository.service';
-import { HashtagCategory } from '../../models/hashtag-category';
-import { Hashtag } from '../../models/hashtag';
-import { IHttpResponse } from '~/app/models/request/http-response';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
-import { PhotosCountService } from '~/app/storages/photos-count.service';
-import { CustomerService, CustomerCreateStatus } from '~/app/storages/customer.service';
+import { SelectPhotoService } from '~/app/services/business-logic/select-photo.service';
 
-interface HashtagResult {
-  name: string;
-  refCount: number;
-  posts: number;
-}
 
 @Component({
   selector: 'ns-confirm-image',
@@ -31,16 +17,14 @@ interface HashtagResult {
 export class ConfirmImageComponent implements OnInit {
 
   public photo: ImageAsset;
+  @Output() public onClickCancel = new EventEmitter<void>();
 
   constructor(
     private readonly page: Page,
     private readonly router: RouterExtensions,
     private readonly deviceService: DeviceService,
-    private readonly userService: UserService,
-    private readonly evaluationRepository: EvaluationRepository,
-    private readonly photosCountService: PhotosCountService,
-    private readonly customerService: CustomerService,
-  ) {
+    private readonly selectPhotoService: SelectPhotoService,
+    ) {
     this.page.actionBarHidden = true;
   }
 
@@ -54,116 +38,25 @@ export class ConfirmImageComponent implements OnInit {
 
   confirmImage(): void {
     this.openLoadingPage();
-    this.savePhoto().subscribe(photoId => {
-      var hasCustomerId = this.customerService.hasCustomerId();
-      if(!hasCustomerId) {
-        this.customerService.createUserIdIfNotExist().subscribe((status) => {
-          if(status == CustomerCreateStatus.NewlyCreated || status == CustomerCreateStatus.AlreadyCreated) {
-            this.uploadImage(photoId);
-          } else {
-            Toast.makeText(localize('toast_create_customer_at_upload_failed'), "long").show();
-            setTimeout.bind(this)(() => {
-              this.goPrevPage();
-            }, 1000);
-          }
-        });
-      } else {
-        this.uploadImage(photoId);
-      }
+    this.selectPhotoService.saveAndUploadPhoto().subscribe((photoId) => {
+      this.openResultsPage(photoId);
+    }, (e) => {
+      var locaKey = e == "customer failed" ? 'toast_create_customer_at_upload_failed' : 'toast_upload_failed;'
+      Toast.makeText(localize(locaKey), "long").show();
+      setTimeout.bind(this)(() => {
+        this.goPrevPage();
+      }, 1000);
     });
-  }
-
-  private uploadImage(photoId: number): void {
-    var customerId = this.customerService.getCustomerId();
-    var photo = this.userService.getPhoto(photoId);
-    this.evaluationRepository.UploadPhoto(photo.image, customerId)
-    .subscribe((httpResponse: IHttpResponse) => {
-      console.log(httpResponse);
-      if(httpResponse.code == 200) {
-        this.parseSuccessfulResponse(photoId, httpResponse);
-        this.photosCountService.decrease();
-      } else {
-        Toast.makeText(localize('toast_upload_failed'), "long").show();
-        setTimeout.bind(this)(() => {
-          this.goPrevPage();
-        }, 1000);
-      }
-    });
-  }
-
-  private savePhoto(): Observable<number> {
-    return new Observable<number>(observer => {
-      var photo = new Photo();
-      photo.timestamp = new Date().getTime();
-      this.deviceService.copyPhotoToAppFolder(this.photo).subscribe(path => {
-        photo.image = path;
-        var photoId = this.userService.addPhoto(photo);
-        observer.next(photoId);
-        observer.complete();
-      })
-    });
-  }
-
-  private parseSuccessfulResponse(photoId: number, httpResponse: IHttpResponse): void {
-    var data = JSON.parse(httpResponse.message);
-    var mostRelevantTags: HashtagResult[] = data.mostRelevantHTags;
-    var trendingTags: HashtagResult[] = data.trendingHTags;
-    var categories: HashtagCategory[] = [];
-    categories.push(this.toHashtagCategory(mostRelevantTags, "results_category_generic_hashtags"));
-    categories.push(this.toHashtagCategory(trendingTags, "results_category_niche_hashtags"));
-
-    var photo = this.userService.getPhoto(photoId);
-    photo.categories = categories;
-    photo.logId = data.logId;
-    photo.proMode = this.photosCountService.getTotalCount() > 0;
-    photo.censorHashtags();
-    
-    this.userService.updatePhoto(photo);
-    this.openResultsPage(photoId);
-  }
-
-  private toHashtagCategory(hashtags: HashtagResult[], title: string) {
-    var category = new HashtagCategory();
-    category.title = title;
-    category.tags = [];
-    for(let i = 0; i < hashtags.length; i++) {
-      var hashtag = new Hashtag({title: hashtags[i].name});
-      category.tags.push(hashtag);
-    }
-    return category;
   }
 
   public chooseImage(): void {
-    let that = this;
-    let context = imagepicker.create({
-      mode: "single",
-      mediaType: imagepicker.ImagePickerMediaType.Image
+    this.selectPhotoService.pickImage().subscribe((image) => {
+      this.photo = image;
     });
-    context
-      .authorize()
-      .then(function() {
-          return context.present();
-      })
-      .then(function(selection) {
-        let imageSrc = selection[0];
-        imageSrc.options.width = 1000;
-        imageSrc.options.height = 1000;
-        that.deviceService.setSelectedPhoto(imageSrc);
-        that.photo = imageSrc;
-      }).catch(function (e) {
-        console.log("IMAGE PICKER Failed: " + e);
-        Toast.makeText(localize('toast_imagepicker_failed') + ': ' + e, "long").show();
-      });
   }
 
   public goPrevPage(): void {
-    this.router.navigate(["/home"], {
-      transition: {
-        name: "slideRight",
-        duration: 500,
-        curve: "easeOut"
-      }
-    });
+    this.onClickCancel.emit();
   }
 
   private openLoadingPage(): void {

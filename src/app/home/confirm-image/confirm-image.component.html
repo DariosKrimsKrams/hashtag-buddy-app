@@ -1,15 +1,5 @@
 <StackLayout id="container">
     <Label text="&times;" id="close-button" class="m-l-20 m-t-30" (tap)="goPrevPage()"></Label>
-    <!-- <GridLayout columns="20,*,20" id="header">
-        <Label col="1" text="{{ 'selection_title' | L }}" class="title"></Label>
-       <StackLayout col="2"></StackLayout> -->
-    <!-- </GridLayout> -->
-    <!-- <GridLayout verticalAlignment="middle" class="m-b-10">
-        <StackLayout [nsRouterLink]="['/home']" id="close-container" class="pull-left">
-            <Label text="&times;" id="close-button" class="p-l-15"></Label>
-        </StackLayout>
-    </GridLayout> -->
-
     <StackLayout id="dialog" class="m-t-100">
         <Label class="text-center" textWrap="true" text="{{ 'selection_popup_title' | L }}:"></Label> 
         <StackLayout id="main-image" class="m-t-15 m-b-15">
@@ -19,5 +9,4 @@
         <Button class="btn btn-rounded-lg btn-normal" text="{{ 'selection_popup_button_ok' | L }}" (tap)="confirmImage()"></Button>
         <Button class="btn btn-outline btn-rounded-lg border-color-normal color-normal" text="{{ 'selection_popup_button_deny' | L }}" (tap)="chooseImage()"></Button>
     </StackLayout>
-
 </StackLayout>

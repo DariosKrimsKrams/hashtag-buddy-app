@@ -1,13 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy } from "@angular/core";
 import { Page } from "tns-core-modules/ui/page";
 import * as app from "tns-core-modules/application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { screen } from "tns-core-modules/platform";
-import * as imagepicker from "nativescript-imagepicker";
-import { DeviceService } from "../services/device-photos.service";
-import * as Toast from 'nativescript-toast';
-import { localize } from 'nativescript-localize/angular';
+import { SelectPhotoService } from "../services/business-logic/select-photo.service";
 
 @Component({
   selector: "Home",
@@ -18,21 +14,19 @@ import { localize } from 'nativescript-localize/angular';
 })
 export class HomeComponent implements OnInit {
 
-  isHistoryOpen: number;
-  historyHeight: number;
-  historyDefaultTransform: number;
-  @ViewChild("history", { static: false }) historyElement: ElementRef;
-  @ViewChild("mainContainer", { static: false }) mainContainerElement: ElementRef;
-  private openConfirmImage: boolean;
+  public isHistoryOpen: number;
+  public historyHeight: number;
+  public historyDefaultTransform: number;
+  public openConfirmImage: boolean;
+  @ViewChild("history", { static: false }) public historyElement: ElementRef;
+  @ViewChild("mainContainer", { static: false }) public mainContainerElement: ElementRef;
 
   constructor(
     private readonly page: Page,
-    private readonly router: RouterExtensions,
-    private readonly deviceService: DeviceService,
-    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly selectPhotoService: SelectPhotoService,
   ) {
     this.page.actionBarHidden = true;
-    // this.changeDetectorRef.detach();
+    this.openConfirmImage = false;
   }
 
   ngOnInit() {
@@ -40,46 +34,14 @@ export class HomeComponent implements OnInit {
     this.historyDefaultTransform = this.historyHeight - 130;
   }
 
-  clickUpload() {
-    // Workaround because of Bug since updating to Angular 8, View will not be refreshed
-    this.watchRedirectToConfirmImagePage();
-
-    let that = this;
-    let context = imagepicker.create({
-      mode: "single",
-      mediaType: imagepicker.ImagePickerMediaType.Image
+  public clickUpload(): void {
+    this.selectPhotoService.pickImage().subscribe(() => {
+      this.openConfirmImage = true;
     });
-    context
-      .authorize()
-      .then(function() {
-        return context.present();
-      })
-      .then(function(selection) {
-        let imageSrc = selection[0];
-        imageSrc.options.width = 1000;
-        imageSrc.options.height = 1000;
-        that.deviceService.setSelectedPhoto(imageSrc);
-        that.openConfirmImage = true;
-      }).catch(function (e) {
-        console.log("IMAGE PICKER Failed: " + e);
-        Toast.makeText(localize('toast_imagepicker_failed') + ': ' + e, "long").show();
-      });
   }
 
-  private watchRedirectToConfirmImagePage(): void {
-    let that = this;
-    var id = setInterval(() => {
-      if(that.openConfirmImage) {
-        that.openConfirmImage = false;
-        that.router.navigate(["/home/confirm-image"]);
-        // that.router.navigate(["/settings"]);
-        clearTimeout(id);
-      }
-    }, 300);
-  }
-
-  openMenu(): void {
-    // timeout as workaround, otherwise the sidemenu will be visible for one frame before fading in
+  public openMenu(): void {
+    // timeout needed or sidemenu will be visible for one frame before fading in
     setTimeout(() => {
       const sideDrawer = <RadSideDrawer>app.getRootView();
       sideDrawer.showDrawer();
@@ -87,12 +49,12 @@ export class HomeComponent implements OnInit {
     }, 10);
   }
 
-  closeMenu() {
+  public closeMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.closeDrawer();
   }
 
-  clickHistory() {
+  public clickHistory(): void {
     this.isHistoryOpen = this.isHistoryOpen != 1 ? 1 : 2;
     var posY = this.isHistoryOpen === 1 ? 0 : this.historyDefaultTransform;
     var bgColor = this.isHistoryOpen === 1 ? '#fff' :'#fcfcfc';
@@ -101,6 +63,10 @@ export class HomeComponent implements OnInit {
       backgroundColor: bgColor,
       duration: 600
     });
+  }
+
+  public onClickCancel(): void {
+    this.openConfirmImage = false
   }
 
 }

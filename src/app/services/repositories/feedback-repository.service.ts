@@ -3,7 +3,7 @@ import { request } from "tns-core-modules/http";
 import { AppFeedback } from '~/app/models/app-feedback';
 import { environment } from '../../environments/environment';
 import { ResultFeedbackRequest } from '../../models/request/result-feedback-request';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root',

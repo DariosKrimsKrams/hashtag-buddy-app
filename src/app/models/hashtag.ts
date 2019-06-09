@@ -1,9 +1,8 @@
 export class Hashtag {
-    title: string;
-    isCensored: boolean;
+  public title: string;
+  public isCensored: boolean;
 
-    public constructor(init?: Partial<Hashtag>) {
-      Object.assign(this, init);
-    }
-
+  public constructor(init?: Partial<Hashtag>) {
+    Object.assign(this, init);
+  }
 }

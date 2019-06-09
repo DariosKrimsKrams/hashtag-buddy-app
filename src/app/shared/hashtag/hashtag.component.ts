@@ -8,11 +8,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class HashtagComponent implements OnInit {
 
-  @Input() name: string;
-  @Input() isActive: boolean;
-  @Input() censored: boolean;
-  @Output() onClick = new EventEmitter<void>();
-  @Output() onClickCensored = new EventEmitter<void>();
+  @Input() public name: string;
+  @Input() public isActive: boolean;
+  @Input() public censored: boolean;
+  @Output() public onClick = new EventEmitter<void>();
+  @Output() public onClickCensored = new EventEmitter<void>();
 
   constructor() { }
 
