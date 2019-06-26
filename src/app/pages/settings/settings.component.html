@@ -4,30 +4,16 @@
         <GridLayout row="1" rows="*,170" height="100%" width="100%">
             <StackLayout row="0" class="p-t-10 p-b-10 p-l-20 p-r-20">
 
-                <!-- <GridLayout rows="20,20" columns="*,50" verticalAlignment="middle" (tap)="goNextPage('auth')">
-                    <Label row="0" col="0" [text]="'settings_auth' | L" class="text-muted"></Label>
-                    <Label row="1" col="0" text="xyz"></Label>
-                    <Label rowSpan="2" col="1" text="&#xf054;" class="fas"></Label>
-                </GridLayout>
-                <StackLayout class="hr-light m-10"></StackLayout> -->
-
                 <GridLayout rows="40" columns="*,50" verticalAlignment="middle" (tap)="goNextPage('about')">
                     <Label col="0" [text]="'settings_about' | L"></Label>
                     <Label col="1" text="&#xf054;" class="fas"></Label>
                 </GridLayout>
                 <StackLayout class="hr-light m-10"></StackLayout>
 
-                <GridLayout rows="40" columns="*,50" verticalAlignment="middle" (tap)="goNextPage('legal')">
+                <GridLayout rows="40" columns="*" verticalAlignment="middle" (tap)="goNextPage('legal')">
                     <Label col="0" [text]="'settings_legal' | L"></Label>
-                    <Label col="1" text="&#xf054;" class="fas"></Label>
                 </GridLayout>
                 <StackLayout class="hr-light m-10"></StackLayout>
-
-                <!-- <GridLayout rows="40" columns="*,50" verticalAlignment="middle" (tap)="goNextPage('terms')">
-                    <Label col="0" [text]="'settings_terms' | L"></Label>
-                    <Label col="1" text="&#xf054;" class="fas"></Label>
-                </GridLayout>
-                <StackLayout class="hr-light m-10"></StackLayout> -->
 
                 <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="share()">
                     <Label row="0" text="{{'settings_share' | L}} &#10084;"></Label>

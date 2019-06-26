@@ -41,7 +41,7 @@ export class ConfirmImageComponent implements OnInit {
     this.selectPhotoService.saveAndUploadPhoto().subscribe((photoId) => {
       this.openResultsPage(photoId);
     }, (e) => {
-      var locaKey = e == "customer failed" ? 'toast_create_customer_at_upload_failed' : 'toast_upload_failed;'
+      var locaKey = e == "customer failed" ? 'toast_create_customer_at_upload_failed' : 'toast_upload_failed'
       Toast.makeText(localize(locaKey), "long").show();
       setTimeout.bind(this)(() => {
         this.goPrevPage();
