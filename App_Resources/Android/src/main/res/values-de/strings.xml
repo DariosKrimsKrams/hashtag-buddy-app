@@ -49,6 +49,7 @@
   <string name="menu_settings">"Mehr"</string>
   <string name="menu_faq">"Tipps und Tricks"</string>
   <string name="menu_store">"Shop"</string>
+  <string name="menu_myhashtags">"Meine Hashtags"</string>
   <string name="menu_home">"Home"</string>
   <string name="about_infos_user_id">"Benutzer ID"</string>
   <string name="about_infos_be_version">"Backend Version"</string>
