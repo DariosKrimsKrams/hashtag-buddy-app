@@ -1,3 +1,17 @@
-<!-- <Button text="myhashtags works!" class="btn btn-primary"></Button> -->
-<Label text="test" class=""></Label>
-<Label text="{{ 'menu_myhashtags' | L }}" class=""></Label>
+<StackLayout tkMainContent>
+    <GridLayout rows="130,*" class="FAQ">
+        <ns-small-header row="0" (OpenMenu)="openMenu()" [image]="'feedback.jpg'" [title]="'menu_myhashtags' | L"></ns-small-header>
+        <GridLayout row="1">
+            <ScrollView sdkExampleTitle sdkToggleNavButton>
+                
+                <StackLayout class="p-r-20 p-l-20">
+                    
+                    <WrapLayout class="m-t-5">
+                        <ns-hashtag *ngFor="let tag of hashtags; let i = index" (onClick)="clickHashtag(tag.title)" [name]="'#' + tag.title"></ns-hashtag>
+                    </WrapLayout>
+
+                </StackLayout>
+            </ScrollView>
+        </GridLayout>    
+    </GridLayout>
+</StackLayout>

@@ -4,6 +4,9 @@ import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { SmallHeaderModule } from '~/app/shared/small-header/small-header.module';
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
 import { FloatLabelModule } from '~/app/shared/float-label/float-label.module';
+import { setStatusBarColors } from "~/app/shared/status-bar-util";
+import { HashtagModule } from '~/app/shared/hashtag/hashtag.module';
+setStatusBarColors();
 
 @NgModule({
   declarations: [
@@ -14,6 +17,7 @@ import { FloatLabelModule } from '~/app/shared/float-label/float-label.module';
     SmallHeaderModule,
     NativeScriptLocalizeModule,
     FloatLabelModule,
+    HashtagModule,
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

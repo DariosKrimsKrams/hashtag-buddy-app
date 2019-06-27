@@ -154,7 +154,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     if(this.selectHashtagIfExist(name)) {
       return;
     }
-    var hashtag = new Hashtag({title: name});
+    var hashtag = new Hashtag(name);
     this.selectedHashtags.push({hashtag: hashtag, titleId: -1, tagId: -1});
     this.selectionChanged();
   }

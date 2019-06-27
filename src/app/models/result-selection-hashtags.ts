@@ -43,7 +43,7 @@ export class ResultSelectionHashtags {
     var result: ResultSelectionHashtag[] = []
     for(var i = 0; i < hashtags.length; i++) {
       var hashtag = hashtags[i];
-      var resultSelectionHashtag = new ResultSelectionHashtag({hashtag: new Hashtag({title: hashtag.title}), titleId: hashtag.categoryId, tagId: -1});
+      var resultSelectionHashtag = new ResultSelectionHashtag({hashtag: new Hashtag(hashtag.title), titleId: hashtag.categoryId, tagId: -1});
       result.push(resultSelectionHashtag);
     }
     return result;

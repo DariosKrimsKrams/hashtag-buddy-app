@@ -11,7 +11,7 @@ export class HashtagCategory {
 	  category.title = title;
 	  category.tags = [];
 	  for(let i = 0; i < hashtags.length; i++) {
-		var hashtag = new Hashtag({title: hashtags[i].name});
+		var hashtag = new Hashtag(hashtags[i].name);
 		category.tags.push(hashtag);
 	  }
 	  return category;

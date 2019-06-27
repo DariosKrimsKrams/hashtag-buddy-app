@@ -61,13 +61,6 @@ export class SettingsComponent implements  OnInit {
 
   share() {
     var text = localize('share') + "\n\n" + localize('link_playstore');
-
-    // const folder: Folder = <Folder> knownFolders.currentApp();
-    // const folderPath: string = path.join(folder.path, "assets/images/3.png");
-    // const image: ImageSource = <ImageSource> fromFile(folderPath);
-    // let image = fromFile("~/3.png");
-    // SocialShare.shareImage(image, text);
-
     SocialShare.shareText(text);
   }
 
