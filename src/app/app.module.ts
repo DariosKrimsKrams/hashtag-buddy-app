@@ -9,10 +9,12 @@ import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { HistoryModule } from "~/app/home/history/history.module";
 import { DeviceService } from "./services/device-photos.service";
 import { ApplicationPipesModule } from "./shared/pipes/application-pipes.module";
-import { ModalComponent } from "./pages/feedback/modal/modal.component";
 import { ModalModule } from "./pages/feedback/modal/modal.module";
 import { LocalStorageService } from "./storages/local-storage.service";
-
+import { MyhashtagsModule } from "./pages/myhashtags/myhashtags.module";
+import { FaqModule } from "./pages/faq/faq.module";
+import { FeedbackModule } from "./pages/feedback/feedback.module";
+import { StoreModule } from "./pages/store/store.module";
 
 @NgModule({
     bootstrap: [
@@ -30,6 +32,10 @@ import { LocalStorageService } from "./storages/local-storage.service";
         HistoryModule,
         ApplicationPipesModule,
         ModalModule,
+        MyhashtagsModule,
+        FaqModule,
+        FeedbackModule,
+        StoreModule,
     ],
     declarations: [
         AppComponent,
