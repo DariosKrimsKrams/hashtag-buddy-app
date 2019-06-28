@@ -88,6 +88,10 @@ export class UserService {
         return photos;
     }
 
+    public countPhotos(): number {
+        return this.getPhotos().length;
+    }
+
     public clearAll(): void {
         this.localStorageService.remove(this.keyPhotos);
         // this.localStorageService.remove(this.keyUserId);

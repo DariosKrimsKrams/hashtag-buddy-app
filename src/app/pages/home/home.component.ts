@@ -1,9 +1,12 @@
-import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy, OnDestroy } from "@angular/core";
 import { Page } from "tns-core-modules/ui/page";
 import * as app from "tns-core-modules/application";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import { screen } from "tns-core-modules/platform";
 import { SelectPhotoService } from "../../services/business-logic/select-photo.service";
+import { UserService } from "~/app/storages/user.service";
+import { Photo } from "~/app/models/photo";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "Home",
@@ -12,18 +15,22 @@ import { SelectPhotoService } from "../../services/business-logic/select-photo.s
   styleUrls: ["./home.component.css"],
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   public isHistoryOpen: number;
   public historyHeight: number;
   public historyDefaultTransform: number;
   public openConfirmImage: boolean;
+  public hasAnyPhotosUploaded: boolean;
   @ViewChild("history", { static: false }) public historyElement: ElementRef;
   @ViewChild("mainContainer", { static: false }) public mainContainerElement: ElementRef;
+
+  private photoAddedSubscription: Subscription;
 
   constructor(
     private readonly page: Page,
     private readonly selectPhotoService: SelectPhotoService,
+    private readonly userService: UserService,
   ) {
     this.page.actionBarHidden = true;
     this.openConfirmImage = false;
@@ -32,6 +39,20 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
+
+    this.hasAnyPhotosUploaded = this.userService.countPhotos() != 0;
+    if(!this.hasAnyPhotosUploaded) {
+      this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
+        this.hasAnyPhotosUploaded = true;
+        this.photoAddedSubscription.unsubscribe();
+      });
+    }
+  }
+  
+  ngOnDestroy() {
+    if(this.photoAddedSubscription !== undefined) {
+      this.photoAddedSubscription.unsubscribe();
+    }
   }
 
   public clickUpload(): void {
