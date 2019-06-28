@@ -1,14 +1,18 @@
-<StackLayout tkMainContent>
-    <GridLayout>
-        <GridLayout rows="130,*" class="Settings" (tap)="dismissSoftKeybaord()">
-            <ns-small-header (OpenMenu)="openMenu()" [image]="'feedback.jpg'" [title]="'menu_feedback' | L"></ns-small-header>
-            <StackLayout class="input-field p-l-30 p-r-30 m-t-20" row="1">
-                <Label textWrap="true" [text]="'feedback_title' | L" class="m-b-10 font-medium-l title"></Label>
-                <Label textWrap="true" [text]="'feedback_intro' | L" class="font-reg-s"></Label>
-                <FloatLabel [placeholder]="'feedback_email' | L" #clearTextfieldClear (userTextEmitter)="emailChange($event)"></FloatLabel>
-                <FloatLabel [placeholder]="'feedback_message' | L" #clearTextfieldClear (userTextEmitter)="messageChange($event)"></FloatLabel>
-                <Button text="{{ 'feedback_send' | L }}" class="btn btn-rounded-lg btn-normal feedback" width="100%" [class.muted]="email=='' && message==''" (tap)="sendFeedback()"></Button>
-            </StackLayout>        
+<GridLayout (tap)="dismissSoftKeybaord()">
+    <StackLayout orientation="vertical" class="main">
+
+        <GridLayout verticalAlignment="middle" columns="20,*,20" id="header" class="gradient">
+            <Image col="0" src="~/app/assets/images/icons/arrowLeft_white.png" (tap)="goPrevPage()"></Image>
+            <Label col="1" [text]="'menu_feedback' | L" class="text-center font-medium-l"></Label>
+            <StackLayout col="2"></StackLayout>
         </GridLayout>
-    </GridLayout>
-</StackLayout>
+
+        <StackLayout class="input-field p-l-30 p-r-30 m-t-20" row="1">
+            <Label textWrap="true" [text]="'feedback_title' | L" class="m-b-10 font-medium-l title"></Label>
+            <Label textWrap="true" [text]="'feedback_intro' | L" class="font-reg-s"></Label>
+            <FloatLabel [placeholder]="'feedback_email' | L" #clearTextfieldClear (userTextEmitter)="emailChange($event)"></FloatLabel>
+            <FloatLabel [placeholder]="'feedback_message' | L" #clearTextfieldClear (userTextEmitter)="messageChange($event)"></FloatLabel>
+            <Button text="{{ 'feedback_send' | L }}" class="btn btn-rounded-lg btn-normal feedback" width="100%" [class.muted]="email=='' && message==''" (tap)="sendFeedback()"></Button>
+        </StackLayout>    
+    </StackLayout>
+</GridLayout>

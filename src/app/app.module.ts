@@ -8,7 +8,7 @@ import { CoreModule } from "./core.module";
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { HistoryModule } from "~/app/home/history/history.module";
 import { DeviceService } from "./services/device-photos.service";
-import { ApplicationPipesModule } from "./shared/pipes/application-pipes.module";
+import { ApplicationPipesModule } from "./pipes/application-pipes.module";
 import { ModalModule } from "./pages/feedback/modal/modal.module";
 import { LocalStorageService } from "./storages/local-storage.service";
 import { MyhashtagsModule } from "./pages/myhashtags/myhashtags.module";

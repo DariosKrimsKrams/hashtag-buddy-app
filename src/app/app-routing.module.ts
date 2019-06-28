@@ -12,7 +12,7 @@ const routes: Routes = [
     { path: "settings", loadChildren: "~/app/pages/settings/settings.module#SettingsModule" },
     { path: "store", component: StoreComponent },
     { path: "faq", component: FaqComponent },
-    { path: "feedback", component: FeedbackComponent },
+    // { path: "feedback", component: FeedbackComponent },
     { path: "myhashtags", component: MyhashtagsComponent },
     // { path: "error", loadChildren: "~/app/shared/error/error.module#ErrorModule" },
 ];

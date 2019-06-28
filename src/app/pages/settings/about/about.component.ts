@@ -17,7 +17,7 @@ export class AboutComponent implements OnInit {
     private readonly page: Page,
     private readonly router: RouterExtensions,
     private readonly customerService: CustomerService,
-    ) {
+  ) {
     this.page.actionBarHidden = true;
   }
 

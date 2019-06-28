@@ -9,6 +9,8 @@ import { TermsComponent } from './terms/terms.component';
 import { AboutComponent } from './about/about.component';
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
 import { setStatusBarColors } from "~/app/shared/status-bar-util";
+import { FeedbackModule } from '../feedback/feedback.module';
+import { FeedbackComponent } from '../feedback/feedback.component';
 setStatusBarColors();
 
 @NgModule({
@@ -23,7 +25,8 @@ setStatusBarColors();
     NativeScriptCommonModule,
     SettingsRoutingModule,
     SmallHeaderModule,
-    NativeScriptLocalizeModule
+    NativeScriptLocalizeModule,
+    FeedbackModule,
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

@@ -15,16 +15,16 @@
                     </StackLayout>
 
                     <GridLayout class="status m-l-20 m-r-5 m-t-10 m-b-10" columns="*,*,*" rows="auto">
-                        <GridLayout [col]="i" class="m-r-15" *ngFor="let item of emoji; let i = index;" (tap)="rating = i;">
+                        <GridLayout [col]="i" class="m-r-15" *ngFor="let emoji of emojis; let i = index;" (tap)="clickEmoji(i)">
                             <StackLayout horizontalAlignment="center" class="p-t-5 p-b-5" [class.gradient]="rating === i">
-                                <Image [src]="'~/app/assets/images/icons/' + item + '.png'" *ngIf="rating !== i"></Image>
-                                <Image [src]="'~/app/assets/images/icons/' + item + '_white.png'" *ngIf="rating === i"></Image>
-                                <Label [text]="item" class="font-reg-s"></Label>
+                                <Image [src]="'~/app/assets/images/icons/' + emoji + '.png'" *ngIf="rating !== i"></Image>
+                                <Image [src]="'~/app/assets/images/icons/' + emoji + '_white.png'" *ngIf="rating === i"></Image>
+                                <Label text="{{'emoji_' + emoji | L}}" class="font-reg-s"></Label>
                             </StackLayout>
                         </GridLayout>
                     </GridLayout>
                 
-                    <StackLayout class="m-l-15 m-r-15 m-b-150">
+                    <StackLayout class="m-l-15 m-r-15 m-b-200">
                         <Label [text]="'leave_feedback_good_hashtags_title' | L" class="font-demi-bold m-t-20 m-l-5 m-b-5"></Label>
                         <Label [text]="'leave_feedback_good_hashtags_desc' | L" class="font-reg-xs m-l-5 m-b-5"></Label>
                         <WrapLayout>

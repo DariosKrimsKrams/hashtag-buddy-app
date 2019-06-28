@@ -15,7 +15,7 @@ import { localize } from 'nativescript-localize/angular';
 export class AppComponent implements OnInit { 
 
     private _sideDrawerTransition: DrawerTransitionBase;
-    menus = ["home", "myhashtags", "faq", "store", "feedback", "settings"];
+    menus = ["home", "myhashtags", "faq", "store", "settings"];
     selected = [];
 
     constructor(

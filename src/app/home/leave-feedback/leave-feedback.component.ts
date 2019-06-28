@@ -29,7 +29,7 @@ export class LeaveFeedbackComponent implements OnInit {
   public comment = '';
   public userSelectedHashtags: Hashtag[] = [];
   public userNotSelectedHashtags: Hashtag[] = [];
-  public emoji = ['great', 'satisfied', 'bad'];
+  public emojis = ['great', 'satisfied', 'bad'];
   
   private photo: Photo;
 
@@ -173,6 +173,10 @@ export class LeaveFeedbackComponent implements OnInit {
 
   public commentChange(text: string): void {
     this.comment = text;
+  }
+
+  public clickEmoji(i: number): void {
+    this.rating = this.rating === i ? 3 : i;
   }
 
   // private openInstagram(): void {

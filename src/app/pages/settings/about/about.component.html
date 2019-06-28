@@ -2,7 +2,7 @@
     <StackLayout orientation="vertical" class="main">
         <GridLayout verticalAlignment="middle" columns="20,*,20" id="header" class="gradient">
             <Image col="0" src="~/app/assets/images/icons/arrowLeft_white.png" (tap)="goPrevPage()"></Image>
-            <Label col="1" text="About" class="text-center font-medium-l"></Label>
+            <Label col="1" [text]="'about_title' | L" class="text-center font-medium-l"></Label>
             <StackLayout col="2"></StackLayout>
         </GridLayout>
 

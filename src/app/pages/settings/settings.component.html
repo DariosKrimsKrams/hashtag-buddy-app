@@ -10,6 +10,12 @@
                 </GridLayout>
                 <StackLayout class="hr-light m-10"></StackLayout>
 
+                <GridLayout rows="40" columns="*,50" verticalAlignment="middle" (tap)="goNextPage('feedback')">
+                    <Label col="0" [text]="'menu_feedback' | L"></Label>
+                    <Label col="1" text="&#xf054;" class="fas"></Label>
+                </GridLayout>
+                <StackLayout class="hr-light m-10"></StackLayout>
+
                 <GridLayout rows="40" columns="*" verticalAlignment="middle" (tap)="goNextPage('legal')">
                     <Label col="0" [text]="'settings_legal' | L"></Label>
                 </GridLayout>
@@ -21,8 +27,9 @@
                 </GridLayout>
                 <StackLayout class="hr-light m-10"></StackLayout>
 
-                <GridLayout rows="40" columns="*" verticalAlignment="middle" (tap)="rate()">
-                    <Label [text]="'settings_rate' | L"></Label>
+                <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="rate()">
+                    <Label row="0" [text]="'settings_rate' | L"></Label>
+                    <Label row="1" [text]="'settings_rate_subline' | L" class="text-muted"></Label>
                 </GridLayout>
                 <StackLayout class="hr-light m-10"></StackLayout>
                 

@@ -7,6 +7,7 @@ import { AuthComponent } from "./auth/auth.component";
 import { LegalComponent } from "./legal/legal.component";
 import { TermsComponent } from "./terms/terms.component";
 import { AboutComponent } from "./about/about.component";
+import { FeedbackComponent } from "../feedback/feedback.component";
 
 const routes: Routes = [
     { path: "", component: SettingsComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: "legal", component: LegalComponent },
     { path: "terms", component: TermsComponent },
     { path: "about", component: AboutComponent },
+    { path: "feedback", component: FeedbackComponent },
 ];
 
 @NgModule({

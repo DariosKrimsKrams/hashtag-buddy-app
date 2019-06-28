@@ -13,6 +13,9 @@ setStatusBarColors();
   declarations: [
     FeedbackComponent,
   ],
+  exports: [
+    FeedbackComponent,
+  ],
   imports: [
     NativeScriptCommonModule,
     SmallHeaderModule,

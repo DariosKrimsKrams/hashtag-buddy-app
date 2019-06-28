@@ -26,27 +26,28 @@ export class FeedbackComponent implements OnInit {
   
   constructor(
     private readonly page: Page,
+    private readonly router: RouterExtensions,
     private readonly modalService: ModalDialogService, 
     private readonly viewContainerRef: ViewContainerRef,
     private readonly feedbackRepositoryService: FeedbackRepository,
     private readonly customerService: CustomerService,
-    ) {
+  ) {
     this.page.actionBarHidden = true;
   }
 
   ngOnInit() {
   }
 
-  public openMenu(target: View): void {
-    this.dismissSoftKeybaord();
-    const sideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.showDrawer();
-  }
+  // public openMenu(target: View): void {
+  //   this.dismissSoftKeybaord();
+  //   const sideDrawer = <RadSideDrawer>app.getRootView();
+  //   sideDrawer.showDrawer();
+  // }
 
-  public closeMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.closeDrawer();
-  }
+  // public closeMenu(): void {
+  //   const sideDrawer = <RadSideDrawer>app.getRootView();
+  //   sideDrawer.closeDrawer();
+  // }
 
   public sendFeedback(): void {
     if(this.email === "" && this.message === ""){
@@ -73,7 +74,7 @@ export class FeedbackComponent implements OnInit {
     this.modalService.showModal(ModalComponent, options);
   }
 
-  private dismissSoftKeybaord(): void {
+  public dismissSoftKeybaord(): void {
     if (isIOS) {
       frame.topmost().nativeView.endEditing(true);
     }
@@ -90,4 +91,13 @@ export class FeedbackComponent implements OnInit {
     this.message = text;
   }
 
+  goPrevPage() {
+    this.router.navigate(["/settings"], {
+      transition: {
+        name: "slideRight",
+        duration: 500,
+        curve: "easeOut"
+      }
+    });
+  }
 }
