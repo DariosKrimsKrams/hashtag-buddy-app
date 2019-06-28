@@ -14,7 +14,6 @@ import { NativeScriptUIGaugeModule } from "nativescript-ui-gauge/angular";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { HistoryModule } from "./history/history.module";
 import { HomeComponent } from "./home.component";
-import { ResultsComponent } from './results/results.component';
 import { CircularProgressBarComponent } from '~/app/shared/circular-progress-bar/circular-progress-bar.component';
 import { LoadingHashtagsComponent } from './loading-hashtags/loading-hashtags.component';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
@@ -22,6 +21,7 @@ import { ConfirmImageComponent } from './confirm-image/confirm-image.component';
 import { HashtagModule } from '../../shared/hashtag/hashtag.module';
 import { setStatusBarColors } from "~/app/shared/status-bar-util";
 import { LeaveFeedbackModule } from "./leave-feedback/leave-feedback.module";
+import { ResultsModule } from "./results/results.module";
 setStatusBarColors();
 
 @NgModule({
@@ -43,10 +43,10 @@ setStatusBarColors();
         HistoryModule,
         HashtagModule,
         LeaveFeedbackModule,
+        ResultsModule
     ],
     declarations: [
         HomeComponent,
-        ResultsComponent,
         CircularProgressBarComponent,
         LoadingHashtagsComponent,
         ConfirmImageComponent

@@ -27,7 +27,6 @@ var clipboard = require("nativescript-clipboard");
 })
 export class ResultsComponent implements AfterViewInit, OnInit {
 
-  public menus = ["home", "settings", "store", "faq", "feedback"];
   public parallaxHeight = 250;
   public photo: Photo;
   public dialogOpen: boolean;
@@ -35,8 +34,6 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public selectedHashtags: ResultSelectionHashtags;
   public hightlightStatus: Array<boolean> = [];
   public currentScrollingY: number;
-  @Input() public customUserHashtagsText: string = "";
-  @Output() public resetInput: EventEmitter<void> = new EventEmitter();
   
   constructor(
     private readonly page: Page,
@@ -128,33 +125,18 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     return true;
   }
 
-  public addCustomHashtags(): void {
-    var input = this.customUserHashtagsText;
-    if(input === undefined) {
-      console.log("error: addCustomHashtags triggered with text=undefined");
-      return;
-    }
-    input.split(' ').map(word => {
-      if(word.length != 0) {
-        word.split('#').map(word2 => {
-          if(word2.length != 0) {
-            this.addHashtag(word2);
-          }
-        });
-      }
-    });
-    this.resetInput.emit();
-  }
+  // public addCustomHashtag(hashtag: Hashtag): void {
+  //   this.addHashtag(hashtag);
+  // }
 
-  private addHashtag(name: string): void {
-    var exist = this.selectedHashtags.hashtags.filter(x => x.hashtag.title.toLowerCase() == name.toLowerCase())[0] !== undefined;
+  public addHashtag(hashtag: Hashtag): void {
+    var exist = this.selectedHashtags.hashtags.filter(x => x.hashtag.title.toLowerCase() == hashtag.title.toLowerCase())[0] !== undefined;
     if(exist) {
       return;
     }
-    if(this.selectHashtagIfExist(name)) {
+    if(this.selectHashtagIfExist(hashtag.title)) {
       return;
     }
-    var hashtag = new Hashtag(name);
     this.selectedHashtags.push({hashtag: hashtag, titleId: -1, tagId: -1});
     this.selectionChanged();
   }

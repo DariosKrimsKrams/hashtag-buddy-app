@@ -125,7 +125,7 @@
   <string name="results_hashtags_add">"Hinzu"</string>
   <string name="results_hashtags_input">"Ergänze eigene #hashtags"</string>
   <string name="results_recommented_amount">"Wähle am besten ca."</string>
-  <string name="results_no_hashtags_selected">"Wähle weiter unten Hashtags aus.."</string>
+  <string name="results_no_hashtags_selected">"Wähle von unten Hashtags aus"</string>
   <string name="results_deselect_all">"keine"</string>
   <string name="results_select_all">"alle"</string>
   <string name="results_category_location_based_hashtags">"Standort-basierte Hashtags"</string>

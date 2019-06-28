@@ -33,22 +33,6 @@
     height: 20pt;
     margin: 0;
 }
-
-.btn-add {
-    font-size: 14pt;
-    border-radius: 10pt;
-    border-width: 2pt;
-    border-color: #cec8c8;
-    color: #A5A2A2;
-    height: 30pt;
-    margin: 0 0 0 5pt;
-}
-
-.btn-add.active {
-    border-color: #FFB184;
-    color: #FFB184;
-}
-
 .input {
     width: 100%;
 }
