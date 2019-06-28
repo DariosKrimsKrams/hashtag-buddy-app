@@ -19,7 +19,7 @@ import { CircularProgressBarComponent } from '~/app/shared/circular-progress-bar
 import { LoadingHashtagsComponent } from './loading-hashtags/loading-hashtags.component';
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
 import { ConfirmImageComponent } from './confirm-image/confirm-image.component';
-import { HashtagModule } from "../shared/hashtag/hashtag.module";
+import { HashtagModule } from '../../shared/hashtag/hashtag.module';
 import { setStatusBarColors } from "~/app/shared/status-bar-util";
 import { LeaveFeedbackModule } from "./leave-feedback/leave-feedback.module";
 setStatusBarColors();

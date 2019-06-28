@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from "@angular/core";
 import { Photo } from "~/app/models/photo";
-import { UserService } from "../../storages/user.service";
+import { UserService } from "../../../storages/user.service";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Hashtag } from "~/app/models/hashtag";
 import { DeviceService } from "~/app/services/device-photos.service";

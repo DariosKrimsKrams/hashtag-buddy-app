@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from "tns-core-modules/ui/page";
-import { PLAN } from "~/app/pages/data/plans";
+import { PLAN } from "~/app/data/plans";
 import * as app from "tns-core-modules/application";
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import *  as purchase from "nativescript-purchase";

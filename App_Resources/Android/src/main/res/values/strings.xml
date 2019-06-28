@@ -20,6 +20,7 @@
   <string name="toast_delete_successful">"Delete successful :)"</string>
   <string name="toast_no_hashtags_selected">"Please select hashtags first :)"</string>
   <string name="toast_hashtags_hidden">"The hashtag is hidden due to Free-Mode :\'("</string>
+  <string name="settings_rate_subline">"at Play Store"</string>
   <string name="settings_rate">"Rate"</string>
   <string name="settings_share_subline">"Tell your friends about this"</string>
   <string name="settings_share">"Spread some love!"</string>
@@ -111,9 +112,9 @@
   <string name="leave_feedback_good_hashtags_title">"Particularly matching hashtags"</string>
   <string name="leave_feedback_rating_desc">"Please rate the results"</string>
   <string name="leave_feedback_rating_title">"Did you like the hashtags?"</string>
-  <string name="emoji_bad">"Bad :\'("</string>
-  <string name="emoji_satisfied">"Satisfied :/"</string>
-  <string name="emoji_great">"Great :D"</string>
+  <string name="emoji_bad">"Bad"</string>
+  <string name="emoji_satisfied">"Satisfied"</string>
+  <string name="emoji_great">"Great"</string>
   <string name="leave_feedback_headline">"Rate Hashtags"</string>
   <string name="leave_feedback_skip">"Skip"</string>
   <string name="copy_failed">"Copy Failed"</string>

@@ -28,9 +28,6 @@ export class MyhashtagsComponent implements OnInit {
     this.hashtags.push(new Hashtag('blubb'));
     this.hashtags.push(new Hashtag('moep'));
     
-    this.hashtags.forEach(tag => {
-      console.log(tag);
-    });
   }
 
   openMenu(): void {

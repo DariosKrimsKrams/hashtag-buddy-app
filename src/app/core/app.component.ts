@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import * as app from "tns-core-modules/application";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
-import { PhotosCountService } from "./storages/photos-count.service";
-import { CustomerService, CustomerCreateStatus } from "./storages/customer.service";
+import { PhotosCountService } from "../storages/photos-count.service";
+import { CustomerService, CustomerCreateStatus } from "../storages/customer.service";
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
 

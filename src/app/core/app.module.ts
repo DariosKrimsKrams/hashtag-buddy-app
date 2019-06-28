@@ -6,15 +6,15 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CoreModule } from "./core.module";
 import { NativeScriptLocalizeModule } from "nativescript-localize/angular";
-import { HistoryModule } from "~/app/home/history/history.module";
-import { DeviceService } from "./services/device-photos.service";
-import { ApplicationPipesModule } from "./pipes/application-pipes.module";
-import { ModalModule } from "./pages/feedback/modal/modal.module";
-import { LocalStorageService } from "./storages/local-storage.service";
-import { MyhashtagsModule } from "./pages/myhashtags/myhashtags.module";
-import { FaqModule } from "./pages/faq/faq.module";
-import { FeedbackModule } from "./pages/feedback/feedback.module";
-import { StoreModule } from "./pages/store/store.module";
+import { HistoryModule } from "~/app/pages/home/history/history.module";
+import { DeviceService } from "../services/device-photos.service";
+import { ApplicationPipesModule } from "../pipes/application-pipes.module";
+import { ModalModule } from "../pages/feedback/modal/modal.module";
+import { LocalStorageService } from "../storages/local-storage.service";
+import { MyhashtagsModule } from "../pages/myhashtags/myhashtags.module";
+import { FaqModule } from "../pages/faq/faq.module";
+import { FeedbackModule } from "../pages/feedback/feedback.module";
+import { StoreModule } from "../pages/store/store.module";
 
 @NgModule({
     bootstrap: [
