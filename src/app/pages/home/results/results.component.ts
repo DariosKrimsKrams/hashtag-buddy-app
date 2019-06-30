@@ -125,10 +125,6 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     return true;
   }
 
-  // public addCustomHashtag(hashtag: Hashtag): void {
-  //   this.addHashtag(hashtag);
-  // }
-
   public addHashtag(hashtag: Hashtag): void {
     var exist = this.selectedHashtags.hashtags.filter(x => x.hashtag.title.toLowerCase() == hashtag.title.toLowerCase())[0] !== undefined;
     if(exist) {

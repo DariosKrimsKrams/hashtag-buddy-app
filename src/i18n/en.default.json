@@ -141,6 +141,9 @@
   "progressbar_results_freemode1": "Free limit reached: Best hashtags are hidden.",
   "progressbar_results_freemode2": "Buy Instaq photo uploads to unlock hashtags.",
   "progressbar_freemode_time": "In %s you receive 1 uncensored Upload.",
+  "myhashtags_intro": "Manage your mostly used hashtags.",
+  "myhashtags_your": "By yourself",
+  "myhashtags_other": "Others",
   "share": "Hey bro, I found this app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too :)",
   "link_playstore": "http://play.google.com/store/apps/details?id=com.innocliq.instaq",
   "email": "dario@innocliq.de"

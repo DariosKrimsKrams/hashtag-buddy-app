@@ -1,11 +1,8 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "tns-core-modules/ui/page";
-import { View } from "tns-core-modules/ui/core/view";
 import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/modal-dialog";
 import { ModalComponent } from './modal/modal.component';
-import * as app from "tns-core-modules/application";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as utils from "tns-core-modules/utils/utils";
 import { isIOS, isAndroid } from "tns-core-modules/platform";
 import * as frame from "tns-core-modules/ui/frame";
@@ -37,17 +34,6 @@ export class FeedbackComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  // public openMenu(target: View): void {
-  //   this.dismissSoftKeybaord();
-  //   const sideDrawer = <RadSideDrawer>app.getRootView();
-  //   sideDrawer.showDrawer();
-  // }
-
-  // public closeMenu(): void {
-  //   const sideDrawer = <RadSideDrawer>app.getRootView();
-  //   sideDrawer.closeDrawer();
-  // }
 
   public sendFeedback(): void {
     if(this.email === "" && this.message === ""){

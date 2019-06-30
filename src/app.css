@@ -6,6 +6,13 @@ Label, Button, Span {
 }
 
 .btn { font-size: 18pt; }
+
+.m-t-40 { margin-top: 40pt; }
+.m-t-50 { margin-top: 50pt; }
+.m-t-60 { margin-top: 60pt; }
+.m-t-70 { margin-top: 70pt; }
+.m-t-80 { margin-top: 80pt; }
+
 .m-b-50 { margin-bottom: 50pt; }
 .m-b-150 { margin-bottom: 150pt; }
 .m-b-160 { margin-bottom: 160pt; }
@@ -13,6 +20,7 @@ Label, Button, Span {
 .m-b-180 { margin-bottom: 180pt; }
 .m-b-190 { margin-bottom: 190pt; }
 .m-b-200 { margin-bottom: 200pt; }
+
 .gradient, .btn-normal {
     background: linear-gradient(to right, #E067A9, #FFB184);
 }

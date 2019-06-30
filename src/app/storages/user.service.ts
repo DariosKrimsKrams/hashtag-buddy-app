@@ -63,7 +63,7 @@ export class UserService {
         return undefined;
     }
 
-    private setPhotos(photos: Photo[]) {
+    private setPhotos(photos: Photo[]): void {
         this.localStorageService.set(this.keyPhotos, photos);
         this.photosCache = photos;
     }
@@ -94,7 +94,6 @@ export class UserService {
 
     public clearAll(): void {
         this.localStorageService.remove(this.keyPhotos);
-        // this.localStorageService.remove(this.keyUserId);
         this.photosCache = [];
     }
 
@@ -114,9 +113,5 @@ export class UserService {
         console.log(result);
         return result;
     }
-
-    // public hasIapAbo(): boolean {
-
-    // }
     
 }

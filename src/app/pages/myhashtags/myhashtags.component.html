@@ -1,15 +1,25 @@
-<StackLayout tkMainContent>
-    <GridLayout rows="130,*" class="FAQ">
+<StackLayout tkMainContent (tap)="dismissSoftKeybaord()">
+    <GridLayout rows="130,*">
         <ns-small-header row="0" (OpenMenu)="openMenu()" [image]="'feedback.jpg'" [title]="'menu_myhashtags' | L"></ns-small-header>
         <GridLayout row="1">
             <ScrollView sdkExampleTitle sdkToggleNavButton>
-                
-                <StackLayout class="p-r-20 p-l-20">
+                <StackLayout class="p-r-10 p-l-10">
+                    <Label [text]="'myhashtags_intro' | L" class="font-reg-s m-t-5 m-l-10"></Label>
+
+                    <StackLayout class="m-b-20 m-l-10 m-r-10">
+                        <ns-insert-hashtags-form (hashtagAdded)="addHashtag($event)"></ns-insert-hashtags-form>
+                    </StackLayout>
                     
-                    <WrapLayout class="m-t-5">
-                        <ns-hashtag *ngFor="let tag of hashtags; let i = index" (onClick)="clickHashtag(tag.title)" [name]="'#' + tag.title"></ns-hashtag>
+                    <Label [text]="'myhashtags_your' | L" class="font-demi-bold m-l-10 m-b-5"></Label>
+                    <WrapLayout class="m-b-20 tag-title">
+                        <ns-hashtag *ngFor="let tag of hashtagsOwn; let j = index;" [name]="'#' + tag.title + ' (' + tag.count + 'x)'"></ns-hashtag>
                     </WrapLayout>
 
+                    <Label [text]="'myhashtags_other' | L" class="font-demi-bold m-l-10 m-b-5"></Label>
+                    <WrapLayout class="m-b-20 tag-title">
+                        <ns-hashtag *ngFor="let tag of hashtagsGenerated; let j = index;" [name]="'#'+tag.title + ' (' + tag.count + 'x)'"></ns-hashtag>
+                    </WrapLayout>
+                    
                 </StackLayout>
             </ScrollView>
         </GridLayout>    

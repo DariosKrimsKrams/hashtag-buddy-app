@@ -141,6 +141,9 @@
   "progressbar_results_freemode1": "Kostenloses Limit erreicht: Hashtags zensiert.",
   "progressbar_results_freemode2": "Erwerbe Instaq Foto-Uploads, um alle Hashtags zu sehen.",
   "progressbar_freemode_time": "In %s erhälst du 1 unzensierten Upload.",
+  "myhashtags_intro": "Verwalte deine häufig benutzten Hashtags.",
+  "myhashtags_your": "Von dir",
+  "myhashtags_other": "Weitere",
   "share": "Hey Bro, Ich habe diese App Instaq entdeckt: Sie hilft mir, die relevantesten Instagram Hashtags für Fotos zu finden. Lass dir auch helfen :)",
   "link_playstore": "http://play.google.com/store/apps/details?id=com.innocliq.instaq",
   "email": "dario@innocliq.de"

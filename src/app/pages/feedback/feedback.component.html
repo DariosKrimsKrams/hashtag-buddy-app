@@ -7,7 +7,7 @@
             <StackLayout col="2"></StackLayout>
         </GridLayout>
 
-        <StackLayout class="input-field p-l-30 p-r-30 m-t-20" row="1">
+        <StackLayout class="input-field p-l-30 p-r-30 m-t-50" row="1">
             <Label textWrap="true" [text]="'feedback_title' | L" class="m-b-10 font-medium-l title"></Label>
             <Label textWrap="true" [text]="'feedback_intro' | L" class="font-reg-s"></Label>
             <FloatLabel [placeholder]="'feedback_email' | L" #clearTextfieldClear (userTextEmitter)="emailChange($event)"></FloatLabel>
