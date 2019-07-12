@@ -3,8 +3,8 @@
   <string name="email">"dario@innocliq.de"</string>
   <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
   <string name="share">"Hey bro, I found this app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too :)"</string>
-  <string name="myhashtags_other">"From photo results"</string>
-  <string name="myhashtags_your">"Added by yourself"</string>
+  <string name="myhashtags_other">"Others"</string>
+  <string name="myhashtags_your">"By yourself"</string>
   <string name="myhashtags_intro">"Manage your mostly used hashtags."</string>
   <string name="progressbar_freemode_time">"In %1$s you receive 1 uncensored Upload."</string>
   <string name="progressbar_results_freemode2">"Buy Instaq photo uploads to unlock hashtags."</string>

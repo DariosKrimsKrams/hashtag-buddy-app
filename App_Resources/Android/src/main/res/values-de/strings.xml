@@ -3,7 +3,7 @@
   <string name="email">"dario@innocliq.de"</string>
   <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
   <string name="share">"Hey Bro, Ich habe diese App Instaq entdeckt: Sie hilft mir, die relevantesten Instagram Hashtags für Fotos zu finden. Lass dir auch helfen :)"</string>
-  <string name="myhashtags_other">"Andere"</string>
+  <string name="myhashtags_other">"Weitere"</string>
   <string name="myhashtags_your">"Von dir"</string>
   <string name="myhashtags_intro">"Verwalte deine häufig benutzten Hashtags."</string>
   <string name="progressbar_freemode_time">"In %1$s erhälst du 1 unzensierten Upload."</string>
