@@ -1,25 +1,11 @@
 import * as application from "tns-core-modules/application";
 import * as platform from "tns-core-modules/platform";
-import * as utils from "tns-core-modules/utils/utils";
 
 declare var android: any;
-declare var UIResponder: any; 
-declare var UIStatusBarStyle: any;
-declare var UIApplication: any;
-declare var UIApplicationDelegate: any;
 
 export function setStatusBarColors() {
     if (application.ios) {
-        let AppDelegate = UIResponder.extend({
-            applicationDidFinishLaunchingWithOptions: function () {
-                utils.ios['getter'](UIApplication, UIApplication.sharedApplication).statusBarStyle = UIStatusBarStyle.LightContent;
-                return true;
-            }
-        }, {
-            name: "AppDelegate",
-            protocols: [UIApplicationDelegate]
-        });
-        application.ios.delegate = AppDelegate;
+        // remove due to API deprecated/removed
     }
 
     if (application.android) {
