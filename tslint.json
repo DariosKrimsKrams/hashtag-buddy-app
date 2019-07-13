@@ -56,8 +56,7 @@
             "check-separator",
             "check-type"
         ],
-        "directive-selector": [true, "attribute", "gr", "camelCase"],
-        "component-selector": [true, "element", "gr", "kebab-case"],
+        "directive-selector": [true, "attribute", "", "camelCase"],
         "no-input-rename": true,
         "no-output-rename": true,
         "no-forward-ref" :true,
