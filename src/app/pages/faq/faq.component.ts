@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Page } from "tns-core-modules/ui/page";
-import * as app from "tns-core-modules/application";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import { Page } from 'tns-core-modules/ui/page';
+import * as app from 'tns-core-modules/application';
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { Faq } from '~/app/models/faq';
 import { localize } from 'nativescript-localize/angular';
 
@@ -29,30 +29,30 @@ export class FaqComponent implements OnInit {
       new Faq({
         expand: false,
         title: localize('faq_headline_stats1'),
-        content: this.getMultipleDiduknowText([3,7,9,10,11]),
+        content: this.getMultipleDiduknowText([3, 7, 9, 10, 11]),
       }),
       new Faq({
         expand: false,
         title: localize('faq_headline_stats2'),
-        content: this.getMultipleDiduknowText([8,13,20,21]),
+        content: this.getMultipleDiduknowText([8, 13, 20, 21]),
       }),
       new Faq({
         expand: false,
         title: localize('faq_headline_stats3'),
-        content: this.getMultipleDiduknowText([1,2,4,5,6,12,22]),
+        content: this.getMultipleDiduknowText([1, 2, 4, 5, 6, 12, 22]),
       }),
       new Faq({
         expand: false,
         title: localize('faq_headline_stats4'),
-        content: this.getMultipleDiduknowText([14,15,16,17,18,19]),
+        content: this.getMultipleDiduknowText([14, 15, 16, 17, 18, 19]),
       })
-    ]
+    ];
   }
 
   private getMultipleDiduknowText(ids: number[]): string {
-    var text = "";
-    ids.map(id => text += this.getDiduknowText(id) + ".\n\n");
-    return text.slice(0, text.length-2);
+    let text = '';
+    ids.map(id => text += this.getDiduknowText(id) + '.\n\n');
+    return text.slice(0, text.length - 2);
   }
 
   private getDiduknowText(id: number): string {
@@ -60,9 +60,9 @@ export class FaqComponent implements OnInit {
   }
 
   public expandToggle(index: number) {
-    if(index == this.current){
+    if (index == this.current) {
       this.faqs[index].expand = !this.faqs[index].expand;
-    }else{
+    } else {
       this.faqs[this.current].expand = false;
       this.faqs[index].expand = true;
       this.current = index;
@@ -80,11 +80,11 @@ export class FaqComponent implements OnInit {
   }
 
   public openFeedbackPage(): void {
-    console.log("feedback");
+    console.log('feedback');
   }
 
   public openEmail(): void {
-    console.log("emil");
+    console.log('emil');
   }
 
 }

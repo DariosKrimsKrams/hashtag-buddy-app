@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { request } from "tns-core-modules/http";
+import { request } from 'tns-core-modules/http';
 import { AppFeedback } from '~/app/models/app-feedback';
 import { environment } from '../../environments/environment';
 import { ResultFeedbackRequest } from '../../models/request/result-feedback-request';
@@ -14,22 +14,22 @@ export class FeedbackRepository {
   constructor(
   ) { }
 
-  private appFeedbackUrl = environment.apiUrl + "/Feedback/App";
-  private resultFeedbackUrl = environment.apiUrl + "/Feedback/Results";
+  private appFeedbackUrl = environment.apiUrl + '/Feedback/App';
+  private resultFeedbackUrl = environment.apiUrl + '/Feedback/Results';
 
   sendAppFeedback (feedback: AppFeedback): Observable<any> {
     return new Observable<any>(observer => {
       request({
         url: this.appFeedbackUrl,
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         content: JSON.stringify(feedback)
       }).then((_response) => {
         // const result = response.content.toJSON();
         observer.next();
         observer.complete();
       }, (e) => {
-        console.log("error", e);
+        console.log('error', e);
       });
     });
   }
@@ -37,14 +37,14 @@ export class FeedbackRepository {
   sendResultFeedback (feedback: ResultFeedbackRequest): void {
     request({
       url: this.resultFeedbackUrl,
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       content: JSON.stringify(feedback)
     }).then((_response) => {
       // const result = response.content.toJSON();
       // console.log("result", result);
     }, (e) => {
-      console.log("error", e);
+      console.log('error', e);
     });
   }
 

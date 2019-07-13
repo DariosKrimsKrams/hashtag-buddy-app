@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { ModalDialogParams } from "nativescript-angular/modal-dialog";
+import { Component, OnInit } from '@angular/core';
+import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
 import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
@@ -18,12 +18,12 @@ export class ModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    var autoClose = this.params.context.autoClose == true;
+    let autoClose = this.params.context.autoClose == true;
     this.button = this.params.context.button;
 
-    if(autoClose) {
+    if (autoClose) {
       setTimeout.bind(this)(() => { 
-        this.close("autoClose");
+        this.close('autoClose');
       }, 1000);    
     }
   }
@@ -33,13 +33,13 @@ export class ModalComponent implements OnInit {
   }
 
   public ok(): void {
-    this.close("ok");
+    this.close('ok');
     setTimeout.bind(this)(() => { 
-      this.router.navigate(["/home"], {
+      this.router.navigate(['/home'], {
         transition: {
-          name: "slideLeft",
+          name: 'slideLeft',
           duration: 500,
-          curve: "easeOut"
+          curve: 'easeOut'
         }
       });
     }, 100);    

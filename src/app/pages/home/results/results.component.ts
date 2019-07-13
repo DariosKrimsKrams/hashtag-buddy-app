@@ -1,23 +1,23 @@
 import { Component, OnInit, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { RouterExtensions } from 'nativescript-angular/router';
-import { HashtagCategory } from "~/app/models/hashtag-category";
-import { ResultSelectionHashtag } from "~/app/models/result-selection-hashtag";
+import { HashtagCategory } from '~/app/models/hashtag-category';
+import { ResultSelectionHashtag } from '~/app/models/result-selection-hashtag';
 import { View } from 'tns-core-modules/ui/core/view';
-import { Page } from "tns-core-modules/ui/page";
+import { Page } from 'tns-core-modules/ui/page';
 import { ActivatedRoute } from '@angular/router';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { Hashtag } from '~/app/models/hashtag';
-import * as utils from "tns-core-modules/utils/utils";
-import { isIOS, isAndroid } from "tns-core-modules/platform";
-import * as frame from "tns-core-modules/ui/frame";
-import * as app from "tns-core-modules/application";
+import * as utils from 'tns-core-modules/utils/utils';
+import { isIOS, isAndroid } from 'tns-core-modules/platform';
+import * as frame from 'tns-core-modules/ui/frame';
+import * as app from 'tns-core-modules/application';
 import { UserService } from '../../../storages/user.service';
 import { Photo } from '../../../models/photo';
 import { ResultSelectionHashtags } from '~/app/models/result-selection-hashtags';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
-var clipboard = require("nativescript-clipboard");
+let clipboard = require('nativescript-clipboard');
 
 @Component({
   selector: 'ns-results',
@@ -70,19 +70,19 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   public toggleHashtag(tag: Hashtag, titleId: number, tagId: number): void {
-    if(this.hightlightStatus[titleId + '_' + tagId]) {
-      this.deselectHashtag(tag.title)
+    if (this.hightlightStatus[titleId + '_' + tagId]) {
+      this.deselectHashtag(tag.title);
     } else {
       this.selectHashtag(tag, titleId, tagId);
     }
   }
 
   public deselectHashtag(name: string): void {
-    for(var i = 0; i < this.selectedHashtags.length; i++) {
-      var hashtag = this.selectedHashtags.hashtags[i];
-      if(hashtag.hashtag.title == name) {
+    for (let i = 0; i < this.selectedHashtags.length; i++) {
+      let hashtag = this.selectedHashtags.hashtags[i];
+      if (hashtag.hashtag.title == name) {
         this.selectedHashtags.splice(i, 1);
-        if(hashtag.titleId != -1 && hashtag.tagId != -1) {
+        if (hashtag.titleId != -1 && hashtag.tagId != -1) {
           this.hightlightStatus[hashtag.titleId + '_' + hashtag.tagId] = false;
         }
         this.selectionChanged();
@@ -103,7 +103,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
 
   public selectAll(category: HashtagCategory, titleId: number): void {
     category.tags.map((tag, tagId) => {
-      if(!this.isHashtagSelected(titleId, tagId)) {
+      if (!this.isHashtagSelected(titleId, tagId)) {
         this.selectHashtag(tag, titleId, tagId);
       }
     });
@@ -116,9 +116,9 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   public areAllHashtagSelected(category: HashtagCategory, titleId: number): boolean {
-    for(var i = 0; i < category.tags.length; i++) {
-      var tagId = i;
-      if(!this.isHashtagSelected(titleId, tagId)) {
+    for (let i = 0; i < category.tags.length; i++) {
+      let tagId = i;
+      if (!this.isHashtagSelected(titleId, tagId)) {
         return false;
       }
     }
@@ -126,11 +126,11 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   public addHashtag(hashtag: Hashtag): void {
-    var exist = this.selectedHashtags.hashtags.filter(x => x.hashtag.title.toLowerCase() == hashtag.title.toLowerCase())[0] !== undefined;
-    if(exist) {
+    let exist = this.selectedHashtags.hashtags.filter(x => x.hashtag.title.toLowerCase() == hashtag.title.toLowerCase())[0] !== undefined;
+    if (exist) {
       return;
     }
-    if(this.selectHashtagIfExist(hashtag.title)) {
+    if (this.selectHashtagIfExist(hashtag.title)) {
       return;
     }
     this.selectedHashtags.push({hashtag: hashtag, titleId: -1, tagId: -1});
@@ -138,11 +138,11 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   private selectHashtagIfExist(name: string): boolean {
-    for(var i = 0; i < this.photo.categories.length; i++) {
-      var category = this.photo.categories[i];
-      for(var j = 0; j < category.tags.length; j++) {
-        var hashtag = category.tags[j]
-        if(hashtag.title == name.toLowerCase()) {
+    for (let i = 0; i < this.photo.categories.length; i++) {
+      let category = this.photo.categories[i];
+      for (let j = 0; j < category.tags.length; j++) {
+        let hashtag = category.tags[j];
+        if (hashtag.title == name.toLowerCase()) {
           this.selectHashtag(hashtag, i, j);
           return true;
         }
@@ -162,7 +162,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   public copySelected(): void {
-    if(this.showToastIfHasNoSelectedHashtags()) {
+    if (this.showToastIfHasNoSelectedHashtags()) {
       return;
     }
     this.copyToClipboard();
@@ -170,7 +170,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   public transferToInstagram(): void {
-    if(this.showToastIfHasNoSelectedHashtags()) {
+    if (this.showToastIfHasNoSelectedHashtags()) {
       return;
     }
     this.navigateToLeaveFeedbackPage();
@@ -180,30 +180,30 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     setTimeout(() => {
       this.router.navigate([`/home/leavefeedback/${this.photo.id}`], {
         transition: {
-          name: "slideLeft",
+          name: 'slideLeft',
           duration: 500,
-          curve: "easeOut"
+          curve: 'easeOut'
         }
       });
     }, 1000);
   }
 
   private copyToClipboard(): void {
-    var text = this.selectedHashtags.getHashtagsAsText();
+    let text = this.selectedHashtags.getHashtagsAsText();
     clipboard.setText(text).then(() => {
       this.dialogOpen = true;
       setTimeout.bind(this)(() => {
         this.dialogOpen = false;
       }, 3000);
     }).catch(function (e) {
-      console.log("Copy failed: " + e);
-      Toast.makeText(localize('copy_failed') + ": " + e, "long").show();
+      console.log('Copy failed: ' + e);
+      Toast.makeText(localize('copy_failed') + ': ' + e, 'long').show();
     });
   }
 
   private showToastIfHasNoSelectedHashtags(): boolean {
-    var hasSelectedHashtags = this.selectedHashtags.length > 0;
-    if(!hasSelectedHashtags) {
+    let hasSelectedHashtags = this.selectedHashtags.length > 0;
+    if (!hasSelectedHashtags) {
       Toast.makeText(localize('toast_no_hashtags_selected')).show();
     }
     return !hasSelectedHashtags;
@@ -219,7 +219,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   public getRecommendedAmount(title: string): number {
-    switch(title) {
+    switch (title) {
       case 'results_category_niche_hashtags':
         return 5;
       case 'results_category_generic_hashtags':

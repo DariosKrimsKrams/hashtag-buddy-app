@@ -1,4 +1,4 @@
-import { Hashtag } from "./hashtag";
+import { Hashtag } from './hashtag';
 
 export class SelectedHashtag extends Hashtag {
     categoryId: number;

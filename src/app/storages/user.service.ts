@@ -1,10 +1,10 @@
-import { Injectable, Output, EventEmitter } from "@angular/core";
-import { LocalStorageService } from "./local-storage.service";
-import { Photo } from "../models/photo";
-import { Transaction } from "nativescript-purchase/transaction";
+import { Injectable, Output, EventEmitter } from '@angular/core';
+import { LocalStorageService } from './local-storage.service';
+import { Photo } from '../models/photo';
+import { Transaction } from 'nativescript-purchase/transaction';
  
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class UserService {
 
@@ -19,8 +19,8 @@ export class UserService {
     ) { }
 
     public addPhoto(photo: Photo): number {
-        var photos = this.getPhotos();
-        photo.id = photos.length == 0 ? 1 : photos[photos.length-1].id + 1;
+        let photos = this.getPhotos();
+        photo.id = photos.length == 0 ? 1 : photos[photos.length - 1].id + 1;
         photos.push(photo);
         this.setPhotos(photos);
         this.photoAdded.emit(photos);
@@ -28,10 +28,10 @@ export class UserService {
     }
 
     public deletePhoto(deletePhoto: Photo): boolean {
-        var photos = this.getPhotos();
-        for(let i = 0; i < photos.length; i++) {
-            var photo = photos[i];
-            if(photo.id == deletePhoto.id) {
+        let photos = this.getPhotos();
+        for (let i = 0; i < photos.length; i++) {
+            let photo = photos[i];
+            if (photo.id == deletePhoto.id) {
                 photos.splice(i, 1);
                 this.setPhotos(photos);
                 return true;
@@ -41,9 +41,9 @@ export class UserService {
     }
 
     public updatePhoto(photo: Photo): void {
-        var photos = this.getPhotos();
-        for(let i = 0; i < photos.length ; i++) {
-            if(photos[i].id == photo.id) {
+        let photos = this.getPhotos();
+        for (let i = 0; i < photos.length ; i++) {
+            if (photos[i].id == photo.id) {
                 photos[i] = photo;
                 break;
             }
@@ -53,10 +53,10 @@ export class UserService {
     }
 
     public getPhoto(id: number): Photo {
-        var photos = this.getPhotos();
-        for(let i = 0; i < photos.length ; i++) {
+        let photos = this.getPhotos();
+        for (let i = 0; i < photos.length ; i++) {
             let photo = photos[i];
-            if(photo.id == id) {
+            if (photo.id == id) {
                 return photo;
             }
         }
@@ -69,17 +69,17 @@ export class UserService {
     }
 
     public getPhotos(): Photo[] {
-        if(this.photosCache !== undefined) {
+        if (this.photosCache !== undefined) {
             return this.photosCache;
         }
-        var json = this.localStorageService.get(this.keyPhotos) || undefined;
-        if(json === undefined) {
+        let json = this.localStorageService.get(this.keyPhotos) || undefined;
+        if (json === undefined) {
             this.photosCache = [];
             return [];
         }
-        var jsonAsObj = JSON.parse(json);
-        var photos: Photo[] = [];
-        for(let i = 0; i < jsonAsObj.length ; i++) {
+        let jsonAsObj = JSON.parse(json);
+        let photos: Photo[] = [];
+        for (let i = 0; i < jsonAsObj.length ; i++) {
             let photo = new Photo();
             Object.assign(photo, jsonAsObj[i]);
             photos[i] = photo;
@@ -98,18 +98,18 @@ export class UserService {
     }
 
     public addPurchase(transaction: Transaction): void {
-        var purchases = this.getExistingPurchases();
+        let purchases = this.getExistingPurchases();
         purchases.push(transaction);
         this.localStorageService.set(this.keyPurchases, purchases);
     }
 
     private getExistingPurchases(): Transaction[] {
-        var json = this.localStorageService.get(this.keyPurchases) || undefined;
-        if(json === undefined) {
+        let json = this.localStorageService.get(this.keyPurchases) || undefined;
+        if (json === undefined) {
             return [];
         }
-        var jsonAsObj = JSON.parse(json);
-        var result = jsonAsObj as Transaction[];
+        let jsonAsObj = JSON.parse(json);
+        let result = jsonAsObj as Transaction[];
         console.log(result);
         return result;
     }

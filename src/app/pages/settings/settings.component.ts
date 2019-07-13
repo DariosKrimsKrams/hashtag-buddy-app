@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterExtensions } from "nativescript-angular/router";
-import { Page } from "tns-core-modules/ui/page";
-import { openUrl } from "tns-core-modules/utils/utils";
-import * as app from "tns-core-modules/application";
+import { RouterExtensions } from 'nativescript-angular/router';
+import { Page } from 'tns-core-modules/ui/page';
+import { openUrl } from 'tns-core-modules/utils/utils';
+import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
-import * as SocialShare from "nativescript-social-share";
+import * as SocialShare from 'nativescript-social-share';
 import { localize } from 'nativescript-localize/angular';
 
 @Component({
@@ -46,26 +46,26 @@ export class SettingsComponent implements  OnInit {
     // } else if(route === 'twitter') {
     //   openUrl("https://twitter.com/");
     // } else
-    if(route === 'legal') {
-      openUrl("http://innocliq.de/legal-privacy.html");
+    if (route === 'legal') {
+      openUrl('http://innocliq.de/legal-privacy.html');
     } else {
-      this.router.navigate(["/settings/" + route], {
+      this.router.navigate(['/settings/' + route], {
         transition: {
-          name: "slideLeft",
+          name: 'slideLeft',
           duration: 500,
-          curve: "easeOut"
+          curve: 'easeOut'
         }
-      })
+      });
     }    
   }
 
   share() {
-    var text = localize('share') + "\n\n" + localize('link_playstore');
+    let text = localize('share') + '\n\n' + localize('link_playstore');
     SocialShare.shareText(text);
   }
 
   rate() {
-    var text = localize('link_playstore');
+    let text = localize('link_playstore');
     openUrl(text);
   }
 

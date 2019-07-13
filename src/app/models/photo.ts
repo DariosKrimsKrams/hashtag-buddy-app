@@ -1,6 +1,6 @@
-import { HashtagCategory } from "./hashtag-category";
-import { SelectedHashtag } from "./selected-hashtag";
-import { ResultFeedback } from "./result-feedback";
+import { HashtagCategory } from './hashtag-category';
+import { SelectedHashtag } from './selected-hashtag';
+import { ResultFeedback } from './result-feedback';
 
 export class Photo {
 	id: number;
@@ -18,14 +18,14 @@ export class Photo {
 	}
 
 	public censorHashtags(): void {
-		if(this.proMode) {
+		if (this.proMode) {
 			return;
 		}
-		for(let i = 0; i < this.categories.length; i++) {
-			var category = this.categories[i];
-			for(let j = 0; j < category.tags.length; j++) {
-				var hashtag = category.tags[j];
-				if(j < 10 && j*2 < category.tags.length) {
+		for (let i = 0; i < this.categories.length; i++) {
+			let category = this.categories[i];
+			for (let j = 0; j < category.tags.length; j++) {
+				let hashtag = category.tags[j];
+				if (j < 10 && j * 2 < category.tags.length) {
 					hashtag.isCensored = true;
 				}
 			}

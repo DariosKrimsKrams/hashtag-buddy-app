@@ -10,7 +10,7 @@ export class InsertHashtagsFormComponent implements OnInit {
 
   @Output() public hashtagAdded: EventEmitter<Hashtag> = new EventEmitter<Hashtag>();
   @Output() public resetInput: EventEmitter<void> = new EventEmitter();
-  @Input() public customUserHashtagsText: string = "";
+  @Input() public customUserHashtagsText: string = '';
 
   constructor() { }
 
@@ -18,15 +18,15 @@ export class InsertHashtagsFormComponent implements OnInit {
   }
 
   public addCustomHashtags(): void {
-    var input = this.customUserHashtagsText;
-    if(input === undefined) {
-      console.log("error: addCustomHashtags triggered with text=undefined");
+    let input = this.customUserHashtagsText;
+    if (input === undefined) {
+      console.log('error: addCustomHashtags triggered with text=undefined');
       return;
     }
     input.split(' ').map(word => {
-      if(word.length != 0) {
+      if (word.length != 0) {
         word.split('#').map(word2 => {
-          if(word2.length != 0) {
+          if (word2.length != 0) {
             this.hashtagAdded.emit(new Hashtag(word2));
           }
         });

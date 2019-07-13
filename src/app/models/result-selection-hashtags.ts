@@ -1,8 +1,8 @@
-import { ResultSelectionHashtag } from "./result-selection-hashtag";
-import { SelectedHashtag } from "./selected-hashtag";
-import { Photo } from "./photo";
-import { Hashtag } from "./hashtag";
-import { HashtagCategory } from "./hashtag-category";
+import { ResultSelectionHashtag } from './result-selection-hashtag';
+import { SelectedHashtag } from './selected-hashtag';
+import { Photo } from './photo';
+import { Hashtag } from './hashtag';
+import { HashtagCategory } from './hashtag-category';
 
 export class ResultSelectionHashtags {
   
@@ -25,10 +25,10 @@ export class ResultSelectionHashtags {
   }
 
   public toSelectedHashtags(): SelectedHashtag[] {
-    var selectedHashtags = [];
-    for(var i = 0; i < this.hashtags.length; i++) {
-      var hashtag = this.hashtags[i];
-      var tag = new SelectedHashtag({title: hashtag.hashtag.title, categoryId: hashtag.titleId});
+    let selectedHashtags = [];
+    for (let i = 0; i < this.hashtags.length; i++) {
+      let hashtag = this.hashtags[i];
+      let tag = new SelectedHashtag({title: hashtag.hashtag.title, categoryId: hashtag.titleId});
       selectedHashtags.push(tag);
     }
     return selectedHashtags;
@@ -40,25 +40,25 @@ export class ResultSelectionHashtags {
   }
 
   private fromSelectedHashtags(hashtags: SelectedHashtag[]): ResultSelectionHashtag[] {
-    var result: ResultSelectionHashtag[] = []
-    for(var i = 0; i < hashtags.length; i++) {
-      var hashtag = hashtags[i];
-      var resultSelectionHashtag = new ResultSelectionHashtag({hashtag: new Hashtag(hashtag.title), titleId: hashtag.categoryId, tagId: -1});
+    let result: ResultSelectionHashtag[] = [];
+    for (let i = 0; i < hashtags.length; i++) {
+      let hashtag = hashtags[i];
+      let resultSelectionHashtag = new ResultSelectionHashtag({hashtag: new Hashtag(hashtag.title), titleId: hashtag.categoryId, tagId: -1});
       result.push(resultSelectionHashtag);
     }
     return result;
   }
 
   private addTagIds(categories: HashtagCategory[], hashtags: ResultSelectionHashtag[]) {
-    for(var i = 0; i < hashtags.length; i++) {
-      var hashtag = hashtags[i];
-      if(hashtag.titleId == -1) {
+    for (let i = 0; i < hashtags.length; i++) {
+      let hashtag = hashtags[i];
+      if (hashtag.titleId == -1) {
         continue;
       }
-      var category = categories[hashtag.titleId];
-      for(var j = 0; j < category.tags.length; j++) {
-        var categoryTag = category.tags[j];
-        if(categoryTag.title == hashtag.hashtag.title) {
+      let category = categories[hashtag.titleId];
+      for (let j = 0; j < category.tags.length; j++) {
+        let categoryTag = category.tags[j];
+        if (categoryTag.title == hashtag.hashtag.title) {
           hashtag.tagId = j;
           break;
         }
@@ -67,7 +67,7 @@ export class ResultSelectionHashtags {
   }
 
   public getHashtagsAsText(): string {
-    var text = "";
+    let text = '';
     this.hashtags.forEach(hashtag => {
       text += `#${hashtag.hashtag.title} `;
     });

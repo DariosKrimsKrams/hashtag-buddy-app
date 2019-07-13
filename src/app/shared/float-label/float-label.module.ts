@@ -1,6 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
-import { FloatLabel } from "./float-label.component";
+import { FloatLabel } from './float-label.component';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterExtensions } from "nativescript-angular/router";
-import { Page } from "tns-core-modules/ui/page";
+import { RouterExtensions } from 'nativescript-angular/router';
+import { Page } from 'tns-core-modules/ui/page';
 
 @Component({
   selector: 'ns-auth',
@@ -24,23 +24,23 @@ export class AuthComponent implements OnInit {
   }
 
   goPrevPage() {
-    this.router.navigate(["/settings"], {
+    this.router.navigate(['/settings'], {
       transition: {
-        name: "slideRight",
+        name: 'slideRight',
         duration: 500,
-        curve: "easeOut"
+        curve: 'easeOut'
       }
-    })
+    });
   }
 
   goHome() {
-    this.router.navigate(["/home"], {
+    this.router.navigate(['/home'], {
       transition: {
-        name: "FadeIn",
+        name: 'FadeIn',
         duration: 500,
-        curve: "easeOut"
+        curve: 'easeOut'
       }
-    })
+    });
   }
 
   goSignIn() {

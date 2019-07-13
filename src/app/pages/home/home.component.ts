@@ -1,18 +1,18 @@
-import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy, OnDestroy } from "@angular/core";
-import { Page } from "tns-core-modules/ui/page";
-import * as app from "tns-core-modules/application";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-import { screen } from "tns-core-modules/platform";
-import { SelectPhotoService } from "../../services/business-logic/select-photo.service";
-import { UserService } from "~/app/storages/user.service";
-import { Photo } from "~/app/models/photo";
-import { Subscription } from "rxjs";
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Page } from 'tns-core-modules/ui/page';
+import * as app from 'tns-core-modules/application';
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+import { screen } from 'tns-core-modules/platform';
+import { SelectPhotoService } from '../../services/business-logic/select-photo.service';
+import { UserService } from '~/app/storages/user.service';
+import { Photo } from '~/app/models/photo';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: "Home",
+  selector: 'Home',
   moduleId: module.id,
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.css"],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class HomeComponent implements OnInit, OnDestroy {
@@ -22,8 +22,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   public historyDefaultTransform: number;
   public openConfirmImage: boolean;
   public hasAnyPhotosUploaded: boolean;
-  @ViewChild("history", { static: false }) public historyElement: ElementRef;
-  @ViewChild("mainContainer", { static: false }) public mainContainerElement: ElementRef;
+  @ViewChild('history', { static: false }) public historyElement: ElementRef;
+  @ViewChild('mainContainer', { static: false }) public mainContainerElement: ElementRef;
 
   private photoAddedSubscription: Subscription;
 
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.historyDefaultTransform = this.historyHeight - 130;
 
     this.hasAnyPhotosUploaded = this.userService.countPhotos() != 0;
-    if(!this.hasAnyPhotosUploaded) {
+    if (!this.hasAnyPhotosUploaded) {
       this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
         this.hasAnyPhotosUploaded = true;
         this.photoAddedSubscription.unsubscribe();
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   
   ngOnDestroy() {
-    if(this.photoAddedSubscription !== undefined) {
+    if (this.photoAddedSubscription !== undefined) {
       this.photoAddedSubscription.unsubscribe();
     }
   }
@@ -77,8 +77,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public clickHistory(): void {
     this.isHistoryOpen = this.isHistoryOpen != 1 ? 1 : 2;
-    var posY = this.isHistoryOpen === 1 ? 0 : this.historyDefaultTransform;
-    var bgColor = this.isHistoryOpen === 1 ? '#fff' :'#fcfcfc';
+    let posY = this.isHistoryOpen === 1 ? 0 : this.historyDefaultTransform;
+    let bgColor = this.isHistoryOpen === 1 ? '#fff' : '#fcfcfc';
     this.historyElement.nativeElement.animate({
       translate: { x: 0, y: posY},
       backgroundColor: bgColor,
@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public onClickCancel(): void {
-    this.openConfirmImage = false
+    this.openConfirmImage = false;
   }
 
 }

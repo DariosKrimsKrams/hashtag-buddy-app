@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page/page';
-import { isIOS, isAndroid } from "tns-core-modules/platform";
-import * as app from "tns-core-modules/application";
+import { isIOS, isAndroid } from 'tns-core-modules/platform';
+import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { Hashtag } from '~/app/models/hashtag';
-import * as frame from "tns-core-modules/ui/frame";
-import * as utils from "tns-core-modules/utils/utils";
+import * as frame from 'tns-core-modules/ui/frame';
+import * as utils from 'tns-core-modules/utils/utils';
 import { MyHashtag } from '~/app/models/my-hashtag';
 
 @Component({
@@ -61,8 +61,8 @@ export class MyhashtagsComponent implements OnInit {
   }
 
   public addHashtag(hashtag: Hashtag): void {
-    var exist = this.hashtagsOwn.filter(x => x.title.toLowerCase() == hashtag.title.toLowerCase())[0] !== undefined;
-    if(exist) {
+    let exist = this.hashtagsOwn.filter(x => x.title.toLowerCase() == hashtag.title.toLowerCase())[0] !== undefined;
+    if (exist) {
       // sort to first position
       return;
     }

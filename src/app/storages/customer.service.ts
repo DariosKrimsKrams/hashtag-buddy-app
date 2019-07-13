@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { LocalStorageService } from "./local-storage.service";
+import { Injectable } from '@angular/core';
+import { LocalStorageService } from './local-storage.service';
 import { Observable, of } from 'rxjs';
-import { CustomerRepository } from "../services/repositories/customer-repository.service";
+import { CustomerRepository } from '../services/repositories/customer-repository.service';
  
 export enum CustomerCreateStatus {
     None,
@@ -11,7 +11,7 @@ export enum CustomerCreateStatus {
 }
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class CustomerService {
 
@@ -24,7 +24,7 @@ export class CustomerService {
 
     public createUserIdIfNotExist(): Observable<CustomerCreateStatus> {
         return new Observable<CustomerCreateStatus>(observer => {
-            if(this.hasCustomerId()) {
+            if (this.hasCustomerId()) {
                 observer.next(CustomerCreateStatus.AlreadyCreated);
                 observer.complete();
             } else {

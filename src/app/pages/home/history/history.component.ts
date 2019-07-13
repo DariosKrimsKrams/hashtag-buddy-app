@@ -1,17 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from "@angular/core";
-import { Photo } from "~/app/models/photo";
-import { UserService } from "../../../storages/user.service";
-import { RouterExtensions } from "nativescript-angular/router";
-import { Hashtag } from "~/app/models/hashtag";
-import { DeviceService } from "~/app/services/device-photos.service";
-import { Subscription } from "rxjs";
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Photo } from '~/app/models/photo';
+import { UserService } from '../../../storages/user.service';
+import { RouterExtensions } from 'nativescript-angular/router';
+import { Hashtag } from '~/app/models/hashtag';
+import { DeviceService } from '~/app/services/device-photos.service';
+import { Subscription } from 'rxjs';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
 
 @Component({
-  selector: "ns-history",
-  templateUrl: "./history.component.html",
-  styleUrls: ["./history.component.css"],
+  selector: 'ns-history',
+  templateUrl: './history.component.html',
+  styleUrls: ['./history.component.css'],
   moduleId: module.id,
 })
 export class HistoryComponent implements OnInit, OnDestroy {
@@ -47,7 +47,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   public selectItem(index: number): void {
-    if(index == this.selected) {
+    if (index == this.selected) {
       this.selected = -1;
     } else {
       this.selected = index;
@@ -59,12 +59,12 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   public deleteHistoryItem(photo): void {
-    if(this.selected == -1) {
+    if (this.selected == -1) {
       return;
     }
-    var successful = this.userService.deletePhoto(photo);
+    let successful = this.userService.deletePhoto(photo);
     this.deviceService.deletePhoto(photo.image);
-    if(successful) {
+    if (successful) {
       this.photosReverse.splice(this.selected, 1);
       this.selected = -1;
       
@@ -80,33 +80,33 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   public selectElement(photo: Photo): void {
-    if(photo.categories.length == 0) {
+    if (photo.categories.length == 0) {
       return;
     }
     this.router.navigate([`/home/results/${photo.id}`], {
       transition: {
-        name: "FadeIn",
+        name: 'FadeIn',
         duration: 500,
-        curve: "easeOut"
+        curve: 'easeOut'
       }
     });
   }
 	
 	public getHashtags(photo: Photo): Hashtag[] {
-    var count = this.hashtagAmount;
-		var hashtags: Hashtag[] = [];
-		if(photo.selectedHashtags !== undefined && photo.selectedHashtags.length !== 0) {
-			var selectedAmount = photo.selectedHashtags.length >= count ? count : photo.selectedHashtags.length;
-			for(let i = 0; i < selectedAmount; i++) {
+    let count = this.hashtagAmount;
+		let hashtags: Hashtag[] = [];
+		if (photo.selectedHashtags !== undefined && photo.selectedHashtags.length !== 0) {
+			let selectedAmount = photo.selectedHashtags.length >= count ? count : photo.selectedHashtags.length;
+			for (let i = 0; i < selectedAmount; i++) {
 				hashtags.push(photo.selectedHashtags[i]);
 			}
 		}
-		if(photo.categories !== undefined && photo.categories.length !== 0) {
-			var categoriesAmount = photo.categories[0].tags.length >= count - hashtags.length ? count - hashtags.length : photo.categories[0].tags.length;
-			for(let i = 0; i < categoriesAmount; i++) {
-        var tag = photo.categories[0].tags[i];
-        if(tag.isCensored) {
-          if(categoriesAmount+1 < photo.categories[0].tags.length-1) {
+		if (photo.categories !== undefined && photo.categories.length !== 0) {
+			let categoriesAmount = photo.categories[0].tags.length >= count - hashtags.length ? count - hashtags.length : photo.categories[0].tags.length;
+			for (let i = 0; i < categoriesAmount; i++) {
+        let tag = photo.categories[0].tags[i];
+        if (tag.isCensored) {
+          if (categoriesAmount + 1 < photo.categories[0].tags.length - 1) {
             categoriesAmount++;
           }
         } else {
@@ -118,16 +118,16 @@ export class HistoryComponent implements OnInit, OnDestroy {
 	}
 
 	public countFurtherHashtags(photo: Photo): number {
-		if(photo.categories === undefined) {
+		if (photo.categories === undefined) {
 			return 0;
 		}
-		var amount = 0;
-		for(let i = 0; i < photo.categories.length; i++) {
-			var category = photo.categories[i];
-			amount += category.tags.length
+		let amount = 0;
+		for (let i = 0; i < photo.categories.length; i++) {
+			let category = photo.categories[i];
+			amount += category.tags.length;
 		}
-    var count = this.hashtagAmount;
-    var result = amount - count;
+    let count = this.hashtagAmount;
+    let result = amount - count;
 		return result >= 0 ? result : 0;
   }
 

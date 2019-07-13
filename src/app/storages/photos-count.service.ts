@@ -1,9 +1,9 @@
-import { Injectable, EventEmitter } from "@angular/core";
-import { LocalStorageService } from "./local-storage.service";
+import { Injectable, EventEmitter } from '@angular/core';
+import { LocalStorageService } from './local-storage.service';
 import { environment } from '../environments/environment';
  
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class PhotosCountService {
 
@@ -17,17 +17,17 @@ export class PhotosCountService {
     ) { }
 
     public initFreePhotos(): void {
-        if(this.localStorageService.has(this.keyFreePhotos)) {
+        if (this.localStorageService.has(this.keyFreePhotos)) {
             return;
         }
         this.setFreeCount(environment.freePhotosStart);
     }
 
     public getTotalCount(): number {
-        var amountPayed = this.getPayedCount();
-        var amountFree = this.getFreeCount();
-        var amountTotal = amountPayed + amountFree;
-        if(amountTotal == 0 && this.checkTimeOver()) {
+        let amountPayed = this.getPayedCount();
+        let amountFree = this.getFreeCount();
+        let amountTotal = amountPayed + amountFree;
+        if (amountTotal == 0 && this.checkTimeOver()) {
             this.setFreeCount(environment.freePhotosIncreatingAmount);
             return environment.freePhotosIncreatingAmount;
         }
@@ -35,25 +35,25 @@ export class PhotosCountService {
     }
 
     public checkTimeOver(): boolean {
-        var date = this.getDate();
-        var dateNow = Date.now() / 1000 | 0;
-        if(date + environment.freePhotosIncreatingTime <= dateNow) {
+        let date = this.getDate();
+        let dateNow = Date.now() / 1000 | 0;
+        if (date + environment.freePhotosIncreatingTime <= dateNow) {
             return true;
         }
         return false;
     }
 
     public decrease(): boolean {
-        var amountTotal = this.getTotalCount();
-        if(amountTotal == 0) {
+        let amountTotal = this.getTotalCount();
+        if (amountTotal == 0) {
             return false;
         }
-        var amountPayed = this.getPayedCount();
-        if(amountPayed > 1) {
+        let amountPayed = this.getPayedCount();
+        if (amountPayed > 1) {
             amountPayed--;
             this.setPayedCount(amountPayed);
         } else {
-            var freeAmount = amountTotal - amountPayed;
+            let freeAmount = amountTotal - amountPayed;
             freeAmount--;
             this.setFreeCount(freeAmount);
         }
@@ -62,8 +62,8 @@ export class PhotosCountService {
     }
 
     public addPayedPhotos(count: number): void {
-        var amountPayed = this.getPayedCount();
-        console.log("amount", amountPayed);
+        let amountPayed = this.getPayedCount();
+        console.log('amount', amountPayed);
         amountPayed += count;
         this.setPayedCount(amountPayed);
         this.changedAmount.emit();
@@ -87,7 +87,7 @@ export class PhotosCountService {
 
     private setFreeCount(amount: number): void {
         this.localStorageService.set(this.keyFreePhotos, amount);
-        var dateNow = Date.now() / 1000 | 0;
+        let dateNow = Date.now() / 1000 | 0;
         this.localStorageService.set(this.keyFreeDate, dateNow);
     }
 

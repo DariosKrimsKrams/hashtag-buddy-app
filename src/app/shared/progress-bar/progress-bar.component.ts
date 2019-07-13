@@ -1,7 +1,7 @@
-import { Component, Input, OnInit, OnDestroy} from "@angular/core";
-import { PhotosCountService } from "../../storages/photos-count.service";
-import { environment } from "../../environments/environment";
-import { Subscription } from "rxjs";
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { PhotosCountService } from '../../storages/photos-count.service';
+import { environment } from '../../environments/environment';
+import { Subscription } from 'rxjs';
 import { localize } from 'nativescript-localize/angular';
 
 @Component({
@@ -53,38 +53,38 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
 
   private updateFreeIndicator(): void {
     this.countPhotoLeft = this.photosCountService.getTotalCount();
-    if(this.forceFreeMode) {
+    if (this.forceFreeMode) {
       this.countPhotoLeft = 0;
     }
     this.countPhotosOverall = environment.freePhotosStart;
-    if(this.countPhotoLeft == 0) {
+    if (this.countPhotoLeft == 0) {
       this.timeOverall = environment.freePhotosIncreatingTime;
     }
   }
 
   private buildText(): void {
 
-    var hasPayedPhotos = this.photosCountService.hasPayedPhotos();
+    let hasPayedPhotos = this.photosCountService.hasPayedPhotos();
 
-    if(hasPayedPhotos && this.page !== "home") {
+    if (hasPayedPhotos && this.page !== 'home') {
       this.isVisible = false;
       return;
     }
 
     this.isVisible = true;
-    if(this.page === "home") {
-      var textKey = hasPayedPhotos ? 'progressbar_home_iapmode' : 'progressbar_home_promode';
+    if (this.page === 'home') {
+      let textKey = hasPayedPhotos ? 'progressbar_home_iapmode' : 'progressbar_home_promode';
       this.text1 = localize(textKey, this.countPhotoLeft.toString());
       this.text2 = localize('progressbar_home_freemode');
     }
 
-    if(this.page === "confirm") {
+    if (this.page === 'confirm') {
       this.text1 = localize('progressbar_confirm_promode', this.countPhotoLeft.toString());
       this.text2 = localize('progressbar_confirm_freemode1');
       this.text3 = localize('progressbar_confirm_freemode2');
     }
 
-    if(this.page === "results") {
+    if (this.page === 'results') {
       this.text2 = localize('progressbar_results_freemode1');
       this.text3 = localize('progressbar_results_freemode2');
     }
@@ -93,14 +93,14 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
 
   private buildData(): void {
     let percent = 0;
-    var result = this.calcTimes();
+    let result = this.calcTimes();
 
     this.text4 = this.setUI(result.hour, result.min, result.sec);
 
-    if(this.countPhotoLeft > 0) {
+    if (this.countPhotoLeft > 0) {
       percent = this.countPhotoLeft / this.countPhotosOverall * 100;
       this.setProgressbarWidth(percent);
-    } else if(this.page === "home") {
+    } else if (this.page === 'home') {
       percent = this.timeStart / this.timeOverall * 100;
       this.setProgressbarWidth(percent);
       this.updateTimer(percent);
@@ -108,24 +108,24 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   }
 
   setProgressbarWidth(percent: number) {
-    if(percent < 2) {
-      percent = 2
+    if (percent < 2) {
+      percent = 2;
     }
-    this.columns = percent + "*," + (100 - percent) + "*";
+    this.columns = percent + '*,' + (100 - percent) + '*';
   }
 
   setUI(hour: number, min: number, sec: number) {
-    let h = "", m = "", s = "";
-    if(hour < 10) { h = "0"; }
-    if(min < 10) { m = "0"; }
-    if(sec < 10) { s = "0"; }
-    var timeAsText = h + hour + ":" + m + min + ":" + s + sec;
+    let h = '', m = '', s = '';
+    if (hour < 10) { h = '0'; }
+    if (min < 10) { m = '0'; }
+    if (sec < 10) { s = '0'; }
+    let timeAsText = h + hour + ':' + m + min + ':' + s + sec;
     return localize('progressbar_freemode_time', timeAsText);
 
   }
 
   private calcTimes(): {hour: number, min: number, sec: number} {
-    var date = this.photosCountService.getDate();
+    let date = this.photosCountService.getDate();
     this.timeStart = (Date.now() / 1000 | 0) - date;
     let hour = Math.floor((this.timeOverall - this.timeStart) / this.oneHour);
     let min = Math.floor((this.timeOverall - this.timeStart - hour * this.oneHour) / 60);
@@ -141,7 +141,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
         clearInterval(intervalId);
       }
 
-      var result = this.calcTimes();
+      let result = this.calcTimes();
       let hour = result.hour;
       let min = result.min;
       let sec = result.sec;

@@ -1,21 +1,21 @@
-import { Component, OnInit } from "@angular/core";
-import * as app from "tns-core-modules/application";
-import { RouterExtensions } from "nativescript-angular/router";
-import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
-import { PhotosCountService } from "../storages/photos-count.service";
-import { CustomerService, CustomerCreateStatus } from "../storages/customer.service";
+import { Component, OnInit } from '@angular/core';
+import * as app from 'tns-core-modules/application';
+import { RouterExtensions } from 'nativescript-angular/router';
+import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from 'nativescript-ui-sidedrawer';
+import { PhotosCountService } from '../storages/photos-count.service';
+import { CustomerService, CustomerCreateStatus } from '../storages/customer.service';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
 
 @Component({
     moduleId: module.id,
-    selector: "ns-app",
-    templateUrl: "app.component.html"
+    selector: 'ns-app',
+    templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit { 
 
     private _sideDrawerTransition: DrawerTransitionBase;
-    menus = ["home", "myhashtags", "faq", "store", "settings"];
+    menus = ['home', 'myhashtags', 'faq', 'store', 'settings'];
     selected = [];
 
     constructor(
@@ -28,9 +28,9 @@ export class AppComponent implements OnInit {
         this._sideDrawerTransition = new SlideInOnTopTransition();
         this.selected[0] = true;
         this.customerService.createUserIdIfNotExist().subscribe((status) => {  
-            if(status == CustomerCreateStatus.Failed) {
+            if (status == CustomerCreateStatus.Failed) {
                 setTimeout(() => {
-                    Toast.makeText(localize('toast_create_customer_failed'), "long").show();
+                    Toast.makeText(localize('toast_create_customer_failed'), 'long').show();
                 }, 2000);
             }
         });
@@ -45,11 +45,11 @@ export class AppComponent implements OnInit {
         this.selected = [];
         this.selected[index] = true;
         this.closeMenu();
-        this.router.navigate(["/" + this.menus[index]], {
+        this.router.navigate(['/' + this.menus[index]], {
             transition: {
-                name: "fadeIn",
+                name: 'fadeIn',
                 duration: 500,
-                curve: "easeOut"
+                curve: 'easeOut'
             }
         });
     }

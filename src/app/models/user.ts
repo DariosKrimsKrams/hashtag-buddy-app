@@ -1,7 +1,7 @@
-import { AppFeedback } from "./app-feedback";
-import { ResultFeedback } from "./result-feedback";
-import { Photo } from "./photo";
-import { Purchase } from "./purchase";
+import { AppFeedback } from './app-feedback';
+import { ResultFeedback } from './result-feedback';
+import { Photo } from './photo';
+import { Purchase } from './purchase';
 
 export class User {
 

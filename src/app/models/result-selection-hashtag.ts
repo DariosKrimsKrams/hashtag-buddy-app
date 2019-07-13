@@ -1,4 +1,4 @@
-import { Hashtag } from "./hashtag";
+import { Hashtag } from './hashtag';
 
 export class ResultSelectionHashtag {
 	hashtag: Hashtag;

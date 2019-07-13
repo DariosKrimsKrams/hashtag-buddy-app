@@ -1,4 +1,4 @@
-import { Product } from "nativescript-purchase/product";
+import { Product } from 'nativescript-purchase/product';
 
 export class Plan {
     

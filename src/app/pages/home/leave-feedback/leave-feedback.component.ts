@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
-import { Page } from "tns-core-modules/ui/page";
+import { Page } from 'tns-core-modules/ui/page';
 import { UserService } from '~/app/storages/user.service';
 import { Hashtag } from '~/app/models/hashtag';
 import { ResultFeedback } from '~/app/models/result-feedback';
@@ -55,7 +55,7 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   private restoreFeedback(feedback: ResultFeedback): void {
-    if(feedback === undefined) {
+    if (feedback === undefined) {
       return;
     }
     this.rating = feedback.rating;
@@ -66,9 +66,9 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   public getUserSelectedHashtags(): SelectedHashtag[] {
-    var hashtags: SelectedHashtag[] = [];
+    let hashtags: SelectedHashtag[] = [];
     this.photo.selectedHashtags.forEach(hashtag => {
-      if(hashtag.categoryId != -1) {
+      if (hashtag.categoryId != -1) {
         hashtags.push(hashtag);
       }
     });
@@ -76,13 +76,13 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   public getUserNotSelectedHashtags(): Hashtag[] {
-    var hashtags: Hashtag[] = [];
-    for(var i = 0; i < this.photo.categories.length; i++) {
-      var category = this.photo.categories[i];
-      for(var j = 0; j < category.tags.length; j++) {
-        var hashtag = category.tags[j];
-        var exist = this.photo.selectedHashtags.filter(x => x.title == hashtag.title)[0] !== undefined;
-        if(!exist && !hashtag.isCensored) {
+    let hashtags: Hashtag[] = [];
+    for (let i = 0; i < this.photo.categories.length; i++) {
+      let category = this.photo.categories[i];
+      for (let j = 0; j < category.tags.length; j++) {
+        let hashtag = category.tags[j];
+        let exist = this.photo.selectedHashtags.filter(x => x.title == hashtag.title)[0] !== undefined;
+        if (!exist && !hashtag.isCensored) {
           hashtags.push(hashtag);
         }
       }
@@ -91,12 +91,12 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   public sendFeedback(): void {
-    if(this.missingHashtags === ''
+    if (this.missingHashtags === ''
       && this.comment === ''
       && this.rating === 3
       && this.tag1.length == 0
       && this.tag2.length == 0
-    ){
+    ) {
       console.log('empty');
       this.continue();
       return;
@@ -123,11 +123,11 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   private doRequest(photo: Photo): void {
-    var feedback = photo.feedback;
-    var rating = feedback.rating == 0 ? 'great' : feedback.rating == 1 ? 'satisfied' : feedback.rating == 2 ? 'bad' : 'none';
-    var goodHashtags = this.getHashtagsByIndizes(this.userSelectedHashtags, feedback.goodHashtags);
-    var badHashtags = this.getHashtagsByIndizes(this.userNotSelectedHashtags, feedback.badHashtags);
-    var customerId = this.customerService.getCustomerId();
+    let feedback = photo.feedback;
+    let rating = feedback.rating == 0 ? 'great' : feedback.rating == 1 ? 'satisfied' : feedback.rating == 2 ? 'bad' : 'none';
+    let goodHashtags = this.getHashtagsByIndizes(this.userSelectedHashtags, feedback.goodHashtags);
+    let badHashtags = this.getHashtagsByIndizes(this.userNotSelectedHashtags, feedback.badHashtags);
+    let customerId = this.customerService.getCustomerId();
 
     const feedbackDto: ResultFeedbackRequest = new ResultFeedbackRequest({ 
       customerId: customerId,
@@ -142,10 +142,10 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   private getHashtagsByIndizes(hashtags: Hashtag[], indizes: any[]): string[] {
-    var result: string[] = [];
-    for(let key in indizes) {
-      if(indizes[key]) {
-        var hashtag = hashtags[key];
+    let result: string[] = [];
+    for (let key in indizes) {
+      if (indizes[key]) {
+        let hashtag = hashtags[key];
         result.push(hashtag.title);
       }
     }
@@ -158,11 +158,11 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   public goPrevPage(): void {
-    this.router.navigate(["/home/results/1"], {
+    this.router.navigate(['/home/results/1'], {
       transition: {
-        name: "slideRight",
+        name: 'slideRight',
         duration: 500,
-        curve: "easeOut"
+        curve: 'easeOut'
       }
     });
   }

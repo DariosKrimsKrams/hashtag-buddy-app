@@ -1,6 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
-import { ProgressBarComponent } from "~/app/shared/progress-bar/progress-bar.component";
+import { ProgressBarComponent } from '~/app/shared/progress-bar/progress-bar.component';
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
 
 @NgModule({

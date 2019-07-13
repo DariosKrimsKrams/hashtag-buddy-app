@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { ImageAsset } from "tns-core-modules/image-asset/image-asset";
-import { fromAsset } from "tns-core-modules/image-source";
+import { Injectable } from '@angular/core';
+import { ImageAsset } from 'tns-core-modules/image-asset/image-asset';
+import { fromAsset } from 'tns-core-modules/image-source';
 import { knownFolders, path } from 'tns-core-modules/file-system/file-system';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class DeviceService {
 
@@ -27,12 +27,12 @@ export class DeviceService {
     public copyPhotoToAppFolder(image: ImageAsset): Observable<string> {
       return new Observable<string>(observer => {
         fromAsset(image).then(imageSource => {
-          var targetFilename = 'img_' + new Date().getTime() + '.jpg';
+          let targetFilename = 'img_' + new Date().getTime() + '.jpg';
           const tempPath = knownFolders.documents().path;
           const localFullPath = path.join(tempPath, targetFilename);
-          var saved = imageSource.saveToFile(localFullPath, "jpg");
-          if(!saved) {
-            console.log("Failed to save :'(");
+          let saved = imageSource.saveToFile(localFullPath, 'jpg');
+          if (!saved) {
+            console.log('Failed to save :\'(');
           }
           observer.next(localFullPath);
           observer.complete();

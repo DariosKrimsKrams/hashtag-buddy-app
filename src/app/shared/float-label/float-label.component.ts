@@ -1,9 +1,9 @@
-import { Component, ElementRef, Input, ViewChild, Output, EventEmitter, OnInit, OnDestroy } from "@angular/core";
-import { Color } from "tns-core-modules/color";
-import { Subscription } from "rxjs";
+import { Component, ElementRef, Input, ViewChild, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { Color } from 'tns-core-modules/color';
+import { Subscription } from 'rxjs';
 
 @Component({
-    selector: "FloatLabel",
+    selector: 'FloatLabel',
     moduleId: module.id,
     template: `
         <GridLayout rows="30, auto">
@@ -19,21 +19,21 @@ export class FloatLabel implements OnInit, OnDestroy {
     @Input() placeholder: string;
     @Input() secure: boolean;
     @Input() reset: EventEmitter<void>;
-    @ViewChild("label", { static: false }) label: ElementRef;
-    @ViewChild("textField", { static: false }) textField: ElementRef;
+    @ViewChild('label', { static: false }) label: ElementRef;
+    @ViewChild('textField', { static: false }) textField: ElementRef;
     @Output() userTextEmitter = new EventEmitter();
 
     constructor() {
     }
 
     ngOnInit(): void {
-        if(this.reset !== undefined) {
+        if (this.reset !== undefined) {
             this.resetSubscription = this.reset.subscribe(() => this.resetText());
         }
     }
     
     ngOnDestroy() {
-        if(this.resetSubscription !== undefined) {
+        if (this.resetSubscription !== undefined) {
             this.resetSubscription.unsubscribe();
         }
     }

@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { RouterExtensions } from "nativescript-angular/router";
-import { Page } from "tns-core-modules/ui/page";
-import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/modal-dialog";
+import { RouterExtensions } from 'nativescript-angular/router';
+import { Page } from 'tns-core-modules/ui/page';
+import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from './modal/modal.component';
-import * as utils from "tns-core-modules/utils/utils";
-import { isIOS, isAndroid } from "tns-core-modules/platform";
-import * as frame from "tns-core-modules/ui/frame";
+import * as utils from 'tns-core-modules/utils/utils';
+import { isIOS, isAndroid } from 'tns-core-modules/platform';
+import * as frame from 'tns-core-modules/ui/frame';
 import { AppFeedback } from '~/app/models/app-feedback';
 import { CustomerService } from '~/app/storages/customer.service';
 import { FeedbackRepository } from '~/app/services/repositories/feedback-repository.service';
@@ -36,8 +36,8 @@ export class FeedbackComponent implements OnInit {
   }
 
   public sendFeedback(): void {
-    if(this.email === "" && this.message === ""){
-      console.log("empty");
+    if (this.email === '' && this.message === '') {
+      console.log('empty');
       return;
     }
     let feedback: AppFeedback = new AppFeedback({
@@ -78,11 +78,11 @@ export class FeedbackComponent implements OnInit {
   }
 
   goPrevPage() {
-    this.router.navigate(["/settings"], {
+    this.router.navigate(['/settings'], {
       transition: {
-        name: "slideRight",
+        name: 'slideRight',
         duration: 500,
-        curve: "easeOut"
+        curve: 'easeOut'
       }
     });
   }

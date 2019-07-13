@@ -1,5 +1,5 @@
-import * as application from "tns-core-modules/application";
-import * as platform from "tns-core-modules/platform";
+import * as application from 'tns-core-modules/application';
+import * as platform from 'tns-core-modules/platform';
 
 declare var android: any;
 
@@ -9,8 +9,8 @@ export function setStatusBarColors() {
     }
 
     if (application.android) {
-        application.android.on("activityStarted", function () {
-            if (application.android && platform.device.sdkVersion >= "21") {
+        application.android.on('activityStarted', function () {
+            if (application.android && platform.device.sdkVersion >= '21') {
                 let View = android.view.View;
                 let window = application.android.startActivity.getWindow();
                 window.setStatusBarColor(0x000000);

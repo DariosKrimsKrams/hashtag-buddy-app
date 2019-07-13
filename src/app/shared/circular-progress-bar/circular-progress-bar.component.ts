@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'circularProgressBar',
@@ -10,7 +10,7 @@ export class CircularProgressBarComponent implements OnInit {
   
   private percentValue: number = 0;
   private timeSec: number = 30;
-  @ViewChild("bar", { static: false }) barElement: ElementRef;
+  @ViewChild('bar', { static: false }) barElement: ElementRef;
 
   constructor(
   ) { }

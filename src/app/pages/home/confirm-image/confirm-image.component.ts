@@ -41,8 +41,8 @@ export class ConfirmImageComponent implements OnInit {
     this.selectPhotoService.saveAndUploadPhoto().subscribe((photoId) => {
       this.openResultsPage(photoId);
     }, (e) => {
-      var locaKey = e == "customer failed" ? 'toast_create_customer_at_upload_failed' : 'toast_upload_failed'
-      Toast.makeText(localize(locaKey), "long").show();
+      let locaKey = e == 'customer failed' ? 'toast_create_customer_at_upload_failed' : 'toast_upload_failed';
+      Toast.makeText(localize(locaKey), 'long').show();
       setTimeout.bind(this)(() => {
         this.goPrevPage();
       }, 1000);
@@ -62,9 +62,9 @@ export class ConfirmImageComponent implements OnInit {
   private openLoadingPage(): void {
     this.router.navigate([`/home/loading-hashtags`], {
       transition: {
-        name: "FadeIn",
+        name: 'FadeIn',
         duration: 500,
-        curve: "easeOut"
+        curve: 'easeOut'
       }
     });
   }
@@ -72,9 +72,9 @@ export class ConfirmImageComponent implements OnInit {
   private openResultsPage(id: number): void {
     this.router.navigate([`/home/results/${id}`], {
       transition: {
-        name: "FadeIn",
+        name: 'FadeIn',
         duration: 500,
-        curve: "easeOut"
+        curve: 'easeOut'
       }
     });
   }

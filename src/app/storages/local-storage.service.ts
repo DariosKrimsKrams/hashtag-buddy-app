@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-let LocalStorage = require( "nativescript-localstorage" );
+import { Injectable } from '@angular/core';
+let LocalStorage = require( 'nativescript-localstorage' );
  
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class LocalStorageService {
 
@@ -14,7 +14,7 @@ export class LocalStorageService {
     }
 
     public get(key: string): string {
-        var value = LocalStorage.getItem(key) || undefined;
+        let value = LocalStorage.getItem(key) || undefined;
         return value != 'null' ? value : undefined;
     }
 
@@ -22,7 +22,7 @@ export class LocalStorageService {
         if (typeof value === 'string' || value instanceof String) {
             LocalStorage.setItem(key, value);
         } else {
-            var json = JSON.stringify(value);
+            let json = JSON.stringify(value);
             LocalStorage.setItem(key, json);
         }
     }
