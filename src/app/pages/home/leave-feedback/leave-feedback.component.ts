@@ -68,7 +68,7 @@ export class LeaveFeedbackComponent implements OnInit {
   public getUserSelectedHashtags(): SelectedHashtag[] {
     let hashtags: SelectedHashtag[] = [];
     this.photo.selectedHashtags.forEach(hashtag => {
-      if (hashtag.categoryId != -1) {
+      if (hashtag.categoryId !== -1) {
         hashtags.push(hashtag);
       }
     });
@@ -81,7 +81,7 @@ export class LeaveFeedbackComponent implements OnInit {
       let category = this.photo.categories[i];
       for (let j = 0; j < category.tags.length; j++) {
         let hashtag = category.tags[j];
-        let exist = this.photo.selectedHashtags.filter(x => x.title == hashtag.title)[0] !== undefined;
+        let exist = this.photo.selectedHashtags.filter(x => x.title === hashtag.title)[0] !== undefined;
         if (!exist && !hashtag.isCensored) {
           hashtags.push(hashtag);
         }
@@ -94,8 +94,8 @@ export class LeaveFeedbackComponent implements OnInit {
     if (this.missingHashtags === ''
       && this.comment === ''
       && this.rating === 3
-      && this.tag1.length == 0
-      && this.tag2.length == 0
+      && this.tag1.length === 0
+      && this.tag2.length === 0
     ) {
       console.log('empty');
       this.continue();
@@ -124,7 +124,7 @@ export class LeaveFeedbackComponent implements OnInit {
 
   private doRequest(photo: Photo): void {
     let feedback = photo.feedback;
-    let rating = feedback.rating == 0 ? 'great' : feedback.rating == 1 ? 'satisfied' : feedback.rating == 2 ? 'bad' : 'none';
+    let rating = feedback.rating === 0 ? 'great' : feedback.rating === 1 ? 'satisfied' : feedback.rating === 2 ? 'bad' : 'none';
     let goodHashtags = this.getHashtagsByIndizes(this.userSelectedHashtags, feedback.goodHashtags);
     let badHashtags = this.getHashtagsByIndizes(this.userNotSelectedHashtags, feedback.badHashtags);
     let customerId = this.customerService.getCustomerId();

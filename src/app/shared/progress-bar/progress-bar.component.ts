@@ -57,7 +57,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
       this.countPhotoLeft = 0;
     }
     this.countPhotosOverall = environment.freePhotosStart;
-    if (this.countPhotoLeft == 0) {
+    if (this.countPhotoLeft === 0) {
       this.timeOverall = environment.freePhotosIncreatingTime;
     }
   }

@@ -12,63 +12,64 @@ import { Subscription } from 'rxjs';
         </GridLayout>
     `
 })
-export class FloatLabel implements OnInit, OnDestroy {
-    
-    private resetSubscription: Subscription;
+export class FloatLabelComponent implements OnInit, OnDestroy {
+  private resetSubscription: Subscription;
 
-    @Input() placeholder: string;
-    @Input() secure: boolean;
-    @Input() reset: EventEmitter<void>;
-    @ViewChild('label', { static: false }) label: ElementRef;
-    @ViewChild('textField', { static: false }) textField: ElementRef;
-    @Output() userTextEmitter = new EventEmitter();
+  @Input() placeholder: string;
+  @Input() secure: boolean;
+  @Input() reset: EventEmitter<void>;
+  @ViewChild('label', { static: false }) label: ElementRef;
+  @ViewChild('textField', { static: false }) textField: ElementRef;
+  @Output() userTextEmitter = new EventEmitter();
 
-    constructor() {
+  constructor() {}
+
+  ngOnInit(): void {
+    if (this.reset !== undefined) {
+      this.resetSubscription = this.reset.subscribe(() => this.resetText());
     }
+  }
 
-    ngOnInit(): void {
-        if (this.reset !== undefined) {
-            this.resetSubscription = this.reset.subscribe(() => this.resetText());
-        }
+  ngOnDestroy() {
+    if (this.resetSubscription !== undefined) {
+      this.resetSubscription.unsubscribe();
     }
-    
-    ngOnDestroy() {
-        if (this.resetSubscription !== undefined) {
-            this.resetSubscription.unsubscribe();
-        }
+  }
+
+  public onFocus(): void {
+    const label = this.label.nativeElement;
+    const textField = this.textField.nativeElement;
+
+    label
+      .animate({
+        translate: { x: 0, y: -25 },
+        opacity: 1
+      })
+      .then(() => {}, () => {});
+
+    textField.borderBottomColor = new Color('#FFB184');
+  }
+
+  public onBlur(): void {
+    const label = this.label.nativeElement;
+    const textField = this.textField.nativeElement;
+
+    if (!textField.text) {
+      label
+        .animate({
+          translate: { x: 0, y: 0 },
+          opacity: 0.6
+        })
+        .then(() => {}, () => {});
     }
+    textField.borderBottomColor = new Color('#cec8c8');
+  }
 
-    public onFocus(): void {
-        const label = this.label.nativeElement;
-        const textField = this.textField.nativeElement;
+  public onChange(): void {
+    this.userTextEmitter.emit(this.textField.nativeElement.text);
+  }
 
-        label.animate({
-            translate: { x: 0, y: - 25 },
-            opacity: 1,
-        }).then(() => { }, () => { });
-
-        textField.borderBottomColor = new Color('#FFB184');
-    }
-
-    public onBlur(): void {
-        const label = this.label.nativeElement;
-        const textField = this.textField.nativeElement;
-
-        if (!textField.text) {
-            label.animate({
-                translate: { x: 0, y: 0 },
-                opacity: 0.6
-            }).then(() => { }, () => { });
-        }
-        textField.borderBottomColor = new Color('#cec8c8');
-    }
-
-    public onChange(): void {
-        this.userTextEmitter.emit(this.textField.nativeElement.text);
-    }
-
-    public resetText(): void {
-        this.textField.nativeElement.text = '';
-    }
-
+  public resetText(): void {
+    this.textField.nativeElement.text = '';
+  }
 }

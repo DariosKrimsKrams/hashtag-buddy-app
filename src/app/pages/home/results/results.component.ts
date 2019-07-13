@@ -80,9 +80,9 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public deselectHashtag(name: string): void {
     for (let i = 0; i < this.selectedHashtags.length; i++) {
       let hashtag = this.selectedHashtags.hashtags[i];
-      if (hashtag.hashtag.title == name) {
+      if (hashtag.hashtag.title === name) {
         this.selectedHashtags.splice(i, 1);
-        if (hashtag.titleId != -1 && hashtag.tagId != -1) {
+        if (hashtag.titleId !== -1 && hashtag.tagId !== -1) {
           this.hightlightStatus[hashtag.titleId + '_' + hashtag.tagId] = false;
         }
         this.selectionChanged();
@@ -126,7 +126,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   public addHashtag(hashtag: Hashtag): void {
-    let exist = this.selectedHashtags.hashtags.filter(x => x.hashtag.title.toLowerCase() == hashtag.title.toLowerCase())[0] !== undefined;
+    let exist = this.selectedHashtags.hashtags.filter(x => x.hashtag.title.toLowerCase() === hashtag.title.toLowerCase())[0] !== undefined;
     if (exist) {
       return;
     }
@@ -142,7 +142,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
       let category = this.photo.categories[i];
       for (let j = 0; j < category.tags.length; j++) {
         let hashtag = category.tags[j];
-        if (hashtag.title == name.toLowerCase()) {
+        if (hashtag.title === name.toLowerCase()) {
           this.selectHashtag(hashtag, i, j);
           return true;
         }

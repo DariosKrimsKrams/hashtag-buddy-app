@@ -12,42 +12,45 @@ import { localize } from 'nativescript-localize/angular';
   selector: 'ns-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css'],
-  moduleId: module.id,
+  moduleId: module.id
 })
 export class HistoryComponent implements OnInit, OnDestroy {
-
   public selected: number = -1;
   public photosReverse: Photo[] = [];
   private hashtagAmount = 7;
   private photoAddedSubscription: Subscription;
   private photoUpdatedSubscription: Subscription;
-  
+
   @Input() isHistoryOpen: boolean;
   @Output() openCloseHistory = new EventEmitter();
 
   constructor(
     private readonly userService: UserService,
     private readonly router: RouterExtensions,
-    private readonly deviceService: DeviceService,
-  ) { }
+    private readonly deviceService: DeviceService
+  ) {}
 
   ngOnInit() {
     this.setPhotos(this.userService.getPhotos());
-    this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
-      this.setPhotos(photos);
-    });
-    this.photoUpdatedSubscription = this.userService.photoUpdated.subscribe((photos: Photo[]) => {
-      this.setPhotos(photos);
-    });
+    this.photoAddedSubscription = this.userService.photoAdded.subscribe(
+      (photos: Photo[]) => {
+        this.setPhotos(photos);
+      }
+    );
+    this.photoUpdatedSubscription = this.userService.photoUpdated.subscribe(
+      (photos: Photo[]) => {
+        this.setPhotos(photos);
+      }
+    );
   }
-    
+
   ngOnDestroy() {
     this.photoAddedSubscription.unsubscribe();
     this.photoUpdatedSubscription.unsubscribe();
   }
 
   public selectItem(index: number): void {
-    if (index == this.selected) {
+    if (index === this.selected) {
       this.selected = -1;
     } else {
       this.selected = index;
@@ -55,11 +58,11 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   public isSelected(index: number): boolean {
-    return index == this.selected;
+    return index === this.selected;
   }
 
   public deleteHistoryItem(photo): void {
-    if (this.selected == -1) {
+    if (this.selected === -1) {
       return;
     }
     let successful = this.userService.deletePhoto(photo);
@@ -67,7 +70,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
     if (successful) {
       this.photosReverse.splice(this.selected, 1);
       this.selected = -1;
-      
+
       Toast.makeText(localize('toast_delete_successful')).show();
     } else {
       Toast.makeText(localize('toast_delete_failed')).show();
@@ -80,7 +83,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   public selectElement(photo: Photo): void {
-    if (photo.categories.length == 0) {
+    if (photo.categories.length === 0) {
       return;
     }
     this.router.navigate([`/home/results/${photo.id}`], {
@@ -91,19 +94,28 @@ export class HistoryComponent implements OnInit, OnDestroy {
       }
     });
   }
-	
-	public getHashtags(photo: Photo): Hashtag[] {
+
+  public getHashtags(photo: Photo): Hashtag[] {
     let count = this.hashtagAmount;
-		let hashtags: Hashtag[] = [];
-		if (photo.selectedHashtags !== undefined && photo.selectedHashtags.length !== 0) {
-			let selectedAmount = photo.selectedHashtags.length >= count ? count : photo.selectedHashtags.length;
-			for (let i = 0; i < selectedAmount; i++) {
-				hashtags.push(photo.selectedHashtags[i]);
-			}
-		}
-		if (photo.categories !== undefined && photo.categories.length !== 0) {
-			let categoriesAmount = photo.categories[0].tags.length >= count - hashtags.length ? count - hashtags.length : photo.categories[0].tags.length;
-			for (let i = 0; i < categoriesAmount; i++) {
+    let hashtags: Hashtag[] = [];
+    if (
+      photo.selectedHashtags !== undefined &&
+      photo.selectedHashtags.length !== 0
+    ) {
+      let selectedAmount =
+        photo.selectedHashtags.length >= count
+          ? count
+          : photo.selectedHashtags.length;
+      for (let i = 0; i < selectedAmount; i++) {
+        hashtags.push(photo.selectedHashtags[i]);
+      }
+    }
+    if (photo.categories !== undefined && photo.categories.length !== 0) {
+      let categoriesAmount =
+        photo.categories[0].tags.length >= count - hashtags.length
+          ? count - hashtags.length
+          : photo.categories[0].tags.length;
+      for (let i = 0; i < categoriesAmount; i++) {
         let tag = photo.categories[0].tags[i];
         if (tag.isCensored) {
           if (categoriesAmount + 1 < photo.categories[0].tags.length - 1) {
@@ -112,27 +124,26 @@ export class HistoryComponent implements OnInit, OnDestroy {
         } else {
           hashtags.push(tag);
         }
-			}
-		}
-		return hashtags;
-	}
+      }
+    }
+    return hashtags;
+  }
 
-	public countFurtherHashtags(photo: Photo): number {
-		if (photo.categories === undefined) {
-			return 0;
-		}
-		let amount = 0;
-		for (let i = 0; i < photo.categories.length; i++) {
-			let category = photo.categories[i];
-			amount += category.tags.length;
-		}
+  public countFurtherHashtags(photo: Photo): number {
+    if (photo.categories === undefined) {
+      return 0;
+    }
+    let amount = 0;
+    for (let i = 0; i < photo.categories.length; i++) {
+      let category = photo.categories[i];
+      amount += category.tags.length;
+    }
     let count = this.hashtagAmount;
     let result = amount - count;
-		return result >= 0 ? result : 0;
+    return result >= 0 ? result : 0;
   }
 
   private setPhotos(photos: Photo[]): void {
     this.photosReverse = photos.slice().reverse();
   }
-
 }

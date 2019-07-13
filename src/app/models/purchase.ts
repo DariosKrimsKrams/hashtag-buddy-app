@@ -1,3 +1,3 @@
 export class Purchase {
-	id: string;
+  id: string;
 }

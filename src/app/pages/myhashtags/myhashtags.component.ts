@@ -61,7 +61,7 @@ export class MyhashtagsComponent implements OnInit {
   }
 
   public addHashtag(hashtag: Hashtag): void {
-    let exist = this.hashtagsOwn.filter(x => x.title.toLowerCase() == hashtag.title.toLowerCase())[0] !== undefined;
+    let exist = this.hashtagsOwn.filter(x => x.title.toLowerCase() === hashtag.title.toLowerCase())[0] !== undefined;
     if (exist) {
       // sort to first position
       return;

@@ -20,7 +20,7 @@ export class UserService {
 
     public addPhoto(photo: Photo): number {
         let photos = this.getPhotos();
-        photo.id = photos.length == 0 ? 1 : photos[photos.length - 1].id + 1;
+        photo.id = photos.length === 0 ? 1 : photos[photos.length - 1].id + 1;
         photos.push(photo);
         this.setPhotos(photos);
         this.photoAdded.emit(photos);
@@ -31,7 +31,7 @@ export class UserService {
         let photos = this.getPhotos();
         for (let i = 0; i < photos.length; i++) {
             let photo = photos[i];
-            if (photo.id == deletePhoto.id) {
+            if (photo.id === deletePhoto.id) {
                 photos.splice(i, 1);
                 this.setPhotos(photos);
                 return true;
@@ -43,7 +43,7 @@ export class UserService {
     public updatePhoto(photo: Photo): void {
         let photos = this.getPhotos();
         for (let i = 0; i < photos.length ; i++) {
-            if (photos[i].id == photo.id) {
+            if (photos[i].id === photo.id) {
                 photos[i] = photo;
                 break;
             }
@@ -56,7 +56,7 @@ export class UserService {
         let photos = this.getPhotos();
         for (let i = 0; i < photos.length ; i++) {
             let photo = photos[i];
-            if (photo.id == id) {
+            if (photo.id === id) {
                 return photo;
             }
         }

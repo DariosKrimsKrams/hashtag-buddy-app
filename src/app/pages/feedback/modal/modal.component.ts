@@ -6,25 +6,24 @@ import { RouterExtensions } from 'nativescript-angular/router';
   selector: 'ns-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css'],
-  moduleId: module.id,
+  moduleId: module.id
 })
 export class ModalComponent implements OnInit {
-
   public button: string;
 
   constructor(
     private readonly params: ModalDialogParams,
-    private readonly router: RouterExtensions,
+    private readonly router: RouterExtensions
   ) {}
 
   ngOnInit() {
-    let autoClose = this.params.context.autoClose == true;
+    let autoClose = this.params.context.autoClose === true;
     this.button = this.params.context.button;
 
     if (autoClose) {
-      setTimeout.bind(this)(() => { 
+      setTimeout.bind(this)(() => {
         this.close('autoClose');
-      }, 1000);    
+      }, 1000);
     }
   }
 
@@ -34,7 +33,7 @@ export class ModalComponent implements OnInit {
 
   public ok(): void {
     this.close('ok');
-    setTimeout.bind(this)(() => { 
+    setTimeout.bind(this)(() => {
       this.router.navigate(['/home'], {
         transition: {
           name: 'slideLeft',
@@ -42,6 +41,6 @@ export class ModalComponent implements OnInit {
           curve: 'easeOut'
         }
       });
-    }, 100);    
+    }, 100);
   }
 }

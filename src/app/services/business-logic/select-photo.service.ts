@@ -49,7 +49,7 @@ export class SelectPhotoService {
         observer.complete();
       }).catch(function (e) {
         e = e.toString();
-        if (e.substr(e.length - 13) != 'result code 0') {
+        if (e.substr(e.length - 13) !== 'result code 0') {
           console.error('IMAGE PICKER Failed: ', e);
           Toast.makeText(localize('toast_imagepicker_failed'), 'long').show();
         }
@@ -65,7 +65,7 @@ export class SelectPhotoService {
         let hasCustomerId = this.customerService.hasCustomerId();
         if (!hasCustomerId) {
             this.customerService.createUserIdIfNotExist().subscribe((status) => {
-            if (status == CustomerCreateStatus.NewlyCreated || status == CustomerCreateStatus.AlreadyCreated) {
+            if (status === CustomerCreateStatus.NewlyCreated || status === CustomerCreateStatus.AlreadyCreated) {
               this.uploadImage(photoId, observer);
             } else {
               observer.error('customer failed');
@@ -99,7 +99,7 @@ export class SelectPhotoService {
     this.evaluationRepository.UploadPhoto(photo.image, customerId)
     .subscribe((httpResponse: IHttpResponse) => {
       console.info(httpResponse);
-      if (httpResponse.code == 200) {
+      if (httpResponse.code === 200) {
         let httpResult = this.parseSuccessfulResponse(httpResponse);
         this.storeHttpResultIntoPhoto(photoId, httpResult);
         this.photosCountService.decrease();

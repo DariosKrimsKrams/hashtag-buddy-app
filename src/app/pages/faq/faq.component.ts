@@ -60,7 +60,7 @@ export class FaqComponent implements OnInit {
   }
 
   public expandToggle(index: number) {
-    if (index == this.current) {
+    if (index === this.current) {
       this.faqs[index].expand = !this.faqs[index].expand;
     } else {
       this.faqs[this.current].expand = false;

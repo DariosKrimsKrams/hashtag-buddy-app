@@ -24,9 +24,9 @@ export class InsertHashtagsFormComponent implements OnInit {
       return;
     }
     input.split(' ').map(word => {
-      if (word.length != 0) {
+      if (word.length !== 0) {
         word.split('#').map(word2 => {
-          if (word2.length != 0) {
+          if (word2.length !== 0) {
             this.hashtagAdded.emit(new Hashtag(word2));
           }
         });

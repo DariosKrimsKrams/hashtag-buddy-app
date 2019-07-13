@@ -52,13 +52,13 @@ export class ResultSelectionHashtags {
   private addTagIds(categories: HashtagCategory[], hashtags: ResultSelectionHashtag[]) {
     for (let i = 0; i < hashtags.length; i++) {
       let hashtag = hashtags[i];
-      if (hashtag.titleId == -1) {
+      if (hashtag.titleId === -1) {
         continue;
       }
       let category = categories[hashtag.titleId];
       for (let j = 0; j < category.tags.length; j++) {
         let categoryTag = category.tags[j];
-        if (categoryTag.title == hashtag.hashtag.title) {
+        if (categoryTag.title === hashtag.hashtag.title) {
           hashtag.tagId = j;
           break;
         }

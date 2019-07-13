@@ -2,11 +2,11 @@ import { Product } from 'nativescript-purchase/product';
 
 export class Plan {
     
-	id: string;
-	image: string;
-	title: string;
-	desc: string;
-	desc2?: string;
+  id: string;
+  image: string;
+  title: string;
+  desc: string;
+  desc2?: string;
   type: string;
 
   amount: number;

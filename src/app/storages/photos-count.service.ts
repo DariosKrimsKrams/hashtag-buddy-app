@@ -27,7 +27,7 @@ export class PhotosCountService {
         let amountPayed = this.getPayedCount();
         let amountFree = this.getFreeCount();
         let amountTotal = amountPayed + amountFree;
-        if (amountTotal == 0 && this.checkTimeOver()) {
+        if (amountTotal === 0 && this.checkTimeOver()) {
             this.setFreeCount(environment.freePhotosIncreatingAmount);
             return environment.freePhotosIncreatingAmount;
         }
@@ -45,7 +45,7 @@ export class PhotosCountService {
 
     public decrease(): boolean {
         let amountTotal = this.getTotalCount();
-        if (amountTotal == 0) {
+        if (amountTotal === 0) {
             return false;
         }
         let amountPayed = this.getPayedCount();

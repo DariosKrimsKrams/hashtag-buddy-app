@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
 
-    this.hasAnyPhotosUploaded = this.userService.countPhotos() != 0;
+    this.hasAnyPhotosUploaded = this.userService.countPhotos() !== 0;
     if (!this.hasAnyPhotosUploaded) {
       this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
         this.hasAnyPhotosUploaded = true;
@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public clickHistory(): void {
-    this.isHistoryOpen = this.isHistoryOpen != 1 ? 1 : 2;
+    this.isHistoryOpen = this.isHistoryOpen !== 1 ? 1 : 2;
     let posY = this.isHistoryOpen === 1 ? 0 : this.historyDefaultTransform;
     let bgColor = this.isHistoryOpen === 1 ? '#fff' : '#fcfcfc';
     this.historyElement.nativeElement.animate({

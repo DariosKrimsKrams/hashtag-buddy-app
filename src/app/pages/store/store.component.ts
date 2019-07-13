@@ -92,7 +92,7 @@ export class StoreComponent implements OnInit {
   }
 
   private getPlanById(id: string): Plan {
-    return this.plans.filter(x => x.id == id)[0];
+    return this.plans.filter(x => x.id === id)[0];
   }
 
   private calcDiscount(): void {
@@ -103,9 +103,9 @@ export class StoreComponent implements OnInit {
         return;
       }
       x.desc = x.product.localizedDescription;
-      if (x.product.productType == 'inapp' && (cheapestInApp == undefined || x.product.priceAmount < cheapestInApp.product.priceAmount)) {
+      if (x.product.productType === 'inapp' && (cheapestInApp === undefined || x.product.priceAmount < cheapestInApp.product.priceAmount)) {
         cheapestInApp = x;
-      } else if (x.product.productType == 'subs' && (cheapestSubs == undefined || x.product.priceAmount * x.amount < cheapestSubs.product.priceAmount)) {
+      } else if (x.product.productType === 'subs' && (cheapestSubs === undefined || x.product.priceAmount * x.amount < cheapestSubs.product.priceAmount)) {
         cheapestSubs = x;
       }
     });
@@ -115,11 +115,11 @@ export class StoreComponent implements OnInit {
       if (x.product === undefined) {
         return;
       }
-      if (x.product.productType == 'inapp' && x.id != cheapestInApp.id) {
+      if (x.product.productType === 'inapp' && x.id !== cheapestInApp.id) {
         x.pricePerPhoto = x.product.priceAmount / x.amount;
         let discount = (1 - (x.pricePerPhoto / cheapestInApp.pricePerPhoto)) * 100;
         x.discount = Math.round(discount);
-      } else if (x.product.productType == 'subs' && x.id != cheapestSubs.id) {
+      } else if (x.product.productType === 'subs' && x.id !== cheapestSubs.id) {
         x.pricePerPhoto = x.product.priceAmount;
         let discount = (1 - (x.pricePerPhoto / cheapestSubs.pricePerPhoto)) * 100;
         x.discount = Math.round(discount);
@@ -153,7 +153,7 @@ export class StoreComponent implements OnInit {
   private onProductBought(transaction: Transaction): void {
     if (isAndroid) {
       let plan = this.getPlanById(transaction.productIdentifier);
-      if (plan.type == 'inapp') {
+      if (plan.type === 'inapp') {
         purchase.consumePurchase(transaction.transactionReceipt)
         .then((responseCode) => {
           console.log('responseCode: ' + responseCode); // If responseCode === 0 the purchase has been successfully consumed
@@ -220,7 +220,7 @@ export class StoreComponent implements OnInit {
     this.userService.addPurchase(transaction);
 
     let plan = this.getPlanById(transaction.productIdentifier);
-    if (plan.type == 'inapp') {
+    if (plan.type === 'inapp') {
       let amount = plan.amount;
       this.photosCountService.addPayedPhotos(amount);
     } else {
