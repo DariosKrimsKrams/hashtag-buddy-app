@@ -51,7 +51,7 @@
   <string name="store_intro">"Getting hashtags is like Magic, Get photo uploads with uncensored hashtag results for all of your best photos. All packages include a lifelong unlimited history."</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"More"</string>
-  <string name="menu_faq">"Tips and Tricks"</string>
+  <string name="menu_faq">"Tips &amp; Tricks"</string>
   <string name="menu_store">"Store"</string>
   <string name="menu_myhashtags">"My hashtags"</string>
   <string name="menu_home">"Home"</string>
@@ -144,7 +144,7 @@
   <string name="history_photo_defect1">"An error occurred:"</string>
   <string name="history_no_content">"No photos uploaded yet"</string>
   <string name="history_title">"History"</string>
-  <string name="home_upload">"Pick your best photo"</string>
+  <string name="home_upload">"Pick a photo"</string>
   <string name="home_desc_2">"#hashtags for your photos"</string>
   <string name="home_desc_1">"Get the best Instagram"</string>
   <string name="_app_name_1k3Sbz">"Instaq"</string>
