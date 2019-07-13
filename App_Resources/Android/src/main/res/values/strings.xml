@@ -60,12 +60,12 @@
   <string name="about_infos_app_version">"App version"</string>
   <string name="about_infos_contact">"Contact us"</string>
   <string name="about_headline_infos">"Infos"</string>
-  <string name="about_credits_6">"Christian und Paul from Germany for kickstarting this Idea"</string>
-  <string name="about_credits_5">"Aditia Kurniawan from Indonesia for Logo"</string>
-  <string name="about_credits_4">"Nazar Nastin from Ukraine for UI / UX Design"</string>
-  <string name="about_credits_3">"Jabub Jiricka from Czech Republic for Frontend Programming"</string>
-  <string name="about_credits_2">"Tim Wiesenmüller from Germany for Management"</string>
-  <string name="about_credits_1">"Dario D. Müller from Germany for Management and Programming"</string>
+  <string name="about_credits_6">"Christian und Paul from Germany (1st prototype)"</string>
+  <string name="about_credits_5">"Aditia Kurniawan from Indonesia (Logo)"</string>
+  <string name="about_credits_4">"Nazar Nastin from Ukraine (UI / UX Design)"</string>
+  <string name="about_credits_3">"Jabub Jiricka from Czech Republic (Frontend Programming)"</string>
+  <string name="about_credits_2">"Tim Wiesenmüller from Germany (Management)"</string>
+  <string name="about_credits_1">"Dario D. Müller from Germany (Management and Programming)"</string>
   <string name="about_headline_credits">"Developed by"</string>
   <string name="about_desc">"Thank you for using Instaq.\n\nWe believe in improving the process of finding Instagram hashtags. To find the best fitting hashtags for your photos, we\'ll analyze it and compare it with photos on instagram. We built Instaq by crawling Instagram and storing it\'s data. The algorithms will analyze Instagram\'s content and calculate the performance of each hashtag, location or topic.\n\nLet us build and improve this project together! Plea contribute by giving us your feedback for hashtags or ask for features or improvements."</string>
   <string name="about_title">"About"</string>
@@ -145,7 +145,7 @@
   <string name="history_no_content">"No photos uploaded yet"</string>
   <string name="history_title">"History"</string>
   <string name="home_upload">"Pick a photo"</string>
-  <string name="home_desc_2">"#hashtags for your photos"</string>
+  <string name="home_desc_2">"#hashtags by uploading a photos"</string>
   <string name="home_desc_1">"Get the best Instagram"</string>
   <string name="_app_name_1k3Sbz">"Instaq"</string>
   <string name="app_name">"Instaq"</string>
