@@ -5,7 +5,7 @@ import { Page } from 'tns-core-modules/ui/page';
 @Component({
   selector: 'ns-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css'],
+  styleUrls: ['./auth.component.scss'],
   moduleId: module.id,
 })
 export class AuthComponent implements OnInit {

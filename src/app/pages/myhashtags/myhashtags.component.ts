@@ -11,7 +11,7 @@ import { MyHashtag } from '~/app/models/my-hashtag';
 @Component({
   selector: 'ns-myhashtags',
   templateUrl: './myhashtags.component.html',
-  styleUrls: ['./myhashtags.component.css'],
+  styleUrls: ['./myhashtags.component.scss'],
   moduleId: module.id,
 })
 export class MyhashtagsComponent implements OnInit {

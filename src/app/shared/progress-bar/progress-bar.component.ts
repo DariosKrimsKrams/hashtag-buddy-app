@@ -7,7 +7,7 @@ import { localize } from 'nativescript-localize/angular';
 @Component({
   selector: 'ProgressBar',
   templateUrl: './progress-bar.component.html',
-  styleUrls: ['./progress-bar.component.css'],
+  styleUrls: ['./progress-bar.component.scss'],
   moduleId: module.id,
 })
 export class ProgressBarComponent implements OnInit, OnDestroy {

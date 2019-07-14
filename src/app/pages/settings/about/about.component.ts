@@ -6,7 +6,7 @@ import { CustomerService } from '~/app/storages/customer.service';
 @Component({
   selector: 'ns-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css'],
+  styleUrls: ['./about.component.scss'],
   moduleId: module.id,
 })
 export class AboutComponent implements OnInit {

@@ -11,7 +11,7 @@ import { localize } from 'nativescript-localize/angular';
 @Component({
   selector: 'ns-history',
   templateUrl: './history.component.html',
-  styleUrls: ['./history.component.css'],
+  styleUrls: ['./history.component.scss'],
   moduleId: module.id
 })
 export class HistoryComponent implements OnInit, OnDestroy {

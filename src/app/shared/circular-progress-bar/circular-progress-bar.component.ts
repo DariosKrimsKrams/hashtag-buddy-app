@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 @Component({
   selector: 'circularProgressBar',
   templateUrl: './circular-progress-bar.component.html',
-  styleUrls: ['./circular-progress-bar.component.css'],
+  styleUrls: ['./circular-progress-bar.component.scss'],
   moduleId: module.id
 })
 export class CircularProgressBarComponent implements OnInit {

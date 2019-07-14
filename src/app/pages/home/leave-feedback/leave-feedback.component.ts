@@ -17,7 +17,7 @@ import { FeedbackRepository } from '~/app/services/repositories/feedback-reposit
 
 @Component({
   templateUrl: './leave-feedback.component.html',
-  styleUrls: ['./leave-feedback.component.css'],
+  styleUrls: ['./leave-feedback.component.scss'],
   moduleId: module.id,
 })
 export class LeaveFeedbackComponent implements OnInit {

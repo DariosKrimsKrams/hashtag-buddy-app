@@ -5,7 +5,7 @@ import { RouterExtensions } from 'nativescript-angular/router';
 @Component({
   selector: 'ns-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css'],
+  styleUrls: ['./modal.component.scss'],
   moduleId: module.id
 })
 export class ModalComponent implements OnInit {

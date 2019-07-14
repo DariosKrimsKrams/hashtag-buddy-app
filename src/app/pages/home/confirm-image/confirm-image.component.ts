@@ -11,7 +11,7 @@ import { SelectPhotoService } from '~/app/services/business-logic/select-photo.s
 @Component({
   selector: 'ns-confirm-image',
   templateUrl: './confirm-image.component.html',
-  styleUrls: ['./confirm-image.component.css'],
+  styleUrls: ['./confirm-image.component.scss'],
   moduleId: module.id,
 })
 export class ConfirmImageComponent implements OnInit {

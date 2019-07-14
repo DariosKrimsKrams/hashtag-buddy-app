@@ -3,7 +3,7 @@ import { Page } from 'tns-core-modules/ui/page';
 import { PLAN } from '~/app/data/plans';
 import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
-import *  as purchase from 'nativescript-purchase';
+import * as purchase from 'nativescript-purchase';
 import { Product } from 'nativescript-purchase/product';
 import { Transaction, TransactionState } from 'nativescript-purchase/transaction';
 import { Plan } from '~/app/models/plan';
@@ -17,18 +17,17 @@ import { PhotosCountService } from '~/app/storages/photos-count.service';
 @Component({
   selector: 'ns-store',
   templateUrl: './store.component.html',
-  styleUrls: ['./store.component.css'],
-  moduleId: module.id,
+  styleUrls: ['./store.component.scss'],
+  moduleId: module.id
 })
 export class StoreComponent implements OnInit {
-
   openmenu = false;
   plans: Plan[] = PLAN;
-  
+
   constructor(
-    private readonly page: Page, 
+    private readonly page: Page,
     private readonly userService: UserService,
-    private readonly photosCountService: PhotosCountService,
+    private readonly photosCountService: PhotosCountService
   ) {
     this.page.actionBarHidden = true;
   }
@@ -40,55 +39,61 @@ export class StoreComponent implements OnInit {
       'medium',
       'large',
       'unlimited1month',
-      'unlimited3months',
+      'unlimited3months'
     ];
 
     (global as any).purchaseInitPromise = purchase.init(products);
 
-    (global as any).purchaseInitPromise.then(() => {
-      purchase.getProducts().then((products: Array<Product>) => {
-        products.forEach((product: Product) => {
-          let plan = this.getPlanById(product.productIdentifier);
-          if (plan !== undefined) {
-            plan.product = product;
-          } else {
-            plan = new Plan({
-              id: product.productIdentifier,
-              image: '~/app/assets/images/0.png',
-              product: product,
+    (global as any).purchaseInitPromise
+      .then(() => {
+        purchase
+          .getProducts()
+          .then((products: Array<Product>) => {
+            products.forEach((product: Product) => {
+              let plan = this.getPlanById(product.productIdentifier);
+              if (plan !== undefined) {
+                plan.product = product;
+              } else {
+                plan = new Plan({
+                  id: product.productIdentifier,
+                  image: '~/app/assets/images/0.png',
+                  product: product
+                });
+                this.plans.push(plan);
+              }
+              plan.title = product.localizedTitle.split(' (')[0];
             });
-            this.plans.push(plan);
-          }
-          plan.title = product.localizedTitle.split(' (')[0];
-        });
-        this.calcDiscount();
-      }).catch((err) => {
+            this.calcDiscount();
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .catch(err => {
         console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
 
-    purchase.on(purchase.transactionUpdatedEvent, (transaction: Transaction) => {
+    purchase.on(
+      purchase.transactionUpdatedEvent,
+      (transaction: Transaction) => {
+        console.log('IAP event: ' + transaction.transactionState);
+        console.log(transaction);
 
-      console.log('IAP event: ' + transaction.transactionState);
-      console.log(transaction);
-
-      switch (transaction.transactionState) {
-        case TransactionState.Purchased:
-          this.onProductBought(transaction);
-          break;
-        case TransactionState.Restored:
-          this.onProductRestored(transaction);
-          break;
-        case TransactionState.Failed:
-          this.onTransactionFailed(transaction);
-          break;
-        case TransactionState.Purchasing:
-          break;
+        switch (transaction.transactionState) {
+          case TransactionState.Purchased:
+            this.onProductBought(transaction);
+            break;
+          case TransactionState.Restored:
+            this.onProductRestored(transaction);
+            break;
+          case TransactionState.Failed:
+            this.onTransactionFailed(transaction);
+            break;
+          case TransactionState.Purchasing:
+            break;
+        }
       }
-    });
+    );
   }
 
   private getPlanById(id: string): Plan {
@@ -103,25 +108,36 @@ export class StoreComponent implements OnInit {
         return;
       }
       x.desc = x.product.localizedDescription;
-      if (x.product.productType === 'inapp' && (cheapestInApp === undefined || x.product.priceAmount < cheapestInApp.product.priceAmount)) {
+      if (
+        x.product.productType === 'inapp' &&
+        (cheapestInApp === undefined ||
+          x.product.priceAmount < cheapestInApp.product.priceAmount)
+      ) {
         cheapestInApp = x;
-      } else if (x.product.productType === 'subs' && (cheapestSubs === undefined || x.product.priceAmount * x.amount < cheapestSubs.product.priceAmount)) {
+      } else if (
+        x.product.productType === 'subs' &&
+        (cheapestSubs === undefined ||
+          x.product.priceAmount * x.amount < cheapestSubs.product.priceAmount)
+      ) {
         cheapestSubs = x;
       }
     });
-    cheapestInApp.pricePerPhoto = cheapestInApp.product.priceAmount / cheapestInApp.amount; 
-    cheapestSubs.pricePerPhoto = cheapestSubs.product.priceAmount / cheapestSubs.amount; 
+    cheapestInApp.pricePerPhoto =
+      cheapestInApp.product.priceAmount / cheapestInApp.amount;
+    cheapestSubs.pricePerPhoto =
+      cheapestSubs.product.priceAmount / cheapestSubs.amount;
     this.plans.forEach(x => {
       if (x.product === undefined) {
         return;
       }
       if (x.product.productType === 'inapp' && x.id !== cheapestInApp.id) {
         x.pricePerPhoto = x.product.priceAmount / x.amount;
-        let discount = (1 - (x.pricePerPhoto / cheapestInApp.pricePerPhoto)) * 100;
+        let discount =
+          (1 - x.pricePerPhoto / cheapestInApp.pricePerPhoto) * 100;
         x.discount = Math.round(discount);
       } else if (x.product.productType === 'subs' && x.id !== cheapestSubs.id) {
         x.pricePerPhoto = x.product.priceAmount;
-        let discount = (1 - (x.pricePerPhoto / cheapestSubs.pricePerPhoto)) * 100;
+        let discount = (1 - x.pricePerPhoto / cheapestSubs.pricePerPhoto) * 100;
         x.discount = Math.round(discount);
       }
     });
@@ -154,20 +170,21 @@ export class StoreComponent implements OnInit {
     if (isAndroid) {
       let plan = this.getPlanById(transaction.productIdentifier);
       if (plan.type === 'inapp') {
-        purchase.consumePurchase(transaction.transactionReceipt)
-        .then((responseCode) => {
-          console.log('responseCode: ' + responseCode); // If responseCode === 0 the purchase has been successfully consumed
-          if (responseCode === 0) {
-            this.buyingProductSuccessful(transaction);
-          } else {
-            console.log(`Failed to consume with code: ${responseCode}`);
-            // alert(`Failed to consume with code: ${responseCode}! :'(`);
-          }
-        })
-        .catch((e) => {
-          console.log(e);
-          alert(`Failed to consume: ${e}`);
-        });
+        purchase
+          .consumePurchase(transaction.transactionReceipt)
+          .then(responseCode => {
+            console.log('responseCode: ' + responseCode); // If responseCode === 0 the purchase has been successfully consumed
+            if (responseCode === 0) {
+              this.buyingProductSuccessful(transaction);
+            } else {
+              console.log(`Failed to consume with code: ${responseCode}`);
+              // alert(`Failed to consume with code: ${responseCode}! :'(`);
+            }
+          })
+          .catch(e => {
+            console.log(e);
+            alert(`Failed to consume: ${e}`);
+          });
       } else {
         this.buyingProductSuccessful(transaction);
       }
@@ -195,7 +212,9 @@ export class StoreComponent implements OnInit {
   }
 
   private showRestorePopup(transaction: Transaction): void {
-    let plan = this.getPlanById(transaction.originalTransaction.productIdentifier);
+    let plan = this.getPlanById(
+      transaction.originalTransaction.productIdentifier
+    );
     let title = localize('iap_restored_successful_title');
     let msg = localize('iap_restored_successful_msg', plan.title);
     let btn = localize('iap_restored_successful_btn');
@@ -227,5 +246,4 @@ export class StoreComponent implements OnInit {
       // is ABO
     }
   }
-
 }

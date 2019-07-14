@@ -22,7 +22,7 @@ let clipboard = require('nativescript-clipboard');
 @Component({
   selector: 'ns-results',
   templateUrl: './results.component.html',
-  styleUrls: ['./results.component.css'],
+  styleUrls: ['./results.component.scss'],
   moduleId: module.id,
 })
 export class ResultsComponent implements AfterViewInit, OnInit {

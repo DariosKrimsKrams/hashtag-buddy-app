@@ -1,3 +1,6 @@
+@import '../../../../app-variables';
+
+
 #header .title {
     font-family: "AvenirNext-Medium", "Avenir Next Medium";
     font-size: 18pt;
@@ -66,7 +69,7 @@
     border-radius: 15pt;
     width: 60%;
     margin-top: 290pt;
-    background: linear-gradient(to right, #E067A9, #FFB184);
+    background: linear-gradient(to right, $color_pink, $color_orange);
     padding: 3pt;
 }
 

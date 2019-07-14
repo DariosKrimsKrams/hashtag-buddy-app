@@ -1,3 +1,5 @@
+@import '../../../app-variables';
+
 .item {
 	border-radius: 8;
 	margin: 0 0 10 0;
@@ -28,7 +30,7 @@
 }
 	.plan-title,
 	.plan-footer Label {
-		color: #E067A9;
+		color: $color_pink;
 	}
 	.plan-footer Button {
 		color: #fff;

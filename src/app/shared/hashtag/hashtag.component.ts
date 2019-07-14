@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'ns-hashtag',
   templateUrl: './hashtag.component.html',
-  styleUrls: ['./hashtag.component.css'],
+  styleUrls: ['./hashtag.component.scss'],
   moduleId: module.id
 })
 export class HashtagComponent implements OnInit {

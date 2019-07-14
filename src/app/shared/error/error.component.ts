@@ -4,7 +4,7 @@ import { Page } from 'tns-core-modules/ui/page';
 @Component({
   selector: 'ns-error',
   templateUrl: './error.component.html',
-  styleUrls: ['./error.component.css'],
+  styleUrls: ['./error.component.scss'],
   moduleId: module.id,
 })
 

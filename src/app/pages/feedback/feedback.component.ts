@@ -13,7 +13,7 @@ import { FeedbackRepository } from '~/app/services/repositories/feedback-reposit
 @Component({
   selector: 'ns-feedback',
   templateUrl: './feedback.component.html',
-  styleUrls: ['./feedback.component.css'],
+  styleUrls: ['./feedback.component.scss'],
   moduleId: module.id,
 })
 export class FeedbackComponent implements OnInit {

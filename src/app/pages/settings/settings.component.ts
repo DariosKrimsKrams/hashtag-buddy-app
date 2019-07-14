@@ -10,7 +10,7 @@ import { localize } from 'nativescript-localize/angular';
 @Component({
   selector: 'ns-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css'],
+  styleUrls: ['./settings.component.scss'],
   moduleId: module.id,
 })
 export class SettingsComponent implements  OnInit {

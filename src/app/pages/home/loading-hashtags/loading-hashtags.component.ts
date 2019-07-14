@@ -4,7 +4,7 @@ import { Page } from 'tns-core-modules/ui/page';
 @Component({
   selector: 'ns-loading-hashtags',
   templateUrl: './loading-hashtags.component.html',
-  styleUrls: ['./loading-hashtags.component.css'],
+  styleUrls: ['./loading-hashtags.component.scss'],
   moduleId: module.id,
 })
 export class LoadingHashtagsComponent implements OnInit {

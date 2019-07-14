@@ -5,7 +5,7 @@ import { Page } from 'tns-core-modules/ui/page';
 @Component({
   selector: 'ns-legal',
   templateUrl: './legal.component.html',
-  styleUrls: ['./legal.component.css'],
+  styleUrls: ['./legal.component.scss'],
   moduleId: module.id,
 })
 export class LegalComponent implements OnInit {

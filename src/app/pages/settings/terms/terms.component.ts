@@ -5,7 +5,7 @@ import { Page } from 'tns-core-modules/ui/page';
 @Component({
   selector: 'ns-terms',
   templateUrl: './terms.component.html',
-  styleUrls: ['./terms.component.css'],
+  styleUrls: ['./terms.component.scss'],
   moduleId: module.id,
 })
 export class TermsComponent implements OnInit {

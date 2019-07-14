@@ -8,7 +8,7 @@ import { localize } from 'nativescript-localize/angular';
 @Component({
   selector: 'ns-faq',
   templateUrl: './faq.component.html',
-  styleUrls: ['./faq.component.css'],
+  styleUrls: ['./faq.component.scss'],
   moduleId: module.id,
 })
 export class FaqComponent implements OnInit {

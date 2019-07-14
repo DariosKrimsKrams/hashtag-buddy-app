@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   selector: 'Home',
   moduleId: module.id,
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class HomeComponent implements OnInit, OnDestroy {
