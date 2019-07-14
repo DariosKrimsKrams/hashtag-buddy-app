@@ -4,21 +4,16 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { SmallHeaderModule } from '~/app/shared/small-header/small-header.module';
 import { SettingsComponent } from './settings.component';
 import { AuthComponent } from './auth/auth.component';
-import { LegalComponent } from './legal/legal.component';
-import { TermsComponent } from './terms/terms.component';
 import { AboutComponent } from './about/about.component';
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
 import { setStatusBarColors } from '~/app/shared/status-bar-util';
 import { FeedbackModule } from '../feedback/feedback.module';
-import { FeedbackComponent } from '../feedback/feedback.component';
 setStatusBarColors();
 
 @NgModule({
   declarations: [
     SettingsComponent,
     AuthComponent,
-    LegalComponent,
-    TermsComponent,
     AboutComponent,
   ],
   imports: [

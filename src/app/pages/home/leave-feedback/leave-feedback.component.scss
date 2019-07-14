@@ -1,53 +1,45 @@
-#header {
-    /* vertical-align: middle;
-    height: 50pt; */
-    /* padding: 30pt 20pt 0 20pt; */
-}
-    #header Label {
-        /* vertical-align: middle; */
-        /* color: #fff; */
-    }
-
-.title, .skip {
-    font-family: "AvenirNext-Medium", "Avenir Next Medium";
+.title,
+.skip {
+  font-family: 'AvenirNext-Medium', 'Avenir Next Medium';
 }
 
-.title {    
-    font-size: 18pt;
-    color: rgb(30, 39, 46);
-    text-align: center;
+.title {
+  font-size: 18pt;
+  color: rgb(30, 39, 46);
+  text-align: center;
 }
 
 .skip {
-    font-size: 17pt;
-    color: rgb(46, 55, 77);
+  font-size: 17pt;
+  color: rgb(46, 55, 77);
 }
 
-.status Image {
+.status {
+  Image {
     width: 24pt;
     height: 24pt;
-}
-
-.status GridLayout {
+  }
+  GridLayout {
     border-radius: 5;
     background: rgb(237, 240, 242);
-}
+  }
 
-.status GridLayout StackLayout {    
+  GridLayout StackLayout {
     width: 100%;
     padding: 10;
     text-align: center;
     border-radius: 5;
-}
+  }
 
-.status .gradient Label {
+  .gradient label {
     color: white;
+  }
 }
 
 .btn {
-    height: 50pt;
+  height: 50pt;
 }
 
 .btn-main {
-    color: white;
+  color: white;
 }
