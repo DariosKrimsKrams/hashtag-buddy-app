@@ -18,8 +18,8 @@ export class FloatLabelComponent implements OnInit, OnDestroy {
   @Input() placeholder: string;
   @Input() secure: boolean;
   @Input() reset: EventEmitter<void>;
-  @ViewChild('label', { static: false }) label: ElementRef;
-  @ViewChild('textField', { static: false }) textField: ElementRef;
+  @ViewChild('label', { read: ElementRef, static: false }) label: ElementRef;
+  @ViewChild('textField', { read: ElementRef, static: false }) textField: ElementRef;
   @Output() userTextEmitter = new EventEmitter();
 
   constructor() {}

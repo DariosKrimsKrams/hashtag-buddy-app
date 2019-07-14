@@ -10,7 +10,7 @@ export class CircularProgressBarComponent implements OnInit {
   
   private percentValue: number = 0;
   private timeSec: number = 30;
-  @ViewChild('bar', { static: false }) barElement: ElementRef;
+  @ViewChild('bar', { read: ElementRef, static: false }) barElement: ElementRef;
 
   constructor(
   ) { }

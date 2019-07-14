@@ -22,8 +22,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   public historyDefaultTransform: number;
   public openConfirmImage: boolean;
   public hasAnyPhotosUploaded: boolean;
-  @ViewChild('history', { static: false }) public historyElement: ElementRef;
-  @ViewChild('mainContainer', { static: false }) public mainContainerElement: ElementRef;
+  @ViewChild('history', { read: ElementRef, static: false }) public historyElement: ElementRef;
+  @ViewChild('mainContainer', { read: ElementRef, static: false }) public mainContainerElement: ElementRef;
 
   private photoAddedSubscription: Subscription;
 
