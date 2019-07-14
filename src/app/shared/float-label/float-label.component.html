@@ -1,0 +1,25 @@
+<GridLayout rows="30, auto" #container>
+  <Label
+    #label
+    row="1"
+    [text]="placeholder"
+    opacity="0.6"
+    fontSize="14"
+    color="#000"
+    class="input"
+  ></Label>
+  <TextField
+    #textField
+    [secure]="secure"
+    row="1"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    (textChange)="onChange()"
+    (loaded)="handleAndroidFocus(textField, container)"
+    color="#000"
+    fontSize="15"
+    borderBottomWidth="2"
+    borderBottomColor="#cec8c8"
+    padding="2"
+  ></TextField>
+</GridLayout>

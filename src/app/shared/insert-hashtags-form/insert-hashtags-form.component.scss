@@ -1,16 +1,16 @@
 @import '../../../app-variables';
 
 .btn-add {
-    font-size: 14pt;
-    border-radius: 10pt;
-    border-width: 2pt;
-    border-color: #cec8c8;
-    color: #A5A2A2;
-    height: 30pt;
-    margin: 0 0 0 5pt;
+  font-size: 14pt;
+  border-radius: 10pt;
+  border-width: 2pt;
+  border-color: #cec8c8;
+  color: #a5a2a2;
+  height: 30pt;
+  margin: 0 0 0 5pt;
 }
 
 .btn-add.active {
-    border-color: #FFB184;
-    color: #FFB184;
+  border-color: $color_orange;
+  color: $color_orange;
 }
