@@ -1,7 +1,9 @@
+import { Rating } from './rating';
+
 export class ResultFeedback {
-  rating: number;
-  goodHashtags: any[];
-  badHashtags: any[];
+  rating: Rating;
+  goodHashtags: string[];
+  badHashtags: string[];
   missingHashtags: string;
   comment: string;
 

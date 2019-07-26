@@ -12,17 +12,19 @@ import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/mod
 import { ModalComponent } from '~/app/pages/feedback/modal/modal.component';
 import { CustomerService } from '~/app/storages/customer.service';
 import { FeedbackRepository } from '~/app/services/repositories/feedback-repository.service';
+import { Rating } from '~/app/models/rating';
 
 @Component({
   templateUrl: './leave-feedback.component.html',
   styleUrls: ['./leave-feedback.component.scss'],
-  moduleId: module.id,
+  moduleId: module.id
 })
 export class LeaveFeedbackComponent implements OnInit {
 
-  public rating = 3; // 0=great, 1=satisfied, 2=bad, 3=none 
-  public tag1: any[] = [];
-  public tag2: any[] = [];
+  public ratingIndex: number;
+  private rating: Rating = Rating.None;
+  public tags1: string[] = [];
+  public tags2: string[] = [];
   public missingHashtags = '';
   public comment = '';
   public userSelectedHashtags: Hashtag[] = [];
@@ -40,7 +42,7 @@ export class LeaveFeedbackComponent implements OnInit {
     private readonly viewContainerRef: ViewContainerRef,
     private readonly modalService: ModalDialogService, 
     private readonly customerService: CustomerService,
-    ) {
+  ) {
     this.page.actionBarHidden = true;
   }
 
@@ -57,8 +59,10 @@ export class LeaveFeedbackComponent implements OnInit {
       return;
     }
     this.rating = feedback.rating;
-    this.tag1 = feedback.goodHashtags;
-    this.tag2 = feedback.badHashtags;
+    this.ratingIndex = feedback.rating === Rating.Great ? 0 : feedback.rating === Rating.Satisfied ? 1 : feedback.rating === Rating.Bad ? 2 : 3;
+
+    this.tags1 = feedback.goodHashtags;
+    this.tags2 = feedback.badHashtags;
     this.missingHashtags = feedback.missingHashtags;
     this.comment = feedback.comment;
   }
@@ -88,25 +92,28 @@ export class LeaveFeedbackComponent implements OnInit {
     return hashtags;
   }
 
-  public sendFeedback(): void {
-    if (this.missingHashtags === ''
-      && this.comment === ''
-      && this.rating === 3
-      && this.tag1.length === 0
-      && this.tag2.length === 0
-    ) {
-      console.log('empty');
-      this.continue();
-      return;
-    }
+  public saveFeedback(): void {
     this.photo.feedback = new ResultFeedback({ 
       rating: this.rating, 
-      goodHashtags: this.tag1, 
-      badHashtags: this.tag2, 
+      goodHashtags: this.tags1, 
+      badHashtags: this.tags2, 
       missingHashtags: this.missingHashtags, 
       comment: this.comment 
     });
     this.userService.updatePhoto(this.photo);
+  }
+
+  public sendFeedback(): void {
+    if (this.missingHashtags === ''
+      && this.comment === ''
+      && this.rating === Rating.None
+      && this.tags1.length === 0
+      && this.tags2.length === 0
+    ) {
+      this.continue();
+      return;
+    }
+    this.saveFeedback(); // save input fields
     this.doRequest(this.photo);
     this.continue();
   }
@@ -122,41 +129,26 @@ export class LeaveFeedbackComponent implements OnInit {
 
   private doRequest(photo: Photo): void {
     let feedback = photo.feedback;
-    let rating = feedback.rating === 0 ? 'great' : feedback.rating === 1 ? 'satisfied' : feedback.rating === 2 ? 'bad' : 'none';
-    let goodHashtags = this.getHashtagsByIndizes(this.userSelectedHashtags, feedback.goodHashtags);
-    let badHashtags = this.getHashtagsByIndizes(this.userNotSelectedHashtags, feedback.badHashtags);
     let customerId = this.customerService.getCustomerId();
 
     const feedbackDto: ResultFeedbackRequest = new ResultFeedbackRequest({ 
       customerId: customerId,
       photoId: photo.logId,
-      rating: rating,
-      goodHashtags: goodHashtags, 
-      badHashtags: badHashtags, 
+      rating: feedback.rating,
+      goodHashtags: feedback.goodHashtags, 
+      badHashtags: feedback.badHashtags, 
       missingHashtags: feedback.missingHashtags, 
       comment: feedback.comment 
     });
     this.feedbackRepositoryService.sendResultFeedback(feedbackDto);
   }
 
-  private getHashtagsByIndizes(hashtags: Hashtag[], indizes: any[]): string[] {
-    let result: string[] = [];
-    for (let key in indizes) {
-      if (indizes[key]) {
-        let hashtag = hashtags[key];
-        result.push(hashtag.title);
-      }
-    }
-    return result;
-  }
-
   public continue(): void {
     this.showModal();
-    // this.openInstagram();
   }
 
   public goPrevPage(): void {
-    this.router.navigate(['/home/results/1'], {
+    this.router.navigate([`/home/results/${this.photo.id}`], {
       transition: {
         name: 'slideRight',
         duration: 500,
@@ -173,25 +165,28 @@ export class LeaveFeedbackComponent implements OnInit {
     this.comment = text;
   }
 
-  public clickEmoji(i: number): void {
-    this.rating = this.rating === i ? 3 : i;
+  public clickEmoji(name: string, index: number): void {
+    this.rating = name === 'satisfied' ? Rating.Satisfied : name === 'great' ? Rating.Great : name === 'bad' ? Rating.Bad : Rating.None;
+    this.ratingIndex = index;
+    this.saveFeedback();
   }
 
-  // private openInstagram(): void {
-  //   let image = this.getImageSource();
-  //   // let image = this.photo.image;
-  //   shareInstagram(image).then((r)=>{
-  //     console.log("instagram open succcessfully", r);
-  //   }).catch((e)=>{
-  //     console.log("instagram is not installed");
-  //     console.log("error", e);
-  //   });
-  //   // ToDo change to putExtra(img, text)
-  // }
+  public clickGoodHashtag(tag: Hashtag) {
+    this.addRemoveHashtags(this.tags1, tag);
+  }
 
-  // private getImageSource(): ImageSource {
-  //   const image = <ImageSource>fromFile(this.photo.image);
-  //   return image;
-  // }
+  public clickBadHashtag(tag: Hashtag) {
+    this.addRemoveHashtags(this.tags2, tag);
+  }
+
+  private addRemoveHashtags(source: string[], tag: Hashtag) {
+    let i = source.indexOf(tag.title);
+    if (i !== -1) {
+      source.splice(i, 1);
+    } else {
+      source.push(tag.title);
+    }
+    this.saveFeedback();
+  }
 
 }

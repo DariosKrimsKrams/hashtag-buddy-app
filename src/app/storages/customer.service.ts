@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CustomerRepository } from '../services/repositories/customer-repository.service';
  
 export enum CustomerCreateStatus {

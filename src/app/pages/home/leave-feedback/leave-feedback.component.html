@@ -15,10 +15,10 @@
                     </StackLayout>
 
                     <GridLayout class="status m-l-20 m-r-5 m-t-10 m-b-10" columns="*,*,*" rows="auto">
-                        <GridLayout [col]="i" class="m-r-15" *ngFor="let emoji of emojis; let i = index;" (tap)="clickEmoji(i)">
-                            <StackLayout horizontalAlignment="center" class="p-t-5 p-b-5" [class.gradient]="rating === i">
-                                <Image [src]="'~/app/assets/images/icons/' + emoji + '.png'" *ngIf="rating !== i"></Image>
-                                <Image [src]="'~/app/assets/images/icons/' + emoji + '_white.png'" *ngIf="rating === i"></Image>
+                        <GridLayout [col]="i" class="m-r-15" *ngFor="let emoji of emojis; let i = index;" (tap)="clickEmoji(emoji, i)">
+                            <StackLayout horizontalAlignment="center" class="p-t-5 p-b-5" [class.gradient]="ratingIndex === i">
+                                <Image [src]="'~/app/assets/images/icons/' + emoji + '.png'" *ngIf="ratingIndex !== i"></Image>
+                                <Image [src]="'~/app/assets/images/icons/' + emoji + '_white.png'" *ngIf="ratingIndex === i"></Image>
                                 <Label text="{{'emoji_' + emoji | L}}" class="font-reg-s"></Label>
                             </StackLayout>
                         </GridLayout>
@@ -28,13 +28,13 @@
                         <Label [text]="'leave_feedback_good_hashtags_title' | L" class="font-demi-bold m-t-20 m-l-5 m-b-5"></Label>
                         <Label [text]="'leave_feedback_good_hashtags_desc' | L" class="font-reg-xs m-l-5 m-b-5"></Label>
                         <WrapLayout>
-                            <ns-hashtag *ngFor="let tag of userSelectedHashtags; let i = index;" (onClick)="tag1[i]=!tag1[i];" [isActive]="tag1[i]" [name]="tag.title"></ns-hashtag>
+                            <ns-hashtag *ngFor="let tag of userSelectedHashtags" (onClick)="clickGoodHashtag(tag)" [isActive]="tags1.indexOf(tag.title) !== -1" [name]="tag.title"></ns-hashtag>
                         </WrapLayout>
 
                         <Label [text]="'leave_feedback_bad_hashtags_title' | L" class="font-demi-bold m-t-20 m-l-5 m-b-5"></Label>
                         <Label [text]="'leave_feedback_bad_hashtags_desc' | L" class="font-reg-xs m-l-5 m-b-5"></Label>
                         <WrapLayout>
-                            <ns-hashtag *ngFor="let tag of userNotSelectedHashtags; let i = index;" (onClick)="tag2[i]=!tag2[i];" [isActive]="tag2[i]" [name]="tag.title"></ns-hashtag>
+                            <ns-hashtag *ngFor="let tag of userNotSelectedHashtags" (onClick)="clickBadHashtag(tag)" [isActive]="tags2.indexOf(tag.title) !== -1" [name]="tag.title"></ns-hashtag>
                         </WrapLayout>
 
                         <FloatLabel class="m-l-10 m-r-10" placeholder="{{ 'leave_feedback_missing_hashtags' | L }}" (userTextEmitter)="setMissingHashtags($event)"></FloatLabel>

@@ -1,7 +1,9 @@
+import { Rating } from '../rating';
+
 export class ResultFeedbackRequest {
   customerId: string;
   photoId: number;
-  rating: string;
+  rating: Rating;
   goodHashtags: string[];
   badHashtags: string[];
   missingHashtags: string;
