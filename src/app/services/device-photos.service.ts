@@ -5,44 +5,41 @@ import { knownFolders, path } from 'tns-core-modules/file-system/file-system';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class DeviceService {
+  selectedPhoto: ImageAsset;
 
-    selectedPhoto: ImageAsset;
+  constructor() {
+    this.selectedPhoto = null;
+  }
 
-    constructor(
-    ) {
-        this.selectedPhoto = null;
-    }
+  public setSelectedPhoto(photo: ImageAsset): void {
+    this.selectedPhoto = photo;
+  }
 
-    public setSelectedPhoto(photo: ImageAsset): void {
-        this.selectedPhoto = photo;
-    }
+  public getSelectedPhoto(): ImageAsset {
+    return this.selectedPhoto;
+  }
 
-    public getSelectedPhoto(): ImageAsset {
-        return this.selectedPhoto;
-    }
-
-    public copyPhotoToAppFolder(image: ImageAsset): Observable<string> {
-      return new Observable<string>(observer => {
-        fromAsset(image).then(imageSource => {
-          let targetFilename = 'img_' + new Date().getTime() + '.jpg';
-          const tempPath = knownFolders.documents().path;
-          const localFullPath = path.join(tempPath, targetFilename);
-          let saved = imageSource.saveToFile(localFullPath, 'jpg');
-          if (!saved) {
-            console.log('Failed to save :\'(');
-          }
-          observer.next(localFullPath);
-          observer.complete();
-        });
-      });
-    }
-
-    public deletePhoto(path: string): void {
+  public copyPhotoToAppFolder(image: ImageAsset): Observable<string> {
+    return new Observable<string>(observer => {
+      fromAsset(image).then(imageSource => {
+        let targetFilename = 'img_' + new Date().getTime() + '.jpg';
         const tempPath = knownFolders.documents().path;
-        // ToDo remove image from disk
-    }
+        const localFullPath = path.join(tempPath, targetFilename);
+        let saved = imageSource.saveToFile(localFullPath, 'jpg');
+        if (!saved) {
+          console.log('Failed to save :\'(');
+        }
+        observer.next(localFullPath);
+        observer.complete();
+      });
+    });
+  }
 
+  public deletePhoto(path: string): void {
+    // const tempPath = knownFolders.documents().path;
+    // ToDo remove image from disk
+  }
 }

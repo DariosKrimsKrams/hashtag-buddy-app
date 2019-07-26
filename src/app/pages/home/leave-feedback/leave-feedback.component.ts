@@ -4,8 +4,6 @@ import { Page } from 'tns-core-modules/ui/page';
 import { UserService } from '~/app/storages/user.service';
 import { Hashtag } from '~/app/models/hashtag';
 import { ResultFeedback } from '~/app/models/result-feedback';
-import { fromFile, ImageSource } from 'tns-core-modules/image-source/image-source';
-// import { shareInstagram } from 'nativescript-instagram-share';
 import { Photo } from '~/app/models/photo';
 import { ActivatedRoute } from '@angular/router';
 import { SelectedHashtag } from '~/app/models/selected-hashtag';

@@ -10,7 +10,7 @@ import { Plan } from '~/app/models/plan';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
-import { isIOS, isAndroid } from 'tns-core-modules/platform';
+import { isAndroid } from 'tns-core-modules/platform';
 import { UserService } from '~/app/storages/user.service';
 import { PhotosCountService } from '~/app/storages/photos-count.service';
 

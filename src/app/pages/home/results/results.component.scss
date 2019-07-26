@@ -1,79 +1,86 @@
 @import '../../../../app-variables';
 
 #header .title {
-    font-family: "AvenirNext-Medium", "Avenir Next Medium";
-    font-size: 18pt;
+  font-family: 'AvenirNext-Medium', 'Avenir Next Medium';
+  font-size: 18pt;
 }
 
 #header .header-right-icon {
-    vertical-align: middle;
-    font-size: 20pt;
+  vertical-align: middle;
+  font-size: 20pt;
 }
 
 #preview-image {
-    width: 100%;
+  width: 100%;
 }
 
 #user-selection {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .hash-title {
-    font-size: 16pt;
+  font-size: 16pt;
 }
 
 .tag-title {
-    font-size: 14pt;
+  font-size: 14pt;
 }
 
-.hash-title, .tag-title, .btn-selectall, .btn-add {
-    font-family: "AvenirNext-Medium", "Avenir Next Medium";
+.hash-title,
+.tag-title,
+.btn-selectall,
+.btn-add {
+  font-family: 'AvenirNext-Medium', 'Avenir Next Medium';
 }
 
 .btn-selectall {
-    font-size: 12pt;
-    height: 20pt;
-    margin: 0;
+  font-size: 12pt;
+  height: 20pt;
+  margin: 0;
 }
 .input {
-    width: 100%;
+  width: 100%;
 }
 
 .footer StackLayout {
-    padding-top: 8;
+  padding-top: 8;
 }
 
 @keyframes show {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .dialogOpen .page {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 .dialogOpen .dialog-wrapper {
-    visibility: visible;
-    animation-name: show;
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
+  visibility: visible;
+  animation-name: show;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
 }
 
 .dialog-wrapper {
-    visibility: collapse;
-    opacity: 0;
+  visibility: collapse;
+  opacity: 0;
 }
 
 .dialog {
-    border-radius: 15pt;
-    width: 60%;
-    margin-top: 290pt;
-    background: linear-gradient(to right, $color_pink, $color_orange);
-    padding: 3pt;
+  border-radius: 15pt;
+  width: 60%;
+  margin-top: 290pt;
+  background: linear-gradient(to right, $color_pink, $color_orange);
+  padding: 3pt;
 }
 
 .dialog2 {
-    border-radius: 13pt;
-    background-color: #F4F4F4;
-    padding: 20pt 10pt;
+  border-radius: 13pt;
+  background-color: #f4f4f4;
+  padding: 20pt 10pt;
 }

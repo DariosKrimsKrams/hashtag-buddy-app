@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { HashtagCategory } from '~/app/models/hashtag-category';
@@ -23,10 +23,9 @@ let clipboard = require('nativescript-clipboard');
   selector: 'ns-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss'],
-  moduleId: module.id,
+  moduleId: module.id
 })
 export class ResultsComponent implements AfterViewInit, OnInit {
-
   public parallaxHeight = 250;
   public photo: Photo;
   public dialogOpen: boolean;
@@ -34,18 +33,17 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public selectedHashtags: ResultSelectionHashtags;
   public hightlightStatus: Array<boolean> = [];
   public currentScrollingY: number;
-  
+
   constructor(
     private readonly page: Page,
     private readonly router: RouterExtensions,
     private readonly userService: UserService,
-    private readonly route: ActivatedRoute,
+    private readonly route: ActivatedRoute
   ) {
     this.page.actionBarHidden = true;
   }
 
-  ngAfterViewInit(): void {
-  }
+  ngAfterViewInit(): void {}
 
   ngOnInit(): void {
     this.selectedHashtags = new ResultSelectionHashtags();
@@ -57,7 +55,11 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     });
   }
 
-  public onScroll(event: ScrollEventData, scrollView: ScrollView, topView: View): void {
+  public onScroll(
+    event: ScrollEventData,
+    scrollView: ScrollView,
+    topView: View
+  ): void {
     this.currentScrollingY = scrollView.verticalOffset;
     if (scrollView.verticalOffset <= this.parallaxHeight) {
       const offset = scrollView.verticalOffset / 2;
@@ -92,7 +94,13 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   private selectHashtag(tag: Hashtag, titleId: number, tagId: number): void {
-    this.selectedHashtags.push(new ResultSelectionHashtag({hashtag: tag, titleId: titleId, tagId: tagId}));
+    this.selectedHashtags.push(
+      new ResultSelectionHashtag({
+        hashtag: tag,
+        titleId: titleId,
+        tagId: tagId
+      })
+    );
     this.hightlightStatus[titleId + '_' + tagId] = true;
     this.selectionChanged();
   }
@@ -108,14 +116,17 @@ export class ResultsComponent implements AfterViewInit, OnInit {
       }
     });
   }
-  
+
   public deselectAll(category: HashtagCategory, titleId: number): void {
     category.tags.map((tag, tagId) => {
       this.deselectHashtag(tag.title);
     });
   }
 
-  public areAllHashtagSelected(category: HashtagCategory, titleId: number): boolean {
+  public areAllHashtagSelected(
+    category: HashtagCategory,
+    titleId: number
+  ): boolean {
     for (let i = 0; i < category.tags.length; i++) {
       let tagId = i;
       if (!this.isHashtagSelected(titleId, tagId)) {
@@ -126,14 +137,17 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   public addHashtag(hashtag: Hashtag): void {
-    let exist = this.selectedHashtags.hashtags.filter(x => x.hashtag.title.toLowerCase() === hashtag.title.toLowerCase())[0] !== undefined;
+    let exist =
+      this.selectedHashtags.hashtags.filter(
+        x => x.hashtag.title.toLowerCase() === hashtag.title.toLowerCase()
+      )[0] !== undefined;
     if (exist) {
       return;
     }
     if (this.selectHashtagIfExist(hashtag.title)) {
       return;
     }
-    this.selectedHashtags.push({hashtag: hashtag, titleId: -1, tagId: -1});
+    this.selectedHashtags.push({ hashtag: hashtag, titleId: -1, tagId: -1 });
     this.selectionChanged();
   }
 
@@ -190,15 +204,18 @@ export class ResultsComponent implements AfterViewInit, OnInit {
 
   private copyToClipboard(): void {
     let text = this.selectedHashtags.getHashtagsAsText();
-    clipboard.setText(text).then(() => {
-      this.dialogOpen = true;
-      setTimeout.bind(this)(() => {
-        this.dialogOpen = false;
-      }, 3000);
-    }).catch(function (e) {
-      console.log('Copy failed: ' + e);
-      Toast.makeText(localize('copy_failed') + ': ' + e, 'long').show();
-    });
+    clipboard
+      .setText(text)
+      .then(() => {
+        this.dialogOpen = true;
+        setTimeout.bind(this)(() => {
+          this.dialogOpen = false;
+        }, 3000);
+      })
+      .catch(function(e) {
+        console.log('Copy failed: ' + e);
+        Toast.makeText(localize('copy_failed') + ': ' + e, 'long').show();
+      });
   }
 
   private showToastIfHasNoSelectedHashtags(): boolean {
@@ -237,5 +254,4 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   public clickedCensoredHashtag(): void {
     Toast.makeText(localize('toast_hashtags_hidden')).show();
   }
-
 }
