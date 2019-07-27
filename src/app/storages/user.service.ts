@@ -2,7 +2,6 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
 import { Photo } from '../models/photo';
 import { Transaction } from 'nativescript-purchase/transaction';
-import { Hashtag } from '../models/hashtag';
 import { MyHashtag } from '../models/my-hashtag';
 
 @Injectable({

@@ -76,13 +76,15 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   private hashtagIsPartOfACategory(title: string): boolean {
-    this.photo.categories.forEach(category => {
-      category.tags.forEach(tag => {
+    for (let i = 0; i < this.photo.categories.length; i++) {
+     const category = this.photo.categories[i];
+     for (let j = 0; j < category.tags.length; j++) {
+      const tag = category.tags[j];
         if (tag.title.toLowerCase() === title.toLowerCase()) {
           return true;
         }
-      });
-    });
+      }
+    }
     return false;
   }
 
