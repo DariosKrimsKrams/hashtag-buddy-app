@@ -1,8 +1,7 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { HashtagCategory } from '~/app/models/hashtag-category';
-import { ResultSelectionHashtag } from '~/app/models/result-selection-hashtag';
 import { View } from 'tns-core-modules/ui/core/view';
 import { Page } from 'tns-core-modules/ui/page';
 import { ActivatedRoute } from '@angular/router';
@@ -14,10 +13,9 @@ import * as frame from 'tns-core-modules/ui/frame';
 import * as app from 'tns-core-modules/application';
 import { UserService } from '../../../storages/user.service';
 import { Photo } from '../../../models/photo';
-import { ResultSelectionHashtags } from '~/app/models/result-selection-hashtags';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
-let clipboard = require('nativescript-clipboard');
+const clipboard = require('nativescript-clipboard');
 
 @Component({
   selector: 'ns-results',
@@ -25,14 +23,14 @@ let clipboard = require('nativescript-clipboard');
   styleUrls: ['./results.component.scss'],
   moduleId: module.id
 })
-export class ResultsComponent implements AfterViewInit, OnInit {
+export class ResultsComponent implements OnInit {
   public parallaxHeight = 250;
   public photo: Photo;
   public dialogOpen: boolean;
   public openmenu: boolean;
-  public selectedHashtags: ResultSelectionHashtags;
-  public hightlightStatus: Array<boolean> = [];
+  public highlightStatus: string[] = [];
   public currentScrollingY: number;
+  public categories: HashtagCategory[] = [];
 
   constructor(
     private readonly page: Page,
@@ -43,16 +41,25 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     this.page.actionBarHidden = true;
   }
 
-  ngAfterViewInit(): void {}
-
   ngOnInit(): void {
-    this.selectedHashtags = new ResultSelectionHashtags();
     const id = Number(this.route.snapshot.params['id']);
     this.photo = this.userService.getPhoto(id);
-    this.selectedHashtags.fromPhoto(this.photo);
-    this.selectedHashtags.hashtags.forEach(hashtag => {
-      this.hightlightStatus[hashtag.titleId + '_' + hashtag.tagId] = true;
+    this.categories = Object.assign([], this.photo.categories);
+    for (let i = 0; i < this.photo.selectedHashtags.length; i++) {
+      this.selectHashtag(this.photo.selectedHashtags[i].title);
+    }
+    this.addFavoriteHashtags();
+  }
+
+  private addFavoriteHashtags(): void {
+    let favoritCat = new HashtagCategory();
+    favoritCat.title = 'results_category_favorites';
+    const favorites = this.userService.getFavorites();
+    favoritCat.tags = [];
+    favorites.forEach(favorit => {
+      favoritCat.tags.push(new Hashtag(favorit.title));
     });
+    this.categories.unshift(favoritCat);
   }
 
   public onScroll(
@@ -71,65 +78,49 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     }
   }
 
-  public toggleHashtag(tag: Hashtag, titleId: number, tagId: number): void {
-    if (this.hightlightStatus[titleId + '_' + tagId]) {
-      this.deselectHashtag(tag.title);
+  public toggleHashtag(title: string): void {
+    if (this.isHashtagSelected(title)) {
+      this.deselectHashtag(title);
     } else {
-      this.selectHashtag(tag, titleId, tagId);
+      this.selectHashtag(title);
     }
+    this.saveSelection();
   }
 
-  public deselectHashtag(name: string): void {
-    for (let i = 0; i < this.selectedHashtags.length; i++) {
-      let hashtag = this.selectedHashtags.hashtags[i];
-      if (hashtag.hashtag.title === name) {
-        this.selectedHashtags.splice(i, 1);
-        if (hashtag.titleId !== -1 && hashtag.tagId !== -1) {
-          this.hightlightStatus[hashtag.titleId + '_' + hashtag.tagId] = false;
-        }
-        this.selectionChanged();
+  public deselectHashtag(title: string): void {
+    for (let i = 0; i < this.highlightStatus.length; i++) {
+      if (this.highlightStatus[i].toLowerCase() === title.toLowerCase()) {
+        this.highlightStatus.splice(i, 1);
         return;
       }
     }
   }
 
-  private selectHashtag(tag: Hashtag, titleId: number, tagId: number): void {
-    this.selectedHashtags.push(
-      new ResultSelectionHashtag({
-        hashtag: tag,
-        titleId: titleId,
-        tagId: tagId
-      })
-    );
-    this.hightlightStatus[titleId + '_' + tagId] = true;
-    this.selectionChanged();
+  private selectHashtag(title: string): void {
+    this.highlightStatus.push(title);
   }
 
-  private isHashtagSelected(titleId: number, tagId: number) {
-    return this.hightlightStatus[titleId + '_' + tagId];
+  private isHashtagSelected(title: string): boolean {
+    return this.highlightStatus.filter(x => x.toLowerCase() === title.toLowerCase())[0] !== undefined;
   }
 
-  public selectAll(category: HashtagCategory, titleId: number): void {
-    category.tags.map((tag, tagId) => {
-      if (!this.isHashtagSelected(titleId, tagId)) {
-        this.selectHashtag(tag, titleId, tagId);
+  public selectAll(category: HashtagCategory): void {
+    category.tags.map(hashtag => {
+      if (!this.isHashtagSelected(hashtag.title)) {
+        this.selectHashtag(hashtag.title);
       }
     });
+    this.saveSelection();
   }
 
-  public deselectAll(category: HashtagCategory, titleId: number): void {
-    category.tags.map((tag, tagId) => {
-      this.deselectHashtag(tag.title);
-    });
+  public deselectAll(category: HashtagCategory): void {
+    category.tags.map((tag) => { this.deselectHashtag(tag.title); });
+    this.saveSelection();
   }
 
-  public areAllHashtagSelected(
-    category: HashtagCategory,
-    titleId: number
-  ): boolean {
+  public areAllHashtagSelected(category: HashtagCategory): boolean {
     for (let i = 0; i < category.tags.length; i++) {
-      let tagId = i;
-      if (!this.isHashtagSelected(titleId, tagId)) {
+      if (!this.isHashtagSelected(category.tags[i].title)) {
         return false;
       }
     }
@@ -137,32 +128,12 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   public addHashtag(hashtag: Hashtag): void {
-    let exist =
-      this.selectedHashtags.hashtags.filter(
-        x => x.hashtag.title.toLowerCase() === hashtag.title.toLowerCase()
-      )[0] !== undefined;
+    const exist = this.isHashtagSelected(hashtag.title);
     if (exist) {
-      return;
+      this.deselectHashtag(hashtag.title);
     }
-    if (this.selectHashtagIfExist(hashtag.title)) {
-      return;
-    }
-    this.selectedHashtags.push({ hashtag: hashtag, titleId: -1, tagId: -1 });
-    this.selectionChanged();
-  }
-
-  private selectHashtagIfExist(name: string): boolean {
-    for (let i = 0; i < this.photo.categories.length; i++) {
-      let category = this.photo.categories[i];
-      for (let j = 0; j < category.tags.length; j++) {
-        let hashtag = category.tags[j];
-        if (hashtag.title === name.toLowerCase()) {
-          this.selectHashtag(hashtag, i, j);
-          return true;
-        }
-      }
-    }
-    return false;
+    this.selectHashtag(hashtag.title);
+    this.saveSelection();
   }
 
   public openMenu(): void {
@@ -203,7 +174,7 @@ export class ResultsComponent implements AfterViewInit, OnInit {
   }
 
   private copyToClipboard(): void {
-    let text = this.selectedHashtags.getHashtagsAsText();
+    let text = this.getHashtagsAsText();
     clipboard
       .setText(text)
       .then(() => {
@@ -218,8 +189,16 @@ export class ResultsComponent implements AfterViewInit, OnInit {
       });
   }
 
+  private getHashtagsAsText(): string {
+    let text = '';
+    for (let i = 0; i < this.highlightStatus.length; i++) {
+      text += `#${this.highlightStatus[i]} `;
+    }
+    return text;
+  }
+
   private showToastIfHasNoSelectedHashtags(): boolean {
-    let hasSelectedHashtags = this.selectedHashtags.length > 0;
+    let hasSelectedHashtags = this.highlightStatus.length > 0;
     if (!hasSelectedHashtags) {
       Toast.makeText(localize('toast_no_hashtags_selected')).show();
     }
@@ -246,8 +225,12 @@ export class ResultsComponent implements AfterViewInit, OnInit {
     }
   }
 
-  private selectionChanged(): void {
-    this.photo.selectedHashtags = this.selectedHashtags.toSelectedHashtags();
+  private saveSelection(): void {
+    let selectedHashtags: Hashtag[] = [];
+    for (let i = 0; i < this.highlightStatus.length; i++) {
+      selectedHashtags.push(new Hashtag(this.highlightStatus[i]));
+    }
+    this.photo.selectedHashtags = selectedHashtags;
     this.userService.updatePhoto(this.photo);
   }
 

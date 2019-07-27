@@ -1,12 +1,12 @@
 import { HashtagCategory } from './hashtag-category';
-import { SelectedHashtag } from './selected-hashtag';
 import { ResultFeedback } from './result-feedback';
+import { Hashtag } from './hashtag';
 
 export class Photo {
   id: number;
   image: string;
   categories: HashtagCategory[];
-  selectedHashtags: SelectedHashtag[];
+  selectedHashtags: Hashtag[];
   feedback: ResultFeedback;
   timestamp: number;
   logId: number;

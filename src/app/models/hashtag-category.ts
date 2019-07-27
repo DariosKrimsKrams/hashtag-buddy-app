@@ -6,6 +6,10 @@ export class HashtagCategory {
   public title?: string;
   public tags?: Hashtag[];
 
+  public constructor() {
+    this.tags = [];
+  }
+
   public static fromHashtagResult(hashtags: HashtagResult[], title: string): HashtagCategory {
     let category = new HashtagCategory();
     category.title = title;

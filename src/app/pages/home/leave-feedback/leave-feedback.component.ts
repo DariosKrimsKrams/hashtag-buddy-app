@@ -6,7 +6,6 @@ import { Hashtag } from '~/app/models/hashtag';
 import { ResultFeedback } from '~/app/models/result-feedback';
 import { Photo } from '~/app/models/photo';
 import { ActivatedRoute } from '@angular/router';
-import { SelectedHashtag } from '~/app/models/selected-hashtag';
 import { ResultFeedbackRequest } from '~/app/models/request/result-feedback-request';
 import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/pages/feedback/modal/modal.component';
@@ -20,17 +19,16 @@ import { Rating } from '~/app/models/rating';
   moduleId: module.id
 })
 export class LeaveFeedbackComponent implements OnInit {
-
   public ratingIndex: number;
-  private rating: Rating = Rating.None;
   public tags1: string[] = [];
   public tags2: string[] = [];
-  public missingHashtags = '';
-  public comment = '';
-  public userSelectedHashtags: Hashtag[] = [];
-  public userNotSelectedHashtags: Hashtag[] = [];
-  public emojis = ['great', 'satisfied', 'bad'];
-  
+  public missingHashtags: string = '';
+  public comment: string = '';
+  public userSelectedHashtags: Hashtag[];
+  public userNotSelectedHashtags: Hashtag[];
+  public emojis: string[] = ['great', 'satisfied', 'bad'];
+
+  private rating: Rating = Rating.None;
   private photo: Photo;
 
   constructor(
@@ -67,14 +65,25 @@ export class LeaveFeedbackComponent implements OnInit {
     this.comment = feedback.comment;
   }
 
-  public getUserSelectedHashtags(): SelectedHashtag[] {
-    let hashtags: SelectedHashtag[] = [];
-    this.photo.selectedHashtags.forEach(hashtag => {
-      if (hashtag.categoryId !== -1) {
-        hashtags.push(hashtag);
+  public getUserSelectedHashtags(): Hashtag[] {
+    let hashtags: Hashtag[] = [];
+    this.photo.selectedHashtags.forEach(selectedHashtag => {
+      if (this.hashtagIsPartOfACategory(selectedHashtag.title)) {
+        hashtags.push(selectedHashtag);
       }
     });
     return hashtags;
+  }
+
+  private hashtagIsPartOfACategory(title: string): boolean {
+    this.photo.categories.forEach(category => {
+      category.tags.forEach(tag => {
+        if (tag.title.toLowerCase() === title.toLowerCase()) {
+          return true;
+        }
+      });
+    });
+    return false;
   }
 
   public getUserNotSelectedHashtags(): Hashtag[] {
