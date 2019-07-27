@@ -19,4 +19,8 @@ export class ErrorComponent implements OnInit {
   ngOnInit() {
   }
 
+  public openMenu(): void {
+    
+  }
+
 }
