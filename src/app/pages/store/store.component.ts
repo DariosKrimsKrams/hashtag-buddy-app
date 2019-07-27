@@ -143,12 +143,12 @@ export class StoreComponent implements OnInit {
     });
   }
 
-  openMenu(): void {
+  public openMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
   }
 
-  closeMenu() {
+  public closeMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.closeDrawer();
   }

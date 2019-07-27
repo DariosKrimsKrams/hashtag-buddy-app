@@ -7,42 +7,54 @@ import { Hashtag } from '~/app/models/hashtag';
 import * as frame from 'tns-core-modules/ui/frame';
 import * as utils from 'tns-core-modules/utils/utils';
 import { MyHashtag } from '~/app/models/my-hashtag';
+import { UserService } from '~/app/storages/user.service';
 
 @Component({
   selector: 'ns-myhashtags',
   templateUrl: './myhashtags.component.html',
   styleUrls: ['./myhashtags.component.scss'],
-  moduleId: module.id,
+  moduleId: module.id
 })
 export class MyhashtagsComponent implements OnInit {
-
-  public hashtagsOwn: MyHashtag[];
-  public hashtagsGenerated: MyHashtag[];
+  public hashtagsOwn: MyHashtag[] = [];
+  public hashtagsGenerated: Hashtag[] = [];
 
   constructor(
-    private readonly page: Page, 
+    private readonly page: Page,
+    private readonly userService: UserService
   ) {
     this.page.actionBarHidden = true;
   }
 
   ngOnInit() {
-    this.hashtagsOwn = [];
-    this.hashtagsOwn.push(new MyHashtag('test', 1));
-    this.hashtagsOwn.push(new MyHashtag('bla123syasd', 2));
-    
-    this.hashtagsGenerated = [];
-    this.hashtagsGenerated.push(new MyHashtag('longverylonghashtagdiesdas', 1));
-    this.hashtagsGenerated.push(new MyHashtag('catlover', 10));
-    this.hashtagsGenerated.push(new MyHashtag('blubb', 5));
-    this.hashtagsGenerated.push(new MyHashtag('moep', 2));
+    this.loadOwnHashtags();
+    this.loadPhotoHashtags();
   }
 
-  openMenu(): void {
+  private loadOwnHashtags(): void {
+    const favorites = this.userService.getFavorites();
+    favorites.forEach(favorit => {
+      this.hashtagsOwn.push(favorit);
+    });
+  }
+
+  private loadPhotoHashtags(): void {
+    const photos = this.userService.getPhotos();
+    photos.forEach(photo => {
+      photo.categories.forEach(cat => {
+        cat.tags.forEach(tag => {
+          this.hashtagsGenerated.push(tag);
+        });
+      });
+    });
+  }
+
+  public openMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
   }
 
-  closeMenu() {
+  public closeMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.closeDrawer();
   }
@@ -56,17 +68,18 @@ export class MyhashtagsComponent implements OnInit {
     }
   }
 
-  public clickHashtag(name: string): void {
-
-  }
-
   public addHashtag(hashtag: Hashtag): void {
-    let exist = this.hashtagsOwn.filter(x => x.title.toLowerCase() === hashtag.title.toLowerCase())[0] !== undefined;
+    let exist =
+      this.hashtagsOwn.filter(
+        x => x.title.toLowerCase() === hashtag.title.toLowerCase()
+      )[0] !== undefined;
     if (exist) {
-      // sort to first position
-      return;
+      let index = this.hashtagsOwn
+        .map(x => x.title.toLowerCase() === hashtag.title.toLowerCase())
+        .indexOf(true);
+      this.hashtagsOwn.splice(index, 1);
     }
-    this.hashtagsOwn.push(new MyHashtag(hashtag.title, 1));
+    this.hashtagsOwn.unshift(new MyHashtag(hashtag.title, 1, 'own'));
+    this.userService.setFavorites(this.hashtagsOwn);
   }
-
 }

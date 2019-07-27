@@ -171,15 +171,15 @@ export class LeaveFeedbackComponent implements OnInit {
     this.saveFeedback();
   }
 
-  public clickGoodHashtag(tag: Hashtag) {
+  public clickGoodHashtag(tag: Hashtag): void {
     this.addRemoveHashtags(this.tags1, tag);
   }
 
-  public clickBadHashtag(tag: Hashtag) {
+  public clickBadHashtag(tag: Hashtag): void {
     this.addRemoveHashtags(this.tags2, tag);
   }
 
-  private addRemoveHashtags(source: string[], tag: Hashtag) {
+  private addRemoveHashtags(source: string[], tag: Hashtag): void {
     let i = source.indexOf(tag.title);
     if (i !== -1) {
       source.splice(i, 1);

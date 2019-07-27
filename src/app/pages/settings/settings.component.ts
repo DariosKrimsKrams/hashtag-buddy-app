@@ -28,12 +28,12 @@ export class SettingsComponent implements  OnInit {
   ngOnInit() {
   }
 
-  openMenu(): void {
+  public openMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
   }
 
-  closeMenu() {
+  public closeMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.closeDrawer();
   }

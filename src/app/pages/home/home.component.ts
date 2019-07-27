@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public historyHeight: number;
   public historyDefaultTransform: number;
   public openConfirmImage: boolean;
-  public hasAnyPhotosUploaded: boolean;
+  public showProgressBar: boolean;
   @ViewChild('history', { read: ElementRef, static: false }) public historyElement: ElementRef;
   @ViewChild('mainContainer', { read: ElementRef, static: false }) public mainContainerElement: ElementRef;
 
@@ -40,10 +40,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
 
-    this.hasAnyPhotosUploaded = this.userService.countPhotos() !== 0;
-    if (!this.hasAnyPhotosUploaded) {
+    this.showProgressBar = this.userService.countPhotos() > 2;
+    if (!this.showProgressBar) {
       this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
-        this.hasAnyPhotosUploaded = true;
+        this.showProgressBar = true;
         this.photoAddedSubscription.unsubscribe();
       });
     }

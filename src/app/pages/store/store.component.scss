@@ -18,6 +18,7 @@
 
 .plan-title {
 	font-weight: bold;
+  color: $color_pink;
 }
 .plan-content {
 	font-size: 15pt;
@@ -28,11 +29,10 @@
 	border-radius: 0 0 5 5;
   padding: 5;
   
-	.plan-title,
-	.plan-footer Label {
+	Label {
 		color: $color_pink;
 	}
-	.plan-footer Button {
+	Button {
 		color: #fff;
 		font-weight: bold;
 	}

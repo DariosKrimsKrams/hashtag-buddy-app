@@ -17,6 +17,7 @@ export class FloatLabelComponent implements OnInit, OnDestroy {
   @ViewChild('label', { read: ElementRef, static: false }) label: ElementRef;
   @ViewChild('textField', { read: ElementRef, static: false }) textField: ElementRef;
   @Output() userTextEmitter = new EventEmitter();
+  @Output() onSubmit = new EventEmitter();
 
   constructor() {}
 
@@ -78,6 +79,10 @@ export class FloatLabelComponent implements OnInit, OnDestroy {
       container.android.setFocusable(true);
       textField.android.clearFocus();
     }
+  }
+
+  public onReturnPress(): void {
+    this.onSubmit.emit();
   }
 
 }

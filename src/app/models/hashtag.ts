@@ -4,6 +4,6 @@ export class Hashtag {
 
   public constructor(title: string) {
     this.title = title;
+    this.isCensored = false;
   }
-
 }
