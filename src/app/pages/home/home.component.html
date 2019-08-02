@@ -18,7 +18,7 @@
         </GridLayout>
     </AbsoluteLayout>
 
-    <StackLayout id="big_header" [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" verticalAlignment="top">
+    <StackLayout id="big_header" #header verticalAlignment="top">
         <ns-big-header></ns-big-header>
     </StackLayout>
 

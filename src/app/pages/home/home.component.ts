@@ -20,8 +20,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   public isHistoryOpen: number;
   public historyHeight: number;
   public historyDefaultTransform: number;
+  public headerDefaultTransform: number;
   public openConfirmImage: boolean;
   @ViewChild('history', { read: ElementRef, static: false }) public historyElement: ElementRef;
+  @ViewChild('header', { read: ElementRef, static: false }) public headerElement: ElementRef;
   @ViewChild('mainContainer', { read: ElementRef, static: false }) public mainContainerElement: ElementRef;
   @Output() public historyOpenChanged: EventEmitter<boolean> = new EventEmitter();
 
@@ -41,6 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
+    this.headerDefaultTransform = -70;
 
     this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
       this.cd.detectChanges();
@@ -77,6 +80,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.cd.reattach();
     this.isHistoryOpen = this.isHistoryOpen !== 1 ? 1 : 2;
     this.historyOpenChanged.emit(this.isHistoryOpen === 1);
+    this.animateHistory();
+    this.animateHeader();
+  }
+
+  private animateHistory(): void {
     let posY = this.isHistoryOpen === 1 ? 0 : this.historyDefaultTransform;
     let bgColor = this.isHistoryOpen === 1 ? '#fff' : '#fcfcfc';
     const that = this;
@@ -86,6 +94,19 @@ export class HomeComponent implements OnInit, OnDestroy {
       duration: 600
     }).then(function () {
       that.cd.detach();
+    });
+  }
+
+  private animateHeader(): void {
+    let posY = this.isHistoryOpen === 1 ? this.headerDefaultTransform : 0;
+    // let bgColor = this.isHistoryOpen === 1 ? '#fff' : '#fcfcfc';
+    // const that = this;
+    this.headerElement.nativeElement.animate({
+      translate: { x: 0, y: posY},
+      // backgroundColor: bgColor,
+      duration: 600
+    }).then(function () {
+      // that.cd.detach();
     });
   }
 

@@ -144,7 +144,7 @@
   <string name="selection_popup_title">"By upload a photo, Instagram\'s most relevant hashtags will be found out"</string>
   <string name="history_photo_defect2">"Please try to re-upload"</string>
   <string name="history_photo_defect1">"An error occurred:"</string>
-  <string name="history_no_content">"No photos uploaded yet"</string>
+  <string name="history_no_content">"You haven\'t uploaded any photos yet."</string>
   <string name="history_title">"History"</string>
   <string name="home_upload">"Pick a photo"</string>
   <string name="home_desc_3">"Upload a photo to get fitting Instagram hashtags."</string>
