@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   public historyHeight: number;
   public historyDefaultTransform: number;
   public openConfirmImage: boolean;
-  public showProgressBar: boolean;
   @ViewChild('history', { read: ElementRef, static: false }) public historyElement: ElementRef;
   @ViewChild('mainContainer', { read: ElementRef, static: false }) public mainContainerElement: ElementRef;
   @Output() public historyOpenChanged: EventEmitter<boolean> = new EventEmitter();
@@ -34,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private readonly userService: UserService,
     private readonly cd: ChangeDetectorRef
   ) {
-    cd.detach();
+    this.cd.detach();
     this.page.actionBarHidden = true;
     this.openConfirmImage = false;
   }
@@ -43,21 +42,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
 
-    this.showProgressBar = this.userService.countPhotos() > 2;
-    if (!this.showProgressBar) {
-      this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
-        this.showProgressBar = true;
-        this.photoAddedSubscription.unsubscribe();
-        this.cd.detectChanges();
-      });
-    }
+    this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
+      this.cd.detectChanges();
+    });
     this.cd.detectChanges();
   }
   
   ngOnDestroy() {
-    if (this.photoAddedSubscription !== undefined) {
       this.photoAddedSubscription.unsubscribe();
-    }
   }
 
   public clickSelectPhoto(): void {

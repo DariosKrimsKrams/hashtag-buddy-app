@@ -12,9 +12,10 @@
   <string name="progressbar_confirm_freemode2">"Best hashtags are hidden now :("</string>
   <string name="progressbar_confirm_freemode1">"Free limit reached:"</string>
   <string name="progressbar_confirm_promode">"%1$s photos left: Enjoy the best hashtags."</string>
-  <string name="progressbar_home_freemode">"Free mode: Some hashtags will be hidden."</string>
-  <string name="progressbar_home_iapmode">"still %1$s photo uploads"</string>
-  <string name="progressbar_home_promode">"%1$s photo uploads left"</string>
+  <string name="progressbar_home_freemode">"You used all free your photo uploads. You can still upload photos but some hashtags will be censored."</string>
+  <string name="progressbar_home_iapmode">"You used %1$s of %2$s photo uploads."</string>
+  <string name="progressbar_home_startmode_is_using">"You have used %1$s of %2$s photo uploads. After using all of them, you get 1 photo upload every 24 hours for free."</string>
+  <string name="progressbar_home_startmode_not_used">"You get %1$s photo uploads for free."</string>
   <string name="toast_imagepicker_failed">"Image Picker failed"</string>
   <string name="toast_create_customer_at_upload_failed">"Request failed! Connection lost :\'("</string>
   <string name="toast_create_customer_failed">"You are offline. Please connect to the internet :)"</string>
@@ -146,7 +147,7 @@
   <string name="history_no_content">"No photos uploaded yet"</string>
   <string name="history_title">"History"</string>
   <string name="home_upload">"Pick a photo"</string>
-  <string name="home_desc_3">"Upload a photo to get hashtags."</string>
+  <string name="home_desc_3">"Upload a photo to get fitting Instagram hashtags."</string>
   <string name="home_desc_2">"#hashtags for your photos"</string>
   <string name="home_desc_1">"Discover the best Instagram"</string>
   <string name="_app_name_1k3Sbz">"Instaq"</string>

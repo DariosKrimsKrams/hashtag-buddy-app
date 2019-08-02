@@ -27,7 +27,7 @@ export class ConfirmImageComponent implements OnInit {
     private readonly selectPhotoService: SelectPhotoService,
     private readonly cd: ChangeDetectorRef,
   ) {
-    cd.detach();
+    this.cd.detach();
     this.page.actionBarHidden = true;
   }
 

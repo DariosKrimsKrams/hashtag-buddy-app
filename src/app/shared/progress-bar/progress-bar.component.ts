@@ -30,6 +30,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
 
   private oneHour = 3600;
   private photosCountChangeSubscription: Subscription;
+  private used: boolean;
 
   constructor(
     private readonly photosCountService: PhotosCountService
@@ -37,18 +38,20 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.photosCountChangeSubscription = this.photosCountService.changedAmount.subscribe(() => {
-      this.updateFreeIndicator();
-      this.buildText();
-      this.buildData();
+      this.photoChanged();
     });
-    
-    this.updateFreeIndicator();
-    this.buildText();
-    this.buildData();
+    this.photoChanged();
   }
 
   ngOnDestroy() {
     this.photosCountChangeSubscription.unsubscribe();
+  }
+
+  private photoChanged(): void {
+    this.updateFreeIndicator();
+    this.calcUsed();
+    this.buildText();
+    this.buildData();
   }
 
   private updateFreeIndicator(): void {
@@ -63,9 +66,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   }
 
   private buildText(): void {
-
     let hasPayedPhotos = this.photosCountService.hasPayedPhotos();
-
     if (hasPayedPhotos && this.page !== 'home') {
       this.isVisible = false;
       return;
@@ -73,8 +74,16 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
 
     this.isVisible = true;
     if (this.page === 'home') {
-      let textKey = hasPayedPhotos ? 'progressbar_home_iapmode' : 'progressbar_home_promode';
-      this.text1 = localize(textKey, this.countPhotoLeft.toString());
+      const usedAmount = this.countPhotosOverall - this.countPhotoLeft;
+      if (hasPayedPhotos) {
+        this.text1 = localize('progressbar_home_iapmode', usedAmount.toString(), this.countPhotosOverall.toString());
+      } else {
+        if (this.used) {
+          this.text1 = localize('progressbar_home_startmode_is_using', usedAmount.toString(), this.countPhotosOverall.toString());
+        } else {
+          this.text1 = localize('progressbar_home_startmode_not_used', this.countPhotosOverall.toString());
+        }
+      }
       this.text2 = localize('progressbar_home_freemode');
     }
 
@@ -90,7 +99,6 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     }
   }
 
-
   private buildData(): void {
     let percent = 0;
     let result = this.calcTimes();
@@ -104,7 +112,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
       percent = this.timeStart / this.timeOverall * 100;
       this.setProgressbarWidth(percent);
       this.updateTimer(percent);
-    }    
+    }
   }
 
   setProgressbarWidth(percent: number) {
@@ -121,7 +129,6 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     if (sec < 10) { s = '0'; }
     let timeAsText = h + hour + ':' + m + min + ':' + s + sec;
     return localize('progressbar_freemode_time', timeAsText);
-
   }
 
   private calcTimes(): {hour: number, min: number, sec: number} {
@@ -148,6 +155,10 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
       this.text4 = this.setUI(hour, min, sec);
       
     }, 1000);
+  }
+
+  private calcUsed(): void {
+    this.used = this.countPhotoLeft !== this.countPhotosOverall;
   }
 
 }

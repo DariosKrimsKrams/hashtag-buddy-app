@@ -12,9 +12,10 @@
   <string name="progressbar_confirm_freemode2">"Einige Hashtags werden zensiert :("</string>
   <string name="progressbar_confirm_freemode1">"Kostenloses Limit erreicht:"</string>
   <string name="progressbar_confirm_promode">"noch %1$s Foto Uploads"</string>
-  <string name="progressbar_home_freemode">"Free Modus: Einige Hashtags sind versteckt."</string>
-  <string name="progressbar_home_iapmode">"noch %1$s Foto Uploads"</string>
-  <string name="progressbar_home_promode">"%1$s Foto Uploads übrig"</string>
+  <string name="progressbar_home_freemode">"Du hast alle kostenlose Foto Uploads verbraucht. Du kannst weiterhin Foto hochladen, aber einige Hashtags werden zensiert."</string>
+  <string name="progressbar_home_iapmode">"Du hast %1$s von %2$s Foto Uploads benutzt."</string>
+  <string name="progressbar_home_startmode_is_using">"Du hast %1$s von %2$s Foto Uploads benutzt. Anschließend erhälst du 1 Foto Upload alle 24 Stunden kostenlos."</string>
+  <string name="progressbar_home_startmode_not_used">"Du erhälst %1$s Foto Uploads kostenlos."</string>
   <string name="toast_imagepicker_failed">"Foto auswählen festgeschlagen"</string>
   <string name="toast_create_customer_at_upload_failed">"Internet-Verbindung verloren :\'("</string>
   <string name="toast_create_customer_failed">"Du bist offline. Bitte verbinde dich mit dem Internet :)"</string>
@@ -95,7 +96,7 @@
   <string name="diduknow_fact9">"Mittwoch 17:00 Uhr ist die beste Zeit, ein Foto zu posten"</string>
   <string name="diduknow_fact8">"Mit jedem Hashtag bis zur Nutzung von 11 Hashtags erhöht sich deine Reichweite"</string>
   <string name="diduknow_fact7">"Videos erhalten 2x so viele Reaktionen (Likes, Kommentare, Teilen) als Fotos"</string>
-  <string name="diduknow_fact6">"17 %% der Jugendlichen sagen, Instagram ist ihre wichtigste Social Media Plattform."</string>
+  <string name="diduknow_fact6">"17 %% der Jugendlichen sagen, Instagram sei ihre wichtigste Social Media Plattform."</string>
   <string name="diduknow_fact5">"38 %% der weiblichen und 26 %% der männlichen Internet Nutzer benutzen Instagram"</string>
   <string name="diduknow_fact4">"68 %% der Instagram Nutzer sind weiblich"</string>
   <string name="diduknow_fact3">"Posts mit mind. 1 Hashtag erreichen 12.6 %% mehr Reaktionen"</string>
@@ -146,7 +147,7 @@
   <string name="history_no_content">"Bisher wurden keine Fotos hochgeladen"</string>
   <string name="history_title">"Historie"</string>
   <string name="home_upload">"Wähle ein Foto"</string>
-  <string name="home_desc_3">"Lade ein Foto hoch, um Hashtags zu erhalten."</string>
+  <string name="home_desc_3">"Lade ein Foto hoch, um Instagram Hashtags zu erhalten."</string>
   <string name="home_desc_2">"#hashtags für deine Fotos"</string>
   <string name="home_desc_1">"Entdecke die besten Instagram"</string>
   <string name="_app_name_1k3Sbz">"Instaq"</string>

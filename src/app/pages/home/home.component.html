@@ -1,11 +1,11 @@
 <GridLayout tkMainContent #mainContainer>
-    <GridLayout rows="240,*" class="Home">
+    <GridLayout rows="220,*" class="Home">
         <GridLayout row="1">
             <GridLayout rows="*,130" verticalAlignment="middle">
                 <StackLayout row="0">
                     <Label [text]="'home_desc_3' | L" class="font-medium-small intro" textWrap="true"></Label>
                     <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient" id="upload-button" text="{{ 'home_upload' | L }}" row="0" (tap)="clickSelectPhoto()"></Button>
-                    <ProgressBar page="home" width="40%" *ngIf="showProgressBar"></ProgressBar>
+                    <ProgressBar page="home" width="40%"></ProgressBar>
                 </StackLayout>
             </GridLayout>
         </GridLayout>
