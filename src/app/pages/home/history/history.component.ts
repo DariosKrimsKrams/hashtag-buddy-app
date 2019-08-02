@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Photo } from '~/app/models/photo';
 import { UserService } from '../../../storages/user.service';
 import { RouterExtensions } from 'nativescript-angular/router';
@@ -12,23 +12,31 @@ import { localize } from 'nativescript-localize/angular';
   selector: 'ns-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss'],
-  moduleId: module.id
+  moduleId: module.id,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HistoryComponent implements OnInit, OnDestroy {
+
   public selected: number = -1;
   public photosReverse: Photo[] = [];
+  public isHistoryOpen: boolean;
+
   private hashtagAmount = 7;
   private photoAddedSubscription: Subscription;
   private photoUpdatedSubscription: Subscription;
+  private historyOpenChangedSubscription: Subscription;
 
-  @Input() isHistoryOpen: boolean;
+  @Input() historyOpenChanged: EventEmitter<boolean>;
   @Output() openCloseHistory = new EventEmitter();
 
   constructor(
     private readonly userService: UserService,
     private readonly router: RouterExtensions,
-    private readonly deviceService: DeviceService
-  ) {}
+    private readonly deviceService: DeviceService,
+    private readonly cd: ChangeDetectorRef
+  ) {
+    this.cd.detach();
+  }
 
   ngOnInit() {
     this.setPhotos(this.userService.getPhotos());
@@ -42,11 +50,23 @@ export class HistoryComponent implements OnInit, OnDestroy {
         this.setPhotos(photos);
       }
     );
+    if (this.historyOpenChanged !== undefined) {
+      this.historyOpenChangedSubscription = this.historyOpenChanged.subscribe(
+        (status) => {
+          this.isHistoryOpen = status;
+          this.cd.detectChanges();
+        }
+      );
+    }
+    this.cd.detectChanges();
   }
 
   ngOnDestroy() {
     this.photoAddedSubscription.unsubscribe();
     this.photoUpdatedSubscription.unsubscribe();
+    if (this.historyOpenChangedSubscription !== undefined) {
+      this.historyOpenChangedSubscription.unsubscribe();
+    }
   }
 
   public selectItem(index: number): void {
@@ -65,12 +85,11 @@ export class HistoryComponent implements OnInit, OnDestroy {
     if (this.selected === -1) {
       return;
     }
-    let successful = this.userService.deletePhoto(photo);
+    const successful = this.userService.deletePhoto(photo);
     this.deviceService.deletePhoto(photo.image);
     if (successful) {
       this.photosReverse.splice(this.selected, 1);
       this.selected = -1;
-
       Toast.makeText(localize('toast_delete_successful')).show();
     } else {
       Toast.makeText(localize('toast_delete_failed')).show();
@@ -145,5 +164,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   private setPhotos(photos: Photo[]): void {
     this.photosReverse = photos.slice().reverse();
+    this.cd.detectChanges();
   }
 }

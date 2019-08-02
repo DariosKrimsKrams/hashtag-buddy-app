@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page';
 import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
   moduleId: module.id,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public showProgressBar: boolean;
   @ViewChild('history', { read: ElementRef, static: false }) public historyElement: ElementRef;
   @ViewChild('mainContainer', { read: ElementRef, static: false }) public mainContainerElement: ElementRef;
+  @Output() public historyOpenChanged: EventEmitter<boolean> = new EventEmitter();
 
   private photoAddedSubscription: Subscription;
 
@@ -31,7 +32,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     private readonly page: Page,
     private readonly selectPhotoService: SelectPhotoService,
     private readonly userService: UserService,
+    private readonly cd: ChangeDetectorRef
   ) {
+    cd.detach();
     this.page.actionBarHidden = true;
     this.openConfirmImage = false;
   }
@@ -45,8 +48,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
         this.showProgressBar = true;
         this.photoAddedSubscription.unsubscribe();
+        this.cd.detectChanges();
       });
     }
+    this.cd.detectChanges();
   }
   
   ngOnDestroy() {
@@ -55,9 +60,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  public clickUpload(): void {
+  public clickSelectPhoto(): void {
     this.selectPhotoService.pickImage().subscribe(() => {
       this.openConfirmImage = true;
+      this.cd.detectChanges();
     });
   }
 
@@ -76,18 +82,24 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public clickHistory(): void {
+    this.cd.reattach();
     this.isHistoryOpen = this.isHistoryOpen !== 1 ? 1 : 2;
+    this.historyOpenChanged.emit(this.isHistoryOpen === 1);
     let posY = this.isHistoryOpen === 1 ? 0 : this.historyDefaultTransform;
     let bgColor = this.isHistoryOpen === 1 ? '#fff' : '#fcfcfc';
+    const that = this;
     this.historyElement.nativeElement.animate({
       translate: { x: 0, y: posY},
       backgroundColor: bgColor,
       duration: 600
+    }).then(function () {
+      that.cd.detach();
     });
   }
 
-  public onClickCancel(): void {
+  public clickCancel(): void {
     this.openConfirmImage = false;
+    this.cd.detectChanges();
   }
 
 }

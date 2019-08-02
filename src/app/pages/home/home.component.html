@@ -4,7 +4,7 @@
             <GridLayout rows="*,130" verticalAlignment="middle">
                 <StackLayout row="0">
                     <Label [text]="'home_desc_3' | L" class="font-medium-small intro" textWrap="true"></Label>
-                    <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient" id="upload-button" text="{{ 'home_upload' | L }}" row="0" (tap)="clickUpload()"></Button>
+                    <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient" id="upload-button" text="{{ 'home_upload' | L }}" row="0" (tap)="clickSelectPhoto()"></Button>
                     <ProgressBar page="home" width="40%" *ngIf="showProgressBar"></ProgressBar>
                 </StackLayout>
             </GridLayout>
@@ -14,7 +14,7 @@
     <AbsoluteLayout class="text-center" verticalAlignment="bottom">
         <GridLayout id="history" [height]="historyHeight" [translateY]="historyDefaultTransform" #history [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" top="0" left="0">
             <Image src="~/app/assets/images/home_footer_shadow.png" id="history_shadow" verticalAlignment="top"></Image>
-            <ns-history [isHistoryOpen]="isHistoryOpen === 1" (openCloseHistory)="clickHistory()"></ns-history>
+            <ns-history [historyOpenChanged]="historyOpenChanged" (openCloseHistory)="clickHistory()"></ns-history>
         </GridLayout>
     </AbsoluteLayout>
 
@@ -26,6 +26,6 @@
         <Image src="~/app/assets/images/icons/menu_bar_white.png" width="20" class="m-l-20 m-t-20" (tap)="openMenu()"></Image>
     </StackLayout>
 
-    <ns-confirm-image *ngIf="openConfirmImage" (onClickCancel)="onClickCancel()"></ns-confirm-image>
+    <ns-confirm-image *ngIf="openConfirmImage" (onClickCancel)="clickCancel()"></ns-confirm-image>
 
 </GridLayout>

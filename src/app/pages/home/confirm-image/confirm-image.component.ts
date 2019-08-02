@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { DeviceService } from '~/app/services/device-photos.service';
 import { ImageAsset } from 'tns-core-modules/image-asset/image-asset';
@@ -13,6 +13,7 @@ import { SelectPhotoService } from '~/app/services/business-logic/select-photo.s
   templateUrl: './confirm-image.component.html',
   styleUrls: ['./confirm-image.component.scss'],
   moduleId: module.id,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConfirmImageComponent implements OnInit {
 
@@ -24,7 +25,9 @@ export class ConfirmImageComponent implements OnInit {
     private readonly router: RouterExtensions,
     private readonly deviceService: DeviceService,
     private readonly selectPhotoService: SelectPhotoService,
-    ) {
+    private readonly cd: ChangeDetectorRef,
+  ) {
+    cd.detach();
     this.page.actionBarHidden = true;
   }
 
@@ -34,12 +37,14 @@ export class ConfirmImageComponent implements OnInit {
 
   loadImage(): void {
     this.photo = this.deviceService.getSelectedPhoto();
+    this.cd.detectChanges();
   }
 
   confirmImage(): void {
     this.openLoadingPage();
     this.selectPhotoService.saveAndUploadPhoto().subscribe((photoId) => {
       this.openResultsPage(photoId);
+      this.cd.detectChanges();
     }, (e) => {
       let locaKey = e === 'customer failed' ? 'toast_create_customer_at_upload_failed' : 'toast_upload_failed';
       Toast.makeText(localize(locaKey), 'long').show();
@@ -52,6 +57,7 @@ export class ConfirmImageComponent implements OnInit {
   public chooseImage(): void {
     this.selectPhotoService.pickImage().subscribe((image) => {
       this.photo = image;
+      this.cd.detectChanges();
     });
   }
 
