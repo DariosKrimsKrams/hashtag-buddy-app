@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @Output() public historyOpenChanged: EventEmitter<boolean> = new EventEmitter();
 
   private photoAddedSubscription: Subscription;
+  private androidBackTriggeredSubscription: Subscription;
 
   constructor(
     private readonly page: Page,
@@ -48,11 +49,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
       this.cd.detectChanges();
     });
+    this.androidBackTriggeredSubscription = this.userService.androidBackTriggered.subscribe((path: string) => this.onAndroidBackTriggered(path));
     this.cd.detectChanges();
   }
   
   ngOnDestroy() {
-      this.photoAddedSubscription.unsubscribe();
+    this.photoAddedSubscription.unsubscribe();
+    this.androidBackTriggeredSubscription.unsubscribe();
   }
 
   public clickSelectPhoto(): void {
@@ -80,39 +83,41 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.cd.reattach();
     this.isHistoryOpen = this.isHistoryOpen !== 1 ? 1 : 2;
     this.historyOpenChanged.emit(this.isHistoryOpen === 1);
-    this.animateHistory();
-    this.animateHeader();
+    const time = 600;
+    this.animateHistory(time);
+    this.animateHeader(time);
   }
 
-  private animateHistory(): void {
+  private animateHistory(time: number): void {
     let posY = this.isHistoryOpen === 1 ? 0 : this.historyDefaultTransform;
     let bgColor = this.isHistoryOpen === 1 ? '#fff' : '#fcfcfc';
     const that = this;
     this.historyElement.nativeElement.animate({
       translate: { x: 0, y: posY},
       backgroundColor: bgColor,
-      duration: 600
+      duration: time
     }).then(function () {
       that.cd.detach();
     });
   }
 
-  private animateHeader(): void {
+  private animateHeader(time: number): void {
     let posY = this.isHistoryOpen === 1 ? this.headerDefaultTransform : 0;
-    // let bgColor = this.isHistoryOpen === 1 ? '#fff' : '#fcfcfc';
-    // const that = this;
     this.headerElement.nativeElement.animate({
       translate: { x: 0, y: posY},
-      // backgroundColor: bgColor,
-      duration: 600
-    }).then(function () {
-      // that.cd.detach();
+      duration: time
     });
   }
 
   public clickCancel(): void {
     this.openConfirmImage = false;
     this.cd.detectChanges();
+  }
+
+  private onAndroidBackTriggered(path: string): void {
+    if (path === '/home' && this.isHistoryOpen) {
+      this.clickHistory();
+    }
   }
 
 }

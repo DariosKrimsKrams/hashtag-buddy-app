@@ -7,6 +7,7 @@ import { CustomerService, CustomerCreateStatus } from '../storages/customer.serv
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
 import * as application from 'tns-core-modules/application';
+import { UserService } from '../storages/user.service';
 
 @Component({
   moduleId: module.id,
@@ -22,7 +23,8 @@ export class AppComponent implements OnInit {
     private readonly router: RouterExtensions,
     private readonly photosCountService: PhotosCountService,
     private readonly customerService: CustomerService,
-    private ngZone: NgZone
+    private readonly ngZone: NgZone,
+    private readonly userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -42,12 +44,16 @@ export class AppComponent implements OnInit {
         args.cancel = true;
         const path = this.router.locationStrategy.path();
         const isResults = path.substring(0, 13) === '/home/results';
-        // console.log('navigate', path, path.substring(0, 13));
         if (isResults) {
+          // const that = this;
+          // ToDo only direct when user is not already coming from home - otherwise History state will be reseted
           this.router.navigate(['home'], {clearHistory: true});
-          // reopen history if is was open before
+          // .then(function() {
+            // that.userService.onAndroidBackTriggered(path);
+          // });
         } else if (path === '/home') {
-          // close history if it was open
+          this.userService.onAndroidBackTriggered(path);
+          // do nothing
         } else if (path === '/home/loading-hashtags') {
           // do nothing
         } else {
