@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import * as app from 'tns-core-modules/application';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from 'nativescript-ui-sidedrawer';
@@ -6,6 +6,7 @@ import { PhotosCountService } from '../storages/photos-count.service';
 import { CustomerService, CustomerCreateStatus } from '../storages/customer.service';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
+import * as application from 'tns-core-modules/application';
 
 @Component({
   moduleId: module.id,
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit {
   constructor(
     private readonly router: RouterExtensions,
     private readonly photosCountService: PhotosCountService,
-    private readonly customerService: CustomerService
+    private readonly customerService: CustomerService,
+    private ngZone: NgZone
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +36,35 @@ export class AppComponent implements OnInit {
       }
     });
     this.photosCountService.initFreePhotos();
+
+    application.android.on(application.AndroidApplication.activityBackPressedEvent, (args: any) => {
+      this.ngZone.run(() => {
+        args.cancel = true;
+        const path = this.router.locationStrategy.path();
+        const isResults = path.substring(0, 13) === '/home/results';
+        // console.log('navigate', path, path.substring(0, 13));
+        if (isResults) {
+          this.router.navigate(['home'], {clearHistory: true});
+          // reopen history if is was open before
+        } else if (path === '/home') {
+          // close history if it was open
+        } else if (path === '/home/loading-hashtags') {
+          // do nothing
+        } else {
+          this.router.back();
+          // update SideMenu curStatus
+        }
+      });
+      // this.router.navigate(['home']);
+      // if (this.router.canGoBack()) {
+
+      //   args.cancel = true;
+      //   this.router.back();
+      // } else {
+      //   args.cancel = false;
+      //   this.router.navigate(['page2']);
+      // }
+    });
   }
 
   get sideDrawerTransition(): DrawerTransitionBase {
