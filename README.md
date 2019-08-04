@@ -25,14 +25,35 @@ Follow [NativeScript Setup Guide](https://docs.nativescript.org/start/ns-setup-w
 Afer NativeScript installation is complete run:
 
 ```
-npm i -g nativescript@latest
 npm i
 tns platform add android/ios
-tns run android/ios
 ```
 
 To ensure code quality, run tslint from time to time using following command:
 
 ```
 npm run tslint
+```
+
+## Publishing app
+
+Check and install dependencies
+
+```
+tns info
+npm i -g nativescript@latest
+npm install tns-core-modules@latest --save
+tns platform clean android/ios
+```
+
+run on device with
+
+```
+tns run android/ios
+```
+
+build with 
+
+```
+tns build Android --copy-to instaq.apk
 ```
