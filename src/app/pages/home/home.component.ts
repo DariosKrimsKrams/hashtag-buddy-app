@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public headerDefaultTransform: number;
   public openConfirmImage: boolean;
   @ViewChild('history', { read: ElementRef, static: false }) public historyElement: ElementRef;
+  @ViewChild('historShadow', { read: ElementRef, static: false }) public historShadowElement: ElementRef;
   @ViewChild('header', { read: ElementRef, static: false }) public headerElement: ElementRef;
   @ViewChild('mainContainer', { read: ElementRef, static: false }) public mainContainerElement: ElementRef;
   @Output() public historyOpenChanged: EventEmitter<boolean> = new EventEmitter();
@@ -85,6 +86,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.historyOpenChanged.emit(this.isHistoryOpen === 1);
     const time = 600;
     this.animateHistory(time);
+    this.animateHistoryShadow(time);
     this.animateHeader(time);
   }
 
@@ -98,6 +100,14 @@ export class HomeComponent implements OnInit, OnDestroy {
       duration: time
     }).then(function () {
       that.cd.detach();
+    });
+  }
+
+  private animateHistoryShadow(time: number): void {
+    let value = this.isHistoryOpen === 1 ? 0 : 1;
+    this.historShadowElement.nativeElement.animate({
+      opacity: value,
+      duration: time
     });
   }
 
@@ -115,7 +125,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private onAndroidBackTriggered(path: string): void {
-    if (path === '/home' && this.isHistoryOpen) {
+    console.log(this.isHistoryOpen);
+    if (path === '/home' && this.isHistoryOpen === 1) {
       this.clickHistory();
     }
   }

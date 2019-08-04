@@ -60,6 +60,9 @@ export class AppComponent implements OnInit {
           this.router.back();
           // update SideMenu curStatus
         }
+
+        // if old=results and before=home & before != "loading" 
+        // this.userService.onAndroidBackTriggered(path);
       });
       // this.router.navigate(['home']);
       // if (this.router.canGoBack()) {
