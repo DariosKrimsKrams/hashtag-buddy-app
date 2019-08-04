@@ -46,7 +46,6 @@ export class AppComponent implements OnInit {
         const isResults = path.substring(0, 13) === '/home/results';
         if (isResults) {
           // const that = this;
-          // ToDo only direct when user is not already coming from home - otherwise History state will be reseted
           this.router.navigate(['home'], {clearHistory: true});
           // .then(function() {
             // that.userService.onAndroidBackTriggered(path);
@@ -60,19 +59,9 @@ export class AppComponent implements OnInit {
           this.router.back();
           // update SideMenu curStatus
         }
-
-        // if old=results and before=home & before != "loading" 
+        // if old=results and before=home & before != "loading" -> open home History
         // this.userService.onAndroidBackTriggered(path);
       });
-      // this.router.navigate(['home']);
-      // if (this.router.canGoBack()) {
-
-      //   args.cancel = true;
-      //   this.router.back();
-      // } else {
-      //   args.cancel = false;
-      //   this.router.navigate(['page2']);
-      // }
     });
   }
 
