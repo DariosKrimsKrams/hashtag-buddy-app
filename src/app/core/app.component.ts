@@ -56,7 +56,9 @@ export class AppComponent implements OnInit {
         } else if (path === '/home/loading-hashtags') {
           // do nothing
         } else {
-          this.router.back();
+          if (this.router.canGoBack()) {
+            this.router.back();
+          }
           // update SideMenu curStatus
         }
         // if old=results and before=home & before != "loading" -> open home History
