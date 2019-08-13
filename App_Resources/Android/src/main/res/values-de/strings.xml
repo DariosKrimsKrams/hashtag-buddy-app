@@ -11,7 +11,7 @@
   <string name="rate_no">"Nie"</string>
   <string name="rate_later">"Später"</string>
   <string name="rate_desc">"Wenn du diese App nützlich findest, könntest du dir vorstellen, eine Bewertung abzugeben? Danke für deinen Support! :)"</string>
-  <string name="rate_headline">"App bewerten ☆☆☆☆☆"</string>
+  <string name="rate_headline">"Bewerten ☆☆☆☆☆"</string>
   <string name="share">"Hey, ich möchte dir diese App empfehlen: Sie hilft, die passendsten Instagram Hashtags für Fotos zu finden. Probiere sie doch gleich mal aus :)"</string>
   <string name="myhashtags_other">"Von Fotos"</string>
   <string name="myhashtags_your">"Von dir"</string>
@@ -34,8 +34,8 @@
   <string name="toast_delete_successful">"Erfolgreich gelöscht :)"</string>
   <string name="toast_no_hashtags_selected">"Bitte zuerst Hashtags auswählen :)"</string>
   <string name="toast_hashtags_hidden">"Dieses Hashtag ist im kostenlosen Modus versteckt"</string>
-  <string name="settings_rate_subline">"im Play Store"</string>
-  <string name="settings_rate">"Bewerten"</string>
+  <string name="settings_rate_subline">"Danke für deinen Support! :)"</string>
+  <string name="settings_rate">"Bewerten im Play Store"</string>
   <string name="settings_share_subline">"Erzähle deinen Freunden hiervon"</string>
   <string name="settings_share">"Verbreite etwas Liebe!"</string>
   <string name="settings_terms">"Geschäftsbedingungen"</string>
