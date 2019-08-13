@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
 import { RouterExtensions } from 'nativescript-angular/router';
 
@@ -9,7 +9,12 @@ import { RouterExtensions } from 'nativescript-angular/router';
   moduleId: module.id
 })
 export class ModalComponent implements OnInit {
-  public button: string;
+  
+  public showIcon: boolean;
+  public headline: string;
+  public desc: string;
+  public buttonOk: string;
+  public buttonCancel: string;
 
   constructor(
     private readonly params: ModalDialogParams,
@@ -17,8 +22,12 @@ export class ModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    let autoClose = this.params.context.autoClose === true;
-    this.button = this.params.context.button;
+    const autoClose = this.params.context.autoClose === true;
+    this.showIcon = this.params.context.showIcon === true;
+    this.headline = this.params.context.headline;
+    this.desc = this.params.context.desc;
+    this.buttonOk = this.params.context.buttonOk;
+    this.buttonCancel = this.params.context.buttonCancel;
 
     if (autoClose) {
       setTimeout.bind(this)(() => {
@@ -33,6 +42,14 @@ export class ModalComponent implements OnInit {
 
   public ok(): void {
     this.close('ok');
+    this.redirectToHome();
+  }
+
+  public cancel(): void {
+    this.close('cancel');
+  }
+
+  public redirectToHome(): void {
     setTimeout.bind(this)(() => {
       this.router.navigate(['/home'], {
         transition: {
@@ -43,4 +60,5 @@ export class ModalComponent implements OnInit {
       });
     }, 100);
   }
+
 }

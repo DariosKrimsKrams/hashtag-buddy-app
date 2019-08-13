@@ -17,7 +17,7 @@ import { ProgressBarModule } from '~/app/shared/progress-bar/progress-bar.module
     FloatLabelModule,
     InsertHashtagsFormModule,
     HashtagModule,
-    ProgressBarModule,
+    ProgressBarModule
   ],
   exports: [
     ResultsComponent

@@ -22,39 +22,38 @@ import { HashtagModule } from '../../shared/hashtag/hashtag.module';
 import { setStatusBarColors } from '~/app/shared/status-bar-util';
 import { LeaveFeedbackModule } from './leave-feedback/leave-feedback.module';
 import { ResultsModule } from './results/results.module';
+import { ModalModule } from '~/app/shared/modal/modal.module';
 setStatusBarColors();
 
 @NgModule({
-    imports: [
-        NativeScriptCommonModule,
-        HomeRoutingModule,
-        BigHeaderModule,
-        ProgressBarModule,
-        FloatLabelModule,
-        NativeScriptUISideDrawerModule,
-        NativeScriptUIListViewModule,
-        NativeScriptUICalendarModule,
-        NativeScriptUIChartModule,
-        NativeScriptUIDataFormModule,
-        NativeScriptUIAutoCompleteTextViewModule,
-        NativeScriptUIGaugeModule,
-        NativeScriptFormsModule,
-        NativeScriptLocalizeModule,
-        HistoryModule,
-        HashtagModule,
-        LeaveFeedbackModule,
-        ResultsModule
-    ],
-    declarations: [
-        HomeComponent,
-        CircularProgressBarComponent,
-        LoadingHashtagsComponent,
-        ConfirmImageComponent
-    ],
-    schemas: [
-        NO_ERRORS_SCHEMA
-    ],
-    entryComponents: [
-    ]
+  imports: [
+    NativeScriptCommonModule,
+    HomeRoutingModule,
+    BigHeaderModule,
+    ProgressBarModule,
+    FloatLabelModule,
+    NativeScriptUISideDrawerModule,
+    NativeScriptUIListViewModule,
+    NativeScriptUICalendarModule,
+    NativeScriptUIChartModule,
+    NativeScriptUIDataFormModule,
+    NativeScriptUIAutoCompleteTextViewModule,
+    NativeScriptUIGaugeModule,
+    NativeScriptFormsModule,
+    NativeScriptLocalizeModule,
+    HistoryModule,
+    HashtagModule,
+    LeaveFeedbackModule,
+    ResultsModule,
+    ModalModule
+  ],
+  declarations: [
+    HomeComponent,
+    CircularProgressBarComponent,
+    LoadingHashtagsComponent,
+    ConfirmImageComponent
+  ],
+  schemas: [NO_ERRORS_SCHEMA],
+  entryComponents: []
 })
-export class HomeModule { }
+export class HomeModule {}

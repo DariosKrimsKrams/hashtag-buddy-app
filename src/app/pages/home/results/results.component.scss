@@ -1,13 +1,16 @@
 @import '../../../../app-variables';
 
-#header .title {
-  font-family: 'AvenirNext-Medium', 'Avenir Next Medium';
-  font-size: 18pt;
-}
+#header {
 
-#header .header-right-icon {
-  vertical-align: middle;
-  font-size: 20pt;
+  .title {
+    font-family: 'AvenirNext-Medium', 'Avenir Next Medium';
+    font-size: 18pt;
+  }
+
+  .header-right-icon {
+    vertical-align: middle;
+    font-size: 20pt;
+  }
 }
 
 #preview-image {
@@ -38,6 +41,7 @@
   height: 20pt;
   margin: 0;
 }
+
 .input {
   width: 100%;
 }
@@ -46,41 +50,41 @@
   padding-top: 8;
 }
 
-@keyframes show {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+// @keyframes show {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
 
-.dialogOpen .page {
-  opacity: 0.2;
-}
+// .dialogOpen .page {
+//   opacity: 0.2;
+// }
 
-.dialogOpen .dialog-wrapper {
-  visibility: visible;
-  animation-name: show;
-  animation-duration: 0.6s;
-  animation-fill-mode: forwards;
-}
+// .dialogOpen .dialog-wrapper {
+//   visibility: visible;
+//   animation-name: show;
+//   animation-duration: 0.6s;
+//   animation-fill-mode: forwards;
+// }
 
-.dialog-wrapper {
-  visibility: collapse;
-  opacity: 0;
-}
+// .dialog-wrapper {
+//   visibility: collapse;
+//   opacity: 0;
+// }
 
-.dialog {
-  border-radius: 15pt;
-  width: 60%;
-  margin-top: 290pt;
-  background: linear-gradient(to right, $color_pink, $color_orange);
-  padding: 3pt;
-}
+// .dialog {
+//   border-radius: 15pt;
+//   width: 60%;
+//   margin-top: 290pt;
+//   background: linear-gradient(to right, $color_pink, $color_orange);
+//   padding: 3pt;
+// }
 
-.dialog2 {
-  border-radius: 13pt;
-  background-color: #f4f4f4;
-  padding: 20pt 10pt;
-}
+// .dialog2 {
+//   border-radius: 13pt;
+//   background-color: #f4f4f4;
+//   padding: 20pt 10pt;
+// }

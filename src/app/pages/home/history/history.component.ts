@@ -26,8 +26,8 @@ export class HistoryComponent implements OnInit, OnDestroy {
   private photoUpdatedSubscription: Subscription;
   private historyOpenChangedSubscription: Subscription;
 
-  @Input() historyOpenChanged: EventEmitter<boolean>;
-  @Output() openCloseHistory = new EventEmitter();
+  @Input() public historyOpenChanged: EventEmitter<boolean>;
+  @Output() public openCloseHistory = new EventEmitter();
 
   constructor(
     private readonly userService: UserService,

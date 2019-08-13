@@ -2,7 +2,17 @@
 <resources>
   <string name="email">"dario@innocliq.de"</string>
   <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
-  <string name="share">"Hey Bro, Ich habe diese App Instaq entdeckt: Sie hilft mir, die relevantesten Instagram Hashtags für Fotos zu finden. Lass dir auch helfen :)"</string>
+  <string name="error_button_back">"Geh zu Home-Seite"</string>
+  <string name="error_button_try_again">"Erneut versuchen"</string>
+  <string name="error_desc2">"Leider konnten wir das Hochladen nicht korrekt abschließen"</string>
+  <string name="error_desc">"Etwas lief schief :("</string>
+  <string name="error_headline">"Ooops..."</string>
+  <string name="rate_yes">"Jetzt bewerten"</string>
+  <string name="rate_no">"Nie"</string>
+  <string name="rate_later">"Später"</string>
+  <string name="rate_desc">"Wenn du diese App nützlich findest, könntest du dir vorstellen, eine Bewertung abzugeben? Danke für deinen Support! :)"</string>
+  <string name="rate_headline">"App bewerten ☆☆☆☆☆"</string>
+  <string name="share">"Hey, ich möchte dir diese App empfehlen: Sie hilft, die passendsten Instagram Hashtags für Fotos zu finden. Probiere sie doch gleich mal aus :)"</string>
   <string name="myhashtags_other">"Von Fotos"</string>
   <string name="myhashtags_your">"Von dir"</string>
   <string name="myhashtags_intro">"Speichere hier deine Lieblings-Hashtags. Du kannst dann direkt aus der Foto-Auswahl darauf zugreifen."</string>
@@ -14,7 +24,7 @@
   <string name="progressbar_confirm_promode">"noch %1$s Foto Uploads"</string>
   <string name="progressbar_home_freemode">"Du hast alle kostenlose Foto Uploads verbraucht. Du kannst weiterhin Foto hochladen, aber einige Hashtags werden zensiert."</string>
   <string name="progressbar_home_iapmode">"Du hast %1$s von %2$s Foto Uploads benutzt."</string>
-  <string name="progressbar_home_startmode_is_using">"Du hast %1$s von %2$s Foto Uploads benutzt. Danach schenken wir dir 1 Foto Upload alle 24 Stunden."</string>
+  <string name="progressbar_home_startmode_is_using">"Du hast %1$s von %2$s Foto Uploads benutzt. Danach erhälst du 1 Foto Upload alle 24 Stunden."</string>
   <string name="progressbar_home_startmode_not_used">"Du erhälst %1$s Foto Uploads kostenlos."</string>
   <string name="toast_imagepicker_failed">"Foto auswählen festgeschlagen"</string>
   <string name="toast_create_customer_at_upload_failed">"Internet-Verbindung verloren :\'("</string>
@@ -30,8 +40,8 @@
   <string name="settings_share">"Verbreite etwas Liebe!"</string>
   <string name="settings_terms">"Geschäftsbedingungen"</string>
   <string name="settings_legal">"Impressum &amp; Datenschutz"</string>
-  <string name="settings_about">"Über uns"</string>
-  <string name="faq_outro">"Verbessere diese Seite: Ideen? Gib uns Feedback und Vorschläge per Feedback Formular."</string>
+  <string name="settings_about">"Credits"</string>
+  <string name="faq_outro">"Verbessere diese Seite: Ideen? Gib mir Feedback und Vorschläge per Feedback Formular."</string>
   <string name="faq_headline_stats4">"Inhalte"</string>
   <string name="faq_headline_stats3">"Zielgruppe"</string>
   <string name="faq_headline_stats2">"Hashtags"</string>
@@ -59,17 +69,19 @@
   <string name="about_infos_user_id">"Benutzer ID"</string>
   <string name="about_infos_be_version">"Backend Version"</string>
   <string name="about_infos_app_version">"App Version"</string>
-  <string name="about_infos_contact">"Kontaktiere uns"</string>
+  <string name="about_infos_contact">"Support"</string>
   <string name="about_headline_infos">"Infos"</string>
-  <string name="about_credits_6">"Christian und Paul aus Deutschland (1. Prototype)"</string>
-  <string name="about_credits_5">"Aditia Kurniawan aus Indonesien (Logo)"</string>
-  <string name="about_credits_4">"Nazar Nastin aus der Ukraine (UI / UX Design)"</string>
-  <string name="about_credits_3">"Jabub Jiricka aus der Tschechischen Republik (Frontend Programmierung)"</string>
-  <string name="about_credits_2">"Tim Wiesenmüller aus Deutschland (Management)"</string>
+  <string name="about_support_6">"Christian und Paul aus Deutschland (1. Prototype)"</string>
+  <string name="about_support_5">"Aditia Kurniawan aus Indonesien (Logo)"</string>
+  <string name="about_support_4">"Nazar Nastin aus der Ukraine (UI / UX Design)"</string>
+  <string name="about_support_3">"Jabub Jiricka aus der Tschechischen Republik (Frontend Programmierung)"</string>
+  <string name="about_support_2">"Andreas Sefzig aus Deutschland (Feedback)"</string>
+  <string name="about_support_1">"Tim Wiesenmüller aus Deutschland (Management)"</string>
+  <string name="about_headline_support">"Unterstützung von"</string>
   <string name="about_credits_1">"Dario D. Müller aus Deutschland (Management and Programmierung)"</string>
   <string name="about_headline_credits">"Entwickelt von"</string>
-  <string name="about_desc">"Danke, dass du Instaq benutzt.\n\nWir versuchen, den Prozess des Hashtags finden, verbessern zu können. Wir möchten es Jedem ermöglichen, so qualitativ hochwertige Hashtags zu finden, wie sie von Influencer Agenturen benutzt werden. Dafür bauen wir Instaq auf Basis von Big Data mit aufwendigen Algorithmen, um Instagram\'s neusten und erfolgreichste Posts zu analysieren, um dir die bestmöglichen Ergebnisse liefern zu können.\n\nStimmst du unserer Vision zu? Lass und dieses Projekt gemeinsam bauen und verbessern! Trage einen Teil zu Instaq bei, in dem du uns Feedback gibst oder auf nützliche Funktionen oder Verbesserungsmöglichkeiten hinweist."</string>
-  <string name="about_title">"Über uns"</string>
+  <string name="about_desc">"Danke, dass du Instaq benutzt.\n\nIch versuche, den Prozess, Hashtags zu finden, immer weiter verbessern zu können. Ich möchte es Jedem ermöglichen, so qualitativ hochwertige Hashtags zu finden, wie sie von Social Media Agenturen und Influencern benutzt werden. Um dies zu erreichen, baue dieses Produkt auf eine Basis von Big Data mit aufwendigen Algorithmen, um Instagram\'s neusten und erfolgreichste Posts zu analysieren, und dir so die bestmöglichen Ergebnisse liefern zu können.\n\nLass uns dieses Projekt gemeinsam verbessern, in dem du mir Feedback gibst oder auf nützliche Funktionen oder Verbesserungsmöglichkeiten hinweist."</string>
+  <string name="about_title">"Credits"</string>
   <string name="settings_footer_title_fallback">"Teilen"</string>
   <string name="settings_footer_title">"Folge us"</string>
   <string name="feedback_modal_button">"OK"</string>
@@ -78,7 +90,7 @@
   <string name="feedback_send">"Feedback senden"</string>
   <string name="feedback_message">"Nachricht"</string>
   <string name="feedback_email">"E-Mail-Adresse"</string>
-  <string name="feedback_intro">"Wir hoffen, dir hat diese App gefallen. Um deine Erfahrung so gut wie möglich zu gestalten, möchten wir Dich gerne mit einbeziehen, in dem du deine Ideen und Meinungen teilst. Was könnten wir verbessern? Was gefällt dir gerade nicht?"</string>
+  <string name="feedback_intro">"Ich hoffe, dir gefällt diese App. Um die App weiter zu verbessern, möchte ich ganz viel Feedback, Ideen und Meinungen von dir. Was kann ich verbessern? Was sollte verbessert oder geändert werden?"</string>
   <string name="feedback_title">"Verbessere Instaq"</string>
   <string name="diduknow_fact22">"30 %% der Nutzer haben schon einmal ein Produkt gekauft, welches sie bei Instagram entdeckt haben"</string>
   <string name="diduknow_fact21">"400 Millionen Nutzer schauen Instagram Stories auf einer täglichen Basis an"</string>

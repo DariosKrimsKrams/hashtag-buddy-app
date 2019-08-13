@@ -8,7 +8,7 @@ import { Photo } from '~/app/models/photo';
 import { ActivatedRoute } from '@angular/router';
 import { ResultFeedbackRequest } from '~/app/models/request/result-feedback-request';
 import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
-import { ModalComponent } from '~/app/pages/feedback/modal/modal.component';
+import { ModalComponent } from '~/app/shared/modal/modal.component';
 import { CustomerService } from '~/app/storages/customer.service';
 import { FeedbackRepository } from '~/app/services/repositories/feedback-repository.service';
 import { Rating } from '~/app/models/rating';
@@ -133,7 +133,12 @@ export class LeaveFeedbackComponent implements OnInit {
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
-      context: { autoClose: true, button: '' }
+      context: {
+        autoClose: true,
+        showIcon: true,
+        headline: 'feedback_successful_headline',
+        desc: 'feedback_successful_desc'
+      }
     };
     this.modalService.showModal(ModalComponent, options);
   }

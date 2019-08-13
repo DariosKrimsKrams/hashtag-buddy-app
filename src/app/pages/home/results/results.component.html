@@ -49,17 +49,20 @@
                     <StackLayout class="bottom-shadow" isUserInteractionEnabled="false"></StackLayout>
                 </GridLayout>
                 <GridLayout row="1" columns="*" class="footer">
-                    <StackLayout col="0" horizontalAliginment="center" (tap)="copySelected()">
+                    <StackLayout col="0" horizontalAlignment="center" (tap)="copySelected()">
                         <Label text="&#xf0ea;" class="fas text-center" fontSize="20"></Label>
                         <Label text="{{ 'results_copy_selected' | L }}" class="text-center font-medium-xs"></Label>
                     </StackLayout>
-                    <!-- <StackLayout col="1" horizontalAliginment="center" (tap)="transferToInstagram()" class="open-instagram">
+                    <!-- <StackLayout col="1" horizontalAlignment="center" (tap)="transferToInstagram()" class="open-instagram">
                         <Label text="&#xf16d;" class="fab text-center" fontSize="20"></Label>
                         <Label text="{{ 'results_copy_to_instagram' | L }}" class="text-center font-medium-xs"></Label>
                     </StackLayout> -->
                 </GridLayout>
             </GridLayout>                         
         </GridLayout>
+
+        <ns-dialog type="results" *ngIf="dialogOpen" isVisible="dialogOpen"></ns-dialog>
+<!--         
         <AbsoluteLayout class="dialog-wrapper" *ngIf="dialogOpen" horizontalAlignment="center">
             <StackLayout class="dialog">            
                 <StackLayout class="dialog2">
@@ -67,6 +70,6 @@
                     <Label [text]="'copy_successful' | L" class="m-t-20 text-center"></Label>
                 </StackLayout>
             </StackLayout>
-        </AbsoluteLayout>
+        </AbsoluteLayout> -->
     </GridLayout>              
 </StackLayout>

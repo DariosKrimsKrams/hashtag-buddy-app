@@ -2,7 +2,17 @@
 <resources>
   <string name="email">"dario@innocliq.de"</string>
   <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
-  <string name="share">"Hey bro, I found this app called Instaq. It helps me find the most relevant Instagram hashtags for my photos. Let it help you, too :)"</string>
+  <string name="error_button_back">"Go to main page"</string>
+  <string name="error_button_try_again">"Try again"</string>
+  <string name="error_desc2">"Something went wrong and we can’t handle your request"</string>
+  <string name="error_desc">"Something went wrong :("</string>
+  <string name="error_headline">"Ooops..."</string>
+  <string name="rate_yes">"Rate now"</string>
+  <string name="rate_no">"Never"</string>
+  <string name="rate_later">"Later"</string>
+  <string name="rate_desc">"If you enjoy using this app, would you mind taking a moment to rate it? Thank you for your support! :)"</string>
+  <string name="rate_headline">"Rate this app"</string>
+  <string name="share">"Hey, I would like to recommend you this app: It helps to find the most relevant Instagram hashtags for photos. Let it help you, too :)"</string>
   <string name="myhashtags_other">"By photos"</string>
   <string name="myhashtags_your">"By yourself"</string>
   <string name="myhashtags_intro">"Save your favorite hashtags here. You can access them directly from the photos-selection."</string>
@@ -59,16 +69,18 @@
   <string name="about_infos_user_id">"User ID"</string>
   <string name="about_infos_be_version">"Backend version"</string>
   <string name="about_infos_app_version">"App version"</string>
-  <string name="about_infos_contact">"Contact us"</string>
+  <string name="about_infos_contact">"Support"</string>
   <string name="about_headline_infos">"Infos"</string>
-  <string name="about_credits_6">"Christian und Paul from Germany (1st prototype)"</string>
-  <string name="about_credits_5">"Aditia Kurniawan from Indonesia (Logo)"</string>
-  <string name="about_credits_4">"Nazar Nastin from Ukraine (UI / UX Design)"</string>
-  <string name="about_credits_3">"Jabub Jiricka from Czech Republic (Frontend Programming)"</string>
-  <string name="about_credits_2">"Tim Wiesenmüller from Germany (Management)"</string>
+  <string name="about_support_6">"Christian und Paul from Germany (1st prototype)"</string>
+  <string name="about_support_5">"Aditia Kurniawan from Indonesia (Logo)"</string>
+  <string name="about_support_4">"Nazar Nastin from Ukraine (UI / UX Design)"</string>
+  <string name="about_support_3">"Jabub Jiricka from Czech Republic (Frontend Programming)"</string>
+  <string name="about_support_2">"Andreas Sefzig from Germany (Feedback)"</string>
+  <string name="about_support_1">"Tim Wiesenmüller from Germany (Management)"</string>
+  <string name="about_headline_support">"Support by"</string>
   <string name="about_credits_1">"Dario D. Müller from Germany (Management and Programming)"</string>
   <string name="about_headline_credits">"Developed by"</string>
-  <string name="about_desc">"Thank you for using Instaq.\n\nWe believe in improving the process of finding Instagram hashtags. To find the best fitting hashtags for your photos, we\'ll analyze it and compare it with photos on instagram. We built Instaq by crawling Instagram and storing it\'s data. The algorithms will analyze Instagram\'s content and calculate the performance of each hashtag, location or topic.\n\nLet us build and improve this project together! Plea contribute by giving us your feedback for hashtags or ask for features or improvements."</string>
+  <string name="about_desc">"Thank you for using Instaq.\n\nI believe in improving the process of finding Instagram hashtags. To find the best fitting hashtags for your photos, I\'ll analyze it and compare it with photos on instagram. The software behind this product is using by crawling Instagram and storing it\'s data. The algorithms will analyze Instagram\'s content and calculate the performance of each hashtag, location or topic.\n\nLet us build and improve this project together! Plea contribute by giving us your feedback for hashtags or ask for features or improvements."</string>
   <string name="about_title">"About"</string>
   <string name="settings_footer_title_fallback">"Share"</string>
   <string name="settings_footer_title">"Follow us"</string>
@@ -108,7 +120,7 @@
   <string name="loading_headline">"Building #hashtags"</string>
   <string name="leave_feedback_send_feedback_copy">"Send feedback"</string>
   <string name="leave_feedback_send_feedback">"Send and transfer them to Instagram"</string>
-  <string name="leave_feedback_comments">"How can we make it better?"</string>
+  <string name="leave_feedback_comments">"How can I make it better?"</string>
   <string name="leave_feedback_missing_hashtags">"Missing hashtags?"</string>
   <string name="leave_feedback_bad_hashtags_desc">"Hashtags which are out of context..."</string>
   <string name="leave_feedback_bad_hashtags_title">"Inappropriate hashtags?"</string>
