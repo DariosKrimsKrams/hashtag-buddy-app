@@ -11,7 +11,7 @@
   <string name="rate_no">"Never"</string>
   <string name="rate_later">"Later"</string>
   <string name="rate_desc">"If you enjoy using this app, would you mind taking a moment to rate it? Thank you for your support! :)"</string>
-  <string name="rate_headline">"Rate ☆☆☆☆☆"</string>
+  <string name="rate_headline">"Rate   ☆ ☆ ☆ ☆ ☆"</string>
   <string name="share">"Hey, I would like to recommend you this app: It helps to find the most relevant Instagram hashtags for photos. Let it help you, too :)"</string>
   <string name="myhashtags_other">"By photos"</string>
   <string name="myhashtags_your">"By yourself"</string>
@@ -59,7 +59,7 @@
   <string name="store_outro">"Keep in mind that Google takes 30 %% off for every transaction you make."</string>
   <string name="store_headline_abo">"Subscriptions"</string>
   <string name="store_headline_once">"One-time packages"</string>
-  <string name="store_intro">"Getting hashtags is like Magic, Get photo uploads with uncensored hashtag results for all of your best photos. All packages include a lifelong unlimited history."</string>
+  <string name="store_intro">"Buy photo uploads for more and uncensored hashtag results. This sales won\'t bring me any profit, but help me cover costs for this app."</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"More"</string>
   <string name="menu_faq">"Tips &amp; Tricks"</string>
@@ -85,7 +85,7 @@
   <string name="about_headline_credits">"Developed by"</string>
   <string name="about_desc_3">"Let us improve this app together! Please contribute by giving me your feedback for hashtags or tell me what you like or dislike."</string>
   <string name="about_desc_2">"I believe to we can improving the way to find the most relevant hashtags. I would like to provide a app to help everyone find the most relevant hashtags. To find it, the software behind this app collect and analyze thousands of photos on instagram."</string>
-  <string name="about_desc_1">"Thank you for using this App.\n\n"</string>
+  <string name="about_desc_1">"Thank you for using this App :)"</string>
   <string name="about_title">"About me"</string>
   <string name="settings_footer_title_fallback">"Share"</string>
   <string name="settings_footer_title">"Follow us"</string>

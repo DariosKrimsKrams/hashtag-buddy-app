@@ -11,7 +11,7 @@
   <string name="rate_no">"Nie"</string>
   <string name="rate_later">"Später"</string>
   <string name="rate_desc">"Wenn du diese App nützlich findest, könntest du dir vorstellen, eine Bewertung abzugeben? Danke für deinen Support! :)"</string>
-  <string name="rate_headline">"Bewerten ☆☆☆☆☆"</string>
+  <string name="rate_headline">"Bewerten   ☆ ☆ ☆ ☆ ☆"</string>
   <string name="share">"Hey, ich möchte dir diese App empfehlen: Sie hilft, die passendsten Instagram Hashtags für Fotos zu finden. Probiere sie doch gleich mal aus :)"</string>
   <string name="myhashtags_other">"Von Fotos"</string>
   <string name="myhashtags_your">"Von dir"</string>
@@ -23,8 +23,8 @@
   <string name="progressbar_confirm_freemode1">"Kostenloses Limit erreicht:"</string>
   <string name="progressbar_confirm_promode">"noch %1$s Foto Uploads"</string>
   <string name="progressbar_home_freemode">"Du hast alle kostenlose Foto Uploads verbraucht. Du kannst weiterhin Foto hochladen, aber einige Hashtags werden zensiert."</string>
-  <string name="progressbar_home_iapmode">"Du hast %1$s von %2$s Foto Uploads benutzt."</string>
-  <string name="progressbar_home_startmode_is_using">"Du hast %1$s von %2$s Foto Uploads benutzt. Danach erhälst du 1 Foto Upload alle 24 Stunden."</string>
+  <string name="progressbar_home_iapmode">"Du hast %1$s von %2$s Foto Uploads verwendet."</string>
+  <string name="progressbar_home_startmode_is_using">"Du hast %1$s von %2$s Foto Uploads verwendet. Danach erhälst du 1 Foto Upload alle 24 Stunden."</string>
   <string name="progressbar_home_startmode_not_used">"Du erhälst %1$s Foto Uploads kostenlos."</string>
   <string name="toast_imagepicker_failed">"Foto auswählen festgeschlagen"</string>
   <string name="toast_create_customer_at_upload_failed">"Internet-Verbindung verloren :\'("</string>
@@ -59,7 +59,7 @@
   <string name="store_outro">"Bitte bedenken Sie, dass Google bei jeder Transaktion 30 %% einbehält."</string>
   <string name="store_headline_abo">"Abonnements"</string>
   <string name="store_headline_once">"Einmalig-Pakete"</string>
-  <string name="store_intro">"Erwerbe Fotos Uploads, um unzensierte Hashtags zu erhalten. Alle Pakete enthalten eine unbegrenze, lebenslange Historie."</string>
+  <string name="store_intro">"Erwerbe Fotos Uploads, um noch mehr und unzensierte Hashtags zu erhalten. Diese Umsätze bringen mir keinen Gewinn, aber helfen mir der Kostendeckung für diese App."</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"Mehr"</string>
   <string name="menu_faq">"Tipps &amp; Tricks"</string>
@@ -85,7 +85,7 @@
   <string name="about_headline_credits">"Entwickelt von"</string>
   <string name="about_desc_3">"Lass uns diese Idee gemeinsam verbessern, indem du mir Feedback, z.B. zu Funktionen oder Verbesserungsmöglichkeiten."</string>
   <string name="about_desc_2">"Ich glaube daran, dass den Weg, die richtigen Hashtags zu finden, verbessern können. Mit dieser App möchte es Jedem ermöglichen, die relavantesten Hashtags zu finden, um besser auf Instagram gefunden zu werden. Um dies zu erreichen, sammelt diese App riesige Datenmangen Instagram\'s neuster und erfolgreichster Fotos, und analysiert diese, und so die besten Hashtags liefern zu können."</string>
-  <string name="about_desc_1">"Danke, dass du diese App benutzt."</string>
+  <string name="about_desc_1">"Danke, dass du diese App verwendest :)"</string>
   <string name="about_title">"Über mich"</string>
   <string name="settings_footer_title_fallback">"Teilen"</string>
   <string name="settings_footer_title">"Folge us"</string>

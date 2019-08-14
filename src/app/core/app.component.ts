@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewContainerRef } from '@angular/core';
 import * as app from 'tns-core-modules/application';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from 'nativescript-ui-sidedrawer';
@@ -8,6 +8,8 @@ import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
 import * as application from 'tns-core-modules/application';
 import { UserService } from '../storages/user.service';
+import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog';
+import { ModalComponent } from '../shared/modal/modal.component';
 
 @Component({
   moduleId: module.id,
@@ -15,16 +17,20 @@ import { UserService } from '../storages/user.service';
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit {
+
+  public menus: string[] = ['home', 'myhashtags', 'faq', 'store', 'settings'];
+  public selected: boolean[] = [];
+
   private _sideDrawerTransition: DrawerTransitionBase;
-  menus = ['home', 'myhashtags', 'faq', 'store', 'settings'];
-  selected = [];
 
   constructor(
     private readonly router: RouterExtensions,
     private readonly photosCountService: PhotosCountService,
     private readonly customerService: CustomerService,
     private readonly ngZone: NgZone,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly viewContainerRef: ViewContainerRef,
+    private readonly modalService: ModalDialogService, 
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +44,10 @@ export class AppComponent implements OnInit {
       }
     });
     this.photosCountService.initFreePhotos();
+
+    if (this.userService.allowShowingRateAppModal()) {
+      this.showRateAppModal();
+    }
 
     application.android.on(application.AndroidApplication.activityBackPressedEvent, (args: any) => {
       this.ngZone.run(() => {
@@ -67,6 +77,36 @@ export class AppComponent implements OnInit {
     });
   }
 
+  private showRateAppModal(): void {
+    const options: ModalDialogOptions = {
+      viewContainerRef: this.viewContainerRef,
+      fullscreen: false,
+      context: {
+        headline: 'rate_headline',
+        desc: 'rate_desc',
+        buttonOk: 'rate_yes',
+        buttonCancel: 'rate_later'
+      }
+    };
+    setTimeout.bind(this)(() => {
+      this.modalService.showModal(ModalComponent, options)
+      .then(reason => {
+        console.log(reason);
+        switch (reason) {
+          case 'ok':
+            this.userService.saveRateAppStatus('ok');
+            return;
+          case 'cancel':
+            this.userService.saveRateAppStatus('later');
+            return;
+        }
+      })
+      .catch(error => {
+        console.log('no response', error);
+      });
+    }, 300);
+  }
+
   get sideDrawerTransition(): DrawerTransitionBase {
     return this._sideDrawerTransition;
   }
@@ -88,4 +128,5 @@ export class AppComponent implements OnInit {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.closeDrawer();
   }
+
 }

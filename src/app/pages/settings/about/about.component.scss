@@ -1,9 +1,5 @@
-.hr {
-  border-bottom: 1pt rgb(90, 98, 104);
-}
-
 .headline {
-  margin-top: 5pt;
+  margin: 15pt 0 0 0;
   font-size: 18pt;
 }
 
@@ -11,5 +7,6 @@
   background-image: url('~/app/assets/images/icons/list.png');
   background-repeat: no-repeat;
   background-position: left center;
-  padding: 3 0 3 20;
+  padding: 3pt 0 3pt 15pt;
+  margin-left: 3pt;
 }

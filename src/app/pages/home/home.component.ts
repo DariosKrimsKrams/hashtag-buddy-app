@@ -7,8 +7,6 @@ import { SelectPhotoService } from '../../services/business-logic/select-photo.s
 import { UserService } from '~/app/storages/user.service';
 import { Photo } from '~/app/models/photo';
 import { Subscription } from 'rxjs';
-import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog';
-import { ModalComponent } from '~/app/shared/modal/modal.component';
 
 @Component({
   selector: 'Home',
@@ -37,8 +35,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     private readonly page: Page,
     private readonly selectPhotoService: SelectPhotoService,
     private readonly userService: UserService,
-    private readonly viewContainerRef: ViewContainerRef,
-    private readonly modalService: ModalDialogService, 
     private readonly cd: ChangeDetectorRef
   ) {
     this.cd.detach();
@@ -55,44 +51,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     this.androidBackTriggeredSubscription = this.userService.androidBackTriggered.subscribe((path: string) => this.onAndroidBackTriggered(path));
     this.cd.detectChanges();
-
-    if (this.userService.allowShowingRateAppModal()) {
-      this.showRateAppModal();
-    }
   }
   
   ngOnDestroy() {
     this.photoAddedSubscription.unsubscribe();
     this.androidBackTriggeredSubscription.unsubscribe();
-  }
-
-  private showRateAppModal(): void {
-    const options: ModalDialogOptions = {
-      viewContainerRef: this.viewContainerRef,
-      fullscreen: false,
-      context: {
-        headline: 'rate_headline',
-        desc: 'rate_desc',
-        buttonOk: 'rate_yes',
-        buttonCancel: 'rate_later'
-      }
-    };
-    setTimeout.bind(this)(() => {
-      this.modalService.showModal(ModalComponent, options)
-      .then(reason => {
-        switch (reason) {
-          case 'ok':
-            this.userService.saveRateAppStatus('ok');
-            return;
-          case 'cancel':
-            this.userService.saveRateAppStatus('later');
-            return;
-        }
-      })
-      .catch(error => {
-        console.log('no response', error);
-      });
-    }, 300);
   }
 
   public clickSelectPhoto(): void {
