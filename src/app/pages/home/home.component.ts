@@ -56,7 +56,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.androidBackTriggeredSubscription = this.userService.androidBackTriggered.subscribe((path: string) => this.onAndroidBackTriggered(path));
     this.cd.detectChanges();
 
-    this.showModal();
+    if (this.userService.allowShowingRateAppModal()) {
+      this.showRateAppModal();
+    }
   }
   
   ngOnDestroy() {
@@ -64,13 +66,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.androidBackTriggeredSubscription.unsubscribe();
   }
 
-  private showModal(): void {
+  private showRateAppModal(): void {
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
       context: {
-        autoClose: false,
-        showIcon: false,
         headline: 'rate_headline',
         desc: 'rate_desc',
         buttonOk: 'rate_yes',
@@ -78,7 +78,20 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     };
     setTimeout.bind(this)(() => {
-      this.modalService.showModal(ModalComponent, options);
+      this.modalService.showModal(ModalComponent, options)
+      .then(reason => {
+        switch (reason) {
+          case 'ok':
+            this.userService.saveRateAppStatus('ok');
+            return;
+          case 'cancel':
+            this.userService.saveRateAppStatus('later');
+            return;
+        }
+      })
+      .catch(error => {
+        console.log('no response', error);
+      });
     }, 300);
   }
 

@@ -11,6 +11,7 @@ export class UserService {
   private keyPhotos: string = 'photos';
   private keyPurchases: string = 'purchases';
   private keyFavorites: string = 'favorites';
+  private keyRateApp: string = 'rateapp';
   private photosCache: Photo[];
   @Output() public photoAdded: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
   @Output() public photoUpdated: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
@@ -128,4 +129,19 @@ export class UserService {
   public onAndroidBackTriggered(path: string): void {
     this.androidBackTriggered.emit(path);
   }
+
+  public allowShowingRateAppModal(): boolean {
+    const value = this.localStorageService.get(this.keyRateApp) || undefined;
+    if (value === undefined && this.countPhotos() >= 1) {
+      return true;
+    } else if (value === 'later' && this.countPhotos() >= 3) {
+
+    }
+    return false;
+  }
+
+  public saveRateAppStatus(value: string): void {
+    this.localStorageService.set(this.keyRateApp, value);
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { HashtagCategory } from '~/app/models/hashtag-category';
@@ -15,6 +15,8 @@ import { UserService } from '../../../storages/user.service';
 import { Photo } from '../../../models/photo';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
+import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
+import { ModalComponent } from '~/app/shared/modal/modal.component';
 const clipboard = require('nativescript-clipboard');
 
 @Component({
@@ -26,7 +28,6 @@ const clipboard = require('nativescript-clipboard');
 export class ResultsComponent implements OnInit {
   public parallaxHeight = 250;
   public photo: Photo;
-  public dialogOpen: boolean;
   public openmenu: boolean;
   public highlightStatus: string[] = [];
   public currentScrollingY: number;
@@ -36,6 +37,8 @@ export class ResultsComponent implements OnInit {
     private readonly page: Page,
     private readonly router: RouterExtensions,
     private readonly userService: UserService,
+    private readonly viewContainerRef: ViewContainerRef,
+    private readonly modalService: ModalDialogService, 
     private readonly route: ActivatedRoute
   ) {
     this.page.actionBarHidden = true;
@@ -151,26 +154,16 @@ export class ResultsComponent implements OnInit {
       return;
     }
     this.copyToClipboard();
-    this.navigateToLeaveFeedbackPage();
-  }
-
-  public transferToInstagram(): void {
-    if (this.showToastIfHasNoSelectedHashtags()) {
-      return;
-    }
-    this.navigateToLeaveFeedbackPage();
   }
 
   private navigateToLeaveFeedbackPage(): void {
-    setTimeout(() => {
-      this.router.navigate([`/home/leavefeedback/${this.photo.id}`], {
-        transition: {
-          name: 'slideLeft',
-          duration: 500,
-          curve: 'easeOut'
-        }
-      });
-    }, 1000);
+    this.router.navigate([`/home/leavefeedback/${this.photo.id}`], {
+      transition: {
+        name: 'slideLeft',
+        duration: 500,
+        curve: 'easeOut'
+      }
+    });
   }
 
   private copyToClipboard(): void {
@@ -178,15 +171,32 @@ export class ResultsComponent implements OnInit {
     clipboard
       .setText(text)
       .then(() => {
-        this.dialogOpen = true;
-        setTimeout.bind(this)(() => {
-          this.dialogOpen = false;
-        }, 3000);
+        this.showModal();
       })
       .catch(function(e) {
         console.log('Copy failed: ' + e);
         Toast.makeText(localize('copy_failed') + ': ' + e, 'long').show();
       });
+  }
+
+  private showModal(): void {
+    const options: ModalDialogOptions = {
+      viewContainerRef: this.viewContainerRef,
+      fullscreen: false,
+      context: {
+        autoCloseTime: 1000,
+        showIcon: true,
+        headline: 'copy_successful',
+        desc: 'copy_please_give_feedback'
+      }
+    };
+    this.modalService.showModal(ModalComponent, options)
+    .then(reason => {
+      this.navigateToLeaveFeedbackPage();
+    })
+    .catch(error => {
+      console.log('no response', error);
+    });
   }
 
   private getHashtagsAsText(): string {

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
-import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
   selector: 'ns-modal',
@@ -17,22 +16,21 @@ export class ModalComponent implements OnInit {
   public buttonCancel: string;
 
   constructor(
-    private readonly params: ModalDialogParams,
-    private readonly router: RouterExtensions
+    private readonly params: ModalDialogParams
   ) {}
 
   ngOnInit() {
-    const autoClose = this.params.context.autoClose === true;
-    this.showIcon = this.params.context.showIcon === true;
-    this.headline = this.params.context.headline;
-    this.desc = this.params.context.desc;
-    this.buttonOk = this.params.context.buttonOk;
-    this.buttonCancel = this.params.context.buttonCancel;
+    const autoCloseTime = this.params.context.autoCloseTime || undefined;
+    this.showIcon = this.params.context.showIcon === true || false;
+    this.headline = this.params.context.headline || '';
+    this.desc = this.params.context.desc || '';
+    this.buttonOk = this.params.context.buttonOk || '';
+    this.buttonCancel = this.params.context.buttonCancel || '';
 
-    if (autoClose) {
+    if (autoCloseTime !== undefined) {
       setTimeout.bind(this)(() => {
         this.close('autoClose');
-      }, 1000);
+      }, autoCloseTime);
     }
   }
 
@@ -42,23 +40,10 @@ export class ModalComponent implements OnInit {
 
   public ok(): void {
     this.close('ok');
-    this.redirectToHome();
   }
 
   public cancel(): void {
     this.close('cancel');
-  }
-
-  public redirectToHome(): void {
-    setTimeout.bind(this)(() => {
-      this.router.navigate(['/home'], {
-        transition: {
-          name: 'slideLeft',
-          duration: 500,
-          curve: 'easeOut'
-        }
-      });
-    }, 100);
   }
 
 }

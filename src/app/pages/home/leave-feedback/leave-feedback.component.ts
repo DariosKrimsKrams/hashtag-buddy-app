@@ -134,13 +134,31 @@ export class LeaveFeedbackComponent implements OnInit {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
       context: {
-        autoClose: true,
+        autoCloseTime: 1000,
         showIcon: true,
         headline: 'feedback_successful_headline',
         desc: 'feedback_successful_desc'
       }
     };
-    this.modalService.showModal(ModalComponent, options);
+    this.modalService.showModal(ModalComponent, options)
+    .then(reason => {
+      this.redirectToHome();
+    })
+    .catch(error => {
+      console.log('no response', error);
+    });
+  }
+
+  public redirectToHome(): void {
+    setTimeout.bind(this)(() => {
+      this.router.navigate(['/home'], {
+        transition: {
+          name: 'slideLeft',
+          duration: 500,
+          curve: 'easeOut'
+        }
+      });
+    }, 100);
   }
 
   private doRequest(photo: Photo): void {

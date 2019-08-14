@@ -1,5 +1,5 @@
 <StackLayout tkMainContent>
-    <GridLayout [class.dialogOpen]="dialogOpen">
+    <GridLayout>
         <GridLayout rows="70,*" class="page">
             <GridLayout id="header" [class.gradient]="currentScrollingY >= parallaxHeight" row="0" columns="20,*,20">
                 <StackLayout col="0" (tap)="openMenu()" verticalAlignment="middle">
@@ -53,23 +53,8 @@
                         <Label text="&#xf0ea;" class="fas text-center" fontSize="20"></Label>
                         <Label text="{{ 'results_copy_selected' | L }}" class="text-center font-medium-xs"></Label>
                     </StackLayout>
-                    <!-- <StackLayout col="1" horizontalAlignment="center" (tap)="transferToInstagram()" class="open-instagram">
-                        <Label text="&#xf16d;" class="fab text-center" fontSize="20"></Label>
-                        <Label text="{{ 'results_copy_to_instagram' | L }}" class="text-center font-medium-xs"></Label>
-                    </StackLayout> -->
                 </GridLayout>
             </GridLayout>                         
         </GridLayout>
-
-        <ns-dialog type="results" *ngIf="dialogOpen" isVisible="dialogOpen"></ns-dialog>
-<!--         
-        <AbsoluteLayout class="dialog-wrapper" *ngIf="dialogOpen" horizontalAlignment="center">
-            <StackLayout class="dialog">            
-                <StackLayout class="dialog2">
-                    <Image src="~/app/assets/images/copied.png" width="60" height="50"></Image>
-                    <Label [text]="'copy_successful' | L" class="m-t-20 text-center"></Label>
-                </StackLayout>
-            </StackLayout>
-        </AbsoluteLayout> -->
     </GridLayout>              
 </StackLayout>
