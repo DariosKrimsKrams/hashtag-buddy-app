@@ -1,22 +1,15 @@
-/* 
-#header {
-    vertical-align: middle;
-    height: 50pt;
-    padding: 10pt 20pt 10pt 20pt;
+.hr {
+  border-bottom: 1pt rgb(90, 98, 104);
 }
-    #header Label {
-        vertical-align: middle;
-        color: #fff;
-    } */
 
 .headline {
-    margin-top: 10;
-    font-size: 18pt;
+  margin-top: 5pt;
+  font-size: 18pt;
 }
 
 .list-entry {
-    background-image: url("~/app/assets/images/icons/list.png");
-    background-repeat: no-repeat;
-    background-position: left center;
-    padding: 3 0 3 20;
+  background-image: url('~/app/assets/images/icons/list.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding: 3 0 3 20;
 }

@@ -17,7 +17,7 @@
   <string name="myhashtags_your">"By yourself"</string>
   <string name="myhashtags_intro">"Save your favorite hashtags here. You can access them directly from the photos-selection."</string>
   <string name="progressbar_freemode_time">"In %1$s you receive 1 uncensored Upload."</string>
-  <string name="progressbar_results_freemode2">"Buy Instaq photo uploads to unlock hashtags."</string>
+  <string name="progressbar_results_freemode2">"Buy photo uploads to unlock hashtags."</string>
   <string name="progressbar_results_freemode1">"Free limit reached: Best hashtags are hidden."</string>
   <string name="progressbar_confirm_freemode2">"Best hashtags are hidden now :("</string>
   <string name="progressbar_confirm_freemode1">"Free limit reached:"</string>
@@ -40,7 +40,7 @@
   <string name="settings_share">"Spread some love!"</string>
   <string name="settings_terms">"Terms and Conditions"</string>
   <string name="settings_legal">"Legal &amp; Privacy"</string>
-  <string name="settings_about">"About"</string>
+  <string name="settings_about">"About me"</string>
   <string name="faq_outro">"Improve this page: Any ideas? Want to give us feedback or advice? Let us know via feedback formular."</string>
   <string name="faq_headline_stats4">"Content"</string>
   <string name="faq_headline_stats3">"Target Audience"</string>
@@ -71,17 +71,22 @@
   <string name="about_infos_app_version">"App version"</string>
   <string name="about_infos_contact">"Support"</string>
   <string name="about_headline_infos">"Infos"</string>
-  <string name="about_support_6">"Christian und Paul from Germany (1st prototype)"</string>
+  <string name="about_made_in_hh_2">"in Hamburg"</string>
+  <string name="about_made_in_hh_1">"Made with love"</string>
+  <string name="about_support_7">"Christian und Paul from Germany (1st prototype)"</string>
+  <string name="about_support_6">"Rouhollah M. from Sweden (Logo)"</string>
   <string name="about_support_5">"Aditia Kurniawan from Indonesia (Logo)"</string>
   <string name="about_support_4">"Nazar Nastin from Ukraine (UI / UX Design)"</string>
   <string name="about_support_3">"Jabub Jiricka from Czech Republic (Frontend Programming)"</string>
   <string name="about_support_2">"Andreas Sefzig from Germany (Feedback)"</string>
   <string name="about_support_1">"Tim Wiesenmüller from Germany (Management)"</string>
-  <string name="about_headline_support">"Support by"</string>
-  <string name="about_credits_1">"Dario D. Müller from Germany (Management and Programming)"</string>
+  <string name="about_headline_support">"Supported by"</string>
+  <string name="about_credits_1">"Dario D. Müller from Germany"</string>
   <string name="about_headline_credits">"Developed by"</string>
-  <string name="about_desc">"Thank you for using Instaq.\n\nI believe in improving the process of finding Instagram hashtags. To find the best fitting hashtags for your photos, I\'ll analyze it and compare it with photos on instagram. The software behind this product is using by crawling Instagram and storing it\'s data. The algorithms will analyze Instagram\'s content and calculate the performance of each hashtag, location or topic.\n\nLet us build and improve this project together! Plea contribute by giving us your feedback for hashtags or ask for features or improvements."</string>
-  <string name="about_title">"About"</string>
+  <string name="about_desc_3">"Let us improve this app together! Please contribute by giving me your feedback for hashtags or tell me what you like or dislike."</string>
+  <string name="about_desc_2">"I believe to we can improving the way to find the most relevant hashtags. I would like to provide a app to help everyone find the most relevant hashtags. To find it, the software behind this app collect and analyze thousands of photos on instagram."</string>
+  <string name="about_desc_1">"Thank you for using this App.\n\n"</string>
+  <string name="about_title">"About me"</string>
   <string name="settings_footer_title_fallback">"Share"</string>
   <string name="settings_footer_title">"Follow us"</string>
   <string name="feedback_modal_button">"OK"</string>
@@ -134,6 +139,7 @@
   <string name="leave_feedback_headline">"Rate Hashtags"</string>
   <string name="leave_feedback_skip">"Skip"</string>
   <string name="copy_failed">"Copy Failed"</string>
+  <string name="copy_please_give_feedback">"Please rate the hashtag results"</string>
   <string name="copy_successful">"Copied to clipboard"</string>
   <string name="results_copy_to_instagram">"Transfer to Instagram"</string>
   <string name="results_copy_selected">"Copy selected"</string>
@@ -162,7 +168,7 @@
   <string name="home_desc_3">"Upload a photo to get fitting Instagram hashtags."</string>
   <string name="home_desc_2">"#hashtags for your photos"</string>
   <string name="home_desc_1">"Discover the best Instagram"</string>
-  <string name="_app_name_1k3Sbz">"Instaq"</string>
-  <string name="app_name">"Instaq"</string>
-  <string name="title_activity_kimera">"Instaq"</string>
+  <string name="_app_name_1k3Sbz">"Hashtag Buddy"</string>
+  <string name="app_name">"Hashtag Buddy"</string>
+  <string name="title_activity_kimera">"Hashtag Buddy"</string>
 </resources>
