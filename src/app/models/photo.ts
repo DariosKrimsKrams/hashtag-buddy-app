@@ -31,4 +31,18 @@ export class Photo {
       }
     }
   }
+
+  public static isHashtagPartOfAnyCategory(photo: Photo, title: string): boolean {
+    for (let i = 0; i < photo.categories.length; i++) {
+     const category = photo.categories[i];
+     for (let j = 0; j < category.tags.length; j++) {
+      const tag = category.tags[j];
+        if (tag.title.toLowerCase() === title.toLowerCase()) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
 }

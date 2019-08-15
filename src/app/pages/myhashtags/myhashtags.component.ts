@@ -8,6 +8,7 @@ import * as frame from 'tns-core-modules/ui/frame';
 import * as utils from 'tns-core-modules/utils/utils';
 import { MyHashtag } from '~/app/models/my-hashtag';
 import { UserService } from '~/app/storages/user.service';
+import { Photo } from '~/app/models/photo';
 
 @Component({
   selector: 'ns-myhashtags',
@@ -41,10 +42,10 @@ export class MyhashtagsComponent implements OnInit {
   private loadPhotoHashtags(): void {
     const photos = this.userService.getPhotos();
     photos.forEach(photo => {
-      photo.categories.forEach(cat => {
-        cat.tags.forEach(tag => {
+      photo.selectedHashtags.forEach(tag => {
+        if (Photo.isHashtagPartOfAnyCategory(photo, tag.title)) {
           this.hashtagsGenerated.push(tag);
-        });
+        }
       });
     });
   }

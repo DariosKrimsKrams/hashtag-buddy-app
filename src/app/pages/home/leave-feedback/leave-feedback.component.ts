@@ -68,24 +68,11 @@ export class LeaveFeedbackComponent implements OnInit {
   public getUserSelectedHashtags(): Hashtag[] {
     let hashtags: Hashtag[] = [];
     this.photo.selectedHashtags.forEach(selectedHashtag => {
-      if (this.hashtagIsPartOfACategory(selectedHashtag.title)) {
+      if (Photo.isHashtagPartOfAnyCategory(this.photo, selectedHashtag.title)) {
         hashtags.push(selectedHashtag);
       }
     });
     return hashtags;
-  }
-
-  private hashtagIsPartOfACategory(title: string): boolean {
-    for (let i = 0; i < this.photo.categories.length; i++) {
-     const category = this.photo.categories[i];
-     for (let j = 0; j < category.tags.length; j++) {
-      const tag = category.tags[j];
-        if (tag.title.toLowerCase() === title.toLowerCase()) {
-          return true;
-        }
-      }
-    }
-    return false;
   }
 
   public getUserNotSelectedHashtags(): Hashtag[] {
@@ -134,7 +121,7 @@ export class LeaveFeedbackComponent implements OnInit {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
       context: {
-        autoCloseTime: 1000,
+        autoCloseTime: 3000,
         showIcon: true,
         headline: 'feedback_successful_headline',
         desc: 'feedback_successful_desc'

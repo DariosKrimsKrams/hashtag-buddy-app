@@ -151,7 +151,7 @@
   <string name="results_deselect_all">"keine"</string>
   <string name="results_select_all">"alle"</string>
   <string name="results_category_location_based_hashtags">"Standort-basiert"</string>
-  <string name="results_category_favorites">"Meine Favoriten"</string>
+  <string name="results_category_favorites">"Meine Hashtags"</string>
   <string name="results_category_upcoming_hashtags">"Im Trend"</string>
   <string name="results_category_generic_hashtags">"Relevante Hashtags"</string>
   <string name="results_category_niche_hashtags">"Nischen Hashtags"</string>

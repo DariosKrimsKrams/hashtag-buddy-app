@@ -184,7 +184,7 @@ export class ResultsComponent implements OnInit {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
       context: {
-        autoCloseTime: 1000,
+        autoCloseTime: 3000,
         showIcon: true,
         headline: 'copy_successful',
         desc: 'copy_please_give_feedback'

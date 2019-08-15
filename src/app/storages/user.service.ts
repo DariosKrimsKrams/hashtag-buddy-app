@@ -135,7 +135,7 @@ export class UserService {
     if (value === undefined && this.countPhotos() >= 1) {
       return true;
     } else if (value === 'later' && this.countPhotos() >= 3) {
-
+      return true;
     }
     return false;
   }
