@@ -13,8 +13,8 @@
   <string name="rate_desc">"Wenn du diese App nützlich findest, könntest du dir vorstellen, eine Bewertung abzugeben? Danke für deinen Support! :)"</string>
   <string name="rate_headline">"Bewerten   ☆ ☆ ☆ ☆ ☆"</string>
   <string name="share">"Hey, ich möchte dir diese App empfehlen: Sie hilft, die passendsten Instagram Hashtags für Fotos zu finden. Probiere sie doch gleich mal aus :)"</string>
-  <string name="myhashtags_other">"Von Fotos"</string>
-  <string name="myhashtags_your">"Von dir"</string>
+  <string name="myhashtags_other">"Hashtags von Fotos"</string>
+  <string name="myhashtags_your">"Von dir hinzugefügt"</string>
   <string name="myhashtags_intro">"Speichere hier deine Lieblings-Hashtags. Du kannst dann direkt aus der Foto-Auswahl darauf zugreifen."</string>
   <string name="progressbar_freemode_time">"In %1$s erhälst du 1 unzensierten Upload."</string>
   <string name="progressbar_results_freemode2">"Erwerbe Foto-Uploads, um alle Hashtags zu sehen."</string>
@@ -26,7 +26,7 @@
   <string name="progressbar_home_iapmode">"Du hast %1$s von %2$s Foto Uploads verwendet."</string>
   <string name="progressbar_home_startmode_is_using">"Du hast %1$s von %2$s Foto Uploads verwendet. Danach erhälst du 1 Foto Upload alle 24 Stunden."</string>
   <string name="progressbar_home_startmode_not_used">"Du erhälst %1$s Foto Uploads kostenlos."</string>
-  <string name="toast_imagepicker_failed">"Foto auswählen festgeschlagen"</string>
+  <string name="toast_imagepicker_failed">"Foto auswählen fehlgeschlagen. Bitte Berechtigung prüfen."</string>
   <string name="toast_create_customer_at_upload_failed">"Internet-Verbindung verloren :\'("</string>
   <string name="toast_create_customer_failed">"Du bist offline. Bitte verbinde dich mit dem Internet :)"</string>
   <string name="toast_upload_failed">"Hochladen fehlgeschlagen. Verbindung verloren :\'("</string>
@@ -81,7 +81,7 @@
   <string name="about_support_2">"Andreas Sefzig aus Deutschland (Feedback)"</string>
   <string name="about_support_1">"Tim Wiesenmüller aus Deutschland (Management)"</string>
   <string name="about_headline_support">"Unterstützung von"</string>
-  <string name="about_credits_1">"Dario D. Müller aus Deutschland"</string>
+  <string name="about_credits_1">"Dario D. Müller aus Hamburg, Deutschland"</string>
   <string name="about_headline_credits">"Entwickelt von"</string>
   <string name="about_desc_3">"Lass uns diese Idee gemeinsam verbessern, indem du mir Feedback, z.B. zu Funktionen oder Verbesserungsmöglichkeiten."</string>
   <string name="about_desc_2">"Ich glaube daran, dass den Weg, die richtigen Hashtags zu finden, verbessern können. Mit dieser App möchte es Jedem ermöglichen, die relavantesten Hashtags zu finden, um besser auf Instagram gefunden zu werden. Um dies zu erreichen, sammelt diese App riesige Datenmangen Instagram\'s neuster und erfolgreichster Fotos, und analysiert diese, und so die besten Hashtags liefern zu können."</string>

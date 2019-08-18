@@ -13,8 +13,8 @@
   <string name="rate_desc">"If you enjoy using this app, would you mind taking a moment to rate it? Thank you for your support! :)"</string>
   <string name="rate_headline">"Rate   ☆ ☆ ☆ ☆ ☆"</string>
   <string name="share">"Hey, I would like to recommend you this app: It helps to find the most relevant Instagram hashtags for photos. Let it help you, too :)"</string>
-  <string name="myhashtags_other">"By photos"</string>
-  <string name="myhashtags_your">"By yourself"</string>
+  <string name="myhashtags_other">"Hashtags from photos"</string>
+  <string name="myhashtags_your">"Added by yourself"</string>
   <string name="myhashtags_intro">"Save your favorite hashtags here. You can access them directly from the photos-selection."</string>
   <string name="progressbar_freemode_time">"In %1$s you receive 1 uncensored Upload."</string>
   <string name="progressbar_results_freemode2">"Buy photo uploads to unlock hashtags."</string>
@@ -26,7 +26,7 @@
   <string name="progressbar_home_iapmode">"You used %1$s of %2$s photo uploads."</string>
   <string name="progressbar_home_startmode_is_using">"You have used %1$s of %2$s photo uploads. After using all of them, you get 1 photo upload every 24 hours for free."</string>
   <string name="progressbar_home_startmode_not_used">"You get %1$s photo uploads for free."</string>
-  <string name="toast_imagepicker_failed">"Image Picker failed"</string>
+  <string name="toast_imagepicker_failed">"Picking Photos failed. Please check read permission."</string>
   <string name="toast_create_customer_at_upload_failed">"Request failed! Connection lost :\'("</string>
   <string name="toast_create_customer_failed">"You are offline. Please connect to the internet :)"</string>
   <string name="toast_upload_failed">"Upload failed! Connection lost :\'("</string>
