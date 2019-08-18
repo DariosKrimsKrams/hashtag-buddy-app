@@ -50,7 +50,6 @@ export class SelectPhotoService {
       }).catch(function (e) {
         e = e.toString();
         if (e.substr(e.length - 13) !== 'result code 0') {
-          console.error('IMAGE PICKER Failed: ', e);
           Toast.makeText(localize('toast_imagepicker_failed'), 'long').show();
         }
         observer.error(e);

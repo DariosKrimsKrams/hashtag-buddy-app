@@ -139,7 +139,7 @@
   <string name="leave_feedback_headline">"Bewerte Hashtags"</string>
   <string name="leave_feedback_skip">"Abbrechen"</string>
   <string name="copy_failed">"Kopieren fehlgeschlagen"</string>
-  <string name="copy_please_give_feedback">"Bitte bewerte die Hashtag Ergebnisse"</string>
+  <string name="copy_please_give_feedback">"Bitte bewerte die Hashtag Ergebnisse..."</string>
   <string name="copy_successful">"In Zwischenablage kopiert"</string>
   <string name="results_copy_to_instagram">"Transferiere zu Instagram"</string>
   <string name="results_copy_selected">"Hashtags kopieren"</string>

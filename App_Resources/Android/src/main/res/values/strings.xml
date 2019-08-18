@@ -139,7 +139,7 @@
   <string name="leave_feedback_headline">"Rate Hashtags"</string>
   <string name="leave_feedback_skip">"Skip"</string>
   <string name="copy_failed">"Copy Failed"</string>
-  <string name="copy_please_give_feedback">"Please rate the hashtag results"</string>
+  <string name="copy_please_give_feedback">"Please rate the hashtag results..."</string>
   <string name="copy_successful">"Copied to clipboard"</string>
   <string name="results_copy_to_instagram">"Transfer to Instagram"</string>
   <string name="results_copy_selected">"Copy selected"</string>
