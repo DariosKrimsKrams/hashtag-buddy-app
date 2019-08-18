@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     private readonly ngZone: NgZone,
     private readonly userService: UserService,
     private readonly viewContainerRef: ViewContainerRef,
-    private readonly modalService: ModalDialogService, 
+    private readonly modalService: ModalDialogService
   ) {}
 
   ngOnInit(): void {

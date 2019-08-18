@@ -127,8 +127,7 @@ export class LeaveFeedbackComponent implements OnInit {
         desc: 'feedback_successful_desc'
       }
     };
-    this.modalService.showModal(ModalComponent, options)
-    .then(reason => {
+    this.modalService.showModal(ModalComponent, options).then(() => {
       this.redirectToHome();
     })
     .catch(error => {

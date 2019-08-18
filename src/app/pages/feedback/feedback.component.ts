@@ -55,7 +55,12 @@ export class FeedbackComponent implements OnInit {
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
-      context: { autoClose: false, button: 'feedback_modal_button' }
+      context: {
+        showIcon: true,
+        headline: 'feedback_successful_headline',
+        desc: 'feedback_successful_desc',
+        buttonOk: 'feedback_modal_button'
+      }
     };
     this.modalService.showModal(ModalComponent, options);
   }

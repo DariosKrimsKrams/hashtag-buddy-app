@@ -190,8 +190,7 @@ export class ResultsComponent implements OnInit {
         desc: 'copy_please_give_feedback'
       }
     };
-    this.modalService.showModal(ModalComponent, options)
-    .then(reason => {
+    this.modalService.showModal(ModalComponent, options).then(() => {
       this.navigateToLeaveFeedbackPage();
     })
     .catch(error => {
