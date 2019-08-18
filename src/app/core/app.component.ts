@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
     });
     this.photosCountService.initFreePhotos();
 
-    if (this.userService.allowShowingRateAppModal()) {
+    if (this.allowShowingRateAppModal()) {
       this.showRateAppModal();
     }
 
@@ -78,6 +78,9 @@ export class AppComponent implements OnInit {
   }
 
   private showRateAppModal(): void {
+    const okFunc = () => {
+      this.userService.saveRateAppStatus('rated');
+    };
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
@@ -85,26 +88,35 @@ export class AppComponent implements OnInit {
         headline: 'rate_headline',
         desc: 'rate_desc',
         buttonOk: 'rate_yes',
-        buttonCancel: 'rate_later'
+        buttonCancel: 'rate_later',
+        okFunc: okFunc
       }
     };
     setTimeout.bind(this)(() => {
-      this.modalService.showModal(ModalComponent, options)
-      .then(reason => {
-        console.log(reason);
-        switch (reason) {
-          case 'ok':
-            this.userService.saveRateAppStatus('ok');
-            return;
-          case 'cancel':
-            this.userService.saveRateAppStatus('later');
-            return;
-        }
-      })
-      .catch(error => {
-        console.log('no response', error);
+      this.modalService.showModal(ModalComponent, options).then(() => {
+        this.saveRateAppStatus();
       });
     }, 300);
+  }
+
+  private allowShowingRateAppModal(): boolean {
+    const status = this.userService.getRateAppStatus();
+    if (status === 'rated') {
+      return false;
+    } else if (status === undefined && this.userService.countPhotos() >= 1) {
+      return true;
+    } else if (status === 'later' && this.userService.countPhotos() >= 3) {
+      return true;
+    }
+    return false;
+  }
+
+  private saveRateAppStatus(): void {
+    const status = this.userService.getRateAppStatus();
+    if (status === 'rated') {
+      return;
+    }
+    this.userService.saveRateAppStatus('later');
   }
 
   get sideDrawerTransition(): DrawerTransitionBase {

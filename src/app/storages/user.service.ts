@@ -130,14 +130,8 @@ export class UserService {
     this.androidBackTriggered.emit(path);
   }
 
-  public allowShowingRateAppModal(): boolean {
-    const value = this.localStorageService.get(this.keyRateApp) || undefined;
-    if (value === undefined && this.countPhotos() >= 1) {
-      return true;
-    } else if (value === 'later' && this.countPhotos() >= 3) {
-      return true;
-    }
-    return false;
+  public getRateAppStatus(): string {
+    return this.localStorageService.get(this.keyRateApp) || undefined;
   }
 
   public saveRateAppStatus(value: string): void {

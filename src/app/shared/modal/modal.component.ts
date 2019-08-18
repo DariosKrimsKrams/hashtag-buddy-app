@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
 
 @Component({
@@ -14,6 +14,9 @@ export class ModalComponent implements OnInit {
   public desc: string;
   public buttonOk: string;
   public buttonCancel: string;
+  public autoCloseFunc: Function;
+  public okFunc: Function;
+  public cancelFunc: Function;
 
   constructor(
     private readonly params: ModalDialogParams
@@ -26,6 +29,9 @@ export class ModalComponent implements OnInit {
     this.desc = this.params.context.desc || '';
     this.buttonOk = this.params.context.buttonOk || '';
     this.buttonCancel = this.params.context.buttonCancel || '';
+    this.autoCloseFunc = this.params.context.autoCloseFunc || undefined;
+    this.okFunc = this.params.context.okFunc || undefined;
+    this.cancelFunc = this.params.context.cancelFunc || undefined;
 
     if (autoCloseTime !== undefined) {
       setTimeout.bind(this)(() => {
@@ -35,7 +41,24 @@ export class ModalComponent implements OnInit {
   }
 
   public close(reason: string): void {
-    this.params.closeCallback(reason);
+    switch (reason) {
+      case 'autoClose':
+        if (this.autoCloseFunc !== undefined) {
+          this.autoCloseFunc();
+        }
+        break;
+      case 'ok':
+        if (this.okFunc !== undefined) {
+          this.okFunc();
+        }
+        break;
+      case 'cancel':
+        if (this.cancelFunc !== undefined) {
+          this.cancelFunc();
+        }
+        break;
+    }
+    this.params.closeCallback();
   }
 
   public ok(): void {
