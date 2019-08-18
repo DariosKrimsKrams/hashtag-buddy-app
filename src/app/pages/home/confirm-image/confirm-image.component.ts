@@ -6,6 +6,7 @@ import { Page } from 'tns-core-modules/ui/page/page';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
 import { SelectPhotoService } from '~/app/services/business-logic/select-photo.service';
+import { UserService } from '~/app/storages/user.service';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class ConfirmImageComponent implements OnInit {
     private readonly deviceService: DeviceService,
     private readonly selectPhotoService: SelectPhotoService,
     private readonly cd: ChangeDetectorRef,
+    private readonly userService: UserService,
   ) {
     this.cd.detach();
     this.page.actionBarHidden = true;
@@ -46,10 +48,11 @@ export class ConfirmImageComponent implements OnInit {
       this.openResultsPage(photoId);
       this.cd.detectChanges();
     }, (e) => {
-      let locaKey = e === 'customer failed' ? 'toast_create_customer_at_upload_failed' : 'toast_upload_failed';
+      const locaKey = e === 'customer failed' ? 'toast_create_customer_at_upload_failed' : 'toast_upload_failed';
       Toast.makeText(localize(locaKey), 'long').show();
       setTimeout.bind(this)(() => {
-        this.goPrevPage();
+        // event for canceling
+        this.userService.uploadFailedTriggered.emit();
       }, 1000);
     });
   }

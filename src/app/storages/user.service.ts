@@ -16,6 +16,7 @@ export class UserService {
   @Output() public photoAdded: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
   @Output() public photoUpdated: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
   @Output() public androidBackTriggered: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public uploadFailedTriggered: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private readonly localStorageService: LocalStorageService
@@ -124,10 +125,6 @@ export class UserService {
       return [];
     }
     return JSON.parse(json) as MyHashtag[];
-  }
-
-  public onAndroidBackTriggered(path: string): void {
-    this.androidBackTriggered.emit(path);
   }
 
   public getRateAppStatus(): string {

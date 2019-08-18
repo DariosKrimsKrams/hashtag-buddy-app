@@ -79,12 +79,4 @@ export class FaqComponent implements OnInit {
     sideDrawer.closeDrawer();
   }
 
-  public openFeedbackPage(): void {
-    console.log('feedback');
-  }
-
-  public openEmail(): void {
-    console.log('emil');
-  }
-
 }

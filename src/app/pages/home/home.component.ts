@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public historyHeight: number;
   public historyDefaultTransform: number;
   public headerDefaultTransform: number;
-  public openConfirmImage: boolean = false;
+  public showConfirmImage: boolean;
   @ViewChild('history', { read: ElementRef, static: false }) public historyElement: ElementRef;
   @ViewChild('historShadow', { read: ElementRef, static: false }) public historShadowElement: ElementRef;
   @ViewChild('header', { read: ElementRef, static: false }) public headerElement: ElementRef;
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public clickSelectPhoto(): void {
     this.selectPhotoService.pickImage().subscribe(() => {
-      this.openConfirmImage = true;
+      this.showConfirmImage = true;
       this.cd.detectChanges();
     });
   }
@@ -119,17 +119,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public clickCancel(): void {
-    this.openConfirmImage = false;
+    this.showConfirmImage = false;
+    console.log("clickCancel triggered");
     this.cd.detectChanges();
   }
 
   private onAndroidBackTriggered(path: string): void {
-    console.log(this.isHistoryOpen);
     if (path === '/home') {
       if (this.isHistoryOpen === 1) {
         this.clickHistory();
-      } else if (this.openConfirmImage) {
-        this.openConfirmImage = false;
+      } else if (this.showConfirmImage) {
+        this.showConfirmImage = false;
       }
     }
   }

@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
             // that.userService.onAndroidBackTriggered(path);
           // });
         } else if (path === '/home') {
-          this.userService.onAndroidBackTriggered(path);
+          this.userService.androidBackTriggered.emit(path);
           // do nothing
         } else if (path === '/home/loading-hashtags') {
           // do nothing

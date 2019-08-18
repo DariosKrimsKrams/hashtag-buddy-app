@@ -26,6 +26,6 @@
         <Image src="~/app/assets/images/icons/menu_bar_white.png" width="20" class="m-l-20 m-t-20" (tap)="openMenu()"></Image>
     </StackLayout>
 
-    <ns-confirm-image *ngIf="openConfirmImage" (onClickCancel)="clickCancel()"></ns-confirm-image>
+    <ns-confirm-image *ngIf="showConfirmImage" (onClickCancel)="clickCancel()"></ns-confirm-image>
 
 </GridLayout>

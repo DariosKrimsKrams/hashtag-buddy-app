@@ -129,9 +129,6 @@ export class LeaveFeedbackComponent implements OnInit {
     };
     this.modalService.showModal(ModalComponent, options).then(() => {
       this.redirectToHome();
-    })
-    .catch(error => {
-      console.log('no response', error);
     });
   }
 

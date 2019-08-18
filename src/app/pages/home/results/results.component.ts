@@ -174,8 +174,7 @@ export class ResultsComponent implements OnInit {
         this.showModal();
       })
       .catch(function(e) {
-        console.log('Copy failed: ' + e);
-        Toast.makeText(localize('copy_failed') + ': ' + e, 'long').show();
+        Toast.makeText(localize('copy_failed'), 'long').show();
       });
   }
 
@@ -192,9 +191,6 @@ export class ResultsComponent implements OnInit {
     };
     this.modalService.showModal(ModalComponent, options).then(() => {
       this.navigateToLeaveFeedbackPage();
-    })
-    .catch(error => {
-      console.log('no response', error);
     });
   }
 

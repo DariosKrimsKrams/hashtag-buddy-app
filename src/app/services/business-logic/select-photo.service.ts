@@ -80,7 +80,7 @@ export class SelectPhotoService {
 
   private savePhoto(): Observable<number> {
     return new Observable<number>(observer => {
-      let selectedPhoto = this.deviceService.getSelectedPhoto();
+      const selectedPhoto = this.deviceService.getSelectedPhoto();
       this.deviceService.copyPhotoToAppFolder(selectedPhoto).subscribe(path => {
         let photo = new Photo();
         photo.timestamp = new Date().getTime();
