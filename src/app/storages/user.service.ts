@@ -17,6 +17,7 @@ export class UserService {
   @Output() public photoUpdated: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
   @Output() public androidBackTriggered: EventEmitter<string> = new EventEmitter<string>();
   @Output() public uploadFailedTriggered: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public uploadCompletedTriggered: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private readonly localStorageService: LocalStorageService

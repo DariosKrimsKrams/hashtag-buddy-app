@@ -8,42 +8,46 @@ import { RouterExtensions } from 'nativescript-angular/router';
   selector: 'ns-loading-hashtags',
   templateUrl: './loading-hashtags.component.html',
   styleUrls: ['./loading-hashtags.component.scss'],
-  moduleId: module.id,
+  moduleId: module.id
 })
 export class LoadingHashtagsComponent implements OnInit, OnDestroy {
-
   public countDots: number = 0;
   public progress: number = 0;
   public tipNo: number;
 
   private tipTimeSec: number = 7;
   private intervalId: number;
-  private subscription: Subscription;
+  private subscription1: Subscription;
+  private subscription2: Subscription;
 
   constructor(
     private page: Page,
     private readonly userService: UserService,
-    private readonly router: RouterExtensions,
+    private readonly router: RouterExtensions
   ) {
     this.page.actionBarHidden = true;
   }
 
   ngOnInit() {
-    this.subscription = this.userService.uploadFailedTriggered.subscribe(() => this.uploadFailed());
+    this.subscription1 = this.userService.uploadFailedTriggered.subscribe(() => {
+      this.uploadFailed();
+    });
+    this.subscription2 = this.userService.uploadCompletedTriggered.subscribe(() => {
+      clearInterval(this.intervalId);
+    });
 
     this.animateDots();
     this.animateTips();
   }
-  
+
   ngOnDestroy() {
-    console.log("ngOnDestroy");
-    this.subscription.unsubscribe();
     clearInterval(this.intervalId);
+    this.subscription1.unsubscribe();
+    this.subscription2.unsubscribe();
   }
 
   private animateDots(): void {
     this.intervalId = setInterval.bind(this)(() => {
-      console.log("animateDots");
       this.countDots = this.countDots >= 3 ? 0 : this.countDots + 1;
     }, 600);
   }
@@ -62,6 +66,7 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
   }
 
   private uploadFailed(): void {
+    clearInterval(this.intervalId);
     this.redirectToHome();
   }
 
@@ -74,5 +79,4 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
       }
     });
   }
-
 }
