@@ -171,4 +171,7 @@
   <string name="_app_name_1k3Sbz">"Hashtag Buddy"</string>
   <string name="app_name">"Hashtag Buddy"</string>
   <string name="title_activity_kimera">"Hashtag Buddy"</string>
+  <string name="results_category_upcoming_has">"results_category_upcoming_has"</string>
+  <string name="_tasso_si__uCsii">"tasso_si\'"</string>
+  <string name="Toast_imagepicker_failed">"Toast_imagepicker_failed"</string>
 </resources>
