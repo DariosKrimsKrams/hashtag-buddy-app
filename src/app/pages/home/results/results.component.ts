@@ -28,7 +28,6 @@ const clipboard = require('nativescript-clipboard');
 export class ResultsComponent implements OnInit {
   public parallaxHeight = 250;
   public photo: Photo;
-  public openmenu: boolean;
   public highlightStatus: string[] = [];
   public currentScrollingY: number;
   public categories: HashtagCategory[] = [];
@@ -139,14 +138,14 @@ export class ResultsComponent implements OnInit {
     this.saveSelection();
   }
 
-  public openMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.showDrawer();
-  }
-
-  public closeMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.closeDrawer();
+  public redirectToHome(): void {
+    this.router.navigate(['/home'], {
+      transition: {
+        name: 'slideRight',
+        duration: 500,
+        curve: 'easeOut'
+      }
+    });
   }
 
   public copySelected(): void {
