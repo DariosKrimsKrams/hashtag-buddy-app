@@ -120,7 +120,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public clickCancel(): void {
     this.showConfirmImage = false;
-    console.log("clickCancel triggered");
     this.cd.detectChanges();
   }
 

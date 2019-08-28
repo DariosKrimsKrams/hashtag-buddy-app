@@ -22,9 +22,8 @@
         <ns-big-header></ns-big-header>
     </StackLayout>
 
-    <StackLayout height="50" width="40" horizontalAlignment="left" verticalAlignment="top" class="m-t-20">
-        <Image src="~/app/assets/images/icons/menu_bar_white.png" width="20" class="m-l-20 m-t-20" (tap)="openMenu()"></Image>
-    </StackLayout>
+    <Image src="~/app/assets/images/icons/menu_bar_white.png" horizontalAlignment="left" verticalAlignment="top" height="70" width="70" class="m-t-20 p-l-25 p-r-25 p-b-20 p-t-10" style="background-color: transparent;" (tap)="openMenu()"></Image>
+
 
     <ns-confirm-image *ngIf="showConfirmImage" (onClickCancel)="clickCancel()"></ns-confirm-image>
 

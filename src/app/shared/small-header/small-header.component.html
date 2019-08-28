@@ -1,8 +1,8 @@
 <GridLayout class="small-header">
     <Image src="~/app/assets/images/header/{{image}}" stretch="aspectFill"></Image>
     <GridLayout rows="*,auto" id="header-content" class="gradientTrans">
-        <GridLayout row="0" rows="50" columns="40,*,40" class="m-b-10 m-t-20">
-            <Image src="~/app/assets/images/icons/menu_bar_white.png" col="0" class="m-l-20" (tap)="openMenu()"></Image>
+        <GridLayout row="0" rows="60" columns="70,*,70" class="m-t-20">
+            <Image src="~/app/assets/images/icons/menu_bar_white.png" col="0" class="p-l-25 p-r-25 p-b-15 p-t-15" style="background-color: transparent;" (tap)="openMenu()"></Image>
             <GridLayout col="1" horizontalAlignment="center" verticalAlignment="middle">
                 <Label [text]="title" class="title"></Label>
             </GridLayout>
