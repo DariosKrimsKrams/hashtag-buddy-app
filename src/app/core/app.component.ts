@@ -10,6 +10,7 @@ import * as application from 'tns-core-modules/application';
 import { UserService } from '../storages/user.service';
 import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '../shared/modal/modal.component';
+import { openUrl } from 'tns-core-modules/utils/utils';
 
 @Component({
   moduleId: module.id,
@@ -81,6 +82,8 @@ export class AppComponent implements OnInit {
   private showRateAppModal(): void {
     const okFunc = () => {
       this.userService.saveRateAppStatus('rated');
+      const text = localize('link_playstore');
+      openUrl(text);
     };
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
