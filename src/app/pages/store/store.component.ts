@@ -148,11 +148,6 @@ export class StoreComponent implements OnInit {
     sideDrawer.showDrawer();
   }
 
-  public closeMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.closeDrawer();
-  }
-
   buyProduct(plan: Plan) {
     let product = plan.product;
     if (purchase.canMakePayments()) {

@@ -74,11 +74,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     }, 10);
   }
 
-  public closeMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.closeDrawer();
-  }
-
   public clickHistory(): void {
     this.cd.reattach();
     this.isHistoryOpen = this.isHistoryOpen !== 1 ? 1 : 2;

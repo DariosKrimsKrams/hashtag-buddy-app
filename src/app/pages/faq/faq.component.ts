@@ -74,9 +74,4 @@ export class FaqComponent implements OnInit {
     sideDrawer.showDrawer();
   }
 
-  public closeMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.closeDrawer();
-  }
-
 }

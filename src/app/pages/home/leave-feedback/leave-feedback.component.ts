@@ -136,7 +136,7 @@ export class LeaveFeedbackComponent implements OnInit {
     setTimeout.bind(this)(() => {
       this.router.navigate(['/home'], {
         transition: {
-          name: 'slideLeft',
+          name: 'slideRight',
           duration: 500,
           curve: 'easeOut'
         }

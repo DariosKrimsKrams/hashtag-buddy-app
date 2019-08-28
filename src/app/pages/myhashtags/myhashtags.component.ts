@@ -55,11 +55,6 @@ export class MyhashtagsComponent implements OnInit {
     sideDrawer.showDrawer();
   }
 
-  public closeMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.closeDrawer();
-  }
-
   public dismissSoftKeybaord(): void {
     if (isIOS) {
       frame.topmost().nativeView.endEditing(true);

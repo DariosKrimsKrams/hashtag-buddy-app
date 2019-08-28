@@ -33,11 +33,6 @@ export class SettingsComponent implements  OnInit {
     sideDrawer.showDrawer();
   }
 
-  public closeMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.closeDrawer();
-  }
-
   goNextPage(route: string) {
     // if(route === 'instagram'){
     //   openUrl("https://www.instagram.com/");      
