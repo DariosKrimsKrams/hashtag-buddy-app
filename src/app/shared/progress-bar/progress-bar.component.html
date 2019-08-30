@@ -5,7 +5,7 @@
     
     <Label [text]="text1" horizontalAlignment="center" class="text1" *ngIf="countPhotoLeft != 0" textWrap="true"></Label>
     
-    <Label [text]="text2" horizontalAlignment="center" *ngIf="countPhotoLeft==0"></Label>
+    <Label [text]="text2" horizontalAlignment="center" *ngIf="countPhotoLeft==0" textWrap="true"></Label>
     <Label [text]="text3" horizontalAlignment="center" *ngIf="countPhotoLeft==0 && text3 != undefined"></Label>
     <Label [text]="text4" horizontalAlignment="center" *ngIf="countPhotoLeft==0 && page == 'home'"></Label>
     <Label [text]="text5" horizontalAlignment="center" *ngIf="countPhotoLeft==0 && text5 != undefined"></Label>
