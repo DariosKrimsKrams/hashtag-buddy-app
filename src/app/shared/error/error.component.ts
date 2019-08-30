@@ -11,16 +11,16 @@ import { Page } from 'tns-core-modules/ui/page';
 export class ErrorComponent implements OnInit {
 
   constructor(
-    private readonly page: Page, 
+    private readonly page: Page,
   ) {
     this.page.actionBarHidden = true;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
   }
 
   public openMenu(): void {
-    
+
   }
 
 }

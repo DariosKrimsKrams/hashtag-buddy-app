@@ -16,14 +16,14 @@ export class FaqComponent implements OnInit {
   public openmenu = false;
   public faqs: Faq[];
   public current = 0;
-  
+
   constructor(
-    private readonly page: Page, 
+    private readonly page: Page,
   ) {
     this.page.actionBarHidden = true;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     // this.faq = FAQ;
     this.faqs = [
       new Faq({
@@ -59,14 +59,14 @@ export class FaqComponent implements OnInit {
     return localize('diduknow_fact' + id);
   }
 
-  public expandToggle(index: number) {
+  public expandToggle(index: number): void {
     if (index === this.current) {
       this.faqs[index].expand = !this.faqs[index].expand;
     } else {
       this.faqs[this.current].expand = false;
       this.faqs[index].expand = true;
       this.current = index;
-    }    
+    }
   }
 
   public openMenu(): void {

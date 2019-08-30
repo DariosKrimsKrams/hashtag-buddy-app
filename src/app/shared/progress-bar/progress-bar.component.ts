@@ -24,9 +24,9 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   public timeStart: number;
   public timeOverall: number;
 
-  @Input() page: string;
-  @Input() width: string;
-  @Input() forceFreeMode: boolean;
+  @Input() public page: string;
+  @Input() public width: string;
+  @Input() public forceFreeMode: boolean;
 
   private oneHour = 3600;
   private photosCountChangeSubscription: Subscription;
@@ -36,14 +36,14 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     private readonly photosCountService: PhotosCountService
   ) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.photosCountChangeSubscription = this.photosCountService.changedAmount.subscribe(() => {
       this.photoChanged();
     });
     this.photoChanged();
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.photosCountChangeSubscription.unsubscribe();
   }
 
@@ -66,7 +66,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   }
 
   private buildText(): void {
-    let hasPayedPhotos = this.photosCountService.hasPayedPhotos();
+    const hasPayedPhotos = this.photosCountService.hasPayedPhotos();
     if (hasPayedPhotos && this.page !== 'home') {
       this.isVisible = false;
       return;
@@ -101,7 +101,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
 
   private buildData(): void {
     let percent = 0;
-    let result = this.calcTimes();
+    const result = this.calcTimes();
 
     this.text4 = this.setUI(result.hour, result.min, result.sec);
 
@@ -115,45 +115,44 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     }
   }
 
-  setProgressbarWidth(percent: number) {
+  private setProgressbarWidth(percent: number): void {
     if (percent < 2) {
       percent = 2;
     }
     this.columns = percent + '*,' + (100 - percent) + '*';
   }
 
-  setUI(hour: number, min: number, sec: number) {
+  private setUI(hour: number, min: number, sec: number): string {
     let h = '', m = '', s = '';
     if (hour < 10) { h = '0'; }
     if (min < 10) { m = '0'; }
     if (sec < 10) { s = '0'; }
-    let timeAsText = h + hour + ':' + m + min + ':' + s + sec;
+    const timeAsText = h + hour + ':' + m + min + ':' + s + sec;
     return localize('progressbar_freemode_time', timeAsText);
   }
 
   private calcTimes(): {hour: number, min: number, sec: number} {
-    let date = this.photosCountService.getDate();
+    const date = this.photosCountService.getDate();
     this.timeStart = (Date.now() / 1000 | 0) - date;
-    let hour = Math.floor((this.timeOverall - this.timeStart) / this.oneHour);
-    let min = Math.floor((this.timeOverall - this.timeStart - hour * this.oneHour) / 60);
-    let sec = (this.timeOverall - this.timeStart) % 60;
+    const hour = Math.floor((this.timeOverall - this.timeStart) / this.oneHour);
+    const min = Math.floor((this.timeOverall - this.timeStart - hour * this.oneHour) / 60);
+    const sec = (this.timeOverall - this.timeStart) % 60;
     return {hour: hour, min: min, sec: sec};
   }
 
-  private updateTimer(percent: number) {
-    let intervalId = setInterval(() => {
+  private updateTimer(percent: number): void {
+    const intervalId = setInterval(() => {
       this.setProgressbarWidth(percent);
       percent += 1 / this.timeOverall * 100;
       if (percent >= 100) {
         clearInterval(intervalId);
       }
 
-      let result = this.calcTimes();
-      let hour = result.hour;
-      let min = result.min;
-      let sec = result.sec;
+      const result = this.calcTimes();
+      const hour = result.hour;
+      const min = result.min;
+      const sec = result.sec;
       this.text4 = this.setUI(hour, min, sec);
-      
     }, 1000);
   }
 

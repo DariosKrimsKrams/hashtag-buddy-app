@@ -8,7 +8,7 @@ import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
   moduleId: module.id
 })
 export class ModalComponent implements OnInit {
-  
+
   public showIcon: boolean;
   public headline: string;
   public desc: string;
@@ -22,7 +22,7 @@ export class ModalComponent implements OnInit {
     private readonly params: ModalDialogParams
   ) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
     const autoCloseTime = this.params.context.autoCloseTime || undefined;
     this.showIcon = this.params.context.showIcon === true || false;
     this.headline = this.params.context.headline || '';

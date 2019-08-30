@@ -5,4 +5,3 @@ export const environment = {
     freePhotosIncreatingTime: 86400,
     freePhotosIncreatingAmount: 1,
 };
-  

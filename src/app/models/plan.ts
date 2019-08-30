@@ -1,19 +1,19 @@
 import { Product } from 'nativescript-purchase/product';
 
 export class Plan {
-    
-  id: string;
-  image: string;
-  title: string;
-  desc: string;
-  desc2?: string;
-  type: string;
 
-  amount: number;
-  product?: Product;
-  discount?: number;
-  pricePerPhoto?: number;
-  priceFallback: string;
+  public id: string;
+  public image: string;
+  public title: string;
+  public desc: string;
+  public desc2?: string;
+  public type: string;
+
+  public amount: number;
+  public product?: Product;
+  public discount?: number;
+  public pricePerPhoto?: number;
+  public priceFallback: string;
 
   public constructor(init?: Partial<Plan>) {
     Object.assign(this, init);

@@ -5,12 +5,12 @@ import { Purchase } from './purchase';
 
 export class User {
 
-    userId: string;
-    photos: Photo[];
-    appFeedbacks: AppFeedback[];
-    resultFeedbacks: ResultFeedback[];
-    purchases: Purchase[];
-    
+    public userId: string;
+    public photos: Photo[];
+    public appFeedbacks: AppFeedback[];
+    public resultFeedbacks: ResultFeedback[];
+    public purchases: Purchase[];
+
     public constructor(init?: Partial<User>) {
         Object.assign(this, init);
       }

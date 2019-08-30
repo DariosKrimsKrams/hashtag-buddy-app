@@ -27,7 +27,7 @@ export class MyhashtagsComponent implements OnInit {
     this.page.actionBarHidden = true;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.loadOwnHashtags();
     this.loadPhotoHashtags();
   }
@@ -65,12 +65,12 @@ export class MyhashtagsComponent implements OnInit {
   }
 
   public addHashtag(hashtag: Hashtag): void {
-    let exist =
+    const exist =
       this.hashtagsOwn.filter(
         x => x.title.toLowerCase() === hashtag.title.toLowerCase()
       )[0] !== undefined;
     if (exist) {
-      let index = this.hashtagsOwn
+      const index = this.hashtagsOwn
         .map(x => x.title.toLowerCase() === hashtag.title.toLowerCase())
         .indexOf(true);
       this.hashtagsOwn.splice(index, 1);

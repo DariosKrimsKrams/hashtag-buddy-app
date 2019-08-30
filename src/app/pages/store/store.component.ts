@@ -21,8 +21,8 @@ import { PhotosCountService } from '~/app/storages/photos-count.service';
   moduleId: module.id
 })
 export class StoreComponent implements OnInit {
-  openmenu = false;
-  plans: Plan[] = PLAN;
+  public openmenu = false;
+  public plans: Plan[] = PLAN;
 
   constructor(
     private readonly page: Page,
@@ -32,9 +32,9 @@ export class StoreComponent implements OnInit {
     this.page.actionBarHidden = true;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     console.log('ngOnInit');
-    let products = [
+    const products = [
       'small',
       'medium',
       'large',
@@ -132,12 +132,12 @@ export class StoreComponent implements OnInit {
       }
       if (x.product.productType === 'inapp' && x.id !== cheapestInApp.id) {
         x.pricePerPhoto = x.product.priceAmount / x.amount;
-        let discount =
+        const discount =
           (1 - x.pricePerPhoto / cheapestInApp.pricePerPhoto) * 100;
         x.discount = Math.round(discount);
       } else if (x.product.productType === 'subs' && x.id !== cheapestSubs.id) {
         x.pricePerPhoto = x.product.priceAmount;
-        let discount = (1 - x.pricePerPhoto / cheapestSubs.pricePerPhoto) * 100;
+        const discount = (1 - x.pricePerPhoto / cheapestSubs.pricePerPhoto) * 100;
         x.discount = Math.round(discount);
       }
     });
@@ -148,8 +148,8 @@ export class StoreComponent implements OnInit {
     sideDrawer.showDrawer();
   }
 
-  buyProduct(plan: Plan) {
-    let product = plan.product;
+  public buyProduct(plan: Plan): void {
+    const product = plan.product;
     if (purchase.canMakePayments()) {
       purchase.buyProduct(product);
     } else {
@@ -157,13 +157,13 @@ export class StoreComponent implements OnInit {
     }
   }
 
-  restore() {
+  public restore(): void {
     purchase.restorePurchases();
   }
 
   private onProductBought(transaction: Transaction): void {
     if (isAndroid) {
-      let plan = this.getPlanById(transaction.productIdentifier);
+      const plan = this.getPlanById(transaction.productIdentifier);
       if (plan.type === 'inapp') {
         purchase
           .consumePurchase(transaction.transactionReceipt)
@@ -194,10 +194,10 @@ export class StoreComponent implements OnInit {
   }
 
   private showBoughtPopup(transaction: Transaction): void {
-    let plan = this.getPlanById(transaction.productIdentifier);
-    let title = localize('iap_purchase_successful_title');
-    let msg = localize('iap_purchase_successful_msg', plan.title);
-    let btn = localize('iap_purchase_successful_btn');
+    const plan = this.getPlanById(transaction.productIdentifier);
+    const title = localize('iap_purchase_successful_title');
+    const msg = localize('iap_purchase_successful_msg', plan.title);
+    const btn = localize('iap_purchase_successful_btn');
     this.showPopup(title, msg, btn);
   }
 
@@ -207,12 +207,12 @@ export class StoreComponent implements OnInit {
   }
 
   private showRestorePopup(transaction: Transaction): void {
-    let plan = this.getPlanById(
+    const plan = this.getPlanById(
       transaction.originalTransaction.productIdentifier
     );
-    let title = localize('iap_restored_successful_title');
-    let msg = localize('iap_restored_successful_msg', plan.title);
-    let btn = localize('iap_restored_successful_btn');
+    const title = localize('iap_restored_successful_title');
+    const msg = localize('iap_restored_successful_msg', plan.title);
+    const btn = localize('iap_restored_successful_btn');
     this.showPopup(title, msg, btn);
   }
 
@@ -233,9 +233,9 @@ export class StoreComponent implements OnInit {
     console.log('addPurchase');
     this.userService.addPurchase(transaction);
 
-    let plan = this.getPlanById(transaction.productIdentifier);
+    const plan = this.getPlanById(transaction.productIdentifier);
     if (plan.type === 'inapp') {
-      let amount = plan.amount;
+      const amount = plan.amount;
       this.photosCountService.addPayedPhotos(amount);
     } else {
       // is ABO

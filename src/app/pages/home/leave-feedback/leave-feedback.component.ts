@@ -38,13 +38,13 @@ export class LeaveFeedbackComponent implements OnInit {
     private readonly userService: UserService,
     private readonly feedbackRepositoryService: FeedbackRepository,
     private readonly viewContainerRef: ViewContainerRef,
-    private readonly modalService: ModalDialogService, 
+    private readonly modalService: ModalDialogService,
     private readonly customerService: CustomerService,
   ) {
     this.page.actionBarHidden = true;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     const id = Number(this.route.snapshot.params['id']);
     this.photo = this.userService.getPhoto(id);
     this.userSelectedHashtags = this.getUserSelectedHashtags();
@@ -66,7 +66,7 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   public getUserSelectedHashtags(): Hashtag[] {
-    let hashtags: Hashtag[] = [];
+    const hashtags: Hashtag[] = [];
     this.photo.selectedHashtags.forEach(selectedHashtag => {
       if (Photo.isHashtagPartOfAnyCategory(this.photo, selectedHashtag.title)) {
         hashtags.push(selectedHashtag);
@@ -76,12 +76,12 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   public getUserNotSelectedHashtags(): Hashtag[] {
-    let hashtags: Hashtag[] = [];
+    const hashtags: Hashtag[] = [];
     for (let i = 0; i < this.photo.categories.length; i++) {
-      let category = this.photo.categories[i];
+      const category = this.photo.categories[i];
       for (let j = 0; j < category.tags.length; j++) {
-        let hashtag = category.tags[j];
-        let exist = this.photo.selectedHashtags.filter(x => x.title === hashtag.title)[0] !== undefined;
+        const hashtag = category.tags[j];
+        const exist = this.photo.selectedHashtags.filter(x => x.title === hashtag.title)[0] !== undefined;
         if (!exist && !hashtag.isCensored) {
           hashtags.push(hashtag);
         }
@@ -91,12 +91,12 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   public saveFeedback(): void {
-    this.photo.feedback = new ResultFeedback({ 
-      rating: this.rating, 
-      goodHashtags: this.tags1, 
-      badHashtags: this.tags2, 
-      missingHashtags: this.missingHashtags, 
-      comment: this.comment 
+    this.photo.feedback = new ResultFeedback({
+      rating: this.rating,
+      goodHashtags: this.tags1,
+      badHashtags: this.tags2,
+      missingHashtags: this.missingHashtags,
+      comment: this.comment
     });
     this.userService.updatePhoto(this.photo);
   }
@@ -145,17 +145,17 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   private doRequest(photo: Photo): void {
-    let feedback = photo.feedback;
-    let customerId = this.customerService.getCustomerId();
+    const feedback = photo.feedback;
+    const customerId = this.customerService.getCustomerId();
 
-    const feedbackDto: ResultFeedbackRequest = new ResultFeedbackRequest({ 
+    const feedbackDto: ResultFeedbackRequest = new ResultFeedbackRequest({
       customerId: customerId,
       photoId: photo.logId,
       rating: feedback.rating,
-      goodHashtags: feedback.goodHashtags, 
-      badHashtags: feedback.badHashtags, 
-      missingHashtags: feedback.missingHashtags, 
-      comment: feedback.comment 
+      goodHashtags: feedback.goodHashtags,
+      badHashtags: feedback.badHashtags,
+      missingHashtags: feedback.missingHashtags,
+      comment: feedback.comment
     });
     this.feedbackRepositoryService.sendResultFeedback(feedbackDto);
   }
@@ -197,7 +197,7 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   private addRemoveHashtags(source: string[], tag: Hashtag): void {
-    let i = source.indexOf(tag.title);
+    const i = source.indexOf(tag.title);
     if (i !== -1) {
       source.splice(i, 1);
     } else {

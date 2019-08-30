@@ -5,12 +5,10 @@ import { HashtagCategory } from '~/app/models/hashtag-category';
 import { View } from 'tns-core-modules/ui/core/view';
 import { Page } from 'tns-core-modules/ui/page';
 import { ActivatedRoute } from '@angular/router';
-import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { Hashtag } from '~/app/models/hashtag';
 import * as utils from 'tns-core-modules/utils/utils';
 import { isIOS, isAndroid } from 'tns-core-modules/platform';
 import * as frame from 'tns-core-modules/ui/frame';
-import * as app from 'tns-core-modules/application';
 import { UserService } from '../../../storages/user.service';
 import { Photo } from '../../../models/photo';
 import * as Toast from 'nativescript-toast';
@@ -37,13 +35,13 @@ export class ResultsComponent implements OnInit {
     private readonly router: RouterExtensions,
     private readonly userService: UserService,
     private readonly viewContainerRef: ViewContainerRef,
-    private readonly modalService: ModalDialogService, 
+    private readonly modalService: ModalDialogService,
     private readonly route: ActivatedRoute
   ) {
     this.page.actionBarHidden = true;
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     const id = Number(this.route.snapshot.params['id']);
     this.photo = this.userService.getPhoto(id);
     this.categories = Object.assign([], this.photo.categories);
@@ -54,7 +52,7 @@ export class ResultsComponent implements OnInit {
   }
 
   private addFavoriteHashtags(): void {
-    let favoritCat = new HashtagCategory();
+    const favoritCat = new HashtagCategory();
     favoritCat.title = 'results_category_favorites';
     const favorites = this.userService.getFavorites();
     favoritCat.tags = [];
@@ -166,13 +164,13 @@ export class ResultsComponent implements OnInit {
   }
 
   private copyToClipboard(): void {
-    let text = this.getHashtagsAsText();
+    const text = this.getHashtagsAsText();
     clipboard
       .setText(text)
       .then(() => {
         this.showModal();
       })
-      .catch(function(e) {
+      .catch(function(): void {
         Toast.makeText(localize('copy_failed'), 'long').show();
       });
   }
@@ -202,7 +200,7 @@ export class ResultsComponent implements OnInit {
   }
 
   private showToastIfHasNoSelectedHashtags(): boolean {
-    let hasSelectedHashtags = this.highlightStatus.length > 0;
+    const hasSelectedHashtags = this.highlightStatus.length > 0;
     if (!hasSelectedHashtags) {
       Toast.makeText(localize('toast_no_hashtags_selected')).show();
     }
@@ -230,7 +228,7 @@ export class ResultsComponent implements OnInit {
   }
 
   private saveSelection(): void {
-    let selectedHashtags: Hashtag[] = [];
+    const selectedHashtags: Hashtag[] = [];
     for (let i = 0; i < this.highlightStatus.length; i++) {
       selectedHashtags.push(new Hashtag(this.highlightStatus[i]));
     }

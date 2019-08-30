@@ -1,8 +1,8 @@
 import { Hashtag } from './hashtag';
 
 export class MyHashtag extends Hashtag {
-  count: number;
-  category: string;
+  public count: number;
+  public category: string;
 
   public constructor(title: string, count: number, category: string = '') {
     super(title);

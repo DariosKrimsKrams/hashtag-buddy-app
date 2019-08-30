@@ -1,13 +1,13 @@
 import { Rating } from '../rating';
 
 export class ResultFeedbackRequest {
-  customerId: string;
-  photoId: number;
-  rating: Rating;
-  goodHashtags: string[];
-  badHashtags: string[];
-  missingHashtags: string;
-  comment: string;
+  public customerId: string;
+  public photoId: number;
+  public rating: Rating;
+  public goodHashtags: string[];
+  public badHashtags: string[];
+  public missingHashtags: string;
+  public comment: string;
 
   public constructor(init?: Partial<ResultFeedbackRequest>) {
     Object.assign(this, init);

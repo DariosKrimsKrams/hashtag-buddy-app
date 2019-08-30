@@ -1,6 +1,6 @@
 export class EvaluationRequest {
-  mostRelevantHTags: string[];
-  trendingHTags: string[];
-  img: string;
-  logId: string;
+  public mostRelevantHTags: string[];
+  public trendingHTags: string[];
+  public img: string;
+  public logId: string;
 }

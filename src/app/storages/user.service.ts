@@ -24,7 +24,7 @@ export class UserService {
   ) {}
 
   public addPhoto(photo: Photo): number {
-    let photos = this.getPhotos();
+    const photos = this.getPhotos();
     photo.id = photos.length === 0 ? 1 : photos[photos.length - 1].id + 1;
     photos.push(photo);
     this.setPhotos(photos);
@@ -33,9 +33,9 @@ export class UserService {
   }
 
   public deletePhoto(deletePhoto: Photo): boolean {
-    let photos = this.getPhotos();
+    const photos = this.getPhotos();
     for (let i = 0; i < photos.length; i++) {
-      let photo = photos[i];
+      const photo = photos[i];
       if (photo.id === deletePhoto.id) {
         photos.splice(i, 1);
         this.setPhotos(photos);
@@ -46,7 +46,7 @@ export class UserService {
   }
 
   public updatePhoto(photo: Photo): void {
-    let photos = this.getPhotos();
+    const photos = this.getPhotos();
     for (let i = 0; i < photos.length; i++) {
       if (photos[i].id === photo.id) {
         photos[i] = photo;
@@ -58,9 +58,9 @@ export class UserService {
   }
 
   public getPhoto(id: number): Photo {
-    let photos = this.getPhotos();
+    const photos = this.getPhotos();
     for (let i = 0; i < photos.length; i++) {
-      let photo = photos[i];
+      const photo = photos[i];
       if (photo.id === id) {
         return photo;
       }
@@ -103,23 +103,23 @@ export class UserService {
   }
 
   public addPurchase(transaction: Transaction): void {
-    let purchases = this.getExistingPurchases();
+    const purchases = this.getExistingPurchases();
     purchases.push(transaction);
     this.localStorageService.set(this.keyPurchases, purchases);
   }
 
   private getExistingPurchases(): Transaction[] {
-    let json = this.localStorageService.get(this.keyPurchases) || undefined;
+    const json = this.localStorageService.get(this.keyPurchases) || undefined;
     if (json === undefined) {
       return [];
     }
     return JSON.parse(json) as Transaction[];
   }
-  
+
   public setFavorites(hashtags: MyHashtag[]): void {
     this.localStorageService.set(this.keyFavorites, hashtags);
   }
-  
+
   public getFavorites(): MyHashtag[] {
     const json = this.localStorageService.get(this.keyFavorites) || undefined;
     if (json === undefined) {

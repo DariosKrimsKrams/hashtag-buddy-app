@@ -13,7 +13,7 @@ import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
-    
+
   ],
   entryComponents: [
     ModalComponent

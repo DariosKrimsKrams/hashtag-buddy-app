@@ -33,16 +33,16 @@ export class ConfirmImageComponent implements OnInit {
     this.page.actionBarHidden = true;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.loadImage();
   }
 
-  loadImage(): void {
+  public loadImage(): void {
     this.photo = this.deviceService.getSelectedPhoto();
     this.cd.detectChanges();
   }
 
-  confirmImage(): void {
+  public confirmImage(): void {
     this.openLoadingPage();
     this.selectPhotoService.saveAndUploadPhoto().subscribe((photoId) => {
       this.openResultsPage(photoId);

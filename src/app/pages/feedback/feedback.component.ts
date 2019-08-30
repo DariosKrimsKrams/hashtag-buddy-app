@@ -20,11 +20,11 @@ export class FeedbackComponent implements OnInit {
 
   public email = '';
   public message = '';
-  
+
   constructor(
     private readonly page: Page,
     private readonly router: RouterExtensions,
-    private readonly modalService: ModalDialogService, 
+    private readonly modalService: ModalDialogService,
     private readonly viewContainerRef: ViewContainerRef,
     private readonly feedbackRepositoryService: FeedbackRepository,
     private readonly customerService: CustomerService,
@@ -32,7 +32,7 @@ export class FeedbackComponent implements OnInit {
     this.page.actionBarHidden = true;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
   }
 
   public sendFeedback(): void {
@@ -40,15 +40,15 @@ export class FeedbackComponent implements OnInit {
       console.log('empty');
       return;
     }
-    let feedback: AppFeedback = new AppFeedback({
-      customerId: this.customerService.getCustomerId(), 
-      email: this.email, 
+    const feedback: AppFeedback = new AppFeedback({
+      customerId: this.customerService.getCustomerId(),
+      email: this.email,
       message: this.message
     });
     this.feedbackRepositoryService.sendAppFeedback(feedback)
     .subscribe(feedback => {
     });
-    this.showModal();  
+    this.showModal();
   }
 
   private showModal(): void {
@@ -82,7 +82,7 @@ export class FeedbackComponent implements OnInit {
     this.message = text;
   }
 
-  goPrevPage() {
+  public goPrevPage(): void {
     this.router.navigate(['/settings'], {
       transition: {
         name: 'slideRight',

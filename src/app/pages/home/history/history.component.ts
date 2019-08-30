@@ -38,7 +38,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
     this.cd.detach();
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.setPhotos(this.userService.getPhotos());
     this.photoAddedSubscription = this.userService.photoAdded.subscribe(
       (photos: Photo[]) => {
@@ -61,7 +61,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
     this.cd.detectChanges();
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.photoAddedSubscription.unsubscribe();
     this.photoUpdatedSubscription.unsubscribe();
     if (this.historyOpenChangedSubscription !== undefined) {
@@ -115,13 +115,13 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   public getHashtags(photo: Photo): Hashtag[] {
-    let count = this.hashtagAmount;
-    let hashtags: Hashtag[] = [];
+    const count = this.hashtagAmount;
+    const hashtags: Hashtag[] = [];
     if (
       photo.selectedHashtags !== undefined &&
       photo.selectedHashtags.length !== 0
     ) {
-      let selectedAmount =
+      const selectedAmount =
         photo.selectedHashtags.length >= count
           ? count
           : photo.selectedHashtags.length;
@@ -135,7 +135,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
           ? count - hashtags.length
           : photo.categories[0].tags.length;
       for (let i = 0; i < categoriesAmount; i++) {
-        let tag = photo.categories[0].tags[i];
+        const tag = photo.categories[0].tags[i];
         if (tag.isCensored) {
           if (categoriesAmount + 1 < photo.categories[0].tags.length - 1) {
             categoriesAmount++;
@@ -154,11 +154,11 @@ export class HistoryComponent implements OnInit, OnDestroy {
     }
     let amount = 0;
     for (let i = 0; i < photo.categories.length; i++) {
-      let category = photo.categories[i];
+      const category = photo.categories[i];
       amount += category.tags.length;
     }
-    let count = this.hashtagAmount;
-    let result = amount - count;
+    const count = this.hashtagAmount;
+    const result = amount - count;
     return result >= 0 ? result : 0;
   }
 

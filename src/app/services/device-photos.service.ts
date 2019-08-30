@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class DeviceService {
-  selectedPhoto: ImageAsset;
+  public selectedPhoto: ImageAsset;
 
   constructor() {
     this.selectedPhoto = null;
@@ -25,10 +25,10 @@ export class DeviceService {
   public copyPhotoToAppFolder(image: ImageAsset): Observable<string> {
     return new Observable<string>(observer => {
       fromAsset(image).then(imageSource => {
-        let targetFilename = 'img_' + new Date().getTime() + '.jpg';
+        const targetFilename = 'img_' + new Date().getTime() + '.jpg';
         const tempPath = knownFolders.documents().path;
         const localFullPath = path.join(tempPath, targetFilename);
-        let saved = imageSource.saveToFile(localFullPath, 'jpg');
+        const saved = imageSource.saveToFile(localFullPath, 'jpg');
         if (!saved) {
           console.log('Failed to save :\'(');
         }

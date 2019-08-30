@@ -15,13 +15,13 @@ export class HashtagComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
     if (this.censored) {
-      let length = this.name.length;
-      let trimLength = length > 5 ? 4 : length - 2;
+      const length = this.name.length;
+      const trimLength = length > 5 ? 4 : length - 2;
       this.name = this.name.substr(0, trimLength + 1);
-      let minAmountOfStars = 4;
-      let amountOfStars =
+      const minAmountOfStars = 4;
+      const amountOfStars =
         length - trimLength >= minAmountOfStars
           ? length
           : trimLength + minAmountOfStars;
@@ -31,7 +31,7 @@ export class HashtagComponent implements OnInit {
     }
   }
 
-  triggerClick() {
+  public triggerClick(): void {
     if (!this.censored) {
       this.onClick.emit();
     } else {

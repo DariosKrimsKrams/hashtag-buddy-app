@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, Output, EventEmitter, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page';
 import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.page.actionBarHidden = true;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 130;
     this.headerDefaultTransform = -70;
@@ -52,8 +52,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.androidBackTriggeredSubscription = this.userService.androidBackTriggered.subscribe((path: string) => this.onAndroidBackTriggered(path));
     this.cd.detectChanges();
   }
-  
-  ngOnDestroy() {
+
+  public ngOnDestroy(): void {
     this.photoAddedSubscription.unsubscribe();
     this.androidBackTriggeredSubscription.unsubscribe();
   }
@@ -85,20 +85,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private animateHistory(time: number): void {
-    let posY = this.isHistoryOpen === 1 ? 0 : this.historyDefaultTransform;
-    let bgColor = this.isHistoryOpen === 1 ? '#fff' : '#fcfcfc';
+    const posY = this.isHistoryOpen === 1 ? 0 : this.historyDefaultTransform;
+    const bgColor = this.isHistoryOpen === 1 ? '#fff' : '#fcfcfc';
     const that = this;
     this.historyElement.nativeElement.animate({
       translate: { x: 0, y: posY},
       backgroundColor: bgColor,
       duration: time
-    }).then(function () {
+    }).then(function(): void {
       that.cd.detach();
     });
   }
 
   private animateHistoryShadow(time: number): void {
-    let value = this.isHistoryOpen === 1 ? 0 : 1;
+    const value = this.isHistoryOpen === 1 ? 0 : 1;
     this.historShadowElement.nativeElement.animate({
       opacity: value,
       duration: time
@@ -106,7 +106,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private animateHeader(time: number): void {
-    let posY = this.isHistoryOpen === 1 ? this.headerDefaultTransform : 0;
+    const posY = this.isHistoryOpen === 1 ? this.headerDefaultTransform : 0;
     this.headerElement.nativeElement.animate({
       translate: { x: 0, y: posY},
       duration: time

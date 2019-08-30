@@ -7,15 +7,15 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   moduleId: module.id
 })
 export class CircularProgressBarComponent implements OnInit {
-  
+
   private percentValue: number = 0;
   private timeSec: number = 30;
-  @ViewChild('bar', { read: ElementRef, static: false }) barElement: ElementRef;
+  @ViewChild('bar', { read: ElementRef, static: false }) public barElement: ElementRef;
 
   constructor(
   ) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.animate();
     // Need Timeout because of Bug :'(
     setTimeout.bind(this)(() => {
@@ -28,7 +28,7 @@ export class CircularProgressBarComponent implements OnInit {
   }
 
   private animate(): void {
-    let intervalId = setInterval.bind(this)(() => {
+    const intervalId = setInterval.bind(this)(() => {
       this.percentValue++;
       if (this.percentValue >= 99) {
         clearInterval(intervalId);
@@ -36,7 +36,7 @@ export class CircularProgressBarComponent implements OnInit {
     }, this.timeSec * 1000 / 99);
   }
 
-  animateBar() {
+  public animateBar(): void {
     this.barElement.nativeElement.animate({
       rotate: 405,
       duration: 2000,
@@ -45,5 +45,5 @@ export class CircularProgressBarComponent implements OnInit {
       this.animateBar();
     });
   }
-  
+
 }

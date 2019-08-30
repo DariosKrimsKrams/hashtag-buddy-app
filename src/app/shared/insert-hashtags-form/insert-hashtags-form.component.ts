@@ -14,11 +14,11 @@ export class InsertHashtagsFormComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
   }
 
   public addCustomHashtags(): void {
-    let input = this.customUserHashtagsText;
+    const input = this.customUserHashtagsText;
     if (input === undefined) {
       console.log('error: addCustomHashtags triggered with text=undefined');
       return;

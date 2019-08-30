@@ -10,8 +10,8 @@ import { Page } from 'tns-core-modules/ui/page';
 })
 export class AuthComponent implements OnInit {
 
-  dialogOpen = false;
-  signin = false;
+  public dialogOpen = false;
+  public signin = false;
 
   constructor(
     private readonly page: Page,
@@ -20,10 +20,10 @@ export class AuthComponent implements OnInit {
     this.page.actionBarHidden = true;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
   }
 
-  goPrevPage() {
+  public goPrevPage(): void {
     this.router.navigate(['/settings'], {
       transition: {
         name: 'slideRight',
@@ -33,7 +33,7 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  goHome() {
+  public goHome(): void {
     this.router.navigate(['/home'], {
       transition: {
         name: 'FadeIn',
@@ -43,7 +43,7 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  goSignIn() {
+  public goSignIn(): void {
     this.signin = true;
     this.dialogOpen = false;
     // this.router.navigate(["/settings/signin"], {
@@ -55,11 +55,11 @@ export class AuthComponent implements OnInit {
     // })
   }
 
-  showDialog() {
+  public showDialog(): void {
     this.dialogOpen = true;
   }
 
-  closeDialog() {
+  public closeDialog(): void {
     this.dialogOpen = false;
   }
 

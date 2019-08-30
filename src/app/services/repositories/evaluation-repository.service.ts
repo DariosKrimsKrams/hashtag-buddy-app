@@ -31,7 +31,7 @@ export class EvaluationRepository {
 
     private uploadLogic(observer): void {
         this.observer = observer;
-        let config = {
+        const config = {
             url: this.evaluationUrl + this.customerId,
             method: 'POST',
             headers: {
@@ -41,24 +41,24 @@ export class EvaluationRepository {
             description: `Uploading ${this.filename}`,
             androidAutoDeleteAfterUpload: false,
         };
-        let params = [
+        const params = [
             { name: 'file', filename: this.file, mimeType: 'image/jpeg' }
         ];
-        let task = this.session.multipartUpload(params, config);
+        const task = this.session.multipartUpload(params, config);
         task.on('error', this.errorHandler.bind(this));
         task.on('responded', this.respondedHandler.bind(this));
         this.tasks.push(task);
     }
 
     private errorHandler(e): void {
-        let httpStatus: IHttpResponse = {status: 'error', code: e.responseCode, message: e.response};
+        const httpStatus: IHttpResponse = {status: 'error', code: e.responseCode, message: e.response};
         this.observer.next(httpStatus);
         this.observer.complete();
     }
 
 
     private respondedHandler(e): void {
-        let httpStatus: IHttpResponse = {status: 'successful', code: e.responseCode, message: e.data};
+        const httpStatus: IHttpResponse = {status: 'successful', code: e.responseCode, message: e.data};
         this.observer.next(httpStatus);
         this.observer.complete();
     }

@@ -30,24 +30,24 @@ export class SelectPhotoService {
 
   public pickImage(): Observable<any> {
     return new Observable<any>(observer => {
-    let that = this;
-    let context = imagepicker.create({
+    const that = this;
+    const context = imagepicker.create({
       mode: 'single',
       mediaType: imagepicker.ImagePickerMediaType.Image
     });
     context
       .authorize()
-      .then(function() {
+      .then(function(): any {
         return context.present();
       })
-      .then(function(selection) {
-        let image = selection[0];
+      .then(function(selection): void {
+        const image = selection[0];
         image.options.width = 1000;
         image.options.height = 1000;
         that.deviceService.setSelectedPhoto(image);
         observer.next(image);
         observer.complete();
-      }).catch(function (e) {
+      }).catch(function(e): void {
         e = e.toString();
         if (e.substr(e.length - 13) !== 'result code 0') {
           Toast.makeText(localize('toast_imagepicker_failed'), 'long').show();
@@ -61,7 +61,7 @@ export class SelectPhotoService {
   public saveAndUploadPhoto(): Observable<any> {
     return new Observable<any>(observer => {
       this.savePhoto().subscribe(photoId => {
-        let hasCustomerId = this.customerService.hasCustomerId();
+        const hasCustomerId = this.customerService.hasCustomerId();
         if (!hasCustomerId) {
             this.customerService.createUserIdIfNotExist().subscribe((status) => {
             if (status === CustomerCreateStatus.NewlyCreated || status === CustomerCreateStatus.AlreadyCreated) {
@@ -82,10 +82,10 @@ export class SelectPhotoService {
     return new Observable<number>(observer => {
       const selectedPhoto = this.deviceService.getSelectedPhoto();
       this.deviceService.copyPhotoToAppFolder(selectedPhoto).subscribe(path => {
-        let photo = new Photo();
+        const photo = new Photo();
         photo.timestamp = new Date().getTime();
         photo.image = path;
-        let photoId = this.userService.addPhoto(photo);
+        const photoId = this.userService.addPhoto(photo);
         observer.next(photoId);
         observer.complete();
       });
@@ -93,13 +93,13 @@ export class SelectPhotoService {
   }
 
   private uploadImage(photoId: number, observer: Subscriber<any>): void {
-    let customerId = this.customerService.getCustomerId();
-    let photo = this.userService.getPhoto(photoId);
+    const customerId = this.customerService.getCustomerId();
+    const photo = this.userService.getPhoto(photoId);
     this.evaluationRepository.UploadPhoto(photo.image, customerId)
     .subscribe((httpResponse: IHttpResponse) => {
       console.info(httpResponse);
       if (httpResponse.code === 200) {
-        let httpResult = this.parseSuccessfulResponse(httpResponse);
+        const httpResult = this.parseSuccessfulResponse(httpResponse);
         this.storeHttpResultIntoPhoto(photoId, httpResult);
         this.photosCountService.decrease();
         observer.next(photoId);
@@ -112,17 +112,17 @@ export class SelectPhotoService {
   }
 
   private parseSuccessfulResponse(httpResponse: IHttpResponse): {categories: HashtagCategory[], logId: number} {
-    let data = JSON.parse(httpResponse.message);
-    let mostRelevantTags: HashtagResult[] = data.mostRelevantHTags;
-    let trendingTags: HashtagResult[] = data.trendingHTags;
-    let categories: HashtagCategory[] = [];
+    const data = JSON.parse(httpResponse.message);
+    const mostRelevantTags: HashtagResult[] = data.mostRelevantHTags;
+    const trendingTags: HashtagResult[] = data.trendingHTags;
+    const categories: HashtagCategory[] = [];
     categories.push(HashtagCategory.fromHashtagResult(mostRelevantTags, 'results_category_generic_hashtags'));
     categories.push(HashtagCategory.fromHashtagResult(trendingTags, 'results_category_niche_hashtags'));
     return { categories: categories, logId: data.logId };
   }
 
   private storeHttpResultIntoPhoto(photoId: number, httpResult: {categories: HashtagCategory[], logId: number}): void {
-    let photo = this.userService.getPhoto(photoId);
+    const photo = this.userService.getPhoto(photoId);
     photo.categories = httpResult.categories;
     photo.logId = httpResult.logId;
     photo.proMode = this.photosCountService.getTotalCount() > 0;

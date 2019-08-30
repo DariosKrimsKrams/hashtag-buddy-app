@@ -11,11 +11,11 @@ export class BigHeaderComponent implements OnInit {
 
   constructor(
     private readonly cd: ChangeDetectorRef
-  ) { 
+  ) {
     this.cd.detach();
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.cd.detectChanges();
   }
 

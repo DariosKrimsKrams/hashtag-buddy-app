@@ -11,23 +11,23 @@ import { Subscription } from 'rxjs';
 export class FloatLabelComponent implements OnInit, OnDestroy {
   private resetSubscription: Subscription;
 
-  @Input() placeholder: string;
-  @Input() secure: boolean;
-  @Input() reset: EventEmitter<void>;
-  @ViewChild('label', { read: ElementRef, static: false }) label: ElementRef;
-  @ViewChild('textField', { read: ElementRef, static: false }) textField: ElementRef;
-  @Output() userTextEmitter = new EventEmitter();
-  @Output() onSubmit = new EventEmitter();
+  @Input() public placeholder: string;
+  @Input() public secure: boolean;
+  @Input() public reset: EventEmitter<void>;
+  @ViewChild('label', { read: ElementRef, static: false }) public label: ElementRef;
+  @ViewChild('textField', { read: ElementRef, static: false }) public textField: ElementRef;
+  @Output() public userTextEmitter = new EventEmitter();
+  @Output() public onSubmit = new EventEmitter();
 
   constructor() {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     if (this.reset !== undefined) {
       this.resetSubscription = this.reset.subscribe(() => this.resetText());
     }
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     if (this.resetSubscription !== undefined) {
       this.resetSubscription.unsubscribe();
     }

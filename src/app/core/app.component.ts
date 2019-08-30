@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     private readonly modalService: ModalDialogService
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this._sideDrawerTransition = new SlideInOnTopTransition();
     this.selected[0] = true;
     this.customerService.createUserIdIfNotExist().subscribe(status => {

@@ -11,21 +11,16 @@ import { localize } from 'nativescript-localize/angular';
   selector: 'ns-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
-  moduleId: module.id,
+  moduleId: module.id
 })
-export class SettingsComponent implements  OnInit {
+export class SettingsComponent {
+  public openmenu = false;
 
-  openmenu = false;
-  
   constructor(
-    private readonly page: Page, 
-    private readonly router: RouterExtensions,
+    private readonly page: Page,
+    private readonly router: RouterExtensions
   ) {
     this.page.actionBarHidden = true;
-  }
-
-
-  ngOnInit() {
   }
 
   public openMenu(): void {
@@ -33,9 +28,9 @@ export class SettingsComponent implements  OnInit {
     sideDrawer.showDrawer();
   }
 
-  goNextPage(route: string) {
+  public goNextPage(route: string): void {
     // if(route === 'instagram'){
-    //   openUrl("https://www.instagram.com/");      
+    //   openUrl("https://www.instagram.com/");
     // } else if(route === 'facebook') {
     //   openUrl("https://www.facebook.com/");
     // } else if(route === 'twitter') {
@@ -51,17 +46,16 @@ export class SettingsComponent implements  OnInit {
           curve: 'easeOut'
         }
       });
-    }    
+    }
   }
 
-  share() {
-    let text = localize('share') + '\n\n' + localize('link_playstore');
+  public share(): void {
+    const text = localize('share') + '\n\n' + localize('link_playstore');
     SocialShare.shareText(text);
   }
 
-  rate() {
-    let text = localize('link_playstore');
+  public rate(): void {
+    const text = localize('link_playstore');
     openUrl(text);
   }
-
 }

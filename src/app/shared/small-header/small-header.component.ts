@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'ns-small-header',
@@ -6,18 +6,13 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./small-header.component.scss'],
   moduleId: module.id,
 })
-export class SmallHeaderComponent implements OnInit {
+export class SmallHeaderComponent {
 
-  @Input() image: string;
-  @Input() title: string;
-  @Output() OpenMenu = new EventEmitter<string>();
-  constructor() { }
+  @Input() public image: string;
+  @Input() public title: string;
+  @Output() public OpenMenu = new EventEmitter<string>();
 
-  ngOnInit() {
-    
-  }
-
-  openMenu() {
+  public openMenu(): void {
     this.OpenMenu.emit();
   }
 

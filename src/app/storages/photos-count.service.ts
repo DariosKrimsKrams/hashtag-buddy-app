@@ -21,9 +21,9 @@ export class PhotosCountService {
   }
 
   public getTotalCount(): number {
-    let amountPayed = this.getPayedCount();
-    let amountFree = this.getFreeCount();
-    let amountTotal = amountPayed + amountFree;
+    const amountPayed = this.getPayedCount();
+    const amountFree = this.getFreeCount();
+    const amountTotal = amountPayed + amountFree;
     if (amountTotal === 0 && this.checkTimeOver()) {
       this.setFreeCount(environment.freePhotosIncreatingAmount);
       return environment.freePhotosIncreatingAmount;
@@ -32,8 +32,8 @@ export class PhotosCountService {
   }
 
   public checkTimeOver(): boolean {
-    let date = this.getDate();
-    let dateNow = (Date.now() / 1000) | 0;
+    const date = this.getDate();
+    const dateNow = (Date.now() / 1000) | 0;
     if (date + environment.freePhotosIncreatingTime <= dateNow) {
       return true;
     }
@@ -41,7 +41,7 @@ export class PhotosCountService {
   }
 
   public decrease(): boolean {
-    let amountTotal = this.getTotalCount();
+    const amountTotal = this.getTotalCount();
     if (amountTotal === 0) {
       return false;
     }
@@ -84,7 +84,7 @@ export class PhotosCountService {
 
   private setFreeCount(amount: number): void {
     this.localStorageService.set(this.keyFreePhotos, amount);
-    let dateNow = (Date.now() / 1000) | 0;
+    const dateNow = (Date.now() / 1000) | 0;
     this.localStorageService.set(this.keyFreeDate, dateNow);
   }
 

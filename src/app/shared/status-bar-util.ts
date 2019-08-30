@@ -3,19 +3,19 @@ import * as platform from 'tns-core-modules/platform';
 
 declare var android: any;
 
-export function setStatusBarColors() {
+export function setStatusBarColors(): void {
     if (application.ios) {
         // remove due to API deprecated/removed
     }
 
     if (application.android) {
-        application.android.on('activityStarted', function () {
+        application.android.on('activityStarted', function(): void {
             if (application.android && platform.device.sdkVersion >= '21') {
-                let View = android.view.View;
-                let window = application.android.startActivity.getWindow();
+                const View = android.view.View;
+                const window = application.android.startActivity.getWindow();
                 window.setStatusBarColor(0x000000);
 
-                let decorView = window.getDecorView();
+                const decorView = window.getDecorView();
                 decorView.setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION

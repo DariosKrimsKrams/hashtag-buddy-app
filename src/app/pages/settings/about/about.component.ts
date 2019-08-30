@@ -21,11 +21,11 @@ export class AboutComponent implements OnInit {
     this.page.actionBarHidden = true;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.userId = this.customerService.getCustomerId().substr(0, 10);
   }
 
-  goPrevPage() {
+  public goPrevPage(): void {
     this.router.navigate(['/settings'], {
       transition: {
         name: 'slideRight',

@@ -12,15 +12,15 @@ export class LocalStorageService {
   }
 
   public get(key: string): string {
-    let value = LocalStorage.getItem(key) || undefined;
+    const value = LocalStorage.getItem(key) || undefined;
     return value !== 'null' ? value : undefined;
   }
 
-  public set(key: string, value: string | number | object) {
+  public set(key: string, value: string | number | object): void {
     if (typeof value === 'string' || value instanceof String) {
       LocalStorage.setItem(key, value);
     } else {
-      let json = JSON.stringify(value);
+      const json = JSON.stringify(value);
       LocalStorage.setItem(key, json);
     }
   }

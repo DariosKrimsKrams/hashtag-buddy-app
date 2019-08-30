@@ -17,7 +17,7 @@ export class FeedbackRepository {
   private appFeedbackUrl = environment.apiUrl + '/Feedback/App';
   private resultFeedbackUrl = environment.apiUrl + '/Feedback/Results';
 
-  sendAppFeedback (feedback: AppFeedback): Observable<any> {
+  public sendAppFeedback(feedback: AppFeedback): Observable<any> {
     return new Observable<any>(observer => {
       request({
         url: this.appFeedbackUrl,
@@ -34,7 +34,7 @@ export class FeedbackRepository {
     });
   }
 
-  sendResultFeedback (feedback: ResultFeedbackRequest): void {
+  public sendResultFeedback(feedback: ResultFeedbackRequest): void {
     request({
       url: this.resultFeedbackUrl,
       method: 'POST',

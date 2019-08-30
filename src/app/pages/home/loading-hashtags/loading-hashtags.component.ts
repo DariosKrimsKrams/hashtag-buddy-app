@@ -28,7 +28,7 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
     this.page.actionBarHidden = true;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.subscription1 = this.userService.uploadFailedTriggered.subscribe(() => {
       this.uploadFailed();
     });
@@ -40,7 +40,7 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
     this.animateTips();
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     clearInterval(this.intervalId);
     this.subscription1.unsubscribe();
     this.subscription2.unsubscribe();
