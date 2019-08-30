@@ -37,14 +37,24 @@ npm run tslint
 
 ## Publishing app
 
-Check and install dependencies
+Install dependencies
+
+```
+npm i -g nativescript@latest
+npm i tns-core-modules@latest
+tns platform add android/ios
+```
+
+Update Instruction
 
 ```
 tns info
 npm i -g nativescript@latest
-npm install tns-core-modules@latest --save
+npm i tns-core-modules@latest
+tns update
 tns platform clean android/ios
 ```
+Weitere Infos: https://docs.nativescript.org/releases/upgrade-instructions
 
 run on device with
 
