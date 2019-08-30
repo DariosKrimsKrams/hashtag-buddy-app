@@ -161,6 +161,7 @@
   "rate_later": "Later",
   "rate_no": "Never",
   "rate_yes": "Rate now",
+  "exit_warning": "Tap again to exit",
   "error_headline": "Ooops...",
   "error_desc": "Something went wrong :(",
   "error_desc2": "Something went wrong and we can’t handle your request",
