@@ -11,7 +11,7 @@ export class UserService {
   private keyPhotos: string = 'photos';
   private keyPurchases: string = 'purchases';
   private keyFavorites: string = 'favorites';
-  private keyRateApp: string = 'rateapp';
+  private keyRateApp: string = 'rateapp2';
   private photosCache: Photo[];
   @Output() public photoAdded: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
   @Output() public photoUpdated: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
