@@ -2,7 +2,7 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { Page } from 'tns-core-modules/ui/page';
 import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog';
-import { ModalComponent } from '../../shared/modal/modal.component';
+import { ModalComponent } from '~/app/shared/modal/modal.component';
 import * as utils from 'tns-core-modules/utils/utils';
 import { isIOS, isAndroid } from 'tns-core-modules/platform';
 import * as frame from 'tns-core-modules/ui/frame';
@@ -14,7 +14,7 @@ import { FeedbackRepository } from '~/app/services/repositories/feedback-reposit
   selector: 'ns-feedback',
   templateUrl: './feedback.component.html',
   styleUrls: ['./feedback.component.scss'],
-  moduleId: module.id,
+  moduleId: module.id
 })
 export class FeedbackComponent implements OnInit {
 

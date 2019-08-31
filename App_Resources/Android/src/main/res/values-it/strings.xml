@@ -7,6 +7,7 @@
   <string name="error_desc2">"Qualcosa è andato storto e non possiamo gestire la tua richiesta"</string>
   <string name="error_desc">"Qualcosa è andato storto :("</string>
   <string name="error_headline">"Ooops..."</string>
+  <string name="exit_warning">"Tap again to exit"</string>
   <string name="_tasso_si__uCsii">"Valuta ora"</string>
   <string name="rate_no">"Non visualizzare più"</string>
   <string name="rate_later">"Più tardi"</string>
@@ -148,8 +149,8 @@
   <string name="results_hashtags_input">"Aggiungi il tuo #hashtag"</string>
   <string name="results_recommented_amount">"Meglio scegliere almeno"</string>
   <string name="results_no_hashtags_selected">"Scegli gli hashtag qui in basso..."</string>
-  <string name="results_deselect_all">"Deseleziona tutto"</string>
-  <string name="results_select_all">"Seleziona tutto"</string>
+  <string name="results_deselect_all">"Nessuna"</string>
+  <string name="results_select_all">"Tutto"</string>
   <string name="results_category_location_based_hashtags">"In base alla posizione"</string>
   <string name="results_category_favorites">"I miei hashtag"</string>
   <string name="results_category_upcoming_has">"Hashtag di tendenza"</string>

@@ -7,6 +7,7 @@
   <string name="error_desc2">"Leider konnten wir das Hochladen nicht korrekt abschließen"</string>
   <string name="error_desc">"Etwas lief schief :("</string>
   <string name="error_headline">"Ooops..."</string>
+  <string name="exit_warning">"Erneut Klicken zum Beenden"</string>
   <string name="rate_yes">"Jetzt bewerten"</string>
   <string name="rate_no">"Nie"</string>
   <string name="rate_later">"Später"</string>
@@ -148,8 +149,8 @@
   <string name="results_hashtags_input">"Ergänze eigene #hashtags"</string>
   <string name="results_recommented_amount">"Wähle am besten ca."</string>
   <string name="results_no_hashtags_selected">"Wähle von unten aus.."</string>
-  <string name="results_deselect_all">"keine"</string>
-  <string name="results_select_all">"alle"</string>
+  <string name="results_deselect_all">"Keine"</string>
+  <string name="results_select_all">"Alle"</string>
   <string name="results_category_location_based_hashtags">"Standort-basiert"</string>
   <string name="results_category_favorites">"Meine Hashtags"</string>
   <string name="results_category_upcoming_hashtags">"Im Trend"</string>

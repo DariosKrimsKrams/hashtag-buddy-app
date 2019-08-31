@@ -20,8 +20,8 @@
                 </StackLayout>
                 <StackLayout col="2" class="trash" *ngIf="isSelected(i)" verticalAlignment="middle" horizontalAlignment="center" (tap)="deleteHistoryItem(photo)">
                     <Image src="~/app/assets/images/icons/trash.png" width="27pt" height="30pt"></Image>
-                </StackLayout>                        
-            </GridLayout>         
+                </StackLayout>
+            </GridLayout>
         </StackLayout>
         <Label class="no-content" [text]="'history_no_content' | L" *ngIf="photosReverse.length === 0"></Label>
     </StackLayout>            

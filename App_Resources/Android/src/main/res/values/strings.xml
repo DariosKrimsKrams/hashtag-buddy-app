@@ -7,6 +7,7 @@
   <string name="error_desc2">"Something went wrong and we can’t handle your request"</string>
   <string name="error_desc">"Something went wrong :("</string>
   <string name="error_headline">"Ooops..."</string>
+  <string name="exit_warning">"Tap again to exit"</string>
   <string name="rate_yes">"Rate now"</string>
   <string name="rate_no">"Never"</string>
   <string name="rate_later">"Later"</string>

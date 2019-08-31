@@ -5,35 +5,35 @@
 
 #history_content {
   margin: 130pt 0 20pt 0;
-}
 
-.trash {
-  background-color: #e95978;
-  width: 100%;
-  height: 78;
-}
+  .trash {
+    background-color: #e95978;
+    width: 100%;
+    height: 78;
+  }
 
-.left-blackbar {
-  height: 80pt;
-  background-color: #fff;
-}
+  .left-blackbar {
+    height: 80pt;
+    background-color: #fff;
+  }
 
-.list-group-item Image {
-  width: 60pt;
-  height: 60pt;
-  margin: 5pt 5pt 10pt 5pt;
-  border-radius: 5pt;
-}
+  .list-group-item Image {
+    width: 60pt;
+    height: 60pt;
+    margin: 5pt 5pt 10pt 5pt;
+    border-radius: 5pt;
+  }
 
-.date-bold {
-  font-family: 'AvenirNext-Medium', 'Avenir Next Medium';
-}
+  .date-bold {
+    font-family: 'AvenirNext-Medium', 'Avenir Next Medium';
+  }
 
-.history-error-text {
-  text-align: left;
-  font-size: 15pt;
-}
+  .history-error-text {
+    text-align: left;
+    font-size: 15pt;
+  }
 
-label.no-content {
-  margin-top: 100pt;
+  label.no-content {
+    margin-top: 100pt;
+  }
 }

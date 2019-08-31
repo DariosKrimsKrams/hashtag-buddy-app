@@ -7,6 +7,7 @@
   <string name="error_desc2">"Algo correu mal e de momento não podemos concretizar o seu pedido"</string>
   <string name="error_desc">"Algo correu mal :("</string>
   <string name="error_headline">"Ooops..."</string>
+  <string name="exit_warning">"Tap again to exit"</string>
   <string name="rate_yes">"Avaliar agora!"</string>
   <string name="rate_no">"Nunca"</string>
   <string name="rate_later">"Mais tarde"</string>
@@ -148,8 +149,8 @@
   <string name="results_hashtags_input">"Adicione o seu próprio #hashtags"</string>
   <string name="results_recommented_amount">"É melhor escolher pelo menos"</string>
   <string name="results_no_hashtags_selected">"Escolha um dos hashtags seguintes..."</string>
-  <string name="results_deselect_all">"Limpar Seleção"</string>
-  <string name="results_select_all">"Selecionar todos"</string>
+  <string name="results_deselect_all">"Nenhum"</string>
+  <string name="results_select_all">"Todos"</string>
   <string name="results_category_location_based_hashtags">"Com base na localização"</string>
   <string name="results_category_favorites">"Os meus hashtags"</string>
   <string name="results_category_upcoming_has">"Trending hashtags"</string>

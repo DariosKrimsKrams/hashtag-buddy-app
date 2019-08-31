@@ -7,6 +7,7 @@
   <string name="error_desc2">"Quelque chose a mal tourné et nous ne pouvons pas traiter votre demande"</string>
   <string name="error_desc">"Quelque chose a mal tourné :("</string>
   <string name="error_headline">"Oups..."</string>
+  <string name="exit_warning">"Tap again to exit"</string>
   <string name="rate_yes">"Évaluez maintenant"</string>
   <string name="rate_no">"Jamais"</string>
   <string name="rate_later">"Plus tard"</string>
@@ -148,8 +149,8 @@
   <string name="results_hashtags_input">"Ajoutez vos propres #hashtags"</string>
   <string name="results_recommented_amount">"Recommandations"</string>
   <string name="results_no_hashtags_selected">"Sélectionner les hashtags ci-dessous..."</string>
-  <string name="results_deselect_all">"Désélectionner tout"</string>
-  <string name="results_select_all">"Sélectionner tout"</string>
+  <string name="results_deselect_all">"Aucun"</string>
+  <string name="results_select_all">"Tous"</string>
   <string name="results_category_location_based_hashtags">"Selon la Localisation"</string>
   <string name="results_category_favorites">"Mes hashtags"</string>
   <string name="results_category_upcoming_has">"Hashtags Tendances "</string>

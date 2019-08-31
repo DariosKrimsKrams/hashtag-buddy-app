@@ -7,7 +7,7 @@ import { SelectPhotoService } from '../../services/business-logic/select-photo.s
 import { UserService } from '~/app/storages/user.service';
 import { Photo } from '~/app/models/photo';
 import { Subscription } from 'rxjs';
-import { exit } from 'nativescript-exit';
+// import { exit } from 'nativescript-exit';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
 
@@ -129,12 +129,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else if (this.showConfirmImage) {
         this.showConfirmImage = false;
       } else {
-        if (!this.backTriggeredForExit) {
-          this.backTriggeredForExit = true;
-          Toast.makeText(localize('exit_warning'), 'long').show();
-        } else {
-          exit();
-        }
+        // if (!this.backTriggeredForExit) {
+        //   this.backTriggeredForExit = true;
+        //   Toast.makeText(localize('exit_warning'), 'long').show();
+        // } else {
+        //   // exit();
+        //   // ToDo
+        // }
       }
     }
   }

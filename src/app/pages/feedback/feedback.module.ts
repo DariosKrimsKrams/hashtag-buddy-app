@@ -5,7 +5,7 @@ import { FeedbackComponent } from '~/app/pages/feedback/feedback.component';
 import { FloatLabelModule } from '~/app/shared/float-label/float-label.module';
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
 import { setStatusBarColors } from '~/app/shared/status-bar-util';
-import { ModalModule } from '../../shared/modal/modal.module';
+import { ModalModule } from '~/app/shared/modal/modal.module';
 import { FeedbackRepository } from '~/app/services/repositories/feedback-repository.service';
 setStatusBarColors();
 
@@ -21,7 +21,7 @@ setStatusBarColors();
     SmallHeaderModule,
     FloatLabelModule,
     NativeScriptLocalizeModule,
-    ModalModule,
+    ModalModule
   ],
   providers: [
     FeedbackRepository
