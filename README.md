@@ -2,7 +2,7 @@
 
 Welcome to the repository of the Instaq App for **Android** & **iOS**. This app is a side-project of mine about uploading photos to find the most relevant hashtags for **Instagram**.
 
-![](https://lh3.googleusercontent.com/OZUZg7HOsBW0PnxeihHcVTGczo_EPuZkwp8DT9DdZA_AICt0q_GbLSYOFG--VlesHw=s180-rw)
+![](https://lh3.googleusercontent.com/UorfLyAg3i91YgbDioeiURsL6EsFWBGs_BF7Nsxck4rq5PYbXkv7KCKgmC069hTTXzI=s180-rw)
 
 ## Links 
   * [Play Store](https://play.google.com/store/apps/details?id=com.innocliq.instaq)
@@ -10,13 +10,16 @@ Welcome to the repository of the Instaq App for **Android** & **iOS**. This app 
 
 ## Features
 
-  * NativeScript 6+
-  * Angular 8+
+  * Native Mobile App
   * Optimized for iOS & Android
-  * tslint
-  * scss
-  * used AccessModifier & Types everywhere
+  * build with NativeScript 6+
+  * using Angular 8+
+  * TSLint
+  * SCSS Support
+  * used AccessModifier & datatypes
   * shared components & dto's
+  * RESTful API
+  * LocalStorage
 
 ## Installation
 
@@ -29,15 +32,20 @@ npm i
 tns platform add android/ios
 ```
 
-To ensure code quality, run tslint from time to time using following command:
+To ensure code quality, run tslint using following command:
 
 ```
 npm run tslint
 ```
 
-## Publishing app
+run on device with
 
-Install dependencies
+```
+tns run Android/iOS
+tns build Android --copy-to instaq.apk
+```
+
+## Install dependencies
 
 ```
 npm i -g nativescript@latest
@@ -54,16 +62,5 @@ npm i tns-core-modules@latest
 tns update
 tns platform clean android/ios
 ```
-Weitere Infos: https://docs.nativescript.org/releases/upgrade-instructions
+More detailed infos: https://docs.nativescript.org/releases/upgrade-instructions
 
-run on device with
-
-```
-tns run android/ios
-```
-
-build with 
-
-```
-tns build Android --copy-to instaq.apk
-```
