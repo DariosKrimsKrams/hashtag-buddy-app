@@ -60,7 +60,7 @@ tns info
 npm i -g nativescript@latest
 npm i tns-core-modules@latest
 tns update
-tns platform clean android/ios
+tns platform clean/remove/add android/ios
 ```
 More detailed infos: https://docs.nativescript.org/releases/upgrade-instructions
 
