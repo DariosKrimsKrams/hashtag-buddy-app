@@ -22,9 +22,6 @@ import { StoreModule } from '~/app/pages/store/store.module';
     NativeScriptModule,
     AppRoutingModule,
     NativeScriptUISideDrawerModule,
-    TNSFontIconModule.forRoot({
-      // 'fa': './assets/fontawesome-free-5.6.3-web/css/all.min.css'
-    }),
     CoreModule,
     NativeScriptLocalizeModule,
     HistoryModule,
