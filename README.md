@@ -1,5 +1,7 @@
 # Instap App
 
+[![DeepScan grade](https://deepscan.io/api/teams/4787/projects/6535/branches/55183/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=4787&pid=6535&bid=55183)
+
 Welcome to the repository of the Instaq App for **Android** & **iOS**. This app is a side-project of mine about uploading photos to find the most relevant hashtags for **Instagram**.
 
 ![](https://lh3.googleusercontent.com/UorfLyAg3i91YgbDioeiURsL6EsFWBGs_BF7Nsxck4rq5PYbXkv7KCKgmC069hTTXzI=s180-rw)
