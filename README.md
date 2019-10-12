@@ -45,6 +45,7 @@ run on device with
 ```
 tns run Android/iOS
 tns build Android --copy-to instaq.apk
+tns run Android
 ```
 
 ## Install dependencies
