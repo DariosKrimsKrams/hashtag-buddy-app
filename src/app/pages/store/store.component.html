@@ -14,12 +14,6 @@
                         <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plan}" *ngIf="plan.type == 'inapp'"></ng-container>
                     </StackLayout>
 
-                    <!-- <Label [text]="'store_headline_abo' | L" class="headline p-t-10 p-b-10"></Label>
-  
-                    <StackLayout *ngFor="let plan of plans; let i = index;">
-                        <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plan}" *ngIf="plan.type == 'subs'"></ng-container>
-                    </StackLayout> -->
-
                     <StackLayout class="hr-light m-10"></StackLayout>
                     <Label textWrap="true" [text]="'store_outro' | L" class="p-b-10"></Label>
                     <Button [text]="'store_restore' | L" (tap)="restore()" class="btn btn-rounded-lg btn-outline border-color-normal color-normal"></Button>
@@ -38,7 +32,6 @@
             <GridLayout col="1" rows="auto,auto">
                 <Label row="0" [text]="plan.title" class="plan-title font-demi-bold"></Label>
                 <Label row="1" [text]="plan.desc" class="m-t-5 plan-content font-reg-s"></Label>
-                <Label row="1" text="- (equals {{plan.pricePerPhoto | currency:plan.product.priceCurrencyCode}} per photo)" class="m-t-25 plan-content font-reg-s" *ngIf="plan.desc2 == undefined && plan.type == 'inapp' && plan.product !== undefined"></Label>
                 <Label row="1" [text]="plan.desc2" class="m-t-25 plan-content font-reg-s" *ngIf="plan.desc2 !== undefined"></Label>
             </GridLayout>
         </GridLayout>

@@ -112,6 +112,7 @@
   "store_headline_once": "Pacchetti One-time",
   "store_headline_abo": "Sottoscrizioni",
   "store_outro": "Ricorda che Google trattiene il 30% di ogni transazione.",
+  "store_price_per_photo": "equals %s per photo",
   "store_restore": "Ripristina acquisti",
   "store_save": "Salva",
   "store_buy_failed": "Sfortunatamente, sembra che il tuo account non sia abilitato a fare pagamenti :(",

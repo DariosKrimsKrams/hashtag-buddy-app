@@ -4,6 +4,7 @@ import { SmallHeaderModule } from '~/app/shared/small-header/small-header.module
 import { StoreComponent } from '~/app/pages/store/store.component';
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
 import { setStatusBarColors } from '~/app/shared/status-bar-util';
+import { CurrencyPipe } from '@angular/common';
 setStatusBarColors();
 
 @NgModule({
@@ -15,6 +16,11 @@ setStatusBarColors();
     SmallHeaderModule,
     NativeScriptLocalizeModule
   ],
-  schemas: [NO_ERRORS_SCHEMA]
+  providers: [
+    CurrencyPipe
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class StoreModule { }

@@ -55,8 +55,9 @@
   <string name="iap_purchase_successful_title">"Parabéns"</string>
   <string name="iap_purchase_failed">"A compra foi cancelada"</string>
   <string name="store_buy_failed">"Infelizmente a sua conta parece não ser eligível para fazer pagamentos :("</string>
-  <string name="store_save">"Guardar"</string>
+  <string name="store_save">"Salvar"</string>
   <string name="store_restore">"Recuperar pagamentos"</string>
+  <string name="store_price_per_photo">"equals %1$s per photo"</string>
   <string name="store_outro">"Tenha em consideração que a Google fica com 30 %% de cada transação que faz."</string>
   <string name="store_headline_abo">"Subscrições"</string>
   <string name="store_headline_once">"Compra única"</string>

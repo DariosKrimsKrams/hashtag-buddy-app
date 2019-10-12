@@ -10,9 +10,10 @@ import { Plan } from '~/app/models/plan';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
-import { isAndroid } from 'tns-core-modules/platform';
+import { isAndroid, device } from 'tns-core-modules/platform';
 import { UserService } from '~/app/storages/user.service';
 import { PhotosCountService } from '~/app/storages/photos-count.service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'ns-store',
@@ -27,7 +28,8 @@ export class StoreComponent implements OnInit {
   constructor(
     private readonly page: Page,
     private readonly userService: UserService,
-    private readonly photosCountService: PhotosCountService
+    private readonly photosCountService: PhotosCountService,
+    private readonly currencyPipe: CurrencyPipe
   ) {
     this.page.actionBarHidden = true;
   }
@@ -64,6 +66,7 @@ export class StoreComponent implements OnInit {
               plan.title = product.localizedTitle.split(' (')[0];
             });
             this.calcDiscount();
+            this.calcLocas();
           })
           .catch(err => {
             console.log(err);
@@ -126,20 +129,28 @@ export class StoreComponent implements OnInit {
       cheapestInApp.product.priceAmount / cheapestInApp.amount;
     cheapestSubs.pricePerPhoto =
       cheapestSubs.product.priceAmount / cheapestSubs.amount;
-    this.plans.forEach(x => {
-      if (x.product === undefined) {
+    this.plans.forEach(plan => {
+      if (plan.product === undefined) {
         return;
       }
-      if (x.product.productType === 'inapp' && x.id !== cheapestInApp.id) {
-        x.pricePerPhoto = x.product.priceAmount / x.amount;
+      if (plan.product.productType === 'inapp' && plan.id !== cheapestInApp.id) {
+        plan.pricePerPhoto = plan.product.priceAmount / plan.amount;
         const discount =
-          (1 - x.pricePerPhoto / cheapestInApp.pricePerPhoto) * 100;
-        x.discount = Math.round(discount);
-      } else if (x.product.productType === 'subs' && x.id !== cheapestSubs.id) {
-        x.pricePerPhoto = x.product.priceAmount;
-        const discount = (1 - x.pricePerPhoto / cheapestSubs.pricePerPhoto) * 100;
-        x.discount = Math.round(discount);
+          (1 - plan.pricePerPhoto / cheapestInApp.pricePerPhoto) * 100;
+        plan.discount = Math.round(discount);
+      } else if (plan.product.productType === 'subs' && plan.id !== cheapestSubs.id) {
+        plan.pricePerPhoto = plan.product.priceAmount;
+        const discount = (1 - plan.pricePerPhoto / cheapestSubs.pricePerPhoto) * 100;
+        plan.discount = Math.round(discount);
       }
+    });
+  }
+
+  private calcLocas(): void {
+    this.plans.forEach(plan => {
+      const formattedPrice = this.currencyPipe.transform(plan.pricePerPhoto, plan.product.priceCurrencyCode);
+      const text = '(' + localize('store_price_per_photo', formattedPrice) + ')';
+      plan.desc2 = text;
     });
   }
 

@@ -57,6 +57,7 @@
   <string name="store_buy_failed">"Malheureusement, votre compte semble ne pas être éligible pour effectuer des paiements :("</string>
   <string name="store_save">"Sauvegarder"</string>
   <string name="store_restore">"Rétablir les paiements"</string>
+  <string name="store_price_per_photo">"equals %1$s per photo"</string>
   <string name="store_outro">"Gardez à l\'esprit que Google prend 30 %% de réduction pour chaque transaction que vous faites."</string>
   <string name="store_headline_abo">"Abonnements"</string>
   <string name="store_headline_once">"Forfaits uniques"</string>

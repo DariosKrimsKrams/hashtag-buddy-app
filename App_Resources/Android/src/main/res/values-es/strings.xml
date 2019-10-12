@@ -26,7 +26,7 @@
   <string name="progressbar_home_freemode">"Usaste todas tus subidas de fotos gratis. Todavía puedes subir fotos pero algunos hashtags serán censurados"</string>
   <string name="progressbar_home_iapmode">"Usaste%% s de%% s cargas de fotos"</string>
   <string name="progressbar_home_startmode_is_using">"Has usado %1$s de %2$s subidas de fotos. Después de usarlas todas, obtienes 1 subida de fotos cada 24 horas gratis"</string>
-  <string name="progressbar_home_startmode_not_used">"Obtiene %1$s subidas de fotos gratis"</string>
+  <string name="progressbar_home_startmode_not_used">"Obtén %1$s subidas de fotos gratis"</string>
   <string name="toast_imagepicker_failed">"Error al seleccionar fotos. Compruebe el permiso de lectura"</string>
   <string name="toast_create_customer_at_upload_failed">"¡Solicitud fallida! Conexión perdida: \'("</string>
   <string name="toast_create_customer_failed">"Estás desconectado. Conéctate a Internet :)"</string>
@@ -57,6 +57,7 @@
   <string name="store_buy_failed">"Lamentablemente, su cuenta parece no ser elegible para realizar pagos :("</string>
   <string name="store_save">"Guardar"</string>
   <string name="store_restore">"Restaurar pagos"</string>
+  <string name="store_price_per_photo">"equals %1$s per photo"</string>
   <string name="store_outro">"Tenga en cuenta que Google obtiene un 30%% por cada transacción que realice"</string>
   <string name="store_headline_abo">"Suscripciones"</string>
   <string name="store_headline_once">"Paquetes únicos"</string>
@@ -101,7 +102,7 @@
   <string name="diduknow_fact22">"El 30%% de los usuarios compraron un producto que descubrieron en Instagram"</string>
   <string name="diduknow_fact21">"400 millones de usuarios miran historias de Instagram a diario"</string>
   <string name="diduknow_fact20">"Los hashtags con 21-24 caracteres funcionan mejor que los hashtags más cortos porque son más específicos"</string>
-  <string name="diduknow_fact19">"el 60%% de las principales marcas utilizan el mismo filtro para cada publicación"</string>
+  <string name="diduknow_fact19">"El 60%% de las principales marcas utilizan el mismo filtro para cada publicación"</string>
   <string name="diduknow_fact18">"Las fotos que tienen el azul como color dominante obtienen un 24%% más de me gusta que las imágenes que tienen rojo como color dominante"</string>
   <string name="diduknow_fact17">"Las fotos con más espacio de fondo (negativo o espacio en blanco) obtienen un 29%% más de me gusta"</string>
   <string name="diduknow_fact16">"Las fotos con un solo tono dominante tienen los mejores resultados"</string>
@@ -113,7 +114,7 @@
   <string name="diduknow_fact10">"Las publicaciones que incluyen etiquetar otro identificador obtienen un 56%% más de interacción"</string>
   <string name="diduknow_fact9">"El Miércoles a las 5 pm es el mejor momento para publicar una foto"</string>
   <string name="diduknow_fact8">"A medida que subes hashtag hasta llegar a los 11 aumenta su visibilidad"</string>
-  <string name="diduknow_fact7">"los videos obtienen 2 veces más interacción que las fotos"</string>
+  <string name="diduknow_fact7">"Los videos obtienen 2 veces más interacción que las fotos"</string>
   <string name="diduknow_fact6">"El 17%% de los adolescentes dice que Instagram es la red social más importante"</string>
   <string name="diduknow_fact5">"38%% de las mujeres y 26%% de los usuarios de internet hombres usan Instagram"</string>
   <string name="diduknow_fact4">"El 68%% de los usuarios de Instagram son Mujeres"</string>

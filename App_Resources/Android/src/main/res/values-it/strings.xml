@@ -57,6 +57,7 @@
   <string name="store_buy_failed">"Sfortunatamente, sembra che il tuo account non sia abilitato a fare pagamenti :("</string>
   <string name="store_save">"Salva"</string>
   <string name="store_restore">"Ripristina acquisti"</string>
+  <string name="store_price_per_photo">"equals %1$s per photo"</string>
   <string name="store_outro">"Ricorda che Google trattiene il 30%% di ogni transazione."</string>
   <string name="store_headline_abo">"Sottoscrizioni"</string>
   <string name="store_headline_once">"Pacchetti One-time"</string>
