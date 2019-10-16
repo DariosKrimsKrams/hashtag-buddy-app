@@ -1,8 +1,11 @@
 # Instap App
 
 [![DeepScan grade](https://deepscan.io/api/teams/4787/projects/6535/branches/55183/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=4787&pid=6535&bid=55183)
+![](https://github.com/dariodomide/instaq-app/workflows/TSLint/badge.svg)
+![](https://github.com/dariodomide/instaq-app/workflows/NativeScript%20Build%20Android/badge.svg)
+![](https://github.com/dariodomide/instaq-app/workflows/NativeScript%20Build%20Android%20w%2F%20Latest/badge.svg)
 
-Welcome to the repository of the Instaq App for **Android** & **iOS**. This app is a side-project of mine about uploading photos to find the most relevant hashtags for **Instagram**.
+Welcome to the repository of the Instaq App for **Android** & **iOS**. This app is my side-project about helping people to find the most relevant hashtags for **Instagram**.
 
 ![](https://lh3.googleusercontent.com/UorfLyAg3i91YgbDioeiURsL6EsFWBGs_BF7Nsxck4rq5PYbXkv7KCKgmC069hTTXzI=s180-rw)
 
@@ -18,10 +21,14 @@ Welcome to the repository of the Instaq App for **Android** & **iOS**. This app 
   * using Angular 8+
   * TSLint
   * SCSS Support
-  * used AccessModifier & datatypes
+  * used AccessModifier & datatypes everywhere
   * shared components & dto's
-  * RESTful API
+  
+## Plugins
+  * Image Gallery
   * LocalStorage
+  * I18n
+  * IAP
 
 ## Installation
 
