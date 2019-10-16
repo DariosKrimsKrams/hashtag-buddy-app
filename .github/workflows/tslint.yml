@@ -13,4 +13,4 @@ jobs:
       run: |
         npm i
     - name: tslint
-      run: npm run lint
+      run: npm run tslint
