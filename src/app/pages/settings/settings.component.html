@@ -2,7 +2,7 @@
     <GridLayout rows="130,*" class="Settings">
         <ns-small-header row="0" (OpenMenu)="openMenu()" [image]="'settings.jpg'" [title]="'menu_settings' | L"></ns-small-header>
         <GridLayout row="1" rows="*,170" height="100%" width="100%">
-            <StackLayout row="0" class="p-t-10 p-b-10 p-l-20 p-r-20">
+            <StackLayout row="0" class="p-t-20 p-l-30 p-r-30" id="list">
 
                 <GridLayout rows="40" columns="*,50" verticalAlignment="middle" (tap)="goNextPage('about')">
                     <Label col="0" [text]="'settings_about' | L"></Label>
@@ -19,19 +19,19 @@
                 <GridLayout rows="40" columns="*" verticalAlignment="middle" (tap)="goNextPage('legal')">
                     <Label col="0" [text]="'settings_legal' | L"></Label>
                 </GridLayout>
-                <StackLayout class="hr-light m-10"></StackLayout>
+                <StackLayout class="hr-light m-t-10 m-b-15"></StackLayout>
 
                 <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="share()">
                     <Label row="0" text="{{'settings_share' | L}} &#10084;"></Label>
                     <Label row="1" [text]="'settings_share_subline' | L" class="text-muted"></Label>
                 </GridLayout>
-                <StackLayout class="hr-light m-10"></StackLayout>
+                <StackLayout class="hr-light m-15"></StackLayout>
 
                 <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="rate()">
                     <Label row="0" [text]="'settings_rate' | L"></Label>
                     <Label row="1" [text]="'settings_rate_subline' | L" class="text-muted"></Label>
                 </GridLayout>
-                <StackLayout class="hr-light m-10"></StackLayout>
+                <StackLayout class="hr-light m-15"></StackLayout>
                 
             </StackLayout>
 

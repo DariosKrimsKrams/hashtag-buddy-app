@@ -10,9 +10,10 @@
             <StackLayout class="top-shadow" isUserInteractionEnabled="false"></StackLayout>
             
             <ScrollView sdkExampleTitle sdkToggleNavButton>
-                <StackLayout class="p-l-20 p-r-20 p-t-20 p-b-20">
+                <StackLayout class="p-l-30 p-r-30 p-b-20 p-t-50">
 
-                    <Label [text]="'about_desc_1' | L" textWrap="true" class="font-medium-small p-b-10"></Label>
+                    <Label textWrap="true" [text]="'about_desc_1' | L" class="m-b-20 font-medium-l"></Label>
+                    <!-- <Label [text]="'about_desc_1' | L" textWrap="true" class="font-medium-small p-b-10"></Label> -->
                     <Label [text]="'about_desc_2' | L" textWrap="true" class="p-b-10"></Label>
                     <Label [text]="'about_desc_3' | L" textWrap="true" class="m-b-25"></Label>
                     <StackLayout class="hr-light"></StackLayout>
@@ -25,17 +26,14 @@
                     <Label class="list-entry" [text]="'about_support_1' | L" textWrap="true"></Label>
                     <Label class="list-entry" [text]="'about_support_2' | L" textWrap="true"></Label>
                     <Label class="list-entry" [text]="'about_support_3' | L" textWrap="true"></Label>
-                    <Label class="list-entry" [text]="'about_support_4' | L" textWrap="true"></Label>
-                    <Label class="list-entry" [text]="'about_support_5' | L" textWrap="true"></Label>
-                    <Label class="list-entry" [text]="'about_support_6' | L" textWrap="true"></Label>
-                    <Label class="list-entry m-b-20" [text]="'about_support_7' | L" textWrap="true"></Label>
+                    <Label class="list-entry m-b-20" [text]="'about_support_4' | L" textWrap="true"></Label>
                     <StackLayout class="hr-light"></StackLayout>
 
                     <Label [text]="'about_headline_infos' | L" class="headline m-t-25"></Label>
-                    <Label class="list-entry" text="{{'about_infos_app_version' | L}}: v1.0.4"></Label>
+                    <Label class="list-entry" text="{{'about_infos_app_version' | L}}: v1.0.7"></Label>
                     <Label class="list-entry" text="{{'about_infos_be_version' | L}}: v1.0"></Label>
                     <Label class="list-entry" text="{{'about_infos_user_id' | L}}: {{userId}}"></Label>
-                    <Label class="list-entry" text="{{'about_infos_contact' | L}}: {{'email' | L}}"></Label>
+                    <Label class="list-entry m-b-30" text="{{'about_infos_contact' | L}}: {{'email' | L}}"></Label>
                     
                 </StackLayout>
             </ScrollView>

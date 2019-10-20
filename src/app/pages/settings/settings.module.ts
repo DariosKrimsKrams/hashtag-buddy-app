@@ -3,7 +3,6 @@ import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { SmallHeaderModule } from '~/app/shared/small-header/small-header.module';
 import { SettingsComponent } from './settings.component';
-import { AuthComponent } from './auth/auth.component';
 import { AboutComponent } from './about/about.component';
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
 import { setStatusBarColors } from '~/app/shared/status-bar-util';
@@ -13,7 +12,6 @@ setStatusBarColors();
 @NgModule({
   declarations: [
     SettingsComponent,
-    AuthComponent,
     AboutComponent,
   ],
   imports: [

@@ -37,7 +37,7 @@ export class SettingsComponent {
     //   openUrl("https://twitter.com/");
     // } else
     if (route === 'legal') {
-      openUrl('http://innocliq.de/legal-privacy.html');
+      openUrl('https://instaq.app/legal-privacy.html');
     } else {
       this.router.navigate(['/settings/' + route], {
         transition: {

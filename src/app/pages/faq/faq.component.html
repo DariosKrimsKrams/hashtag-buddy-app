@@ -3,9 +3,9 @@
         <ns-small-header row="0" (OpenMenu)="openMenu()" [image]="'store.jpg'" [title]="'menu_faq' | L"></ns-small-header>
         <GridLayout row="1">
             <ScrollView sdkExampleTitle sdkToggleNavButton>
-                <StackLayout class="p-r-20 p-l-20">
+                <StackLayout class="p-r-30 p-l-30">
                     <StackLayout *ngFor="let faq of faqs; let i = index;">
-                        <GridLayout columns="*,20" verticalAlignment="middle" (tap)="expandToggle(i)" class="p-t-20 p-b-15" [class.is-expanded]="faq.expand">
+                        <GridLayout columns="*,20" verticalAlignment="middle" (tap)="expandToggle(i)" class="p-t-20 p-b-15 p-l-10 p-r-10" [class.is-expanded]="faq.expand">
                             <Label col="0" [text]="faq.title" class="headline-text h3" verticalAlignment="middle" textWrap="true"></Label>
                             <Label col="1" [text]="faq.expand ? '&#xf068;' : '&#xf067;'" fontSize="15" class="fas"></Label>
                         </GridLayout>

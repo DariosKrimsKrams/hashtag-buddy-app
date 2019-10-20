@@ -7,12 +7,12 @@
             <StackLayout col="2"></StackLayout>
         </GridLayout>
 
-        <StackLayout class="input-field p-l-30 p-r-30 m-t-50" row="1">
-            <Label textWrap="true" [text]="'feedback_title' | L" class="m-b-10 font-medium-l title"></Label>
+        <StackLayout class="input-field p-l-30 p-r-30 m-t-70" row="1">
+            <Label textWrap="true" [text]="'feedback_title' | L" class="m-b-20 font-medium-l"></Label>
             <Label textWrap="true" [text]="'feedback_intro' | L" class="font-reg-s"></Label>
             <FloatLabel [placeholder]="'feedback_email' | L" #clearTextfieldClear (userTextEmitter)="emailChange($event)"></FloatLabel>
             <FloatLabel [placeholder]="'feedback_message' | L" #clearTextfieldClear (userTextEmitter)="messageChange($event)"></FloatLabel>
-            <Button text="{{ 'feedback_send' | L }}" class="btn btn-rounded-lg btn-normal feedback" width="100%" [class.muted]="email=='' && message==''" (tap)="sendFeedback()"></Button>
+            <Button text="{{ 'feedback_send' | L }}" class="btn btn-rounded-lg btn-normal feedbackBtn" width="100%" [class.muted]="email=='' && message==''" (tap)="sendFeedback()"></Button>
         </StackLayout>    
     </StackLayout>
 </GridLayout>

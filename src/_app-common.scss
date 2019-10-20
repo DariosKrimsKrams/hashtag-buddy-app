@@ -7,6 +7,12 @@ Label, Button, Span {
 
 .btn { font-size: 18pt; }
 
+.p-t-40 { padding-top: 40pt; }
+.p-t-50 { padding-top: 50pt; }
+.p-t-60 { padding-top: 60pt; }
+.p-t-70 { padding-top: 70pt; }
+.p-t-80 { padding-top: 80pt; }
+
 .m-t-40 { margin-top: 40pt; }
 .m-t-50 { margin-top: 50pt; }
 .m-t-60 { margin-top: 60pt; }
@@ -55,6 +61,7 @@ Label, Button, Span {
 .fas {
   font-family: Font Awesome 5 Free, fa-solid-900;
   font-weight: 900; 
+	color: rgba(0,0,0,0.5);
 }
 .font-reg-xs {
   font-family: "AvenirNext-Regular", "Avenir Next";
@@ -70,7 +77,7 @@ Label, Button, Span {
 .font-medium-l {
   font-family: "AvenirNext-Medium", "Avenir Next Medium";
   font-size: 18pt;
-  color: rgb(30, 39, 46);
+	color: rgba(0,0,0,0.4);
 }
 .font-medium-small {
   font-family: "AvenirNext-Medium", "Avenir Next Medium";
