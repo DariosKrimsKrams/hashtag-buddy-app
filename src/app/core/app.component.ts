@@ -56,12 +56,12 @@ export class AppComponent implements OnInit {
         const path = this.router.locationStrategy.path();
         const isResults = path.substring(0, 13) === '/home/results';
         console.log('path', path);
+        if (path === '/') {
+          // would be crashing otherwise
+          return;
+        }
         if (isResults) {
-          // const that = this;
           this.router.navigate(['home'], { clearHistory: true });
-          // .then(function() {
-            // that.userService.onAndroidBackTriggered(path);
-          // });
         } else if (path === '/home') {
           this.ngZone.run(() => {
             this.userService.androidBackTriggered.emit(path);
