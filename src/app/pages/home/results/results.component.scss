@@ -4,7 +4,13 @@
   padding: 20pt 0 0 0;
 
   .title {
-    color: rgb(30, 39, 46);
+    font-family: "AvenirNext-Medium", "Avenir Next Medium";
+    font-size: 18pt;
+    color: #fff;
+
+    &.isBlack {
+      color: rgb(30, 39, 46);
+    }
   }
 
   .header-right-icon {

@@ -61,7 +61,7 @@ Label, Button, Span {
 .fas {
   font-family: Font Awesome 5 Free, fa-solid-900;
   font-weight: 900; 
-	color: rgba(0,0,0,0.5);
+	color: rgba(0,0,0,0.4);
 }
 .font-reg-xs {
   font-family: "AvenirNext-Regular", "Avenir Next";
@@ -102,26 +102,31 @@ Label, Button, Span {
   background-position: left;
   height: 100%;
   background-size: cover;
-  padding: 20;
-}
-  .menu .item {
-      margin-top: 50pt;
+  padding: 20pt;
+  
+  .hideMenuBtn {
+    margin: 20pt 0 30pt 0;
   }
-  .menu .item Image {
-      width: 18pt;
-      height: 20pt;
-  }
-  .menu .item Label {
-      font-size: 18pt;
+  .item {
+    margin-top: 50pt;
+
+    Image {
+      width: 22pt;
+      height: 22pt;
+    }
+    Label {
+      font-size: 19pt;
       font-family: "AvenirNext-Medium", "Avenir Next Medium";
       vertical-align: middle;
-      margin-left: 18pt;
+      margin-left: 15pt;
       color: #737373;
+    }
+    .menu-active {
+      font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
+      color: $color_pink;
+    }
   }
-      .menu .item .menu-active {
-          font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
-          color: $color_pink;
-      }
+}
 
 .top-shadow {
   height: 100%;    

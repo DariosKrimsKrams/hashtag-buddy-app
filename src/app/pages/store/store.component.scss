@@ -1,19 +1,19 @@
 @import '../../../app-variables';
 
 .item {
-	border-radius: 8;
-	margin: 0 0 10 0;
-	padding: 3;
+	border-radius: 8pt;
+	margin: 0 0 20pt 0;
+	padding: 3pt;
 }
 
 .plan-header {
 	background-color: rgb(237, 240, 242);
-	border-radius: 5 5 0 0;
-	padding: 5;
+	border-radius: 5pt 5pt 0 0;
+	padding: 5pt;
 }
 
 .plan-header Image {
-	border-radius: 5;
+	border-radius: 5pt;
 }
 
 .plan-title {
@@ -26,8 +26,8 @@
 
 .plan-footer {
 	background-color: rgb(250, 250, 250);
-	border-radius: 0 0 5 5;
-  padding: 5;
+	border-radius: 0 0 5pt 5pt;
+  padding: 5pt;
   
 	Label {
 		color: $color_pink;

@@ -1,4 +1,4 @@
-<GridLayout columns="*,60">
+<GridLayout columns="*,60" class="m-l-5 m-r-5">
     <FloatLabel col="0" [placeholder]="'results_hashtags_input' | L" (userTextEmitter)="customUserHashtagsText = $event" (onSubmit)="addCustomHashtags()" [reset]="resetInput"></FloatLabel>
     <Button col="1" text="+ {{'results_hashtags_add' | L}}" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="customUserHashtagsText !== ''" (tap)="addCustomHashtags()" *ngIf="customUserHashtagsText !== ''" verticalAlignment="bottom" horizontalAlignment="right"></Button>
 </GridLayout>

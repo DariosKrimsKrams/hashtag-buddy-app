@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private photoAddedSubscription: Subscription;
   private androidBackTriggeredSubscription: Subscription;
-  public backTriggeredForExit: boolean;
+  private backTriggeredForExit: boolean;
 
   constructor(
     private readonly page: Page,
@@ -67,6 +67,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.showConfirmImage = true;
       this.cd.detectChanges();
     });
+    this.backTriggeredForExit = false;
   }
 
   public openMenu(): void {
@@ -76,6 +77,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       sideDrawer.showDrawer();
       sideDrawer.drawerContentSize = 250;
     }, 10);
+    this.backTriggeredForExit = false;
   }
 
   public clickHistory(): void {
@@ -86,6 +88,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.animateHistory(time);
     this.animateHistoryShadow(time);
     this.animateHeader(time);
+    this.backTriggeredForExit = false;
   }
 
   private animateHistory(time: number): void {

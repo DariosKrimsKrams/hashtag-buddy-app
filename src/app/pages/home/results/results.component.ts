@@ -27,7 +27,7 @@ export class ResultsComponent implements OnInit {
   public parallaxHeight = 250;
   public photo: Photo;
   public highlightStatus: string[] = [];
-  public currentScrollingY: number;
+  public currentScrollingY: number = 0;
   public categories: HashtagCategory[] = [];
 
   constructor(

@@ -93,7 +93,7 @@ export class AppComponent implements OnInit {
         headline: 'rate_headline',
         desc: 'rate_desc',
         buttonOk: 'rate_yes',
-        buttonCancel: 'rate_later',
+        buttonCancel: 'rate_no',
         okFunc: okFunc
       }
     };
@@ -106,12 +106,12 @@ export class AppComponent implements OnInit {
 
   private allowShowingRateAppModal(): boolean {
     const status = this.userService.getRateAppStatus();
-    if (status === 'rated') {
+    if (status === 'rated' || status === 'never') {
       return false;
-    } else if (status === undefined && this.userService.countPhotos() >= 1) {
+    } else if (status === undefined && this.userService.countPhotos() >= 3) {
       return true;
-    } else if (status === 'later' && this.userService.countPhotos() >= 3) {
-      return true;
+    } else if (status === 'later' && this.userService.countPhotos() >= 5) {
+      return false;
     }
     return false;
   }
@@ -121,10 +121,10 @@ export class AppComponent implements OnInit {
     if (status === 'rated') {
       return;
     }
-    this.userService.saveRateAppStatus('later');
+    this.userService.saveRateAppStatus('never');
   }
 
-  get sideDrawerTransition(): DrawerTransitionBase {
+  public get sideDrawerTransition(): DrawerTransitionBase {
     return this._sideDrawerTransition;
   }
 
