@@ -58,9 +58,9 @@
   <string name="store_save">"Spare"</string>
   <string name="store_restore">"Käufe wiederherstellen"</string>
   <string name="store_price_per_photo">"entspricht %1$s pro Foto"</string>
-  <string name="store_outro">"Bitte bedenken Sie, dass Google bei jeder Transaktion 30 %% einbehält. Vielen Dank für das Verständnis."</string>
+  <string name="store_outro">"Bitte bedenke, dass Google bei jeder Transaktion 30 %% einbehält. Vielen Dank für die Unterstützung :)"</string>
   <string name="store_headline_abo">"Abonnements"</string>
-  <string name="store_headline_once">"Einmalkauf Pakete"</string>
+  <string name="store_headline_once">"Einmalige Pakete"</string>
   <string name="store_intro">"Erwerbe Fotos Uploads, um noch mehr und unzensierte Hashtags zu erhalten. Diese Umsätze bringen mir keinen Gewinn, aber unterstützen mich der Kostendeckung dieser App."</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"Mehr"</string>
@@ -142,7 +142,7 @@
   <string name="leave_feedback_skip">"Abbrechen"</string>
   <string name="results_ok_to_leave_feedback">"Feedback geben"</string>
   <string name="copy_failed">"Kopieren fehlgeschlagen"</string>
-  <string name="copy_please_give_feedback">"Bitte bewerte die Hashtag Ergebnisse auf der nächsten Seite"</string>
+  <string name="copy_please_give_feedback">"Bitte bewerte die Hashtag Ergebnisse auf der nächsten Seite:"</string>
   <string name="copy_successful">"In Zwischenablage kopiert"</string>
   <string name="results_copy_to_instagram">"Transferiere zu Instagram"</string>
   <string name="results_copy_selected">"Hashtags kopieren"</string>
