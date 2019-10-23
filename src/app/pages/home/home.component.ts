@@ -120,7 +120,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  public clickCancel(): void {
+  public clickCancelConfirmImage(): void {
     this.showConfirmImage = false;
     this.cd.detectChanges();
   }
@@ -130,7 +130,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       if (this.isHistoryOpen === 1) {
         this.clickHistory();
       } else if (this.showConfirmImage) {
-        this.showConfirmImage = false;
+        this.clickCancelConfirmImage();
       } else {
         if (!this.backTriggeredForExit) {
           this.backTriggeredForExit = true;

@@ -146,14 +146,7 @@ export class ResultsComponent implements OnInit {
     });
   }
 
-  public copySelected(): void {
-    if (this.showToastIfHasNoSelectedHashtags()) {
-      return;
-    }
-    this.copyToClipboard();
-  }
-
-  private navigateToLeaveFeedbackPage(): void {
+  public navigateToLeaveFeedbackPage(): void {
     this.router.navigate([`/home/leavefeedback/${this.photo.id}`], {
       transition: {
         name: 'slideLeft',
@@ -163,7 +156,10 @@ export class ResultsComponent implements OnInit {
     });
   }
 
-  private copyToClipboard(): void {
+  public copyToClipboard(): void {
+    if (this.showToastIfHasNoSelectedHashtags()) {
+      return;
+    }
     const text = this.getHashtagsAsText();
     clipboard
       .setText(text)
@@ -176,18 +172,23 @@ export class ResultsComponent implements OnInit {
   }
 
   private showModal(): void {
+    const okFunc = () => {
+      setTimeout.bind(this)(() => {
+        this.navigateToLeaveFeedbackPage();
+      }, 100);
+    };
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
       context: {
-        autoCloseTime: 3000,
         showIcon: true,
+        buttonOk: 'results_ok_to_leave_feedback',
         headline: 'copy_successful',
-        desc: 'copy_please_give_feedback'
+        desc: 'copy_please_give_feedback',
+        okFunc: okFunc
       }
     };
     this.modalService.showModal(ModalComponent, options).then(() => {
-      this.navigateToLeaveFeedbackPage();
     });
   }
 

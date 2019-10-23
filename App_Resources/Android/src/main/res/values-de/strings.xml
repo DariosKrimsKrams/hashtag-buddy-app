@@ -140,8 +140,9 @@
   <string name="emoji_great">"Sehr gut"</string>
   <string name="leave_feedback_headline">"Bewerte Hashtags"</string>
   <string name="leave_feedback_skip">"Abbrechen"</string>
+  <string name="results_ok_to_leave_feedback">"Feedback geben"</string>
   <string name="copy_failed">"Kopieren fehlgeschlagen"</string>
-  <string name="copy_please_give_feedback">"Bitte bewerte die Hashtag Ergebnisse..."</string>
+  <string name="copy_please_give_feedback">"Bitte bewerte die Hashtag Ergebnisse auf der nächsten Seite"</string>
   <string name="copy_successful">"In Zwischenablage kopiert"</string>
   <string name="results_copy_to_instagram">"Transferiere zu Instagram"</string>
   <string name="results_copy_selected">"Hashtags kopieren"</string>
@@ -161,7 +162,7 @@
   <string name="results_headline">"Hashtags"</string>
   <string name="selection_popup_button_deny">"Wähle ein Anderes"</string>
   <string name="selection_popup_button_ok">"Hochladen"</string>
-  <string name="selection_popup_title">"Indem du ein Foto hochlädst, werden Instagram\'s relevantesten Hashtags herausgefunden"</string>
+  <string name="selection_popup_title">"Lade dieses Foto hoch, um Instagram\'s relevanteste Hashtags hierfür zu finden"</string>
   <string name="history_photo_defect2">"Bitte Foto erneut hochladen."</string>
   <string name="history_photo_defect1">"Keine Ergebnisse wegen eines Fehlers."</string>
   <string name="history_no_content">"Du hast bisher keine Fotos hochgeladen."</string>

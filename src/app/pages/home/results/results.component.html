@@ -34,7 +34,7 @@
                         <WrapLayout class="m-t-5">
                             <ns-hashtag *ngFor="let title of highlightStatus" (onClick)="deselectHashtag(title)" [name]="'#' + title + '   &times;'" [isActive]="true"></ns-hashtag>
                         </WrapLayout>  
-                        <Button [text]="'results_copy_selected' | L" (tap)="copySelected()" class="btn btn-rounded-lg btn-outline border-color-normal color-normal" verticalAlignment="middle" *ngIf="highlightStatus.length !== 0"></Button>
+                        <Button [text]="'results_copy_selected' | L" (tap)="copyToClipboard()" class="btn btn-rounded-lg btn-outline border-color-normal color-normal" verticalAlignment="middle" *ngIf="highlightStatus.length !== 0"></Button>
                         <Label class="m-r-10 m-l-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="highlightStatus.length == 0"></Label>
                         <ns-insert-hashtags-form (hashtagAdded)="addHashtag($event)"></ns-insert-hashtags-form>
                     </StackLayout>

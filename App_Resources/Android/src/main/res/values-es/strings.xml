@@ -140,6 +140,7 @@
   <string name="emoji_great">"Genial"</string>
   <string name="leave_feedback_headline">"Calificar hashtags"</string>
   <string name="leave_feedback_skip">"Saltar"</string>
+  <string name="results_ok_to_leave_feedback">"Give Feedback"</string>
   <string name="copy_failed">"Copia fallida"</string>
   <string name="copy_please_give_feedback">"Califique los resultados del hashtag …"</string>
   <string name="copy_successful">"Copiado al portapapeles"</string>

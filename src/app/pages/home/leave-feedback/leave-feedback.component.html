@@ -9,12 +9,12 @@
             <ScrollView sdkExampleTitle sdkToggleNavButton>
                 <StackLayout>
 
-                    <StackLayout class="m-l-20 m-r-20 m-t-10">
+                    <StackLayout class="m-l-30 m-r-30 m-t-20">
                         <Label [text]="'leave_feedback_rating_title' | L" class="font-demi-bold"></Label>
                         <Label [text]="'leave_feedback_rating_desc' | L" class="font-reg-xs" textWrap="true"></Label>
                     </StackLayout>
 
-                    <GridLayout class="status m-l-20 m-r-5 m-t-10 m-b-10" columns="*,*,*" rows="auto">
+                    <GridLayout class="status m-l-30 m-r-15 m-t-10 m-b-10" columns="*,*,*" rows="auto">
                         <GridLayout [col]="i" class="m-r-15" *ngFor="let emoji of emojis; let i = index;" (tap)="clickEmoji(emoji, i)">
                             <StackLayout horizontalAlignment="center" class="p-t-5 p-b-5" [class.gradient]="ratingIndex === i">
                                 <Image [src]="'~/app/assets/images/icons/' + emoji + '.png'" *ngIf="ratingIndex !== i"></Image>
@@ -24,7 +24,7 @@
                         </GridLayout>
                     </GridLayout>
                 
-                    <StackLayout class="m-l-15 m-r-15 m-b-200">
+                    <StackLayout class="m-l-25 m-r-25 m-b-200">
                         <Label [text]="'leave_feedback_good_hashtags_title' | L" class="font-demi-bold m-t-20 m-l-5 m-b-5"></Label>
                         <Label [text]="'leave_feedback_good_hashtags_desc' | L" class="font-reg-xs m-l-5 m-b-5"></Label>
                         <WrapLayout>
@@ -37,8 +37,8 @@
                             <ns-hashtag *ngFor="let tag of userNotSelectedHashtags" (onClick)="clickBadHashtag(tag)" [isActive]="tags2.indexOf(tag.title) !== -1" [name]="tag.title"></ns-hashtag>
                         </WrapLayout>
 
-                        <FloatLabel class="m-l-10 m-r-10" placeholder="{{ 'leave_feedback_missing_hashtags' | L }}" (userTextEmitter)="setMissingHashtags($event)"></FloatLabel>
-                        <FloatLabel class="m-l-10 m-r-10" placeholder="{{ 'leave_feedback_comments' | L }}" (userTextEmitter)="commentChange($event)"></FloatLabel>
+                        <FloatLabel class="m-l-30 m-r-30" placeholder="{{ 'leave_feedback_missing_hashtags' | L }}" (userTextEmitter)="setMissingHashtags($event)"></FloatLabel>
+                        <FloatLabel class="m-l-30 m-r-30" placeholder="{{ 'leave_feedback_comments' | L }}" (userTextEmitter)="commentChange($event)"></FloatLabel>
                     </StackLayout>
                     
                 </StackLayout> 

@@ -140,6 +140,7 @@
   <string name="emoji_great">"Fantastico"</string>
   <string name="leave_feedback_headline">"Valuta Hashtags"</string>
   <string name="leave_feedback_skip">"Salta"</string>
+  <string name="results_ok_to_leave_feedback">"Give Feedback"</string>
   <string name="copy_failed">"Copia non riuscita"</string>
   <string name="copy_please_give_feedback">"Valuta i risultati dell’hashtag"</string>
   <string name="copy_successful">"Copiato negli appunti"</string>
