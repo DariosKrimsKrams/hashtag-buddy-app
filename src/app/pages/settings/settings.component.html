@@ -4,13 +4,13 @@
         <GridLayout row="1" rows="*,170" height="100%" width="100%">
             <StackLayout row="0" class="p-t-20 p-l-30 p-r-30" id="list">
 
-                <GridLayout rows="40" columns="*,50" verticalAlignment="middle" (tap)="goNextPage('about')">
+                <GridLayout rows="40" columns="*,40" verticalAlignment="middle" (tap)="goNextPage('about')">
                     <Label col="0" [text]="'settings_about' | L"></Label>
                     <Label col="1" text="&#xf054;" class="fas"></Label>
                 </GridLayout>
                 <StackLayout class="hr-light m-10"></StackLayout>
 
-                <GridLayout rows="40" columns="*,50" verticalAlignment="middle" (tap)="goNextPage('feedback')">
+                <GridLayout rows="40" columns="*,40" verticalAlignment="middle" (tap)="goNextPage('feedback')">
                     <Label col="0" [text]="'menu_feedback' | L"></Label>
                     <Label col="1" text="&#xf054;" class="fas"></Label>
                 </GridLayout>

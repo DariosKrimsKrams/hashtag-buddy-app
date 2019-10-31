@@ -5,10 +5,10 @@
             
             <ScrollView sdkExampleTitle sdkToggleNavButton>
 
-                <StackLayout class="p-l-30 p-r-30 p-b-30 p-t-10">
+                <StackLayout class="p-l-30 p-r-30 p-b-30">
                     <Label textWrap="true" [text]="'store_intro' | L" class="p-b-10"></Label>
 
-                    <Label [text]="'store_headline_once' | L" class="headline p-t-20 p-b-10"></Label>
+                    <Label [text]="'store_headline_once' | L" class="headline p-t-10 p-b-10"></Label>
 
                     <StackLayout *ngFor="let plan of plans; let i = index;">
                         <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plan}" *ngIf="plan.type == 'inapp'"></ng-container>
@@ -36,7 +36,7 @@
             </GridLayout>
         </GridLayout>
         <GridLayout row="1" columns="*,150" verticalAlignment="middle" class="plan-footer">
-            <Label col="0" text="{{'store_save' | L}} {{plan.discount}} %" *ngIf="plan.discount != undefined" class="font-demi-bold" verticalAlignment="middle"></Label>
+            <Label col="0" text="{{'store_save' | L}} {{plan.discount}} %" *ngIf="plan.discount != undefined" class="font-demi-bold m-l-10" verticalAlignment="middle"></Label>
             <Button col="1" [text]="plan.product.priceFormatted" (tap)="buyProduct(plan)" class="btn btn-rounded-lg btn-normal font-demi-bold" verticalAlignment="middle" *ngIf="plan.product !== undefined"></Button>
         </GridLayout>
     </GridLayout>
