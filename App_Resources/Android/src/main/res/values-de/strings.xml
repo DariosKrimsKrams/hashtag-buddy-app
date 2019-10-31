@@ -11,7 +11,7 @@
   <string name="rate_yes">"Jetzt bewerten"</string>
   <string name="rate_no">"Nie"</string>
   <string name="rate_later">"Später"</string>
-  <string name="rate_desc">"Wenn du diese App nützlich findest, könntest du dir vorstellen, eine Bewertung abzugeben? Danke für deinen Support! :)"</string>
+  <string name="rate_desc">"Könntest du dir vorstellen, für Hashtag Buddy eine Bewertung abzugeben? Als Dank für deinen Support erhälst du 3 Foto Uploads! :)"</string>
   <string name="rate_headline">"Bewerten   ☆ ☆ ☆ ☆ ☆"</string>
   <string name="share">"Hey, ich möchte dir diese App empfehlen: Sie hilft, die passendsten Instagram Hashtags für Fotos zu finden. Probiere sie doch gleich mal aus :)"</string>
   <string name="myhashtags_other">"Hashtags von Fotos"</string>
@@ -25,7 +25,7 @@
   <string name="progressbar_confirm_promode">"noch %1$s Foto Uploads"</string>
   <string name="progressbar_home_freemode">"Du hast alle kostenlose Foto Uploads verbraucht. Du kannst weiterhin Foto hochladen, aber einige Hashtags werden zensiert."</string>
   <string name="progressbar_home_iapmode">"Du hast %1$s von %2$s Foto Uploads verwendet."</string>
-  <string name="progressbar_home_startmode_is_using">"Du hast %1$s von %2$s Foto Uploads verwendet. Danach erhälst du 1 Foto Upload alle 24 Stunden."</string>
+  <string name="progressbar_home_startmode_is_using">"Du hast %1$s von %2$s Foto Uploads verwendet. Danach erhälst du 1 Foto Upload alle 24 Stunden kostenlos."</string>
   <string name="progressbar_home_startmode_not_used">"Du erhälst %1$s Foto Uploads kostenlos"</string>
   <string name="toast_imagepicker_failed">"Foto auswählen fehlgeschlagen. Bitte Berechtigung prüfen."</string>
   <string name="toast_create_customer_at_upload_failed">"Internet-Verbindung verloren :\'("</string>
@@ -35,12 +35,12 @@
   <string name="toast_delete_successful">"Erfolgreich gelöscht :)"</string>
   <string name="toast_no_hashtags_selected">"Bitte zuerst Hashtags auswählen :)"</string>
   <string name="toast_hashtags_hidden">"Dieses Hashtag ist im kostenlosen Modus versteckt"</string>
-  <string name="settings_rate_subline">"Danke für deinen Support! :)"</string>
-  <string name="settings_rate">"Bewerten im Play Store"</string>
+  <string name="settings_rate_subline">"Bewerte es im Play Store"</string>
+  <string name="settings_rate">"Supporte Hashtag Buddy!"</string>
   <string name="settings_share_subline">"Erzähle deinen Freunden hiervon"</string>
   <string name="settings_share">"Verbreite etwas Liebe!"</string>
   <string name="settings_terms">"Geschäftsbedingungen"</string>
-  <string name="settings_legal">"Impressum &amp; Datenschutz"</string>
+  <string name="settings_legal">"Datenschutzerklärung"</string>
   <string name="settings_about">"Über mich"</string>
   <string name="faq_outro">"Verbessere diese Seite: Ideen? Gib mir Feedback und Vorschläge per Feedback Formular."</string>
   <string name="faq_headline_stats4">"Inhalte"</string>
@@ -144,6 +144,7 @@
   <string name="copy_failed">"Kopieren fehlgeschlagen"</string>
   <string name="copy_please_give_feedback">"Bitte bewerte die Hashtag Ergebnisse auf der nächsten Seite:"</string>
   <string name="copy_successful">"In Zwischenablage kopiert"</string>
+  <string name="results_made_with_app">"erstellt mit #hashtagBuddyApp"</string>
   <string name="results_copy_to_instagram">"Transferiere zu Instagram"</string>
   <string name="results_copy_selected">"Hashtags kopieren"</string>
   <string name="results_copy_top">"Kopiere Top 20"</string>
@@ -168,7 +169,7 @@
   <string name="history_no_content">"Du hast bisher keine Fotos hochgeladen."</string>
   <string name="history_title">"Historie"</string>
   <string name="home_upload">"Wähle ein Foto"</string>
-  <string name="home_desc_3">"Lade ein Foto hoch, um die besten Instagram Hashtags zu entdecken:"</string>
+  <string name="home_desc_3">"Lade ein Foto hoch, um die besten Instagram Hashtags hierfür zu entdecken:"</string>
   <string name="home_desc_2">"#hashtags für deine Fotos"</string>
   <string name="home_desc_1">"Entdecke die besten Instagram"</string>
   <string name="_app_name_1k3Sbz">"Hashtag Buddy"</string>

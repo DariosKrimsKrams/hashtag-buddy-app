@@ -3,6 +3,7 @@ import { PhotosCountService } from '../../storages/photos-count.service';
 import { environment } from '../../environments/environment';
 import { Subscription } from 'rxjs';
 import { localize } from 'nativescript-localize/angular';
+import { UserService } from '~/app/storages/user.service';
 
 @Component({
   selector: 'ProgressBar',
@@ -33,7 +34,8 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   private used: boolean;
 
   constructor(
-    private readonly photosCountService: PhotosCountService
+    private readonly photosCountService: PhotosCountService,
+    private readonly userService: UserService
   ) { }
 
   public ngOnInit(): void {
@@ -60,6 +62,11 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
       this.countPhotoLeft = 0;
     }
     this.countPhotosOverall = environment.freePhotosStart;
+    const isAppRated = this.userService.isAppRated();
+    if (isAppRated) {
+      this.countPhotosOverall += environment.freePhotosRateApp;
+    }
+
     if (this.countPhotoLeft === 0) {
       this.timeOverall = environment.freePhotosIncreatingTime;
     }
@@ -147,7 +154,6 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
       if (percent >= 100) {
         clearInterval(intervalId);
       }
-
       const result = this.calcTimes();
       const hour = result.hour;
       const min = result.min;

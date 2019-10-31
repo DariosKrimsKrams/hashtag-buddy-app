@@ -133,6 +133,10 @@ export class UserService {
     return this.localStorageService.get(this.keyRateApp) || undefined;
   }
 
+  public isAppRated(): boolean {
+    return this.getRateAppStatus() === 'rated';
+  }
+
   public saveRateAppStatus(value: string): void {
     this.localStorageService.set(this.keyRateApp, value);
   }

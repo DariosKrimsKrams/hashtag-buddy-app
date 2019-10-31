@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
 import { environment } from '../environments/environment';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,10 @@ export class PhotosCountService {
   private keyFreeDate: string = 'freePhotosDate';
   public changedAmount: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private readonly localStorageService: LocalStorageService) {}
+  constructor(
+    private readonly localStorageService: LocalStorageService,
+    private readonly userService: UserService
+  ) {}
 
   public initFreePhotos(): void {
     if (this.localStorageService.has(this.keyFreePhotos)) {
@@ -22,11 +26,15 @@ export class PhotosCountService {
 
   public getTotalCount(): number {
     const amountPayed = this.getPayedCount();
-    const amountFree = this.getFreeCount();
+    let amountFree = this.getFreeCount();
+    const isAppRated = this.userService.isAppRated();
+    if (isAppRated) {
+      amountFree += environment.freePhotosRateApp;
+    }
     const amountTotal = amountPayed + amountFree;
     if (amountTotal === 0 && this.checkTimeOver()) {
-      this.setFreeCount(environment.freePhotosIncreatingAmount);
-      return environment.freePhotosIncreatingAmount;
+      this.setFreeCount(environment.freePhotosIncreasingAmount);
+      return environment.freePhotosIncreasingAmount;
     }
     return amountTotal;
   }

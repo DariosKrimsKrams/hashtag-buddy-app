@@ -11,7 +11,7 @@
   <string name="rate_yes">"Califica ahora"</string>
   <string name="rate_no">"Nunca"</string>
   <string name="rate_later">"Más tarde"</string>
-  <string name="rate_desc">"Si te gusta usar esta aplicación, ¿te importaría tomarte un momento para calificarla? ¡Gracias por tu apoyo! :)"</string>
+  <string name="rate_desc">"Si te gusta usar esta aplicación, ¿te importaría tomarte un momento para calificarla? ¡Gracias por tu apoyo! You will receive 3 photo uploads! :)"</string>
   <string name="rate_headline">"Califica â† â˜† â˜† â˜† â˜†"</string>
   <string name="share">"Oye, me gustaría recomendarte esta aplicación: ayuda a encontrar los hashtags de Instagram más relevantes para fotos. Deja que también te ayude :)"</string>
   <string name="myhashtags_other">"Hashtags de fotos"</string>
@@ -144,6 +144,7 @@
   <string name="copy_failed">"Copia fallida"</string>
   <string name="copy_please_give_feedback">"Califique los resultados del hashtag …"</string>
   <string name="copy_successful">"Copiado al portapapeles"</string>
+  <string name="results_made_with_app">"made with #hashtagBuddyApp"</string>
   <string name="results_copy_to_instagram">"Transferir a Instagram"</string>
   <string name="results_copy_selected">"Copiar seleccionado"</string>
   <string name="results_copy_top">"Copia los 20 principales"</string>

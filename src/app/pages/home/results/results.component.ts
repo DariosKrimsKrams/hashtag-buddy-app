@@ -161,7 +161,8 @@ export class ResultsComponent implements OnInit {
     if (this.showToastIfHasNoSelectedHashtags()) {
       return;
     }
-    const text = this.getHashtagsAsText();
+    let text = this.getHashtagsAsText();
+    text += localize('results_made_with_app');
     clipboard
       .setText(text)
       .then(() => {
