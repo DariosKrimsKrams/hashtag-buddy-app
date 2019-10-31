@@ -71,6 +71,7 @@ npm i -g nativescript@latest
 npm i tns-core-modules@latest
 tns update
 tns platform clean/remove/add android/ios
+tns plugin update
 ```
-More detailed infos: https://docs.nativescript.org/releases/upgrade-instructions
+More detailed infos on [NativeScript Upgrade Instructions](https://docs.nativescript.org/releases/upgrade-instructions) page.
 
