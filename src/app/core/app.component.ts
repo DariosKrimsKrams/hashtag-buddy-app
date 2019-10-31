@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, NgZone, ViewContainerRef, OnDestroy } from '@angular/core';
 import * as app from 'tns-core-modules/application';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from 'nativescript-ui-sidedrawer';
@@ -11,18 +11,21 @@ import { UserService } from '../storages/user.service';
 import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '../shared/modal/modal.component';
 import { openUrl } from 'tns-core-modules/utils/utils';
+import { Subscription } from 'rxjs';
 
 @Component({
   moduleId: module.id,
   selector: 'ns-app',
   templateUrl: 'app.component.html'
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   public menus: string[] = ['home', 'myhashtags', 'faq', 'store', 'settings'];
   public selected: boolean[] = [];
 
   private _sideDrawerTransition: DrawerTransitionBase;
+  private createUserFailedSubscription: Subscription;
+  private openFeedbackModalSubscription: Subscription;
 
   constructor(
     private readonly router: RouterExtensions,
@@ -37,7 +40,7 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void {
     this._sideDrawerTransition = new SlideInOnTopTransition();
     this.selected[0] = true;
-    this.customerService.createUserIdIfNotExist().subscribe(status => {
+    this.createUserFailedSubscription = this.customerService.createUserIdIfNotExist().subscribe(status => {
       if (status === CustomerCreateStatus.Failed) {
         setTimeout(() => {
           Toast.makeText(localize('toast_create_customer_failed'), 'long').show();
@@ -49,6 +52,14 @@ export class AppComponent implements OnInit {
     if (this.allowShowingRateAppModal()) {
       this.showRateAppModal();
     }
+
+    this.openFeedbackModalSubscription = this.userService.openFeedbackModal.subscribe(x => {
+      const status = this.userService.getRateAppStatus();
+      if (status === 'rated' || status === 'never') {
+        return;
+      }
+      this.showRateAppModal();
+    });
 
     application.android.on(application.AndroidApplication.activityBackPressedEvent, (args: any) => {
       // this.ngZone.run(() => {
@@ -80,6 +91,11 @@ export class AppComponent implements OnInit {
     // });
   }
 
+  public ngOnDestroy(): void {
+    this.createUserFailedSubscription.unsubscribe();
+    this.openFeedbackModalSubscription.unsubscribe();
+  }
+
   private showRateAppModal(): void {
     const okFunc = () => {
       this.userService.saveRateAppStatus('rated');
@@ -93,7 +109,7 @@ export class AppComponent implements OnInit {
         headline: 'rate_headline',
         desc: 'rate_desc',
         buttonOk: 'rate_yes',
-        buttonCancel: 'rate_no',
+        buttonCancel: 'rate_later',
         okFunc: okFunc
       }
     };
@@ -108,9 +124,9 @@ export class AppComponent implements OnInit {
     const status = this.userService.getRateAppStatus();
     if (status === 'rated' || status === 'never') {
       return false;
-    } else if (status === undefined && this.userService.countPhotos() >= 3) {
+    } else if (status === undefined && this.userService.countPhotos() >= 2) {
       return true;
-    } else if (status === 'later' && this.userService.countPhotos() >= 5) {
+    } else if (status === 'later' && this.userService.countPhotos() >= 3) {
       return false;
     }
     return false;
@@ -121,7 +137,7 @@ export class AppComponent implements OnInit {
     if (status === 'rated') {
       return;
     }
-    this.userService.saveRateAppStatus('never');
+    this.userService.saveRateAppStatus('later');
   }
 
   public get sideDrawerTransition(): DrawerTransitionBase {

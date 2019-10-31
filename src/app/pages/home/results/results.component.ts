@@ -144,6 +144,7 @@ export class ResultsComponent implements OnInit {
         curve: 'easeOut'
       }
     });
+    this.userService.openFeedbackModal.emit();
   }
 
   public navigateToLeaveFeedbackPage(): void {

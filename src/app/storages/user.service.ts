@@ -18,6 +18,7 @@ export class UserService {
   @Output() public androidBackTriggered: EventEmitter<string> = new EventEmitter<string>();
   @Output() public uploadFailedTriggered: EventEmitter<string> = new EventEmitter<string>();
   @Output() public uploadCompletedTriggered: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public openFeedbackModal: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private readonly localStorageService: LocalStorageService

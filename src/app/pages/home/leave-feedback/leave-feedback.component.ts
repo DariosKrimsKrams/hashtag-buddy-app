@@ -111,7 +111,7 @@ export class LeaveFeedbackComponent implements OnInit {
       this.continue();
       return;
     }
-    this.saveFeedback(); // save input fields
+    this.saveFeedback();
     this.doRequest(this.photo);
     this.continue();
   }
@@ -141,6 +141,7 @@ export class LeaveFeedbackComponent implements OnInit {
           curve: 'easeOut'
         }
       });
+      this.userService.openFeedbackModal.emit();
     }, 100);
   }
 
