@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {
     this.cd.detach();
     this.page.actionBarHidden = true;
+    disableIosSwipe(this.page, frameModule);
   }
 
   public ngOnInit(): void {
