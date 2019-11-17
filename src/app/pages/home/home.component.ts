@@ -10,6 +10,8 @@ import { Subscription } from 'rxjs';
 import { exit } from 'nativescript-exit';
 import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
+import * as frameModule from 'tns-core-modules/ui/frame';
+import { disableIosSwipe } from '~/app/shared/status-bar-util';
 
 @Component({
   selector: 'Home',
@@ -43,6 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {
     this.cd.detach();
     this.page.actionBarHidden = true;
+    disableIosSwipe(this.page, frameModule);
   }
 
   public ngOnInit(): void {

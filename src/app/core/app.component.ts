@@ -12,6 +12,9 @@ import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/mod
 import { ModalComponent } from '../shared/modal/modal.component';
 import { openUrl } from 'tns-core-modules/utils/utils';
 import { Subscription } from 'rxjs';
+import { Page } from 'tns-core-modules/ui/page';
+import * as frameModule from 'tns-core-modules/ui/frame';
+import { disableIosSwipe } from '~/app/shared/status-bar-util';
 
 @Component({
   moduleId: module.id,
@@ -34,7 +37,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private readonly ngZone: NgZone,
     private readonly userService: UserService,
     private readonly viewContainerRef: ViewContainerRef,
-    private readonly modalService: ModalDialogService
+    private readonly modalService: ModalDialogService,
+    private readonly page: Page
   ) {}
 
   public ngOnInit(): void {
@@ -62,33 +66,34 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     application.android.on(application.AndroidApplication.activityBackPressedEvent, (args: any) => {
-      // this.ngZone.run(() => {
-        args.cancel = true;
-        const path = this.router.locationStrategy.path();
-        const isResults = path.substring(0, 13) === '/home/results';
-        console.log('path', path);
-        if (path === '/') {
-          // would be crashing otherwise
-          return;
+      args.cancel = true;
+      const path = this.router.locationStrategy.path();
+      const isResults = path.substring(0, 13) === '/home/results';
+      console.log('path', path);
+      if (path === '/') {
+        // would be crashing otherwise
+        return;
+      }
+      if (isResults) {
+        this.router.navigate(['home'], { clearHistory: true });
+      } else if (path === '/home') {
+        this.ngZone.run(() => {
+          this.userService.androidBackTriggered.emit(path);
+        });
+      } else if (path === '/home/loading-hashtags') {
+        // do nothing
+      } else {
+        if (this.router.canGoBack()) {
+          this.router.back();
         }
-        if (isResults) {
-          this.router.navigate(['home'], { clearHistory: true });
-        } else if (path === '/home') {
-          this.ngZone.run(() => {
-            this.userService.androidBackTriggered.emit(path);
-          });
-        } else if (path === '/home/loading-hashtags') {
-          // do nothing
-        } else {
-          if (this.router.canGoBack()) {
-            this.router.back();
-          }
-          // update SideMenu curStatus
-        }
-        // if old=results and before=home & before != "loading" -> open home History
-        // this.userService.onAndroidBackTriggered(path);
-      });
-    // });
+        // update SideMenu curStatus
+      }
+      // if old=results and before=home & before != "loading" -> open home History
+      // this.userService.onAndroidBackTriggered(path);
+    });
+
+    disableIosSwipe(this.page, frameModule);
+
   }
 
   public ngOnDestroy(): void {

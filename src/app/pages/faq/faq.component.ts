@@ -4,6 +4,8 @@ import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { Faq } from '~/app/models/faq';
 import { localize } from 'nativescript-localize/angular';
+import * as frameModule from 'tns-core-modules/ui/frame';
+import { disableIosSwipe } from '~/app/shared/status-bar-util';
 
 @Component({
   selector: 'ns-faq',
@@ -24,6 +26,9 @@ export class FaqComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+
+    disableIosSwipe(this.page, frameModule);
+
     // this.faq = FAQ;
     this.faqs = [
       new Faq({

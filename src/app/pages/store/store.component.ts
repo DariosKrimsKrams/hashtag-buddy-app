@@ -14,6 +14,8 @@ import { isAndroid } from 'tns-core-modules/platform';
 import { UserService } from '~/app/storages/user.service';
 import { PhotosCountService } from '~/app/storages/photos-count.service';
 import { CurrencyPipe } from '@angular/common';
+import * as frameModule from 'tns-core-modules/ui/frame';
+import { disableIosSwipe } from '~/app/shared/status-bar-util';
 
 @Component({
   selector: 'ns-store',
@@ -35,6 +37,9 @@ export class StoreComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+
+    disableIosSwipe(this.page, frameModule);
+
     console.log('ngOnInit');
     const products = [
       'small',

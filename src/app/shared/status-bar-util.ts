@@ -1,5 +1,7 @@
 import * as application from 'tns-core-modules/application';
 import * as platform from 'tns-core-modules/platform';
+import { Page } from 'tns-core-modules/ui/page';
+import { isIOS } from 'tns-core-modules/platform';
 
 declare var android: any;
 
@@ -25,5 +27,14 @@ export function setStatusBarColors(): void {
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
             }
         });
+    }
+}
+
+export function disableIosSwipe(page: Page, frameModule: any): void {
+    if (isIOS) {
+        const controller = frameModule.topmost().ios.controller;
+        const navigationItem = controller.visibleViewController.navigationItem;
+        navigationItem.setHidesBackButtonAnimated(true, false);
+        page.enableSwipeBackNavigation = false;
     }
 }

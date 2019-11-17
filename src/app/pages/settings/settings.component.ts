@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { Page } from 'tns-core-modules/ui/page';
 import { openUrl } from 'tns-core-modules/utils/utils';
@@ -6,6 +6,9 @@ import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import * as SocialShare from 'nativescript-social-share';
 import { localize } from 'nativescript-localize/angular';
+import * as frameModule from 'tns-core-modules/ui/frame';
+import { isIOS } from 'tns-core-modules/platform';
+import { disableIosSwipe } from '~/app/shared/status-bar-util';
 
 @Component({
   selector: 'ns-settings',
@@ -13,7 +16,7 @@ import { localize } from 'nativescript-localize/angular';
   styleUrls: ['./settings.component.scss'],
   moduleId: module.id
 })
-export class SettingsComponent {
+export class SettingsComponent implements OnInit {
   public openmenu = false;
 
   constructor(
@@ -23,19 +26,16 @@ export class SettingsComponent {
     this.page.actionBarHidden = true;
   }
 
+  public ngOnInit(): void {
+    disableIosSwipe(this.page, frameModule);
+  }
+
   public openMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
   }
 
   public goNextPage(route: string): void {
-    // if(route === 'instagram'){
-    //   openUrl("https://www.instagram.com/");
-    // } else if(route === 'facebook') {
-    //   openUrl("https://www.facebook.com/");
-    // } else if(route === 'twitter') {
-    //   openUrl("https://twitter.com/");
-    // } else
     if (route === 'legal') {
       openUrl('https://instaq.app/legal-privacy.html');
     } else {

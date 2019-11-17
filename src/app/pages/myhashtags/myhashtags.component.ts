@@ -9,6 +9,8 @@ import * as utils from 'tns-core-modules/utils/utils';
 import { MyHashtag } from '~/app/models/my-hashtag';
 import { UserService } from '~/app/storages/user.service';
 import { Photo } from '~/app/models/photo';
+import * as frameModule from 'tns-core-modules/ui/frame';
+import { disableIosSwipe } from '~/app/shared/status-bar-util';
 
 @Component({
   selector: 'ns-myhashtags',
@@ -25,6 +27,7 @@ export class MyhashtagsComponent implements OnInit {
     private readonly userService: UserService
   ) {
     this.page.actionBarHidden = true;
+    disableIosSwipe(this.page, frameModule);
   }
 
   public ngOnInit(): void {
