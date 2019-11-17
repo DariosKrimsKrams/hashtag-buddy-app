@@ -34,11 +34,11 @@ export class StoreComponent implements OnInit {
     private readonly currencyPipe: CurrencyPipe
   ) {
     this.page.actionBarHidden = true;
+    disableIosSwipe(this.page, frameModule);
   }
 
   public ngOnInit(): void {
 
-    disableIosSwipe(this.page, frameModule);
 
     console.log('ngOnInit');
     const products = [

@@ -7,7 +7,6 @@ import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import * as SocialShare from 'nativescript-social-share';
 import { localize } from 'nativescript-localize/angular';
 import * as frameModule from 'tns-core-modules/ui/frame';
-import { isIOS } from 'tns-core-modules/platform';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 
 @Component({
@@ -24,10 +23,10 @@ export class SettingsComponent implements OnInit {
     private readonly router: RouterExtensions
   ) {
     this.page.actionBarHidden = true;
+    disableIosSwipe(this.page, frameModule);
   }
 
   public ngOnInit(): void {
-    disableIosSwipe(this.page, frameModule);
   }
 
   public openMenu(): void {

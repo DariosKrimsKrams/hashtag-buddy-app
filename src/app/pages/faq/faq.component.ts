@@ -23,11 +23,11 @@ export class FaqComponent implements OnInit {
     private readonly page: Page,
   ) {
     this.page.actionBarHidden = true;
+    disableIosSwipe(this.page, frameModule);
   }
 
   public ngOnInit(): void {
 
-    disableIosSwipe(this.page, frameModule);
 
     // this.faq = FAQ;
     this.faqs = [

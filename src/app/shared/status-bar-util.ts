@@ -1,7 +1,6 @@
 import * as application from 'tns-core-modules/application';
 import * as platform from 'tns-core-modules/platform';
 import { Page } from 'tns-core-modules/ui/page';
-import { isIOS } from 'tns-core-modules/platform';
 
 declare var android: any;
 
@@ -31,7 +30,7 @@ export function setStatusBarColors(): void {
 }
 
 export function disableIosSwipe(page: Page, frameModule: any): void {
-    if (isIOS) {
+    if (application.ios) {
         const controller = frameModule.topmost().ios.controller;
         const navigationItem = controller.visibleViewController.navigationItem;
         navigationItem.setHidesBackButtonAnimated(true, false);
