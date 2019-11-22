@@ -75,3 +75,20 @@ tns plugin update
 ```
 More detailed infos on [NativeScript Upgrade Instructions](https://docs.nativescript.org/releases/upgrade-instructions) page.
 
+## iOS Troubleshooting
+
+```
+npm i nativescript-dev-webpack --save-dev
+tns update
+pod repo update
+sudo gem install cocopods
+tns platform clean ios
+tns plugin update
+rm -rf node_modules
+rm -rf platforms
+rm package-lock.json
+npm i
+tns plugin remove nativescript-imagepicker
+tns plugin add nativescript-imagepicker
+npm dedupe
+```
