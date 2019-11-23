@@ -67,7 +67,7 @@ export class FeedbackComponent implements OnInit {
 
   public dismissSoftKeybaord(): void {
     if (isIOS) {
-      frame.topmost().nativeView.endEditing(true);
+      frame.Frame.topmost().nativeView.endEditing(true);
     }
     if (isAndroid) {
       utils.ad.dismissSoftInput();

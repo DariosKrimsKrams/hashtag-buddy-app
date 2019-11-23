@@ -31,7 +31,7 @@ export function setStatusBarColors(): void {
 
 export function disableIosSwipe(page: Page, frameModule: any): void {
     if (application.ios) {
-        const controller = frameModule.topmost().ios.controller;
+        const controller = frameModule.Frame.topmost().ios.controller;
         const navigationItem = controller.visibleViewController.navigationItem;
         navigationItem.setHidesBackButtonAnimated(true, false);
         page.enableSwipeBackNavigation = false;
