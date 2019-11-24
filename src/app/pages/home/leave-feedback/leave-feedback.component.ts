@@ -157,6 +157,8 @@ export class LeaveFeedbackComponent implements OnInit {
       missingHashtags: feedback.missingHashtags,
       comment: feedback.comment
     });
+    console.log('leave Feedback with user:');
+    console.log(feedbackDto);
     this.feedbackRepositoryService.sendResultFeedback(feedbackDto);
   }
 
