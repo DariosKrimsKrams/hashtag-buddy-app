@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, NgZone } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { DeviceService } from '~/app/services/device-photos.service';
 import { ImageAsset } from 'tns-core-modules/image-asset/image-asset';
@@ -28,6 +28,7 @@ export class ConfirmImageComponent implements OnInit {
     private readonly selectPhotoService: SelectPhotoService,
     private readonly cd: ChangeDetectorRef,
     private readonly userService: UserService,
+    private readonly ngZone: NgZone
   ) {
     this.cd.detach();
     this.page.actionBarHidden = true;
@@ -45,9 +46,11 @@ export class ConfirmImageComponent implements OnInit {
   public confirmImage(): void {
     this.openLoadingPage();
     this.selectPhotoService.saveAndUploadPhoto().subscribe((photoId) => {
-      this.openResultsPage(photoId);
-      this.userService.uploadCompletedTriggered.emit();
-      this.cd.detectChanges();
+      this.ngZone.run(() => {
+        this.openResultsPage(photoId);
+        this.userService.uploadCompletedTriggered.emit();
+        this.cd.detectChanges();
+      });
     }, (e) => {
       const locaKey = e === 'customer failed' ? 'toast_create_customer_at_upload_failed' : 'toast_upload_failed';
       const text = localize(locaKey);
