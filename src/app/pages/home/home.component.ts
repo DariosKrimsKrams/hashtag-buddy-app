@@ -12,6 +12,7 @@ import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
 import * as frameModule from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
   selector: 'Home',
@@ -41,7 +42,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private readonly page: Page,
     private readonly selectPhotoService: SelectPhotoService,
     private readonly userService: UserService,
-    private readonly cd: ChangeDetectorRef
+    private readonly cd: ChangeDetectorRef,
+    private readonly router: RouterExtensions
   ) {
     this.cd.detach();
     this.page.actionBarHidden = true;
@@ -73,6 +75,16 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.cd.detectChanges();
     });
     this.backTriggeredForExit = false;
+  }
+
+  public clickTipsAndTricks(): void {
+    this.router.navigate([`/faq`], {
+      transition: {
+        name: 'FadeIn',
+        duration: 500,
+        curve: 'easeOut'
+      }
+    });
   }
 
   public openMenu(): void {
