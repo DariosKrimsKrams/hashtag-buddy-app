@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'circularProgressBar',
@@ -9,7 +10,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class CircularProgressBarComponent implements OnInit {
 
   private percentValue: number = 0;
-  private timeSec: number = 20;
   @ViewChild('bar', { read: ElementRef, static: false }) public barElement: ElementRef;
 
   constructor(
@@ -33,7 +33,7 @@ export class CircularProgressBarComponent implements OnInit {
       if (this.percentValue >= 99) {
         clearInterval(intervalId);
       }
-    }, this.timeSec * 1000 / 99);
+    }, environment.loadingTimeSec * 1000 / 99);
   }
 
   public animateBar(): void {

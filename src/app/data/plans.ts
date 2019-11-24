@@ -4,7 +4,7 @@ export const PLAN: Plan[] = [
     {
         id: 'small',
         image: '~/app/assets/images/5.png',
-        title: 'Entry Magic',
+        title: 'Professional',
         desc: 'Unlock 5 photo uploads',
         type: 'inapp',
         priceFallback: '1.50',
@@ -13,7 +13,7 @@ export const PLAN: Plan[] = [
     {
         id: 'medium',
         image: '~/app/assets/images/10.png',
-        title: 'Advanced Magic',
+        title: 'Business',
         desc: 'Unlock 10 photo uploads',
         type: 'inapp',
         priceFallback: '2.50',
@@ -22,7 +22,7 @@ export const PLAN: Plan[] = [
     {
         id: 'large',
         image: '~/app/assets/images/20.png',
-        title: 'Professional Magic',
+        title: 'Enterprise',
         desc: 'Unlock 20 photo uploads',
         type: 'inapp',
         priceFallback: '4.00',

@@ -5,4 +5,5 @@ export const environment = {
     freePhotosRateApp: 3,
     freePhotosIncreatingTime: 86400,
     freePhotosIncreasingAmount: 1,
+    loadingTimeSec: 30,
 };

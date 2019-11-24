@@ -102,18 +102,17 @@ export class LeaveFeedbackComponent implements OnInit {
   }
 
   public sendFeedback(): void {
+    this.showModal();
     if (this.missingHashtags === ''
       && this.comment === ''
       && this.rating === Rating.None
       && this.tags1.length === 0
       && this.tags2.length === 0
     ) {
-      this.continue();
       return;
     }
     this.saveFeedback();
     this.doRequest(this.photo);
-    this.continue();
   }
 
   private showModal(): void {
@@ -159,10 +158,6 @@ export class LeaveFeedbackComponent implements OnInit {
       comment: feedback.comment
     });
     this.feedbackRepositoryService.sendResultFeedback(feedbackDto);
-  }
-
-  public continue(): void {
-    this.showModal();
   }
 
   public goPrevPage(): void {

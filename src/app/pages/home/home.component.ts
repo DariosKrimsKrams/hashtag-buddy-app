@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.page.actionBarHidden = true;
 
     // leads to Crash in latest NativeScript 6.2 etc.
-    //disableIosSwipe(this.page, frameModule);
+    // disableIosSwipe(this.page, frameModule);
   }
 
   public ngOnInit(): void {
