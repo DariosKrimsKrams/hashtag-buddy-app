@@ -70,14 +70,20 @@ tns info
 npm i -g nativescript@latest
 npm i tns-core-modules@latest
 tns update
-tns platform clean/remove/add android/ios
+tns platform clean android
 tns plugin update
+npm i nativescript-dev-webpack@latest --save-dev
+./node_modules/.bin/update-ns-webpack --deps --configs
+npm i nativescript-angular@latest --save
+./node_modules/.bin/update-app-ng-deps
+npm i
 ```
 More detailed infos on [NativeScript Upgrade Instructions](https://docs.nativescript.org/releases/upgrade-instructions) page.
 
 ## iOS Troubleshooting
 
 ```
+npm rebuild node-sass
 npm i nativescript-dev-webpack --save-dev
 tns update
 pod repo update
