@@ -4,7 +4,6 @@ import { RouterExtensions } from 'nativescript-angular/router';
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from 'nativescript-ui-sidedrawer';
 import { PhotosCountService } from '../storages/photos-count.service';
 import { CustomerService, CustomerCreateStatus } from '../storages/customer.service';
-import * as Toast from 'nativescript-toast';
 import { localize } from 'nativescript-localize/angular';
 import * as application from 'tns-core-modules/application';
 import { UserService } from '../storages/user.service';
@@ -15,6 +14,7 @@ import { Subscription } from 'rxjs';
 import { Page } from 'tns-core-modules/ui/page';
 import * as frameModule from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
+import { ToastDuration, Toasty } from 'nativescript-toasty';
 
 @Component({
   moduleId: module.id,
@@ -47,7 +47,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.createUserFailedSubscription = this.customerService.createUserIdIfNotExist().subscribe(status => {
       if (status === CustomerCreateStatus.Failed) {
         setTimeout(() => {
-          Toast.makeText(localize('toast_create_customer_failed'), 'long').show();
+          const text = localize('toast_create_customer_failed');
+          new Toasty({ text: text })
+            .setToastDuration(ToastDuration.LONG)
+            .show();
         }, 2000);
       }
     });

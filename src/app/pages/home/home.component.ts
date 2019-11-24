@@ -8,7 +8,7 @@ import { UserService } from '~/app/storages/user.service';
 import { Photo } from '~/app/models/photo';
 import { Subscription } from 'rxjs';
 import { exit } from 'nativescript-exit';
-import * as Toast from 'nativescript-toast';
+import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
 import * as frameModule from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
@@ -139,7 +139,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       } else {
         if (!this.backTriggeredForExit) {
           this.backTriggeredForExit = true;
-          Toast.makeText(localize('exit_warning'), 'long').show();
+          const text = localize('exit_warning');
+          new Toasty({ text: text })
+            .setToastDuration(ToastDuration.LONG)
+            .show();
         } else {
           exit();
         }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import * as imagepicker from 'nativescript-imagepicker';
-import * as Toast from 'nativescript-toast';
+import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
 import { DeviceService } from '../device-photos.service';
 import { CustomerService, CustomerCreateStatus } from '../../storages/customer.service';
@@ -50,7 +50,10 @@ export class SelectPhotoService {
       }).catch(function(e): void {
         e = e.toString();
         if (e.substr(e.length - 13) !== 'result code 0') {
-          Toast.makeText(localize('toast_imagepicker_failed'), 'long').show();
+          const text = localize('toast_imagepicker_failed');
+          new Toasty({ text: text })
+            .setToastDuration(ToastDuration.LONG)
+            .show();
         }
         observer.error(e);
         observer.complete();

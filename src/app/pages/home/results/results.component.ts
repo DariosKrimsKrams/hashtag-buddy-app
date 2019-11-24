@@ -11,7 +11,7 @@ import { isIOS, isAndroid } from 'tns-core-modules/platform';
 import * as frame from 'tns-core-modules/ui/frame';
 import { UserService } from '../../../storages/user.service';
 import { Photo } from '../../../models/photo';
-import * as Toast from 'nativescript-toast';
+import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
 import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
@@ -169,7 +169,10 @@ export class ResultsComponent implements OnInit {
         this.showModal();
       })
       .catch(function(): void {
-        Toast.makeText(localize('copy_failed'), 'long').show();
+        const text = localize('copy_failed');
+        new Toasty({ text: text })
+          .setToastDuration(ToastDuration.LONG)
+          .show();
       });
   }
 
@@ -205,7 +208,10 @@ export class ResultsComponent implements OnInit {
   private showToastIfHasNoSelectedHashtags(): boolean {
     const hasSelectedHashtags = this.highlightStatus.length > 0;
     if (!hasSelectedHashtags) {
-      Toast.makeText(localize('toast_no_hashtags_selected')).show();
+      const text = localize('toast_no_hashtags_selected');
+      new Toasty({ text: text })
+        .setToastDuration(ToastDuration.LONG)
+        .show();
     }
     return !hasSelectedHashtags;
   }
@@ -240,6 +246,9 @@ export class ResultsComponent implements OnInit {
   }
 
   public clickedCensoredHashtag(): void {
-    Toast.makeText(localize('toast_hashtags_hidden')).show();
+    const text = localize('toast_hashtags_hidden');
+    new Toasty({ text: text })
+      .setToastDuration(ToastDuration.LONG)
+      .show();
   }
 }

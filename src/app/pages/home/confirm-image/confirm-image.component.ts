@@ -3,7 +3,7 @@ import { RouterExtensions } from 'nativescript-angular/router';
 import { DeviceService } from '~/app/services/device-photos.service';
 import { ImageAsset } from 'tns-core-modules/image-asset/image-asset';
 import { Page } from 'tns-core-modules/ui/page/page';
-import * as Toast from 'nativescript-toast';
+import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
 import { SelectPhotoService } from '~/app/services/business-logic/select-photo.service';
 import { UserService } from '~/app/storages/user.service';
@@ -50,7 +50,10 @@ export class ConfirmImageComponent implements OnInit {
       this.cd.detectChanges();
     }, (e) => {
       const locaKey = e === 'customer failed' ? 'toast_create_customer_at_upload_failed' : 'toast_upload_failed';
-      Toast.makeText(localize(locaKey), 'long').show();
+      const text = localize(locaKey);
+      new Toasty({ text: text })
+        .setToastDuration(ToastDuration.LONG)
+        .show();
       setTimeout.bind(this)(() => {
         // event for canceling
         this.userService.uploadFailedTriggered.emit();

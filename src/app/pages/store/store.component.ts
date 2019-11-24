@@ -7,7 +7,7 @@ import * as purchase from 'nativescript-purchase';
 import { Product } from 'nativescript-purchase/product';
 import { Transaction, TransactionState } from 'nativescript-purchase/transaction';
 import { Plan } from '~/app/models/plan';
-import * as Toast from 'nativescript-toast';
+import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
 import { isAndroid } from 'tns-core-modules/platform';
@@ -169,7 +169,10 @@ export class StoreComponent implements OnInit {
     if (purchase.canMakePayments()) {
       purchase.buyProduct(product);
     } else {
-      Toast.makeText(localize('store_buy_failed')).show();
+      const text = localize('store_buy_failed');
+      new Toasty({ text: text })
+        .setToastDuration(ToastDuration.LONG)
+        .show();
     }
   }
 
@@ -234,7 +237,10 @@ export class StoreComponent implements OnInit {
 
   private onTransactionFailed(transaction: Transaction): void {
     console.log(`Purchase of ${transaction.productIdentifier} was canceled!`);
-    Toast.makeText(localize('iap_purchase_failed')).show();
+    const text = localize('iap_purchase_failed');
+    new Toasty({ text: text })
+      .setToastDuration(ToastDuration.LONG)
+      .show();
   }
 
   private showPopup(title: string, msg: string, btn: string): void {

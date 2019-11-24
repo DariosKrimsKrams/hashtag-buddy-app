@@ -5,7 +5,7 @@ import { RouterExtensions } from 'nativescript-angular/router';
 import { Hashtag } from '~/app/models/hashtag';
 import { DeviceService } from '~/app/services/device-photos.service';
 import { Subscription } from 'rxjs';
-import * as Toast from 'nativescript-toast';
+import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
 
 @Component({
@@ -87,13 +87,17 @@ export class HistoryComponent implements OnInit, OnDestroy {
     }
     const successful = this.userService.deletePhoto(photo);
     this.deviceService.deletePhoto(photo.image);
+    let toastText = '';
     if (successful) {
       this.photosReverse.splice(this.selected, 1);
       this.selected = -1;
-      Toast.makeText(localize('toast_delete_successful')).show();
+      toastText = 'toast_delete_successful';
     } else {
-      Toast.makeText(localize('toast_delete_failed')).show();
+      toastText = 'toast_delete_failed';
     }
+    new Toasty({ text: toastText })
+      .setToastDuration(ToastDuration.LONG)
+      .show();
   }
 
   public clickOpenCloseHistory(): void {
