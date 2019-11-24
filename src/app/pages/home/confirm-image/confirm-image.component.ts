@@ -52,15 +52,18 @@ export class ConfirmImageComponent implements OnInit {
         this.cd.detectChanges();
       });
     }, (e) => {
-      const locaKey = e === 'customer failed' ? 'toast_create_customer_at_upload_failed' : 'toast_upload_failed';
-      const text = localize(locaKey);
-      new Toasty({ text: text })
-        .setToastDuration(ToastDuration.LONG)
-        .show();
-      setTimeout.bind(this)(() => {
-        // event for canceling
-        this.userService.uploadFailedTriggered.emit();
-      }, 1000);
+      this.ngZone.run(() => {
+        console.log('ERROR', e);
+        const locaKey = e === 'customer failed' ? 'toast_create_customer_at_upload_failed' : 'toast_upload_failed';
+        const text = localize(locaKey);
+        new Toasty({ text: text })
+          .setToastDuration(ToastDuration.LONG)
+          .show();
+        setTimeout.bind(this)(() => {
+          // event for canceling
+          this.userService.uploadFailedTriggered.emit();
+        }, 1000);
+      });
     });
   }
 
