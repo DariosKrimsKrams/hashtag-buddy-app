@@ -4,15 +4,15 @@
   <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
   <string name="error_button_back">"Geh zu Home-Seite"</string>
   <string name="error_button_try_again">"Erneut versuchen"</string>
-  <string name="error_desc2">"Leider konnten wir das Hochladen nicht korrekt abschließen"</string>
+  <string name="error_desc2">"Leider konnte das Hochladen nicht korrekt abgeschlossen werden."</string>
   <string name="error_desc">"Etwas lief schief :("</string>
   <string name="error_headline">"Ooops..."</string>
   <string name="exit_warning">"Erneut Tippen zum Beenden"</string>
   <string name="rate_yes">"Jetzt bewerten"</string>
   <string name="rate_no">"Nie"</string>
   <string name="rate_later">"Später"</string>
-  <string name="rate_desc">"Könntest du dir vorstellen, für Hashtag Buddy eine Bewertung abzugeben? Als Dank für deinen Support erhälst du 3 Foto Uploads! :)"</string>
-  <string name="rate_headline">"Bewerten   ☆ ☆ ☆ ☆ ☆"</string>
+  <string name="rate_desc">"Du bist ein Hashtag Star! Könntest du dir vorstellen, für Hashtag Buddy eine Bewertung abzugeben? Als Dankeschön erhälst du 3 Foto Uploads! :)"</string>
+  <string name="rate_headline">"Greife nach den Sternen   ☆ ☆ ☆ ☆ ☆"</string>
   <string name="share">"Hey, ich möchte dir diese App empfehlen: Sie hilft, die passendsten Instagram Hashtags für Fotos zu finden. Probiere sie doch gleich mal aus :)"</string>
   <string name="myhashtags_other">"Hashtags von Fotos"</string>
   <string name="myhashtags_your">"Von dir hinzugefügt"</string>
@@ -50,9 +50,9 @@
   <string name="iap_restored_successful_btn">"Perfekt"</string>
   <string name="iap_restored_successful_msg">"Produkt \'%1$s\' wurde wiederhergestellt :)"</string>
   <string name="iap_restored_successful_title">"Wiederherstellen"</string>
-  <string name="iap_purchase_successful_btn">"Nice"</string>
-  <string name="iap_purchase_successful_msg">"Erwerb von %1$s war erfolgreich :)"</string>
-  <string name="iap_purchase_successful_title">"Herzlichen Glühstrumpf!"</string>
+  <string name="iap_purchase_successful_btn">"OK"</string>
+  <string name="iap_purchase_successful_msg">"Von nun an kannst du die volle Pracht deines neuen Buddy genießen. Du hast erfolgreich %1$s erworben :)"</string>
+  <string name="iap_purchase_successful_title">"Herzlichen Glückwunsch! Gute Wahl."</string>
   <string name="iap_purchase_failed">"Kauf wurde abgebrochen"</string>
   <string name="store_buy_failed">"Schade, dein Konto scheint nicht für Zahlungen berechtigt zu sein :("</string>
   <string name="store_save">"Spare"</string>
@@ -86,13 +86,13 @@
   <string name="about_credits_1">"Dario D. Müller aus Hamburg, Deutschland"</string>
   <string name="about_headline_credits">"Entwickelt von"</string>
   <string name="about_desc_3">"Lass uns diese Idee gemeinsam verbessern, indem du mir Feedback, z.B. zu Funktionen oder Verbesserungsmöglichkeiten."</string>
-  <string name="about_desc_2">"Ich glaube daran, dass den Weg, die richtigen Hashtags zu finden, verbessern können. Mit dieser App möchte es Jedem ermöglichen, die relavantesten Hashtags zu finden, um besser auf Instagram gefunden zu werden. Um dies zu erreichen, sammelt diese App riesige Datenmangen Instagram\'s neuster und erfolgreichster Fotos, und analysiert diese, und so die besten Hashtags liefern zu können."</string>
+  <string name="about_desc_2">"Ich glaube daran, dass es Verbesserungspotential gibt, wie wir derzeit die besten und relevantesten Hashtags für unsere Fotos finden. Mit dieser App möchte es Jedem ermöglichen, die relavantesten Hashtags zu finden, um besser auf Instagram gefunden zu werden. Um dies zu erreichen, sammelt diese App riesige Datenmangen Instagram\'s neuster und erfolgreichster Fotos, und analysiert diese, und so die besten Hashtags liefern zu können."</string>
   <string name="about_desc_1">"Danke, dass du diese App verwendest :)"</string>
   <string name="about_title">"Über mich"</string>
   <string name="settings_footer_title_fallback">"Teilen"</string>
   <string name="settings_footer_title">"Folge us"</string>
   <string name="feedback_modal_button">"OK"</string>
-  <string name="feedback_successful_desc">"Dein Feedback wurde gesendet :)"</string>
+  <string name="feedback_successful_desc">"Ich werde mich bemühen, es zu verbessern. Dein Feedback wird in Kürze geprüft."</string>
   <string name="feedback_successful_headline">"Dankeschön!"</string>
   <string name="feedback_send">"Feedback senden"</string>
   <string name="feedback_message">"Nachricht"</string>

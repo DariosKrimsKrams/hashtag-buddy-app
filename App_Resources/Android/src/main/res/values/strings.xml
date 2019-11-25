@@ -4,15 +4,15 @@
   <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
   <string name="error_button_back">"Go to main page"</string>
   <string name="error_button_try_again">"Try again"</string>
-  <string name="error_desc2">"Something went wrong and we can’t handle your request"</string>
+  <string name="error_desc2">"Something went wrong and the app couldn\'t handle your request correctly."</string>
   <string name="error_desc">"Something went wrong :("</string>
   <string name="error_headline">"Ooops..."</string>
   <string name="exit_warning">"Tap again to exit"</string>
   <string name="rate_yes">"Rate now"</string>
   <string name="rate_no">"Never"</string>
   <string name="rate_later">"Later"</string>
-  <string name="rate_desc">"Would you mind taking a moment to rate Hashtag Buddy? As a thank you for your support, you will receive 3 photo uploads! :)"</string>
-  <string name="rate_headline">"Rate   ☆ ☆ ☆ ☆ ☆"</string>
+  <string name="rate_desc">"You\'re a Hashtag Star! Would you mind taking a moment to rate Hashtag Buddy? As a thank you, you will receive 3 photo uploads! :)"</string>
+  <string name="rate_headline">"Reach for the Stars   ☆ ☆ ☆ ☆ ☆"</string>
   <string name="share">"Hey, I would like to recommend this app: It helps to find the most relevant Instagram hashtags for photos. Let it help you too :)"</string>
   <string name="myhashtags_other">"Hashtags from photos"</string>
   <string name="myhashtags_your">"Added by you"</string>
@@ -50,9 +50,9 @@
   <string name="iap_restored_successful_btn">"Perfect"</string>
   <string name="iap_restored_successful_msg">"Product \'%1$s\' has been restored :)"</string>
   <string name="iap_restored_successful_title">"Restored"</string>
-  <string name="iap_purchase_successful_btn">"Nice"</string>
-  <string name="iap_purchase_successful_msg">"You successfully bought %1$s :)"</string>
-  <string name="iap_purchase_successful_title">"Congratulations"</string>
+  <string name="iap_purchase_successful_btn">"OK"</string>
+  <string name="iap_purchase_successful_msg">"From now on you\'re able to enjoy the full beauty of your new Buddy. You successfully acquired %1$s :)"</string>
+  <string name="iap_purchase_successful_title">"Congratulations! You chose well."</string>
   <string name="iap_purchase_failed">"Purchase was canceled"</string>
   <string name="store_buy_failed">"Sadly, your account seems to not be eligible to make payments :("</string>
   <string name="store_save">"Save"</string>
@@ -86,13 +86,13 @@
   <string name="about_credits_1">"Dario D. Mueller from Germany"</string>
   <string name="about_headline_credits">"Developed by"</string>
   <string name="about_desc_3">"Let us improve this app together! Please contribute by giving me your feedback for hashtags and telling me what you like or dislike."</string>
-  <string name="about_desc_2">"I believe we can improve the way to find the most relevant hashtags. I would like to provide an app to help everyone find the most relevant hashtags. To find it, the software behind this app collect and analyze thousands of photos on instagram."</string>
+  <string name="about_desc_2">"I believe there is improvement potential for the way to find the best fitting und most relevant hashtags. I would like to provide an app to help everyone find the most relevant hashtags. To find it, the software behind this app collect and analyze thousands of photos on instagram."</string>
   <string name="about_desc_1">"Thank you for using this App :)"</string>
   <string name="about_title">"About me"</string>
   <string name="settings_footer_title_fallback">"Share"</string>
   <string name="settings_footer_title">"Follow us"</string>
   <string name="feedback_modal_button">"OK"</string>
-  <string name="feedback_successful_desc">"Your feedback has been sent :)"</string>
+  <string name="feedback_successful_desc">"I\'ll strive to do better. Your feedback will be evaluated soon."</string>
   <string name="feedback_successful_headline">"Thank you!"</string>
   <string name="feedback_send">"Send feedback"</string>
   <string name="feedback_message">"Your message"</string>
