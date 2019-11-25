@@ -17,7 +17,7 @@
         </GridLayout>
     </GridLayout>
     
-    <AbsoluteLayout class="text-center" verticalAlignment="bottom" isUserInteractionEnabled="false">
+    <AbsoluteLayout class="text-center" verticalAlignment="bottom">
         <GridLayout id="history" [height]="historyHeight" [translateY]="historyDefaultTransform" #history [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" top="0" left="0">
             <Image src="~/app/assets/images/home_footer_shadow.png" #historShadow verticalAlignment="top"></Image>
             <ns-history [historyOpenChanged]="historyOpenChanged" (openCloseHistory)="clickHistory()"></ns-history>
@@ -28,7 +28,10 @@
         <ns-big-header></ns-big-header>
     </StackLayout>
 
-    <Image src="~/app/assets/images/icons/menu_bar_white.png" horizontalAlignment="left" verticalAlignment="top" height="70" width="70" class="m-t-20 p-l-25 p-r-25 p-b-20 p-t-10" style="background-color: transparent;" (tap)="openMenu()"></Image>
+    <StackLayout (tap)="openMenu()" horizontalAlignment="left" verticalAlignment="top" height="70" width="70" class="m-t-20">
+        <Image src="~/app/assets/images/icons/menu_bar_white.png" height="20" width="20" class="m-t-20 p-l-25 p-r-25 p-b-20 p-t-10"></Image>
+    </StackLayout>
+
 
     <ns-confirm-image *ngIf="showConfirmImage" (onClickCancel)="clickCancelConfirmImage()"></ns-confirm-image>
 
