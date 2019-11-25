@@ -155,7 +155,7 @@
   <string name="results_deselect_all">"Deselect all"</string>
   <string name="results_select_all">"Select all"</string>
   <string name="results_category_location_based_hashtags">"Location-based"</string>
-  <string name="results_category_favorites">"My hashtags"</string>
+  <string name="results_category_favorites">"my hashtags"</string>
   <string name="results_category_upcoming_hashtags">"Trending hashtags"</string>
   <string name="results_category_generic_hashtags">"Generic hashtags"</string>
   <string name="results_category_niche_hashtags">"Niche hashtags"</string>
