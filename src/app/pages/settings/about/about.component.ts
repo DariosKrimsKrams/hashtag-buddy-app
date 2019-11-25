@@ -22,7 +22,7 @@ export class AboutComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.userId = this.customerService.getCustomerId().substr(0, 10);
+    this.userId = this.customerService.getCustomerId().substr(0, 10).toUpperCase();
   }
 
   public goPrevPage(): void {
