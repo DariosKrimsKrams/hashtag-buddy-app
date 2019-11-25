@@ -195,9 +195,9 @@ export class StoreComponent implements OnInit {
               // alert(`Failed to consume with code: ${responseCode}! :'(`);
             }
           })
-          .catch(e => {
-            console.log(e);
-            alert(`Failed to consume: ${e}`);
+          .catch(err => {
+            console.log(err);
+            alert(`Failed to consume: ${err}`);
           });
       } else {
         this.buyingProductSuccessful(transaction);

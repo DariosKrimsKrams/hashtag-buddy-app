@@ -41,21 +41,24 @@ export class SelectPhotoService {
         return context.present();
       })
       .then(function(selection): void {
+        console.log('image picker successful', selection);
         const image = selection[0];
+        console.log(image);
+        console.log(image.options.width);
         image.options.width = 1000;
         image.options.height = 1000;
         that.deviceService.setSelectedPhoto(image);
         observer.next(image);
         observer.complete();
-      }).catch(function(e): void {
-        e = e.toString();
-        if (e.substr(e.length - 13) !== 'result code 0') {
+      }).catch(err => {
+        console.log('image picker error', err);
+        if (err.substr(err.length - 13) !== 'result code 0') {
           const text = localize('toast_imagepicker_failed');
           new Toasty({ text: text })
             .setToastDuration(ToastDuration.LONG)
             .show();
         }
-        observer.error(e);
+        observer.error(err);
         observer.complete();
       });
     });
