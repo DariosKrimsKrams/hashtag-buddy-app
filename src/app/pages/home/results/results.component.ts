@@ -162,7 +162,9 @@ export class ResultsComponent implements OnInit {
       return;
     }
     let text = this.getHashtagsAsText();
-    text += localize('results_made_with_app');
+    if (!this.userService.hasPurchase()) {
+      text += localize('results_made_with_app');
+    }
     clipboard
       .setText(text)
       .then(() => {

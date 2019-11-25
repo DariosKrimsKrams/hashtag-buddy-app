@@ -109,6 +109,11 @@ export class UserService {
     this.localStorageService.set(this.keyPurchases, purchases);
   }
 
+  public hasPurchase(): boolean {
+    const purchases = this.getExistingPurchases();
+    return purchases.length !== 0;
+  }
+
   private getExistingPurchases(): Transaction[] {
     const json = this.localStorageService.get(this.keyPurchases) || undefined;
     if (json === undefined) {
