@@ -29,6 +29,7 @@ export class ResultsComponent implements OnInit {
   public highlightStatus: string[] = [];
   public currentScrollingY: number = 0;
   public categories: HashtagCategory[] = [];
+  private hasAnyInteraction: boolean = false;
 
   constructor(
     private readonly page: Page,
@@ -98,6 +99,7 @@ export class ResultsComponent implements OnInit {
 
   private selectHashtag(title: string): void {
     this.highlightStatus.push(title);
+    this.hasAnyInteraction = true;
   }
 
   private isHashtagSelected(title: string): boolean {
@@ -144,7 +146,9 @@ export class ResultsComponent implements OnInit {
         curve: 'easeOut'
       }
     });
-    this.userService.openFeedbackModal.emit();
+    if (this.hasAnyInteraction) {
+      this.userService.openFeedbackModal.emit();
+    }
   }
 
   public navigateToLeaveFeedbackPage(): void {
@@ -176,6 +180,7 @@ export class ResultsComponent implements OnInit {
           .setToastDuration(ToastDuration.LONG)
           .show();
       });
+    this.hasAnyInteraction = true;
   }
 
   private showModal(): void {

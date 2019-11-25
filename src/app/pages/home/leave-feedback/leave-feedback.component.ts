@@ -30,6 +30,7 @@ export class LeaveFeedbackComponent implements OnInit {
 
   private rating: Rating = Rating.None;
   private photo: Photo;
+  private leftFeedback: boolean = false;
 
   constructor(
     private readonly page: Page,
@@ -111,6 +112,7 @@ export class LeaveFeedbackComponent implements OnInit {
     ) {
       return;
     }
+    this.leftFeedback = true;
     this.saveFeedback();
     this.doRequest(this.photo);
   }
@@ -140,7 +142,9 @@ export class LeaveFeedbackComponent implements OnInit {
           curve: 'easeOut'
         }
       });
-      this.userService.openFeedbackModal.emit();
+      if (this.leftFeedback) {
+        this.userService.openFeedbackModal.emit();
+      }
     }, 100);
   }
 

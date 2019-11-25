@@ -56,7 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
     this.photosCountService.initFreePhotos();
 
-    if (this.allowShowingRateAppModal()) {
+    if (this.isNowGoodTimeToShowRateAppModalOnStartup()) {
       this.showRateAppModal();
     }
 
@@ -128,7 +128,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }, 300);
   }
 
-  private allowShowingRateAppModal(): boolean {
+  private isNowGoodTimeToShowRateAppModalOnStartup(): boolean {
     const status = this.userService.getRateAppStatus();
     if (status === 'rated' || status === 'never') {
       return false;
