@@ -1,25 +1,30 @@
 <GridLayout tkMainContent #mainContainer>
     <GridLayout rows="220,*" class="Home">
+        <!-- <GridLayout row="0"> -->
+        <!-- </GridLayout> -->
         <GridLayout row="1">
             <GridLayout rows="*,130" verticalAlignment="middle">
                 <StackLayout row="0">
                     <Label [text]="'home_desc_3' | L" class="font-medium-small intro" textWrap="true"></Label>
-                    <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient" id="uploadButton" text="{{ 'home_upload' | L }}" row="0" (tap)="clickSelectPhoto()"></Button>
+                    <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient home-button upload-button" text="{{ 'home_upload' | L }}" (tap)="clickSelectPhoto()"></Button>
+                    <Button class="btn btn-rounded-lg btn-outline border-color-normal color-normal home-button" text="{{ 'menu_faq' | L }}" (tap)="clickTipsAndTricks()"></Button>
                     <ProgressBar page="home" width="40%"></ProgressBar>
-                    <Button class="btn btn-rounded-lg btn-outline border-color-normal color-normal" text="{{ 'menu_faq' | L }}" row="0" (tap)="clickTipsAndTricks()"></Button>
                 </StackLayout>
+                <!-- <StackLayout row="1">
+                    Footer
+                </StackLayout> -->
             </GridLayout>
         </GridLayout>
     </GridLayout>
     
-    <AbsoluteLayout class="text-center" verticalAlignment="bottom">
+    <AbsoluteLayout class="text-center" verticalAlignment="bottom" isUserInteractionEnabled="false">
         <GridLayout id="history" [height]="historyHeight" [translateY]="historyDefaultTransform" #history [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" top="0" left="0">
             <Image src="~/app/assets/images/home_footer_shadow.png" #historShadow verticalAlignment="top"></Image>
             <ns-history [historyOpenChanged]="historyOpenChanged" (openCloseHistory)="clickHistory()"></ns-history>
         </GridLayout>
     </AbsoluteLayout>
 
-    <StackLayout id="big_header" #header verticalAlignment="top">
+    <StackLayout id="big_header" #header verticalAlignment="top" isUserInteractionEnabled="false">
         <ns-big-header></ns-big-header>
     </StackLayout>
 
