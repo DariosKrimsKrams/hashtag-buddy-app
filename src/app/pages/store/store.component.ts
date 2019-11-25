@@ -180,6 +180,12 @@ export class StoreComponent implements OnInit {
     purchase.restorePurchases();
   }
 
+  public getOutroText(): string {
+    const key = 'store_outro_' + (isAndroid ? 'google' : 'apple');
+    const company = localize(key);
+    return localize('store_outro', company);
+  }
+
   private onProductBought(transaction: Transaction): void {
     if (isAndroid) {
       const plan = this.getPlanById(transaction.productIdentifier);

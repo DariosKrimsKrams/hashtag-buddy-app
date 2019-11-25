@@ -58,7 +58,9 @@
   <string name="store_save">"Salva"</string>
   <string name="store_restore">"Ripristina acquisti"</string>
   <string name="store_price_per_photo">"equals %1$s per photo"</string>
-  <string name="store_outro">"Ricorda che Google trattiene il 30%% di ogni transazione."</string>
+  <string name="store_outro_apple">"Apple"</string>
+  <string name="store_outro_google">"Google"</string>
+  <string name="store_outro">"Ricorda che %1$s trattiene il 30%% di ogni transazione."</string>
   <string name="store_headline_abo">"Sottoscrizioni"</string>
   <string name="store_headline_once">"Pacchetti One-time"</string>
   <string name="store_intro">"Acquista i caricamenti di foto per ottenere più risultati e hashtag non nascosti. Queste vendite non mi porteranno alcun profitto, ma mi aiuteranno a coprire i costi relativi al mantenimento dell’applicazione"</string>

@@ -58,7 +58,9 @@
   <string name="store_save">"Salvar"</string>
   <string name="store_restore">"Recuperar pagamentos"</string>
   <string name="store_price_per_photo">"equals %1$s per photo"</string>
-  <string name="store_outro">"Tenha em consideração que a Google fica com 30 %% de cada transação que faz."</string>
+  <string name="store_outro_apple">"Apple"</string>
+  <string name="store_outro_google">"Google"</string>
+  <string name="store_outro">"Tenha em consideração que a %1$s fica com 30 %% de cada transação que faz."</string>
   <string name="store_headline_abo">"Subscrições"</string>
   <string name="store_headline_once">"Compra única"</string>
   <string name="store_intro">"Compre carregamentos de fotos para obter mais hashtags e hashtags exclusivos. Estas vendas não geram lucro apenas cobrem despesas de manutenção da aplicação."</string>

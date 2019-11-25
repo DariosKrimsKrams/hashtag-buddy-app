@@ -15,7 +15,7 @@
                     </StackLayout>
 
                     <StackLayout class="hr-light m-10"></StackLayout>
-                    <Label textWrap="true" [text]="'store_outro' | L" class="p-b-10"></Label>
+                    <Label textWrap="true" [text]="getOutroText()" class="p-b-10"></Label>
                     <Button [text]="'store_restore' | L" (tap)="restore()" class="btn btn-rounded-lg btn-outline border-color-normal color-normal"></Button>
 
                 </StackLayout>
