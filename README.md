@@ -1,9 +1,9 @@
 # Instap App
 
 [![DeepScan grade](https://deepscan.io/api/teams/4787/projects/6535/branches/55183/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=4787&pid=6535&bid=55183)
-![](https://github.com/dariodomide/instaq-app/workflows/TSLint/badge.svg)
-![](https://github.com/dariodomide/instaq-app/workflows/NativeScript%20Build%20Android/badge.svg)
-![](https://github.com/dariodomide/instaq-app/workflows/NativeScript%20Build%20Android%20w%2F%20Latest/badge.svg)
+[![](https://github.com/dariodomide/instaq-app/workflows/TSLint/badge.svg)](https://github.com/DarioDomiDE/instaq-app/actions?query=workflow%3ATSLint)
+[![](https://github.com/dariodomide/instaq-app/workflows/NativeScript%20Build%20Android/badge.svg)](https://github.com/DarioDomiDE/instaq-app/actions?query=workflow%3A%22NativeScript+Build+Android%22)
+[![](https://github.com/dariodomide/instaq-app/workflows/NativeScript%20Build%20Android%20w%2F%20Latest/badge.svg)](https://github.com/DarioDomiDE/instaq-app/actions?query=workflow%3A%22NativeScript+Build+Android+w%2F+Latest%22)
 
 Welcome to the repository of the Instaq App for **Android** & **iOS**. This app is my side-project about helping people to find the most relevant hashtags for **Instagram**.
 
@@ -55,7 +55,9 @@ tns build Android --copy-to instaq.apk
 tns run Android
 ```
 
-## Install dependencies
+## Dependencies
+
+### Install
 
 ```
 npm i -g nativescript@latest
@@ -63,7 +65,7 @@ npm i tns-core-modules@latest
 tns platform add android/ios
 ```
 
-Update Instruction
+### Update Instruction
 
 ```
 tns info
@@ -80,7 +82,7 @@ npm i
 ```
 More detailed infos on [NativeScript Upgrade Instructions](https://docs.nativescript.org/releases/upgrade-instructions) page.
 
-## iOS Troubleshooting
+### Troubleshooting
 
 ```
 npm rebuild node-sass
