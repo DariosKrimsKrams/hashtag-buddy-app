@@ -20,11 +20,7 @@ jobs:
         .\tns update
         .\tns plugin update
         .\tns platform add android
-        npm i nativescript-dev-webpack@latest --save-dev
         ./node_modules/.bin/update-ns-webpack --deps --configs
-        npm i nativescript-angular@latest --save
-        ./node_modules/.bin/update-app-ng-deps
-        npm i
         npm rebuild node-sass
     - name: TNS Infos
       run: .\tns info
