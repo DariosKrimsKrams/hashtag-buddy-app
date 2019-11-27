@@ -7,11 +7,11 @@
 
                 <StackLayout class="p-l-30 p-r-30 p-b-30">
                     <Label textWrap="true" [text]="'store_intro' | L" class="p-b-10"></Label>
-
+                    
                     <Label [text]="'store_headline_once' | L" class="headline p-t-10 p-b-10"></Label>
 
                     <StackLayout *ngFor="let plan of plans; let i = index;">
-                        <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plan}" *ngIf="plan.type == 'inapp'"></ng-container>
+                        <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plan}"></ng-container>
                     </StackLayout>
 
                     <StackLayout class="hr-light m-10"></StackLayout>
@@ -31,12 +31,13 @@
             <Image [src]="plan.image" col="0" class="m-r-10" stretch="aspectFill"></Image>
             <GridLayout col="1" rows="auto,auto">
                 <Label row="0" [text]="plan.title" class="plan-title font-demi-bold"></Label>
-                <Label row="1" [text]="plan.desc" class="m-t-5 plan-content font-reg-s"></Label>
-                <Label row="1" [text]="plan.desc2" class="m-t-25 plan-content font-reg-s" *ngIf="plan.desc2 !== undefined"></Label>
+                <Label row="1" [text]="plan.desc" class="plan-content font-reg-s"></Label>
+                <Label row="1" [text]="plan.desc2" class="m-t-20 plan-content font-reg-s" *ngIf="plan.desc2 !== undefined"></Label>
             </GridLayout>
         </GridLayout>
         <GridLayout row="1" columns="*,150" verticalAlignment="middle" class="plan-footer">
-            <Label col="0" text="{{'store_save' | L}} {{plan.discount}} %" *ngIf="plan.discount != undefined" class="font-demi-bold m-l-10" verticalAlignment="middle"></Label>
+            <Label col="0" text="{{'store_save' | L}} {{plan.discount}} %" *ngIf="plan.discount != undefined && plan.id != 'large'" class="font-demi-bold m-l-10" verticalAlignment="middle"></Label>
+            <Label col="0" text="+ unlock Tips & Tricks" class="font-demi-bold m-l-10 m-t-10 m-b-10" *ngIf="plan.id == 'large'" verticalAlignment="middle"></Label>
             <Button col="1" [text]="plan.product.priceFormatted" (tap)="buyProduct(plan)" class="btn btn-rounded-lg btn-normal font-demi-bold" verticalAlignment="middle" *ngIf="plan.product !== undefined"></Button>
         </GridLayout>
     </GridLayout>

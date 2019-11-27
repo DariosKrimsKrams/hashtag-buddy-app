@@ -189,7 +189,7 @@ export class StoreComponent implements OnInit {
   private onProductBought(transaction: Transaction): void {
     if (isAndroid) {
       const plan = this.getPlanById(transaction.productIdentifier);
-      if (plan.type === 'inapp') {
+      // if (plan.type === 'inapp') {
         purchase
           .consumePurchase(transaction.transactionReceipt)
           .then(responseCode => {
@@ -205,9 +205,9 @@ export class StoreComponent implements OnInit {
             console.log(err);
             alert(`Failed to consume: ${err}`);
           });
-      } else {
-        this.buyingProductSuccessful(transaction);
-      }
+      // } else {
+      //   this.buyingProductSuccessful(transaction);
+      // }
     } else {
       this.buyingProductSuccessful(transaction);
     }

@@ -10,18 +10,17 @@
 	background-color: rgb(237, 240, 242);
 	border-radius: 5pt 5pt 0 0;
 	padding: 5pt;
-}
 
-.plan-header Image {
-	border-radius: 5pt;
-}
-
-.plan-title {
-	font-weight: bold;
-  color: $color_pink;
-}
-.plan-content {
-	font-size: 15pt;
+	Image {
+		border-radius: 5pt;
+	}
+	.plan-title {
+		font-weight: bold;
+		color: $color_pink;
+	}
+	.plan-content {
+		font-size: 15pt;
+	}
 }
 
 .plan-footer {
