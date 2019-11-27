@@ -18,7 +18,10 @@ jobs:
         npm i nativescript@latest
         npm i tns-core-modules@latest
         .\tns update
-        .\tns platform clean android
+        .\tns plugin update
+        .\tns platform add android
+        ./node_modules/.bin/update-ns-webpack --deps --configs
+        npm rebuild node-sass
     - name: TNS Infos
       run: .\tns info
     - name: Build Android
