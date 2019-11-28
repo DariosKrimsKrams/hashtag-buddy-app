@@ -42,6 +42,10 @@
   <string name="settings_terms">"Geschäftsbedingungen"</string>
   <string name="settings_legal">"Datenschutzerklärung"</string>
   <string name="settings_about">"Über mich"</string>
+  <string name="faq_buy_cancel">"Cancel"</string>
+  <string name="faq_buy_cta">"Buy now for 1 €"</string>
+  <string name="faq_buy_desc">"You\'re just one click away from unlocking \"%1$s\" and all other Tips &amp; Tricks sections :)"</string>
+  <string name="faq_buy_headline">"Freischalten von Tips &amp; Tricks"</string>
   <string name="faq_outro">"Verbessere diese Seite: Ideen? Gib mir Feedback und Vorschläge per Feedback Formular."</string>
   <string name="faq_headline_stats4">"Inhalte"</string>
   <string name="faq_headline_stats3">"Zielgruppe"</string>
@@ -62,7 +66,7 @@
   <string name="store_outro_google">"Google"</string>
   <string name="store_outro">"Bitte bedenke, dass %1$s bei jeder Transaktion 30 %% einbehält. Vielen Dank für die Unterstützung :)"</string>
   <string name="store_headline_abo">"Abonnements"</string>
-  <string name="store_headline_once">"Einmalige Pakete"</string>
+  <string name="store_headline_once">"Einmal-Käufe"</string>
   <string name="store_intro">"Erwerbe Fotos Uploads, um noch mehr und unzensierte Hashtags zu erhalten. Diese Umsätze bringen mir keinen Gewinn, aber unterstützen mich der Kostendeckung dieser App."</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"Mehr"</string>

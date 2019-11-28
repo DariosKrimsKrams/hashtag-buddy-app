@@ -42,6 +42,10 @@
   <string name="settings_terms">"Terms and Conditions"</string>
   <string name="settings_legal">"Privacy Policy"</string>
   <string name="settings_about">"About me"</string>
+  <string name="faq_buy_cancel">"Cancel"</string>
+  <string name="faq_buy_cta">"Buy now"</string>
+  <string name="faq_buy_desc">"You\'re just one click away from unlocking \"%1$s\" and all other Tips &amp; Tricks sections for %2$s. :)"</string>
+  <string name="faq_buy_headline">"Unlock all Tips &amp; Tricks"</string>
   <string name="faq_outro">"Improve this page: Any ideas? Want to give us your feedback or recommendations? Let us know via the feedback formula."</string>
   <string name="faq_headline_stats4">"Content"</string>
   <string name="faq_headline_stats3">"Target Audience"</string>
@@ -62,7 +66,7 @@
   <string name="store_outro_google">"Google"</string>
   <string name="store_outro">"Keep in mind that %1$s takes 30 %% off for every transaction you make. Thank you for your support :)"</string>
   <string name="store_headline_abo">"Subscriptions"</string>
-  <string name="store_headline_once">"One-time packages"</string>
+  <string name="store_headline_once">"One-time payments"</string>
   <string name="store_intro">"Buy photo uploads for more and uncensored hashtag results. These sales won\'t bring me any profit. It will however support me cover costs for this app."</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"More"</string>

@@ -56,7 +56,7 @@ export class FeedbackComponent implements OnInit {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
       context: {
-        showIcon: true,
+        icon: 'copied',
         headline: 'feedback_successful_headline',
         desc: 'feedback_successful_desc',
         buttonOk: 'feedback_modal_button'

@@ -1,4 +1,13 @@
+@import '../../../app-variables';
+
 .is-expanded .headline-text {
 	font-weight: bold;
 	color: rgba(0,0,0,0.5);
+}
+.locked {
+	background-color: #EFEFEF;
+	color: $color_pink;
+	border-radius: 3pt;
+	padding: 2pt 7pt;
+	margin-left: 10pt;
 }

@@ -1,5 +1,5 @@
 <StackLayout class="dialog" horizontalAlignment="center">            
-    <Image src="~/app/assets/images/copied.png" width="61" height="50" *ngIf="showIcon"></Image>
+    <Image [src]="iconPath" height="50" class="m-t-10" *ngIf="!!icon"></Image>
     <Label [text]="headline | L" class="m-t-10 text-center font-demi-bold" *ngIf="headline != ''"></Label>
     <Label [text]="desc | L" class="m-t-20 m-b-10 text-center font-medium-small" textWrap="true" *ngIf="desc != ''"></Label>
 
@@ -7,7 +7,7 @@
 
     <GridLayout columns="1*,2*" *ngIf="buttonOk != '' && buttonCancel != ''" class="buttons">
       <Button col="0" class="btn btn-outline btn-rounded-lg border-color-normal color-normal buttonCancel" [text]="buttonCancel | L" (tap)="cancel()"></Button>
-      <Button col="1" class="btn btn-outline btn-rounded-lg border-color-normal color-normal buttonOk" [text]="buttonOk | L" (tap)="ok()"></Button>
+      <Button col="1" class="btn gradient color-white btn-rounded-lg border-color-normal color-normal buttonOk" [text]="buttonOk | L" (tap)="ok()"></Button>
     </GridLayout>
 
 </StackLayout>

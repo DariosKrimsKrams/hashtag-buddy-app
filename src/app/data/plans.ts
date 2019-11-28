@@ -26,7 +26,7 @@ export const PLAN: Plan[] = [
         desc: 'Unlock 15 photo uploads',
         type: 'inapp',
         priceFallback: '2.50',
-        amount: 10,
+        amount: 15,
     },
     {
         id: 'large',
@@ -35,6 +35,6 @@ export const PLAN: Plan[] = [
         desc: 'Unlock 30 photo uploads',
         type: 'inapp',
         priceFallback: '4.50',
-        amount: 20,
+        amount: 30,
     }
 ];

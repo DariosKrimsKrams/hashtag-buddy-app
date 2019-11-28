@@ -1,17 +1,20 @@
 .dialog {
-    border-radius: 10;
-    width: 80%;
-    background-color: #fafafa;
-    padding: 20pt 20pt 10pt 20pt;
+  border-radius: 10pt;
+  width: 80%;
+  background-color: #fafafa;
+  padding: 20pt 20pt 10pt 20pt;
 
-    .buttons {
-      height: 50pt;
+  .buttons {
+    height: 50pt;
 
-      .buttonCancel {
-        width: 100%;
-      }
-      .buttonOk {
-        width: 140pt;
-      }
+    .buttonCancel {
+      width: 100%;
     }
+    .buttonOk {
+      width: 140pt;
+    }
+  }
+}
+.color-white {
+  color: #fff;
 }

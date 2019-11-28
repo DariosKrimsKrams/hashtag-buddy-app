@@ -193,7 +193,7 @@ export class ResultsComponent implements OnInit {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
       context: {
-        showIcon: true,
+        icon: 'copied',
         buttonOk: 'results_ok_to_leave_feedback',
         headline: 'copy_successful',
         desc: 'copy_please_give_feedback',

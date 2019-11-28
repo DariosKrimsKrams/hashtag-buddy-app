@@ -123,7 +123,7 @@ export class LeaveFeedbackComponent implements OnInit {
       fullscreen: false,
       context: {
         autoCloseTime: 3000,
-        showIcon: true,
+        icon: 'copied',
         headline: 'feedback_successful_headline',
         desc: 'feedback_successful_desc'
       }

@@ -9,7 +9,7 @@ import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
 })
 export class ModalComponent implements OnInit {
 
-  public showIcon: boolean;
+  public icon: string;
   public headline: string;
   public desc: string;
   public buttonOk: string;
@@ -24,7 +24,7 @@ export class ModalComponent implements OnInit {
 
   public ngOnInit(): void {
     const autoCloseTime = this.params.context.autoCloseTime || undefined;
-    this.showIcon = this.params.context.showIcon === true || false;
+    this.icon = this.params.context.icon || undefined;
     this.headline = this.params.context.headline || '';
     this.desc = this.params.context.desc || '';
     this.buttonOk = this.params.context.buttonOk || '';
@@ -67,6 +67,10 @@ export class ModalComponent implements OnInit {
 
   public cancel(): void {
     this.close('cancel');
+  }
+
+  public get iconPath(): string {
+    return '~/app/assets/images/' + this.icon + '.png';
   }
 
 }

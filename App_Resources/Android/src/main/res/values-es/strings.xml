@@ -42,6 +42,10 @@
   <string name="settings_terms">"Términos y Condiciones"</string>
   <string name="settings_legal">"Privacidad y Términos Legales"</string>
   <string name="settings_about">"Acerca de mí"</string>
+  <string name="faq_buy_cancel">"Cancel"</string>
+  <string name="faq_buy_cta">"Buy now for 1 €"</string>
+  <string name="faq_buy_desc">"You\'re just one click away from unlocking \"%1$s\" and all other Tips &amp; Tricks sections :)"</string>
+  <string name="faq_buy_headline">"Unlock all Tips &amp; Tricks"</string>
   <string name="faq_outro">"Mejorar esta página: ¿Alguna idea? ¿Quiere darnos su opinión o consejo? Háganoslo saber a través del formulario de comentarios"</string>
   <string name="faq_headline_stats4">"Contenido"</string>
   <string name="faq_headline_stats3">"Público Objetivo"</string>
