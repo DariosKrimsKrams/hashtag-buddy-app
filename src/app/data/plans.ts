@@ -8,7 +8,8 @@ export const PLAN: Plan[] = [
         desc: 'Unlock all Tips & Tricks',
         type: 'inapp',
         priceFallback: '1.00',
-        amount: 20,
+        amount: 0,
+        tipstrick: true,
     },
     {
         id: 'small',
@@ -18,6 +19,7 @@ export const PLAN: Plan[] = [
         type: 'inapp',
         priceFallback: '1.50',
         amount: 5,
+        tipstrick: false,
     },
     {
         id: 'medium',
@@ -27,6 +29,7 @@ export const PLAN: Plan[] = [
         type: 'inapp',
         priceFallback: '2.50',
         amount: 15,
+        tipstrick: false,
     },
     {
         id: 'large',
@@ -36,5 +39,6 @@ export const PLAN: Plan[] = [
         type: 'inapp',
         priceFallback: '4.50',
         amount: 30,
+        tipstrick: true,
     }
 ];

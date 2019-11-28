@@ -38,17 +38,12 @@ export class StoreComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-
-
-    console.log('ngOnInit');
     const products = [
+      'tipstricks',
       'small',
       'medium',
       'large',
-      'unlimited1month',
-      'unlimited3months'
     ];
-
     (global as any).purchaseInitPromise = purchase.init(products);
 
     (global as any).purchaseInitPromise
@@ -110,7 +105,7 @@ export class StoreComponent implements OnInit {
 
   private calcDiscount(): void {
     let cheapestInApp: Plan;
-    let cheapestSubs: Plan;
+    // let cheapestSubs: Plan;
     this.plans.map(x => {
       if (x.product === undefined) {
         return;
@@ -118,22 +113,24 @@ export class StoreComponent implements OnInit {
       x.desc = x.product.localizedDescription;
       if (
         x.product.productType === 'inapp' &&
+        x.product.productIdentifier !== 'tipstricks' &&
         (cheapestInApp === undefined ||
           x.product.priceAmount < cheapestInApp.product.priceAmount)
       ) {
         cheapestInApp = x;
-      } else if (
-        x.product.productType === 'subs' &&
-        (cheapestSubs === undefined ||
-          x.product.priceAmount * x.amount < cheapestSubs.product.priceAmount)
-      ) {
-        cheapestSubs = x;
       }
+      // else if (
+      //   x.product.productType === 'subs' &&
+      //   (cheapestSubs === undefined ||
+      //     x.product.priceAmount * x.amount < cheapestSubs.product.priceAmount)
+      // ) {
+      //   cheapestSubs = x;
+      // }
     });
     cheapestInApp.pricePerPhoto =
       cheapestInApp.product.priceAmount / cheapestInApp.amount;
-    cheapestSubs.pricePerPhoto =
-      cheapestSubs.product.priceAmount / cheapestSubs.amount;
+    // cheapestSubs.pricePerPhoto =
+    //   cheapestSubs.product.priceAmount / cheapestSubs.amount;
     this.plans.forEach(plan => {
       if (plan.product === undefined) {
         return;
@@ -143,19 +140,22 @@ export class StoreComponent implements OnInit {
         const discount =
           (1 - plan.pricePerPhoto / cheapestInApp.pricePerPhoto) * 100;
         plan.discount = Math.round(discount);
-      } else if (plan.product.productType === 'subs' && plan.id !== cheapestSubs.id) {
-        plan.pricePerPhoto = plan.product.priceAmount;
-        const discount = (1 - plan.pricePerPhoto / cheapestSubs.pricePerPhoto) * 100;
-        plan.discount = Math.round(discount);
       }
+      // else if (plan.product.productType === 'subs' && plan.id !== cheapestSubs.id) {
+      //   plan.pricePerPhoto = plan.product.priceAmount;
+      //   const discount = (1 - plan.pricePerPhoto / cheapestSubs.pricePerPhoto) * 100;
+      //   plan.discount = Math.round(discount);
+      // }
     });
   }
 
   private calcLocas(): void {
     this.plans.forEach(plan => {
-      const formattedPrice = this.currencyPipe.transform(plan.pricePerPhoto, plan.product.priceCurrencyCode);
-      const text = '(' + localize('store_price_per_photo', formattedPrice) + ')';
-      plan.desc2 = text;
+      if (plan.amount !== 0) {
+        const formattedPrice = this.currencyPipe.transform(plan.pricePerPhoto, plan.product.priceCurrencyCode);
+        const text = '(' + localize('store_price_per_photo', formattedPrice) + ')';
+        plan.desc2 = text;
+      }
     });
   }
 
@@ -188,26 +188,19 @@ export class StoreComponent implements OnInit {
 
   private onProductBought(transaction: Transaction): void {
     if (isAndroid) {
-      const plan = this.getPlanById(transaction.productIdentifier);
-      // if (plan.type === 'inapp') {
-        purchase
-          .consumePurchase(transaction.transactionReceipt)
-          .then(responseCode => {
-            console.log('responseCode: ' + responseCode); // If responseCode === 0 the purchase has been successfully consumed
-            if (responseCode === 0) {
-              this.buyingProductSuccessful(transaction);
-            } else {
-              console.log(`Failed to consume with code: ${responseCode}`);
-              // alert(`Failed to consume with code: ${responseCode}! :'(`);
-            }
-          })
-          .catch(err => {
-            console.log(err);
-            alert(`Failed to consume: ${err}`);
-          });
-      // } else {
-      //   this.buyingProductSuccessful(transaction);
-      // }
+      purchase.consumePurchase(transaction.transactionReceipt)
+        .then(responseCode => {
+          console.log('responseCode: ' + responseCode);
+          if (responseCode === 0) {
+            this.buyingProductSuccessful(transaction);
+          } else {
+            console.log(`Failed to consume with code: ${responseCode}`);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          alert(`Failed to consume: ${err}`);
+        });
     } else {
       this.buyingProductSuccessful(transaction);
     }
@@ -258,15 +251,13 @@ export class StoreComponent implements OnInit {
   }
 
   private savePurchase(transaction: Transaction): void {
-    console.log('addPurchase');
     this.userService.addPurchase(transaction);
-
     const plan = this.getPlanById(transaction.productIdentifier);
-    if (plan.type === 'inapp') {
-      const amount = plan.amount;
-      this.photosCountService.addPayedPhotos(amount);
-    } else {
-      // is ABO
+    if (plan.amount !== 0) {
+      this.photosCountService.addPayedPhotos(plan.amount);
+    }
+    if (plan.tipstrick) {
+     // ToDo
     }
   }
 }

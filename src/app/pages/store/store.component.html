@@ -7,12 +7,14 @@
 
                 <StackLayout class="p-l-30 p-r-30 p-b-30">
                     <Label textWrap="true" [text]="'store_intro' | L" class="p-b-10"></Label>
-                    
-                    <Label [text]="'store_headline_once' | L" class="headline p-t-10 p-b-10"></Label>
 
+                    <Label [text]="'store_buy_photo' | L" class="headline p-t-10 p-b-10"></Label>
                     <StackLayout *ngFor="let plan of plans; let i = index;">
-                        <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plan}"></ng-container>
+                        <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plan}" *ngIf="i != 0"></ng-container>
                     </StackLayout>
+                    
+                    <Label [text]="'store_buy_tips_tricks' | L" class="headline p-t-10 p-b-10"></Label>
+                    <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plans[0]}"></ng-container>
 
                     <StackLayout class="hr-light m-10"></StackLayout>
                     <Label textWrap="true" [text]="getOutroText()" class="p-b-10"></Label>
@@ -31,14 +33,14 @@
             <Image [src]="plan.image" col="0" class="m-r-10" stretch="aspectFill"></Image>
             <GridLayout col="1" rows="auto,auto">
                 <Label row="0" [text]="plan.title" class="plan-title font-demi-bold"></Label>
-                <Label row="1" [text]="plan.desc" class="plan-content font-reg-s"></Label>
+                <Label row="1" [text]="plan.desc" class="plan-content font-reg-s" textWrap="true"></Label>
                 <Label row="1" [text]="plan.desc2" class="m-t-20 plan-content font-reg-s" *ngIf="plan.desc2 !== undefined"></Label>
             </GridLayout>
         </GridLayout>
-        <GridLayout row="1" columns="*,150" verticalAlignment="middle" class="plan-footer">
-            <Label col="0" text="{{'store_save' | L}} {{plan.discount}} %" *ngIf="plan.discount != undefined && plan.id != 'large'" class="font-demi-bold m-l-10" verticalAlignment="middle"></Label>
-            <Label col="0" text="+ unlock Tips & Tricks" class="font-demi-bold m-l-10 m-t-10 m-b-10" *ngIf="plan.id == 'large'" verticalAlignment="middle"></Label>
-            <Button col="1" [text]="plan.product.priceFormatted" (tap)="buyProduct(plan)" class="btn btn-rounded-lg btn-normal font-demi-bold" verticalAlignment="middle" *ngIf="plan.product !== undefined"></Button>
+        <GridLayout row="1" columns="*,150" class="plan-footer">
+            <Label col="0" text="{{'store_save' | L}} {{plan.discount}} %" *ngIf="plan.discount != undefined && plan.id != 'large' && plan.id != 'tipstricks'" class="font-demi-bold m-l-10 m-b-10" verticalAlignment="middle"></Label>
+            <Label col="0" text="+ {{'menu_faq' | L}}" class="font-demi-bold m-l-10 m-b-10" *ngIf="plan.id == 'large'" verticalAlignment="middle"></Label>
+            <Button col="1" [text]="plan.product.priceFormatted" (tap)="buyProduct(plan)" class="btn btn-rounded-lg btn-normal font-demi-bold" verticalAlignment="bottom" *ngIf="plan.product !== undefined"></Button>
         </GridLayout>
     </GridLayout>
 </ng-template>

@@ -1,13 +1,18 @@
 @import '../../../app-variables';
 
-.is-expanded .headline-text {
+.headline-text {
 	font-weight: bold;
 	color: rgba(0,0,0,0.5);
 }
 .locked {
-	background-color: #EFEFEF;
+	border-color: $color_pink;
+  border-width: 1pt;
+	border-radius: 5pt;
 	color: $color_pink;
-	border-radius: 3pt;
 	padding: 2pt 7pt;
-	margin-left: 10pt;
+	margin-left: 15pt;
+	// font-weight: bold;
+}
+.content {
+	line-height: 5;
 }

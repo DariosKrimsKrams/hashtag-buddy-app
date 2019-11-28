@@ -8,8 +8,9 @@ export class Plan {
   public desc: string;
   public desc2?: string;
   public type: string;
-
   public amount: number;
+  public tipstrick: boolean;
+
   public product?: Product;
   public discount?: number;
   public pricePerPhoto?: number;
