@@ -174,9 +174,14 @@ export class FaqComponent implements OnInit {
                 this.plans.push(plan);
               }
               plan.title = product.localizedTitle.split(' (')[0];
+              if (plan.id === 'tipstricks') {
+                let price = this.currencyPipe.transform(plan.product.priceAmount, plan.product.priceCurrencyCode);
+                if (price.substr(-3) === '.00' || price.substr(-3) === ',00') {
+                  price = price.substr(0, price.length - 3);
+                }
+                this.price = price;
+              }
             });
-            // this.calcDiscount();
-            // this.calcLocas();
           })
           .catch(err => {
             console.log(err);

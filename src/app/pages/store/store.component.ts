@@ -105,7 +105,6 @@ export class StoreComponent implements OnInit {
 
   private calcDiscount(): void {
     let cheapestInApp: Plan;
-    // let cheapestSubs: Plan;
     this.plans.map(x => {
       if (x.product === undefined) {
         return;
@@ -119,18 +118,9 @@ export class StoreComponent implements OnInit {
       ) {
         cheapestInApp = x;
       }
-      // else if (
-      //   x.product.productType === 'subs' &&
-      //   (cheapestSubs === undefined ||
-      //     x.product.priceAmount * x.amount < cheapestSubs.product.priceAmount)
-      // ) {
-      //   cheapestSubs = x;
-      // }
     });
     cheapestInApp.pricePerPhoto =
       cheapestInApp.product.priceAmount / cheapestInApp.amount;
-    // cheapestSubs.pricePerPhoto =
-    //   cheapestSubs.product.priceAmount / cheapestSubs.amount;
     this.plans.forEach(plan => {
       if (plan.product === undefined) {
         return;
@@ -141,11 +131,6 @@ export class StoreComponent implements OnInit {
           (1 - plan.pricePerPhoto / cheapestInApp.pricePerPhoto) * 100;
         plan.discount = Math.round(discount);
       }
-      // else if (plan.product.productType === 'subs' && plan.id !== cheapestSubs.id) {
-      //   plan.pricePerPhoto = plan.product.priceAmount;
-      //   const discount = (1 - plan.pricePerPhoto / cheapestSubs.pricePerPhoto) * 100;
-      //   plan.discount = Math.round(discount);
-      // }
     });
   }
 
