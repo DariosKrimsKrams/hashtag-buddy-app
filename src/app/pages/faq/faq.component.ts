@@ -4,7 +4,7 @@ import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { TipsAndTricks } from '~/app/models/tips-and-tricks';
 import { localize } from 'nativescript-localize/angular';
-import * as frameModule from 'tns-core-modules/ui/frame';
+import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
@@ -44,7 +44,7 @@ export class FaqComponent implements OnInit {
     private readonly currencyPipe: CurrencyPipe
   ) {
     this.page.actionBarHidden = true;
-    disableIosSwipe(this.page, frameModule);
+    disableIosSwipe(this.page, frame);
   }
 
   public ngOnInit(): void {

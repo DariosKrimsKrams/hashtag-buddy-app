@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 import { exit } from 'nativescript-exit';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
-import * as frameModule from 'tns-core-modules/ui/frame';
+import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { RouterExtensions } from 'nativescript-angular/router';
 
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.page.actionBarHidden = true;
 
     // leads to Crash in latest NativeScript 6.2 etc.
-    // disableIosSwipe(this.page, frameModule);
+    // disableIosSwipe(this.page, frame);
   }
 
   public ngOnInit(): void {

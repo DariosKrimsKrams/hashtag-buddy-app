@@ -14,7 +14,7 @@ import { isAndroid } from 'tns-core-modules/platform';
 import { UserService } from '~/app/storages/user.service';
 import { PhotosCountService } from '~/app/storages/photos-count.service';
 import { CurrencyPipe } from '@angular/common';
-import * as frameModule from 'tns-core-modules/ui/frame';
+import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 
 @Component({
@@ -34,7 +34,7 @@ export class StoreComponent implements OnInit {
     private readonly currencyPipe: CurrencyPipe
   ) {
     this.page.actionBarHidden = true;
-    disableIosSwipe(this.page, frameModule);
+    disableIosSwipe(this.page, frame);
   }
 
   public ngOnInit(): void {

@@ -12,7 +12,7 @@ import { ModalComponent } from '../shared/modal/modal.component';
 import { openUrl } from 'tns-core-modules/utils/utils';
 import { Subscription } from 'rxjs';
 import { Page } from 'tns-core-modules/ui/page';
-import * as frameModule from 'tns-core-modules/ui/frame';
+import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
 
@@ -95,7 +95,7 @@ export class AppComponent implements OnInit, OnDestroy {
       // this.userService.onAndroidBackTriggered(path);
     });
 
-    disableIosSwipe(this.page, frameModule);
+    disableIosSwipe(this.page, frame);
 
   }
 

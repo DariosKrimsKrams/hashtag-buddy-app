@@ -7,7 +7,8 @@ import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
 import { SelectPhotoService } from '~/app/services/business-logic/select-photo.service';
 import { UserService } from '~/app/storages/user.service';
-
+import { disableIosSwipe } from '~/app/shared/status-bar-util';
+import * as frame from 'tns-core-modules/ui/frame';
 
 @Component({
   selector: 'ns-confirm-image',
@@ -32,6 +33,7 @@ export class ConfirmImageComponent implements OnInit {
   ) {
     this.cd.detach();
     this.page.actionBarHidden = true;
+    disableIosSwipe(this.page, frame);
   }
 
   public ngOnInit(): void {
