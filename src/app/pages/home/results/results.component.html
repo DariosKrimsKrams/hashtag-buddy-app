@@ -1,18 +1,9 @@
 <StackLayout tkMainContent>
     <GridLayout rows="70,*" class="page">
         <GridLayout id="header" [class.gradient]="currentScrollingY >= parallaxHeight" row="0" columns="60,*,60">
-            <Image
-                col="0"
-                (tap)="redirectToHome()"
-                verticalAlignment="middle"
-                [src]="parallaxHeight > currentScrollingY ? '~/app/assets/images/icons/arrowLeft.png' : '~/app/assets/images/icons/arrowLeft_white.png'"
-                style="background-color: transparent;"
-                horizontalAlignment="left"
-                verticalAlignment="top"
-                width="70"
-                height="60"
-                class="p-l-20 p-r-20"
-                ></Image>
+            <StackLayout col="0" (tap)="redirectToHome()" horizontalAlignment="left" verticalAlignment="top" height="60" width="70">
+                <Image [src]="parallaxHeight > currentScrollingY ? '~/app/assets/images/icons/arrowLeft.png' : '~/app/assets/images/icons/arrowLeft_white.png'" height="20" width="20" class="m-t-20 p-l-25 p-r-25 p-b-20 p-t-10"></Image>
+            </StackLayout>
             <GridLayout col="1" horizontalAlignment="center" verticalAlignment="middle">
                 <Label [text]="'results_headline' | L"  class="text-center font-medium-l" class="title" [class.isBlack]="parallaxHeight > currentScrollingY"></Label>
             </GridLayout>
