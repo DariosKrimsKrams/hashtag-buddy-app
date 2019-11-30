@@ -40,6 +40,7 @@ export class ResultsComponent implements OnInit {
     private readonly route: ActivatedRoute
   ) {
     this.page.actionBarHidden = true;
+    this.page.enableSwipeBackNavigation = false;
   }
 
   public ngOnInit(): void {

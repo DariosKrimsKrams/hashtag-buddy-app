@@ -3,6 +3,8 @@ import { Page } from 'tns-core-modules/ui/page';
 import { UserService } from '~/app/storages/user.service';
 import { Subscription } from 'rxjs';
 import { RouterExtensions } from 'nativescript-angular/router';
+import { disableIosSwipe } from '~/app/shared/status-bar-util';
+import * as frame from 'tns-core-modules/ui/frame';
 
 @Component({
   selector: 'ns-loading-hashtags',
@@ -38,6 +40,7 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
 
     this.animateDots();
     this.animateTips();
+    disableIosSwipe(this.page, frame);
   }
 
   public ngOnDestroy(): void {
