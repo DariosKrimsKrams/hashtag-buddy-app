@@ -104,7 +104,8 @@ export class SelectPhotoService {
     this.evaluationRepository.UploadPhoto(photo.image, customerId)
     .subscribe((httpResponse: IHttpResponse) => {
       console.info(httpResponse);
-      if (httpResponse.code === 200) {
+      // iOS uses -1 at successful requests
+      if ((httpResponse.code === 200 || httpResponse.code === -1) || httpResponse.message === 'successful') {
         const httpResult = this.parseSuccessfulResponse(httpResponse);
         this.storeHttpResultIntoPhoto(photoId, httpResult);
         this.photosCountService.decrease();
