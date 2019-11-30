@@ -95,7 +95,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
     } else {
       toastText = 'toast_delete_failed';
     }
-    new Toasty({ text: toastText })
+    new Toasty({ text: localize(toastText) })
       .setToastDuration(ToastDuration.LONG)
       .show();
   }

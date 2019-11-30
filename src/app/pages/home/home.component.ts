@@ -10,8 +10,8 @@ import { Subscription } from 'rxjs';
 import { exit } from 'nativescript-exit';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
-import * as frame from 'tns-core-modules/ui/frame';
-import { disableIosSwipe } from '~/app/shared/status-bar-util';
+// import * as frame from 'tns-core-modules/ui/frame';
+// import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
