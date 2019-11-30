@@ -6,12 +6,16 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
 <RadSideDrawer toggleNavButton [drawerTransition]="sideDrawerTransition">
     <StackLayout tkDrawerContent>
         <StackLayout rows="auto, *" class="menu">
-            <GridLayout rows="30" columns="20" horizontalAlignment="left" class="hideMenuBtn">
+            <GridLayout rows="30" columns="20" horizontalAlignment="left" class="close-menu">
                 <Image col="0" src="~/app/assets/images/icons/arrowLeft.png" (tap)="closeMenu()" width="16pt" height="12pt"></Image>
             </GridLayout> 
             <GridLayout rows="30" columns="20,auto" (tap)="openPage(i)" class="item" *ngFor="let menu of menus; let i = index;">
                 <Image col="0" [src]="'~/app/assets/images/icons/' + menu + '.png'"></Image>
-                <Label col="1" text="{{ 'menu_' + menu | L }}" class="" [class.menu-active]="selected[i]"></Label>
+                <Label *ngIf="i != 2" col="1" text="{{ 'menu_' + menu | L }}" [class.menu-active]="selected[i]"></Label>
+                <WrapLayout col="1" *ngIf="i == 2">
+                    <Label text="{{ 'menu_' + menu | L }}" [class.menu-active]="selected[i]"></Label>
+                    <Label [text]="'menu_new' | L" class="new-info" verticalAlignment="middle"></Label>
+                </WrapLayout>
             </GridLayout>
         </StackLayout>
     </StackLayout>

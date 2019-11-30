@@ -51,6 +51,7 @@
   <string name="faq_headline_stats3">"Zielgruppe"</string>
   <string name="faq_headline_stats2">"Hashtags"</string>
   <string name="faq_headline_stats1">"Performance"</string>
+  <string name="faq_unlocked">"entsperrt"</string>
   <string name="faq_locked">"gesperrt"</string>
   <string name="iap_restored_successful_btn">"Perfekt"</string>
   <string name="iap_restored_successful_msg">"Produkt \'%1$s\' wurde wiederhergestellt :)"</string>
@@ -73,6 +74,7 @@
   <string name="store_intro">"Erwerbe Fotos Uploads, um noch mehr und unzensierte Hashtags zu erhalten. Diese Umsätze bringen mir keinen Gewinn, aber unterstützen mich der Kostendeckung dieser App."</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"Mehr"</string>
+  <string name="menu_new">"neu"</string>
   <string name="menu_faq">"Tipps &amp; Tricks"</string>
   <string name="menu_store">"Shop"</string>
   <string name="menu_myhashtags">"meine Hashtags"</string>
@@ -107,7 +109,8 @@
   <string name="feedback_send">"Feedback senden"</string>
   <string name="feedback_message">"Nachricht"</string>
   <string name="feedback_email">"E-Mail-Adresse"</string>
-  <string name="feedback_intro">"Ich hoffe, dir gefällt diese App. Um sie weiter zu verbessern, teile mir hier dein Feedback, und Verbesserungsvorschläge mit."</string>
+  <string name="feedback_via_email">"Or send me an e-mail to:"</string>
+  <string name="feedback_intro">"Ich hoffe, dir gefällt diese App. Um sie weiter zu verbessern, teile mir gerne hier dein Feedback oder Verbesserungsvorschläge mit."</string>
   <string name="feedback_title">"Verbessere diese App"</string>
   <string name="diduknow_fact22">"30 %% der Nutzer haben schon einmal ein Produkt gekauft, welches sie bei Instagram entdeckt haben"</string>
   <string name="diduknow_fact21">"400 Millionen Nutzer schauen Instagram Stories auf einer täglichen Basis an"</string>

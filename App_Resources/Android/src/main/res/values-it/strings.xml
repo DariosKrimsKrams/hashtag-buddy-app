@@ -70,6 +70,7 @@
   <string name="store_intro">"Acquista i caricamenti di foto per ottenere più risultati e hashtag non nascosti. Queste vendite non mi porteranno alcun profitto, ma mi aiuteranno a coprire i costi relativi al mantenimento dell’applicazione"</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"Scopri di più"</string>
+  <string name="menu_new">"new"</string>
   <string name="menu_faq">"Tips &amp; Tricks"</string>
   <string name="menu_store">"Store"</string>
   <string name="menu_myhashtags">"I miei hashtag"</string>
@@ -206,8 +207,10 @@
   <string name="faq_2_headline">"Kenne Dein Warum"</string>
   <string name="faq_1_desc">"Du möchtest, dass Dir viele Menschen auf Instagram folgen? Dann gib ihnen einen Grund Dir zu folgen? Was für einen Nutzen bietest Du? Es gibt so viele Profile auf Instagram, überlege Dir was genau dein Profil einzigartig macht was Dich von anderen abhebt. Was kannst du neben schönen Bilder vermitteln was anderen hilft ein Problem zu lösen? Kennst Du vielleicht abgefahrene Rezepte, hast Du einen interessanten Humor und kannst andere gut unterhalten, bist ein ein absoluter Trendsetter und inspirierst andere mit Deinen Kreationen. Was auch immer es ist überlege Dir genau welchen Mehrwert du schaffen kannst."</string>
   <string name="faq_1_headline">"Schaffe Mehrwert"</string>
-  <string name="faq_locked">"gesperrt"</string>
+  <string name="faq_unlocked">"unlocked"</string>
+  <string name="faq_locked">"locked"</string>
   <string name="store_buy_tips_tricks">"Acquire tips &amp; tricks"</string>
   <string name="store_buy_photo">"Acquire photo uploads"</string>
+  <string name="feedback_via_email">"Oder sende mir eine E-Mail an:"</string>
   <string name="results_category_upcoming_hashtags">"Trending hashtags"</string>
 </resources>

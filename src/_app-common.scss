@@ -123,7 +123,7 @@ Label, Button, Span {
   background-size: cover;
   padding: 20pt;
   
-  .hideMenuBtn {
+  .close-menu {
     margin: 20pt 0 30pt 0;
   }
   .item {
@@ -137,8 +137,18 @@ Label, Button, Span {
       font-size: 19pt;
       font-family: "AvenirNext-Medium", "Avenir Next Medium";
       vertical-align: middle;
-      margin-left: 15pt;
+      margin-left: 10pt;
       color: #737373;
+
+      &.new-info {
+        font-size: 15pt;
+        border-width: 1pt;
+        border-radius: 5pt;
+        padding: 1pt 6pt 2pt 6pt;
+        margin-left: 10pt;
+        border-color: $color_pink;
+        color: $color_pink;
+      }
     }
     .menu-active {
       font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
