@@ -1,24 +1,29 @@
 @import '../../../app-variables';
 
-.headline-text {
-	font-weight: bold;
-	color: rgba(0,0,0,0.5);
-}
-.iap-info {
-  border-width: 1pt;
-	border-radius: 5pt;
-	padding: 1pt 8pt 4pt 8pt;
-	margin-left: 15pt;
+.item {
+	border-bottom-width: 1pt;
+	border-bottom-color: #ddd;
 
-	&.locked {
-		border-color: $color_pink;
-		color: $color_pink;
+	.headline-text {
+		font-weight: bold;
+		color: rgba(0,0,0,0.5);
 	}
-	&.unlocked {
-		border-color: #67DB67;
-		color: #67DB67;
+	.iap-info {
+		border-width: 1pt;
+		border-radius: 5pt;
+		padding: 1pt 8pt 4pt 8pt;
+		margin-left: 15pt;
+	
+		&.locked {
+			border-color: $color_pink;
+			color: $color_pink;
+		}
+		&.unlocked {
+			border-color: #67DB67;
+			color: #67DB67;
+		}
 	}
-}
-.content {
-	line-height: 3;
+	.content {
+		line-height: 3;
+	}
 }

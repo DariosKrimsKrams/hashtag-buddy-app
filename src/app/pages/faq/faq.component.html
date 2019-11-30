@@ -3,9 +3,9 @@
         <ns-small-header row="0" (OpenMenu)="openMenu()" [image]="'store.jpg'" [title]="'menu_faq' | L"></ns-small-header>
         <GridLayout row="1">
             <ScrollView sdkExampleTitle sdkToggleNavButton>
-                <StackLayout class="p-r-20 p-l-20">
-                    <StackLayout *ngFor="let faq of faqs; let i = index;">
-                        <GridLayout columns="*,20" verticalAlignment="middle" (tap)="expandToggle(i)" class="p-t-20 p-b-10 p-l-20 p-r-20" [class.is-expanded]="faq.expand">
+                <StackLayout class="p-r-20 p-l-20 p-b-50">
+                    <StackLayout *ngFor="let faq of faqs; let i = index;" class="item">
+                        <GridLayout columns="*,20" verticalAlignment="middle" (tap)="expandToggle(i)" class="p-t-20 p-b-15 p-l-20 p-r-20" [class.is-expanded]="faq.expand">
                             <WrapLayout col="0">
                                 <Label [text]="faq.title" class="headline-text h3" verticalAlignment="middle" textWrap="true"></Label>
                                 <Label [text]="'faq_locked' | L" class="locked iap-info" verticalAlignment="middle" textWrap="true" *ngIf="faq.locked && !hasTipsTricksUnlocked"></Label>
@@ -16,7 +16,6 @@
                         <WrapLayout class="p-b-15 p-l-2" *ngIf="faq.expand">
                             <Label [text]="faq.content" textWrap="true" class="content font-reg-s"></Label>
                         </WrapLayout>
-                        <StackLayout class="hr-light m-t-5 m-l-10 m-r-10"></StackLayout>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

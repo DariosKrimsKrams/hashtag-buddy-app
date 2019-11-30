@@ -49,32 +49,19 @@ export class FaqComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.faqs = [
-      new TipsAndTricks({
+
+    this.faqs = [];
+    const maxItem = 11;
+    const lockedNumbers = [4, 6, 8, 9];
+    for (let i = 1; i <= maxItem; i++) {
+      const faq = new TipsAndTricks({
         expand: false,
-        title: localize('faq_1_headline'),
-        content: localize('faq_1_desc'),
-        locked: false,
-      }),
-      new TipsAndTricks({
-        expand: false,
-        title: localize('faq_2_headline'),
-        content: localize('faq_2_desc'),
-        locked: false,
-      }),
-      new TipsAndTricks({
-        expand: false,
-        title: localize('faq_headline_stats3'),
-        content: '',
-        locked: true,
-      }),
-      new TipsAndTricks({
-        expand: false,
-        title: localize('faq_headline_stats4'),
-        content: '',
-        locked: true,
-      })
-    ];
+        title: localize(`faq_${i}_headline`),
+        content: localize(`faq_${i}_desc`),
+        locked: !!lockedNumbers.find(x => x === i) ? true : false,
+      });
+      this.faqs.push(faq);
+    }
 
     this.configureIap();
     this.hasTipsTricksUnlocked = this.userService.hasTipsTricksUnlocked();
