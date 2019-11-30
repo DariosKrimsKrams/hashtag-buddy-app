@@ -242,7 +242,7 @@ export class StoreComponent implements OnInit {
       this.photosCountService.addPayedPhotos(plan.amount);
     }
     if (plan.tipstrick) {
-     // ToDo
+      this.userService.unlockedTipsTricks();
     }
   }
 }

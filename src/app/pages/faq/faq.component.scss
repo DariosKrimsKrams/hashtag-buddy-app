@@ -4,13 +4,20 @@
 	font-weight: bold;
 	color: rgba(0,0,0,0.5);
 }
-.locked {
-	border-color: $color_pink;
+.iap-info {
   border-width: 1pt;
 	border-radius: 5pt;
-	color: $color_pink;
 	padding: 1pt 8pt 4pt 8pt;
 	margin-left: 15pt;
+
+	&.locked {
+		border-color: $color_pink;
+		color: $color_pink;
+	}
+	&.unlocked {
+		border-color: #67DB67;
+		color: #67DB67;
+	}
 }
 .content {
 	line-height: 3;

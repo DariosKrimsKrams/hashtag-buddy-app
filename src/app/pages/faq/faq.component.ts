@@ -33,6 +33,7 @@ export class FaqComponent implements OnInit {
   public faqs: TipsAndTricks[];
   public current: number = -1;
   public plans: Plan[] = PLAN;
+  public hasTipsTricksUnlocked: boolean;
   private price: string = '1 €';
 
   constructor(
@@ -76,14 +77,7 @@ export class FaqComponent implements OnInit {
     ];
 
     this.configureIap();
-  }
-
-  private onTransactionFailed(transaction: Transaction): void {
-    console.log(`Purchase of ${transaction.productIdentifier} was canceled!`);
-    const text = localize('iap_purchase_failed');
-    new Toasty({ text: text })
-      .setToastDuration(ToastDuration.LONG)
-      .show();
+    this.hasTipsTricksUnlocked = this.userService.hasTipsTricksUnlocked();
   }
 
   private getPlanById(id: string): Plan {
@@ -92,7 +86,7 @@ export class FaqComponent implements OnInit {
 
   public expandToggle(index: number): void {
     const entry = this.faqs[index];
-    if (entry.locked) {
+    if (entry.locked && !this.hasTipsTricksUnlocked) {
       this.openUnlockModal(entry);
     } else {
       this.toogle(index, entry);
@@ -102,11 +96,6 @@ export class FaqComponent implements OnInit {
   public openMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
-  }
-
-  public isTipsTricksUnlocked(): boolean {
-    // ToDo
-    return false;
   }
 
   private toogle(index: number, entry: TipsAndTricks): void {
@@ -175,11 +164,7 @@ export class FaqComponent implements OnInit {
               }
               plan.title = product.localizedTitle.split(' (')[0];
               if (plan.id === 'tipstricks') {
-                let price = this.currencyPipe.transform(plan.product.priceAmount, plan.product.priceCurrencyCode);
-                if (price.substr(-3) === '.00' || price.substr(-3) === ',00') {
-                  price = price.substr(0, price.length - 3);
-                }
-                this.price = price;
+                this.price = this.minifyPrice(plan.product.priceFormatted);
               }
             });
           })
@@ -209,6 +194,27 @@ export class FaqComponent implements OnInit {
           }
         }
       );
+  }
+
+  private minifyPrice(price: string): string {
+    let parts = price.split('.00');
+    if (parts.length === 2) {
+      return parts.join('');
+    } else {
+      parts = price.split(',00');
+      if (parts.length === 2) {
+        return parts.join('');
+      }
+    }
+    return price;
+  }
+
+  private onTransactionFailed(transaction: Transaction): void {
+    console.log(`Purchase of ${transaction.productIdentifier} was canceled!`);
+    const text = localize('iap_purchase_failed');
+    new Toasty({ text: text })
+      .setToastDuration(ToastDuration.LONG)
+      .show();
   }
 
   private buyProduct(plan: Plan): void {
@@ -266,7 +272,11 @@ export class FaqComponent implements OnInit {
   private savePurchase(transaction: Transaction): void {
     this.userService.addPurchase(transaction);
     const plan = this.getPlanById(transaction.productIdentifier);
-    this.photosCountService.addPayedPhotos(plan.amount);
+    console.log('Bought over FAQ ' + plan.product.productIdentifier);
+    if (plan.tipstrick) {
+      this.userService.unlockedTipsTricks();
+      this.hasTipsTricksUnlocked = true;
+    }
   }
 
 }

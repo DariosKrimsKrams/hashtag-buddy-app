@@ -12,6 +12,7 @@ export class UserService {
   private keyPurchases: string = 'purchases';
   private keyFavorites: string = 'favorites';
   private keyRateApp: string = 'rateapp2';
+  private keyTipsTricks: string = 'hasUnlockedTipsTricks';
   private photosCache: Photo[];
   @Output() public photoAdded: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
   @Output() public photoUpdated: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
@@ -144,6 +145,14 @@ export class UserService {
 
   public saveRateAppStatus(value: string): void {
     this.localStorageService.set(this.keyRateApp, value);
+  }
+
+  public hasTipsTricksUnlocked(): boolean {
+    return this.localStorageService.get(this.keyTipsTricks) === 'true' || undefined;
+  }
+
+  public unlockedTipsTricks(): void {
+    this.localStorageService.set(this.keyTipsTricks, 'true');
   }
 
 }

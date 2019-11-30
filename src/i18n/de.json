@@ -131,6 +131,7 @@
   "iap_restored_successful_msg": "Produkt '%s' wurde wiederhergestellt :)",
   "iap_restored_successful_btn": "Perfekt",
   "faq_locked": "gesperrt",
+  "faq_unlocked": "entsperrt",
   "faq_headline_stats1": "Performance",
   "faq_headline_stats2": "Hashtags",
   "faq_headline_stats3": "Zielgruppe",
