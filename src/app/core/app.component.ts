@@ -97,6 +97,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
     disableIosSwipe(this.page, frame);
 
+    this.userService.openTipsAndTricksPage.subscribe(() => {
+      this.selected = [];
+      this.selected[2] = true;
+    });
   }
 
   public ngOnDestroy(): void {

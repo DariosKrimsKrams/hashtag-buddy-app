@@ -38,7 +38,7 @@ export class CircularProgressBarComponent implements OnInit {
 
   public animateBar(): void {
     this.barElement.nativeElement.animate({
-      rotate: 405,
+      rotate: 360 + 45,
       duration: 2000,
     }).then(() => {
       this.barElement.nativeElement.rotate = 45;

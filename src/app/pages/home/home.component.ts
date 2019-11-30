@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {
     this.cd.detach();
     this.page.actionBarHidden = true;
+    this.page.enableSwipeBackNavigation = false;
 
     // leads to Crash in latest NativeScript 6.2 etc.
     // disableIosSwipe(this.page, frame);
@@ -78,6 +79,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public clickTipsAndTricks(): void {
+    this.userService.openTipsAndTricksPage.emit();
     this.router.navigate([`/faq`], {
       transition: {
         name: 'FadeIn',
