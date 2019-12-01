@@ -72,13 +72,15 @@ export class AppComponent implements OnInit, OnDestroy {
       args.cancel = true;
       const path = this.router.locationStrategy.path();
       const isResults = path.substring(0, 13) === '/home/results';
-      console.log('path', path);
+      console.log('path', path, isResults);
       if (path === '/') {
         // would be crashing otherwise
         return;
       }
       if (isResults) {
-        this.router.navigate(['home'], { clearHistory: true });
+        this.ngZone.run(() => {
+          this.router.navigate(['home'], { clearHistory: true });
+        });
       } else if (path === '/home') {
         this.ngZone.run(() => {
           this.userService.androidBackTriggered.emit(path);
