@@ -11,7 +11,7 @@
   <string name="rate_yes">"Jetzt bewerten"</string>
   <string name="rate_no">"Nie"</string>
   <string name="rate_later">"Später"</string>
-  <string name="rate_desc">"Du bist ein Hashtag Star! Könntest du dir vorstellen, für Hashtag Buddy eine Bewertung abzugeben? Als Dankeschön erhälst du 3 Foto Uploads! :)"</string>
+  <string name="rate_desc">"Du bist ein Hashtag Star! Könntest du dir vorstellen, für Hashtag Buddy eine Bewertung mit Kommentar abzugeben? Als Dankeschön erhälst du 3 Foto Uploads! :)"</string>
   <string name="rate_headline">"Greife nach den Sternen   ☆ ☆ ☆ ☆ ☆"</string>
   <string name="share">"Hey, ich möchte dir diese App empfehlen: Sie hilft, die passendsten Instagram Hashtags für Fotos zu finden. Probiere sie doch gleich mal aus :)"</string>
   <string name="myhashtags_other">"Hashtags von Fotos"</string>
@@ -44,7 +44,7 @@
   <string name="settings_about">"Über mich"</string>
   <string name="faq_buy_cancel">"Abbrechen"</string>
   <string name="faq_buy_cta">"Jetzt kaufen"</string>
-  <string name="faq_buy_desc">"Du bist nur noch einen Klick davon entfernt \"%1$s\" und alle anderen Kapitel für nur %2$s freizuschalten. :)"</string>
+  <string name="faq_buy_desc">"Du bist nur noch einen Klick davon entfernt, \"%1$s\" und alle anderen Kapitel für nur %2$s freizuschalten. :)"</string>
   <string name="faq_buy_headline">"Freischalten von Tipps &amp; Tricks"</string>
   <string name="faq_outro">"Verbessere diese Seite: Ideen? Gib mir Feedback und Vorschläge per Feedback Formular."</string>
   <string name="faq_headline_stats4">"Inhalte"</string>
@@ -86,14 +86,10 @@
   <string name="about_headline_infos">"Infos"</string>
   <string name="about_made_in_hh_2">"in Hamburg"</string>
   <string name="about_made_in_hh_1">"Made with love"</string>
-  <string name="about_support_others">"All die vielen Anderen für Übersetzungen und Tipps &amp; Tricks"</string>
-  <string name="about_support_7">"Christian und Paul aus Deutschland (1. Prototype)"</string>
-  <string name="about_support_6">"Rouhollah M. aus Schweden (Logo)"</string>
-  <string name="about_support_5">"Aditia Kurniawan aus Indonesien (Logo)"</string>
-  <string name="about_support_4">"Nazar Nastin aus der Ukraine (UI / UX Design)"</string>
-  <string name="about_support_3">"Jabub Jiricka aus der Tschechischen Republik (Frontend Programmierung)"</string>
-  <string name="about_support_2">"Andreas Sefzig aus Deutschland (Feedback)"</string>
-  <string name="about_support_1">"Tim Wiesenmüller aus Deutschland (Management)"</string>
+  <string name="about_support_others">"All die vielen Anderen für Übersetzungen, Feedback und Tipps &amp; Tricks"</string>
+  <string name="about_support_4">"Nazar Nastin (UI / UX)"</string>
+  <string name="about_support_2">"Andreas Sefzig (Feedback)"</string>
+  <string name="about_support_1">"Tim Wiesenmüller (Feedback)"</string>
   <string name="about_headline_support">"Unterstützung von"</string>
   <string name="about_credits_1">"Dario D. Müller aus Hamburg, Deutschland"</string>
   <string name="about_headline_credits">"Entwickelt von"</string>
