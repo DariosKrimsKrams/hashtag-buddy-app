@@ -43,8 +43,6 @@ export class SelectPhotoService {
       .then(function(selection): void {
         console.log('image picker successful', selection);
         const image = selection[0];
-        console.log(image);
-        console.log(image.options.width);
         image.options.width = 1000;
         image.options.height = 1000;
         that.deviceService.setSelectedPhoto(image);
@@ -103,9 +101,9 @@ export class SelectPhotoService {
     const photo = this.userService.getPhoto(photoId);
     this.evaluationRepository.UploadPhoto(photo.image, customerId)
     .subscribe((httpResponse: IHttpResponse) => {
-      console.info(httpResponse);
-      // iOS uses -1 at successful requests
-      if ((httpResponse.code === 200 || httpResponse.code === -1) || httpResponse.message === 'successful') {
+      console.log(httpResponse);
+      // iOS uses -1 (not 200) at successful requests
+      if (httpResponse.status === 'successful') {
         const httpResult = this.parseSuccessfulResponse(httpResponse);
         this.storeHttpResultIntoPhoto(photoId, httpResult);
         this.photosCountService.decrease();
