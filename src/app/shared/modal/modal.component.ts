@@ -11,6 +11,7 @@ export class ModalComponent implements OnInit {
 
   public icon: string;
   public headline: string;
+  public headline2: string;
   public desc: string;
   public buttonOk: string;
   public buttonCancel: string;
@@ -26,6 +27,7 @@ export class ModalComponent implements OnInit {
     const autoCloseTime = this.params.context.autoCloseTime || undefined;
     this.icon = this.params.context.icon || undefined;
     this.headline = this.params.context.headline || '';
+    this.headline2 = this.params.context.headline2 || '';
     this.desc = this.params.context.desc || '';
     this.buttonOk = this.params.context.buttonOk || '';
     this.buttonCancel = this.params.context.buttonCancel || '';

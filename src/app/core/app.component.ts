@@ -119,6 +119,7 @@ export class AppComponent implements OnInit, OnDestroy {
       fullscreen: false,
       context: {
         headline: 'rate_headline',
+        headline2: 'rate_stars',
         desc: 'rate_desc',
         buttonOk: 'rate_yes',
         buttonCancel: 'rate_later',

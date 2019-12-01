@@ -11,8 +11,9 @@
   <string name="rate_yes">"Jetzt bewerten"</string>
   <string name="rate_no">"Nie"</string>
   <string name="rate_later">"Später"</string>
-  <string name="rate_desc">"Du bist ein Hashtag Star! Könntest du dir vorstellen, für Hashtag Buddy eine Bewertung mit Kommentar abzugeben? Als Dankeschön erhälst du 3 Foto Uploads! :)"</string>
-  <string name="rate_headline">"Greife nach den Sternen   ☆ ☆ ☆ ☆ ☆"</string>
+  <string name="rate_desc">"Du bist ein Hashtag Star! Würdest du Hashtag Buddy bewerten? Als Dankeschön bekommst du 3 Foto Uploads geschenkt! :)"</string>
+  <string name="rate_stars">"☆ ☆ ☆ ☆ ☆"</string>
+  <string name="rate_headline">"Greife nach den Sternen"</string>
   <string name="share">"Hey, ich möchte dir diese App empfehlen: Sie hilft, die passendsten Instagram Hashtags für Fotos zu finden. Probiere sie doch gleich mal aus :)"</string>
   <string name="myhashtags_other">"Hashtags von Fotos"</string>
   <string name="myhashtags_your">"Von dir hinzugefügt"</string>

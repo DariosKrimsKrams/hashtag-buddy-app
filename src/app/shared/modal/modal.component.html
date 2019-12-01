@@ -1,7 +1,8 @@
 <StackLayout class="dialog" horizontalAlignment="center">            
     <Image [src]="iconPath" height="50" class="m-t-10" *ngIf="!!icon"></Image>
-    <Label [text]="headline | L" class="m-t-10 text-center font-demi-bold" *ngIf="headline != ''"></Label>
-    <Label [text]="desc | L" class="m-t-20 m-b-10 m-l-10 m-r-10 text-center font-medium-small" textWrap="true" *ngIf="desc != ''"></Label>
+    <Label [text]="headline | L" class="m-t-10 m-b-5 text-center font-demi-bold" *ngIf="headline != ''"></Label>
+    <Label [text]="headline2 | L" class="text-center font-demi-bold" *ngIf="headline2 != ''"></Label>
+    <Label [text]="desc | L" class="m-t-15 m-b-10 m-l-10 m-r-10 text-center font-medium-small" textWrap="true" *ngIf="desc != ''"></Label>
 
     <Button class="btn btn-outline btn-rounded-lg border-color-normal color-normal" [text]="buttonOk | L" (tap)="ok()" *ngIf="buttonOk != '' && buttonCancel == ''"></Button>
 
