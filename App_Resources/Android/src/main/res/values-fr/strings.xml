@@ -12,7 +12,7 @@
   <string name="rate_no">"Jamais"</string>
   <string name="rate_later">"Plus tard"</string>
   <string name="rate_desc">"Si vous aimez utiliser cette application, pourriez-vous prendre un moment pour l\'évaluer ? Merci de votre soutien ! You will receive 3 photo uploads ! :)"</string>
-  <string name="rate_headline">"Note     ☆ ☆ ☆ ☆ ☆"</string>
+  <string name="rate_headline">"Note"</string>
   <string name="share">"Hé, j\'aimerais vous recommander cette application : Qui aide à trouver les hashtags Instagram les plus pertinents pour les photos. Essayez-la aussi :)"</string>
   <string name="myhashtags_other">"Hashtags d\'après des photos"</string>
   <string name="myhashtags_your">"Ajouté par vous-même"</string>

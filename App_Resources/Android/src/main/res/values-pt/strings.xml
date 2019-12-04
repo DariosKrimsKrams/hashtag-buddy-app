@@ -12,7 +12,8 @@
   <string name="rate_no">"Nunca"</string>
   <string name="rate_later">"Mais tarde"</string>
   <string name="rate_desc">"Se gosta da aplicação pode, por favor, avaliar-nos? Obrigado pela sua colaboração! You will receive 3 photo uploads! :)"</string>
-  <string name="rate_headline">"Avalie   ☆ ☆ ☆ ☆ ☆"</string>
+  <string name="rate_stars">"☆ ☆ ☆ ☆ ☆"</string>
+  <string name="rate_headline">"Avalie"</string>
   <string name="share">"Olá, Eu gostaria de recomendar esta aplicação: Ela ajuda-o a encontrar o melhor e os mais relevante hashtags do Instagram para as suas fotos. Experimente! :)"</string>
   <string name="myhashtags_other">"Hashtags das fotos"</string>
   <string name="myhashtags_your">"Adicionado por si"</string>
@@ -179,7 +180,6 @@
   <string name="_app_name_1k3Sbz">"Hashtag Buddy"</string>
   <string name="app_name">"Hashtag Buddy"</string>
   <string name="title_activity_kimera">"Hashtag Buddy"</string>
-  <string name="rate_stars">"☆ ☆ ☆ ☆ ☆"</string>
   <string name="faq_11_desc">"Wenn Dein Account wächst, werden früher oder später Anfragen von Firmen auf Dich zukommen. Dabei geht es darum, dass Du deiner Community Produkte und Dienstleistungen empfiehlst. Die Firmen erhoffen sich dadurch wie auch bei klassischer Werbung Aufmerksamkeit und zusätzliche Verkäufe. Bei kleineren Accounts geht es meistens darum, dass Dir ein Produkt oder eine Dienstleistung zur kostenlos Verfügung gestellt wird und Du sie dann mit Deiner Community teilst. Wenn der Account etwas größer ist oder andere Merkmale hat, die für die Marke besonders interessant sind wird auch eine Vergütung vereinbart. Wenn Du Werbung für eine Marke machst, achte aber darauf, dass sie zu den Merkmalen Deines Accounts passen. Wenn es bei dir um gesunde Ernährung geht kommt es komisch rüber, wenn Du auf einmal Werbung für eine Fast Food Kette machst. Wähle Deine Partner danach aus, was zu Dir passt und was auch für Deine Community interessant ist. Auch wenn die Angebote gerade am Anfang verführerisch sein können, überlege vorher was Dir auch Langfristig hilft und Deine Glaubwürdigkeit unterstützt.  Wenn Du Werbung machst solltest Du diese in jeden Fall als solche kennzeichnen, auch wenn die Produkte vielleicht ohnehin nutzen würdest, ist es wichtig, dass Deine Follower einordnen können, ob du das Produkt selbst gekauft hast, oder ob es dir kostenfrei zugeschickt wurde. Zudem gehst Du so der Gefahr einer Abmahnung aus dem Weg."</string>
   <string name="faq_11_headline">"Kooperationen und Authenzitiät"</string>
   <string name="faq_10_desc">"xxx"</string>

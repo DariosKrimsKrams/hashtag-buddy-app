@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ImageAsset } from 'tns-core-modules/image-asset/image-asset';
-import { fromAsset } from 'tns-core-modules/image-source';
+import { ImageSource } from 'tns-core-modules/image-source';
 import { knownFolders, path } from 'tns-core-modules/file-system/file-system';
 import { Observable } from 'rxjs/internal/Observable';
 
@@ -25,7 +25,7 @@ export class DeviceService {
   public copyPhotoToAppFolder(image: ImageAsset): Observable<string> {
     return new Observable<string>(observer => {
       try {
-        fromAsset(image).then(imageSource => {
+        ImageSource.fromAsset(image).then(imageSource => {
           const targetFilename = 'img_' + new Date().getTime() + '.jpg';
           const tempPath = knownFolders.documents().path;
           const localFullPath = path.join(tempPath, targetFilename);
