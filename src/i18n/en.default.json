@@ -151,7 +151,7 @@
   "faq_10_headline": "Reichweite erhöhen",
   "faq_10_desc": "xxx",
   "faq_11_headline": "Kooperationen und Authenzitiät",
-  "faq_11_desc": "Wenn Dein Account wächst, werden früher oder später Anfragen von Firmen auf Dich zukommen. Dabei geht es darum, dass Du deiner Community Produkte und Dienstleistungen empfiehlst. Die Firmen erhoffen sich dadurch wie auch bei klassischer Werbung Aufmerksamkeit und zusätzliche Verkäufe. Bei kleineren Accounts geht es meistens darum, dass Dir ein Produkt oder eine Dienstleistung zur kostenlos Verfügung gestellt wird und Du sie dann mit Deiner Community teilst. Wenn der Account etwas größer ist oder andere Merkmale hat, die für die Marke besonders interessant sind wird auch eine Vergütung vereinbart. Wenn Du Werbung für eine Marke machst, achte aber darauf, dass sie zu den Merkmalen Deines Accounts passen. Wenn es bei dir um gesunde Ernährung geht kommt es komisch rüber, wenn Du auf einmal Werbung für eine Fast Food Kette machst. Wähle Deine Partner danach aus, was zu Dir passt und was auch für Deine Community interessant ist. Auch wenn die Angebote gerade am Anfang verführerisch sein können, überlege vorher was Dir auch Langfristig hilft und Deine Glaubwürdigkeit unterstützt.  Wenn Du Werbung machst solltest Du diese in jeden Fall als solche kennzeichnen, auch wenn die Produkte vielleicht ohnehin nutzen würdest, ist es wichtig, dass Deine Follower einordnen können, ob du das Produkt selbst gekauft hast, oder ob es dir kostenfrei zugeschickt wurde. Zudem gehst Du so der Gefahr einer Abmahnung aus dem Weg.",
+  "faq_11_desc": "xxx",
   "faq_headline_stats3": "yyyy",
   "faq_headline_stats4": "zzzzz",
   "faq_outro": "Improve this page: Do you want to give me feedback or text improvements? Let me know via the feedback formula.",
@@ -194,6 +194,8 @@
   "rate_later": "Later",
   "rate_no": "Never",
   "rate_yes": "Rate now",
+  "offer_headline": "Special offer",
+  "offer": "You received a gift! Unlock all Tips & Tricks and get x photo uploads now for just x € - How does that sound?",
   "exit_warning": "Tap again to exit",
   "error_headline": "Ooops...",
   "error_desc": "Something went wrong :(",
