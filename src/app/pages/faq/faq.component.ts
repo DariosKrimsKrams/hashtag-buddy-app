@@ -52,7 +52,7 @@ export class FaqComponent implements OnInit {
 
     this.faqs = [];
     const maxItem = 11;
-    const lockedNumbers = [4, 6, 8, 9];
+    const lockedNumbers = [4, 5, 7, 8, 10, 11];
     for (let i = 1; i <= maxItem; i++) {
       const faq = new TipsAndTricks({
         expand: false,

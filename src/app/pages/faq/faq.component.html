@@ -8,7 +8,7 @@
                         <GridLayout columns="*,20" verticalAlignment="middle" (tap)="expandToggle(i)" class="p-t-20 p-b-15 p-l-20 p-r-20" [class.is-expanded]="faq.expand">
                             <WrapLayout col="0">
                                 <Label [text]="faq.title" class="headline-text h3" verticalAlignment="middle" textWrap="true"></Label>
-                                <Label [text]="'faq_locked' | L" class="locked iap-info" verticalAlignment="middle" *ngIf="faq.locked && !hasTipsTricksUnlocked"></Label>
+                                <Label [text]="'faq_premium' | L" class="locked iap-info" verticalAlignment="middle" *ngIf="faq.locked && !hasTipsTricksUnlocked"></Label>
                                 <Label [text]="'faq_unlocked' | L" class="unlocked iap-info" verticalAlignment="middle" *ngIf="faq.locked && hasTipsTricksUnlocked"></Label>
                             </WrapLayout>
                             <Label col="1" [text]="faq.expand ? '&#xf068;' : '&#xf067;'" fontSize="15" class="fas" *ngIf="!faq.locked && !hasTipsTricksUnlocked"></Label>
