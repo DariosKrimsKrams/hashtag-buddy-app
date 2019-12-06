@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ViewChild, ElementRef } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page';
 import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
@@ -27,6 +27,7 @@ import * as dialogs from 'tns-core-modules/ui/dialogs';
 })
 export class FaqComponent implements OnInit {
 
+  @ViewChild('scrollView', { read: ElementRef, static: false }) public scrollView: ElementRef;
   public openmenu = false;
   public faqs: TipsAndTricks[];
   public current: number = -1;
@@ -45,7 +46,6 @@ export class FaqComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-
     this.faqs = [];
     const maxItem = 11;
     const lockedNumbers = [4, 5, 7, 8, 10, 11];
@@ -91,7 +91,15 @@ export class FaqComponent implements OnInit {
       }
       entry.expand = true;
       this.current = index;
+      this.scrollToIndex(index);
     }
+  }
+
+  private scrollToIndex(index: number): void {
+    const posY = 63 * index;
+    setTimeout.bind(this)(() => {
+      this.scrollView.nativeElement.scrollToVerticalOffset(posY, false);
+    }, 1);
   }
 
   private openUnlockModal(faq: TipsAndTricks): void {
