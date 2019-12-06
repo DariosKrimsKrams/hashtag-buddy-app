@@ -17,8 +17,6 @@ import { Plan } from '~/app/models/plan';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { isAndroid } from 'tns-core-modules/platform';
 import { UserService } from '~/app/storages/user.service';
-import { PhotosCountService } from '~/app/storages/photos-count.service';
-import { CurrencyPipe } from '@angular/common';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
 
 @Component({
@@ -41,8 +39,6 @@ export class FaqComponent implements OnInit {
     private readonly modalService: ModalDialogService,
     private readonly viewContainerRef: ViewContainerRef,
     private readonly userService: UserService,
-    private readonly photosCountService: PhotosCountService,
-    private readonly currencyPipe: CurrencyPipe
   ) {
     this.page.actionBarHidden = true;
     disableIosSwipe(this.page, frame);
