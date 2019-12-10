@@ -264,9 +264,9 @@ export class FaqComponent implements OnInit {
     this.userService.addPurchase(transaction);
     const plan = this.getPlanById(transaction.productIdentifier);
     console.log('Bought over FAQ ' + plan.product.productIdentifier);
+    this.hasTipsTricksUnlocked = true;
     if (plan.tipstrick) {
       this.userService.unlockedTipsTricks();
-      this.hasTipsTricksUnlocked = true;
     }
   }
 
