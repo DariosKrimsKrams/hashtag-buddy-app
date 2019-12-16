@@ -69,7 +69,7 @@
   <string name="menu_new">"new"</string>
   <string name="menu_faq">"Trucs &amp; Astuces"</string>
   <string name="menu_store">"Store"</string>
-  <string name="menu_myhashtags">"Mes hashtags"</string>
+  <string name="menu_myhashtags">"mes hashtags"</string>
   <string name="menu_home">"Acceuil"</string>
   <string name="about_infos_user_id">"ID utilisateur"</string>
   <string name="about_infos_be_version">"Version Backend"</string>
