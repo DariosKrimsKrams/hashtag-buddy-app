@@ -12,6 +12,7 @@
 android {  
   defaultConfig {  
     generatedDensities = []
+    applicationId = "com.innocliq.instaq"
   }  
   aaptOptions {  
     additionalParameters "--no-version-vectors"  
