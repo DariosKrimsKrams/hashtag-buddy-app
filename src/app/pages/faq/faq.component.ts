@@ -18,6 +18,7 @@ import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { isAndroid } from 'tns-core-modules/platform';
 import { UserService } from '~/app/storages/user.service';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
   selector: 'ns-faq',
@@ -40,6 +41,7 @@ export class FaqComponent implements OnInit {
     private readonly modalService: ModalDialogService,
     private readonly viewContainerRef: ViewContainerRef,
     private readonly userService: UserService,
+    private readonly router: RouterExtensions
   ) {
     this.page.actionBarHidden = true;
     disableIosSwipe(this.page, frame);
@@ -265,9 +267,14 @@ export class FaqComponent implements OnInit {
     const plan = this.getPlanById(transaction.productIdentifier);
     console.log('Bought over FAQ ' + plan.product.productIdentifier);
     this.hasTipsTricksUnlocked = true;
-    if (plan.tipstrick) {
-      this.userService.unlockedTipsTricks();
-    }
+    this.userService.unlockedTipsTricks();
+    this.router.navigate([`/faq`], {
+      transition: {
+        name: 'FadeIn',
+        duration: 500,
+        curve: 'easeOut'
+      }
+    });
   }
 
 }
