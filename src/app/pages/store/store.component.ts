@@ -16,6 +16,7 @@ import { PhotosCountService } from '~/app/storages/photos-count.service';
 import { CurrencyPipe } from '@angular/common';
 import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
   selector: 'ns-store',
@@ -31,7 +32,8 @@ export class StoreComponent implements OnInit {
     private readonly page: Page,
     private readonly userService: UserService,
     private readonly photosCountService: PhotosCountService,
-    private readonly currencyPipe: CurrencyPipe
+    private readonly currencyPipe: CurrencyPipe,
+    private readonly router: RouterExtensions
   ) {
     this.page.actionBarHidden = true;
     disableIosSwipe(this.page, frame);
@@ -244,5 +246,12 @@ export class StoreComponent implements OnInit {
     if (plan.tipstrick) {
       this.userService.unlockedTipsTricks();
     }
+    this.router.navigate([`/home`], {
+      transition: {
+        name: 'FadeIn',
+        duration: 500,
+        curve: 'easeOut'
+      }
+    });
   }
 }

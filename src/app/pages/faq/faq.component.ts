@@ -19,6 +19,7 @@ import { isAndroid } from 'tns-core-modules/platform';
 import { UserService } from '~/app/storages/user.service';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
 import { RouterExtensions } from 'nativescript-angular/router';
+import { PhotosCountService } from '~/app/storages/photos-count.service';
 
 @Component({
   selector: 'ns-faq',
@@ -40,6 +41,7 @@ export class FaqComponent implements OnInit {
     private readonly page: Page,
     private readonly modalService: ModalDialogService,
     private readonly viewContainerRef: ViewContainerRef,
+    private readonly photosCountService: PhotosCountService,
     private readonly userService: UserService,
     private readonly router: RouterExtensions
   ) {
@@ -267,8 +269,13 @@ export class FaqComponent implements OnInit {
     const plan = this.getPlanById(transaction.productIdentifier);
     console.log('Bought over FAQ ' + plan.product.productIdentifier);
     this.hasTipsTricksUnlocked = true;
-    this.userService.unlockedTipsTricks();
-    this.router.navigate([`/faq`], {
+    if (plan.amount !== 0) {
+      this.photosCountService.addPayedPhotos(plan.amount);
+    }
+    if (plan.tipstrick) {
+      this.userService.unlockedTipsTricks();
+    }
+    this.router.navigate([`/home`], {
       transition: {
         name: 'FadeIn',
         duration: 500,
