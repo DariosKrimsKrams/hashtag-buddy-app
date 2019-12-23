@@ -80,12 +80,8 @@ export class FeedbackComponent implements OnInit {
   }
 
   public goPrevPage(): void {
-    this.router.navigate(['/settings'], {
-      transition: {
-        name: 'slideRight',
-        duration: 500,
-        curve: 'easeOut'
-      }
-    });
+    if (this.router.canGoBack()) {
+      this.router.back();
+    }
   }
 }
