@@ -57,15 +57,9 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   }
 
   private updateFreeIndicator(): void {
-    this.countPhotoLeft = this.photosCountService.getTotalCount();
-    if (this.forceFreeMode) {
-      this.countPhotoLeft = 0;
-    }
-    this.countPhotosOverall = environment.freePhotosStart;
-    const isAppRated = this.userService.isAppRated();
-    if (isAppRated) {
-      this.countPhotosOverall += environment.freePhotosRateApp;
-    }
+    this.countPhotosOverall = this.photosCountService.getTotalCount();
+    const used = this.userService.getPhotos().length;
+    this.countPhotoLeft = this.countPhotosOverall - used;
 
     if (this.countPhotoLeft === 0) {
       this.timeOverall = environment.freePhotosIncreatingTime;
