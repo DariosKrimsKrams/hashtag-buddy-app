@@ -48,10 +48,7 @@ export class FeedbackComponent implements OnInit {
     this.feedbackRepositoryService.sendAppFeedback(feedback)
     .subscribe(feedback => {
     });
-    this.showModal();
-  }
 
-  private showModal(): void {
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
