@@ -2,10 +2,10 @@
   "nativescript": {
     "id": "com.innocliq.instaq",
     "tns-ios": {
-      "version": "6.2.0"
+      "version": "6.3.0"
     },
     "tns-android": {
-      "version": "6.2.0"
+      "version": "6.3.0"
     }
   },
   "description": "Hashtag Buddy",
@@ -33,7 +33,7 @@
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
     "codelyzer": "^5.2.1",
-    "nativescript": "^6.0.2",
+    "nativescript": "^6.3.0",
     "nativescript-angular": "^8.20.3",
     "nativescript-background-http": "^4.2.1",
     "nativescript-clipboard": "^1.2.0",
@@ -61,9 +61,9 @@
     "zone.js": "^0.9.1"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "8.2.14",
+    "@angular/compiler-cli": "8.2.0",
     "@nativescript/schematics": "^1.0.0",
-    "@ngtools/webpack": "8.3.21",
+    "@ngtools/webpack": "8.2.0",
     "nativescript-dev-webpack": "^1.3.0",
     "node-sass": "4.13.0",
     "typescript": "~3.5.3"
