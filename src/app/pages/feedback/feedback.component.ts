@@ -48,10 +48,7 @@ export class FeedbackComponent implements OnInit {
     this.feedbackRepositoryService.sendAppFeedback(feedback)
     .subscribe(feedback => {
     });
-    this.showModal();
-  }
 
-  private showModal(): void {
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
@@ -83,12 +80,8 @@ export class FeedbackComponent implements OnInit {
   }
 
   public goPrevPage(): void {
-    this.router.navigate(['/settings'], {
-      transition: {
-        name: 'slideRight',
-        duration: 500,
-        curve: 'easeOut'
-      }
-    });
+    if (this.router.canGoBack()) {
+      this.router.back();
+    }
   }
 }

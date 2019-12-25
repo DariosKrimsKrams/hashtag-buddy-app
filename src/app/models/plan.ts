@@ -15,6 +15,7 @@ export class Plan {
   public discount?: number;
   public pricePerPhoto?: number;
   public priceFallback: string;
+  public priceShort: string;
 
   public constructor(init?: Partial<Plan>) {
     Object.assign(this, init);

@@ -1,6 +1,6 @@
 import { Plan } from '../models/plan';
 
-export const PLAN: Plan[] = [
+export const PLANS: Plan[] = [
     {
         id: 'tipstricks',
         image: '~/app/assets/images/tipstricks.png',
@@ -8,6 +8,7 @@ export const PLAN: Plan[] = [
         desc: 'Unlock all Tips & Tricks',
         type: 'inapp',
         priceFallback: '1.00',
+        priceShort: '',
         amount: 0,
         tipstrick: true,
     },
@@ -18,6 +19,7 @@ export const PLAN: Plan[] = [
         desc: 'Unlock 5 photo uploads',
         type: 'inapp',
         priceFallback: '1.50',
+        priceShort: '',
         amount: 5,
         tipstrick: false,
     },
@@ -28,6 +30,7 @@ export const PLAN: Plan[] = [
         desc: 'Unlock 15 photo uploads',
         type: 'inapp',
         priceFallback: '2.50',
+        priceShort: '',
         amount: 15,
         tipstrick: false,
     },
@@ -38,6 +41,7 @@ export const PLAN: Plan[] = [
         desc: 'Unlock 30 photo uploads',
         type: 'inapp',
         priceFallback: '4.50',
+        priceShort: '',
         amount: 30,
         tipstrick: true,
     }

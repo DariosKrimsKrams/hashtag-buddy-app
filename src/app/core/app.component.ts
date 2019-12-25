@@ -15,6 +15,16 @@ import { Page } from 'tns-core-modules/ui/page';
 import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
+// IAP
+import * as purchase from 'nativescript-purchase';
+import { Product } from 'nativescript-purchase/product';
+import { Transaction, TransactionState } from 'nativescript-purchase/transaction';
+import { Plan } from '~/app/models/plan';
+import { isAndroid } from 'tns-core-modules/platform';
+import * as dialogs from 'tns-core-modules/ui/dialogs';
+import { StoreService } from '../storages/store.service';
+import { PLANS } from '../data/plans';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   moduleId: module.id,
@@ -25,10 +35,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public menus: string[] = ['home', 'myhashtags', 'faq', 'store', 'settings'];
   public selected: boolean[] = [];
+  public plans: Plan[] = PLANS;
 
   private _sideDrawerTransition: DrawerTransitionBase;
   private createUserFailedSubscription: Subscription;
   private openFeedbackModalSubscription: Subscription;
+  private openTipsAndTricksPageSubscription: Subscription;
+  private buyProductSubscription: Subscription;
 
   constructor(
     private readonly router: RouterExtensions,
@@ -36,8 +49,10 @@ export class AppComponent implements OnInit, OnDestroy {
     private readonly customerService: CustomerService,
     private readonly ngZone: NgZone,
     private readonly userService: UserService,
+    private readonly storeService: StoreService,
     private readonly viewContainerRef: ViewContainerRef,
     private readonly modalService: ModalDialogService,
+    private readonly currencyPipe: CurrencyPipe,
     private readonly page: Page
   ) {}
 
@@ -99,15 +114,19 @@ export class AppComponent implements OnInit, OnDestroy {
 
     disableIosSwipe(this.page, frame);
 
-    this.userService.openTipsAndTricksPage.subscribe(() => {
+    this.openTipsAndTricksPageSubscription = this.userService.openTipsAndTricksPage.subscribe(() => {
       this.selected = [];
       this.selected[2] = true;
     });
+
+    this.buyProductSubscription = this.storeService.onBuyProduct.subscribe((x: string) => this.buyProduct(x));
   }
 
   public ngOnDestroy(): void {
     this.createUserFailedSubscription.unsubscribe();
     this.openFeedbackModalSubscription.unsubscribe();
+    this.openTipsAndTricksPageSubscription.unsubscribe();
+    this.buyProductSubscription.unsubscribe();
   }
 
   private showRateAppModal(): void {
@@ -175,6 +194,224 @@ export class AppComponent implements OnInit, OnDestroy {
   public closeMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.closeDrawer();
+  }
+
+
+  /************* SHOP LOGIC IAP **************/
+
+  private getPlanById(id: string): Plan {
+    return this.plans.filter(x => x.id === id)[0];
+  }
+
+  private configureIap(): void {
+    const products = [
+      'tipstricks',
+      'small',
+      'medium',
+      'large',
+    ];
+    (global as any).purchaseInitPromise = purchase.init(products);
+
+    (global as any).purchaseInitPromise
+      .then(() => {
+        purchase
+          .getProducts()
+          .then((products: Array<Product>) => {
+            products.forEach((product: Product) => {
+              let plan = this.getPlanById(product.productIdentifier);
+              if (plan !== undefined) {
+                plan.product = product;
+              } else {
+                plan = new Plan({
+                  id: product.productIdentifier,
+                  image: '~/app/assets/images/0.png',
+                  product: product
+                });
+                this.plans.push(plan);
+              }
+              plan.title = product.localizedTitle.split(' (')[0];
+              plan.priceShort = this.minifyPrice(plan.product.priceFormatted);
+            });
+            this.calcDiscount();
+            this.calcLocas();
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
+      purchase.on(
+        purchase.transactionUpdatedEvent,
+        (transaction: Transaction) => {
+          console.log('IAP event: ' + transaction.transactionState);
+          console.log(transaction);
+
+          switch (transaction.transactionState) {
+            case TransactionState.Purchased:
+              this.onProductBought(transaction);
+              break;
+            case TransactionState.Restored:
+              this.onProductRestored(transaction);
+              break;
+            case TransactionState.Failed:
+              this.onTransactionFailed(transaction);
+              break;
+            case TransactionState.Purchasing:
+              break;
+          }
+        }
+      );
+  }
+
+  private minifyPrice(price: string): string {
+    let parts = price.split('.00');
+    if (parts.length === 2) {
+      return parts.join('');
+    } else {
+      parts = price.split(',00');
+      if (parts.length === 2) {
+        return parts.join('');
+      }
+    }
+    return price;
+  }
+
+  private calcDiscount(): void {
+    let cheapestInApp: Plan;
+    this.plans.map(x => {
+      if (x.product === undefined) {
+        return;
+      }
+      x.desc = x.product.localizedDescription;
+      if (
+        x.product.productType === 'inapp' &&
+        x.product.productIdentifier !== 'tipstricks' &&
+        (cheapestInApp === undefined ||
+          x.product.priceAmount < cheapestInApp.product.priceAmount)
+      ) {
+        cheapestInApp = x;
+      }
+    });
+    cheapestInApp.pricePerPhoto =
+      cheapestInApp.product.priceAmount / cheapestInApp.amount;
+    this.plans.forEach(plan => {
+      if (plan.product === undefined) {
+        return;
+      }
+      if (plan.product.productType === 'inapp' && plan.id !== cheapestInApp.id) {
+        plan.pricePerPhoto = plan.product.priceAmount / plan.amount;
+        const discount =
+          (1 - plan.pricePerPhoto / cheapestInApp.pricePerPhoto) * 100;
+        plan.discount = Math.round(discount);
+      }
+    });
+  }
+
+  private calcLocas(): void {
+    this.plans.forEach(plan => {
+      if (plan.amount !== 0) {
+        const formattedPrice = this.currencyPipe.transform(plan.pricePerPhoto, plan.product.priceCurrencyCode);
+        const text = '(' + localize('store_price_per_photo', formattedPrice) + ')';
+        plan.desc2 = text;
+      }
+    });
+  }
+
+  private onTransactionFailed(transaction: Transaction): void {
+    console.log(`Purchase of ${transaction.productIdentifier} was canceled!`);
+    const text = localize('iap_purchase_failed');
+    new Toasty({ text: text })
+      .setToastDuration(ToastDuration.LONG)
+      .show();
+  }
+
+  private buyProduct(item: string): void {
+    const plan = this.getPlanById(item);
+    const product = plan.product;
+    if (purchase.canMakePayments()) {
+      purchase.buyProduct(product);
+    } else {
+      const text = localize('store_buy_failed');
+      new Toasty({ text: text })
+        .setToastDuration(ToastDuration.LONG)
+        .show();
+    }
+  }
+
+  private onProductBought(transaction: Transaction): void {
+    if (isAndroid) {
+      purchase.consumePurchase(transaction.transactionReceipt)
+        .then(responseCode => {
+          console.log('responseCode: ' + responseCode);
+          if (responseCode === 0) {
+            this.buyingProductSuccessful(transaction);
+          } else {
+            console.log(`Failed to consume with code: ${responseCode}`);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          alert(`Failed to consume: ${err}`);
+        });
+    } else {
+      this.buyingProductSuccessful(transaction);
+    }
+  }
+
+  private buyingProductSuccessful(transaction: Transaction): void {
+    this.savePurchase(transaction);
+    this.showBoughtPopup(transaction);
+  }
+
+  private showBoughtPopup(transaction: Transaction): void {
+    const plan = this.getPlanById(transaction.productIdentifier);
+    const desc = localize('iap_purchase_successful_msg', plan.title);
+
+    const options: ModalDialogOptions = {
+      viewContainerRef: this.viewContainerRef,
+      fullscreen: false,
+      context: {
+        icon: 'copied',
+        headline: 'iap_purchase_successful_title',
+        desc: desc,
+        buttonOk: 'iap_purchase_successful_btn'
+      }
+    };
+    this.modalService.showModal(ModalComponent, options);
+  }
+
+  private onProductRestored(transaction: Transaction): void {
+    this.savePurchase(transaction);
+    this.showRestorePopup(transaction);
+  }
+
+  private showRestorePopup(transaction: Transaction): void {
+    const plan = this.getPlanById(
+      transaction.originalTransaction.productIdentifier
+    );
+    const title = localize('iap_restored_successful_title');
+    const msg = localize('iap_restored_successful_msg', plan.title);
+    const btn = localize('iap_restored_successful_btn');
+    dialogs.alert({
+      title: title,
+      message: msg,
+      okButtonText: btn
+    });
+  }
+
+  private savePurchase(transaction: Transaction): void {
+    this.userService.addPurchase(transaction);
+    const plan = this.getPlanById(transaction.productIdentifier);
+    console.log('Product bought: ' + plan.product.productIdentifier);
+    if (plan.amount !== 0) {
+      this.photosCountService.addPayedPhotos(plan.amount);
+    }
+    if (plan.tipstrick) {
+      this.userService.unlockedTipsTricks();
+    }
   }
 
 }

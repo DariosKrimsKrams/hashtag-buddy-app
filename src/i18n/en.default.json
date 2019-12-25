@@ -174,7 +174,7 @@
   "toast_create_customer_at_upload_failed": "Request failed! Connection lost :'(",
   "toast_imagepicker_failed": "Picking Photos failed. Please check read permission.",
   "progressbar_home_startmode_not_used": "You get %s photo uploads for free",
-  "progressbar_home_startmode_is_using": "You have used %s of %s photo uploads. After using all of them, you get 1 photo upload every 24 hours for free.",
+  "progressbar_home_startmode_is_using": "You have used %s of %s photo uploads. After that, you receive 1 photo upload every 24 hours for free.",
   "progressbar_home_iapmode": "You used %s of %s photo uploads.",
   "progressbar_home_freemode": "You used all your free photo uploads. You can still upload photos but some hashtags will be hidden.",
   "progressbar_confirm_promode": "%s photos left: Enjoy the best hashtags.",
