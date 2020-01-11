@@ -28,7 +28,7 @@
   <string name="progressbar_confirm_promode">"noch %1$s Foto Uploads"</string>
   <string name="progressbar_home_freemode">"Du hast alle kostenlose Foto Uploads verbraucht. Du kannst weiterhin Foto hochladen, aber einige Hashtags werden zensiert."</string>
   <string name="progressbar_home_iapmode">"Du hast %1$s von %2$s Foto Uploads verwendet."</string>
-  <string name="progressbar_home_startmode_is_using">"Du hast %1$s von %2$s Foto Uploads verwendet. Danach erhälst du 1 Foto Upload alle 24 Stunden kostenlos."</string>
+  <string name="progressbar_home_startmode_is_using">"Du hast %1$s von %2$s Foto Uploads verwendet. Danach bekommst du 1 Foto Upload alle 24 Stunden kostenlos."</string>
   <string name="progressbar_home_startmode_not_used">"Du erhälst %1$s Foto Uploads kostenlos"</string>
   <string name="toast_imagepicker_failed">"Foto auswählen fehlgeschlagen. Bitte Berechtigung prüfen."</string>
   <string name="toast_create_customer_at_upload_failed">"Internet-Verbindung verloren :\'("</string>

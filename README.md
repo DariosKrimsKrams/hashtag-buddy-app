@@ -61,10 +61,8 @@ tns run Android
 ```
 npm i -g nativescript@latest
 npm i tns-core-modules@latest
-tns platform remove android
-tns platform add android
-tns platform remove ios
-tns platform add ios
+tns platform remove android && tns platform add android@latest
+tns platform remove ios && tns platform add ios@latest
 ```
 
 ### Update Instruction
