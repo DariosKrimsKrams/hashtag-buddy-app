@@ -45,7 +45,7 @@ export class FaqComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.faqs = [];
     const maxItem = 11;
-    const lockedNumbers = [4, 5, 7, 8, 10, 11];
+    const lockedNumbers = [4, 5, 8, 10, 11];
     for (let i = 1; i <= maxItem; i++) {
       const faq = new TipsAndTricks({
         expand: false,
@@ -59,7 +59,6 @@ export class FaqComponent implements OnInit, OnDestroy {
     this.hasTipsTricksUnlocked = this.userService.hasTipsTricksUnlocked();
 
     this.purchaseSuccessfulSub = this.storeService.onPurchaseSuccessful.subscribe((item: string) => {
-      console.log(item);
       if (item === 'tipstricks') {
         this.hasTipsTricksUnlocked = true;
       }
@@ -113,13 +112,14 @@ export class FaqComponent implements OnInit, OnDestroy {
       const item = 'tipstricks';
       this.storeService.onBuyProduct.emit(item);
     };
-    const desc = localize('faq_buy_desc', faq.title, this.price);
+    const headline = localize('faq_buy_headline', faq.title);
+    const desc = localize('faq_buy_desc', this.price);
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
       context: {
         icon: 'cart',
-        headline: 'faq_buy_headline',
+        headline: headline,
         desc: desc,
         buttonOk: 'faq_buy_cta',
         buttonCancel: 'faq_buy_cancel',
