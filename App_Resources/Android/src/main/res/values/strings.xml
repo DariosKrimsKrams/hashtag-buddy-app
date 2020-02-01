@@ -20,16 +20,13 @@
   <string name="myhashtags_other">"Hashtags from photos"</string>
   <string name="myhashtags_your">"Added by you"</string>
   <string name="myhashtags_intro">"Save your favorite hashtags here. You can access them directly from the photos-selection."</string>
-  <string name="progressbar_freemode_time">"In %1$s you receive 1 uncensored Upload."</string>
-  <string name="progressbar_results_freemode2">"Buy photo uploads to unlock hashtags."</string>
-  <string name="progressbar_results_freemode1">"Free limit reached: Best hashtags are hidden."</string>
-  <string name="progressbar_confirm_freemode2">"Best hashtags are now hidden :("</string>
-  <string name="progressbar_confirm_freemode1">"Free limit reached:"</string>
+  <string name="progressbar_results_freemode1">"Free limit reached: Best hashtags are hidden. Buy photo uploads to unlock hashtags."</string>
+  <string name="progressbar_confirm_freemode1">"Free limit reached: Best and exclusive hashtags will be hidden :("</string>
   <string name="progressbar_confirm_promode">"%1$s photos left: Enjoy the best hashtags."</string>
-  <string name="progressbar_home_freemode">"You used all your free photo uploads. You can still upload photos but some hashtags will be hidden."</string>
+  <string name="progressbar_home_freemode">"You used %1$s von %2$s free photo uploads. You can still upload photos but some hashtags will be hidden."</string>
   <string name="progressbar_home_iapmode">"You used %1$s of %2$s photo uploads."</string>
-  <string name="progressbar_home_startmode_is_using">"You have used %1$s of %2$s photo uploads. After that, you receive 1 photo upload every 24 hours for free."</string>
-  <string name="progressbar_home_startmode_not_used">"You get %1$s photo uploads for free"</string>
+  <string name="progressbar_home_startmode_is_using">"You have used %1$s of %2$s photo uploads. After that, some hashtags will be hidden."</string>
+  <string name="progressbar_home_startmode_not_used">"You get %1$s photo uploads for free."</string>
   <string name="toast_imagepicker_failed">"Picking Photos failed. Please check read permission."</string>
   <string name="toast_create_customer_at_upload_failed">"Request failed! Connection lost :\'("</string>
   <string name="toast_create_customer_failed">"You are offline. Please connect to the internet :)"</string>
@@ -206,6 +203,7 @@
   <string name="_app_name_1k3Sbz">"Hashtag Buddy"</string>
   <string name="app_name">"Hashtag Buddy"</string>
   <string name="title_activity_kimera">"Hashtag Buddy"</string>
+  <string name="progressbar_results_freemode2">"progressbar_results_freemode2"</string>
   <string name="results_category_upcoming_has">"results_category_upcoming_has"</string>
   <string name="Toast_imagepicker_failed">"Toast_imagepicker_failed"</string>
 </resources>

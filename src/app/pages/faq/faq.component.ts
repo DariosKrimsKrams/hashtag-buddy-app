@@ -108,7 +108,7 @@ export class FaqComponent implements OnInit, OnDestroy {
 
   private openUnlockModal(faq: TipsAndTricks): void {
     const okFunc = () => {
-      console.log('clicked CTA');
+      console.log('openUnlockModal');
       const item = 'tipstricks';
       this.storeService.onBuyProduct.emit(item);
     };

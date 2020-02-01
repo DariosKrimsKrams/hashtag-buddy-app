@@ -3,7 +3,7 @@ export const environment = {
     apiUrl: 'https://instaq-api.innocliq.de',
     freePhotosStart: 4,
     freePhotosRateApp: 3,
-    freePhotosIncreatingTime: 259200,
-    freePhotosIncreasingAmount: 1,
-    loadingTimeSec: 20,
+    freePhotosIncreatingTime: 0,
+    freePhotosIncreasingAmount: 0,
+    loadingTimeSec: 15,
 };

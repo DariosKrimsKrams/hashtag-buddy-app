@@ -20,15 +20,12 @@
   <string name="myhashtags_other">"Hashtags d\'après des photos"</string>
   <string name="myhashtags_your">"Ajouté par vous-même"</string>
   <string name="myhashtags_intro">"Sauvegardez vos hashtags préférés ici. Vous pouvez y accéder directement à partir de la sélection de photos."</string>
-  <string name="progressbar_freemode_time">"Dans %1$s vous recevez 1 Chargement non censuré."</string>
-  <string name="progressbar_results_freemode2">"Achetez des photos pour débloquer les hashtags."</string>
-  <string name="progressbar_results_freemode1">"Limite gratuite atteinte: Les meilleurs hashtags sont cachés."</string>
-  <string name="progressbar_confirm_freemode2">"Les meilleurs hashtags sont cachés maintenant :("</string>
-  <string name="progressbar_confirm_freemode1">"Limite gratuite atteinte :"</string>
+  <string name="progressbar_results_freemode1">"Limite gratuite atteinte: Les meilleurs hashtags sont cachés. Achetez des photos pour débloquer les hashtags."</string>
+  <string name="progressbar_confirm_freemode1">"Limite gratuite atteinte: Les meilleurs hashtags sont cachés maintenant :("</string>
   <string name="progressbar_confirm_promode">"%% des photos restantes: Profitez des meilleurs hashtags."</string>
-  <string name="progressbar_home_freemode">"Vous avez utilisé tous vos chargements de photos gratuits. Vous pouvez toujours charger des photos mais certains hashtags seront censurés."</string>
+  <string name="progressbar_home_freemode">"Vous avez utilisé %1$s de %2$s de photos chargées gratuits. Vous pouvez toujours charger des photos mais certains hashtags seront censurés."</string>
   <string name="progressbar_home_iapmode">"Vous avez utilisé %1$s de %2$s de photos chargées."</string>
-  <string name="progressbar_home_startmode_is_using">"Vous avez utilisé %1$s des %2$s de %3$s de chargement de photos. Après les avoir tous utilisés, vous obtenez 1 chargement de photo toutes les 24 heures gratuitement."</string>
+  <string name="progressbar_home_startmode_is_using">"Vous avez utilisé %1$s des %2$s de chargement de photos. Après ça, vous obtenez 1 chargement de photo toutes les 3 journées gratuitement."</string>
   <string name="progressbar_home_startmode_not_used">"Vous obtenez %% de photos chargées gratuitement."</string>
   <string name="toast_imagepicker_failed">"La sélection des photos a échoué. Veuillez vérifier l\'autorisation de lecture."</string>
   <string name="toast_create_customer_at_upload_failed">"La demande a échoué ! Connexion perdue :\'("</string>
@@ -207,5 +204,6 @@
   <string name="app_name">"Hashtag Buddy"</string>
   <string name="title_activity_kimera">"Hashtag Buddy"</string>
   <string name="results_category_upcoming_hashtags">"Trending hashtags"</string>
+  <string name="progressbar_results_freemode2">"progressbar_results_freemode2"</string>
   <string name="Toast_imagepicker_failed">"Toast_imagepicker_failed"</string>
 </resources>

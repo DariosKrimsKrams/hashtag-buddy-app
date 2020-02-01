@@ -49,8 +49,8 @@ export class SelectPhotoService {
         observer.next(image);
         observer.complete();
       }).catch(err => {
-        console.log('image picker error', err);
-        if (err.substr(err.length - 13) !== 'result code 0') {
+        console.log('image picker error: ', err);
+        if (err.toString().substr(err.toString().length - 13) !== 'result code 0') {
           const text = localize('toast_imagepicker_failed');
           new Toasty({ text: text })
             .setToastDuration(ToastDuration.LONG)
@@ -107,7 +107,10 @@ export class SelectPhotoService {
         const httpResult = this.parseSuccessfulResponse(httpResponse);
         if (httpResult.logId !== undefined) {
           this.storeHttpResultIntoPhoto(photoId, httpResult);
-          this.photosCountService.decrease();
+          const remaining = this.photosCountService.getRemainingCount();
+          if (remaining >= 1) {
+            this.photosCountService.decrease();
+          }
           observer.next(photoId);
           observer.complete();
           return;
@@ -132,7 +135,7 @@ export class SelectPhotoService {
     const photo = this.userService.getPhoto(photoId);
     photo.categories = httpResult.categories;
     photo.logId = httpResult.logId;
-    photo.proMode = this.photosCountService.getTotalCount() > 0;
+    photo.proMode = this.photosCountService.getRemainingCount() >= 1;
     photo.censorHashtags();
     this.userService.updatePhoto(photo);
   }

@@ -8,6 +8,7 @@ import { UserService } from './user.service';
 })
 export class PhotosCountService {
   private keyPayedPhotos: string = 'payedPhotosAmount';
+  private keyTotalPayedPhotos: string = 'payedTotalPhotosAmount';
   private keyFreePhotos: string = 'freePhotosAmount';
   private keyFreeDate: string = 'freePhotosDate';
   public changedAmount: EventEmitter<void> = new EventEmitter<void>();
@@ -25,40 +26,39 @@ export class PhotosCountService {
   }
 
   public getTotalCount(): number {
-    const amountPayed = this.getPayedCount();
-    let amountFree = this.getFreeCount();
+    let totalAmount = 0;
+    totalAmount += this.getTotalPayedCount();
+    totalAmount += environment.freePhotosStart;
     const isAppRated = this.userService.isAppRated();
     if (isAppRated) {
-      amountFree += environment.freePhotosRateApp;
+      totalAmount += environment.freePhotosRateApp;
     }
-    const amountTotal = amountPayed + amountFree;
-    if (amountTotal === 0 && this.checkTimeOver()) {
-      this.setFreeCount(environment.freePhotosIncreasingAmount);
-      return environment.freePhotosIncreasingAmount;
-    }
-    return amountTotal;
+    return totalAmount;
   }
 
-  public checkTimeOver(): boolean {
-    const date = this.getDate();
-    const dateNow = (Date.now() / 1000) | 0;
-    if (date + environment.freePhotosIncreatingTime <= dateNow) {
-      return true;
+  public getRemainingCount(): number {
+    let totalAmount = 0;
+    totalAmount += this.getPayedCount();
+    totalAmount += this.getFreeCount();
+    const isAppRated = this.userService.isAppRated();
+    if (isAppRated) {
+      totalAmount += environment.freePhotosRateApp;
     }
-    return false;
+    return totalAmount;
   }
 
   public decrease(): boolean {
-    const amountTotal = this.getTotalCount();
-    if (amountTotal === 0) {
+    const totalAmount = this.getRemainingCount();
+    if (totalAmount <= 0) {
       return false;
     }
+
     let amountPayed = this.getPayedCount();
-    if (amountPayed > 1) {
+    if (amountPayed >= 1) {
       amountPayed--;
       this.setPayedCount(amountPayed);
     } else {
-      let freeAmount = amountTotal - amountPayed;
+      let freeAmount = this.getFreeCount();
       freeAmount--;
       this.setFreeCount(freeAmount);
     }
@@ -68,9 +68,12 @@ export class PhotosCountService {
 
   public addPayedPhotos(count: number): void {
     let amountPayed = this.getPayedCount();
-    console.log('amount', amountPayed);
     amountPayed += count;
     this.setPayedCount(amountPayed);
+
+    const totalPaid = this.getTotalPayedCount();
+    this.setTotalPayedCount(totalPaid + count);
+
     this.changedAmount.emit();
   }
 
@@ -90,6 +93,10 @@ export class PhotosCountService {
     return Number(this.localStorageService.get(this.keyPayedPhotos) || 0);
   }
 
+  private getTotalPayedCount(): number {
+    return Number(this.localStorageService.get(this.keyTotalPayedPhotos) || 0);
+  }
+
   private setFreeCount(amount: number): void {
     this.localStorageService.set(this.keyFreePhotos, amount);
     const dateNow = (Date.now() / 1000) | 0;
@@ -99,4 +106,9 @@ export class PhotosCountService {
   private setPayedCount(amount: number): void {
     this.localStorageService.set(this.keyPayedPhotos, amount);
   }
+
+  private setTotalPayedCount(amount: number): void {
+    this.localStorageService.set(this.keyTotalPayedPhotos, amount);
+  }
+
 }
