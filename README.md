@@ -61,14 +61,17 @@ tns run Android
 ```
 npm i -g nativescript@latest
 npm i tns-core-modules@latest
-tns platform remove android && tns platform add android@latest
-tns platform remove ios && tns platform add ios@latest
+tns platform remove android
+tns platform add android@latest
+tns platform remove ios
+tns platform add ios@latest
 ```
 
 ### Update Instruction
 
 ```
 tns info
+tns doctor
 npm i -g nativescript@latest
 npm i tns-core-modules@latest
 tns update
@@ -79,6 +82,7 @@ npm i nativescript-dev-webpack@latest --save-dev
 npm i nativescript-angular@latest --save
 ./node_modules/.bin/update-app-ng-deps
 npm i
+npm audit fix
 ```
 More detailed infos on [NativeScript Upgrade Instructions](https://docs.nativescript.org/releases/upgrade-instructions) page.
 
