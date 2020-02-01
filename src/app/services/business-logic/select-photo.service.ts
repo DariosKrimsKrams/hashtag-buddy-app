@@ -105,14 +105,16 @@ export class SelectPhotoService {
       // iOS uses -1 (not 200) at successful requests
       if (httpResponse.status === 'successful') {
         const httpResult = this.parseSuccessfulResponse(httpResponse);
-        this.storeHttpResultIntoPhoto(photoId, httpResult);
-        this.photosCountService.decrease();
-        observer.next(photoId);
-        observer.complete();
-      } else {
-        observer.error('upload failed');
-        observer.complete();
+        if (httpResult.logId !== undefined) {
+          this.storeHttpResultIntoPhoto(photoId, httpResult);
+          this.photosCountService.decrease();
+          observer.next(photoId);
+          observer.complete();
+          return;
+        }
       }
+      observer.error('upload failed');
+      observer.complete();
     });
   }
 
