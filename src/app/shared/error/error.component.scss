@@ -1,4 +1,15 @@
-.title,
+// .bg {
+  // width: 100%;
+  // height: 100%;
+  // vertical-align: center;
+  // background-color: rgb(94, 117, 137);
+  // padding: 20;
+// }
+
+#big_header {
+  height: 220pt;
+}
+
 .desc {
   font-size: 28pt;
   font-family: 'AvenirNext-Medium', 'Avenir Next Medium';
@@ -11,7 +22,11 @@
 }
 
 Button {
-  text-transform: unset;
-  font-family: 'AvenirNext-DemiBold', 'Avenir Next Demi Bold';
-  font-size: 16pt;
+  height: 50pt;
+  text-transform: none;
+
+  &.main-button {
+    color: #fff;
+    margin-bottom: 10pt;
+  }
 }

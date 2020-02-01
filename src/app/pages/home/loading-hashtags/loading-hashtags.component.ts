@@ -70,11 +70,7 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
 
   private uploadFailed(): void {
     clearInterval(this.intervalId);
-    this.redirectToHome();
-  }
-
-  private redirectToHome(): void {
-    this.router.navigate([`/home`], {
+    this.router.navigate([`/error`], {
       transition: {
         name: 'FadeIn',
         duration: 500,
@@ -82,4 +78,5 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
       }
     });
   }
+  
 }

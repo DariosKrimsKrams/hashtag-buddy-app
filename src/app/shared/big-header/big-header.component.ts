@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
   selector: 'ns-big-header',
@@ -9,6 +9,9 @@ import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@
 })
 export class BigHeaderComponent implements OnInit {
 
+  @Input() public image: string;
+  @Input() public darkmode: boolean;
+
   constructor(
     private readonly cd: ChangeDetectorRef
   ) {
@@ -17,6 +20,10 @@ export class BigHeaderComponent implements OnInit {
 
   public ngOnInit(): void {
     this.cd.detectChanges();
+  }
+
+  public get imagePath(): string {
+    return '~/app/assets/images/header/' + this.image;
   }
 
 }

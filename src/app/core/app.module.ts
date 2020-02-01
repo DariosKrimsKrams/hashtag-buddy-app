@@ -15,6 +15,7 @@ import { MyhashtagsModule } from '~/app/pages/myhashtags/myhashtags.module';
 import { FaqModule } from '~/app/pages/faq/faq.module';
 import { FeedbackModule } from '~/app/pages/feedback/feedback.module';
 import { StoreModule } from '~/app/pages/store/store.module';
+import { ErrorModule } from '../shared/error/error.module';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -33,7 +34,8 @@ import { StoreModule } from '~/app/pages/store/store.module';
     MyhashtagsModule,
     FaqModule,
     FeedbackModule,
-    StoreModule
+    StoreModule,
+    ErrorModule
   ],
   declarations: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA],

@@ -1,6 +1,11 @@
-.subtitle {
-  font-size: 17pt;
-  font-family: 'AvenirNext-Medium', 'Avenir Next Medium';
+.header-text {
+  font-family: "AvenirNext-Medium", "Avenir Next Medium";
+  text-transform: none;
+  font-size: 28pt;
   text-align: center;
   color: #fff;
+
+  &.size-smaller {
+    font-size: 24pt;
+  }
 }

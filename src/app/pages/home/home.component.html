@@ -25,13 +25,12 @@
     </AbsoluteLayout>
 
     <StackLayout id="big_header" #header verticalAlignment="top" isUserInteractionEnabled="false">
-        <ns-big-header></ns-big-header>
+        <ns-big-header image="img5.jpg" [darkmode]="false"></ns-big-header>
     </StackLayout>
 
     <StackLayout (tap)="openMenu()" horizontalAlignment="left" verticalAlignment="top" height="70" width="70" class="m-t-20">
         <Image src="~/app/assets/images/icons/menu_bar_white.png" height="20" width="20" class="m-t-20 p-l-25 p-r-25 p-b-20 p-t-10"></Image>
     </StackLayout>
-
 
     <ns-confirm-image *ngIf="showConfirmImage" (onClickCancel)="clickCancelConfirmImage()"></ns-confirm-image>
 

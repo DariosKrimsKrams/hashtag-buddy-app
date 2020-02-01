@@ -1,28 +1,22 @@
 <StackLayout tkMainContent>
-    <GridLayout rows="200,*" class="Error">
-        <GridLayout row="0">
-            <Image src="~/app/assets/images/big-header.png" stretch="fill"></Image>
-            <StackLayout>
-                <GridLayout rows="50" columns="40,*,40" class="m-b-10 m-t-20">
-                    <Image src="~/app/assets/images/icons/menu_bar_white.png" col="0" class="m-l-20" (tap)="openMenu()"></Image>
-                    <GridLayout col="1" horizontalAlignment="center">
-                        <Image src="~/app/assets/images/logo_white.png" height="30"></Image>            
-                    </GridLayout>
-                    <Label col="2"></Label>
-                </GridLayout>
-                <Label [text]="'error_headline' | L" color="white" class="text-center title"></Label>
-                <Label [text]="'error_desc' | L" color="white" class="text-center desc"></Label>
-            </StackLayout>
-        </GridLayout>
-        <StackLayout row="1" class="p-20 m-t-20">
+    <GridLayout rows="220,*">
+
+        <StackLayout row="0" id="big_header" verticalAlignment="top">
+            <ns-big-header image="home2.jpg" [darkmode]="true"></ns-big-header>
+            <Label [text]="'error_headline' | L" textWrap="true"></Label>
+            <Label [text]="'error_desc' | L" textWrap="true"></Label>
+        </StackLayout>
+        
+        <StackLayout row="1" class="p-l-20 p-r-20 m-t-70">
             <GridLayout rows="auto" columns="50,*" class="info p-10">
                 <Image src="~/app/assets/images/icons/info.png" row="0" col="0" width="22pt" height="22pt"></Image>
-                <Label [text]="'error_desc2' | L" textWrap="true" row="0" col="1"></Label>
+                <Label [text]="'error_desc2' | L" textWrap="true" class="font-reg-s" row="0" col="1"></Label>
             </GridLayout>
             <StackLayout class="m-t-30">
-                <Button [text]="'error_button_try_again' | L" class="btn btn-normal btn-rounded-lg"></Button>
-                <Button [text]="'error_button_back' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal"></Button>
+                <!-- <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient main-button" text="{{ 'error_button_try_again' | L }}" (tap)="clickRetry()"></Button> -->
+                <Button class="btn btn-rounded-lg btn-outline border-color-normal color-normal" text="{{ 'error_button_back' | L }}" (tap)="clickGoHome()"></Button>
             </StackLayout>            
         </StackLayout>
+        
     </GridLayout>
 </StackLayout>

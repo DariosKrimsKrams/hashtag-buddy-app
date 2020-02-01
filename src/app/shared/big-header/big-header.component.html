@@ -1,9 +1,11 @@
 <GridLayout class="big-header">
-    <Image src="~/app/assets/images/header/img5.jpg" stretch="aspectFill"></Image>
-    <GridLayout rows="*,auto" id="header-content" class="gradientTrans p-t-20">
-        <GridLayout row="0" rows="40" columns="*,auto,auto,*" class="m-t-10 m-b-20">
+    <Image [src]="imagePath" stretch="aspectFill"></Image>
+    <GridLayout rows="*,auto" id="header-content" style="padding-top: 20pt;" [class]="!!this.darkmode ? 'gradientTransDark' : 'gradientTrans'">
+        <GridLayout row="0" rows="40" columns="*,auto,auto,*" class="m-t-10 m-b-20" *ngIf="!darkmode">
             <Image col="2" src="~/app/assets/images/logo_white.png" height="30" verticalAlignment="top" class="m-t-4"></Image>
         </GridLayout>
+        <Label row="0" [text]="'error_headline' | L" textWrap="true" class="m-t-40 header-text" *ngIf="darkmode"></Label>
+        <Label row="0" [text]="'error_desc' | L" textWrap="true" class="m-t-90 header-text size-smaller" *ngIf="darkmode"></Label>
         <Image row="1" src="~/app/assets/images/header_shadow.png"></Image>
     </GridLayout>
 </GridLayout>

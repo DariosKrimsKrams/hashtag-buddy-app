@@ -4,6 +4,7 @@ import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { MyhashtagsComponent } from '../pages/myhashtags/myhashtags.component';
 import { FaqComponent } from '../pages/faq/faq.component';
 import { StoreComponent } from '../pages/store/store.component';
+import { ErrorComponent } from '../shared/error/error.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'settings', loadChildren: '~/app/pages/settings/settings.module#SettingsModule' },
   { path: 'store', component: StoreComponent },
   { path: 'faq', component: FaqComponent },
-  { path: 'myhashtags', component: MyhashtagsComponent }
+  { path: 'myhashtags', component: MyhashtagsComponent },
+  { path: 'error', component: ErrorComponent }
 ];
 
 @NgModule({

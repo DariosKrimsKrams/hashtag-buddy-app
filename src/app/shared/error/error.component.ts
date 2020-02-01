@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
   selector: 'ns-error',
@@ -12,6 +13,7 @@ export class ErrorComponent implements OnInit {
 
   constructor(
     private readonly page: Page,
+    private readonly router: RouterExtensions
   ) {
     this.page.actionBarHidden = true;
   }
@@ -19,8 +21,18 @@ export class ErrorComponent implements OnInit {
   public ngOnInit(): void {
   }
 
-  public openMenu(): void {
+  // public clickRetry(): void {
 
+  // }
+
+  public clickGoHome(): void {
+    this.router.navigate([`/home`], {
+      transition: {
+        name: 'slideRight',
+        duration: 500,
+        curve: 'easeOut'
+      }
+    });
   }
 
 }
