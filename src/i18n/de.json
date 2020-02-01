@@ -174,7 +174,7 @@
   "toast_create_customer_at_upload_failed": "Internet-Verbindung verloren :'(",
   "toast_imagepicker_failed": "Foto auswählen fehlgeschlagen. Bitte Berechtigung prüfen.",
   "progressbar_home_startmode_not_used": "Du erhälst %s Foto Uploads kostenlos",
-  "progressbar_home_startmode_is_using": "Du hast %s von %s Foto Uploads verwendet. Danach bekommst du 1 Foto Upload alle 24 Stunden kostenlos.",
+  "progressbar_home_startmode_is_using": "Du hast %s von %s Foto Uploads verwendet. Danach bekommst du 1 Foto Upload alle 3 Tage kostenlos.",
   "progressbar_home_iapmode": "Du hast %s von %s Foto Uploads verwendet.",
   "progressbar_home_freemode": "Du hast alle kostenlose Foto Uploads verbraucht. Du kannst weiterhin Foto hochladen, aber einige Hashtags werden zensiert.",
   "progressbar_confirm_promode": "noch %s Foto Uploads",

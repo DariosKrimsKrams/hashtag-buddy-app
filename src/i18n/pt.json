@@ -174,7 +174,7 @@
   "toast_create_customer_at_upload_failed": "O pedido falhou! Conexão perdida :'(",
   "toast_imagepicker_failed": "Falhou a escolha de fotos. Por favor, verifique a permissão.",
   "progressbar_home_startmode_not_used": "Tem %s carregamentos de foto gratuitos.",
-  "progressbar_home_startmode_is_using": "Já utilizou %s de %s carregamentos de fotos. Quando esgotar, tem 1 carregamento gratuito a cada 24 horas.",
+  "progressbar_home_startmode_is_using": "Já utilizou %s de %s carregamentos de fotos. Quando esgotar, tem 1 carregamento gratuito a cada 3 dias.",
   "progressbar_home_iapmode": "Utilizou %s de %s carregamentos de foto.",
   "progressbar_home_freemode": "Já usou todos os carregamentos de foto gratuitods. Ainda poderá carregar as suas fotos mas os hashtags exclusivos ficaram ocultos.",
   "progressbar_confirm_promode": "Ainda tem %s carregamentos de foto: Disfrute dos melhores hashtags.",

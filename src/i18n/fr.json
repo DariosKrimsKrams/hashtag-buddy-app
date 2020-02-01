@@ -174,7 +174,7 @@
   "toast_create_customer_at_upload_failed": "La demande a échoué ! Connexion perdue :'(",
   "toast_imagepicker_failed": "La sélection des photos a échoué. Veuillez vérifier l'autorisation de lecture.",
   "progressbar_home_startmode_not_used": "Vous obtenez % de photos chargées gratuitement.",
-  "progressbar_home_startmode_is_using": "Vous avez utilisé %s des %s de %s de chargement de photos. Après les avoir tous utilisés, vous obtenez 1 chargement de photo toutes les 24 heures gratuitement.",
+  "progressbar_home_startmode_is_using": "Vous avez utilisé %s des %s de chargement de photos. Après ça, vous obtenez 1 chargement de photo toutes les 3 journées gratuitement.",
   "progressbar_home_iapmode": "Vous avez utilisé %s de %s de photos chargées.",
   "progressbar_home_freemode": "Vous avez utilisé tous vos chargements de photos gratuits. Vous pouvez toujours charger des photos mais certains hashtags seront censurés.",
   "progressbar_confirm_promode": "% des photos restantes: Profitez des meilleurs hashtags.",
