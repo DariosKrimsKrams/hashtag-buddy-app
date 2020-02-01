@@ -22,7 +22,6 @@
   <string name="myhashtags_intro">"Guarde os seus hashtags favoritos aqui. Podes aceder diretamente através das fotos selecionadas."</string>
   <string name="progressbar_results_freemode1">"Atingiu o limite de carregamentos grátis: Os melhores hashtags estão ocultos. Compre carregamentos de fotos para desbloquear os hashtags."</string>
   <string name="progressbar_confirm_freemode1">"Atingiu o limite de carregamentos gratuitos: Os melhores e os hashtags exclusivos estão agora ocultos :("</string>
-  <string name="progressbar_confirm_promode">"Ainda tem %1$s carregamentos de foto: Disfrute dos melhores hashtags."</string>
   <string name="progressbar_home_freemode">"Já usou %1$s de %2$s carregamentos de foto gratuitods. Ainda poderá carregar as suas fotos mas os hashtags exclusivos ficaram ocultos."</string>
   <string name="progressbar_home_iapmode">"Utilizou %1$s de %2$s carregamentos de foto."</string>
   <string name="progressbar_home_startmode_is_using">"Já utilizou %1$s de %2$s carregamentos de fotos. Quando esgotar, tem 1 carregamento gratuito a cada 3 dias."</string>

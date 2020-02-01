@@ -132,8 +132,13 @@ export class AppComponent implements OnInit, OnDestroy {
   private showRateAppModal(): void {
     const okFunc = () => {
       this.userService.saveRateAppStatus('rated');
-      const text = localize('link_playstore');
-      openUrl(text);
+      this.userService.appRatedTriggered.emit();
+      const text = localize('feedback_successful_headline');
+      new Toasty({ text: text })
+        .setToastDuration(ToastDuration.LONG)
+        .show();
+      const link = localize('link_playstore');
+      openUrl(link);
     };
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,

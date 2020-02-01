@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @Output() public historyOpenChanged: EventEmitter<boolean> = new EventEmitter();
 
   private photoAddedSubscription: Subscription;
+  private appRatedSubscription: Subscription;
   private androidBackTriggeredSubscription: Subscription;
   private backTriggeredForExit: boolean;
 
@@ -61,6 +62,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
       this.cd.detectChanges();
     });
+    this.appRatedSubscription = this.userService.appRatedTriggered.subscribe(() => {
+      this.cd.detectChanges();
+      setTimeout.bind(this)(() => {
+        this.cd.detectChanges();
+      }, 100);
+    });
     this.androidBackTriggeredSubscription = this.userService.androidBackTriggered.subscribe((path: string) => this.onAndroidBackTriggered(path));
     this.cd.detectChanges();
   }
@@ -68,6 +75,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.photoAddedSubscription.unsubscribe();
     this.androidBackTriggeredSubscription.unsubscribe();
+    this.appRatedSubscription.unsubscribe();
   }
 
   public clickSelectPhoto(): void {

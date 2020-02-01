@@ -177,7 +177,6 @@
   "progressbar_home_startmode_is_using": "You have used %s of %s photo uploads. After that, some hashtags will be hidden.",
   "progressbar_home_iapmode": "You used %s of %s photo uploads.",
   "progressbar_home_freemode": "You used %s von %s free photo uploads. You can still upload photos but some hashtags will be hidden.",
-  "progressbar_confirm_promode": "%s photos left: Enjoy the best hashtags.",
   "progressbar_confirm_freemode1": "Free limit reached: Best and exclusive hashtags will be hidden :(",
   "progressbar_results_freemode1": "Free limit reached: Best hashtags are hidden. Buy photo uploads to unlock hashtags.",
   "myhashtags_intro": "Save your favorite hashtags here. You can access them directly from the photos-selection.",

@@ -22,7 +22,6 @@
   <string name="myhashtags_intro">"Speichere hier deine Lieblings-Hashtags. Du kannst dann direkt aus der Foto-Auswahl darauf zugreifen."</string>
   <string name="progressbar_results_freemode1">"Kostenloses Limit erreicht: Die besten Hashtags sind versteckt. Erwerbe Foto-Uploads, um alle Hashtags zu sehen."</string>
   <string name="progressbar_confirm_freemode1">"Kostenloses Limit erreicht: Die besten und exklusive Hashtags werden versteckt :("</string>
-  <string name="progressbar_confirm_promode">"noch %1$s Foto Uploads"</string>
   <string name="progressbar_home_freemode">"Du hast %1$s von %2$s kostenlose Foto Uploads verwendet. Du kannst weiterhin Foto hochladen, aber einige Hashtags werden versteckt."</string>
   <string name="progressbar_home_iapmode">"Du hast %1$s von %2$s Foto Uploads verwendet."</string>
   <string name="progressbar_home_startmode_is_using">"Du hast %1$s von %2$s Foto Uploads verwendet. Danach werden einige Hashtags versteckt."</string>
@@ -114,7 +113,7 @@
   <string name="about_headline_credits">"Entwickelt von"</string>
   <string name="about_desc_3">"Lass uns diese Idee gemeinsam verbessern, indem du mir Feedback, z.B. zu Funktionen oder Verbesserungsmöglichkeiten, gibst."</string>
   <string name="about_desc_2">"Ich glaube daran, dass es Verbesserungspotential gibt, wie wir derzeit die besten und relevantesten Hashtags für unsere Fotos finden. Mit dieser App möchte ich es jedem ermöglichen, die relevantesten Hashtags zu finden, um besser auf Instagram gefunden zu werden. Um dies zu erreichen, sammelt diese App riesige Datenmengen Instagram\'s neuster und erfolgreichster Fotos, und analysiert diese, um so die besten Hashtags liefern zu können."</string>
-  <string name="about_desc_1">"Danke, dass du diese App verwendest :)"</string>
+  <string name="about_desc_1">"Danke, dass du Hashtag Buddy verwendest :)"</string>
   <string name="about_title">"Über mich"</string>
   <string name="settings_footer_title_fallback">"Teilen"</string>
   <string name="settings_footer_title">"Folge us"</string>

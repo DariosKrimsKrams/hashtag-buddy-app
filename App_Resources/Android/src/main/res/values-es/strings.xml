@@ -23,7 +23,6 @@
   <string name="progressbar_results_freemode2">""</string>
   <string name="progressbar_results_freemode1">"Límite libre alcanzado: los mejores hashtags están ocultos. Compra subidas de fotos para desbloquear hashtags"</string>
   <string name="progressbar_confirm_freemode1">"Límite libre alcanzado: Los mejores hashtags están ocultos ahora :("</string>
-  <string name="progressbar_confirm_promode">"Quedan %1$s fotos: disfruta de los mejores hashtags"</string>
   <string name="progressbar_home_freemode">"Usaste %1$s de %2$s cargas de fotos gratis. Todavía puedes subir fotos pero algunos hashtags serán censurados"</string>
   <string name="progressbar_home_iapmode">"Usaste %1$s de %2$s cargas de fotos"</string>
   <string name="progressbar_home_startmode_is_using">"Has usado %1$s de %2$s subidas de fotos. Después de usarlas todas, obtienes 1 subida de fotos cada 3 dias gratis."</string>

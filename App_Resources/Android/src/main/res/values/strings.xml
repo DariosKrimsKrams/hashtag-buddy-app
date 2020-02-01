@@ -22,7 +22,6 @@
   <string name="myhashtags_intro">"Save your favorite hashtags here. You can access them directly from the photos-selection."</string>
   <string name="progressbar_results_freemode1">"Free limit reached: Best hashtags are hidden. Buy photo uploads to unlock hashtags."</string>
   <string name="progressbar_confirm_freemode1">"Free limit reached: Best and exclusive hashtags will be hidden :("</string>
-  <string name="progressbar_confirm_promode">"%1$s photos left: Enjoy the best hashtags."</string>
   <string name="progressbar_home_freemode">"You used %1$s von %2$s free photo uploads. You can still upload photos but some hashtags will be hidden."</string>
   <string name="progressbar_home_iapmode">"You used %1$s of %2$s photo uploads."</string>
   <string name="progressbar_home_startmode_is_using">"You have used %1$s of %2$s photo uploads. After that, some hashtags will be hidden."</string>

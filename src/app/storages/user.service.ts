@@ -21,6 +21,7 @@ export class UserService {
   @Output() public uploadCompletedTriggered: EventEmitter<string> = new EventEmitter<string>();
   @Output() public openFeedbackModal: EventEmitter<void> = new EventEmitter<void>();
   @Output() public openTipsAndTricksPage: EventEmitter<void> = new EventEmitter<void>();
+  @Output() public appRatedTriggered: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private readonly localStorageService: LocalStorageService

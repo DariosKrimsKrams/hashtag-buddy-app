@@ -9,11 +9,9 @@ import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
 import { UserService } from '~/app/storages/user.service';
-import * as dialogs from 'tns-core-modules/ui/dialogs';
 import { Subscription } from 'rxjs';
 import { StoreService } from '~/app/storages/store.service';
 import { PLANS } from '~/app/data/plans';
-import { Plan } from '~/app/models/plan';
 
 @Component({
   selector: 'ns-faq',
@@ -45,7 +43,7 @@ export class FaqComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.faqs = [];
     const maxItem = 11;
-    const lockedNumbers = [4, 5, 8, 10, 11];
+    const lockedNumbers = [4, 5, 7, 8, 10, 11];
     for (let i = 1; i <= maxItem; i++) {
       const faq = new TipsAndTricks({
         expand: false,

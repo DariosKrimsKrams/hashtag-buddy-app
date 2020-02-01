@@ -177,7 +177,6 @@
   "progressbar_home_startmode_is_using": "Vous avez utilisé %s des %s de chargement de photos. Après ça, vous obtenez 1 chargement de photo toutes les 3 journées gratuitement.",
   "progressbar_home_iapmode": "Vous avez utilisé %s de %s de photos chargées.",
   "progressbar_home_freemode": "Vous avez utilisé %s de %s de photos chargées gratuits. Vous pouvez toujours charger des photos mais certains hashtags seront censurés.",
-  "progressbar_confirm_promode": "% des photos restantes: Profitez des meilleurs hashtags.",
   "progressbar_confirm_freemode1": "Limite gratuite atteinte: Les meilleurs hashtags sont cachés maintenant :(",
   "progressbar_results_freemode1": "Limite gratuite atteinte: Les meilleurs hashtags sont cachés. Achetez des photos pour débloquer les hashtags.",
   "myhashtags_intro": "Sauvegardez vos hashtags préférés ici. Vous pouvez y accéder directement à partir de la sélection de photos.",

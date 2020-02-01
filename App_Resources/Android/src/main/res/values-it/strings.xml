@@ -23,7 +23,6 @@
   <string name="progressbar_results_freemode2">""</string>
   <string name="progressbar_results_freemode1">"Limite gratuito raggiunto: I migliori hashtag sono nascosti. Acquista caricamenti foto per sbloccare gli hashtag."</string>
   <string name="progressbar_confirm_freemode1">"Limite gratuito raggiunto: Adesso i migliori hashtag verranno nascosti :("</string>
-  <string name="progressbar_confirm_promode">"Rimangono %1$s foto: Goditi i migliori hashtag."</string>
   <string name="progressbar_home_freemode">"Hai usato %1$s di %2$s caricamenti gratuiti di foto. Puoi ancora caricare le foto, ma alcuni hashtag saranno nascosti"</string>
   <string name="progressbar_home_iapmode">"Hai usato %1$s di %2$s caricamenti foto."</string>
   <string name="progressbar_home_startmode_is_using">"Hai usato %1$s di %2$s caricamenti foto. Dopo averli utilizzati tutti, si ottiene 1 caricamento di foto gratis ogni 3 giorni."</string>

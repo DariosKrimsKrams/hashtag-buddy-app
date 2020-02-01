@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { PhotosCountService } from '../../storages/photos-count.service';
-import { environment } from '../../environments/environment';
 import { Subscription } from 'rxjs';
 import { localize } from 'nativescript-localize/angular';
 import { UserService } from '~/app/storages/user.service';
@@ -16,16 +15,16 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   public isVisible: boolean;
   public columns: any;
   public text1: string;
-  public text2: string;
   public countPhotoLeft: number;
   public countPhotosOverall: number;
+  public used: boolean;
+  public usedAmount: number;
 
   @Input() public page: string;
   @Input() public width: string;
 
-  private oneHour = 3600;
   private photosCountChangeSubscription: Subscription;
-  private used: boolean;
+  private appRatedSubscription: Subscription;
 
   constructor(
     private readonly photosCountService: PhotosCountService,
@@ -36,11 +35,15 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     this.photosCountChangeSubscription = this.photosCountService.changedAmount.subscribe(() => {
       this.photoChanged();
     });
+    this.appRatedSubscription = this.userService.appRatedTriggered.subscribe(() => {
+      this.photoChanged();
+    });
     this.photoChanged();
   }
 
   public ngOnDestroy(): void {
     this.photosCountChangeSubscription.unsubscribe();
+    this.appRatedSubscription.unsubscribe();
   }
 
   private photoChanged(): void {
@@ -54,6 +57,7 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     this.countPhotosOverall = this.photosCountService.getTotalCount();
     this.countPhotoLeft = this.photosCountService.getRemainingCount();
     this.used = this.countPhotosOverall !== this.countPhotoLeft;
+    this.usedAmount = this.countPhotosOverall - this.countPhotoLeft;
   }
 
   private buildText(): void {
@@ -64,34 +68,36 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     }
 
     this.isVisible = true;
-    const usedAmount = this.countPhotosOverall - this.countPhotoLeft;
+
     if (this.page === 'home') {
       if (hasPayedPhotos) {
-        this.text1 = localize('progressbar_home_iapmode', usedAmount.toString(), this.countPhotosOverall.toString());
+        this.text1 = localize('progressbar_home_iapmode', this.usedAmount.toString(), this.countPhotosOverall.toString());
       } else {
-        if (this.used) {
-          this.text1 = localize('progressbar_home_startmode_is_using', usedAmount.toString(), this.countPhotosOverall.toString());
+        if (this.countPhotoLeft === 0) {
+          this.text1 = localize('progressbar_home_freemode', this.usedAmount.toString(), this.countPhotosOverall.toString());
+        } else if (this.used) {
+          this.text1 = localize('progressbar_home_startmode_is_using', this.usedAmount.toString(), this.countPhotosOverall.toString());
         } else {
           this.text1 = localize('progressbar_home_startmode_not_used', this.countPhotosOverall.toString());
         }
       }
-      this.text2 = '';
-      if (this.countPhotoLeft === 0) {
-        this.text2 = localize('progressbar_home_freemode', usedAmount.toString(), this.countPhotosOverall.toString());
-      }
     }
 
     if (this.page === 'confirm') {
+      this.text1 = '';
       if (this.used) {
-        this.text2 = localize('progressbar_home_iapmode', usedAmount.toString(), this.countPhotosOverall.toString());
+        this.text1 = localize('progressbar_home_iapmode', this.usedAmount.toString(), this.countPhotosOverall.toString());
         if (this.countPhotoLeft === 0) {
-          this.text2 = localize('progressbar_confirm_freemode1');
+          this.text1 = localize('progressbar_confirm_freemode1');
         }
       }
     }
 
     if (this.page === 'results') {
-      this.text2 = localize('progressbar_results_freemode1');
+      this.text1 = '';
+      if (this.countPhotoLeft === 0) {
+        this.text1 = localize('progressbar_results_freemode1');
+      }
     }
   }
 
