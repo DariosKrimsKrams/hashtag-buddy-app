@@ -1,6 +1,6 @@
 <StackLayout id="container">
     <Label text="&times;" id="close-button" class="m-l-20 m-t-30" (tap)="goPrevPage()"></Label>
-    <StackLayout id="dialog">
+    <StackLayout id="dialog" class="m-t-20">
         <Label class="text-center" textWrap="true" text="{{ 'selection_popup_title' | L }}:"></Label> 
         <StackLayout id="main-image" class="m-t-15 m-b-15">
             <Image [src]="photo" stretch="aspectFill"></Image> 

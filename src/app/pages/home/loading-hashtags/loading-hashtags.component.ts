@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import * as frame from 'tns-core-modules/ui/frame';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'ns-loading-hashtags',
@@ -19,6 +20,7 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
 
   private tipTimeSec: number = 7;
   private intervalId: number;
+  private timeoutId: number;
   private subscription1: Subscription;
   private subscription2: Subscription;
 
@@ -33,14 +35,22 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.subscription1 = this.userService.uploadFailedTriggered.subscribe(() => {
       this.uploadFailed();
+      clearInterval(this.timeoutId);
+      clearInterval(this.intervalId);
     });
     this.subscription2 = this.userService.uploadCompletedTriggered.subscribe(() => {
       clearInterval(this.intervalId);
+      clearInterval(this.timeoutId);
     });
 
     this.animateDots();
     this.animateTips();
     disableIosSwipe(this.page, frame);
+
+    this.timeoutId = setTimeout.bind(this)(() => {
+      this.uploadFailed();
+      clearInterval(this.intervalId);
+    }, (environment.loadingTimeSec + 3) * 1000);
   }
 
   public ngOnDestroy(): void {
@@ -78,5 +88,5 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
       }
     });
   }
-  
+
 }
