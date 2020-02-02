@@ -115,7 +115,7 @@
   <string name="about_desc_3">"¡Permítanos mejorar esta aplicación juntos! Por favor contribuya dándome sus comentarios sobre hashtags o dígame qué le gusta o qué no le gusta"</string>
   <string name="about_desc_2">"Creo que existe una posible mejora en la forma de encontrar los hashtags más relevantes y adecuados. Me gustaría ofrecer una app para ayudar a todos a encontrar los hashtags más relevantes. Para encontrarla, el software detrás de esta app recopila y analiza miles de fotos en instagram."</string>
   <string name="about_desc_1">"Gracias por usar esta Aplicación :)"</string>
-  <string name="about_title">"Acerca de mí"</string>
+  <string name="about_title">"Acerca de Hashtag Buddy"</string>
   <string name="settings_footer_title_fallback">"Compartir"</string>
   <string name="settings_footer_title">"Síguenos"</string>
   <string name="feedback_modal_button">"OK"</string>
@@ -157,9 +157,9 @@
   <string name="leave_feedback_send_feedback">"Enviar y transferirlos a Instagram"</string>
   <string name="leave_feedback_comments">"¿Cómo puedo mejorarlo?"</string>
   <string name="leave_feedback_missing_hashtags">"¿Faltan hashtags?"</string>
-  <string name="leave_feedback_bad_hashtags_desc">"Hashtags que están fuera de contexto …"</string>
+  <string name="leave_feedback_bad_hashtags_desc">"Hashtags que están fuera de contexto?"</string>
   <string name="leave_feedback_bad_hashtags_title">"¿Hashtags inapropiados?"</string>
-  <string name="leave_feedback_good_hashtags_desc">"Hashtags que más me gustan …"</string>
+  <string name="leave_feedback_good_hashtags_desc">"Hashtags que más me gustan?"</string>
   <string name="leave_feedback_good_hashtags_title">"¿Hashtags particularmente coincidentes?"</string>
   <string name="leave_feedback_rating_desc">"Califica los resultados"</string>
   <string name="leave_feedback_rating_title">"¿Te gustaron los hashtags?"</string>

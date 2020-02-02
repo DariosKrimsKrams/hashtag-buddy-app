@@ -78,7 +78,7 @@
   <string name="iap_purchase_successful_msg">"Von nun an kannst du die volle Pracht deines neuen Buddy genießen. Du hast erfolgreich %1$s erworben :)"</string>
   <string name="iap_purchase_successful_title">"Herzlichen Glückwunsch! Gute Wahl."</string>
   <string name="iap_purchase_failed">"Kauf wurde abgebrochen"</string>
-  <string name="store_buy_tips_tricks">"Erwerbe Tipps &amp; Tricks"</string>
+  <string name="store_buy_tips_tricks">"Erwerbe Tipps &amp; Tricks einzeln"</string>
   <string name="store_buy_photo">"Erwerbe Foto Uploads"</string>
   <string name="store_buy_failed">"Schade, dein Konto scheint nicht für Zahlungen berechtigt zu sein :("</string>
   <string name="store_save">"Spare"</string>
@@ -89,7 +89,7 @@
   <string name="store_outro">"Bitte bedenke, dass %1$s bei jeder Transaktion 30 %% einbehält. Vielen Dank für deine Unterstützung :)"</string>
   <string name="store_headline_abo">"Abonnements"</string>
   <string name="store_headline_once">"Einmal-Käufe"</string>
-  <string name="store_intro">"Erwerbe Fotos Uploads, um noch mehr und unzensierte Hashtags zu erhalten. Diese Umsätze bringen mir keinen Gewinn, aber unterstützen mich der Kostendeckung dieser App."</string>
+  <string name="store_intro">"Erwerbe Fotos Uploads, um weiterhin die besten Hashtags zu erhalten. Diese Umsätze bringen mir keinen Gewinn, aber unterstützen mich der Kostendeckung dieser App."</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"Mehr"</string>
   <string name="menu_new">"neu"</string>
@@ -114,7 +114,7 @@
   <string name="about_desc_3">"Lass uns diese Idee gemeinsam verbessern, indem du mir Feedback, z.B. zu Funktionen oder Verbesserungsmöglichkeiten, gibst."</string>
   <string name="about_desc_2">"Ich glaube daran, dass es Verbesserungspotential gibt, wie wir derzeit die besten und relevantesten Hashtags für unsere Fotos finden. Mit dieser App möchte ich es jedem ermöglichen, die relevantesten Hashtags zu finden, um besser auf Instagram gefunden zu werden. Um dies zu erreichen, sammelt diese App riesige Datenmengen Instagram\'s neuster und erfolgreichster Fotos, und analysiert diese, um so die besten Hashtags liefern zu können."</string>
   <string name="about_desc_1">"Danke, dass du Hashtag Buddy verwendest :)"</string>
-  <string name="about_title">"Über mich"</string>
+  <string name="about_title">"Über Hashtag Buddy"</string>
   <string name="settings_footer_title_fallback">"Teilen"</string>
   <string name="settings_footer_title">"Folge us"</string>
   <string name="feedback_modal_button">"OK"</string>

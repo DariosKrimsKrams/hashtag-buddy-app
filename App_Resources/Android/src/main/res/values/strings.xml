@@ -78,7 +78,7 @@
   <string name="iap_purchase_successful_msg">"From now on you\'ll be able to enjoy the full beauty of your new Buddy. You successfully acquired %1$s :)"</string>
   <string name="iap_purchase_successful_title">"Congratulations! You chose well."</string>
   <string name="iap_purchase_failed">"Purchase was canceled"</string>
-  <string name="store_buy_tips_tricks">"Acquire tips &amp; tricks"</string>
+  <string name="store_buy_tips_tricks">"Acquire tips &amp; tricks separatly"</string>
   <string name="store_buy_photo">"Acquire photo uploads"</string>
   <string name="store_buy_failed">"Sadly, your account seems to not be eligible to make payments :("</string>
   <string name="store_save">"Save"</string>
@@ -89,7 +89,7 @@
   <string name="store_outro">"Keep in mind that %1$s takes 30 %% off for every transaction you make. Thank you for your support :)"</string>
   <string name="store_headline_abo">"Subscriptions"</string>
   <string name="store_headline_once">"One-time payments"</string>
-  <string name="store_intro">"Buy photo uploads for more and uncensored hashtag results. These sales won\'t bring me any profit. It will however support me cover costs for this app."</string>
+  <string name="store_intro">"Buy photo uploads for more and trending hashtag results. These sales won\'t bring me any profit. It will however support me cover costs for this app."</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"More"</string>
   <string name="menu_new">"new"</string>
@@ -114,7 +114,7 @@
   <string name="about_desc_3">"Let us improve this app together! Please contribute by giving me your feedback for hashtags and telling me what you like or dislike."</string>
   <string name="about_desc_2">"I believe there is improvement potential for the way to find the most appropriate and relevant hashtags. I would like to provide an app to help everyone find the most relevant hashtags. To find it, the software behind this app collects and analyzes thousands of photos on instagram."</string>
   <string name="about_desc_1">"Thank you for using this App :)"</string>
-  <string name="about_title">"About me"</string>
+  <string name="about_title">"About Hashtag Buddy"</string>
   <string name="settings_footer_title_fallback">"Share"</string>
   <string name="settings_footer_title">"Follow us"</string>
   <string name="feedback_modal_button">"OK"</string>
@@ -128,7 +128,7 @@
   <string name="feedback_title">"Improve this app"</string>
   <string name="diduknow_fact22">"30 %% of users bought a product they discovered on Instagram"</string>
   <string name="diduknow_fact21">"400 million users watch Instagram Stories on a daily basis"</string>
-  <string name="diduknow_fact20">"Hashtags with 21 - 24 characters perform better than shorter hashtags because they are more specific"</string>
+  <string name="diduknow_fact20">"Hashtags with 21 to 24 characters perform better than shorter hashtags because they are more specific"</string>
   <string name="diduknow_fact19">"60 %% of the top brands use the same filter for every post"</string>
   <string name="diduknow_fact18">"Photos that have blue as the dominant color get 24 %% more likes than images with red as the dominant color"</string>
   <string name="diduknow_fact17">"Photos with more background space (negative or white space) get 29 %% more likes"</string>
@@ -141,8 +141,8 @@
   <string name="diduknow_fact10">"Posts that include tagging another handle gain 56 %% more engagement"</string>
   <string name="diduknow_fact9">"Wednesday 5 pm is the best time to post a photo"</string>
   <string name="diduknow_fact8">"With each hashtag as you go up to 11 you increase your visibility"</string>
-  <string name="diduknow_fact7">"videos get twice the engagement compared to photos"</string>
-  <string name="diduknow_fact6">"17 %% of teens say Instagram is the most important social media site"</string>
+  <string name="diduknow_fact7">"Videos get twice the engagement compared to photos"</string>
+  <string name="diduknow_fact6">"Instagram is the most important social media site for 17 %% of teens"</string>
   <string name="diduknow_fact5">"38 %% of female and 26 %% of male internet users use Instagram"</string>
   <string name="diduknow_fact4">"68 %% of Instagram users are Females"</string>
   <string name="diduknow_fact3">"Posts with at least one hashtag reach an average of 12.6 %% more engagement"</string>
