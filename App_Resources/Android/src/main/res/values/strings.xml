@@ -156,9 +156,9 @@
   <string name="leave_feedback_send_feedback">"Send and transfer them to Instagram"</string>
   <string name="leave_feedback_comments">"How can I improve it?"</string>
   <string name="leave_feedback_missing_hashtags">"Missing hashtags?"</string>
-  <string name="leave_feedback_bad_hashtags_desc">"Hashtags which are out of context..."</string>
+  <string name="leave_feedback_bad_hashtags_desc">"Which Hashtags do you don\'t like?"</string>
   <string name="leave_feedback_bad_hashtags_title">"Inappropriate hashtags?"</string>
-  <string name="leave_feedback_good_hashtags_desc">"Hashtags I like most..."</string>
+  <string name="leave_feedback_good_hashtags_desc">"Which Hashtags do you like most?"</string>
   <string name="leave_feedback_good_hashtags_title">"Particularly matching hashtags?"</string>
   <string name="leave_feedback_rating_desc">"Please rate the results"</string>
   <string name="leave_feedback_rating_title">"Did you like the hashtags?"</string>

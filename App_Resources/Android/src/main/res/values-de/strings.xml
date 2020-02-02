@@ -128,7 +128,7 @@
   <string name="feedback_title">"Verbessere diese App"</string>
   <string name="diduknow_fact22">"30 %% der Nutzer haben schon einmal ein Produkt gekauft, welches sie bei Instagram entdeckt haben"</string>
   <string name="diduknow_fact21">"400 Millionen Nutzer schauen täglich Instagram Stories an"</string>
-  <string name="diduknow_fact20">"Hashtags mit 21 - 24 Zeichen schneiden besser als kurze Hashtags ab, weil sie spezifischer sind"</string>
+  <string name="diduknow_fact20">"Hashtags mit 21 bis 24 Zeichen Länge schneiden besser als Kurze ab, weil sie spezifischer sind"</string>
   <string name="diduknow_fact19">"60 %% der größten Marken nutzen die selben Filter für jeden Post"</string>
   <string name="diduknow_fact18">"Fotos mit Blau als dominierender Farbe erhalten 24 %% mehr Likes als Rot als dominierende Farbe"</string>
   <string name="diduknow_fact17">"Fotos mit mehr Platz für den Hintergrund (Negativ- oder Leerraum) erhalten 29 %% mehr Likes"</string>
@@ -141,11 +141,11 @@
   <string name="diduknow_fact10">"Posts, welche andere Seiten oder Influencer verlinken, erreichen ein 56 %% mehr Reaktionen"</string>
   <string name="diduknow_fact9">"Mittwochs 17:00 Uhr ist die beste Zeit, ein Foto zu posten"</string>
   <string name="diduknow_fact8">"Mit jedem Hashtag bis zur Nutzung von 11 Hashtags erhöht sich deine Reichweite"</string>
-  <string name="diduknow_fact7">"Videos erhalten 2x so viele Reaktionen (Likes, Kommentare, Teilen) als Fotos"</string>
-  <string name="diduknow_fact6">"17 %% der Jugendlichen sagen, Instagram sei ihre wichtigste Social Media Plattform"</string>
+  <string name="diduknow_fact7">"Videos erhalten doppelt so viele Reaktionen (Likes, Kommentare, Teilen) als Fotos"</string>
+  <string name="diduknow_fact6">"Instagram ist bei 17 %% der Jugendlichen die wichtigste Social Media Plattform"</string>
   <string name="diduknow_fact5">"38 %% der weiblichen und 26 %% der männlichen Internet Nutzer benutzen Instagram"</string>
   <string name="diduknow_fact4">"68 %% der Instagram Nutzer sind weiblich"</string>
-  <string name="diduknow_fact3">"Posts mit mind. 1 Hashtag erreichen 12,6 %% mehr Reaktionen"</string>
+  <string name="diduknow_fact3">"Posts mit mind. einem Hashtag erreichen 12,6 %% mehr Reaktionen"</string>
   <string name="diduknow_fact2">"32 %% aller Internet Nutzer sind auf Instagram"</string>
   <string name="diduknow_fact1">"Ungefähr 95 Million Fotos werden täglich auf Instagram veröffentlicht"</string>
   <string name="loading_status2">"Analysiere"</string>
@@ -156,9 +156,9 @@
   <string name="leave_feedback_send_feedback">"Senden und zu Instagram"</string>
   <string name="leave_feedback_comments">"Weiteres Feedback?"</string>
   <string name="leave_feedback_missing_hashtags">"Fehlende Hashtags?"</string>
-  <string name="leave_feedback_bad_hashtags_desc">"Am wenigsten passend..."</string>
+  <string name="leave_feedback_bad_hashtags_desc">"Welche Hashtags gefallen dir ganz und gar nicht?"</string>
   <string name="leave_feedback_bad_hashtags_title">"Unpassende Hashtags?"</string>
-  <string name="leave_feedback_good_hashtags_desc">"Am besten gefallen mir..."</string>
+  <string name="leave_feedback_good_hashtags_desc">"Welche Hashtags gefallen dir am besten?"</string>
   <string name="leave_feedback_good_hashtags_title">"Perfekt passende Hashtags?"</string>
   <string name="leave_feedback_rating_desc">"Bitte bewerbe, um zukünftige Hashtags zu verbessern."</string>
   <string name="leave_feedback_rating_title">"Haben dir die Hashtags gefallen?"</string>
