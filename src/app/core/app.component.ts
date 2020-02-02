@@ -120,6 +120,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     this.buyProductSubscription = this.storeService.onBuyProduct.subscribe((x: string) => this.buyProduct(x));
+    this.configureIap();
   }
 
   public ngOnDestroy(): void {
