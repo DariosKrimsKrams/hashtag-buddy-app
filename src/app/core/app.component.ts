@@ -83,34 +83,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.showRateAppModal();
     });
 
-    application.android.on(application.AndroidApplication.activityBackPressedEvent, (args: any) => {
-      args.cancel = true;
-      const path = this.router.locationStrategy.path();
-      const isResults = path.substring(0, 13) === '/home/results';
-      console.log('path', path, isResults);
-      if (path === '/') {
-        // would be crashing otherwise
-        return;
-      }
-      if (isResults) {
-        this.ngZone.run(() => {
-          this.router.navigate(['home'], { clearHistory: true });
-        });
-      } else if (path === '/home') {
-        this.ngZone.run(() => {
-          this.userService.androidBackTriggered.emit(path);
-        });
-      } else if (path === '/home/loading-hashtags') {
-        // do nothing
-      } else {
-        if (this.router.canGoBack()) {
-          this.router.back();
-        }
-        // update SideMenu curStatus
-      }
-      // if old=results and before=home & before != "loading" -> open home History
-      // this.userService.onAndroidBackTriggered(path);
-    });
+    application.android.on(application.AndroidApplication.activityBackPressedEvent, this.handleBackButtonPressed, this);
 
     disableIosSwipe(this.page, frame);
 
@@ -128,6 +101,36 @@ export class AppComponent implements OnInit, OnDestroy {
     this.openFeedbackModalSubscription.unsubscribe();
     this.openTipsAndTricksPageSubscription.unsubscribe();
     this.buyProductSubscription.unsubscribe();
+    application.android.off(application.AndroidApplication.activityBackPressedEvent, this.handleBackButtonPressed, this);
+  }
+
+  private handleBackButtonPressed(args: any): void {
+    args.cancel = true;
+    const path = this.router.locationStrategy.path();
+    const isResults = path.substring(0, 13) === '/home/results';
+    console.log('path', path, isResults);
+    if (path === '/') {
+      // otherwise it would result in a crash if no "return"
+      return;
+    }
+    if (isResults) {
+      this.ngZone.run(() => {
+        this.router.navigate(['home'], { clearHistory: true });
+      });
+    } else if (path === '/home') {
+      this.ngZone.run(() => {
+        this.userService.androidBackTriggered.emit(path);
+      });
+    } else if (path === '/home/loading-hashtags') {
+      // do nothing
+    } else {
+      if (this.router.canGoBack()) {
+        this.router.back();
+      }
+      // update SideMenu curStatus
+    }
+    // if old=results and before=home & before != "loading" -> open home History
+    // this.userService.onAndroidBackTriggered(path);
   }
 
   private showRateAppModal(): void {
