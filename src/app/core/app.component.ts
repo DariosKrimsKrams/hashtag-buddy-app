@@ -15,12 +15,12 @@ import { Page } from 'tns-core-modules/ui/page';
 import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
+import { isIOS, isAndroid } from 'tns-core-modules/platform';
 // IAP
 import * as purchase from 'nativescript-purchase';
 import { Product } from 'nativescript-purchase/product';
 import { Transaction, TransactionState } from 'nativescript-purchase/transaction';
 import { Plan } from '~/app/models/plan';
-import { isAndroid } from 'tns-core-modules/platform';
 import * as dialogs from 'tns-core-modules/ui/dialogs';
 import { StoreService } from '../storages/store.service';
 import { PLANS } from '../data/plans';
@@ -33,7 +33,7 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  public menus: string[] = ['home', 'myhashtags', 'faq', 'store', 'settings'];
+  public menus: string[] = [];
   public selected: boolean[] = [];
   public plans: Plan[] = PLANS;
 
@@ -57,6 +57,11 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
+    this.menus = ['home', 'myhashtags', 'faq', 'store', 'settings'];
+    if (isIOS) {
+      this.menus.splice(1, 0, 'history');
+    }
+
     this._sideDrawerTransition = new SlideInOnTopTransition();
     this.selected[0] = true;
     this.createUserFailedSubscription = this.customerService.createUserIdIfNotExist().subscribe(status => {

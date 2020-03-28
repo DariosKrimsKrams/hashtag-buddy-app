@@ -13,6 +13,7 @@ import { localize } from 'nativescript-localize/angular';
 // import * as frame from 'tns-core-modules/ui/frame';
 // import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { RouterExtensions } from 'nativescript-angular/router';
+import { isIOS, isAndroid } from 'tns-core-modules/platform';
 
 @Component({
   selector: 'Home',
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public historyDefaultTransform: number;
   public headerDefaultTransform: number;
   public showConfirmImage: boolean;
+  public isIOS: boolean;
   @ViewChild('history', { read: ElementRef, static: false }) public historyElement: ElementRef;
   @ViewChild('historShadow', { read: ElementRef, static: false }) public historShadowElement: ElementRef;
   @ViewChild('header', { read: ElementRef, static: false }) public headerElement: ElementRef;
@@ -49,7 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.cd.detach();
     this.page.actionBarHidden = true;
     this.page.enableSwipeBackNavigation = false;
-
+    this.isIOS = isIOS;
     // leads to Crash in latest NativeScript 6.2 etc.
     // disableIosSwipe(this.page, frame);
   }
