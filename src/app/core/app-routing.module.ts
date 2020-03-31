@@ -5,10 +5,12 @@ import { MyhashtagsComponent } from '../pages/myhashtags/myhashtags.component';
 import { FaqComponent } from '../pages/faq/faq.component';
 import { StoreComponent } from '../pages/store/store.component';
 import { ErrorComponent } from '../shared/error/error.component';
+import { HistoryoverviewComponent } from '../pages/historyoverview/historyoverview.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', loadChildren: '~/app/pages/home/home.module#HomeModule' },
+  { path: 'historyoverview', component: HistoryoverviewComponent },
   { path: 'settings', loadChildren: '~/app/pages/settings/settings.module#SettingsModule' },
   { path: 'store', component: StoreComponent },
   { path: 'faq', component: FaqComponent },

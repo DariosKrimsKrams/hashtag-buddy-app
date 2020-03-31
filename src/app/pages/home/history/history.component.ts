@@ -27,6 +27,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   private historyOpenChangedSubscription: Subscription;
 
   @Input() public historyOpenChanged: EventEmitter<boolean>;
+  @Input() public showHeader: boolean;
   @Output() public openCloseHistory = new EventEmitter();
 
   constructor(

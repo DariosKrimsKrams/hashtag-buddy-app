@@ -10,13 +10,11 @@ import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 
 @Component({
-  selector: 'ns-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
   moduleId: module.id
 })
 export class SettingsComponent implements OnInit {
-  public openmenu = false;
 
   constructor(
     private readonly page: Page,

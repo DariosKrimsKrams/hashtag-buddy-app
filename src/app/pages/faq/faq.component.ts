@@ -22,7 +22,6 @@ import { PLANS } from '~/app/data/plans';
 export class FaqComponent implements OnInit, OnDestroy {
 
   @ViewChild('scrollView', { read: ElementRef, static: false }) public scrollView: ElementRef;
-  public openmenu = false;
   public faqs: TipsAndTricks[];
   public current: number = -1;
   public hasTipsTricksUnlocked: boolean;

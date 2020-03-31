@@ -20,7 +20,7 @@
     <AbsoluteLayout *ngIf="!isIOS" class="text-center" verticalAlignment="bottom" isUserInteractionEnabled="false">
         <GridLayout id="history" [height]="historyHeight" [translateY]="historyDefaultTransform" #history [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" top="0" left="0">
             <Image src="~/app/assets/images/home_footer_shadow.png" #historShadow verticalAlignment="top"></Image>
-            <ns-history [historyOpenChanged]="historyOpenChanged" (openCloseHistory)="clickHistory()"></ns-history>
+            <ns-history [showHeader]="true" [historyOpenChanged]="historyOpenChanged" (openCloseHistory)="clickHistory()"></ns-history>
         </GridLayout>
     </AbsoluteLayout>
 

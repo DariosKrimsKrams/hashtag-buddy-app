@@ -12,13 +12,11 @@ import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { StoreService } from '~/app/storages/store.service';
 
 @Component({
-  selector: 'ns-store',
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.scss'],
   moduleId: module.id
 })
 export class StoreComponent implements OnInit {
-  public openmenu = false;
   public plans: Plan[] = PLANS;
 
   constructor(

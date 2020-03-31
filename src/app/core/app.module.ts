@@ -15,6 +15,7 @@ import { FaqModule } from '~/app/pages/faq/faq.module';
 import { FeedbackModule } from '~/app/pages/feedback/feedback.module';
 import { StoreModule } from '~/app/pages/store/store.module';
 import { ErrorModule } from '../shared/error/error.module';
+import { HistoryoverviewModule } from '../pages/historyoverview/historyoverview.module';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -31,7 +32,8 @@ import { ErrorModule } from '../shared/error/error.module';
     FaqModule,
     FeedbackModule,
     StoreModule,
-    ErrorModule
+    ErrorModule,
+    HistoryoverviewModule
   ],
   declarations: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA],

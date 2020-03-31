@@ -13,7 +13,7 @@ import { localize } from 'nativescript-localize/angular';
 // import * as frame from 'tns-core-modules/ui/frame';
 // import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { RouterExtensions } from 'nativescript-angular/router';
-import { isIOS, isAndroid } from 'tns-core-modules/platform';
+import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
   selector: 'Home',

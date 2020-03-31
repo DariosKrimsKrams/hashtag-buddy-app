@@ -4,7 +4,10 @@
 }
 
 #history_content {
-  margin: 136pt 0 20pt 0;
+
+  &.top_margin {
+    margin: 136pt 0 20pt 0;
+  }
 
   .trash {
     background-color: #e95978;

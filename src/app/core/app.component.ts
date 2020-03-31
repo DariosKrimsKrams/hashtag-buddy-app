@@ -196,7 +196,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.selected = [];
     this.selected[index] = true;
     this.closeMenu();
-    this.router.navigate(['/' + this.menus[index]], {
+    let route = this.menus[index];
+    if (route === 'history') {
+      route = 'historyoverview';
+    }
+    this.router.navigate(['/' + route], {
       transition: {
         name: 'fadeIn',
         duration: 500,
