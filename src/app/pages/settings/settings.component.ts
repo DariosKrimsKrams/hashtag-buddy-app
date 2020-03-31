@@ -8,6 +8,7 @@ import * as SocialShare from 'nativescript-social-share';
 import { localize } from 'nativescript-localize/angular';
 import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
+import { isAndroid } from 'tns-core-modules/platform';
 
 @Component({
   templateUrl: './settings.component.html',
@@ -32,6 +33,12 @@ export class SettingsComponent implements OnInit {
     sideDrawer.showDrawer();
   }
 
+  public get rateSubline(): string {
+    return localize('settings_rate_subline')
+      + ' '
+      + (isAndroid ? localize('google_play') : localize('app_store'));
+  }
+
   public goNextPage(route: string): void {
     if (route === 'legal') {
       openUrl('https://instaq.app/legal-privacy.html');
@@ -47,12 +54,14 @@ export class SettingsComponent implements OnInit {
   }
 
   public share(): void {
-    const text = localize('share') + '\n\n' + localize('link_playstore');
+    const text = localize('share')
+      + '\n\n'
+      + (isAndroid ? localize('link_playstore') : localize('link_appstore'));
     SocialShare.shareText(text);
   }
 
   public rate(): void {
-    const text = localize('link_playstore');
+    const text = isAndroid ? localize('link_playstore') : localize('link_appstore');
     openUrl(text);
   }
 }

@@ -164,7 +164,9 @@
   "settings_share": "Diffondi l’amore!",
   "settings_share_subline": "Dillo ai tuoi amici",
   "settings_rate": "Supporta Hashtag Buddy!",
-  "settings_rate_subline": "Valuta sul Play Store",
+  "settings_rate_subline": "Valuta sul",
+  "google_play": "Play Store",
+  "app_store": "App Store",
   "toast_hashtags_hidden": "L'hashtag è nascosto a causa del Free-Mode :'(",
   "toast_no_hashtags_selected": "Per prima cosa seleziona l’hashtag :)",
   "toast_delete_successful": "Eliminazione avvenuta con successo :)",
@@ -199,5 +201,6 @@
   "error_button_try_again": "Riprova",
   "error_button_back": "Vai alla pagina principale",
   "link_playstore": "http://play.google.com/store/apps/details?id=com.innocliq.instaq",
+  "link_appstore": "https://apps.apple.com/de/app/apple-store/idXYZ",
   "email": "dario@innocliq.de"
 }

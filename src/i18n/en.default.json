@@ -164,7 +164,9 @@
   "settings_share": "Spread some love!",
   "settings_share_subline": "Tell your friends about this",
   "settings_rate": "Support Hashtag Buddy!",
-  "settings_rate_subline": "Rate on Play Store",
+  "settings_rate_subline": "Rate on",
+  "google_play": "Play Store",
+  "app_store": "App Store",
   "toast_hashtags_hidden": "The hashtag is hidden due to Free-Mode :'(",
   "toast_no_hashtags_selected": "Please select hashtags first :)",
   "toast_delete_successful": "Delete successful :)",
@@ -198,5 +200,6 @@
   "error_button_try_again": "Try again",
   "error_button_back": "Go to main page",
   "link_playstore": "http://play.google.com/store/apps/details?id=com.innocliq.instaq",
+  "link_appstore": "https://apps.apple.com/de/app/apple-store/idXYZ",
   "email": "dario@innocliq.de"
 }

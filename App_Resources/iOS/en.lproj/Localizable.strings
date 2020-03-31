@@ -1,4 +1,5 @@
 "email" = "dario@innocliq.de";
+"link_appstore" = "https://apps.apple.com/de/app/apple-store/idXYZ";
 "link_playstore" = "http://play.google.com/store/apps/details?id=com.innocliq.instaq";
 "error_button_back" = "Go to main page";
 "error_button_try_again" = "Try again";
@@ -32,7 +33,9 @@
 "toast_delete_successful" = "Delete successful :)";
 "toast_no_hashtags_selected" = "Please select hashtags first :)";
 "toast_hashtags_hidden" = "The hashtag is hidden due to Free-Mode :'(";
-"settings_rate_subline" = "Rate on Play Store";
+"app_store" = "App Store";
+"google_play" = "Play Store";
+"settings_rate_subline" = "Rate on";
 "settings_rate" = "Support Hashtag Buddy!";
 "settings_share_subline" = "Tell your friends about this";
 "settings_share" = "Spread some love!";
