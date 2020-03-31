@@ -146,7 +146,7 @@ export class AppComponent implements OnInit, OnDestroy {
       new Toasty({ text: text })
         .setToastDuration(ToastDuration.LONG)
         .show();
-      const link = localize('link_playstore');
+      const link = isAndroid ? localize('link_playstore') : localize('link_appstore');
       openUrl(link);
     };
     const options: ModalDialogOptions = {
