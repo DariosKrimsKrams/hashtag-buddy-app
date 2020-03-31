@@ -58,7 +58,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.menus = ['home', 'myhashtags', 'faq', 'store', 'settings'];
-    if (isIOS) {
+    if (isIOS && this.userService.countPhotos() !== 0) {
       this.menus.splice(1, 0, 'history');
     }
 
