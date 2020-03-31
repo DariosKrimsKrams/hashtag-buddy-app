@@ -54,7 +54,7 @@
     "nativescript-ui-chart": "^7.1.1",
     "nativescript-ui-dataform": "^6.0.0",
     "nativescript-ui-gauge": "^6.0.0",
-    "nativescript-ui-listview": "^8.1.0",
+    "nativescript-ui-listview": "^8.1.1",
     "nativescript-ui-sidedrawer": "^8.0.0",
     "reflect-metadata": "~0.1.10",
     "rxjs": "^6.4.0",
