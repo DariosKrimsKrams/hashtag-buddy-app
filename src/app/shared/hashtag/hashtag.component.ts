@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
   selector: 'ns-hashtag',
@@ -7,13 +8,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   moduleId: module.id
 })
 export class HashtagComponent implements OnInit {
+
+  public isIOS: boolean;
   @Input() public name: string;
   @Input() public isActive: boolean;
   @Input() public censored: boolean;
   @Output() public onClick = new EventEmitter<void>();
   @Output() public onClickCensored = new EventEmitter<void>();
 
-  constructor() {}
+  constructor() {
+    this.isIOS = isIOS;
+  }
 
   public ngOnInit(): void {
     if (this.censored) {

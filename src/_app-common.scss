@@ -54,7 +54,8 @@ Label, Button, Span {
 .m-b-190 { margin-bottom: 190pt; }
 .m-b-200 { margin-bottom: 200pt; }
 
-.gradient, .btn-normal {
+.gradient,
+.btn-normal {
   background: linear-gradient(to right, $color_pink, $color_orange);
 }
 .gradientTrans {
