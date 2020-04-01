@@ -12,6 +12,7 @@ import { ModalComponent } from '~/app/shared/modal/modal.component';
 import { CustomerService } from '~/app/storages/customer.service';
 import { FeedbackRepository } from '~/app/services/repositories/feedback-repository.service';
 import { Rating } from '~/app/models/rating';
+import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
   templateUrl: './leave-feedback.component.html',
@@ -27,6 +28,7 @@ export class LeaveFeedbackComponent implements OnInit {
   public userSelectedHashtags: Hashtag[];
   public userNotSelectedHashtags: Hashtag[];
   public emojis: string[] = ['great', 'satisfied', 'bad'];
+  public isIOS: boolean;
 
   private rating: Rating = Rating.None;
   private photo: Photo;
@@ -43,6 +45,7 @@ export class LeaveFeedbackComponent implements OnInit {
     private readonly customerService: CustomerService,
   ) {
     this.page.actionBarHidden = true;
+    this.isIOS = isIOS;
   }
 
   public ngOnInit(): void {

@@ -4,7 +4,7 @@
         <Label col="1" text="{{ 'leave_feedback_headline' | L }}" class="title"></Label>
     </GridLayout>
 
-    <GridLayout row="1" rows="*,100">
+    <GridLayout row="1" rows="*,{{isIOS ? 70 : 100}}">
         <GridLayout row="0">
             <ScrollView sdkExampleTitle sdkToggleNavButton>
                 <StackLayout>
@@ -47,7 +47,7 @@
             <StackLayout class="bottom-shadow" isUserInteractionEnabled="false"></StackLayout>
         </GridLayout>
         <GridLayout row="1" class="footer">
-            <Button text="{{ 'leave_feedback_send_feedback_copy' | L }}" class="btn btn-main btn-normal btn-rounded-lg font-demi-bold" (tap)="sendFeedback()" verticalAlignment="top"></Button>
+            <Button text="{{ 'leave_feedback_send_feedback_copy' | L }}" class="btn btn-main btn-normal btn-rounded-lg font-demi-bold" (tap)="sendFeedback()" [verticalAlignment]="isIOS ? middle : top"></Button>
         </GridLayout>
     </GridLayout>
 </StackLayout>
