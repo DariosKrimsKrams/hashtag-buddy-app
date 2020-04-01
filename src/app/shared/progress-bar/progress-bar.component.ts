@@ -12,7 +12,6 @@ import { UserService } from '~/app/storages/user.service';
 })
 export class ProgressBarComponent implements OnInit, OnDestroy {
 
-  public isVisible: boolean;
   public columns: any;
   public text1: string;
   public countPhotoLeft: number;
@@ -63,11 +62,8 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   private buildText(): void {
     const hasPayedPhotos = this.photosCountService.hasPayedPhotos();
     if (hasPayedPhotos && this.page !== 'home') {
-      this.isVisible = false;
       return;
     }
-
-    this.isVisible = true;
 
     if (this.page === 'home') {
       if (hasPayedPhotos) {
