@@ -1,4 +1,4 @@
-<StackLayout class="dialog" horizontalAlignment="center">            
+<StackLayout class="dialog" [class.more_width]="isIOS" horizontalAlignment="center">            
     <Image [src]="iconPath" height="50" class="m-t-10" *ngIf="!!icon"></Image>
     <Label [text]="headline | L" class="m-t-10 m-b-5 text-center font-demi-bold" *ngIf="headline != ''"></Label>
     <Label [text]="headline2 | L" class="text-center font-demi-bold" *ngIf="headline2 != ''"></Label>

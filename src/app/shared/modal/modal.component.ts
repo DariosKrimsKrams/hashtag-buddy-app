@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
+import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
-  selector: 'ns-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
   moduleId: module.id
@@ -18,10 +18,13 @@ export class ModalComponent implements OnInit {
   public autoCloseFunc: Function;
   public okFunc: Function;
   public cancelFunc: Function;
+  public isIOS: boolean;
 
   constructor(
     private readonly params: ModalDialogParams
-  ) {}
+  ) {
+    this.isIOS = isIOS;
+  }
 
   public ngOnInit(): void {
     const autoCloseTime = this.params.context.autoCloseTime || undefined;
