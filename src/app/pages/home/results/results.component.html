@@ -31,7 +31,7 @@
                     </StackLayout>
 
                     <StackLayout orientation="vertical" class="list-group-item m-b-20" *ngFor="let category of categories">
-                        <GridLayout columns="*,60" class="hash-title m-l-10 m-r-20" *ngIf="category.tags.length !== 0">
+                        <GridLayout columns="*,90" class="hash-title m-l-10 m-r-20" *ngIf="category.tags.length !== 0">
                             <Label [text]="category.title | L" class="font-demi-bold" col="0"></Label>
                             <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category)" *ngIf="!areAllHashtagSelected(category)"></Button>
                             <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="deselectAll(category)" *ngIf="areAllHashtagSelected(category)"></Button>
