@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, Input } from '@angular/core';
+import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
   selector: 'ns-big-header',
@@ -9,6 +10,7 @@ import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, Input } 
 })
 export class BigHeaderComponent implements OnInit {
 
+  public isIOS: boolean;
   @Input() public image: string;
   @Input() public darkmode: boolean;
 
@@ -16,6 +18,7 @@ export class BigHeaderComponent implements OnInit {
     private readonly cd: ChangeDetectorRef
   ) {
     this.cd.detach();
+    this.isIOS = isIOS;
   }
 
   public ngOnInit(): void {

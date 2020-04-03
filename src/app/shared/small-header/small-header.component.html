@@ -1,7 +1,7 @@
 <GridLayout class="small-header">
     <Image src="~/app/assets/images/header/{{image}}" stretch="aspectFill"></Image>
     <GridLayout rows="*,auto" id="header-content" class="gradientTrans">
-        <GridLayout row="0" rows="60" columns="70,*,70" class="m-t-20">
+        <GridLayout row="0" rows="60" columns="70,*,70" [class.m-t-20]="!isIOS">
             <GridLayout col="1" horizontalAlignment="center" verticalAlignment="middle">
                 <Label [text]="title" class="title"></Label>
             </GridLayout>
@@ -9,7 +9,7 @@
         <Image row="1" src="~/app/assets/images/header_shadow.png" id="shadow"></Image>
     </GridLayout>
 
-    <StackLayout (tap)="openMenu()" horizontalAlignment="left" verticalAlignment="top" height="70" width="70" class="m-t-20">
+    <StackLayout (tap)="openMenu()" horizontalAlignment="left" verticalAlignment="top" height="70" width="70" [class.m-t-20]="!isIOS">
         <Image src="~/app/assets/images/icons/menu_bar_white.png" height="20" width="20" class="m-t-20 p-l-25 p-r-25 p-b-20 p-t-10"></Image>
     </StackLayout>
 

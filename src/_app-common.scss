@@ -7,7 +7,6 @@ Label, Button, Span {
 
 .btn { font-size: 18pt; }
 
-
 .p-t-40 { padding-top: 40pt; }
 .p-t-50 { padding-top: 50pt; }
 .p-t-60 { padding-top: 60pt; }
@@ -32,6 +31,7 @@ Label, Button, Span {
 .p-l-70 { padding-left: 70pt; }
 .p-l-80 { padding-left: 80pt; }
 
+.m-t-30 { margin-top: 30pt; }
 .m-t-40 { margin-top: 40pt; }
 .m-t-50 { margin-top: 50pt; }
 .m-t-60 { margin-top: 60pt; }
@@ -46,7 +46,9 @@ Label, Button, Span {
 .m-t-150 { margin-top: 150pt; }
 .m-t-160 { margin-top: 160pt; }
 
+.m-b-40 { margin-bottom: 40pt; }
 .m-b-50 { margin-bottom: 50pt; }
+.m-b-60 { margin-bottom: 60pt; }
 .m-b-150 { margin-bottom: 150pt; }
 .m-b-160 { margin-bottom: 160pt; }
 .m-b-170 { margin-bottom: 170pt; }
@@ -128,6 +130,7 @@ Label, Button, Span {
 }
 
 .menu {
+  background-color: transparent;
   background-image: url("~/app/assets/images/menu.png");
   background-repeat: no-repeat;
   background-position: left;

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
   selector: 'ns-small-header',
@@ -8,9 +9,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class SmallHeaderComponent {
 
+  public isIOS: boolean;
   @Input() public image: string;
   @Input() public title: string;
   @Output() public OpenMenu = new EventEmitter<string>();
+
+  constructor() {
+    this.isIOS = isIOS;
+  }
 
   public openMenu(): void {
     this.OpenMenu.emit();
