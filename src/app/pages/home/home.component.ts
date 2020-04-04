@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   public showConfirmImage: boolean;
   public isIOS: boolean;
   @ViewChild('history', { read: ElementRef, static: false }) public historyElement: ElementRef;
-  @ViewChild('historShadow', { read: ElementRef, static: false }) public historShadowElement: ElementRef;
   @ViewChild('header', { read: ElementRef, static: false }) public headerElement: ElementRef;
   @ViewChild('mainContainer', { read: ElementRef, static: false }) public mainContainerElement: ElementRef;
   @Output() public historyOpenChanged: EventEmitter<boolean> = new EventEmitter();
@@ -115,29 +114,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.historyOpenChanged.emit(this.isHistoryOpen === 1);
     const time = 600;
     this.animateHistory(time);
-    this.animateHistoryShadow(time);
     this.animateHeader(time);
     this.backTriggeredForExit = false;
   }
 
   private animateHistory(time: number): void {
     const posY = this.isHistoryOpen === 1 ? 0 : this.historyDefaultTransform;
-    const bgColor = this.isHistoryOpen === 1 ? '#fff' : '#fcfcfc';
     const that = this;
     this.historyElement.nativeElement.animate({
       translate: { x: 0, y: posY},
-      backgroundColor: bgColor,
       duration: time
     }).then(function(): void {
       that.cd.detach();
-    });
-  }
-
-  private animateHistoryShadow(time: number): void {
-    const value = this.isHistoryOpen === 1 ? 0 : 1;
-    this.historShadowElement.nativeElement.animate({
-      opacity: value,
-      duration: time
     });
   }
 

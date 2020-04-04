@@ -1,4 +1,4 @@
-<GridLayout class="big-header">
+<GridLayout>
     <Image [src]="imagePath" stretch="aspectFill"></Image>
     <GridLayout rows="*,auto" id="header-content" [class.p-t-20]="!isIOS" [class]="!!this.darkmode ? 'gradientTransDark' : 'gradientTrans'">
         <GridLayout row="0" rows="40" columns="*,auto,auto,*" class="m-t-10 m-b-20" *ngIf="!darkmode">

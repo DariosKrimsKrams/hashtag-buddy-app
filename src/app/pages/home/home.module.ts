@@ -1,7 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { HomeRoutingModule } from './home-routing.module';
-import { BigHeaderModule } from '~/app/shared/big-header/big-header.module';
 import { ProgressBarModule } from '~/app/shared/progress-bar/progress-bar.module';
 import { FloatLabelModule } from '~/app/shared/float-label/float-label.module';
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular';
@@ -29,7 +28,6 @@ setStatusBarColors();
   imports: [
     NativeScriptCommonModule,
     HomeRoutingModule,
-    BigHeaderModule,
     ProgressBarModule,
     FloatLabelModule,
     NativeScriptUISideDrawerModule,

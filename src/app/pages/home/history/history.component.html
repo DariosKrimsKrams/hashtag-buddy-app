@@ -1,8 +1,10 @@
-<GridLayout columns="auto,auto,auto" *ngIf="showHeader" horizontalAlignment="center" verticalAlignment="top" id="history_header" (tap)="clickOpenCloseHistory()">
-    <Image src="~/app/assets/images/icons/history.png" col="0" class="m-r-10" width="20pt" height="18pt"></Image>
-    <Label text="{{ 'history_title' | L }} ({{photosReverse.length}})" fontSize="16" class="font-weight-bold" col="1"></Label>
-    <Image src="~/app/assets/images/icons/up.png" *ngIf="!isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
-    <Image src="~/app/assets/images/icons/down.png" *ngIf="isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
+<GridLayout *ngIf="showHeader" id="history_header" verticalAlignment="top">
+    <GridLayout columns="auto,auto,auto" horizontalAlignment="center" verticalAlignment="top" (tap)="clickOpenCloseHistory()">
+        <Image src="~/app/assets/images/icons/history.png" col="0" class="m-r-10" width="20pt" height="18pt"></Image>
+        <Label text="{{ 'history_title' | L }} ({{photosReverse.length}})" fontSize="16" class="font-weight-bold" col="1"></Label>
+        <Image src="~/app/assets/images/icons/up.png" *ngIf="!isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
+        <Image src="~/app/assets/images/icons/down.png" *ngIf="isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
+    </GridLayout>
 </GridLayout>
 <ScrollView id="history_content" [class.top_margin]="showHeader" orientation="vertical" sdkExampleTitle sdkToggleNavButton>
     <StackLayout>

@@ -1,12 +1,14 @@
 #history_header {
-  margin: 40pt 0 0 0;
-  padding: 30pt 50pt;
+  width: 100%;
+  padding: 35pt 50pt 40pt 50pt;
+  background-color: #F7F7F7;
 }
 
 #history_content {
+  background-color: #F7F7F7;
 
   &.top_margin {
-    margin: 136pt 0 20pt 0;
+    margin: 90pt 0 20pt 0;
   }
 
   .trash {
