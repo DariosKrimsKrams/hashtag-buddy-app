@@ -1,8 +1,9 @@
-<StackLayout tkMainContent>
-    <GridLayout rows="130,*" class="Settings">
-        <ns-small-header row="0" (OpenMenu)="openMenu()" [image]="'settings.jpg'" [title]="'menu_settings' | L"></ns-small-header>
-        <GridLayout row="1" rows="*,170" height="100%" width="100%">
-            <StackLayout row="0" class="p-t-20 p-l-30 p-r-30" id="list">
+<GridLayout tkMainContent>
+    <!-- CONTENT -->
+    <!-- <GridLayout rows="130,*" class="Settings"> -->
+        <!-- <ns-small-header row="0" (OpenMenu)="openMenu()" image="header_img2.png" [title]="'menu_settings' | L"></ns-small-header> -->
+        <!-- <GridLayout class="m-t-140" rows="*,170" height="100%" width="100%"> -->
+            <StackLayout row="0" class="m-t-160 p-l-30 p-r-30" id="list">
 
                 <GridLayout rows="40" columns="*,30" verticalAlignment="middle" (tap)="goNextPage('about')">
                     <Label col="0" [text]="'settings_about' | L"></Label>
@@ -34,7 +35,7 @@
                 <StackLayout class="hr-light m-15"></StackLayout>
                 
             </StackLayout>
-
+<!-- 
             <StackLayout row="1" class="text-center gradient" id="footer">
                 <Image src="~/app/assets/images/settings_footer.png" id="footer-shadow"></Image>
                 <GridLayout verticalAlignment="bottom" class="">
@@ -47,7 +48,26 @@
                     <Image col="3" src="~/app/assets/images/icons/twitter.png" horizontalAlignment="center" (tap)="share()"></Image>
                     <StackLayout col="4"></StackLayout>
                 </GridLayout>
-            </StackLayout>
+            </StackLayout> -->
+        <!-- </GridLayout> -->
+    <!-- </GridLayout> -->
+
+    <!-- HEADER -->
+    <StackLayout id="small_header" verticalAlignment="top" isUserInteractionEnabled="false">
+        <ns-small-header (OpenMenu)="openMenu()" image="header_img2.png" [title]="'menu_settings' | L"></ns-small-header>
+    </StackLayout>
+
+    <!-- FOOTER -->
+    <GridLayout  class="text-center gradient" height="150" verticalAlignment="bottom" isUserInteractionEnabled="false">
+        <Image src="~/app/assets/images/settings_footer.png" id="footer-shadow" verticalAlignment="top"></Image>
+        <GridLayout verticalAlignment="bottom" class="m-b-90">
+            <Label [text]="'settings_footer_title_fallback' | L" class="bottom-text" fontSize="24" color="white"></Label>
+        </GridLayout>
+        <GridLayout columns="60,*,*,*,60" verticalAlignment="bottom" class="m-b-20 bottom">
+            <Image col="1" src="~/app/assets/images/icons/instagram.png" horizontalAlignment="center" (tap)="share()"></Image>
+            <Image col="2" src="~/app/assets/images/icons/facebook.png" horizontalAlignment="center" (tap)="share()"></Image>
+            <Image col="3" src="~/app/assets/images/icons/twitter.png" horizontalAlignment="center" (tap)="share()"></Image>
         </GridLayout>
     </GridLayout>
-</StackLayout>
+
+</GridLayout>

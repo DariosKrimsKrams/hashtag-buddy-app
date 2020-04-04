@@ -1,31 +1,31 @@
-<StackLayout tkMainContent>
-    <GridLayout rows="130,*" class="Settings">
-        <ns-small-header (OpenMenu)="openMenu()" [image]="'home2.jpg'" [title]="'menu_store' | L"></ns-small-header>
-        <StackLayout row="1" class="plans">
+<GridLayout tkMainContent>
             
-            <ScrollView sdkExampleTitle sdkToggleNavButton>
+    <!-- CONTENT -->
+    <ScrollView class="m-t-90" sdkExampleTitle sdkToggleNavButton>
 
-                <StackLayout class="p-l-40 p-r-40 p-b-30">
-                    <Label textWrap="true" [text]="'store_intro' | L" class="p-b-10"></Label>
+        <StackLayout class="p-t-70 p-l-40 p-r-40 p-b-30">
+            <Label textWrap="true" [text]="'store_intro' | L" class="p-b-10"></Label>
 
-                    <Label [text]="'store_buy_photo' | L" class="headline p-t-10 p-b-10"></Label>
-                    <StackLayout *ngFor="let plan of plans; let i = index;">
-                        <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plan}" *ngIf="i != 0"></ng-container>
-                    </StackLayout>
-                    
-                    <Label [text]="'store_buy_tips_tricks' | L" class="headline p-t-10 p-b-10"></Label>
-                    <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plans[0]}"></ng-container>
+            <Label [text]="'store_buy_photo' | L" class="headline p-t-10 p-b-10"></Label>
+            <StackLayout *ngFor="let plan of plans; let i = index;">
+                <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plan}" *ngIf="i != 0"></ng-container>
+            </StackLayout>
+            
+            <Label [text]="'store_buy_tips_tricks' | L" class="headline p-t-10 p-b-10"></Label>
+            <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plans[0]}"></ng-container>
 
-                    <StackLayout class="hr-light m-10"></StackLayout>
-                    <Label textWrap="true" [text]="getOutroText()" class="p-b-10"></Label>
-                    <Button [text]="'store_restore' | L" (tap)="restore()" class="btn btn-rounded-lg btn-outline border-color-normal color-normal"></Button>
+            <StackLayout class="hr-light m-10"></StackLayout>
+            <Label textWrap="true" [text]="getOutroText()" class="p-b-10"></Label>
+            <Button [text]="'store_restore' | L" (tap)="restore()" class="btn btn-rounded-lg btn-outline border-color-normal color-normal"></Button>
 
-                </StackLayout>
-            </ScrollView>
+        </StackLayout>
+    </ScrollView>
 
-        </StackLayout> 
-    </GridLayout>
-</StackLayout>
+    <!-- HEADER -->
+    <StackLayout id="small_header" verticalAlignment="top" isUserInteractionEnabled="false">
+        <ns-small-header (OpenMenu)="openMenu()" image="header_img3.png" [title]="'menu_store' | L"></ns-small-header>
+    </StackLayout>
+</GridLayout>
 
 <ng-template #entry let-plan="plan">
     <GridLayout rows="65,55" class="item gradient">
