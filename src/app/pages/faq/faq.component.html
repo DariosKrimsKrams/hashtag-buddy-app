@@ -1,24 +1,29 @@
-<StackLayout tkMainContent>
-    <GridLayout rows="130,*">
-        <ns-small-header row="0" (OpenMenu)="openMenu()" [image]="'img4.jpg'" [title]="'menu_faq' | L"></ns-small-header>
-        <GridLayout row="1">
-            <ScrollView sdkExampleTitle sdkToggleNavButton #scrollView>
-                <StackLayout class="p-r-20 p-l-20 p-b-50">
-                    <StackLayout *ngFor="let faq of faqs; let i = index;" class="item">
-                        <GridLayout columns="*,20" verticalAlignment="middle" (tap)="expandToggle(i)" class="p-t-20 p-b-15 p-l-20 p-r-20" [class.is-expanded]="faq.expand">
-                            <WrapLayout col="0">
-                                <Label [text]="faq.title" class="headline-text h3" verticalAlignment="middle" textWrap="true"></Label>
-                                <Label [text]="'faq_premium' | L" class="locked iap-info" verticalAlignment="middle" *ngIf="faq.locked && !hasTipsTricksUnlocked"></Label>
-                                <Label [text]="'faq_unlocked' | L" class="unlocked iap-info" verticalAlignment="middle" *ngIf="faq.locked && hasTipsTricksUnlocked"></Label>
-                            </WrapLayout>
-                            <Label col="1" [text]="faq.expand ? '&#xf068;' : '&#xf067;'" fontSize="15" class="fas" *ngIf="!faq.locked || hasTipsTricksUnlocked"></Label>
-                        </GridLayout>
-                        <WrapLayout class="p-b-15 p-l-2" *ngIf="faq.expand">
-                            <Label [text]="faq.content" textWrap="true" class="content font-reg-s"></Label>
+<GridLayout tkMainContent>
+
+    <!-- CONTENT -->
+    <GridLayout>
+        <ScrollView class="m-t-90" sdkExampleTitle sdkToggleNavButton #scrollView>
+            <StackLayout class="p-t-50 p-r-20 p-l-20 p-b-50">
+                <StackLayout *ngFor="let faq of faqs; let i = index;" class="item">
+                    <GridLayout columns="*,20" verticalAlignment="middle" (tap)="expandToggle(i)" class="p-t-20 p-b-15 p-l-20 p-r-20" [class.is-expanded]="faq.expand">
+                        <WrapLayout col="0">
+                            <Label [text]="faq.title" class="headline-text h3" verticalAlignment="middle" textWrap="true"></Label>
+                            <Label [text]="'faq_premium' | L" class="locked iap-info" verticalAlignment="middle" *ngIf="faq.locked && !hasTipsTricksUnlocked"></Label>
+                            <Label [text]="'faq_unlocked' | L" class="unlocked iap-info" verticalAlignment="middle" *ngIf="faq.locked && hasTipsTricksUnlocked"></Label>
                         </WrapLayout>
-                    </StackLayout>
+                        <Label col="1" [text]="faq.expand ? '&#xf068;' : '&#xf067;'" fontSize="15" class="fas" *ngIf="!faq.locked || hasTipsTricksUnlocked"></Label>
+                    </GridLayout>
+                    <WrapLayout class="p-b-15 p-l-2" *ngIf="faq.expand">
+                        <Label [text]="faq.content" textWrap="true" class="content font-reg-s"></Label>
+                    </WrapLayout>
                 </StackLayout>
-            </ScrollView>
-        </GridLayout>    
+            </StackLayout>
+        </ScrollView>
     </GridLayout>
-</StackLayout>
+
+    <!-- HEADER -->
+    <StackLayout id="small_header" verticalAlignment="top" isUserInteractionEnabled="false">
+        <ns-small-header (OpenMenu)="openMenu()" image="header_tips-tricks.png" [title]="'menu_faq' | L"></ns-small-header>
+    </StackLayout>
+
+</GridLayout>
