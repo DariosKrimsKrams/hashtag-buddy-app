@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="email">"dario@innocliq.de"</string>
+  <string name="link_appstore">"https://apps.apple.com/de/app/apple-store/idXYZ"</string>
   <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
   <string name="error_button_back">"Geh zur Home-Seite"</string>
   <string name="error_button_try_again">"Erneut versuchen"</string>
@@ -34,7 +35,9 @@
   <string name="toast_delete_successful">"Erfolgreich gelöscht :)"</string>
   <string name="toast_no_hashtags_selected">"Bitte zuerst Hashtags auswählen :)"</string>
   <string name="toast_hashtags_hidden">"Dieses Hashtag ist im kostenlosen Modus versteckt"</string>
-  <string name="settings_rate_subline">"Bewerte es im Play Store"</string>
+  <string name="app_store">"App Store"</string>
+  <string name="google_play">"Play Store"</string>
+  <string name="settings_rate_subline">"Bewerte es im"</string>
   <string name="settings_rate">"Supporte Hashtag Buddy!"</string>
   <string name="settings_share_subline">"Erzähle deinen Freunden hiervon"</string>
   <string name="settings_share">"Verbreite etwas Liebe!"</string>
@@ -95,7 +98,7 @@
   <string name="menu_new">"neu"</string>
   <string name="menu_faq">"Tipps &amp; Tricks"</string>
   <string name="menu_store">"Shop"</string>
-  <string name="menu_myhashtags">"meine Hashtags"</string>
+  <string name="menu_myhashtags">"Meine Hashtags"</string>
   <string name="menu_home">"Home"</string>
   <string name="about_infos_user_id">"Benutzer ID"</string>
   <string name="about_infos_be_version">"Backend Version"</string>

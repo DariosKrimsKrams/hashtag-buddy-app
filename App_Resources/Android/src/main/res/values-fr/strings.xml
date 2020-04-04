@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="email">"dario@innocliq.de"</string>
+  <string name="link_appstore">"https://apps.apple.com/de/app/apple-store/idXYZ"</string>
   <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
   <string name="error_button_back">"Aller à la page principale"</string>
   <string name="error_button_try_again">"Essayer encore"</string>
@@ -34,7 +35,9 @@
   <string name="toast_delete_successful">"Supprimé avec succès :) :)"</string>
   <string name="toast_no_hashtags_selected">"Veuillez d\'abord sélectionner les hashtags :)"</string>
   <string name="toast_hashtags_hidden">"Le hashtag est caché à cause de Free-Mode :\'("</string>
-  <string name="settings_rate_subline">"Noter sur le Play Store"</string>
+  <string name="app_store">"App Store"</string>
+  <string name="google_play">"Play Store"</string>
+  <string name="settings_rate_subline">"Noter sur le"</string>
   <string name="settings_rate">"Supportez Hashtag Buddy !"</string>
   <string name="settings_share_subline">"Parlez-en à vos amis."</string>
   <string name="settings_share">"Répandez un peu d\'amour !"</string>
@@ -95,7 +98,7 @@
   <string name="menu_new">"nouveau"</string>
   <string name="menu_faq">"Trucs &amp; Astuces"</string>
   <string name="menu_store">"Store"</string>
-  <string name="menu_myhashtags">"mes hashtags"</string>
+  <string name="menu_myhashtags">"Mes hashtags"</string>
   <string name="menu_home">"Acceuil"</string>
   <string name="about_infos_user_id">"ID utilisateur"</string>
   <string name="about_infos_be_version">"Version Backend"</string>
