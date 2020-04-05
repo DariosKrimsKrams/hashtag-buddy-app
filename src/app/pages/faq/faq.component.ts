@@ -69,11 +69,13 @@ export class FaqComponent implements OnInit, OnDestroy {
   }
 
   public expandToggle(index: number): void {
-    const entry = this.faqs[index];
+    this.toogle(index, this.faqs[index]);
+  }
+
+  public openModal(): void {
+    const entry = this.faqs[this.current];
     if (entry.locked && !this.hasTipsTricksUnlocked) {
       this.openUnlockModal(entry);
-    } else {
-      this.toogle(index, entry);
     }
   }
 
