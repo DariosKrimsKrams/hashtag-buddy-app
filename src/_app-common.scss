@@ -31,7 +31,9 @@ Label, Button, Span {
 .p-l-70 { padding-left: 70pt; }
 .p-l-80 { padding-left: 80pt; }
 
+.m-t-15 { margin-top: 15pt; }
 .m-t-30 { margin-top: 30pt; }
+.m-t-35 { margin-top: 35pt; }
 .m-t-40 { margin-top: 40pt; }
 .m-t-50 { margin-top: 50pt; }
 .m-t-60 { margin-top: 60pt; }
@@ -65,9 +67,6 @@ Label, Button, Span {
 }
 .gradientTrans {
   background: linear-gradient(to right, $color_pink_transparent, $color_orange_transparent);
-}
-.gradientTransDark {
-  background: linear-gradient(to right, $color_pink_transparent_dark, $color_orange_transparent_dark);
 }
 .btn-normal {
   color: #fff;
