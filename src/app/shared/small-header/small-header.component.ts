@@ -12,14 +12,10 @@ export class SmallHeaderComponent {
   public isIOS: boolean;
   @Input() public image: string;
   @Input() public title: string;
-  @Output() public OpenMenu = new EventEmitter<string>();
+  @Input() public headerTop: number;
 
   constructor() {
     this.isIOS = isIOS;
-  }
-
-  public openMenu(): void {
-    this.OpenMenu.emit();
   }
 
 }

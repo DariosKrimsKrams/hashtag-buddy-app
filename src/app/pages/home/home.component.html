@@ -1,17 +1,15 @@
 <GridLayout tkMainContent #mainContainer>
     
     <!-- CONTENT -->
-    <GridLayout rows="220,*" class="Home">
-        <GridLayout row="1">
-            <GridLayout rows="*,130" verticalAlignment="middle">
-                <StackLayout row="0">
-                    <Label [text]="'home_desc_3' | L" class="font-medium-small intro" textWrap="true"></Label>
-                    <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient home-button upload-button" text="{{ 'home_upload' | L }}" (tap)="clickSelectPhoto()"></Button>
-                    <Button class="btn btn-rounded-lg btn-outline border-color-normal color-normal home-button" text="{{ 'menu_faq' | L }}" (tap)="clickTipsAndTricks()"></Button>
-                    <ProgressBar page="home" width="40%"></ProgressBar>
-                </StackLayout>
-            </GridLayout>
-        </GridLayout>
+    <GridLayout rows="220,*,130" class="Home">
+        <StackLayout row="1" verticalAlignment="middle">
+            <Label [text]="'home_desc_3' | L" class="font-medium-small intro" textWrap="true"></Label>
+            <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient home-button upload-button" text="{{ 'home_upload' | L }}" (tap)="clickSelectPhoto()"></Button>
+            <Button class="btn btn-rounded-lg btn-outline border-color-normal color-normal home-button" text="{{ 'menu_faq' | L }}" (tap)="clickTipsAndTricks()"></Button>
+            <ProgressBar page="home" width="40%"></ProgressBar>
+        </StackLayout>
+        <!-- <StackLayout row="2" verticalAlignment="middle" (tap)="clickHistory()" id="history_clickarea" width="100%" height="100%">
+        </StackLayout> -->
     </GridLayout>
     
     <!-- HISTORY -->
@@ -24,8 +22,10 @@
 
     <!-- HEADER -->
     <AbsoluteLayout [height]="headerHeight" #header verticalAlignment="top" isUserInteractionEnabled="false">
-        <Image src="~/app/assets/images/header/header_home.png" stretch="aspectFill" [top]="headerTop"></Image>
-        <Image src="~/app/assets/images/logo_white.png" height="30" horizontalAlignment="center" verticalAlignment="top" [class]="isIOS ? 'm-t-15' : 'm-t-35'"></Image>
+        <Image src="~/app/assets/images/header/header_home.png" stretch="aspectFill" width="100%" [top]="headerTop"></Image>
+        <GridLayout width="100%">
+            <Image src="~/app/assets/images/logo_white.png" height="30" horizontalAlignment="center" [class]="isIOS ? 'm-t-15' : 'm-t-35'"></Image>
+        </GridLayout>
     </AbsoluteLayout>
 
     <!-- MENU BUTTON -->

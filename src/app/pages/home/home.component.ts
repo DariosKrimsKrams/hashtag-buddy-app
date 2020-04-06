@@ -171,6 +171,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     const screenWidth = screen.mainScreen.widthDIPs;
     const imgAspectRatio = imgWidth / imgHeight;
     const headerHeight = screenWidth / imgAspectRatio;
+
     const screenHeight = screen.mainScreen.heightDIPs;
     const targetHeaderSpace = 218 / 731;
     const actualHeaderSpace = headerHeight / screenHeight;

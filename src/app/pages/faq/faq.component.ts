@@ -12,6 +12,7 @@ import { UserService } from '~/app/storages/user.service';
 import { Subscription } from 'rxjs';
 import { StoreService } from '~/app/storages/store.service';
 import { PLANS } from '~/app/data/plans';
+import { screen } from 'tns-core-modules/platform';
 
 @Component({
   selector: 'ns-faq',
@@ -25,6 +26,8 @@ export class FaqComponent implements OnInit, OnDestroy {
   public faqs: TipsAndTricks[];
   public current: number = -1;
   public hasTipsTricksUnlocked: boolean;
+  public headerHeight: number = 0;
+  public headerTop: number = 0;
   private price: string = '1 €';
   private purchaseSuccessfulSub: Subscription;
 
@@ -37,6 +40,7 @@ export class FaqComponent implements OnInit, OnDestroy {
   ) {
     this.page.actionBarHidden = true;
     disableIosSwipe(this.page, frame);
+    this.calcHeader();
   }
 
   public ngOnInit(): void {
@@ -126,6 +130,24 @@ export class FaqComponent implements OnInit, OnDestroy {
       }
     };
     this.modalService.showModal(ModalComponent, options);
+  }
+
+  private calcHeader(): void {
+    const imgWidth = 1080;
+    const imgHeight = 416;
+    const screenWidth = screen.mainScreen.widthDIPs;
+    const imgAspectRatio = imgWidth / imgHeight;
+    const headerHeight = screenWidth / imgAspectRatio;
+
+    const screenHeight = screen.mainScreen.heightDIPs;
+    const targetHeaderSpace = 140 / 731;
+    const actualHeaderSpace = headerHeight / screenHeight;
+    const spaceToReduce = actualHeaderSpace - targetHeaderSpace;
+    const visibleHeight = headerHeight / actualHeaderSpace * (actualHeaderSpace - spaceToReduce);
+    const marginTop = headerHeight - visibleHeight;
+
+    this.headerHeight = Math.round(headerHeight);
+    this.headerTop = Math.round(marginTop * -1);
   }
 
 }
