@@ -23,7 +23,7 @@
     </AbsoluteLayout>
 
     <!-- HEADER -->
-    <GridLayout height="220" #header verticalAlignment="top" isUserInteractionEnabled="false">
+    <GridLayout [height]="headerHeight" #header verticalAlignment="top" isUserInteractionEnabled="false">
         <Image src="~/app/assets/images/header/header_home.png" stretch="aspectFill"></Image>
         <Image src="~/app/assets/images/logo_white.png" height="30" verticalAlignment="top" [class]="isIOS ? 'm-t-15' : 'm-t-35'"></Image>
         <GridLayout rows="*,auto" >

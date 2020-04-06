@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public headerDefaultTransform: number;
   public showConfirmImage: boolean;
   public isIOS: boolean;
+  public headerHeight: number;
   @ViewChild('history', { read: ElementRef, static: false }) public historyElement: ElementRef;
   @ViewChild('header', { read: ElementRef, static: false }) public headerElement: ElementRef;
   @ViewChild('mainContainer', { read: ElementRef, static: false }) public mainContainerElement: ElementRef;
@@ -51,7 +52,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.page.actionBarHidden = true;
     this.page.enableSwipeBackNavigation = false;
     this.isIOS = isIOS;
-    // leads to Crash in latest NativeScript 6.2 etc.
+    this.calcHeaderHeight();
+    // leads to Crash in NativeScript 6.2 etc.
     // disableIosSwipe(this.page, frame);
   }
 
@@ -160,6 +162,14 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
       }
     }
+  }
+
+  private calcHeaderHeight(): void {
+    const imgWidth = 1080;
+    const imgHeight = 574;
+    const screenWidth = screen.mainScreen.widthDIPs;
+    const imgAspectRatio = imgWidth / imgHeight;
+    this.headerHeight = screenWidth / imgAspectRatio;
   }
 
 }
