@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public showConfirmImage: boolean;
   public isIOS: boolean;
   public headerHeight: number = 0;
+  public headerTop: number = 0;
   @ViewChild('history', { read: ElementRef, static: false }) public historyElement: ElementRef;
   @ViewChild('header', { read: ElementRef, static: false }) public headerElement: ElementRef;
   @ViewChild('mainContainer', { read: ElementRef, static: false }) public mainContainerElement: ElementRef;
@@ -52,7 +53,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.page.actionBarHidden = true;
     this.page.enableSwipeBackNavigation = false;
     this.isIOS = isIOS;
-    this.calcHeaderHeight();
+    this.calcHeader();
     // leads to Crash in NativeScript 6.2 etc.
     // disableIosSwipe(this.page, frame);
   }
@@ -164,12 +165,21 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  private calcHeaderHeight(): void {
+  private calcHeader(): void {
     const imgWidth = 1080;
     const imgHeight = 574;
     const screenWidth = screen.mainScreen.widthDIPs;
     const imgAspectRatio = imgWidth / imgHeight;
-    this.headerHeight = Math.floor(screenWidth / imgAspectRatio);
+    const headerHeight = screenWidth / imgAspectRatio;
+    const screenHeight = screen.mainScreen.heightDIPs;
+    const targetHeaderSpace = 218 / 731;
+    const actualHeaderSpace = headerHeight / screenHeight;
+    const spaceToReduce = actualHeaderSpace - targetHeaderSpace;
+    const visibleHeight = headerHeight / actualHeaderSpace * (actualHeaderSpace - spaceToReduce);
+    const marginTop = headerHeight - visibleHeight;
+
+    this.headerHeight = Math.round(headerHeight);
+    this.headerTop = Math.round(marginTop * -1);
   }
 
 }

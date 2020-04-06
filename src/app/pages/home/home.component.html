@@ -23,14 +23,10 @@
     </AbsoluteLayout>
 
     <!-- HEADER -->
-    <GridLayout [height]="headerHeight" #header verticalAlignment="top" isUserInteractionEnabled="false">
-        <Image src="~/app/assets/images/header/header_home.png" stretch="aspectFill"></Image>
-        <Image src="~/app/assets/images/logo_white.png" height="30" verticalAlignment="top" [class]="isIOS ? 'm-t-15' : 'm-t-35'"></Image>
-        <GridLayout rows="*,auto" >
-            <GridLayout row="0" rows="40" columns="*,auto,auto,*" class="m-t-10 m-b-20">
-            </GridLayout>
-        </GridLayout>
-    </GridLayout>
+    <AbsoluteLayout [height]="headerHeight" #header verticalAlignment="top" isUserInteractionEnabled="false">
+        <Image src="~/app/assets/images/header/header_home.png" stretch="aspectFill" [top]="headerTop"></Image>
+        <Image src="~/app/assets/images/logo_white.png" height="30" horizontalAlignment="center" verticalAlignment="top" [class]="isIOS ? 'm-t-15' : 'm-t-35'"></Image>
+    </AbsoluteLayout>
 
     <!-- MENU BUTTON -->
     <StackLayout (tap)="openMenu()" horizontalAlignment="left" verticalAlignment="top" height="70" width="70" class="m-t-20">
