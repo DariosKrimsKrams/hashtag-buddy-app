@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public headerDefaultTransform: number;
   public showConfirmImage: boolean;
   public isIOS: boolean;
-  public headerHeight: number;
+  public headerHeight: number = 0;
   @ViewChild('history', { read: ElementRef, static: false }) public historyElement: ElementRef;
   @ViewChild('header', { read: ElementRef, static: false }) public headerElement: ElementRef;
   @ViewChild('mainContainer', { read: ElementRef, static: false }) public mainContainerElement: ElementRef;
@@ -169,7 +169,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     const imgHeight = 574;
     const screenWidth = screen.mainScreen.widthDIPs;
     const imgAspectRatio = imgWidth / imgHeight;
-    this.headerHeight = screenWidth / imgAspectRatio;
+    this.headerHeight = Math.floor(screenWidth / imgAspectRatio);
   }
 
 }
