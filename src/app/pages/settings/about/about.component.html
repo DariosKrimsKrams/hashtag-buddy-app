@@ -1,5 +1,6 @@
 <GridLayout>
     <StackLayout orientation="vertical" class="main">
+
         <GridLayout verticalAlignment="middle" columns="20,*,20" id="header" class="gradient">
             <Image col="0" src="~/app/assets/images/icons/arrowLeft_white.png" (tap)="goPrevPage()"></Image>
             <Label col="1" [text]="'about_title' | L" class="text-center font-medium-l"></Label>
@@ -10,7 +11,7 @@
             <StackLayout class="top-shadow" isUserInteractionEnabled="false"></StackLayout>
             
             <ScrollView sdkExampleTitle sdkToggleNavButton>
-                <StackLayout class="p-l-30 p-r-30 p-b-20 p-t-60">
+                <StackLayout class="p-l-30 p-r-30 p-b-20 m-t-70">
 
                     <Label textWrap="true" [text]="'about_desc_1' | L" class="m-b-20 font-medium-l"></Label>
                     <Label [text]="'about_desc_2' | L" textWrap="true" class="p-b-10"></Label>
