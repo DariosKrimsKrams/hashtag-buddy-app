@@ -22,11 +22,15 @@
     background-color: #fff;
   }
 
-  .list-group-item Image {
-    width: 60pt;
-    height: 60pt;
-    margin: 5pt 0 10pt 5pt;
-    border-radius: 5pt;
+  .list-group-item {
+    background-color: #fff;
+  
+    Image {
+      width: 60pt;
+      height: 60pt;
+      margin: 5pt 0 10pt 5pt;
+      border-radius: 5pt;
+    }
   }
 
   .date-bold {
