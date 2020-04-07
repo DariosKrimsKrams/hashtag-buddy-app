@@ -12,7 +12,6 @@ import { UserService } from '~/app/storages/user.service';
 import { Subscription } from 'rxjs';
 import { StoreService } from '~/app/storages/store.service';
 import { PLANS } from '~/app/data/plans';
-import { screen } from 'tns-core-modules/platform';
 
 @Component({
   selector: 'ns-faq',
@@ -133,24 +132,9 @@ export class FaqComponent implements OnInit, OnDestroy {
   }
 
   private calcHeader(): void {
-    const imgWidth = 1080;
-    const imgHeight = 416;
-    const screenWidth = screen.mainScreen.widthDIPs;
-    const imgAspectRatio = imgWidth / imgHeight;
-    const headerHeight = screenWidth / imgAspectRatio;
-
-    const screenHeight = screen.mainScreen.heightDIPs;
-    const targetHeaderSpace = 140 / 731;
-    let actualHeaderSpace = headerHeight / screenHeight;
-    if (actualHeaderSpace < targetHeaderSpace) {
-      actualHeaderSpace = targetHeaderSpace;
-    }
-    const spaceToReduce = actualHeaderSpace - targetHeaderSpace;
-    const visibleHeight = headerHeight / actualHeaderSpace * (actualHeaderSpace - spaceToReduce);
-    const marginTop = headerHeight - visibleHeight;
-
-    this.headerHeight = Math.round(headerHeight);
-    this.headerTop = Math.round(marginTop * -1);
+    const data = this.userService.calcHeader(1080, 416, 140);
+    this.headerHeight = data.height;
+    this.headerTop = data.top;
   }
 
 }

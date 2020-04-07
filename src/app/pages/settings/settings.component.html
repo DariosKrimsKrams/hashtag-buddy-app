@@ -1,60 +1,49 @@
 <GridLayout tkMainContent>
     <!-- CONTENT -->
-    <!-- <GridLayout rows="130,*" class="Settings"> -->
-        <!-- <ns-small-header row="0" (OpenMenu)="openMenu()" image="header_img2.png" [title]="'menu_settings' | L"></ns-small-header> -->
-        <!-- <GridLayout class="m-t-140" rows="*,170" height="100%" width="100%"> -->
-            <StackLayout row="0" class="m-t-160 p-l-30 p-r-30" id="list">
+    <StackLayout row="0" class="m-t-160 p-l-30 p-r-30" id="list">
 
-                <GridLayout rows="40" columns="*,30" verticalAlignment="middle" (tap)="goNextPage('about')">
-                    <Label col="0" [text]="'settings_about' | L"></Label>
-                    <Label col="1" text="&#xf054;" class="fas"></Label>
-                </GridLayout>
-                <StackLayout class="hr-light m-10"></StackLayout>
+        <GridLayout rows="40" columns="*,30" verticalAlignment="middle" (tap)="goNextPage('about')">
+            <Label col="0" [text]="'settings_about' | L"></Label>
+            <Label col="1" text="&#xf054;" class="fas"></Label>
+        </GridLayout>
+        <StackLayout class="hr-light m-10"></StackLayout>
 
-                <GridLayout rows="40" columns="*,30" verticalAlignment="middle" (tap)="goNextPage('feedback')">
-                    <Label col="0" [text]="'menu_feedback' | L"></Label>
-                    <Label col="1" text="&#xf054;" class="fas"></Label>
-                </GridLayout>
-                <StackLayout class="hr-light m-10"></StackLayout>
+        <GridLayout rows="40" columns="*,30" verticalAlignment="middle" (tap)="goNextPage('feedback')">
+            <Label col="0" [text]="'menu_feedback' | L"></Label>
+            <Label col="1" text="&#xf054;" class="fas"></Label>
+        </GridLayout>
+        <StackLayout class="hr-light m-10"></StackLayout>
 
-                <GridLayout rows="40" columns="*" verticalAlignment="middle" (tap)="goNextPage('legal')">
-                    <Label col="0" [text]="'settings_legal' | L"></Label>
-                </GridLayout>
-                <StackLayout class="hr-light m-t-10 m-b-15"></StackLayout>
+        <GridLayout rows="40" columns="*" verticalAlignment="middle" (tap)="goNextPage('legal')">
+            <Label col="0" [text]="'settings_legal' | L"></Label>
+        </GridLayout>
+        <StackLayout class="hr-light m-t-10 m-b-15"></StackLayout>
 
-                <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="share()">
-                    <Label row="0" text="{{'settings_share' | L}} &#10084;"></Label>
-                    <Label row="1" [text]="'settings_share_subline' | L" class="text-muted"></Label>
-                </GridLayout>
-                <StackLayout class="hr-light m-15"></StackLayout>
+        <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="share()">
+            <Label row="0" text="{{'settings_share' | L}} &#10084;"></Label>
+            <Label row="1" [text]="'settings_share_subline' | L" class="text-muted"></Label>
+        </GridLayout>
+        <StackLayout class="hr-light m-15"></StackLayout>
 
-                <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="rate()">
-                    <Label row="0" text="{{'settings_rate' | L}} &#10084;"></Label>
-                    <Label row="1" [text]="rateSubline" class="text-muted"></Label>
-                </GridLayout>
-                <StackLayout class="hr-light m-15"></StackLayout>
-                
-            </StackLayout>
-<!-- 
-            <StackLayout row="1" class="text-center gradient" id="footer">
-                <Image src="~/app/assets/images/settings_footer.png" id="footer-shadow"></Image>
-                <GridLayout verticalAlignment="bottom" class="">
-                    <Label [text]="'settings_footer_title_fallback' | L" class="bottom-text" fontSize="24" color="white"></Label>
-                </GridLayout>
-                <GridLayout columns="60,*,*,*,60" verticalAlignment="bottom" class="p-t-10 bottom">
-                    <StackLayout col="0"></StackLayout>
-                    <Image col="1" src="~/app/assets/images/icons/instagram.png" horizontalAlignment="center" (tap)="share()"></Image>
-                    <Image col="2" src="~/app/assets/images/icons/facebook.png" horizontalAlignment="center" (tap)="share()"></Image>
-                    <Image col="3" src="~/app/assets/images/icons/twitter.png" horizontalAlignment="center" (tap)="share()"></Image>
-                    <StackLayout col="4"></StackLayout>
-                </GridLayout>
-            </StackLayout> -->
-        <!-- </GridLayout> -->
-    <!-- </GridLayout> -->
+        <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="rate()">
+            <Label row="0" text="{{'settings_rate' | L}} &#10084;"></Label>
+            <Label row="1" [text]="rateSubline" class="text-muted"></Label>
+        </GridLayout>
+        <StackLayout class="hr-light m-15"></StackLayout>
+        
+    </StackLayout>
 
     <!-- HEADER -->
-    <StackLayout id="small_header" verticalAlignment="top" isUserInteractionEnabled="false">
-        <ns-small-header (OpenMenu)="openMenu()" image="header_img2.png" [title]="'menu_settings' | L"></ns-small-header>
+    <AbsoluteLayout [height]="headerHeight" verticalAlignment="top" isUserInteractionEnabled="false">
+        <Image src="~/app/assets/images/header/header_img2.png" stretch="aspectFill" width="100%" [top]="headerTop"></Image>
+        <GridLayout width="100%">
+            <Label [text]="'menu_settings' | L" horizontalAlignment="center" [class]="'title ' + (isIOS ? 'm-t-20' : 'm-t-40')"></Label>
+        </GridLayout>
+    </AbsoluteLayout>
+
+    <!-- MENU BUTTON -->
+    <StackLayout (tap)="openMenu()" horizontalAlignment="left" verticalAlignment="top" height="70" width="70" class="m-t-20">
+        <Image src="~/app/assets/images/icons/menu_bar_white.png" height="20" width="20" [class.m-t-20]="!isIOS" class="p-l-25 p-r-25 p-b-20 p-t-10"></Image>
     </StackLayout>
 
     <!-- FOOTER -->

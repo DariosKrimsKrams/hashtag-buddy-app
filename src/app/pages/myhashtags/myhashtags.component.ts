@@ -18,8 +18,11 @@ import { disableIosSwipe } from '~/app/shared/status-bar-util';
   moduleId: module.id
 })
 export class MyhashtagsComponent implements OnInit {
+
   public hashtagsOwn: MyHashtag[] = [];
   public hashtagsGenerated: Hashtag[] = [];
+  public headerHeight: number = 0;
+  public headerTop: number = 0;
 
   constructor(
     private readonly page: Page,
@@ -27,6 +30,7 @@ export class MyhashtagsComponent implements OnInit {
   ) {
     this.page.actionBarHidden = true;
     disableIosSwipe(this.page, frame);
+    this.calcHeader();
   }
 
   public ngOnInit(): void {
@@ -80,4 +84,11 @@ export class MyhashtagsComponent implements OnInit {
     this.hashtagsOwn.unshift(new MyHashtag(hashtag.title, 1, 'own'));
     this.userService.setFavorites(this.hashtagsOwn);
   }
+
+  private calcHeader(): void {
+    const data = this.userService.calcHeader(1080, 416, 140);
+    this.headerHeight = data.height;
+    this.headerTop = data.top;
+  }
+
 }

@@ -3,6 +3,7 @@ import { LocalStorageService } from './local-storage.service';
 import { Photo } from '../models/photo';
 import { Transaction } from 'nativescript-purchase/transaction';
 import { MyHashtag } from '../models/my-hashtag';
+import { screen } from 'tns-core-modules/platform';
 
 @Injectable({
   providedIn: 'root'
@@ -155,6 +156,27 @@ export class UserService {
 
   public unlockedTipsTricks(): void {
     this.localStorageService.set(this.keyTipsTricks, 'true');
+  }
+
+  public calcHeader(imgWidth: number, imgHeight: number, normalHeight: number): { height: number, top: number } {
+    const screenWidth = screen.mainScreen.widthDIPs;
+    const imgAspectRatio = imgWidth / imgHeight;
+    const headerHeight = screenWidth / imgAspectRatio;
+
+    const screenHeight = screen.mainScreen.heightDIPs;
+    const targetHeaderSpace = normalHeight / 731;
+    let actualHeaderSpace = headerHeight / screenHeight;
+    if (actualHeaderSpace < targetHeaderSpace) {
+      actualHeaderSpace = targetHeaderSpace;
+    }
+    const spaceToReduce = actualHeaderSpace - targetHeaderSpace;
+    const visibleHeight = headerHeight / actualHeaderSpace * (actualHeaderSpace - spaceToReduce);
+    const marginTop = headerHeight - visibleHeight;
+
+    const newHeaderHeight = Math.round(headerHeight);
+    const headerTop = Math.round(marginTop * -1);
+
+    return { height: newHeaderHeight, top: headerTop };
   }
 
 }

@@ -1,17 +1,18 @@
-Label {
-	vertical-align: middle;
-	font-size: 15pt;
+#list {
+	GridLayout {
+		padding-left: 10pt;
+	}
+	Label {
+		vertical-align: middle;
+		font-size: 15pt;
+	}
 }
 
-#list GridLayout {
-	padding-left: 10pt;
+#footer-shadow {
+	width: 100%;
 }
 
 .bottom Image {
 	width: 52pt;
 	height: 52pt;
-}
-
-#footer-shadow {
-	width: 100%;
 }

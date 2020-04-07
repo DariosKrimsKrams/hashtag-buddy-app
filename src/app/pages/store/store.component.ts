@@ -10,6 +10,7 @@ import { isAndroid } from 'tns-core-modules/platform';
 import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { StoreService } from '~/app/storages/store.service';
+import { UserService } from '~/app/storages/user.service';
 
 @Component({
   templateUrl: './store.component.html',
@@ -18,13 +19,17 @@ import { StoreService } from '~/app/storages/store.service';
 })
 export class StoreComponent implements OnInit {
   public plans: Plan[] = PLANS;
+  public headerHeight: number = 0;
+  public headerTop: number = 0;
 
   constructor(
     private readonly page: Page,
     private readonly storeService: StoreService,
+    private readonly userService: UserService
   ) {
     this.page.actionBarHidden = true;
     disableIosSwipe(this.page, frame);
+    this.calcHeader();
   }
 
   public ngOnInit(): void {
@@ -47,6 +52,12 @@ export class StoreComponent implements OnInit {
     const key = 'store_outro_' + (isAndroid ? 'google' : 'apple');
     const company = localize(key);
     return localize('store_outro', company);
+  }
+
+  private calcHeader(): void {
+    const data = this.userService.calcHeader(1080, 416, 140);
+    this.headerHeight = data.height;
+    this.headerTop = data.top;
   }
 
 }
