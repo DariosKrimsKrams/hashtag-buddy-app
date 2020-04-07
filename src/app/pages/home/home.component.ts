@@ -174,13 +174,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     const screenHeight = screen.mainScreen.heightDIPs;
     const targetHeaderSpace = 218 / 731;
-    const actualHeaderSpace = headerHeight / screenHeight;
+    let actualHeaderSpace = headerHeight / screenHeight;
+    if (actualHeaderSpace < targetHeaderSpace) {
+      actualHeaderSpace = targetHeaderSpace;
+    }
     const spaceToReduce = actualHeaderSpace - targetHeaderSpace;
     const visibleHeight = headerHeight / actualHeaderSpace * (actualHeaderSpace - spaceToReduce);
     const marginTop = headerHeight - visibleHeight;
 
     this.headerHeight = Math.round(headerHeight);
     this.headerTop = Math.round(marginTop * -1);
+
   }
 
 }

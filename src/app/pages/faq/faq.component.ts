@@ -141,7 +141,10 @@ export class FaqComponent implements OnInit, OnDestroy {
 
     const screenHeight = screen.mainScreen.heightDIPs;
     const targetHeaderSpace = 140 / 731;
-    const actualHeaderSpace = headerHeight / screenHeight;
+    let actualHeaderSpace = headerHeight / screenHeight;
+    if (actualHeaderSpace < targetHeaderSpace) {
+      actualHeaderSpace = targetHeaderSpace;
+    }
     const spaceToReduce = actualHeaderSpace - targetHeaderSpace;
     const visibleHeight = headerHeight / actualHeaderSpace * (actualHeaderSpace - spaceToReduce);
     const marginTop = headerHeight - visibleHeight;
