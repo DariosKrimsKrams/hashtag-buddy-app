@@ -12,6 +12,7 @@ import { UserService } from '~/app/storages/user.service';
 import { Subscription } from 'rxjs';
 import { StoreService } from '~/app/storages/store.service';
 import { PLANS } from '~/app/data/plans';
+import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
   selector: 'ns-faq',
@@ -27,6 +28,7 @@ export class FaqComponent implements OnInit, OnDestroy {
   public hasTipsTricksUnlocked: boolean;
   public headerHeight: number = 0;
   public headerTop: number = 0;
+  public isIOS: boolean;
   private price: string = '1 €';
   private purchaseSuccessfulSub: Subscription;
 
@@ -38,6 +40,7 @@ export class FaqComponent implements OnInit, OnDestroy {
     private readonly userService: UserService,
   ) {
     this.page.actionBarHidden = true;
+    this.isIOS = isIOS;
     disableIosSwipe(this.page, frame);
     this.calcHeader();
   }

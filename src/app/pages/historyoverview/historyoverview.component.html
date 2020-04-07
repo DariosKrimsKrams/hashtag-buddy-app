@@ -1,6 +1,9 @@
 <GridLayout tkMainContent>
+
     <!-- CONTENT -->
-    <ns-history row="1" class="m-t-130" [showHeader]="false"></ns-history>
+    <StackLayout [style.margin-top]="headerHeight + headerTop">
+        <ns-history [showHeader]="false"></ns-history>
+    </StackLayout>
 
     <!-- HEADER -->
     <AbsoluteLayout [height]="headerHeight" verticalAlignment="top" isUserInteractionEnabled="false">

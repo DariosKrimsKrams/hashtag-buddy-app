@@ -23,12 +23,14 @@ export class MyhashtagsComponent implements OnInit {
   public hashtagsGenerated: Hashtag[] = [];
   public headerHeight: number = 0;
   public headerTop: number = 0;
+  public isIOS: boolean;
 
   constructor(
     private readonly page: Page,
     private readonly userService: UserService
   ) {
     this.page.actionBarHidden = true;
+    this.isIOS = isIOS;
     disableIosSwipe(this.page, frame);
     this.calcHeader();
   }

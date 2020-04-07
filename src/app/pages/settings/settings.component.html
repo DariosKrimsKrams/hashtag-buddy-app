@@ -47,7 +47,7 @@
     </StackLayout>
 
     <!-- FOOTER -->
-    <GridLayout  class="text-center gradient" height="150" verticalAlignment="bottom" isUserInteractionEnabled="false">
+    <GridLayout *ngIf="!isIOS" class="text-center gradient" height="150" verticalAlignment="bottom" isUserInteractionEnabled="false">
         <Image src="~/app/assets/images/settings_footer.png" id="footer-shadow" verticalAlignment="top"></Image>
         <GridLayout verticalAlignment="bottom" class="m-b-90">
             <Label [text]="'settings_footer_title_fallback' | L" class="bottom-text" fontSize="24" color="white"></Label>

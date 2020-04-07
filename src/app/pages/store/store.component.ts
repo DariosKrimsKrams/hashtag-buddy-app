@@ -11,6 +11,7 @@ import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { StoreService } from '~/app/storages/store.service';
 import { UserService } from '~/app/storages/user.service';
+import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
   templateUrl: './store.component.html',
@@ -21,6 +22,7 @@ export class StoreComponent implements OnInit {
   public plans: Plan[] = PLANS;
   public headerHeight: number = 0;
   public headerTop: number = 0;
+  public isIOS: boolean;
 
   constructor(
     private readonly page: Page,
@@ -28,6 +30,7 @@ export class StoreComponent implements OnInit {
     private readonly userService: UserService
   ) {
     this.page.actionBarHidden = true;
+    this.isIOS = isIOS;
     disableIosSwipe(this.page, frame);
     this.calcHeader();
   }

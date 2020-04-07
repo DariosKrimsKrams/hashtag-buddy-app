@@ -13,7 +13,7 @@
     </GridLayout>
     
     <!-- HISTORY -->
-    <AbsoluteLayout *ngIf="!iOS" class="text-center" verticalAlignment="bottom" isUserInteractionEnabled="false">
+    <AbsoluteLayout *ngIf="!isIOS" class="text-center" verticalAlignment="bottom" isUserInteractionEnabled="false">
         <GridLayout rows="auto,*" id="history" [height]="historyHeight" [translateY]="historyDefaultTransform" #history [class.active]="isHistoryOpen === 1" [class.inactive]="isHistoryOpen === 2" top="0" left="0">
             <Image row="0" src="~/app/assets/images/home_footer_shadow.png" verticalAlignment="top"></Image>
             <ns-history row="1" [showHeader]="true" [historyOpenChanged]="historyOpenChanged" (openCloseHistory)="clickHistory()"></ns-history>

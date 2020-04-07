@@ -7,6 +7,7 @@ import { DeviceService } from '~/app/services/device-photos.service';
 import { Subscription } from 'rxjs';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
+import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
   selector: 'ns-history',
@@ -20,6 +21,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   public selected: number = -1;
   public photosReverse: Photo[] = [];
   public isHistoryOpen: boolean;
+  public isIOS: boolean;
 
   private hashtagAmount = 7;
   private photoAddedSubscription: Subscription;
@@ -36,6 +38,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
     private readonly deviceService: DeviceService,
     private readonly cd: ChangeDetectorRef
   ) {
+    this.isIOS = isIOS;
     this.cd.detach();
   }
 
