@@ -1,6 +1,18 @@
-<StackLayout tkMainContent>
-    <GridLayout rows="130,*" class="historyoverview">
-        <ns-small-header row="0" (OpenMenu)="openMenu()" image="header_img3.png" [title]="'history_title' | L"></ns-small-header>
-        <ns-history row="1" [showHeader]="false"></ns-history>
-    </GridLayout>
-</StackLayout>
+<GridLayout tkMainContent>
+    <!-- CONTENT -->
+    <ns-history row="1" class="m-t-130" [showHeader]="false"></ns-history>
+
+    <!-- HEADER -->
+    <AbsoluteLayout [height]="headerHeight" verticalAlignment="top" isUserInteractionEnabled="false">
+        <Image src="~/app/assets/images/header/header_img3.png" stretch="aspectFill" width="100%" [top]="headerTop"></Image>
+        <GridLayout width="100%">
+            <Label [text]="'history_title' | L" horizontalAlignment="center" [class]="'title ' + (isIOS ? 'm-t-20' : 'm-t-40')"></Label>
+        </GridLayout>
+    </AbsoluteLayout>
+
+    <!-- MENU BUTTON -->
+    <StackLayout (tap)="openMenu()" horizontalAlignment="left" verticalAlignment="top" height="70" width="70" class="m-t-20">
+        <Image src="~/app/assets/images/icons/menu_bar_white.png" height="20" width="20" [class.m-t-20]="!isIOS" class="p-l-25 p-r-25 p-b-20 p-t-10"></Image>
+    </StackLayout>
+    
+</GridLayout>
