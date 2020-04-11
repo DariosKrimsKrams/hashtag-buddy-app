@@ -41,8 +41,12 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.photosCountChangeSubscription.unsubscribe();
-    this.appRatedSubscription.unsubscribe();
+    if (!!this.photosCountChangeSubscription) {
+      this.photosCountChangeSubscription.unsubscribe();
+    }
+    if (!!this.appRatedSubscription) {
+      this.appRatedSubscription.unsubscribe();
+    }
   }
 
   private photoChanged(): void {

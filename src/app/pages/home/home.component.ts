@@ -77,9 +77,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.photoAddedSubscription.unsubscribe();
-    this.androidBackTriggeredSubscription.unsubscribe();
-    this.appRatedSubscription.unsubscribe();
+    if (!!this.photoAddedSubscription) {
+      this.photoAddedSubscription.unsubscribe();
+    }
+    if (!!this.androidBackTriggeredSubscription) {
+      this.androidBackTriggeredSubscription.unsubscribe();
+    }
+    if (!!this.appRatedSubscription) {
+      this.appRatedSubscription.unsubscribe();
+    }
   }
 
   public clickSelectPhoto(): void {

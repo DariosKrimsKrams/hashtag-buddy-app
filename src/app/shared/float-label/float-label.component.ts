@@ -22,13 +22,13 @@ export class FloatLabelComponent implements OnInit, OnDestroy {
   constructor() {}
 
   public ngOnInit(): void {
-    if (this.reset !== undefined) {
+    if (!!this.reset) {
       this.resetSubscription = this.reset.subscribe(() => this.resetText());
     }
   }
 
   public ngOnDestroy(): void {
-    if (this.resetSubscription !== undefined) {
+    if (!!this.resetSubscription) {
       this.resetSubscription.unsubscribe();
     }
   }

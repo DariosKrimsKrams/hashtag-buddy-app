@@ -55,8 +55,12 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     clearInterval(this.intervalId);
-    this.subscription1.unsubscribe();
-    this.subscription2.unsubscribe();
+    if (!!this.subscription1) {
+      this.subscription1.unsubscribe();
+    }
+    if (!!this.subscription2) {
+      this.subscription2.unsubscribe();
+    }
   }
 
   private animateDots(): void {

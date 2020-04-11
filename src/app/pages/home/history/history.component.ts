@@ -54,7 +54,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
         this.setPhotos(photos);
       }
     );
-    if (this.historyOpenChanged !== undefined) {
+    if (!!this.historyOpenChanged) {
       this.historyOpenChangedSubscription = this.historyOpenChanged.subscribe(
         (status) => {
           this.isHistoryOpen = status;
@@ -66,9 +66,13 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.photoAddedSubscription.unsubscribe();
-    this.photoUpdatedSubscription.unsubscribe();
-    if (this.historyOpenChangedSubscription !== undefined) {
+    if (!!this.photoAddedSubscription) {
+      this.photoAddedSubscription.unsubscribe();
+    }
+    if (!!this.photoUpdatedSubscription) {
+      this.photoUpdatedSubscription.unsubscribe();
+    }
+    if (!!this.historyOpenChangedSubscription) {
       this.historyOpenChangedSubscription.unsubscribe();
     }
   }

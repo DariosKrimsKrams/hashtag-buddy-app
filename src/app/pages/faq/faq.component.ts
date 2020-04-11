@@ -71,7 +71,9 @@ export class FaqComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.purchaseSuccessfulSub.unsubscribe();
+    if (!!this.purchaseSuccessfulSub) {
+      this.purchaseSuccessfulSub.unsubscribe();
+    }
   }
 
   public expandToggle(index: number): void {

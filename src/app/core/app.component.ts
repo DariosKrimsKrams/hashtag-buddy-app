@@ -102,10 +102,18 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.createUserFailedSubscription.unsubscribe();
-    this.openFeedbackModalSubscription.unsubscribe();
-    this.openTipsAndTricksPageSubscription.unsubscribe();
-    this.buyProductSubscription.unsubscribe();
+    if (!!this.createUserFailedSubscription) {
+      this.createUserFailedSubscription.unsubscribe();
+    }
+    if (!!this.openFeedbackModalSubscription) {
+      this.openFeedbackModalSubscription.unsubscribe();
+    }
+    if (!!this.openTipsAndTricksPageSubscription) {
+      this.openTipsAndTricksPageSubscription.unsubscribe();
+    }
+    if (!!this.buyProductSubscription) {
+      this.buyProductSubscription.unsubscribe();
+    }
     application.android.off(application.AndroidApplication.activityBackPressedEvent, this.handleBackButtonPressed, this);
   }
 
