@@ -30,6 +30,7 @@ export class ResultsComponent implements OnInit {
   public currentScrollingY: number = 0;
   public categories: HashtagCategory[] = [];
   private hasAnyInteraction: boolean = false;
+  public isIOS: boolean;
 
   constructor(
     private readonly page: Page,
@@ -41,6 +42,7 @@ export class ResultsComponent implements OnInit {
   ) {
     this.page.actionBarHidden = true;
     this.page.enableSwipeBackNavigation = false;
+    this.isIOS = isIOS;
   }
 
   public ngOnInit(): void {
