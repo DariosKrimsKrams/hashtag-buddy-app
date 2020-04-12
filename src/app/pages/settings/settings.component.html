@@ -1,37 +1,40 @@
 <GridLayout tkMainContent>
+
     <!-- CONTENT -->
-    <StackLayout row="0" class="m-t-160 p-l-30 p-r-30" id="list">
+    <GridLayout rows="auto,*,auto" class="Home">
+        <StackLayout row="1" verticalAlignment="middle" class="p-l-30 p-r-30" id="list">
 
-        <GridLayout rows="40" columns="*,30" verticalAlignment="middle" (tap)="goNextPage('about')">
-            <Label col="0" [text]="'settings_about' | L"></Label>
-            <Label col="1" text="&#xf054;" class="fas"></Label>
-        </GridLayout>
-        <StackLayout class="hr-light m-10"></StackLayout>
+            <GridLayout rows="40" columns="*,30" verticalAlignment="middle" (tap)="goNextPage('about')">
+                <Label col="0" [text]="'settings_about' | L"></Label>
+                <Label col="1" text="&#xf054;" class="fas"></Label>
+            </GridLayout>
+            <StackLayout class="hr-light m-10"></StackLayout>
 
-        <GridLayout rows="40" columns="*,30" verticalAlignment="middle" (tap)="goNextPage('feedback')">
-            <Label col="0" [text]="'menu_feedback' | L"></Label>
-            <Label col="1" text="&#xf054;" class="fas"></Label>
-        </GridLayout>
-        <StackLayout class="hr-light m-10"></StackLayout>
+            <GridLayout rows="40" columns="*,30" verticalAlignment="middle" (tap)="goNextPage('feedback')">
+                <Label col="0" [text]="'menu_feedback' | L"></Label>
+                <Label col="1" text="&#xf054;" class="fas"></Label>
+            </GridLayout>
+            <StackLayout class="hr-light m-10"></StackLayout>
 
-        <GridLayout rows="40" columns="*" verticalAlignment="middle" (tap)="goNextPage('legal')">
-            <Label col="0" [text]="'settings_legal' | L"></Label>
-        </GridLayout>
-        <StackLayout class="hr-light m-t-10 m-b-15"></StackLayout>
+            <GridLayout rows="40" columns="*" verticalAlignment="middle" (tap)="goNextPage('legal')">
+                <Label col="0" [text]="'settings_legal' | L"></Label>
+            </GridLayout>
+            <StackLayout class="hr-light m-t-10 m-b-15"></StackLayout>
 
-        <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="share()">
-            <Label row="0" text="{{'settings_share' | L}} &#10084;"></Label>
-            <Label row="1" [text]="'settings_share_subline' | L" class="text-muted"></Label>
-        </GridLayout>
-        <StackLayout class="hr-light m-15"></StackLayout>
+            <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="share()">
+                <Label row="0" text="{{'settings_share' | L}} &#10084;"></Label>
+                <Label row="1" [text]="'settings_share_subline' | L" class="text-muted"></Label>
+            </GridLayout>
+            <StackLayout class="hr-light m-15"></StackLayout>
 
-        <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="rate()">
-            <Label row="0" text="{{'settings_rate' | L}} &#10084;"></Label>
-            <Label row="1" [text]="rateSubline" class="text-muted"></Label>
-        </GridLayout>
-        <StackLayout class="hr-light m-15"></StackLayout>
-        
-    </StackLayout>
+            <GridLayout rows="20,20" columns="*" verticalAlignment="middle" (tap)="rate()">
+                <Label row="0" text="{{'settings_rate' | L}} &#10084;"></Label>
+                <Label row="1" [text]="rateSubline" class="text-muted"></Label>
+            </GridLayout>
+            <StackLayout class="hr-light m-15"></StackLayout>
+            
+        </StackLayout>
+    </GridLayout>
 
     <!-- HEADER -->
     <AbsoluteLayout [height]="headerHeight" verticalAlignment="top" isUserInteractionEnabled="false">
