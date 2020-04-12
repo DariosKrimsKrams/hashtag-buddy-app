@@ -88,9 +88,9 @@ export class AppComponent implements OnInit, OnDestroy {
       this.showRateAppModal();
     });
 
-    application.android.on(application.AndroidApplication.activityBackPressedEvent, this.handleBackButtonPressed, this);
-
-    disableIosSwipe(this.page, frame);
+    if (isAndroid) {
+      application.android.on(application.AndroidApplication.activityBackPressedEvent, this.handleBackButtonPressed, this);
+    }
 
     this.openTipsAndTricksPageSubscription = this.userService.openTipsAndTricksPage.subscribe(() => {
       this.selected = [];
@@ -114,7 +114,9 @@ export class AppComponent implements OnInit, OnDestroy {
     if (!!this.buyProductSubscription) {
       this.buyProductSubscription.unsubscribe();
     }
-    application.android.off(application.AndroidApplication.activityBackPressedEvent, this.handleBackButtonPressed, this);
+    if (isAndroid) {
+      application.android.off(application.AndroidApplication.activityBackPressedEvent, this.handleBackButtonPressed, this);
+    }
   }
 
   private handleBackButtonPressed(args: any): void {
