@@ -72,6 +72,9 @@ export class ResultsComponent implements OnInit {
     topView: View
   ): void {
     this.currentScrollingY = scrollView.verticalOffset;
+    if (isIOS) {
+      return;
+    }
     if (scrollView.verticalOffset <= this.parallaxHeight) {
       const offset = scrollView.verticalOffset / 2;
       if (scrollView.ios) {
