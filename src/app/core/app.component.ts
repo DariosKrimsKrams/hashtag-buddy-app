@@ -12,8 +12,6 @@ import { ModalComponent } from '../shared/modal/modal.component';
 import { openUrl } from 'tns-core-modules/utils/utils';
 import { Subscription } from 'rxjs';
 import { Page } from 'tns-core-modules/ui/page';
-import * as frame from 'tns-core-modules/ui/frame';
-import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { isIOS, isAndroid } from 'tns-core-modules/platform';
 // IAP
