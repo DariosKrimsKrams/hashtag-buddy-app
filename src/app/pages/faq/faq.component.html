@@ -1,8 +1,8 @@
 <GridLayout tkMainContent>
 
     <!-- CONTENT -->
-    <ScrollView [style.margin-top]="headerHeight + headerTop - 50" sdkExampleTitle sdkToggleNavButton #scrollView>
-        <StackLayout class="p-t-50 p-r-20 p-l-20 p-b-50">
+    <ScrollView [style.margin-top]="headerHeight + headerTop - (headerHeight / 2)" sdkExampleTitle sdkToggleNavButton #scrollView>
+        <StackLayout [style.padding-top]="headerHeight / 2" class="p-r-20 p-l-20 p-b-50">
             <StackLayout *ngFor="let faq of faqs; let i = index;" class="item">
                 <GridLayout columns="*,20" verticalAlignment="middle" (tap)="expandToggle(i)" class="p-t-20 p-b-15 p-l-20 p-r-20" [class.is-expanded]="faq.expand">
                     <WrapLayout col="0">

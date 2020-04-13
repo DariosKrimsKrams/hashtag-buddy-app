@@ -1,8 +1,8 @@
 <GridLayout tkMainContent (tap)="dismissSoftKeybaord()">
 
     <!-- CONTENT -->
-    <ScrollView class="m-t-90" sdkExampleTitle sdkToggleNavButton>
-        <StackLayout class="p-t-50 p-r-20 p-l-20">
+    <ScrollView  [style.margin-top]="headerHeight + headerTop - (headerHeight / 2)" sdkExampleTitle sdkToggleNavButton>
+        <StackLayout [style.padding-top]="headerHeight / 2" class="p-r-20 p-l-20">
             <Label [text]="'myhashtags_intro' | L" class="font-reg-s m-t-15 m-l-10 m-b-10 m-r-20" textWrap="true"></Label>
 
             <StackLayout class="m-b-20 m-l-10 m-r-10">
