@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { Page } from 'tns-core-modules/ui/page';
 import { CustomerService } from '~/app/storages/customer.service';
+import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
   selector: 'ns-about',
@@ -12,6 +13,7 @@ import { CustomerService } from '~/app/storages/customer.service';
 export class AboutComponent implements OnInit {
 
   public userId: string;
+  public isIOS: boolean;
 
   constructor(
     private readonly page: Page,
@@ -19,6 +21,7 @@ export class AboutComponent implements OnInit {
     private readonly customerService: CustomerService,
   ) {
     this.page.actionBarHidden = true;
+    this.isIOS = isIOS;
   }
 
   public ngOnInit(): void {
