@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page';
 import { PLANS } from '~/app/data/plans';
 import * as app from 'tns-core-modules/application';
@@ -47,7 +47,6 @@ export class StoreComponent implements OnInit {
   }
 
   public restore(): void {
-    console.log('restore triggered');
     this.storeService.onRestorePurchases.emit();
   }
 
