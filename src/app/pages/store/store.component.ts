@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page';
 import { PLANS } from '~/app/data/plans';
 import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
-import * as purchase from 'nativescript-purchase';
 import { Plan } from '~/app/models/plan';
 import { localize } from 'nativescript-localize/angular';
 import { isAndroid } from 'tns-core-modules/platform';
@@ -48,7 +47,8 @@ export class StoreComponent implements OnInit {
   }
 
   public restore(): void {
-    purchase.restorePurchases();
+    console.log('restore triggered');
+    this.storeService.onRestorePurchases.emit();
   }
 
   public getOutroText(): string {

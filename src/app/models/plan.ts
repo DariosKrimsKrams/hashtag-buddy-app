@@ -7,7 +7,6 @@ export class Plan {
   public title: string;
   public desc: string;
   public desc2?: string;
-  public type: string;
   public amount: number;
   public tipstrick: boolean;
 

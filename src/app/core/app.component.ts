@@ -18,7 +18,6 @@ import * as purchase from 'nativescript-purchase';
 import { Product } from 'nativescript-purchase/product';
 import { Transaction, TransactionState } from 'nativescript-purchase/transaction';
 import { Plan } from '~/app/models/plan';
-import * as dialogs from 'tns-core-modules/ui/dialogs';
 import { StoreService } from '../storages/store.service';
 import { PLANS } from '../data/plans';
 import { CurrencyPipe } from '@angular/common';
@@ -94,6 +93,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     this.buyProductSubscription = this.storeService.onBuyProduct.subscribe((x: string) => this.buyProduct(x));
+    this.buyProductSubscription = this.storeService.onRestorePurchases.subscribe((x: string) => this.restorePurchases(x));
     this.configureIap();
   }
 
@@ -267,8 +267,7 @@ export class AppComponent implements OnInit, OnDestroy {
         console.log(err);
       });
 
-      purchase.on(
-        purchase.transactionUpdatedEvent,
+      purchase.on(purchase.transactionUpdatedEvent,
         (transaction: Transaction) => {
           console.log('IAP event: ' + transaction.transactionState);
           console.log(transaction);
@@ -310,25 +309,20 @@ export class AppComponent implements OnInit, OnDestroy {
         return;
       }
       x.desc = x.product.localizedDescription;
-      if (
-        x.product.productType === 'inapp' &&
-        x.product.productIdentifier !== 'tipstricks' &&
-        (cheapestInApp === undefined ||
-          x.product.priceAmount < cheapestInApp.product.priceAmount)
+      if (x.product.productIdentifier !== 'tipstricks'
+        && (cheapestInApp === undefined || x.product.priceAmount < cheapestInApp.product.priceAmount)
       ) {
         cheapestInApp = x;
       }
     });
-    cheapestInApp.pricePerPhoto =
-      cheapestInApp.product.priceAmount / cheapestInApp.amount;
+    cheapestInApp.pricePerPhoto = cheapestInApp.product.priceAmount / cheapestInApp.amount;
     this.plans.forEach(plan => {
       if (plan.product === undefined) {
         return;
       }
-      if (plan.product.productType === 'inapp' && plan.id !== cheapestInApp.id) {
+      if (plan.id !== cheapestInApp.id) {
         plan.pricePerPhoto = plan.product.priceAmount / plan.amount;
-        const discount =
-          (1 - plan.pricePerPhoto / cheapestInApp.pricePerPhoto) * 100;
+        const discount = (1 - plan.pricePerPhoto / cheapestInApp.pricePerPhoto) * 100;
         plan.discount = Math.round(discount);
       }
     });
@@ -365,6 +359,10 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  private restorePurchases(item: string): void {
+    purchase.restorePurchases();
+  }
+
   private onProductBought(transaction: Transaction): void {
     if (isAndroid) {
       purchase.consumePurchase(transaction.transactionReceipt)
@@ -387,42 +385,18 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private buyingProductSuccessful(transaction: Transaction): void {
     this.savePurchase(transaction);
-    this.showBoughtPopup(transaction);
-  }
-
-  private showBoughtPopup(transaction: Transaction): void {
     const plan = this.getPlanById(transaction.productIdentifier);
-    const desc = localize('iap_purchase_successful_msg', plan.title);
-
-    const options: ModalDialogOptions = {
-      viewContainerRef: this.viewContainerRef,
-      fullscreen: false,
-      context: {
-        icon: 'copied',
-        headline: 'iap_purchase_successful_title',
-        desc: desc,
-        buttonOk: 'iap_purchase_successful_btn'
-      }
-    };
-    this.modalService.showModal(ModalComponent, options);
+    this.ngZone.run(() => {
+      this.showBoughtPopup(plan.title);
+    });
+    this.storeService.onPurchasedSuccessful.emit(plan.title);
   }
 
   private onProductRestored(transaction: Transaction): void {
     this.savePurchase(transaction);
-    this.showRestorePopup(transaction);
-  }
-
-  private showRestorePopup(transaction: Transaction): void {
-    const plan = this.getPlanById(
-      transaction.originalTransaction.productIdentifier
-    );
-    const title = localize('iap_restored_successful_title');
-    const msg = localize('iap_restored_successful_msg', plan.title);
-    const btn = localize('iap_restored_successful_btn');
-    dialogs.alert({
-      title: title,
-      message: msg,
-      okButtonText: btn
+    const plan = this.getPlanById(transaction.productIdentifier);
+    this.ngZone.run(() => {
+      this.showRestorePopup(plan.title);
     });
   }
 
@@ -436,6 +410,32 @@ export class AppComponent implements OnInit, OnDestroy {
     if (plan.tipstrick) {
       this.userService.unlockedTipsTricks();
     }
+  }
+
+  private showBoughtPopup(planTitle: string): void {
+    const desc = localize('iap_purchase_successful_msg', planTitle);
+    this.displayModal('iap_purchase_successful_title', desc, 'iap_purchase_successful_btn');
+  }
+
+  private showRestorePopup(planTitle: string): void {
+    const title = localize('iap_restored_successful_title');
+    const desc = localize('iap_restored_successful_msg', planTitle);
+    const btn = localize('iap_restored_successful_btn');
+    this.displayModal(title, desc, btn);
+  }
+
+  private displayModal(headline: string, desc: string, btn: string): void {
+    const options: ModalDialogOptions = {
+      viewContainerRef: this.viewContainerRef,
+      fullscreen: false,
+      context: {
+        icon: 'copied',
+        headline: headline,
+        desc: desc,
+        buttonOk: btn
+      }
+    };
+    this.modalService.showModal(ModalComponent, options);
   }
 
 }
