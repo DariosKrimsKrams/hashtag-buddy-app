@@ -11,7 +11,6 @@ import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/mod
 import { ModalComponent } from '../shared/modal/modal.component';
 import { openUrl } from 'tns-core-modules/utils/utils';
 import { Subscription } from 'rxjs';
-import { Page } from 'tns-core-modules/ui/page';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { isIOS, isAndroid } from 'tns-core-modules/platform';
 // IAP
@@ -50,8 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private readonly storeService: StoreService,
     private readonly viewContainerRef: ViewContainerRef,
     private readonly modalService: ModalDialogService,
-    private readonly currencyPipe: CurrencyPipe,
-    private readonly page: Page
+    private readonly currencyPipe: CurrencyPipe
   ) {}
 
   public ngOnInit(): void {
