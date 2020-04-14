@@ -93,7 +93,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     this.buyProductSubscription = this.storeService.onBuyProduct.subscribe((x: string) => this.buyProduct(x));
-    this.buyProductSubscription = this.storeService.onRestorePurchases.subscribe((x: string) => this.restorePurchases(x));
+    this.buyProductSubscription = this.storeService.onRestorePurchases.subscribe(() => this.restorePurchases());
     this.configureIap();
   }
 
@@ -359,7 +359,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  private restorePurchases(item: string): void {
+  private restorePurchases(): void {
     purchase.restorePurchases();
   }
 
@@ -388,8 +388,8 @@ export class AppComponent implements OnInit, OnDestroy {
     const plan = this.getPlanById(transaction.productIdentifier);
     this.ngZone.run(() => {
       this.showBoughtPopup(plan.title);
+      this.storeService.onPurchasedSuccessful.emit(plan.title);
     });
-    this.storeService.onPurchasedSuccessful.emit(plan.title);
   }
 
   private onProductRestored(transaction: Transaction): void {
