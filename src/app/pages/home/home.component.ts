@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.historyHeight = screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 140;
-    this.headerDefaultTransform = -70;
+    this.headerDefaultTransform = -60;
 
     this.photoAddedSubscription = this.userService.photoAdded.subscribe((photos: Photo[]) => {
       this.cd.detectChanges();
