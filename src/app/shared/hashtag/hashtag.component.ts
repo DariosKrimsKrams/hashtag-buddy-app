@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { isIOS } from 'tns-core-modules/platform';
+import { Page } from 'tns-core-modules/ui/page/page';
 
 @Component({
   selector: 'ns-hashtag',
@@ -16,7 +17,9 @@ export class HashtagComponent implements OnInit {
   @Output() public onClick = new EventEmitter<void>();
   @Output() public onClickCensored = new EventEmitter<void>();
 
-  constructor() {
+  constructor(
+    private readonly page: Page
+  ) {
     this.isIOS = isIOS;
   }
 
@@ -36,7 +39,29 @@ export class HashtagComponent implements OnInit {
     }
   }
 
+  public onLoaded(): void {
+    console.log('onLoaded -> handleIosShadow');
+
+    // const page = args.object;
+    console.log(this.page);
+    const label = this.page.getViewById('label');
+    console.log(label);
+
+    if (this.page.ios) {
+      const layer = label.ios.layer;
+      // layer.backgroundColor = UIColor.whiteColor.CGColor;
+      layer.backgroundColor = 'white';
+      // layer.shadowOffset = CGSizeMake(0, 1);
+      layer.shadowOpacity = 1;
+      layer.shadowRadius = 5;
+      layer.cornerRadius = 20;
+    }
+  }
+
   public triggerClick(): void {
+    this.isActive = !this.isActive;
+    return;
+
     if (!this.censored) {
       this.onClick.emit();
     } else {

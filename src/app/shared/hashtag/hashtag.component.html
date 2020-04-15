@@ -1,6 +1,13 @@
-<AbsoluteLayout class="tag" (tap)="triggerClick()">
-    <Label [text]="name" class="tag-text font-medium-small"></Label>
-    <StackLayout class="tag-left"></StackLayout>
-    <Label [text]="name" class="tag-text-active gradient" *ngIf="isActive && isIOS"></Label>
-    <Label [text]="name" class="tag-text-active font-medium-small" [class.gradient]="!isIOS" *ngIf="isActive"></Label>
-</AbsoluteLayout>
+<Label 
+    (tap)="triggerClick()"
+    id="label"
+    [text]="name"
+    class="tag font-medium-small"
+    [class.active]="isActive"
+    (loaded)="onLoaded()"
+
+    android:borderRadius="6"
+    androidElevation="6"
+    android:background="{{isActive ? 'linear-gradient(to right, #E067A9, #FFB184)' : 'white'}}"
+    ></Label>
+
