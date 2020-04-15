@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { isIOS } from 'tns-core-modules/platform';
 import { Page } from 'tns-core-modules/ui/page/page';
+declare var CGSizeMake: any;
+declare var UIColor: any;
 
 @Component({
   selector: 'ns-hashtag',
@@ -10,7 +11,6 @@ import { Page } from 'tns-core-modules/ui/page/page';
 })
 export class HashtagComponent implements OnInit {
 
-  public isIOS: boolean;
   @Input() public name: string;
   @Input() public isActive: boolean;
   @Input() public censored: boolean;
@@ -20,7 +20,6 @@ export class HashtagComponent implements OnInit {
   constructor(
     private readonly page: Page
   ) {
-    this.isIOS = isIOS;
   }
 
   public ngOnInit(): void {
@@ -40,21 +39,18 @@ export class HashtagComponent implements OnInit {
   }
 
   public onLoaded(): void {
-    console.log('onLoaded -> handleIosShadow');
-
-    // const page = args.object;
-    console.log(this.page);
     const label = this.page.getViewById('label');
-    console.log(label);
-
     if (this.page.ios) {
+      console.log(UIColor);
+      console.log(UIColor.whiteColor);
       const layer = label.ios.layer;
-      // layer.backgroundColor = UIColor.whiteColor.CGColor;
-      layer.backgroundColor = 'white';
-      // layer.shadowOffset = CGSizeMake(0, 1);
-      layer.shadowOpacity = 1;
-      layer.shadowRadius = 5;
-      layer.cornerRadius = 20;
+      layer.backgroundColor = UIColor.whiteColor.CGColor;
+      // layer.backgroundColor = 'white';
+      layer.shadowOffset = CGSizeMake(0, 5);
+      layer.shadowOpacity = 0.5;
+      layer.shadowRadius = 6;
+      layer.cornerRadius = 6;
+      // layer.backgroundColor = 'linear-gradient(to right, #E067A9, #FFB184)';
     }
   }
 

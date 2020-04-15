@@ -1,13 +1,12 @@
 <Label 
+    (loaded)="onLoaded()"
     (tap)="triggerClick()"
     id="label"
     [text]="name"
     class="tag font-medium-small"
     [class.active]="isActive"
-    (loaded)="onLoaded()"
-
     android:borderRadius="6"
     androidElevation="6"
-    android:background="{{isActive ? 'linear-gradient(to right, #E067A9, #FFB184)' : 'white'}}"
     ></Label>
 
+    <!-- android:background="{{isActive ? 'linear-gradient(to right, #E067A9, #FFB184)' : 'white'}}" -->
