@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page/page';
+import { Color } from 'tns-core-modules/color';
 declare var CGSizeMake: any;
 declare var UIColor: any;
 
@@ -41,21 +42,31 @@ export class HashtagComponent implements OnInit {
   public onLoaded(): void {
     const label = this.page.getViewById('label');
     if (this.page.ios) {
-      console.log(UIColor);
-      console.log(UIColor.whiteColor);
       const layer = label.ios.layer;
       layer.backgroundColor = UIColor.whiteColor.CGColor;
-      // layer.backgroundColor = 'white';
+      if (this.isActive) {
+        const color = new Color('#FFB184');
+        layer.backgroundColor = color.ios.CGColor;
+      }
       layer.shadowOffset = CGSizeMake(0, 5);
       layer.shadowOpacity = 0.5;
       layer.shadowRadius = 6;
       layer.cornerRadius = 6;
-      // layer.backgroundColor = 'linear-gradient(to right, #E067A9, #FFB184)';
     }
   }
 
   public triggerClick(): void {
     this.isActive = !this.isActive;
+    const label = this.page.getViewById('label');
+    if (this.page.ios) {
+      const layer = label.ios.layer;
+      if (this.isActive) {
+        const color = new Color('#FFB184');
+        layer.backgroundColor = color.ios.CGColor;
+      } else {
+        layer.backgroundColor = UIColor.whiteColor.CGColor;
+      }
+    }
     return;
 
     if (!this.censored) {
