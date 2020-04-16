@@ -40,8 +40,8 @@ export class HashtagComponent implements OnInit {
   }
 
   public onLoaded(): void {
-    const label = this.label.nativeElement;
-    if (this.page.ios) {
+    setTimeout.bind(this)(() => {
+      const label = this.label.nativeElement;
       const layer = label.ios.layer;
       layer.backgroundColor = UIColor.whiteColor.CGColor;
       layer.shadowOffset = CGSizeMake(0, 4);
@@ -50,7 +50,7 @@ export class HashtagComponent implements OnInit {
       layer.cornerRadius = 6;
       const color = new Color('#cccccc');
       layer.shadowColor = color.ios.CGColor;
-    }
+    }, 1);
   }
 
   public triggerClick(): void {
