@@ -206,7 +206,7 @@ export class ResultsComponent implements OnInit {
         okFunc: okFunc
       }
     };
-    this.modalService.showModal(ModalComponent, options)
+    this.modalService.showModal(ModalComponent, options);
   }
 
   private getHashtagsAsText(): string {
