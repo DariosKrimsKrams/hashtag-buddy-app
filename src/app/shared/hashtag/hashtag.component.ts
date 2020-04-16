@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page/page';
 import { Color } from 'tns-core-modules/color';
 declare var CGSizeMake: any;
@@ -12,6 +12,7 @@ declare var UIColor: any;
 })
 export class HashtagComponent implements OnInit {
 
+  @ViewChild('label', { read: ElementRef, static: false }) public label: ElementRef;
   @Input() public name: string;
   @Input() public isActive: boolean;
   @Input() public censored: boolean;
@@ -20,8 +21,7 @@ export class HashtagComponent implements OnInit {
 
   constructor(
     private readonly page: Page
-  ) {
-  }
+  ) { }
 
   public ngOnInit(): void {
     if (this.censored) {
@@ -40,7 +40,7 @@ export class HashtagComponent implements OnInit {
   }
 
   public onLoaded(): void {
-    const label = this.page.getViewById('label');
+    const label = this.label.nativeElement;
     if (this.page.ios) {
       const layer = label.ios.layer;
       layer.backgroundColor = UIColor.whiteColor.CGColor;
@@ -49,7 +49,7 @@ export class HashtagComponent implements OnInit {
         layer.backgroundColor = color.ios.CGColor;
       }
       layer.shadowOffset = CGSizeMake(0, 5);
-      layer.shadowOpacity = 0.5;
+      layer.shadowOpacity = 0.4;
       layer.shadowRadius = 6;
       layer.cornerRadius = 6;
     }
