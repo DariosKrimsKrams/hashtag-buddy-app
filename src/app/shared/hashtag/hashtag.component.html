@@ -16,9 +16,9 @@
     *ngIf="!this.page.ios"
     (tap)="triggerClick()"
     [text]="name"
-    class="tag font-medium-small"
+    class="tag tag-android font-medium-small"
     [class.active]="isActive"
     android:borderRadius="6"
-    androidElevation="6"
+    androidElevation="4"
     android:background="{{isActive ? 'linear-gradient(to right, #E067A9, #FFB184)' : 'white'}}"
     ></Label>
