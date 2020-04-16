@@ -1,20 +1,23 @@
+<!-- iOS -->
+<AbsoluteLayout *ngIf="this.page.ios">
+    <Label 
+        (tap)="triggerClick()"
+        [text]="name"
+        class="tag tag-ios font-medium-small"
+        (loaded)="onLoaded()"
+        #label
+        ></Label>
+    <Label [text]="name" class="tag tag-bg gradient font-medium-small" *ngIf="isActive"></Label>
+    <Label [text]="name" class="tag active font-medium-small" *ngIf="isActive"></Label>
+</AbsoluteLayout>
+
+<!-- ANDROID -->
 <Label 
-    *ngIf="this.page.ios"
+    *ngIf="!this.page.ios"
     (tap)="triggerClick()"
     [text]="name"
     class="tag font-medium-small"
     [class.active]="isActive"
-
-    (loaded)="onLoaded()"
-    #label
-    ></Label>
-<Label 
-    *ngElse
-    (tap)="triggerClick()"
-    [text]="name"
-    class="tag font-medium-small"
-    [class.active]="isActive"
-
     android:borderRadius="6"
     androidElevation="6"
     android:background="{{isActive ? 'linear-gradient(to right, #E067A9, #FFB184)' : 'white'}}"

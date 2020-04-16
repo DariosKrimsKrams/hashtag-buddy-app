@@ -44,35 +44,21 @@ export class HashtagComponent implements OnInit {
     if (this.page.ios) {
       const layer = label.ios.layer;
       layer.backgroundColor = UIColor.whiteColor.CGColor;
-      if (this.isActive) {
-        const color = new Color('#FFB184');
-        layer.backgroundColor = color.ios.CGColor;
-      }
-      layer.shadowOffset = CGSizeMake(0, 5);
+      layer.shadowOffset = CGSizeMake(0, 4);
       layer.shadowOpacity = 0.4;
       layer.shadowRadius = 6;
       layer.cornerRadius = 6;
+      const color = new Color('#999999');
+      layer.shadowColor = color.ios.CGColor;
     }
   }
 
   public triggerClick(): void {
-    this.isActive = !this.isActive;
-    const label = this.page.getViewById('label');
-    if (this.page.ios) {
-      const layer = label.ios.layer;
-      if (this.isActive) {
-        const color = new Color('#FFB184');
-        layer.backgroundColor = color.ios.CGColor;
-      } else {
-        layer.backgroundColor = UIColor.whiteColor.CGColor;
-      }
-    }
-    return;
-
     if (!this.censored) {
       this.onClick.emit();
     } else {
       this.onClickCensored.emit();
     }
   }
+
 }
