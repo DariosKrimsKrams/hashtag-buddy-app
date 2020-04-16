@@ -1,5 +1,5 @@
 <!-- iOS -->
-<AbsoluteLayout *ngIf="this.page.ios">
+<AbsoluteLayout *ngIf="isIOS">
     <Label 
         (tap)="triggerClick()"
         [text]="name"
@@ -13,7 +13,7 @@
 
 <!-- ANDROID -->
 <Label 
-    *ngIf="!this.page.ios"
+    *ngIf="!isIOS"
     (tap)="triggerClick()"
     [text]="name"
     class="tag tag-android font-medium-small"

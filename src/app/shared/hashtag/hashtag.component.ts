@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { Page } from 'tns-core-modules/ui/page/page';
 import { Color } from 'tns-core-modules/color';
+import { isIOS } from 'tns-core-modules/platform';
 declare var CGSizeMake: any;
 declare var UIColor: any;
 
@@ -18,10 +18,12 @@ export class HashtagComponent implements OnInit {
   @Input() public censored: boolean;
   @Output() public onClick = new EventEmitter<void>();
   @Output() public onClickCensored = new EventEmitter<void>();
+  public isIOS: boolean;
 
   constructor(
-    private readonly page: Page
-  ) { }
+  ) {
+    this.isIOS = isIOS;
+  }
 
   public ngOnInit(): void {
     if (this.censored) {
