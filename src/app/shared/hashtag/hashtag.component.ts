@@ -45,10 +45,10 @@ export class HashtagComponent implements OnInit {
       const layer = label.ios.layer;
       layer.backgroundColor = UIColor.whiteColor.CGColor;
       layer.shadowOffset = CGSizeMake(0, 4);
-      layer.shadowOpacity = 0.4;
-      layer.shadowRadius = 6;
+      layer.shadowOpacity = 0.5;
+      layer.shadowRadius = 4;
       layer.cornerRadius = 6;
-      const color = new Color('#999999');
+      const color = new Color('#cccccc');
       layer.shadowColor = color.ios.CGColor;
     }
   }
