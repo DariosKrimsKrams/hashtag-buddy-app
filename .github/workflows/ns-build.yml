@@ -15,4 +15,4 @@ jobs:
     - name: Install Angular CLI
       run: npm install @angular/cli
     - name: Build Android
-      run: .\tns build Android
+      run: .\tns build Android --env.aot --env.uglify --aab
