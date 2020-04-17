@@ -12,7 +12,7 @@
             <GridLayout rows="*" [columns]="isSelected(i) ? '20,*,70' : '70,*,0'" verticalAlignment="top" class="m-b-10">
                 <Image [src]="photo.image" col="0" *ngIf="!isSelected(i)" stretch="aspectFill" (tap)="selectElement(photo)" verticalAlignment="top"></Image>
                 <StackLayout class="left-blackbar" col="0" *ngIf="isSelected(i)"></StackLayout>
-                <StackLayout class="history-item" col="1" class="m-b-5" (tap)="selectElement(photo)">
+                <StackLayout class="history-item" col="1" class="m-l-10 m-b-5" (tap)="selectElement(photo)">
                     <WrapLayout *ngIf="photo.categories.length != 0">
                         <ns-hashtag *ngFor="let tag of getHashtags(photo)" [name]="tag.title"></ns-hashtag>
                         <ns-hashtag name="+{{countFurtherHashtags(photo)}} more"></ns-hashtag>
