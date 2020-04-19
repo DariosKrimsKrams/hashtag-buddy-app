@@ -314,7 +314,9 @@ export class AppComponent implements OnInit, OnDestroy {
         cheapestInApp = x;
       }
     });
-    cheapestInApp.pricePerPhoto = cheapestInApp.product.priceAmount / cheapestInApp.amount;
+    if (!!cheapestInApp) {
+      cheapestInApp.pricePerPhoto = cheapestInApp.product.priceAmount / cheapestInApp.amount;
+    }
     this.plans.forEach(plan => {
       if (plan.product === undefined) {
         return;
@@ -329,7 +331,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private calcLocas(): void {
     this.plans.forEach(plan => {
-      if (plan.amount !== 0) {
+      if (!!plan.product && plan.amount !== 0) {
         const formattedPrice = this.currencyPipe.transform(plan.pricePerPhoto, plan.product.priceCurrencyCode);
         const text = '(' + localize('store_price_per_photo', formattedPrice) + ')';
         plan.desc2 = text;

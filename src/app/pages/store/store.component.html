@@ -45,7 +45,7 @@
         <GridLayout row="1" columns="*,150" class="plan-footer">
             <Label col="0" text="{{'store_save' | L}} {{plan.discount}} %" *ngIf="plan.discount != undefined && plan.id != 'large' && plan.id != 'tipstricks'" class="font-demi-bold m-b-10" verticalAlignment="bottom"></Label>
             <Label col="0" text="+ {{'menu_faq' | L}}" class="font-demi-bold m-b-10" *ngIf="plan.id == 'large'" verticalAlignment="bottom"></Label>
-            <Button col="1" [text]="plan.product.priceFormatted" (tap)="buyProduct(plan)" class="btn btn-rounded-lg btn-normal font-demi-bold" *ngIf="plan.product !== undefined"></Button>
+            <Button col="1" [text]="getPrice(plan)" (tap)="buyProduct(plan)" class="btn btn-rounded-lg btn-normal font-demi-bold"></Button>
         </GridLayout>
     </GridLayout>
 </ng-template>

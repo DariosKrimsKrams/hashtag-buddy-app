@@ -56,6 +56,10 @@ export class StoreComponent implements OnInit {
     return localize('store_outro', company);
   }
 
+  public getPrice(plan: Plan): string {
+    return !!plan.product ? plan.product.priceFormatted : plan.priceFallback;
+  }
+
   private calcHeader(): void {
     const data = this.userService.calcHeader(1080, 416, 140);
     this.headerHeight = data.height;
