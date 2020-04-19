@@ -3,7 +3,6 @@ import { Plan } from '../models/plan';
 export const PLANS: Plan[] = [
     {
         id: 'tipstricks',
-        image: '~/app/assets/images/tipstricks.png',
         title: 'Tips & Tricks',
         desc: 'Unlock all Tips & Tricks',
         priceFallback: '1.00',
@@ -13,7 +12,6 @@ export const PLANS: Plan[] = [
     },
     {
         id: 'small',
-        image: '~/app/assets/images/1.png',
         title: 'Professional',
         desc: 'Unlock 5 photo uploads',
         priceFallback: '1.50',
@@ -23,7 +21,6 @@ export const PLANS: Plan[] = [
     },
     {
         id: 'medium',
-        image: '~/app/assets/images/2.png',
         title: 'Business',
         desc: 'Unlock 15 photo uploads',
         priceFallback: '2.50',
@@ -33,7 +30,6 @@ export const PLANS: Plan[] = [
     },
     {
         id: 'large',
-        image: '~/app/assets/images/3.png',
         title: 'Enterprise',
         desc: 'Unlock 30 photo uploads',
         priceFallback: '4.50',

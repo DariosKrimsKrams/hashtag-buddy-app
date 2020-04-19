@@ -248,7 +248,6 @@ export class AppComponent implements OnInit, OnDestroy {
               } else {
                 plan = new Plan({
                   id: product.productIdentifier,
-                  image: '~/app/assets/images/0.png',
                   product: product
                 });
                 this.plans.push(plan);

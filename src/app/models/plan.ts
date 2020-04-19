@@ -3,7 +3,6 @@ import { Product } from 'nativescript-purchase/product';
 export class Plan {
 
   public id: string;
-  public image: string;
   public title: string;
   public desc: string;
   public desc2?: string;
