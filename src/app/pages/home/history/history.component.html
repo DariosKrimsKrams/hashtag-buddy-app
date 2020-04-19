@@ -1,13 +1,14 @@
-<GridLayout *ngIf="showHeader" id="history_header" verticalAlignment="top">
-    <GridLayout columns="auto,auto,auto" horizontalAlignment="center" verticalAlignment="top" (tap)="clickOpenCloseHistory()">
-        <Image src="~/app/assets/images/icons/history.png" col="0" class="m-r-10" width="20pt" height="18pt"></Image>
-        <Label text="{{ 'history_title' | L }} ({{photosReverse.length}})" fontSize="16" class="font-weight-bold" col="1"></Label>
-        <Image src="~/app/assets/images/icons/up.png" *ngIf="!isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
-        <Image src="~/app/assets/images/icons/down.png" *ngIf="isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
-    </GridLayout>
-</GridLayout>
-<ScrollView id="history_content" [class.top_margin]="showHeader" orientation="vertical" sdkExampleTitle sdkToggleNavButton>
+
+<ScrollView id="history_content" orientation="vertical" sdkExampleTitle sdkToggleNavButton #scrollView>
     <StackLayout>
+        <GridLayout *ngIf="showHeader" id="history_header" verticalAlignment="top" (tap)="clickOpenCloseHistory()">
+            <GridLayout columns="auto,auto,auto" horizontalAlignment="center" verticalAlignment="top">
+                <Image src="~/app/assets/images/icons/history.png" col="0" class="m-r-10" width="20pt" height="18pt"></Image>
+                <Label text="{{ 'history_title' | L }} ({{photosReverse.length}})" fontSize="16" class="font-weight-bold" col="1"></Label>
+                <Image src="~/app/assets/images/icons/up.png" *ngIf="!isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
+                <Image src="~/app/assets/images/icons/down.png" *ngIf="isHistoryOpen" col="2" class="m-l-10" width="10pt" height="6pt"></Image>
+            </GridLayout>
+        </GridLayout>
         <StackLayout orientation="horizontal" class="list-group-item" (longPress)="selectItem(i)" *ngFor="let photo of photosReverse; let i = index;">
             <GridLayout rows="*" [columns]="isSelected(i) ? '20,*,70' : '70,*,0'" verticalAlignment="top" class="m-b-10">
                 <Image [src]="photo.image" col="0" *ngIf="!isSelected(i)" stretch="aspectFill" (tap)="selectElement(photo)" verticalAlignment="top"></Image>

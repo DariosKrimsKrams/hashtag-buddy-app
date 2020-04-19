@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { Photo } from '~/app/models/photo';
 import { UserService } from '../../../storages/user.service';
 import { RouterExtensions } from 'nativescript-angular/router';
@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
 import { isIOS } from 'tns-core-modules/platform';
+import { ScrollView } from 'tns-core-modules/ui/scroll-view/scroll-view';
 
 @Component({
   selector: 'ns-history',
@@ -22,8 +23,9 @@ export class HistoryComponent implements OnInit, OnDestroy {
   public photosReverse: Photo[] = [];
   public isHistoryOpen: boolean;
   public isIOS: boolean;
+  public isOpened: boolean = false;
 
-  private hashtagAmount = 7;
+  private hashtagAmount: number = 7;
   private photoAddedSubscription: Subscription;
   private photoUpdatedSubscription: Subscription;
   private historyOpenChangedSubscription: Subscription;
@@ -31,6 +33,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   @Input() public historyOpenChanged: EventEmitter<boolean>;
   @Input() public showHeader: boolean;
   @Output() public openCloseHistory = new EventEmitter();
+  @ViewChild('scrollView', { read: ElementRef, static: false }) public scrollView: ElementRef;
 
   constructor(
     private readonly userService: UserService,
@@ -63,6 +66,9 @@ export class HistoryComponent implements OnInit, OnDestroy {
       );
     }
     this.cd.detectChanges();
+    setTimeout.bind(this)(() => {
+      this.allowScrolling(false);
+    }, 1000);
   }
 
   public ngOnDestroy(): void {
@@ -111,6 +117,11 @@ export class HistoryComponent implements OnInit, OnDestroy {
   public clickOpenCloseHistory(): void {
     this.openCloseHistory.emit();
     this.setPhotos(this.userService.getPhotos());
+    this.isOpened = !this.isOpened;
+    this.allowScrolling(this.isOpened);
+    if (!this.isOpened) {
+      this.allowToTop();
+    }
   }
 
   public selectElement(photo: Photo): void {
@@ -178,4 +189,22 @@ export class HistoryComponent implements OnInit, OnDestroy {
     this.photosReverse = photos.slice().reverse();
     this.cd.detectChanges();
   }
+
+  private allowScrolling(status: boolean): void {
+    const scrollView: ScrollView = this.scrollView.nativeElement;
+    if (isIOS) {
+      scrollView.ios.scrollEnabled = !status;
+    } else {
+      if (!!scrollView.android) {
+        scrollView.android.setScrollEnabled(status);
+      }
+    }
+  }
+
+  private allowToTop(): void {
+    setTimeout.bind(this)(() => {
+      this.scrollView.nativeElement.scrollToVerticalOffset(0, false);
+    }, 1);
+  }
+
 }
