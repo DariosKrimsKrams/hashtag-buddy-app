@@ -3,7 +3,7 @@
     <Label 
         (tap)="triggerClick()"
         [text]="name"
-        class="tag tag-ios font-medium-small"
+        class="tag font-medium-small"
         (loaded)="onLoaded()"
         #label
         ></Label>
@@ -16,7 +16,7 @@
     *ngIf="!isIOS"
     (tap)="triggerClick()"
     [text]="name"
-    class="tag tag-android font-medium-small"
+    class="tag font-medium-small"
     [class.active]="isActive"
     android:borderRadius="6"
     androidElevation="4"

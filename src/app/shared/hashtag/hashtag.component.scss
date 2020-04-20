@@ -1,6 +1,6 @@
 .tag {
-    margin: 3pt 1pt 4pt 1pt;
-    padding: 6pt 10pt 6pt 10pt;
+    margin: 3pt 4pt 4pt 4pt;
+    padding: 4pt 10pt 6pt 10pt;
     color: rgba(30, 39, 46, 0.8);
 
     &.active {
@@ -8,11 +8,5 @@
     }
     &.tag-bg {
         border-radius: 6pt;
-    }
-    &.tag-ios {
-        margin-right: 10pt;
-    }
-    &.tag-android {
-        margin-right: 10pt;
     }
 }
