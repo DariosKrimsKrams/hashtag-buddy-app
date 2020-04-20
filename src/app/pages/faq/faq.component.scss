@@ -22,6 +22,11 @@
 			border-color: #67DB67;
 			color: #67DB67;
 		}
+		&.buy-btn {
+			color: #fff;
+			border-width: 0;
+			padding: 5pt 10pt 6pt 10pt;
+		}
 	}
 	.content {
 		line-height: 3;
