@@ -18,7 +18,8 @@
   <string name="rate_stars">"☆ ☆ ☆ ☆ ☆"</string>
   <string name="rate_headline">"Greife nach den Sternen"</string>
   <string name="share">"Hey, ich möchte dir diese App empfehlen: Sie hilft, die passendsten Instagram Hashtags für Fotos zu finden. Probiere sie doch gleich mal aus :)"</string>
-  <string name="myhashtags_other">"Hashtags von Fotos"</string>
+  <string name="myhashtags_all">"Hashtags von Fotos"</string>
+  <string name="myhashtags_other">"Hashtags, die dir gefallen"</string>
   <string name="myhashtags_your">"Von dir hinzugefügt"</string>
   <string name="myhashtags_intro">"Speichere hier deine Lieblings-Hashtags. Du kannst dann direkt aus der Foto-Auswahl darauf zugreifen."</string>
   <string name="progressbar_results_freemode1">"Kostenloses Limit erreicht: Die besten Hashtags sind versteckt. Erwerbe Foto-Uploads, um alle Hashtags zu sehen."</string>

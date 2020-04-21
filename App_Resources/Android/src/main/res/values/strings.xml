@@ -18,7 +18,8 @@
   <string name="rate_stars">"☆ ☆ ☆ ☆ ☆"</string>
   <string name="rate_headline">"Reach for the Stars"</string>
   <string name="share">"Hey, I would like to recommend this app: It helps to find the most relevant Instagram hashtags for photos. Let it help you too :)"</string>
-  <string name="myhashtags_other">"Hashtags from photos"</string>
+  <string name="myhashtags_all">"Hashtags from photos"</string>
+  <string name="myhashtags_other">"Hashtags you like"</string>
   <string name="myhashtags_your">"Added by you"</string>
   <string name="myhashtags_intro">"Save your favorite hashtags here. You can access them directly from the photos-selection."</string>
   <string name="progressbar_results_freemode1">"Free limit reached: Best hashtags are hidden. Buy photo uploads to unlock hashtags."</string>

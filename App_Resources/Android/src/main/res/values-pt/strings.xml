@@ -18,6 +18,7 @@
   <string name="rate_stars">"☆ ☆ ☆ ☆ ☆"</string>
   <string name="rate_headline">"Avalie"</string>
   <string name="share">"Olá, Eu gostaria de recomendar esta aplicação: Ela ajuda-o a encontrar o melhor e os mais relevante hashtags do Instagram para as suas fotos. Experimente! :)"</string>
+  <string name="myhashtags_all">"Hashtags das fotos"</string>
   <string name="myhashtags_other">"Hashtags das fotos"</string>
   <string name="myhashtags_your">"Adicionado por si"</string>
   <string name="myhashtags_intro">"Guarde os seus hashtags favoritos aqui. Podes aceder diretamente através das fotos selecionadas."</string>

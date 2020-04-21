@@ -18,6 +18,7 @@
   <string name="rate_stars">"☆ ☆ ☆ ☆ ☆"</string>
   <string name="rate_headline">"Logra las Estrellas"</string>
   <string name="share">"Oye, me gustaría recomendarte esta aplicación: ayuda a encontrar los hashtags de Instagram más relevantes para fotos. Deja que también te ayude :)"</string>
+  <string name="myhashtags_all">"Hashtags de fotos"</string>
   <string name="myhashtags_other">"Hashtags de fotos"</string>
   <string name="myhashtags_your">"Agregado por ti mismo"</string>
   <string name="myhashtags_intro">"Guarde sus hashtags favoritos aquí. Puedes acceder a ellos directamente desde la selección de fotos"</string>
