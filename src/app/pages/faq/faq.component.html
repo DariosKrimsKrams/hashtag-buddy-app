@@ -14,7 +14,7 @@
                 </GridLayout>
                 <WrapLayout class="p-b-15 p-l-2" *ngIf="faq.expand">
                     <Label [text]="faq.locked && !hasTipsTricksUnlocked ? faq.content.substring(0,200) + '...' : faq.content" textWrap="true" class="content font-reg-s"></Label>
-                    <Label [text]="'faq_buy' | L" class="m-t-10 gradient font-demi-bold iap-info buy-btn " verticalAlignment="middle" *ngIf="faq.locked && !hasTipsTricksUnlocked" (tap)="openModal()"></Label>
+                    <Button [text]="'faq_buy' | L" class="m-t-10 tn btn-rounded-lg btn-normal font-demi-bold iap-info buy-btn " verticalAlignment="middle" *ngIf="faq.locked && !hasTipsTricksUnlocked" (tap)="openModal()"></Button>
                 </WrapLayout>
             </StackLayout>
         </StackLayout>
