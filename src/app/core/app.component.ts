@@ -241,6 +241,7 @@ export class AppComponent implements OnInit, OnDestroy {
         purchase
           .getProducts()
           .then((products: Array<Product>) => {
+            console.log(products);
             products.forEach((product: Product) => {
               let plan = this.getPlanById(product.productIdentifier);
               if (plan !== undefined) {
@@ -252,7 +253,9 @@ export class AppComponent implements OnInit, OnDestroy {
                 });
                 this.plans.push(plan);
               }
-              plan.title = product.localizedTitle.split(' (')[0];
+              if (!!product.localizedTitle) {
+                plan.title = product.localizedTitle.split(' (')[0];
+              }
               plan.priceShort = this.minifyPrice(plan.product.priceFormatted);
             });
             this.calcDiscount();
@@ -307,7 +310,9 @@ export class AppComponent implements OnInit, OnDestroy {
       if (x.product === undefined) {
         return;
       }
-      x.desc = x.product.localizedDescription;
+      if (!!x.product.localizedDescription) {
+        x.desc = x.product.localizedDescription;
+      }
       if (x.product.productIdentifier !== 'tipstricks'
         && (cheapestInApp === undefined || x.product.priceAmount < cheapestInApp.product.priceAmount)
       ) {

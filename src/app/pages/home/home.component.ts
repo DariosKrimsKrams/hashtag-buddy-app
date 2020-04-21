@@ -13,7 +13,7 @@ import { localize } from 'nativescript-localize/angular';
 // import * as frame from 'tns-core-modules/ui/frame';
 // import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { RouterExtensions } from 'nativescript-angular/router';
-import { isIOS } from 'tns-core-modules/platform';
+import { isIOS, isAndroid } from 'tns-core-modules/platform';
 const permissions = require('nativescript-permissions');
 
 @Component({
@@ -75,7 +75,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     this.androidBackTriggeredSubscription = this.userService.androidBackTriggered.subscribe((path: string) => this.onAndroidBackTriggered(path));
     this.cd.detectChanges();
-    permissions.requestPermission((global as any).android.Manifest.permission.READ_EXTERNAL_STORAGE, 'Need permissions to access photos for finding best hashtags.');
+    if (isAndroid) {
+      permissions.requestPermission((global as any).android.Manifest.permission.READ_EXTERNAL_STORAGE, 'Need permissions to access photos for finding best hashtags.');
+    }
   }
 
   public ngOnDestroy(): void {
