@@ -241,7 +241,6 @@ export class AppComponent implements OnInit, OnDestroy {
         purchase
           .getProducts()
           .then((products: Array<Product>) => {
-            console.log(products);
             products.forEach((product: Product) => {
               let plan = this.getPlanById(product.productIdentifier);
               if (plan !== undefined) {
@@ -262,11 +261,11 @@ export class AppComponent implements OnInit, OnDestroy {
             this.calcLocas();
           })
           .catch(err => {
-            console.log(err);
+            console.error(err);
           });
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
 
       purchase.on(purchase.transactionUpdatedEvent,
@@ -381,7 +380,7 @@ export class AppComponent implements OnInit, OnDestroy {
           }
         })
         .catch(err => {
-          console.log(err);
+          console.error(err);
           alert(`Failed to consume: ${err}`);
         });
     } else {
