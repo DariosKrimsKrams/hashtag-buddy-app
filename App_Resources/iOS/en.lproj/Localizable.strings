@@ -16,7 +16,8 @@
 "rate_stars" = "☆ ☆ ☆ ☆ ☆";
 "rate_headline" = "Reach for the Stars";
 "share" = "Hey, I would like to recommend this app: It helps to find the most relevant Instagram hashtags for photos. Let it help you too :)";
-"myhashtags_other" = "Hashtags from photos";
+"myhashtags_all" = "Hashtags from photos";
+"myhashtags_other" = "Hashtags you like";
 "myhashtags_your" = "Added by you";
 "myhashtags_intro" = "Save your favorite hashtags here. You can access them directly from the photos-selection.";
 "progressbar_results_freemode1" = "Free limit reached: Best hashtags are hidden. Buy photo uploads to unlock hashtags.";

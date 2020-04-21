@@ -16,7 +16,8 @@
 "rate_stars" = "☆ ☆ ☆ ☆ ☆";
 "rate_headline" = "Greife nach den Sternen";
 "share" = "Hey, ich möchte dir diese App empfehlen: Sie hilft, die passendsten Instagram Hashtags für Fotos zu finden. Probiere sie doch gleich mal aus :)";
-"myhashtags_other" = "Hashtags von Fotos";
+"myhashtags_all" = "Hashtags von Fotos";
+"myhashtags_other" = "Hashtags, die dir gefallen";
 "myhashtags_your" = "Von dir hinzugefügt";
 "myhashtags_intro" = "Speichere hier deine Lieblings-Hashtags. Du kannst dann direkt aus der Foto-Auswahl darauf zugreifen.";
 "progressbar_results_freemode1" = "Kostenloses Limit erreicht: Die besten Hashtags sind versteckt. Erwerbe Foto-Uploads, um alle Hashtags zu sehen.";
