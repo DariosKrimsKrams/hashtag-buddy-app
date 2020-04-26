@@ -6,6 +6,7 @@ import { FaqComponent } from '../pages/faq/faq.component';
 import { StoreComponent } from '../pages/store/store.component';
 import { ErrorComponent } from '../shared/error/error.component';
 import { HistoryoverviewComponent } from '../pages/historyoverview/historyoverview.component';
+import { SearchComponent } from '../pages/search/search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'store', component: StoreComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'myhashtags', component: MyhashtagsComponent },
+  { path: 'search', component: SearchComponent },
   { path: 'error', component: ErrorComponent }
 ];
 

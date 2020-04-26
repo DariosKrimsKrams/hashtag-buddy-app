@@ -1,0 +1,25 @@
+<GridLayout tkMainContent (tap)="dismissSoftKeybaord()">
+
+    <!-- CONTENT -->
+    <ScrollView  [style.margin-top]="headerHeight + headerTop - (headerHeight / 2)" sdkExampleTitle sdkToggleNavButton>
+        <StackLayout [style.padding-top]="headerHeight / 2" class="p-r-20 p-l-20">
+            <Label [text]="'test' | L" class="font-reg-s m-t-15 m-l-10 m-b-10 m-r-20" textWrap="true"></Label>
+
+            
+        </StackLayout>
+    </ScrollView>
+
+    <!-- HEADER -->
+    <AbsoluteLayout [height]="headerHeight" verticalAlignment="top" isUserInteractionEnabled="false">
+        <Image src="~/app/assets/images/header/header_img1.png" stretch="aspectFill" width="100%" [top]="headerTop"></Image>
+        <GridLayout width="100%">
+            <Label [text]="'menu_myhashtags' | L" horizontalAlignment="center" [class]="'title ' + (isIOS ? 'm-t-20' : 'm-t-40')"></Label>
+        </GridLayout>
+    </AbsoluteLayout>
+
+    <!-- MENU BUTTON -->
+    <StackLayout (tap)="openMenu()" horizontalAlignment="left" verticalAlignment="top" height="70" width="70" class="m-t-20">
+        <Image src="~/app/assets/images/icons/menu_bar_white.png" height="20" width="20" [class.m-t-20]="!isIOS" class="p-l-25 p-r-25 p-b-20 p-t-10"></Image>
+    </StackLayout>
+    
+</GridLayout>

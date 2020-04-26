@@ -52,7 +52,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.menus = ['home', 'myhashtags', 'faq', 'store', 'settings'];
+    this.menus = ['home', 'faq', 'search', 'myhashtags', 'store', 'settings'];
     if (isIOS) {
       this.menus.splice(1, 0, 'history');
     }
