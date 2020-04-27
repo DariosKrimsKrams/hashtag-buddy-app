@@ -95,6 +95,7 @@
   <string name="store_headline_abo">"Abonnements"</string>
   <string name="store_headline_once">"Paiements uniques"</string>
   <string name="store_intro">"Achetez des chargements de photos pour plus de résultats de hashtag non censurés. Ces ventes ne m\'apporteront aucun profit, mais m\'aideront à couvrir les coûts de cette application."</string>
+  <string name="menu_search">"Hashtag Inspector"</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"Plus"</string>
   <string name="menu_new">"nouveau"</string>
