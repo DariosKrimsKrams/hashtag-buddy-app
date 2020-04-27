@@ -45,6 +45,9 @@
   <string name="settings_terms">"Termos e Condições"</string>
   <string name="settings_legal">"Política de Privacidade"</string>
   <string name="settings_about">"Sobre"</string>
+  <string name="search_results">"Results"</string>
+  <string name="search_cta">"yyyy"</string>
+  <string name="search_intro">"xxx"</string>
   <string name="faq_buy_cancel">"Cancelar"</string>
   <string name="faq_buy_cta">"Compre agora"</string>
   <string name="faq_buy_desc">"Desbloquear todas as dicas por apenas %1$s :)"</string>

@@ -45,6 +45,9 @@
   <string name="settings_terms">"Geschäftsbedingungen"</string>
   <string name="settings_legal">"Datenschutzerklärung"</string>
   <string name="settings_about">"Über mich"</string>
+  <string name="search_results">"Results"</string>
+  <string name="search_cta">"yyyy"</string>
+  <string name="search_intro">"xxx"</string>
   <string name="faq_buy_cancel">"Abbrechen"</string>
   <string name="faq_buy_cta">"Jetzt kaufen"</string>
   <string name="faq_buy_desc">"Schalte jetzt alle Tipps &amp; Tricks Texte für nur %1$s frei :)"</string>

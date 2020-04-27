@@ -48,6 +48,8 @@ export class SearchComponent implements OnInit {
       utils.ad.dismissSoftInput();
     }
   }
+  public addHashtag(hashtag: Hashtag): void {
+  }
 
   private calcHeader(): void {
     const data = this.userService.calcHeader(1080, 416, 140);

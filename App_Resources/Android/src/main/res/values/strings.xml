@@ -45,6 +45,9 @@
   <string name="settings_terms">"Terms and Conditions"</string>
   <string name="settings_legal">"Privacy Policy"</string>
   <string name="settings_about">"About me"</string>
+  <string name="search_cta">"search"</string>
+  <string name="search_results">"Results"</string>
+  <string name="search_intro">"Find similar hashtags based on your search requests. Like Google, but for Instagram hashtags :)"</string>
   <string name="faq_buy_cancel">"Cancel"</string>
   <string name="faq_buy_cta">"Buy now"</string>
   <string name="faq_buy_desc">"Unlock now all Tips &amp; Tricks for just %1$s :)"</string>
