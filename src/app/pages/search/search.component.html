@@ -10,18 +10,13 @@
         <Button col="1" text="Search" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="searchInput !== ''" (tap)="search()" *ngIf="searchInput !== ''" verticalAlignment="bottom" horizontalAlignment="right"></Button>
       </GridLayout>
       
-      <!-- <Label [text]="'myhashtags_your' | L" class="font-demi-bold m-l-10 m-b-5" *ngIf="hashtagsOwn.length !== 0"></Label>
-      <WrapLayout class="m-b-20 tag-title" *ngIf="hashtagsOwn.length !== 0">
-          <ns-hashtag *ngFor="let tag of hashtagsOwn; let j = index;" [name]="'#' + tag.title"></ns-hashtag>
-      </WrapLayout>
+      <!-- SELECTION AREA with SearchMultiple Hashtag-Completion -->
 
-      <Label [text]="'myhashtags_other' | L" class="font-demi-bold m-l-10 m-b-5" *ngIf="hashtagsGenerated.length !== 0"></Label>
-      <WrapLayout class="m-b-20 tag-title" *ngIf="hashtagsGenerated.length !== 0">
-          <ns-hashtag *ngFor="let tag of hashtagsGenerated; let j = index;" [name]="'#' + tag.title"></ns-hashtag>
-      </WrapLayout> -->
+      <Label text="Similar Hashtags" class="font-demi-bold m-l-10 m-b-5" *ngIf="!!hashtagCategory"></Label>
+      <WrapLayout class="m-b-20 tag-title" *ngIf="!!hashtagCategory">
+          <ns-hashtag *ngFor="let tag of hashtagCategory.tags; let j = index;" [name]="'#' + tag.title"></ns-hashtag>
+      </WrapLayout>
       
-      <!-- RESULTS-PAGE SELECTED # -->
-      <!-- RESULTS-PAGE SELECTION -->
       <!-- LOADING INDICATOR -->
     
     </StackLayout>

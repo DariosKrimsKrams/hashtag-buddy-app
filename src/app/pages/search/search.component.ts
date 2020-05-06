@@ -12,6 +12,8 @@ import { EvaluationRepository } from '~/app/services/repositories/evaluation-rep
 import { SearchRequest } from '~/app/models/request/search-request';
 import { IHttpResponse } from '~/app/models/request/http-response';
 import { Toasty, ToastDuration } from 'nativescript-toasty';
+import { HashtagResult } from '~/app/models/hashtag-result';
+import { HashtagCategory } from '~/app/models/hashtag-category';
 
 @Component({
   templateUrl: './search.component.html',
@@ -24,6 +26,8 @@ export class SearchComponent implements OnInit {
   public headerTop: number = 0;
   public isIOS: boolean;
   public searchInput: string = '';
+  public lastSearch: string = '';
+  public hashtagCategory: HashtagCategory = undefined;
 
   constructor(
     private readonly page: Page,
@@ -55,7 +59,7 @@ export class SearchComponent implements OnInit {
   }
 
   public search(): void {
-    if (!this.searchInput) {
+    if (!this.searchInput || this.searchInput === this.lastSearch) {
       return;
     }
     const customerId = this.customerService.getCustomerId();
@@ -64,13 +68,19 @@ export class SearchComponent implements OnInit {
       .setToastDuration(ToastDuration.LONG)
       .show();
     }
+    this.lastSearch = this.searchInput;
+    this.hashtagCategory = undefined;
     const data: SearchRequest = {
       customerId: customerId,
       keyword: this.searchInput
     };
-    console.log(data);
     this.evaluationRepository.search(data).subscribe((httpResponse: IHttpResponse) => {
-      console.log(httpResponse);
+      const response = httpResponse as any;
+      const hashtags = response.hashtags as HashtagResult[];
+      if (hashtags.length === 0) {
+        return;
+      }
+      this.hashtagCategory = HashtagCategory.fromHashtagResult(hashtags, 'search');
     });
 
   }
