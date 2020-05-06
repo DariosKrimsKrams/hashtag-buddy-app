@@ -20,7 +20,7 @@ export class InsertHashtagsFormComponent implements OnInit {
   public addCustomHashtags(): void {
     const input = this.customUserHashtagsText;
     if (input === undefined) {
-      console.log('error: addCustomHashtags triggered with text=undefined');
+      console.error('error: addCustomHashtags triggered with text=undefined');
       return;
     }
     input.split(' ').map(word => {

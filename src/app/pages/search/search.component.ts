@@ -3,13 +3,15 @@ import { Page } from 'tns-core-modules/ui/page/page';
 import { isIOS, isAndroid } from 'tns-core-modules/platform';
 import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
-import { Hashtag } from '~/app/models/hashtag';
 import * as frame from 'tns-core-modules/ui/frame';
 import * as utils from 'tns-core-modules/utils/utils';
-import { MyHashtag } from '~/app/models/my-hashtag';
 import { UserService } from '~/app/storages/user.service';
-import { Photo } from '~/app/models/photo';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
+import { CustomerService } from '~/app/storages/customer.service';
+import { EvaluationRepository } from '~/app/services/repositories/evaluation-repository.service';
+import { SearchRequest } from '~/app/models/request/search-request';
+import { IHttpResponse } from '~/app/models/request/http-response';
+import { Toasty, ToastDuration } from 'nativescript-toasty';
 
 @Component({
   templateUrl: './search.component.html',
@@ -21,9 +23,12 @@ export class SearchComponent implements OnInit {
   public headerHeight: number = 0;
   public headerTop: number = 0;
   public isIOS: boolean;
+  public searchInput: string = '';
 
   constructor(
     private readonly page: Page,
+    private readonly evaluationRepository: EvaluationRepository,
+    private readonly customerService: CustomerService,
     private readonly userService: UserService
   ) {
     this.page.actionBarHidden = true;
@@ -48,7 +53,26 @@ export class SearchComponent implements OnInit {
       utils.ad.dismissSoftInput();
     }
   }
-  public addHashtag(hashtag: Hashtag): void {
+
+  public search(): void {
+    if (!this.searchInput) {
+      return;
+    }
+    const customerId = this.customerService.getCustomerId();
+    if (!customerId) {
+      new Toasty({ text: 'Customer error. Try restarting the app and be online.' })
+      .setToastDuration(ToastDuration.LONG)
+      .show();
+    }
+    const data: SearchRequest = {
+      customerId: customerId,
+      keyword: this.searchInput
+    };
+    console.log(data);
+    this.evaluationRepository.search(data).subscribe((httpResponse: IHttpResponse) => {
+      console.log(httpResponse);
+    });
+
   }
 
   private calcHeader(): void {

@@ -17,7 +17,7 @@ setStatusBarColors();
     NativeScriptLocalizeModule,
     FloatLabelModule,
     HashtagModule,
-    InsertHashtagsFormModule,
+    InsertHashtagsFormModule
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
