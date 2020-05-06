@@ -49,7 +49,7 @@ export class SettingsComponent implements OnInit {
 
   public goNextPage(route: string): void {
     if (route === 'legal') {
-      openUrl('https://instaq.app/legal-privacy.html');
+      openUrl('https://hashtagbuddy.app/legal-privacy.html');
     } else {
       this.router.navigate(['/settings/' + route], {
         transition: {
