@@ -22,9 +22,9 @@ export class CustomerRepository {
         headers: { 'Content-Type': 'application/json' },
         content: ''
       }).then((response) => {
-          const result = response.content.toJSON();
-          observer.next(result);
-          observer.complete();
+        const result = response.content.toJSON();
+        observer.next(result);
+        observer.complete();
       }, (error) => {
         console.log('error', error);
         observer.error(error);

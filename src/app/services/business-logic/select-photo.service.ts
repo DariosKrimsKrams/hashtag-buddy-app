@@ -99,7 +99,7 @@ export class SelectPhotoService {
   private uploadImage(photoId: number, observer: Subscriber<any>): void {
     const customerId = this.customerService.getCustomerId();
     const photo = this.userService.getPhoto(photoId);
-    this.evaluationRepository.UploadPhoto(photo.image, customerId)
+    this.evaluationRepository.uploadPhoto(photo.image, customerId)
     .subscribe((httpResponse: IHttpResponse) => {
       console.log(httpResponse);
       // iOS uses -1 (not 200) at successful requests
