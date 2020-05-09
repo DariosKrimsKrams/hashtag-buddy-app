@@ -1,0 +1,11 @@
+<Label class="m-t-10 m-b-5 m-l-5 m-r-5">
+    <FormattedString>
+        <Span class="font-demi-bold" [text]="'results_category_user_hashtags' | L"></Span>
+        <Span text="  ({{highlightStatus.length}} / 30)" fontSize="12"></Span>
+    </FormattedString>
+</Label>
+<WrapLayout class="m-t-5">
+    <ns-hashtag *ngFor="let title of highlightStatus" (onClick)="deselectHashtag(title)" [name]="'#' + title + '   &times;'" [isActive]="true"></ns-hashtag>
+</WrapLayout>  
+<Button [text]="'results_copy_selected' | L" (tap)="copyToClipboard()" class="btn btn-rounded-lg btn-outline border-color-normal color-normal" verticalAlignment="middle" *ngIf="highlightStatus.length !== 0"></Button>
+<Label class="m-r-10 m-l-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="highlightStatus.length == 0"></Label>
