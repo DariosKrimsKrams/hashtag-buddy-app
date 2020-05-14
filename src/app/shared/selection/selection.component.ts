@@ -117,21 +117,32 @@ export class SelectionComponent implements OnInit, OnDestroy {
     };
     this.evaluationRepository.searchMultiple(data).subscribe((httpResponse: IHttpResponse) => {
       const response = httpResponse as any;
-      const hashtagsResults = response.hashtags as HashtagResult[];
-      if (hashtagsResults.length === 0) {
-        return;
-      }
-      hashtagsResults.slice(0, 10);
-      this.suggestedHashtags = HashtagCategory.fromHashtagResult(hashtagsResults, 'search');
-      this.selectedHashtags.forEach(selectedHashtag => {
-        if (this.excludedHashtags.indexOf(selectedHashtag) === -1) {
-          const exist = this.suggestedHashtags.tags.filter(x => x.title === selectedHashtag).length[0] !== undefined;
-          if (!exist) {
-            this.suggestedHashtags.tags.unshift(new Hashtag(selectedHashtag));
-          }
-        }
-      });
+      const hashtags = response.hashtags as HashtagResult[];
+      this.processSearchResults(hashtags);
     });
+  }
+
+  private processSearchResults(hashtags: HashtagResult[]): void {
+    if (hashtags.length === 0) {
+      return;
+    }
+    hashtags = hashtags.slice(0, 15);
+    this.suggestedHashtags = HashtagCategory.fromHashtagResult(hashtags, 'search');
+
+    const selectedHashtags: Hashtag[] = [];
+    this.selectedHashtags.forEach(selectedHashtag => {
+      if (this.excludedHashtags.indexOf(selectedHashtag) === -1) {
+        const exist = this.suggestedHashtags.tags.filter(x => x.title === selectedHashtag).length[0] !== undefined;
+        if (!exist) {
+          selectedHashtags.push(new Hashtag(selectedHashtag));
+        }
+      }
+    });
+    const hasPurchase = this.userService.hasPurchase();
+    if (!hasPurchase) {
+      this.suggestedHashtags.censorHashtags();
+    }
+    this.suggestedHashtags.tags = selectedHashtags.concat(this.suggestedHashtags.tags);
   }
 
 }

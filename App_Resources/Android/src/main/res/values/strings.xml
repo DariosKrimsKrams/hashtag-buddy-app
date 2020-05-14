@@ -35,7 +35,7 @@
   <string name="toast_delete_failed">"Delete failed :\'("</string>
   <string name="toast_delete_successful">"Delete successful :)"</string>
   <string name="toast_no_hashtags_selected">"Please select hashtags first :)"</string>
-  <string name="toast_hashtags_hidden">"The hashtag is hidden due to Free-Mode :\'("</string>
+  <string name="toast_hashtags_hidden">"%1$s is hidden due to free-mode :\'("</string>
   <string name="app_store">"App Store"</string>
   <string name="google_play">"Play Store"</string>
   <string name="settings_rate_subline">"Rate on"</string>
@@ -205,7 +205,7 @@
   <string name="history_no_content">"You haven\'t uploaded any photos yet."</string>
   <string name="history_title">"History"</string>
   <string name="home_upload">"Select a photo"</string>
-  <string name="home_desc_3">"Upload a photo to discover the best Instagram hashtags:"</string>
+  <string name="home_desc_3">"Upload a photo to discover matching Instagram hashtags:"</string>
   <string name="home_desc_2">"#hashtags for your photos"</string>
   <string name="home_desc_1">"Discover the best Instagram"</string>
   <string name="_app_name_1k3Sbz">"Hashtag Buddy"</string>

@@ -114,8 +114,7 @@ export class UserService {
   }
 
   public hasPurchase(): boolean {
-    const purchases = this.getExistingPurchases();
-    return purchases.length !== 0;
+    return this.getExistingPurchases().length !== 0;
   }
 
   private getExistingPurchases(): Transaction[] {

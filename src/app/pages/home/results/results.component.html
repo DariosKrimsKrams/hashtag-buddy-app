@@ -35,7 +35,6 @@
                         <WrapLayout class="m-t-5 m-l-5 m-b-20 tag-title" *ngIf="category.tags.length !== 0">
                             <ns-hashtag *ngFor="let tag of category.tags"
                             (onClick)="toggleHashtag(tag.title)"
-                            (onClickCensored)="clickedCensoredHashtag()"
                             [name]="'#' + tag.title"
                             [isActive]="selectedHashtags.indexOf(tag.title) > -1"
                             [censored]="tag.isCensored"

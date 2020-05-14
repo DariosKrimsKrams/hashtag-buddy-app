@@ -172,7 +172,7 @@
   "settings_rate_subline": "Valuta sul",
   "google_play": "Play Store",
   "app_store": "App Store",
-  "toast_hashtags_hidden": "L'hashtag è nascosto a causa del Free-Mode :'(",
+  "toast_hashtags_hidden": "%s è nascosto a causa del Free-Mode :'(",
   "toast_no_hashtags_selected": "Per prima cosa seleziona l’hashtag :)",
   "toast_delete_successful": "Eliminazione avvenuta con successo :)",
   "toast_delete_failed": "Eliminazione non riuscita :'(",

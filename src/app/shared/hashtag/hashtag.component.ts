@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Color } from 'tns-core-modules/color';
 import { isIOS } from 'tns-core-modules/platform';
+import { Toasty, ToastDuration } from 'nativescript-toasty';
+import { localize } from 'nativescript-localize/angular';
 declare var CGSizeMake: any;
 declare var UIColor: any;
 
@@ -17,7 +19,6 @@ export class HashtagComponent implements OnInit {
   @Input() public isActive: boolean;
   @Input() public censored: boolean;
   @Output() public onClick = new EventEmitter<void>();
-  @Output() public onClickCensored = new EventEmitter<void>();
   public isIOS: boolean;
 
   constructor(
@@ -31,10 +32,7 @@ export class HashtagComponent implements OnInit {
       const trimLength = length > 5 ? 4 : length - 2;
       this.name = this.name.substr(0, trimLength + 1);
       const minAmountOfStars = 4;
-      const amountOfStars =
-        length - trimLength >= minAmountOfStars
-          ? length
-          : trimLength + minAmountOfStars;
+      const amountOfStars = length - trimLength >= minAmountOfStars ? length : trimLength + minAmountOfStars;
       for (let i = trimLength; i < amountOfStars; i++) {
         this.name += '*';
       }
@@ -59,8 +57,15 @@ export class HashtagComponent implements OnInit {
     if (!this.censored) {
       this.onClick.emit();
     } else {
-      this.onClickCensored.emit();
+      this.clickedCensoredHashtag();
     }
+  }
+
+  public clickedCensoredHashtag(): void {
+    const text = localize('toast_hashtags_hidden', this.name);
+    new Toasty({ text: text })
+      .setToastDuration(ToastDuration.LONG)
+      .show();
   }
 
 }

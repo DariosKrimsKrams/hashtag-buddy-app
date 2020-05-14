@@ -35,7 +35,7 @@
   <string name="toast_delete_failed">"Löschen fehlgeschlagen :\'("</string>
   <string name="toast_delete_successful">"Erfolgreich gelöscht :)"</string>
   <string name="toast_no_hashtags_selected">"Bitte zuerst Hashtags auswählen :)"</string>
-  <string name="toast_hashtags_hidden">"Dieses Hashtag ist im kostenlosen Modus versteckt"</string>
+  <string name="toast_hashtags_hidden">"%1$s ist im kostenlosen Modus versteckt :\'("</string>
   <string name="app_store">"App Store"</string>
   <string name="google_play">"Play Store"</string>
   <string name="settings_rate_subline">"Bewerte es im"</string>
@@ -205,7 +205,7 @@
   <string name="history_no_content">"Du hast bisher keine Fotos hochgeladen."</string>
   <string name="history_title">"Historie"</string>
   <string name="home_upload">"Wähle ein Foto"</string>
-  <string name="home_desc_3">"Lade ein Foto hoch, um die besten Instagram Hashtags hierfür zu entdecken:"</string>
+  <string name="home_desc_3">"Lade ein Foto hoch, um passende Instagram Hashtags zu entdecken:"</string>
   <string name="home_desc_2">"#hashtags für deine Fotos"</string>
   <string name="home_desc_1">"Entdecke die besten Instagram"</string>
   <string name="_app_name_1k3Sbz">"Hashtag Buddy"</string>

@@ -11,11 +11,11 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
             </GridLayout> 
             <GridLayout rows="30" columns="20,20,auto" (tap)="openPage(i)" class="item" *ngFor="let menu of menus; let i = index;">
                 <Image col="1" [src]="'~/app/assets/images/icons/' + (menu == 'history' ? 'history_gradient' : menu) + '.png'"></Image>
-                <Label *ngIf="menu != 'faq'" col="2" text="{{ (menu == 'history' ? 'history_title' : 'menu_' + menu) | L }}" [class.menu-active]="selected[i]"></Label>
-                <WrapLayout col="2" *ngIf="menu == 'faq'">
+                <Label col="2" text="{{ (menu == 'history' ? 'history_title' : 'menu_' + menu) | L }}" [class.menu-active]="selected[i]"></Label>
+                <!-- <WrapLayout col="2" *ngIf="menu == 'faq'">
                     <Label text="{{ 'menu_' + menu | L }}" [class.menu-active]="selected[i]"></Label>
                     <Label [text]="'menu_new' | L" class="new-info" verticalAlignment="middle"></Label>
-                </WrapLayout>
+                </WrapLayout> -->
             </GridLayout>
         </StackLayout>
     </StackLayout>

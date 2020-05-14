@@ -9,7 +9,6 @@
         <FloatLabel col="0" placeholder="Topic or keyword" (userTextEmitter)="searchInput = $event" (onSubmit)="search()"></FloatLabel>
         <Button col="1" text="Search" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="searchInput !== ''" (tap)="search()" *ngIf="searchInput !== ''" verticalAlignment="bottom" horizontalAlignment="right"></Button>
       </GridLayout>
-      
       <ns-selection
         *ngIf="!!hashtagCategory"
         [selectedHashtags]="selectedHashtags"
@@ -18,8 +17,7 @@
         [hashtagsChanged]="hashtagsChanged"
         [excludedHashtags]="excludedHashtags"
         ></ns-selection>
-
-      <Label text="Similar Hashtags (based on my search)" class="font-demi-bold m-t-10 m-l-5 m-b-5" *ngIf="!!hashtagCategory"></Label>
+      <Label text="Similar Hashtags (based on my search)" class="font-demi-bold m-t-20 m-l-5 m-b-5" *ngIf="!!hashtagCategory"></Label>
       <WrapLayout class="m-b-40 tag-title" *ngIf="!!hashtagCategory">
           <ns-hashtag
           *ngFor="let tag of hashtagCategory.tags; let j = index;"
@@ -31,6 +29,8 @@
       </WrapLayout>
       
       <!-- LOADING INDICATOR -->
+      
+      <!-- Feedback No Search Results found -->
     
     </StackLayout>
   </ScrollView>

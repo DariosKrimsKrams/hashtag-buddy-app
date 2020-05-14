@@ -35,7 +35,7 @@
   <string name="toast_delete_failed">" La suppresion à échouée :\'("</string>
   <string name="toast_delete_successful">"Supprimé avec succès :) :)"</string>
   <string name="toast_no_hashtags_selected">"Veuillez d\'abord sélectionner les hashtags :)"</string>
-  <string name="toast_hashtags_hidden">"Le hashtag est caché à cause de Free-Mode :\'("</string>
+  <string name="toast_hashtags_hidden">"%1$s est caché à cause de Free-Mode :\'("</string>
   <string name="app_store">"App Store"</string>
   <string name="google_play">"Play Store"</string>
   <string name="settings_rate_subline">"Noter sur le"</string>

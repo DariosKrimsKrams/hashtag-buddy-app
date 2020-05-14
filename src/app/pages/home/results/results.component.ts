@@ -190,13 +190,6 @@ export class ResultsComponent implements OnInit {
     }
   }
 
-  public clickedCensoredHashtag(): void {
-    const text = localize('toast_hashtags_hidden');
-    new Toasty({ text: text })
-      .setToastDuration(ToastDuration.LONG)
-      .show();
-  }
-
   private selectHashtag(title: string): void {
     this.selectedHashtags.push(title);
     this.hasAnyInteraction = true;

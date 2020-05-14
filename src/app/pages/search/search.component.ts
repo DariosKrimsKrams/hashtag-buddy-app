@@ -87,6 +87,10 @@ export class SearchComponent implements OnInit {
         return;
       }
       this.hashtagCategory = HashtagCategory.fromHashtagResult(hashtags, 'search');
+      const hasPurchase = this.userService.hasPurchase();
+      if (!hasPurchase) {
+        this.hashtagCategory.censorHashtags();
+      }
       this.setExcludedHashtags();
     });
 

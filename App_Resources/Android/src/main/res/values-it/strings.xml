@@ -36,7 +36,7 @@
   <string name="toast_delete_failed">"Eliminazione non riuscita :\'("</string>
   <string name="toast_delete_successful">"Eliminazione avvenuta con successo :)"</string>
   <string name="toast_no_hashtags_selected">"Per prima cosa seleziona l’hashtag :)"</string>
-  <string name="toast_hashtags_hidden">"L\'hashtag è nascosto a causa del Free-Mode :\'("</string>
+  <string name="toast_hashtags_hidden">"%1$s è nascosto a causa del Free-Mode :\'("</string>
   <string name="app_store">"App Store"</string>
   <string name="google_play">"Play Store"</string>
   <string name="settings_rate_subline">"Valuta sul"</string>

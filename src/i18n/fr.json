@@ -172,7 +172,7 @@
   "settings_rate_subline": "Noter sur le",
   "google_play": "Play Store",
   "app_store": "App Store",
-  "toast_hashtags_hidden": "Le hashtag est caché à cause de Free-Mode :'(",
+  "toast_hashtags_hidden": "%s est caché à cause de Free-Mode :'(",
   "toast_no_hashtags_selected": "Veuillez d'abord sélectionner les hashtags :)",
   "toast_delete_successful": "Supprimé avec succès :) :)",
   "toast_delete_failed": " La suppresion à échouée :'(",
