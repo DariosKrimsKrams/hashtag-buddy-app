@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page/page';
 import { isIOS, isAndroid } from 'tns-core-modules/platform';
 import * as app from 'tns-core-modules/application';
@@ -14,6 +14,7 @@ import { IHttpResponse } from '~/app/models/request/http-response';
 import { Toasty, ToastDuration } from 'nativescript-toasty';
 import { HashtagResult } from '~/app/models/hashtag-result';
 import { HashtagCategory } from '~/app/models/hashtag-category';
+import { localize } from 'nativescript-localize/angular';
 
 @Component({
   templateUrl: './search.component.html',
@@ -22,12 +23,15 @@ import { HashtagCategory } from '~/app/models/hashtag-category';
 })
 export class SearchComponent implements OnInit {
 
+  @Output() public hashtagsChanged: EventEmitter<void> = new EventEmitter();
   public headerHeight: number = 0;
   public headerTop: number = 0;
   public isIOS: boolean;
   public searchInput: string = '';
   public lastSearch: string = '';
   public hashtagCategory: HashtagCategory = undefined;
+  public selectedHashtags: string[] = [];
+  public excludedHashtags: string[] = [];
 
   constructor(
     private readonly page: Page,
@@ -70,6 +74,8 @@ export class SearchComponent implements OnInit {
     }
     this.lastSearch = this.searchInput;
     this.hashtagCategory = undefined;
+    this.selectedHashtags = [];
+    this.excludedHashtags = [];
     const data: SearchRequest = {
       customerId: customerId,
       keyword: this.searchInput
@@ -81,14 +87,51 @@ export class SearchComponent implements OnInit {
         return;
       }
       this.hashtagCategory = HashtagCategory.fromHashtagResult(hashtags, 'search');
+      this.setExcludedHashtags();
     });
 
+  }
+
+  public toggleHashtag(title: string): void {
+    const index = this.selectedHashtags.indexOf(title);
+    if (index > -1) {
+      this.selectedHashtags.splice(index, 1);
+    } else {
+      this.selectedHashtags.push(title);
+    }
+    this.hashtagsChanged.emit();
+    this.setExcludedHashtags();
+  }
+
+  public copyToClipboard(): void {
+    const text = localize('copy_successful');
+    new Toasty({ text: text })
+      .setToastDuration(ToastDuration.LONG)
+      .show();
+  }
+
+  public deselectHashtag(title: string): void {
+    for (let i = 0; i < this.selectedHashtags.length; i++) {
+      if (this.selectedHashtags[i].toLowerCase() === title.toLowerCase()) {
+        this.selectedHashtags.splice(i, 1);
+        return;
+      }
+    }
+    this.setExcludedHashtags();
   }
 
   private calcHeader(): void {
     const data = this.userService.calcHeader(1080, 416, 140);
     this.headerHeight = data.height;
     this.headerTop = data.top;
+  }
+
+  private setExcludedHashtags(): void {
+    this.excludedHashtags = [];
+    this.hashtagCategory.tags.forEach(tag => {
+      this.excludedHashtags.push(tag.title);
+    });
+    this.excludedHashtags.push(this.searchInput);
   }
 
 }

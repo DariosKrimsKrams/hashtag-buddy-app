@@ -23,7 +23,7 @@ export class EvaluationRepository {
 
   private evaluationUrl = environment.apiUrl + '/Evaluation/File/';
   private searchUrl = environment.apiUrl + '/Evaluation/Search/';
-  private searchMultipleUrl = environment.apiUrl + '/Evaluation/SearchMultiple/';
+  private searchMultipleUrl = environment.apiUrl + '/Evaluation/MultipleSearch/';
 
   public uploadPhoto(filepath: string, customerId: string): Observable<IHttpResponse> {
     this.file = filepath;

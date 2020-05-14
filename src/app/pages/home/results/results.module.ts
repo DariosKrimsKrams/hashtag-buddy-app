@@ -6,6 +6,7 @@ import { InsertHashtagsFormModule } from '~/app/shared/insert-hashtags-form/inse
 import { FloatLabelModule } from '~/app/shared/float-label/float-label.module';
 import { HashtagModule } from '~/app/shared/hashtag/hashtag.module';
 import { ProgressBarModule } from '~/app/shared/progress-bar/progress-bar.module';
+import { SelectionModule } from '~/app/shared/selection/selection.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProgressBarModule } from '~/app/shared/progress-bar/progress-bar.module
     FloatLabelModule,
     InsertHashtagsFormModule,
     HashtagModule,
-    ProgressBarModule
+    ProgressBarModule,
+    SelectionModule
   ],
   exports: [
     ResultsComponent

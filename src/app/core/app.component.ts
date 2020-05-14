@@ -36,7 +36,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private _sideDrawerTransition: DrawerTransitionBase;
   private createUserFailedSubscription: Subscription;
   private openFeedbackModalSubscription: Subscription;
-  private openTipsAndTricksPageSubscription: Subscription;
+  private openPageSubscription: Subscription;
   private buyProductSubscription: Subscription;
 
   constructor(
@@ -87,9 +87,16 @@ export class AppComponent implements OnInit, OnDestroy {
       application.android.on(application.AndroidApplication.activityBackPressedEvent, this.handleBackButtonPressed, this);
     }
 
-    this.openTipsAndTricksPageSubscription = this.userService.openTipsAndTricksPage.subscribe(() => {
+    this.openPageSubscription = this.userService.openPage.subscribe((page: string) => {
       this.selected = [];
-      this.selected[2] = true;
+      switch (page) {
+        case 'tipstricks':
+          this.selected[1] = true;
+          break;
+        case 'search':
+          this.selected[2] = true;
+          break;
+      }
     });
 
     this.buyProductSubscription = this.storeService.onBuyProduct.subscribe((x: string) => this.buyProduct(x));
@@ -104,8 +111,8 @@ export class AppComponent implements OnInit, OnDestroy {
     if (!!this.openFeedbackModalSubscription) {
       this.openFeedbackModalSubscription.unsubscribe();
     }
-    if (!!this.openTipsAndTricksPageSubscription) {
-      this.openTipsAndTricksPageSubscription.unsubscribe();
+    if (!!this.openPageSubscription) {
+      this.openPageSubscription.unsubscribe();
     }
     if (!!this.buyProductSubscription) {
       this.buyProductSubscription.unsubscribe();

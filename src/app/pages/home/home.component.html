@@ -4,9 +4,9 @@
     <GridLayout rows="220,*,130" class="Home">
         <StackLayout row="1" verticalAlignment="middle">
             <Label [text]="'home_desc_3' | L" class="font-medium-small intro" textWrap="true"></Label>
-            <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient home-button upload-button" text="{{ 'home_upload' | L }}" (tap)="clickSelectPhoto()"></Button>
-            <Button class="btn btn-rounded-lg btn-outline border-color-normal color-normal home-button" text="{{ 'menu_faq' | L }}" (tap)="clickTipsAndTricks()"></Button>
-            <ProgressBar page="home" width="40%"></ProgressBar>
+            <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient home-button" color="#fff" text="{{ 'home_upload' | L }}" (tap)="clickSelectPhoto()"></Button>
+            <Button class="btn btn-rounded-lg btn-outline border-color-normal color-normal home-button margin-top" text="{{ 'menu_faq' | L }}" (tap)="clickTipsAndTricks()"></Button>
+            <Button class="btn btn-rounded-lg btn-outline border-color-normal color-normal home-button margin-top" text="{{ 'menu_search' | L }}" (tap)="clickSearch()"></Button>
         </StackLayout>
         <!-- <StackLayout row="2" verticalAlignment="middle" (tap)="clickHistory()" id="history_clickarea" width="100%" height="100%">
         </StackLayout> -->

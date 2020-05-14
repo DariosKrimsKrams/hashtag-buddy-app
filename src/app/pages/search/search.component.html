@@ -2,19 +2,32 @@
 
   <!-- CONTENT -->
   <ScrollView  [style.margin-top]="headerHeight + headerTop - (headerHeight / 2)" sdkExampleTitle sdkToggleNavButton>
-    <StackLayout [style.padding-top]="headerHeight / 2" class="p-r-20 p-l-20">
-      <Label [text]="'search_intro' | L" class="font-reg-s m-t-15 m-l-10 m-b-10 m-r-20" textWrap="true"></Label>
+    <StackLayout [style.padding-top]="headerHeight / 2" class="p-r-20 p-l-20 m-l-10 m-t-10">
+      <Label [text]="'search_intro' | L" class="font-reg-s m-t-15 m-b-10 m-r-10" textWrap="true"></Label>
 
-      <GridLayout class="m-b-20 m-l-10 m-r-10" columns="*,70">
+      <GridLayout class="m-b-20" columns="*,70">
         <FloatLabel col="0" placeholder="Topic or keyword" (userTextEmitter)="searchInput = $event" (onSubmit)="search()"></FloatLabel>
         <Button col="1" text="Search" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="searchInput !== ''" (tap)="search()" *ngIf="searchInput !== ''" verticalAlignment="bottom" horizontalAlignment="right"></Button>
       </GridLayout>
       
-      <!-- SELECTION AREA with SearchMultiple Hashtag-Completion -->
+      <ns-selection
+        *ngIf="!!hashtagCategory"
+        [selectedHashtags]="selectedHashtags"
+        (onCopied)="copyToClipboard()"
+        (onDeselect)="deselectHashtag($event)"
+        [hashtagsChanged]="hashtagsChanged"
+        [excludedHashtags]="excludedHashtags"
+        ></ns-selection>
 
-      <Label text="Similar Hashtags" class="font-demi-bold m-l-10 m-b-5" *ngIf="!!hashtagCategory"></Label>
-      <WrapLayout class="m-b-20 tag-title" *ngIf="!!hashtagCategory">
-          <ns-hashtag *ngFor="let tag of hashtagCategory.tags; let j = index;" [name]="'#' + tag.title"></ns-hashtag>
+      <Label text="Similar Hashtags (based on my search)" class="font-demi-bold m-t-10 m-l-5 m-b-5" *ngIf="!!hashtagCategory"></Label>
+      <WrapLayout class="m-b-40 tag-title" *ngIf="!!hashtagCategory">
+          <ns-hashtag
+          *ngFor="let tag of hashtagCategory.tags; let j = index;"
+          [name]="'#' + tag.title"
+          (onClick)="toggleHashtag(tag.title)"
+          [isActive]="selectedHashtags.indexOf(tag.title) > -1"
+          [censored]="tag.isCensored"
+          ></ns-hashtag>
       </WrapLayout>
       
       <!-- LOADING INDICATOR -->

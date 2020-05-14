@@ -3,6 +3,7 @@ import { FloatLabelModule } from '../float-label/float-label.module';
 import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { SelectionComponent } from './selection.component';
+import { HashtagModule } from '../hashtag/hashtag.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { SelectionComponent } from './selection.component';
     NativeScriptCommonModule,
     NativeScriptLocalizeModule,
     FloatLabelModule,
+    HashtagModule
   ],
   exports: [
     SelectionComponent

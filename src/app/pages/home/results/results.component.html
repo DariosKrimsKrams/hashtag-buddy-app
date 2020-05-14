@@ -15,22 +15,16 @@
                         <Image [src]="photo.image" stretch="aspectFill"></Image>
                     </GridLayout>
                     <StackLayout id="user-selection" class="p-l-5 p-r-5 p-b-10 p-t-10">
-                        <ProgressBar page="results" width="80%" *ngIf="!photo.proMode" class="m-l-5 m-r-5"></ProgressBar>
-                        <ns-selection [hashtags]="highlightStatus" (copied)="copyToClipboard()" (deselect)="deselectHashtag($event)"></ns-selection>
-                        <!--<Label class="m-t-10 m-b-5 m-l-5 m-r-5">
-                            <FormattedString>
-                                <Span class="font-demi-bold" [text]="'results_category_user_hashtags' | L"></Span>
-                                <Span text="  ({{highlightStatus.length}} / 30)" fontSize="12"></Span>
-                            </FormattedString>
-                        </Label>
-                        <WrapLayout class="m-t-5">
-                            <ns-hashtag *ngFor="let title of highlightStatus" (onClick)="deselectHashtag(title)" [name]="'#' + title + '   &times;'" [isActive]="true"></ns-hashtag>
-                        </WrapLayout>-->
-                        <!-- <Button [text]="'results_copy_selected' | L" (tap)="copyToClipboard()" class="btn btn-rounded-lg btn-outline border-color-normal color-normal" verticalAlignment="middle" *ngIf="highlightStatus.length !== 0"></Button> -->
-                        <!-- <Label class="m-r-10 m-l-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="highlightStatus.length == 0"></Label> -->
+                        <ProgressBar page="results" width="80%" *ngIf="!photo.proMode"></ProgressBar>
+                        <ns-selection
+                            [selectedHashtags]="selectedHashtags"
+                            (onCopied)="copyToClipboard()"
+                            (onDeselect)="deselectHashtag($event)"
+                            [hashtagsChanged]="hashtagsChanged"
+                            [excludedHashtags]="excludedHashtags"
+                            ></ns-selection>
                         <ns-insert-hashtags-form (hashtagAdded)="addHashtag($event)"></ns-insert-hashtags-form>
                     </StackLayout>
-
                     <StackLayout orientation="vertical" class="list-group-item m-b-20" *ngFor="let category of categories">
                         <GridLayout columns="*,90" class="hash-title m-l-10 m-r-20" *ngIf="category.tags.length !== 0">
                             <Label [text]="category.title | L" class="font-demi-bold" col="0"></Label>
@@ -39,10 +33,15 @@
                         </GridLayout>
                         <Label text="{{ 'results_recommented_amount' | L }} {{ getRecommendedAmount(category.title) }}" class="font-reg-xs m-l-10 m-r-5" *ngIf="getRecommendedAmount(category.title) !== 0 && category.tags.length !== 0"></Label>
                         <WrapLayout class="m-t-5 m-l-5 m-b-20 tag-title" *ngIf="category.tags.length !== 0">
-                            <ns-hashtag *ngFor="let tag of category.tags" (onClick)="toggleHashtag(tag.title)" (onClickCensored)="clickedCensoredHashtag()" [name]="'#' + tag.title" [isActive]="isHashtagSelected(tag.title)" [censored]="tag.isCensored"></ns-hashtag>
+                            <ns-hashtag *ngFor="let tag of category.tags"
+                            (onClick)="toggleHashtag(tag.title)"
+                            (onClickCensored)="clickedCensoredHashtag()"
+                            [name]="'#' + tag.title"
+                            [isActive]="selectedHashtags.indexOf(tag.title) > -1"
+                            [censored]="tag.isCensored"
+                            ></ns-hashtag>
                         </WrapLayout>
                     </StackLayout>
-                    
                 </StackLayout>
             </ScrollView>
             <StackLayout class="top-shadow" isUserInteractionEnabled="false" *ngIf="currentScrollingY >= parallaxHeight - 3"></StackLayout>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, EventEmitter, Output } from '@angular/core';
 import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { HashtagCategory } from '~/app/models/hashtag-category';
@@ -15,7 +15,6 @@ import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
 import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
-const clipboard = require('nativescript-clipboard');
 
 @Component({
   selector: 'ns-results',
@@ -24,9 +23,12 @@ const clipboard = require('nativescript-clipboard');
   moduleId: module.id
 })
 export class ResultsComponent implements OnInit {
+
+  @Output() public hashtagsChanged: EventEmitter<void> = new EventEmitter();
   public parallaxHeight = 250;
   public photo: Photo;
-  public highlightStatus: string[] = [];
+  public selectedHashtags: string[] = [];
+  public excludedHashtags: string[] = [];
   public currentScrollingY: number = 0;
   public categories: HashtagCategory[] = [];
   private hasAnyInteraction: boolean = false;
@@ -50,9 +52,10 @@ export class ResultsComponent implements OnInit {
     this.photo = this.userService.getPhoto(id);
     this.categories = Object.assign([], this.photo.categories);
     for (let i = 0; i < this.photo.selectedHashtags.length; i++) {
-      this.selectHashtag(this.photo.selectedHashtags[i].title);
+      this.selectedHashtags.push(this.photo.selectedHashtags[i].title);
     }
     this.addFavoriteHashtags();
+    this.setExcludedHashtags();
   }
 
   private addFavoriteHashtags(): void {
@@ -86,30 +89,23 @@ export class ResultsComponent implements OnInit {
   }
 
   public toggleHashtag(title: string): void {
-    if (this.isHashtagSelected(title)) {
-      this.deselectHashtag(title);
+    const index = this.selectedHashtags.indexOf(title);
+    if (index > -1) {
+      this.selectedHashtags.splice(index, 1);
     } else {
-      this.selectHashtag(title);
+      this.selectedHashtags.push(title);
+      this.hasAnyInteraction = true;
     }
     this.saveSelection();
+    this.hashtagsChanged.emit();
+    this.setExcludedHashtags();
   }
 
   public deselectHashtag(title: string): void {
-    for (let i = 0; i < this.highlightStatus.length; i++) {
-      if (this.highlightStatus[i].toLowerCase() === title.toLowerCase()) {
-        this.highlightStatus.splice(i, 1);
-        return;
-      }
+    const index = this.selectedHashtags.indexOf(title);
+    if (index > -1) {
+      this.selectedHashtags.splice(index, 1);
     }
-  }
-
-  private selectHashtag(title: string): void {
-    this.highlightStatus.push(title);
-    this.hasAnyInteraction = true;
-  }
-
-  private isHashtagSelected(title: string): boolean {
-    return this.highlightStatus.filter(x => x.toLowerCase() === title.toLowerCase())[0] !== undefined;
   }
 
   public selectAll(category: HashtagCategory): void {
@@ -119,6 +115,7 @@ export class ResultsComponent implements OnInit {
       }
     });
     this.saveSelection();
+    this.setExcludedHashtags();
   }
 
   public deselectAll(category: HashtagCategory): void {
@@ -142,6 +139,7 @@ export class ResultsComponent implements OnInit {
     }
     this.selectHashtag(hashtag.title);
     this.saveSelection();
+    this.setExcludedHashtags();
   }
 
   public redirectToHome(): void {
@@ -168,64 +166,8 @@ export class ResultsComponent implements OnInit {
   }
 
   public copyToClipboard(): void {
-    if (this.showToastIfHasNoSelectedHashtags()) {
-      return;
-    }
-    let text = this.getHashtagsAsText();
-    if (!this.userService.hasPurchase()) {
-      text += localize('results_made_with_app');
-    }
-    clipboard
-      .setText(text)
-      .then(() => {
-        this.showModal();
-      })
-      .catch(function(): void {
-        const text = localize('copy_failed');
-        new Toasty({ text: text })
-          .setToastDuration(ToastDuration.LONG)
-          .show();
-      });
+    this.showModal();
     this.hasAnyInteraction = true;
-  }
-
-  private showModal(): void {
-    const okFunc = () => {
-      setTimeout.bind(this)(() => {
-        this.navigateToLeaveFeedbackPage();
-      }, 100);
-    };
-    const options: ModalDialogOptions = {
-      viewContainerRef: this.viewContainerRef,
-      fullscreen: false,
-      context: {
-        icon: 'copied',
-        buttonOk: 'results_ok_to_leave_feedback',
-        headline: 'copy_successful',
-        desc: 'copy_please_give_feedback',
-        okFunc: okFunc
-      }
-    };
-    this.modalService.showModal(ModalComponent, options);
-  }
-
-  private getHashtagsAsText(): string {
-    let text = '';
-    for (let i = 0; i < this.highlightStatus.length; i++) {
-      text += `#${this.highlightStatus[i]} `;
-    }
-    return text;
-  }
-
-  private showToastIfHasNoSelectedHashtags(): boolean {
-    const hasSelectedHashtags = this.highlightStatus.length > 0;
-    if (!hasSelectedHashtags) {
-      const text = localize('toast_no_hashtags_selected');
-      new Toasty({ text: text })
-        .setToastDuration(ToastDuration.LONG)
-        .show();
-    }
-    return !hasSelectedHashtags;
   }
 
   public dismissSoftKeybaord(): void {
@@ -248,19 +190,58 @@ export class ResultsComponent implements OnInit {
     }
   }
 
-  private saveSelection(): void {
-    const selectedHashtags: Hashtag[] = [];
-    for (let i = 0; i < this.highlightStatus.length; i++) {
-      selectedHashtags.push(new Hashtag(this.highlightStatus[i]));
-    }
-    this.photo.selectedHashtags = selectedHashtags;
-    this.userService.updatePhoto(this.photo);
-  }
-
   public clickedCensoredHashtag(): void {
     const text = localize('toast_hashtags_hidden');
     new Toasty({ text: text })
       .setToastDuration(ToastDuration.LONG)
       .show();
   }
+
+  private selectHashtag(title: string): void {
+    this.selectedHashtags.push(title);
+    this.hasAnyInteraction = true;
+  }
+
+  private isHashtagSelected(title: string): boolean {
+    return this.selectedHashtags.indexOf(title) > -1;
+  }
+
+  private showModal(): void {
+    const okFunc = () => {
+      setTimeout.bind(this)(() => {
+        this.navigateToLeaveFeedbackPage();
+      }, 100);
+    };
+    const options: ModalDialogOptions = {
+      viewContainerRef: this.viewContainerRef,
+      fullscreen: false,
+      context: {
+        icon: 'copied',
+        buttonOk: 'results_ok_to_leave_feedback',
+        headline: 'copy_successful',
+        desc: 'copy_please_give_feedback',
+        okFunc: okFunc
+      }
+    };
+    this.modalService.showModal(ModalComponent, options);
+  }
+
+  private saveSelection(): void {
+    const selectedHashtags: Hashtag[] = [];
+    for (let i = 0; i < this.selectedHashtags.length; i++) {
+      selectedHashtags.push(new Hashtag(this.selectedHashtags[i]));
+    }
+    this.photo.selectedHashtags = selectedHashtags;
+    this.userService.updatePhoto(this.photo);
+  }
+
+  private setExcludedHashtags(): void {
+    this.excludedHashtags = [];
+    this.categories.forEach(category => {
+      category.tags.forEach(tag => {
+        this.excludedHashtags.push(tag.title);
+      });
+    });
+  }
+
 }

@@ -114,8 +114,19 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public clickTipsAndTricks(): void {
-    this.userService.openTipsAndTricksPage.emit();
+    this.userService.openPage.emit('tipstricks');
     this.router.navigate([`/faq`], {
+      transition: {
+        name: 'FadeIn',
+        duration: 500,
+        curve: 'easeOut'
+      }
+    });
+  }
+
+  public clickSearch(): void {
+    this.userService.openPage.emit('search');
+    this.router.navigate([`/search`], {
       transition: {
         name: 'FadeIn',
         duration: 500,
