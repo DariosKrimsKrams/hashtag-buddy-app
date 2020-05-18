@@ -25,11 +25,11 @@ export class FeedbackRepository {
         headers: { 'Content-Type': 'application/json' },
         content: JSON.stringify(feedback)
       }).then((_response) => {
-        // const result = response.content.toJSON();
         observer.next();
         observer.complete();
       }, (e) => {
-        console.log('error', e);
+        console.error('error sendAppFeedback: ' + e);
+        observer.complete();
       });
     });
   }
@@ -41,10 +41,8 @@ export class FeedbackRepository {
       headers: { 'Content-Type': 'application/json' },
       content: JSON.stringify(feedback)
     }).then((_response) => {
-      // const result = response.content.toJSON();
-      // console.log("result", result);
     }, (e) => {
-      console.log('error', e);
+      console.error('error sendResultFeedback: ' + e);
     });
   }
 

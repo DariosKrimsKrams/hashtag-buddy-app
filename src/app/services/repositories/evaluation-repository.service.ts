@@ -33,35 +33,47 @@ export class EvaluationRepository {
   }
 
   public search(data: SearchRequest): Observable<IHttpResponse> {
-    return new Observable<any>(observer => {
+    return new Observable<IHttpResponse>(observer => {
       request({
         url: this.searchUrl,
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         content: JSON.stringify(data)
       }).then((response) => {
-        const result = response.content.toJSON();
-        observer.next(result);
+        if (response.statusCode !== 200) {
+          console.error('reponse error ' + response.statusCode + ': ' + response.content);
+          observer.error(response);
+        } else {
+          const result = response.content.toJSON();
+          observer.next(result);
+        }
         observer.complete();
       }, (e) => {
-        console.error('error', e);
+        console.error('error search: ' + e);
+        observer.complete();
       });
     });
   }
 
   public searchMultiple(data: SearchMultipleRequest): Observable<IHttpResponse> {
-    return new Observable<any>(observer => {
+    return new Observable<IHttpResponse>(observer => {
       request({
         url: this.searchMultipleUrl,
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         content: JSON.stringify(data)
       }).then((response) => {
-        const result = response.content.toJSON();
-        observer.next(result);
+        if (response.statusCode !== 200) {
+          console.error('reponse error ' + response.statusCode + ': ' + response.content);
+          observer.error(response);
+        } else {
+          const result = response.content.toJSON();
+          observer.next(result);
+        }
         observer.complete();
       }, (e) => {
-        console.error('error', e);
+        console.error('error searchMultiple: ' + e);
+        observer.complete();
       });
     });
   }
@@ -69,17 +81,17 @@ export class EvaluationRepository {
   private uploadLogic(observer: any, customerId: string): void {
     this.observer = observer;
     const config = {
-        url: this.evaluationUrl + customerId,
-        method: 'POST',
-        headers: {
-            'Content-Type': 'multipart/form-data; boundary',
-            'File-Name': this.filename
-        },
-        description: `Uploading ${this.filename}`,
-        androidAutoDeleteAfterUpload: false,
+      url: this.evaluationUrl + customerId,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data; boundary',
+        'File-Name': this.filename
+      },
+      description: `Uploading ${this.filename}`,
+      androidAutoDeleteAfterUpload: false,
     };
     const params = [
-        { name: 'file', filename: this.file, mimeType: 'image/jpeg' }
+      { name: 'file', filename: this.file, mimeType: 'image/jpeg' }
     ];
     const task = this.session.multipartUpload(params, config);
     task.on('error', this.handleError.bind(this));
@@ -88,21 +100,25 @@ export class EvaluationRepository {
     task.on('complete', this.handleComplete.bind(this));
     this.tasks.push(task);
   }
+
   private handleError(e): void {
     const httpStatus: IHttpResponse = {status: 'error', code: e.responseCode, message: e.response};
     this.observer.next(httpStatus);
     this.observer.complete();
   }
+
   private handleCancelled(e): void {
     const httpStatus: IHttpResponse = {status: 'error', code: e.responseCode, message: e.response};
     this.observer.next(httpStatus);
     this.observer.complete();
   }
+
   private handleReponded(e): void {
     const httpStatus: IHttpResponse = {status: 'successful', code: e.responseCode, message: e.data};
     this.observer.next(httpStatus);
     this.observer.complete();
   }
+
   private handleComplete(e): void {
     const httpStatus: IHttpResponse = {status: 'successful', code: e.responseCode, message: e.data};
     this.observer.next(httpStatus);

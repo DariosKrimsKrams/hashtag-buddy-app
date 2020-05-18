@@ -29,6 +29,8 @@
       </WrapLayout>
       <circularProgressBar *ngIf="isLoading" size="small"></circularProgressBar>
       <Label [text]="'search_not_found' | L" class="font-reg-s " textWrap="true" *ngIf="nothingFound"></Label>
+      <Label [text]="'error_desc' | L" class="font-medium-l m-t-10 m-b-20" textWrap="true" *ngIf="isError"></Label>
+      <Label [text]="'error_desc2' | L" class="font-reg-s" textWrap="true" *ngIf="isError"></Label>
     </StackLayout>
   </ScrollView>
 

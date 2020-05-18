@@ -119,6 +119,7 @@ export class SelectionComponent implements OnInit, OnDestroy {
       const response = httpResponse as any;
       const hashtags = response.hashtags as HashtagResult[];
       this.processSearchResults(hashtags);
+    }, (_error) => {
     });
   }
 

@@ -26,7 +26,7 @@ export class CustomerRepository {
         observer.next(result);
         observer.complete();
       }, (error) => {
-        console.log('error', error);
+        console.error('error createCustomer: ' + error);
         observer.error(error);
         observer.complete();
       });

@@ -29,6 +29,7 @@ export class SearchComponent implements OnInit {
   public isIOS: boolean;
   public isLoading: boolean;
   public nothingFound: boolean;
+  public isError: boolean;
   public searchInput: string = '';
   public lastSearch: string = '';
   public hashtagCategory: HashtagCategory = undefined;
@@ -75,6 +76,7 @@ export class SearchComponent implements OnInit {
       .show();
     }
     this.isLoading = true;
+    this.isError = false;
     this.nothingFound = false;
     this.lastSearch = this.searchInput;
     this.hashtagCategory = undefined;
@@ -105,6 +107,9 @@ export class SearchComponent implements OnInit {
         this.hashtagCategory.censorHashtags();
       }
       this.setExcludedHashtags();
+    }, (_error: IHttpResponse) => {
+      this.isError = true;
+      this.isLoading = false;
     });
     this.dismissSoftKeyboard();
   }
