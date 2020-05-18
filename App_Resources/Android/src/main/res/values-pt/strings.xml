@@ -50,7 +50,8 @@
   <string name="search_results">"Hashtags semelhantes (com base na minha pesquisa)"</string>
   <string name="search_button">"Procurar"</string>
   <string name="search_input">"Tópico ou palavra-chave"</string>
-  <string name="search_paywall_info">"Algumas hashtags serão ocultadas."</string>
+  <string name="search_paywall_unlocked">"Todas as hashtags serão mostradas. Aprecie toda a beleza :)"</string>
+  <string name="search_paywall_locked">"Algumas hashtags serão ocultadas."</string>
   <string name="search_intro">"Encontre hashtags semelhantes com base nas palavras-chave da sua pesquisa."</string>
   <string name="faq_buy_cancel">"Cancelar"</string>
   <string name="faq_buy_cta">"Compre agora"</string>

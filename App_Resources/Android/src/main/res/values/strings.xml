@@ -50,7 +50,8 @@
   <string name="search_results">"Similar Hashtags (based on my search)"</string>
   <string name="search_button">"Search"</string>
   <string name="search_input">"Topic or keyword"</string>
-  <string name="search_paywall_info">"Some hashtags will be hidden."</string>
+  <string name="search_paywall_unlocked">"All hashtags will be shown. Enjoy the full beauty :)"</string>
+  <string name="search_paywall_locked">"Some hashtags will be hidden."</string>
   <string name="search_intro">"Find similar hashtags based on your search keywords."</string>
   <string name="faq_buy_cancel">"Cancel"</string>
   <string name="faq_buy_cta">"Buy now"</string>

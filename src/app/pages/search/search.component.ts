@@ -139,7 +139,12 @@ export class SearchComponent implements OnInit {
 
   public get introText(): string {
     let text = localize('search_intro');
-    text += ' ' + localize('search_paywall_info');
+    const hasPurchase = this.userService.hasPurchase();
+    if (!hasPurchase) {
+      text += ' ' + localize('search_paywall_locked');
+    } else {
+      text += ' ' + localize('search_paywall_unlocked');
+    }
     return text;
   }
 
