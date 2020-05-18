@@ -8,7 +8,6 @@ import * as frame from 'tns-core-modules/ui/frame';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'ns-loading-hashtags',
   templateUrl: './loading-hashtags.component.html',
   styleUrls: ['./loading-hashtags.component.scss'],
   moduleId: module.id

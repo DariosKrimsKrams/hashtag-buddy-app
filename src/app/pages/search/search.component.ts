@@ -27,6 +27,7 @@ export class SearchComponent implements OnInit {
   public headerHeight: number = 0;
   public headerTop: number = 0;
   public isIOS: boolean;
+  public isLoading: boolean;
   public searchInput: string = '';
   public lastSearch: string = '';
   public hashtagCategory: HashtagCategory = undefined;
@@ -72,16 +73,18 @@ export class SearchComponent implements OnInit {
       .setToastDuration(ToastDuration.LONG)
       .show();
     }
+    this.isLoading = true;
     this.lastSearch = this.searchInput;
     this.hashtagCategory = undefined;
     this.selectedHashtags = [];
     this.excludedHashtags = [];
     const data: SearchRequest = {
-      customerId: customerId,
+      customerId,
       keyword: this.searchInput
     };
     this.evaluationRepository.search(data).subscribe((httpResponse: IHttpResponse) => {
-      const response = httpResponse as any;
+    this.isLoading = false;
+    const response = httpResponse as any;
       const hashtags = response.hashtags as HashtagResult[];
       if (hashtags.length === 0) {
         return;

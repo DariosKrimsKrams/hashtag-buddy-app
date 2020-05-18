@@ -1,19 +1,34 @@
 GridLayout {
-  width: 240;
-  height: 240;
-}
 
-.bg {
-  width: 210;
-  height: 210;
-}
+  &.large {
+    width: 240pt;
+    height: 240pt;
 
-.bar {
-  width: 225;
-  height: 225;
-}
+    .bg {
+      width: 210pt;
+      height: 210pt;
+    }
+    .bar {
+      width: 225pt;
+      height: 225pt;
+    }
+  }
+  &.small {
+    width: 120pt;
+    height: 120pt;
+    
+    .bg {
+      width: 105pt;
+      height: 105pt;
+    }
+    .bar {
+      width: 112pt;
+      height: 112pt;
+    }
+  }
 
-Label {
-  font-size: 34pt;
-  color: #eb9c8b;
+  Label {
+    font-size: 34pt;
+    color: #eb9c8b;
+  }
 }

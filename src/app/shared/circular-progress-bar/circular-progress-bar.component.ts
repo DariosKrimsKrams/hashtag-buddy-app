@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -7,20 +7,24 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./circular-progress-bar.component.scss'],
   moduleId: module.id
 })
-export class CircularProgressBarComponent implements OnInit {
+export class CircularProgressBarComponent implements OnInit, OnDestroy {
 
   private percentValue: number = 0;
+  private intervalId: number = 0;
   @ViewChild('bar', { read: ElementRef, static: false }) public barElement: ElementRef;
+  @Input() public size: string;
 
-  constructor(
-  ) { }
+  constructor() { }
 
   public ngOnInit(): void {
     this.animate();
-    // Need Timeout because of Bug :'(
     setTimeout.bind(this)(() => {
       this.animateBar();
     }, 1);
+  }
+
+  public ngOnDestroy(): void {
+    clearInterval(this.intervalId);
   }
 
   public get text(): string {
@@ -28,10 +32,10 @@ export class CircularProgressBarComponent implements OnInit {
   }
 
   private animate(): void {
-    const intervalId = setInterval.bind(this)(() => {
+    this.intervalId = setInterval.bind(this)(() => {
       this.percentValue++;
       if (this.percentValue >= 99) {
-        clearInterval(intervalId);
+        clearInterval(this.intervalId);
       }
     }, environment.loadingTimeSec * 1000 / 99);
   }
