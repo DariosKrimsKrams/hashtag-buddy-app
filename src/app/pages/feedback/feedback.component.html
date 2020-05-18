@@ -1,4 +1,4 @@
-<GridLayout (tap)="dismissSoftKeybaord()">
+<GridLayout (tap)="dismissSoftKeyboard()">
     <StackLayout orientation="vertical" class="main">
 
         <GridLayout verticalAlignment="middle" columns="20,*,20" id="header" class="gradient">
@@ -9,8 +9,6 @@
 
         <GridLayout>
             <StackLayout class="top-shadow" isUserInteractionEnabled="false"></StackLayout>
-            
-
             <GridLayout rows="0,*,70" class="Home">
                 <StackLayout row="1" verticalAlignment="middle" class="input-field p-l-40 p-r-40">
                     <Label textWrap="true" [text]="'feedback_title' | L" class="m-b-20 font-medium-l"></Label>

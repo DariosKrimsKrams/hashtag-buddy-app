@@ -9,7 +9,7 @@
             </GridLayout>
         </GridLayout>
         <GridLayout row="1" tkMainContent>
-            <ScrollView #scrollView (scroll)="onScroll($event, scrollView, topView)" (tap)="dismissSoftKeybaord()">
+            <ScrollView #scrollView (scroll)="onScroll($event, scrollView, topView)" (tap)="dismissSoftKeyboard()">
                 <StackLayout>
                     <GridLayout id="preview-image" [height]="parallaxHeight" #topView>
                         <Image [src]="photo.image" stretch="aspectFill"></Image>

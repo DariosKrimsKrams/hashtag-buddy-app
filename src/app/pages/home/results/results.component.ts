@@ -170,7 +170,7 @@ export class ResultsComponent implements OnInit {
     this.hasAnyInteraction = true;
   }
 
-  public dismissSoftKeybaord(): void {
+  public dismissSoftKeyboard(): void {
     if (isIOS) {
       frame.Frame.topmost().nativeView.endEditing(true);
     }

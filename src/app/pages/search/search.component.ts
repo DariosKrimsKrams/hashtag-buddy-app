@@ -28,6 +28,7 @@ export class SearchComponent implements OnInit {
   public headerTop: number = 0;
   public isIOS: boolean;
   public isLoading: boolean;
+  public nothingFound: boolean;
   public searchInput: string = '';
   public lastSearch: string = '';
   public hashtagCategory: HashtagCategory = undefined;
@@ -54,16 +55,16 @@ export class SearchComponent implements OnInit {
     sideDrawer.showDrawer();
   }
 
-  public dismissSoftKeybaord(): void {
+  public dismissSoftKeyboard(): void {
     if (isIOS) {
       frame.Frame.topmost().nativeView.endEditing(true);
-    }
-    if (isAndroid) {
+    } else {
       utils.ad.dismissSoftInput();
     }
   }
 
   public search(): void {
+    this.searchInput = this.searchInput.replace(/[^a-zA-Z ]/g, '');
     if (!this.searchInput || this.searchInput === this.lastSearch) {
       return;
     }
@@ -74,6 +75,7 @@ export class SearchComponent implements OnInit {
       .show();
     }
     this.isLoading = true;
+    this.nothingFound = false;
     this.lastSearch = this.searchInput;
     this.hashtagCategory = undefined;
     this.selectedHashtags = [];
@@ -87,6 +89,7 @@ export class SearchComponent implements OnInit {
       const response = httpResponse as any;
       const hashtags = response.hashtags as HashtagResult[];
       if (hashtags.length === 0) {
+        this.nothingFound = true;
         return;
       }
       this.hashtagCategory = HashtagCategory.fromHashtagResult(hashtags, 'search');
@@ -96,7 +99,7 @@ export class SearchComponent implements OnInit {
       }
       this.setExcludedHashtags();
     });
-
+    this.dismissSoftKeyboard();
   }
 
   public toggleHashtag(title: string): void {

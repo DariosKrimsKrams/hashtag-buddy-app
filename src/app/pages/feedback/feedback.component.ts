@@ -62,7 +62,7 @@ export class FeedbackComponent implements OnInit {
     this.modalService.showModal(ModalComponent, options);
   }
 
-  public dismissSoftKeybaord(): void {
+  public dismissSoftKeyboard(): void {
     if (isIOS) {
       frame.Frame.topmost().nativeView.endEditing(true);
     }

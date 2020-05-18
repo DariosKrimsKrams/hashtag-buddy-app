@@ -63,7 +63,7 @@ export class MyhashtagsComponent implements OnInit {
     sideDrawer.showDrawer();
   }
 
-  public dismissSoftKeybaord(): void {
+  public dismissSoftKeyboard(): void {
     if (isIOS) {
       frame.Frame.topmost().nativeView.endEditing(true);
     }
