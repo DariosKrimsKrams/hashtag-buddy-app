@@ -11,13 +11,16 @@ export class CircularProgressBarComponent implements OnInit, OnDestroy {
 
   private percentValue: number = 0;
   private intervalId: number = 0;
+  private animation: any = undefined;
   @ViewChild('bar', { read: ElementRef, static: false }) public barElement: ElementRef;
   @Input() public size: string;
 
   constructor() { }
 
   public ngOnInit(): void {
-    this.animate();
+    if (this.size === 'large') {
+      this.animateText();
+    }
     setTimeout.bind(this)(() => {
       this.animateBar();
     }, 1);
@@ -25,13 +28,16 @@ export class CircularProgressBarComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     clearInterval(this.intervalId);
+    if (!!this.animation) {
+      this.animation.cancel();
+    }
   }
 
   public get text(): string {
     return `${this.percentValue.toFixed()} %`;
   }
 
-  private animate(): void {
+  private animateText(): void {
     this.intervalId = setInterval.bind(this)(() => {
       this.percentValue++;
       if (this.percentValue >= 99) {
@@ -41,10 +47,11 @@ export class CircularProgressBarComponent implements OnInit, OnDestroy {
   }
 
   public animateBar(): void {
-    this.barElement.nativeElement.animate({
+    this.animation = this.barElement.nativeElement.animate({
       rotate: 360 + 45,
       duration: 2000,
-    }).then(() => {
+    });
+    this.animation.then(() => {
       this.barElement.nativeElement.rotate = 45;
       this.animateBar();
     });

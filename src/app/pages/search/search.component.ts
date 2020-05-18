@@ -83,8 +83,8 @@ export class SearchComponent implements OnInit {
       keyword: this.searchInput
     };
     this.evaluationRepository.search(data).subscribe((httpResponse: IHttpResponse) => {
-    this.isLoading = false;
-    const response = httpResponse as any;
+      this.isLoading = false;
+      const response = httpResponse as any;
       const hashtags = response.hashtags as HashtagResult[];
       if (hashtags.length === 0) {
         return;
