@@ -22,7 +22,6 @@
   <string name="myhashtags_other">"Hashtag dalle foto"</string>
   <string name="myhashtags_your">"Aggiunti da te"</string>
   <string name="myhashtags_intro">"Salva qui i tuoi hashtag preferiti. Sono accessibili direttamente dalla selezione foto."</string>
-  <string name="progressbar_results_freemode2">""</string>
   <string name="progressbar_results_freemode1">"Limite gratuito raggiunto: I migliori hashtag sono nascosti. Acquista caricamenti foto per sbloccare gli hashtag."</string>
   <string name="progressbar_confirm_freemode1">"Limite gratuito raggiunto: Adesso i migliori hashtag verranno nascosti :("</string>
   <string name="progressbar_home_freemode">"Hai usato %1$s di %2$s caricamenti gratuiti di foto. Puoi ancora caricare le foto, ma alcuni hashtag saranno nascosti"</string>
@@ -46,9 +45,13 @@
   <string name="settings_terms">"Termini e condizioni"</string>
   <string name="settings_legal">"Privacy Policy"</string>
   <string name="settings_about">"Su di me"</string>
-  <string name="search_results">"Results"</string>
-  <string name="search_cta">"yyyy"</string>
-  <string name="search_intro">"xxx"</string>
+  <string name="selection_suggestions">"Suggerimenti (in base alla mia selezione)"</string>
+  <string name="search_not_found">"Purtroppo, non è stato trovato nulla. Per favore, prova un\'altra parola."</string>
+  <string name="search_results">"Hashtag simili (basato sulla mia ricerca)"</string>
+  <string name="search_button">"Ricerca"</string>
+  <string name="search_input">"Argomento o parola chiave"</string>
+  <string name="search_paywall_info">"Alcuni hashtag saranno nascosti."</string>
+  <string name="search_intro">"Trova hashtag simili in base alle parole chiave di ricerca."</string>
   <string name="faq_buy_cancel">"Annulla"</string>
   <string name="faq_buy_cta">"Acquista adesso"</string>
   <string name="faq_buy_desc">"Sbloccare tutti i Tips &amp; Tricks per solo %1$s :)"</string>

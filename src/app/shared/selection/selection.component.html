@@ -18,7 +18,7 @@
     verticalAlignment="middle"
     *ngIf="selectedHashtags.length !== 0"
     ></Button>
-<Label text="Suggestions (based on my selection)" class="font-demi-bold m-t-10 m-l-5 m-b-5" *ngIf="!!suggestedHashtags && suggestedHashtags.tags.length > 0"></Label>
+<Label [text]="'selection_suggestions' | L" class="font-demi-bold m-t-10 m-l-5 m-b-5" textWrap="true" *ngIf="!!suggestedHashtags && suggestedHashtags.tags.length > 0"></Label>
 <WrapLayout class="m-t-5" *ngIf="!!suggestedHashtags">
   <ns-hashtag
     *ngFor="let tag of suggestedHashtags.tags"
@@ -28,4 +28,4 @@
     [censored]="tag.isCensored"
     ></ns-hashtag>
 </WrapLayout>
-<Label class="m-r-10 m-l-5 m-b-5" text="{{ 'results_no_hashtags_selected' | L }}" *ngIf="selectedHashtags.length == 0"></Label>
+<Label class="m-r-10 m-l-5 m-b-5" text="{{ 'results_no_hashtags_selected' | L }}" textWrap="true" *ngIf="selectedHashtags.length == 0"></Label>

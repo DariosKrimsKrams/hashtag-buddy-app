@@ -45,9 +45,13 @@
   <string name="settings_terms">"Termos e Condições"</string>
   <string name="settings_legal">"Política de Privacidade"</string>
   <string name="settings_about">"Sobre"</string>
-  <string name="search_results">"Results"</string>
-  <string name="search_cta">"yyyy"</string>
-  <string name="search_intro">"xxx"</string>
+  <string name="selection_suggestions">"Sugestões (com base na minha seleção)"</string>
+  <string name="search_not_found">"Infelizmente, nada foi encontrado. Por favor, tente outra palavra."</string>
+  <string name="search_results">"Hashtags semelhantes (com base na minha pesquisa)"</string>
+  <string name="search_button">"Procurar"</string>
+  <string name="search_input">"Tópico ou palavra-chave"</string>
+  <string name="search_paywall_info">"Algumas hashtags serão ocultadas."</string>
+  <string name="search_intro">"Encontre hashtags semelhantes com base nas palavras-chave da sua pesquisa."</string>
   <string name="faq_buy_cancel">"Cancelar"</string>
   <string name="faq_buy_cta">"Compre agora"</string>
   <string name="faq_buy_desc">"Desbloquear todas as dicas por apenas %1$s :)"</string>
@@ -212,6 +216,5 @@
   <string name="app_name">"Hashtag Buddy"</string>
   <string name="title_activity_kimera">"Hashtag Buddy"</string>
   <string name="results_category_upcoming_hashtags">"Trending hashtags"</string>
-  <string name="progressbar_results_freemode2">"progressbar_results_freemode2"</string>
   <string name="Toast_imagepicker_failed">"Toast_imagepicker_failed"</string>
 </resources>

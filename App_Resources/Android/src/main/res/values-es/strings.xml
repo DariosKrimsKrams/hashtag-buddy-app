@@ -22,7 +22,6 @@
   <string name="myhashtags_other">"Hashtags de fotos"</string>
   <string name="myhashtags_your">"Agregado por ti mismo"</string>
   <string name="myhashtags_intro">"Guarde sus hashtags favoritos aquí. Puedes acceder a ellos directamente desde la selección de fotos"</string>
-  <string name="progressbar_results_freemode2">""</string>
   <string name="progressbar_results_freemode1">"Límite libre alcanzado: los mejores hashtags están ocultos. Compra subidas de fotos para desbloquear hashtags"</string>
   <string name="progressbar_confirm_freemode1">"Límite libre alcanzado: Los mejores hashtags están ocultos ahora :("</string>
   <string name="progressbar_home_freemode">"Usaste %1$s de %2$s cargas de fotos gratis. Todavía puedes subir fotos pero algunos hashtags serán censurados"</string>
@@ -46,9 +45,13 @@
   <string name="settings_terms">"Términos y Condiciones"</string>
   <string name="settings_legal">"Política de Privacidad"</string>
   <string name="settings_about">"Acerca de mí"</string>
-  <string name="search_results">"Results"</string>
-  <string name="search_cta">"yyyy"</string>
-  <string name="search_intro">"xxx"</string>
+  <string name="selection_suggestions">"Sugerencias (basadas en mi selección)"</string>
+  <string name="search_not_found">"Tristemente, nada encontrado. Por favor intente con otra palabra."</string>
+  <string name="search_results">"Hashtags similares (basados en mi búsqueda)"</string>
+  <string name="search_button">"Buscar"</string>
+  <string name="search_input">"Tema o palabra clave"</string>
+  <string name="search_paywall_info">"Algunos hashtags estarán ocultos."</string>
+  <string name="search_intro">"Encuentra hashtags similares en función de tus palabras clave de búsqueda."</string>
   <string name="faq_buy_cancel">"Cancelar"</string>
   <string name="faq_buy_cta">"Comprar ahora"</string>
   <string name="faq_buy_desc">"Desbloquear todos los Consejos &amp; Trucos por solo %1$s :)"</string>

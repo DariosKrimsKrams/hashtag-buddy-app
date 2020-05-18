@@ -85,13 +85,20 @@ export class SearchComponent implements OnInit {
       keyword: this.searchInput
     };
     this.evaluationRepository.search(data).subscribe((httpResponse: IHttpResponse) => {
-      this.isLoading = false;
       const response = httpResponse as any;
       const hashtags = response.hashtags as HashtagResult[];
       if (hashtags.length === 0) {
+        const lastChar = this.searchInput.substr(this.searchInput.length - 1);
+        if (lastChar === 's') {
+          this.searchInput = this.searchInput.substring(0, this.searchInput.length - 1);
+          this.search();
+          return;
+        }
         this.nothingFound = true;
+        this.isLoading = false;
         return;
       }
+      this.isLoading = false;
       this.hashtagCategory = HashtagCategory.fromHashtagResult(hashtags, 'search');
       const hasPurchase = this.userService.hasPurchase();
       if (!hasPurchase) {
@@ -128,6 +135,12 @@ export class SearchComponent implements OnInit {
       }
     }
     this.setExcludedHashtags();
+  }
+
+  public get introText(): string {
+    let text = localize('search_intro');
+    text += ' ' + localize('search_paywall_info');
+    return text;
   }
 
   private calcHeader(): void {

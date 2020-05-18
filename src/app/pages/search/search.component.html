@@ -3,11 +3,11 @@
   <!-- CONTENT -->
   <ScrollView  [style.margin-top]="headerHeight + headerTop - (headerHeight / 2)" sdkExampleTitle sdkToggleNavButton>
     <StackLayout [style.padding-top]="headerHeight / 2" class="p-l-30 p-r-30 m-t-25" (tap)="dismissSoftKeyboard()">
-      <Label [text]="'search_intro' | L" class="font-reg-s m-b-10" textWrap="true"></Label>
+      <Label [text]="introText | L" class="font-reg-s m-b-10" textWrap="true"></Label>
 
       <GridLayout class="m-b-20" columns="*,70">
-        <FloatLabel col="0" placeholder="Topic or keyword" (userTextEmitter)="searchInput = $event" (onSubmit)="search()"></FloatLabel>
-        <Button col="1" text="Search" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="searchInput !== ''" (tap)="search()" *ngIf="searchInput !== ''" verticalAlignment="bottom" horizontalAlignment="right"></Button>
+        <FloatLabel col="0" [placeholder]="'search_input' | L" (userTextEmitter)="searchInput = $event" (onSubmit)="search()"></FloatLabel>
+        <Button col="1" [text]="'search_button' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="searchInput !== ''" (tap)="search()" *ngIf="searchInput !== ''" verticalAlignment="bottom" horizontalAlignment="right"></Button>
       </GridLayout>
       <ns-selection
         *ngIf="!!hashtagCategory"
@@ -17,23 +17,18 @@
         [hashtagsChanged]="hashtagsChanged"
         [excludedHashtags]="excludedHashtags"
         ></ns-selection>
-      <Label text="Similar Hashtags (based on my search)" class="font-demi-bold m-t-20 m-l-5 m-b-5" *ngIf="!!hashtagCategory"></Label>
+      <Label [text]="'search_results' | L" class="font-demi-bold m-t-20 m-l-5 m-b-5" textWrap="true" *ngIf="!!hashtagCategory"></Label>
       <WrapLayout class="m-b-40 tag-title" *ngIf="!!hashtagCategory">
-          <ns-hashtag
-          *ngFor="let tag of hashtagCategory.tags; let j = index;"
-          [name]="'#' + tag.title"
-          (onClick)="toggleHashtag(tag.title)"
-          [isActive]="selectedHashtags.indexOf(tag.title) > -1"
-          [censored]="tag.isCensored"
-          ></ns-hashtag>
+        <ns-hashtag
+        *ngFor="let tag of hashtagCategory.tags; let j = index;"
+        [name]="'#' + tag.title"
+        (onClick)="toggleHashtag(tag.title)"
+        [isActive]="selectedHashtags.indexOf(tag.title) > -1"
+        [censored]="tag.isCensored"
+        ></ns-hashtag>
       </WrapLayout>
-      
-      <!-- LOADING INDICATOR -->
       <circularProgressBar *ngIf="isLoading" size="small"></circularProgressBar>
-      
-      <!-- Feedback No Search Results found -->
-      <Label [text]="'Nothing found' | L" class="font-reg-s " textWrap="true" *ngIf="nothingFound"></Label>
-    
+      <Label [text]="'search_not_found' | L" class="font-reg-s " textWrap="true" *ngIf="nothingFound"></Label>
     </StackLayout>
   </ScrollView>
 
@@ -41,7 +36,7 @@
   <AbsoluteLayout [height]="headerHeight" verticalAlignment="top" isUserInteractionEnabled="false">
     <Image src="~/app/assets/images/header/header_img1.png" stretch="aspectFill" width="100%" [top]="headerTop"></Image>
     <GridLayout width="100%">
-    <Label [text]="'menu_search' | L" horizontalAlignment="center" [class]="'title ' + (isIOS ? 'm-t-20' : 'm-t-40')"></Label>
+      <Label [text]="'menu_search' | L" horizontalAlignment="center" [class]="'title ' + (isIOS ? 'm-t-20' : 'm-t-40')"></Label>
     </GridLayout>
   </AbsoluteLayout>
 
