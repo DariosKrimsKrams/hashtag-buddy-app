@@ -46,6 +46,7 @@
   <string name="settings_legal">"Privacy Policy"</string>
   <string name="settings_about">"Su di me"</string>
   <string name="selection_suggestions">"Suggerimenti (in base alla mia selezione)"</string>
+  <string name="search_iap_desc">"Hashtag Inspector won\'t show hidden hashtags anymore. All hashtags will be visible."</string>
   <string name="search_not_found">"Purtroppo, non è stato trovato nulla. Per favore, prova un\'altra parola."</string>
   <string name="search_results">"Hashtag simili (basato sulla mia ricerca)"</string>
   <string name="search_button">"Ricerca"</string>

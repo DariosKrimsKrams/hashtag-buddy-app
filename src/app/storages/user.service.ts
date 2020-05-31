@@ -14,6 +14,7 @@ export class UserService {
   private keyFavorites: string = 'favorites';
   private keyRateApp: string = 'rateapp2';
   private keyTipsTricks: string = 'hasUnlockedTipsTricks';
+  private keyHashtagInspector: string = 'hasUnlockedHashtagInspector';
   private photosCache: Photo[];
   @Output() public photoAdded: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
   @Output() public photoUpdated: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
@@ -153,8 +154,16 @@ export class UserService {
     return this.localStorageService.get(this.keyTipsTricks) === 'true' || undefined;
   }
 
+  public hasHashtagInspectorUnlocked(): boolean {
+    return this.localStorageService.get(this.keyHashtagInspector) === 'true' || undefined;
+  }
+
   public unlockedTipsTricks(): void {
     this.localStorageService.set(this.keyTipsTricks, 'true');
+  }
+
+  public unlockedHashtagInspector(): void {
+    this.localStorageService.set(this.keyHashtagInspector, 'true');
   }
 
   public calcHeader(imgWidth: number, imgHeight: number, normalHeight: number): { height: number, top: number } {

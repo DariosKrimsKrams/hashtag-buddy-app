@@ -167,6 +167,7 @@
   "search_button": "Buscar",
   "search_results": "Hashtags similares (basados en mi búsqueda)",
   "search_not_found": "Tristemente, nada encontrado. Por favor intente con otra palabra.",
+  "search_iap_desc": "Hashtag Inspector won't show hidden hashtags anymore. All hashtags will be visible.",
   "selection_suggestions": "Sugerencias (basadas en mi selección)",
   "settings_about": "Acerca de mí",
   "settings_legal": "Política de Privacidad",

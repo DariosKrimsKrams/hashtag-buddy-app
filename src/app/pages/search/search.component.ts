@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewContainerRef, OnDestroy } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page/page';
 import { isIOS, isAndroid } from 'tns-core-modules/platform';
 import * as app from 'tns-core-modules/application';
@@ -15,13 +15,18 @@ import { Toasty, ToastDuration } from 'nativescript-toasty';
 import { HashtagResult } from '~/app/models/hashtag-result';
 import { HashtagCategory } from '~/app/models/hashtag-category';
 import { localize } from 'nativescript-localize/angular';
+import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/common';
+import { StoreService } from '~/app/storages/store.service';
+import { PLANS } from '~/app/data/plans';
+import { ModalComponent } from '~/app/shared/modal/modal.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
   moduleId: module.id
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
 
   @Output() public hashtagsChanged: EventEmitter<void> = new EventEmitter();
   public headerHeight: number = 0;
@@ -35,11 +40,17 @@ export class SearchComponent implements OnInit {
   public hashtagCategory: HashtagCategory = undefined;
   public selectedHashtags: string[] = [];
   public excludedHashtags: string[] = [];
+  public hasUnlocked: boolean;
+  private price: string = '1,09 €';
+  private purchaseSuccessfulSub: Subscription;
 
   constructor(
     private readonly page: Page,
     private readonly evaluationRepository: EvaluationRepository,
     private readonly customerService: CustomerService,
+    private readonly modalService: ModalDialogService,
+    private readonly viewContainerRef: ViewContainerRef,
+    private readonly storeService: StoreService,
     private readonly userService: UserService
   ) {
     this.page.actionBarHidden = true;
@@ -49,6 +60,17 @@ export class SearchComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.price = PLANS.find(x => x.id === 'hashtagsunlimited').priceShort;
+    this.hasUnlocked = this.userService.hasHashtagInspectorUnlocked();
+    this.purchaseSuccessfulSub = this.storeService.onPurchasedSuccessful.subscribe((item: string) => {
+      this.hasUnlocked = true;
+    });
+  }
+
+  public ngOnDestroy(): void {
+    if (!!this.purchaseSuccessfulSub) {
+      this.purchaseSuccessfulSub.unsubscribe();
+    }
   }
 
   public openMenu(): void {
@@ -102,7 +124,7 @@ export class SearchComponent implements OnInit {
       }
       this.isLoading = false;
       this.hashtagCategory = HashtagCategory.fromHashtagResult(hashtags, 'search');
-      const hasPurchase = this.userService.hasPurchase();
+      const hasPurchase = this.userService.hasHashtagInspectorUnlocked();
       if (!hasPurchase) {
         this.hashtagCategory.censorHashtags();
       }
@@ -151,6 +173,29 @@ export class SearchComponent implements OnInit {
       text += ' ' + localize('search_paywall_unlocked');
     }
     return text;
+  }
+
+  public openUnlockModal(): void {
+    const okFunc = () => {
+      console.log('openUnlockModal');
+      const item = 'tipstricks';
+      this.storeService.onBuyProduct.emit(item);
+    };
+    const headline = PLANS.find(x => x.id === 'hashtagsunlimited').title;
+    const desc = localize('search_iap_desc', this.price);
+    const options: ModalDialogOptions = {
+      viewContainerRef: this.viewContainerRef,
+      fullscreen: false,
+      context: {
+        icon: 'cart',
+        headline: headline,
+        desc: desc,
+        buttonOk: 'faq_buy_cta',
+        buttonCancel: 'faq_buy_cancel',
+        okFunc: okFunc
+      }
+    };
+    this.modalService.showModal(ModalComponent, options);
   }
 
   private calcHeader(): void {

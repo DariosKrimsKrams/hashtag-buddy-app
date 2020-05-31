@@ -407,6 +407,9 @@ export class AppComponent implements OnInit, OnDestroy {
     if (plan.tipstrick) {
       this.userService.unlockedTipsTricks();
     }
+    if (plan.hashtagInspector) {
+      this.userService.unlockedHashtagInspector();
+    }
   }
 
   private showBoughtPopup(planTitle: string): void {
