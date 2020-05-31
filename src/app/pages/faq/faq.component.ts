@@ -29,7 +29,7 @@ export class FaqComponent implements OnInit, OnDestroy {
   public headerHeight: number = 0;
   public headerTop: number = 0;
   public isIOS: boolean;
-  private price: string = '1 €';
+  private price: string = '1,09 €';
   private purchaseSuccessfulSub: Subscription;
 
   constructor(

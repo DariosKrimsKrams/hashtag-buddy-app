@@ -91,7 +91,7 @@
   <string name="iap_purchase_successful_msg">"Von nun an kannst du die volle Pracht deines neuen Buddy genießen. Du hast erfolgreich %1$s erworben :)"</string>
   <string name="iap_purchase_successful_title">"Herzlichen Glückwunsch! Gute Wahl."</string>
   <string name="iap_purchase_failed">"Kauf wurde abgebrochen"</string>
-  <string name="store_buy_tips_tricks">"Erwerbe Tipps &amp; Tricks einzeln"</string>
+  <string name="store_buy_separatly">"Erwerbe einzeln"</string>
   <string name="store_buy_photo">"Erwerbe Foto Uploads"</string>
   <string name="store_buy_failed">"Schade, dein Konto scheint nicht für Zahlungen berechtigt zu sein :("</string>
   <string name="store_save">"Spare"</string>

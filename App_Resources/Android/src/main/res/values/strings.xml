@@ -91,7 +91,7 @@
   <string name="iap_purchase_successful_msg">"From now on you\'ll be able to enjoy the full beauty of your new Buddy. You successfully acquired %1$s :)"</string>
   <string name="iap_purchase_successful_title">"Congratulations! You chose well."</string>
   <string name="iap_purchase_failed">"Purchase was canceled"</string>
-  <string name="store_buy_tips_tricks">"Acquire tips &amp; tricks separatly"</string>
+  <string name="store_buy_separatly">"Acquire separatly"</string>
   <string name="store_buy_photo">"Acquire photo uploads"</string>
   <string name="store_buy_failed">"Sadly, your account seems to not be eligible to make payments :("</string>
   <string name="store_save">"Save"</string>

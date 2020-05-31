@@ -121,7 +121,7 @@
   "store_save": "Salvar",
   "store_buy_failed": "Infelizmente a sua conta parece não ser eligível para fazer pagamentos :(",
   "store_buy_photo": "Acquire photo uploads",
-  "store_buy_tips_tricks": "Acquire tips & tricks",
+  "store_buy_separatly": "Acquire tips & tricks",
   "iap_purchase_failed": "A compra foi cancelada",
   "iap_purchase_successful_title": "Parabéns",
   "iap_purchase_successful_msg": "Comprou com sucesso %s :)",

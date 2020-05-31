@@ -121,7 +121,7 @@
   "store_save": "Sauvegarder",
   "store_buy_failed": "Malheureusement, votre compte semble ne pas être éligible pour effectuer des paiements :(",
   "store_buy_photo": "Acquérir des chargements de photos",
-  "store_buy_tips_tricks": "Acquérir des trucs et astuces",
+  "store_buy_separatly": "Acquérir des trucs et astuces",
   "iap_purchase_failed": "L'achat a été annulé",
   "iap_purchase_successful_title": " Félicitations! Vous avez bien choisi.",
   "iap_purchase_successful_msg": "Désormais, vous pourrez profiter pleinement de la beauté de votre nouveau Buddy. Vous avez acquis %s :)",

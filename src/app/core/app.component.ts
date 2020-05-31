@@ -21,6 +21,7 @@ import { Plan } from '~/app/models/plan';
 import { StoreService } from '../storages/store.service';
 import { PLANS } from '../data/plans';
 import { CurrencyPipe } from '@angular/common';
+import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular/platform-browser';
 
 @Component({
   moduleId: module.id,
@@ -235,11 +236,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private configureIap(): void {
+    this.calcDiscount();
     const products = [
       'tipstricks',
       'small',
       'medium',
       'large',
+      'hashtagsunlimited'
     ];
     (global as any).purchaseInitPromise = purchase.init(products);
 
@@ -265,7 +268,7 @@ export class AppComponent implements OnInit, OnDestroy {
               plan.priceShort = this.minifyPrice(plan.product.priceFormatted);
             });
             this.calcDiscount();
-            this.calcLocas();
+            // this.calcLocas();
           })
           .catch(err => {
             console.error(err);
@@ -311,41 +314,23 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private calcDiscount(): void {
-    let cheapestInApp: Plan;
-    this.plans.map(x => {
-      if (x.product === undefined) {
-        return;
-      }
-      if (!!x.product.localizedDescription) {
-        x.desc = x.product.localizedDescription;
-      }
-      if (x.product.productIdentifier !== 'tipstricks'
-        && (cheapestInApp === undefined || x.product.priceAmount < cheapestInApp.product.priceAmount)
-      ) {
-        cheapestInApp = x;
-      }
-    });
-    if (!!cheapestInApp) {
-      cheapestInApp.pricePerPhoto = cheapestInApp.product.priceAmount / cheapestInApp.amount;
-    }
-    this.plans.forEach(plan => {
-      if (plan.product === undefined) {
-        return;
-      }
-      if (plan.id !== cheapestInApp.id) {
-        plan.pricePerPhoto = plan.product.priceAmount / plan.amount;
-        const discount = (1 - plan.pricePerPhoto / cheapestInApp.pricePerPhoto) * 100;
-        plan.discount = Math.round(discount);
-      }
-    });
-  }
-
-  private calcLocas(): void {
-    this.plans.forEach(plan => {
-      if (!!plan.product && plan.amount !== 0) {
-        const formattedPrice = this.currencyPipe.transform(plan.pricePerPhoto, plan.product.priceCurrencyCode);
-        const text = '(' + localize('store_price_per_photo', formattedPrice) + ')';
-        plan.desc2 = text;
+    this.plans.forEach((plan) => {
+      switch (plan.id) {
+        case 'medium':
+          plan.discount = '4.50';
+          break;
+          case 'large':
+          let newPrice = 6.5;
+          let currencyCode = 'EUR';
+          if (!!plan.product) {
+            const lastPrice = plan.product.priceAmount * 1.3;
+            const diff = lastPrice % 0.5;
+            newPrice = lastPrice - diff + 0.5;
+            currencyCode = plan.product.priceCurrencyCode;
+          }
+          const formattedPrice = this.currencyPipe.transform(newPrice, currencyCode, true, '2', 'de-de');
+          plan.discount = formattedPrice;
+          break;
       }
     });
   }

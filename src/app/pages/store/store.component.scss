@@ -9,7 +9,7 @@
 		background-color: #fff;
 		border-radius: 5pt 5pt 0 0;
 		padding: 5pt 0 0 5pt;
-		height: 70pt;
+		height: 85pt;
 	
 		.plan-title {
 			color: $color_pink;
@@ -25,6 +25,11 @@
 		
 		Label {
 			color: #fff;
+
+			&.discount {
+				text-decoration: line-through;
+				font-size: 18pt;
+			}
 		}
 		Button {
 			color: #fff;

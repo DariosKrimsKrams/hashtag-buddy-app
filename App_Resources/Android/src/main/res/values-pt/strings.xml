@@ -91,7 +91,7 @@
   <string name="iap_purchase_successful_msg">"Comprou com sucesso %1$s :)"</string>
   <string name="iap_purchase_successful_title">"Parabéns"</string>
   <string name="iap_purchase_failed">"A compra foi cancelada"</string>
-  <string name="store_buy_tips_tricks">"Acquire tips &amp; tricks"</string>
+  <string name="store_buy_separatly">"Acquire tips &amp; tricks"</string>
   <string name="store_buy_photo">"Acquire photo uploads"</string>
   <string name="store_buy_failed">"Infelizmente a sua conta parece não ser eligível para fazer pagamentos :("</string>
   <string name="store_save">"Salvar"</string>
