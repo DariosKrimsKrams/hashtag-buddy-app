@@ -15,7 +15,7 @@
                         <Image [src]="photo.image" stretch="aspectFill"></Image>
                     </GridLayout>
                     <StackLayout id="user-selection" class="p-l-5 p-r-5 p-b-10 p-t-10">
-                        <ProgressBar page="results" width="80%" *ngIf="!photo.proMode"></ProgressBar>
+                        <ProgressBar page="results" *ngIf="!photo.proMode"></ProgressBar>
                         <ns-selection
                             [selectedHashtags]="selectedHashtags"
                             (onCopied)="copyToClipboard()"

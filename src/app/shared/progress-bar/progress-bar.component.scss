@@ -1,23 +1,25 @@
 .bg {
-    background-color: #F9F9F9;
-    padding-bottom: 5pt;
-    border-radius: 5pt;
-}
-.home {
-  margin-top: 10pt;
+  background-color: #F9F9F9;
+  padding-bottom: 5pt;
+  border-radius: 5pt;
+
+  &.results {
+    margin: 0 40pt;
+  }
 }
 .progressbar {
-    height: 5pt;
-    border-radius: 5pt;
-    background-color: #ECEFF1;
-    margin: 7pt 0;
-    padding: 0;
+  height: 5pt;
+  border-radius: 5pt;
+  background-color: #ECEFF1;
+  margin: 7pt 0;
+  padding: 0;
+  width: 80%;
 }
 .progressbar-value {
-    background-color: #EF8B97;
-    border-radius: 5pt;
+  background-color: #EF8B97;
+  border-radius: 5pt;
 }
 .text {
   text-align: center;
-  margin: 0 40pt 10pt 40pt;
+  margin: 0 20pt 10pt 20pt;
 }

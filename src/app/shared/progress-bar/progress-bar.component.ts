@@ -20,7 +20,6 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
   public usedAmount: number;
 
   @Input() public page: string;
-  @Input() public width: string;
 
   private photosCountChangeSubscription: Subscription;
   private appRatedSubscription: Subscription;
@@ -65,38 +64,19 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
 
   private buildText(): void {
     const hasPayedPhotos = this.photosCountService.hasPayedPhotos();
-    if (hasPayedPhotos && this.page !== 'home') {
-      return;
-    }
-
-    if (this.page === 'home') {
-      if (hasPayedPhotos) {
-        this.text1 = localize('progressbar_home_iapmode', this.usedAmount.toString(), this.countPhotosOverall.toString());
-      } else {
-        if (this.countPhotoLeft === 0) {
-          this.text1 = localize('progressbar_home_freemode', this.usedAmount.toString(), this.countPhotosOverall.toString());
-        } else if (this.used) {
-          this.text1 = localize('progressbar_home_startmode_is_using', this.usedAmount.toString(), this.countPhotosOverall.toString());
-        } else {
-          this.text1 = localize('progressbar_home_startmode_not_used', this.countPhotosOverall.toString());
-        }
-      }
-    }
+    this.text1 = '';
 
     if (this.page === 'confirm') {
-      this.text1 = '';
       if (this.used) {
-        this.text1 = localize('progressbar_home_iapmode', this.usedAmount.toString(), this.countPhotosOverall.toString());
-        if (this.countPhotoLeft === 0) {
-          this.text1 = localize('progressbar_confirm_freemode1');
+        if (hasPayedPhotos) {
+          this.text1 = localize('progressbar_confirm_iapmode', this.countPhotosOverall.toString());
+        } else {
+          this.text1 = localize('progressbar_confirm_freemode');
         }
       }
-    }
-
-    if (this.page === 'results') {
-      this.text1 = '';
-      if (this.countPhotoLeft === 0) {
-        this.text1 = localize('progressbar_results_freemode1');
+    } else if (this.page === 'results') {
+      if (this.countPhotoLeft === 0 && !hasPayedPhotos) {
+        this.text1 = localize('progressbar_results_freemode');
       }
     }
   }

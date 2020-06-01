@@ -22,12 +22,9 @@
   <string name="myhashtags_other">"Hashtags das fotos"</string>
   <string name="myhashtags_your">"Adicionado por si"</string>
   <string name="myhashtags_intro">"Guarde os seus hashtags favoritos aqui. Podes aceder diretamente através das fotos selecionadas."</string>
-  <string name="progressbar_results_freemode1">"Atingiu o limite de carregamentos grátis: Os melhores hashtags estão ocultos. Compre carregamentos de fotos para desbloquear os hashtags."</string>
-  <string name="progressbar_confirm_freemode1">"Atingiu o limite de carregamentos gratuitos: Os melhores e os hashtags exclusivos estão agora ocultos :("</string>
-  <string name="progressbar_home_freemode">"Já usou %1$s de %2$s carregamentos de foto gratuitods. Ainda poderá carregar as suas fotos mas os hashtags exclusivos ficaram ocultos."</string>
-  <string name="progressbar_home_iapmode">"Utilizou %1$s de %2$s carregamentos de foto."</string>
-  <string name="progressbar_home_startmode_is_using">"Já utilizou %1$s de %2$s carregamentos de fotos. Quando esgotar, tem 1 carregamento gratuito a cada 3 dias."</string>
-  <string name="progressbar_home_startmode_not_used">"Tem %1$s carregamentos de foto gratuitos."</string>
+  <string name="progressbar_results_freemode">"Some hashtags are hidden. If you want to support Hashtag Buddy, you can unlock hashtags in store."</string>
+  <string name="progressbar_confirm_iapmode">"You used %1$s of %2$s photo uploads with all hashtags visible."</string>
+  <string name="progressbar_confirm_freemode">"You can upload infinite photos, but sometimes some hashtags will be censored."</string>
   <string name="toast_imagepicker_failed">"Falhou a escolha de fotos. Por favor, verifique a permissão."</string>
   <string name="toast_create_customer_at_upload_failed">"O pedido falhou! Conexão perdida :\'("</string>
   <string name="toast_create_customer_failed">"Está offline! Por favor ligue-se a internet :)"</string>

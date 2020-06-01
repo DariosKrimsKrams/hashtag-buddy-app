@@ -1,5 +1,5 @@
-<StackLayout [class.bg]="page !== 'home'" [class.home]="page === 'home'" *ngIf="!!text1">
-    <GridLayout [columns]="columns" [width]="width" class="progressbar" *ngIf="this.used && page !== 'home'">
+<StackLayout class="bg" [class.results]="page === 'results'">
+    <GridLayout [columns]="columns" class="progressbar" *ngIf="this.used">
         <StackLayout col="0" class="progressbar-value"></StackLayout>
     </GridLayout>
     <Label [text]="text1" class="text" *ngIf="!!text1" textWrap="true"></Label>
