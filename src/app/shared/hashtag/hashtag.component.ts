@@ -62,8 +62,7 @@ export class HashtagComponent implements OnInit {
   }
 
   public clickedCensoredHashtag(): void {
-    const text = localize('toast_hashtags_hidden', this.name);
-    new Toasty({ text: text })
+    new Toasty({ text: localize('toast_hashtags_hidden') })
       .setToastDuration(ToastDuration.LONG)
       .show();
   }

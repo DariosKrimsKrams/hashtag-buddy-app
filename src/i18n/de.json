@@ -178,7 +178,7 @@
   "settings_rate_subline": "Bewerte es im",
   "google_play": "Play Store",
   "app_store": "App Store",
-  "toast_hashtags_hidden": "%s ist im kostenlosen Modus versteckt :'(",
+  "toast_hashtags_hidden": "Hashtag ist versteckt. Upgrade, um diesen Hashtag zu sehen.",
   "toast_no_hashtags_selected": "Bitte zuerst Hashtags auswählen :)",
   "toast_delete_successful": "Erfolgreich gelöscht :)",
   "toast_delete_failed": "Löschen fehlgeschlagen :'(",

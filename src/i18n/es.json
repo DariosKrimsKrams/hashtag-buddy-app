@@ -178,7 +178,7 @@
   "settings_rate_subline": "Puntúa en",
   "google_play": "Play Store",
   "app_store": "App Store",
-  "toast_hashtags_hidden": "%s está oculto debido al Modo Libre",
+  "toast_hashtags_hidden": "Hashtag está oculto debido al Modo Libre",
   "toast_no_hashtags_selected": "Seleccione primero los hashtags :)",
   "toast_delete_successful": "Eliminación exitosa :)",
   "toast_delete_failed": "Error al eliminar :'(",

@@ -30,7 +30,7 @@
 "toast_delete_failed" = "O ficheiro não foi apagado :'(";
 "toast_delete_successful" = "Apagado com sucesso :)";
 "toast_no_hashtags_selected" = "Por favor, selecione hashtags primeiro :)";
-"toast_hashtags_hidden" = "%1$@ está oculto porque se encontra no modo gratuito :'(";
+"toast_hashtags_hidden" = "Hashtag está oculto porque se encontra no modo gratuito";
 "app_store" = "App Store";
 "google_play" = "Play Store";
 "settings_rate_subline" = "Avalie na";

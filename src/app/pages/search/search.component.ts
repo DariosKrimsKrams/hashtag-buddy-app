@@ -87,7 +87,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   public search(): void {
-    this.searchInput = this.searchInput.replace(/[^a-zA-Z ]/g, '');
+    this.searchInput = this.searchInput.replace(/[^a-zA-Z ]/g, '').toLocaleLowerCase();
     if (!this.searchInput || this.searchInput === this.lastSearch) {
       return;
     }

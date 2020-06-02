@@ -30,7 +30,7 @@
 "toast_delete_failed" = " La suppresion à échouée :'(";
 "toast_delete_successful" = "Supprimé avec succès :) :)";
 "toast_no_hashtags_selected" = "Veuillez d'abord sélectionner les hashtags :)";
-"toast_hashtags_hidden" = "%1$@ est caché à cause de Free-Mode :'(";
+"toast_hashtags_hidden" = "Hashtag est caché à cause de Free-Mode";
 "app_store" = "App Store";
 "google_play" = "Play Store";
 "settings_rate_subline" = "Noter sur le";

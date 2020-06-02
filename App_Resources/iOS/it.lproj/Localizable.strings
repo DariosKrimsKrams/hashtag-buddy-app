@@ -30,7 +30,7 @@
 "toast_delete_failed" = "Eliminazione non riuscita :'(";
 "toast_delete_successful" = "Eliminazione avvenuta con successo :)";
 "toast_no_hashtags_selected" = "Per prima cosa seleziona l’hashtag :)";
-"toast_hashtags_hidden" = "%1$@ è nascosto a causa del Free-Mode :'(";
+"toast_hashtags_hidden" = "Hashtag è nascosto a causa del Free-Mode";
 "app_store" = "App Store";
 "google_play" = "Play Store";
 "settings_rate_subline" = "Valuta sul";

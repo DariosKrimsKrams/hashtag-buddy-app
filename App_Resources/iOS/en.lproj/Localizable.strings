@@ -30,7 +30,7 @@
 "toast_delete_failed" = "Delete failed :'(";
 "toast_delete_successful" = "Delete successful :)";
 "toast_no_hashtags_selected" = "Please select hashtags first :)";
-"toast_hashtags_hidden" = "%1$@ is hidden due to free-mode :'(";
+"toast_hashtags_hidden" = "Hashtag is hidden. Upgrade to see this hashtag.";
 "app_store" = "App Store";
 "google_play" = "Play Store";
 "settings_rate_subline" = "Rate on";
