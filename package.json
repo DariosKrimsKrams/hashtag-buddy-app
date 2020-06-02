@@ -4,10 +4,10 @@
       "android": "com.innocliq.instaq",
       "ios": "com.hashtagbuddy.instagramtipstricks"
     },
-    "tns-ios": {
-      "version": "6.5.0"
-    },
     "tns-android": {
+      "version": "6.5.1"
+    },
+    "tns-ios": {
       "version": "6.5.1"
     }
   },
