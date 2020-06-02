@@ -26,7 +26,7 @@
         [censored]="tag.isCensored && !hasUnlocked"
         ></ns-hashtag>
       </WrapLayout>
-      <Button [text]="'faq_buy' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal" verticalAlignment="middle" *ngIf="!!hashtagCategory && !hasUnlocked" (tap)="openUnlockModal()"></Button>
+      <Button [text]="'search_buy' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal" verticalAlignment="middle" *ngIf="!!hashtagCategory && !hasUnlocked" (tap)="openUnlockModal()"></Button>
       <circularProgressBar *ngIf="isLoading" size="small"></circularProgressBar>
       <Label [text]="'search_not_found' | L" class="font-reg-s " textWrap="true" *ngIf="nothingFound"></Label>
       <Label [text]="'error_desc' | L" class="font-medium-l m-t-10 m-b-20" textWrap="true" *ngIf="isError"></Label>

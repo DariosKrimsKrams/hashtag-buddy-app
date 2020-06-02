@@ -41,6 +41,7 @@
 "settings_legal" = "Privacy Policy";
 "settings_about" = "Su di me";
 "selection_suggestions" = "Suggerimenti (in base alla mia selezione)";
+"search_buy" = "Unlock hashtags";
 "search_iap_desc" = "Hashtag Inspector won't show hidden hashtags anymore. All hashtags will be visible.";
 "search_not_found" = "Purtroppo, non è stato trovato nulla. Per favore, prova un'altra parola.";
 "search_results" = "Hashtag simili (basato sulla mia ricerca)";
