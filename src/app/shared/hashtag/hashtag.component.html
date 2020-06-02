@@ -7,8 +7,15 @@
         (loaded)="onLoaded()"
         #label
         ></Label>
-    <Label [text]="name" class="tag tag-bg gradient font-medium-small" *ngIf="isActive"></Label>
-    <Label [text]="name" class="tag active font-medium-small" *ngIf="isActive"></Label>
+    <Label [text]="name"
+        class="tag tag-bg gradient font-medium-small"
+        *ngIf="isActive"
+        ></Label>
+    <Label [text]="name"
+        class="tag active font-medium-small"
+        (tap)="triggerClick()"
+        *ngIf="isActive"
+        ></Label>
 </AbsoluteLayout>
 
 <!-- ANDROID -->
