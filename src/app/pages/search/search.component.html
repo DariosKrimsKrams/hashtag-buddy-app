@@ -2,7 +2,7 @@
 
   <!-- CONTENT -->
   <ScrollView  [style.margin-top]="headerHeight + headerTop - (headerHeight / 2)" sdkExampleTitle sdkToggleNavButton>
-    <StackLayout [style.padding-top]="headerHeight / 2" class="p-l-30 p-r-30 m-t-25 p-b-40" (tap)="dismissSoftKeyboard()">
+    <StackLayout [style.padding-top]="headerHeight / 2" class="p-l-20 p-r-20 m-t-25 p-b-40" (tap)="dismissSoftKeyboard()">
       <Label [text]="introText | L" class="font-reg-s m-b-10" textWrap="true"></Label>
       <GridLayout class="m-b-20" columns="*,80">
         <FloatLabel col="0" [placeholder]="'search_input' | L" (userTextEmitter)="searchInput = $event" (onSubmit)="search()"></FloatLabel>
