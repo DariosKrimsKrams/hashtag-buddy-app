@@ -12,7 +12,7 @@
 "rate_yes" = "Valuta ora";
 "rate_no" = "Mai";
 "rate_later" = "Più tardi";
-"rate_desc" = "Adesso sei un Hashtag Star! Ti andrebbe di dedicare un momento per lasciare una recensione e valutare Hashtag Buddy? Per ringraziarti riceverai 3 caricamenti di foto! :)";
+"rate_desc" = "Adesso sei un Hashtag Star! Ti andrebbe di dedicare un momento per lasciare una recensione e valutare Hashtag Buddy? Grazie mille :)";
 "rate_stars" = "☆ ☆ ☆ ☆ ☆";
 "rate_headline" = "Seleziona le stelle";
 "share" = "Ehi, vorrei consigliarti quest’app: Aiuta a trovare gli hashtag Instagram più rilevanti per le foto. Lascia che sia d'aiuto anche a te :)";
@@ -20,13 +20,9 @@
 "myhashtags_other" = "Hashtag dalle foto";
 "myhashtags_your" = "Aggiunti da te";
 "myhashtags_intro" = "Salva qui i tuoi hashtag preferiti. Sono accessibili direttamente dalla selezione foto.";
-"progressbar_results_freemode2" = "";
-"progressbar_results_freemode1" = "Limite gratuito raggiunto: I migliori hashtag sono nascosti. Acquista caricamenti foto per sbloccare gli hashtag.";
-"progressbar_confirm_freemode1" = "Limite gratuito raggiunto: Adesso i migliori hashtag verranno nascosti :(";
-"progressbar_home_freemode" = "Hai usato %1$@ di %2$@ caricamenti gratuiti di foto. Puoi ancora caricare le foto, ma alcuni hashtag saranno nascosti";
-"progressbar_home_iapmode" = "Hai usato %1$@ di %2$@ caricamenti foto.";
-"progressbar_home_startmode_is_using" = "Hai usato %1$@ di %2$@ caricamenti foto. Dopo averli utilizzati tutti, si ottiene 1 caricamento di foto gratis ogni 3 giorni.";
-"progressbar_home_startmode_not_used" = "Ricevi gratis %1$@ caricamenti di foto.";
+"progressbar_results_freemode" = "Some hashtags are hidden. If you want to support Hashtag Buddy, you can unlock hashtags in store.";
+"progressbar_confirm_iapmode" = "You used %1$@ of %2$@ photo uploads with all hashtags visible.";
+"progressbar_confirm_freemode" = "You can upload infinite photos, but sometimes some hashtags will be censored.";
 "Toast_imagepicker_failed" = "Non sono riuscito a recuperare le foto. Per favore, controlla il permesso di lettura.";
 "toast_create_customer_at_upload_failed" = "Richiesta fallita! Connessione interrotta :’(";
 "toast_create_customer_failed" = "Offline. Riprova a connetterti a internet :)";
@@ -34,7 +30,7 @@
 "toast_delete_failed" = "Eliminazione non riuscita :'(";
 "toast_delete_successful" = "Eliminazione avvenuta con successo :)";
 "toast_no_hashtags_selected" = "Per prima cosa seleziona l’hashtag :)";
-"toast_hashtags_hidden" = "L'hashtag è nascosto a causa del Free-Mode :'(";
+"toast_hashtags_hidden" = "%1$@ è nascosto a causa del Free-Mode :'(";
 "app_store" = "App Store";
 "google_play" = "Play Store";
 "settings_rate_subline" = "Valuta sul";
@@ -44,6 +40,15 @@
 "settings_terms" = "Termini e condizioni";
 "settings_legal" = "Privacy Policy";
 "settings_about" = "Su di me";
+"selection_suggestions" = "Suggerimenti (in base alla mia selezione)";
+"search_iap_desc" = "Hashtag Inspector won't show hidden hashtags anymore. All hashtags will be visible.";
+"search_not_found" = "Purtroppo, non è stato trovato nulla. Per favore, prova un'altra parola.";
+"search_results" = "Hashtag simili (basato sulla mia ricerca)";
+"search_button" = "Ricerca";
+"search_input" = "Argomento o parola chiave";
+"search_paywall_unlocked" = "Verranno mostrati tutti gli hashtag. Goditi tutta la bellezza :)";
+"search_paywall_locked" = "Alcuni hashtag saranno nascosti.";
+"search_intro" = "Trova hashtag simili in base alle parole chiave di ricerca.";
 "faq_buy_cancel" = "Annulla";
 "faq_buy_cta" = "Acquista adesso";
 "faq_buy_desc" = "Sbloccare tutti i Tips & Tricks per solo %1$@ :)";
@@ -82,7 +87,7 @@
 "iap_purchase_successful_msg" = "D'ora in poi potrai godere appieno del tuo nuovo Buddy. %1$@ acquistato con successo:)";
 "iap_purchase_successful_title" = "Congratulazioni! Hai fatto una buona scelta.";
 "iap_purchase_failed" = "L’acquisto è stato annullato";
-"store_buy_tips_tricks" = "Acquista i tips & tricks";
+"store_buy_separatly" = "Acquista i tips & tricks";
 "store_buy_photo" = "Acquista caricamenti foto";
 "store_buy_failed" = "Sfortunatamente, sembra che il tuo account non sia abilitato a fare pagamenti :(";
 "store_save" = "Salva";
@@ -94,6 +99,7 @@
 "store_headline_abo" = "Sottoscrizioni";
 "store_headline_once" = "Pagamenti One-time";
 "store_intro" = "Acquista i caricamenti di foto per ottenere più risultati e hashtag non nascosti. Queste vendite non mi porteranno alcun profitto, ma mi aiuteranno a coprire i costi relativi al mantenimento dell’applicazione";
+"menu_search" = "Hashtag Inspector";
 "menu_feedback" = "Feedback";
 "menu_settings" = "Scopri di più";
 "menu_new" = "nuovo";
