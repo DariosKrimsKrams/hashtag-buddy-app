@@ -32,7 +32,7 @@
   <string name="toast_delete_failed">"Delete failed :\'("</string>
   <string name="toast_delete_successful">"Delete successful :)"</string>
   <string name="toast_no_hashtags_selected">"Please select hashtags first :)"</string>
-  <string name="toast_hashtags_hidden">"%1$s is hidden due to free-mode :\'("</string>
+  <string name="toast_hashtags_hidden">"Hashtag is hidden. Upgrade to see this hashtag."</string>
   <string name="app_store">"App Store"</string>
   <string name="google_play">"Play Store"</string>
   <string name="settings_rate_subline">"Rate on"</string>

@@ -32,7 +32,7 @@
   <string name="toast_delete_failed">"Löschen fehlgeschlagen :\'("</string>
   <string name="toast_delete_successful">"Erfolgreich gelöscht :)"</string>
   <string name="toast_no_hashtags_selected">"Bitte zuerst Hashtags auswählen :)"</string>
-  <string name="toast_hashtags_hidden">"%1$s ist im kostenlosen Modus versteckt :\'("</string>
+  <string name="toast_hashtags_hidden">"Hashtag ist versteckt. Upgrade, um diesen Hashtag zu sehen."</string>
   <string name="app_store">"App Store"</string>
   <string name="google_play">"Play Store"</string>
   <string name="settings_rate_subline">"Bewerte es im"</string>

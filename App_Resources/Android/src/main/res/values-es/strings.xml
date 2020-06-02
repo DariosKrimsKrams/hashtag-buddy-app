@@ -32,7 +32,7 @@
   <string name="toast_delete_failed">"Error al eliminar :\'("</string>
   <string name="toast_delete_successful">"Eliminación exitosa :)"</string>
   <string name="toast_no_hashtags_selected">"Seleccione primero los hashtags :)"</string>
-  <string name="toast_hashtags_hidden">"%1$s está oculto debido al Modo Libre"</string>
+  <string name="toast_hashtags_hidden">"Hashtag está oculto debido al Modo Libre"</string>
   <string name="app_store">"App Store"</string>
   <string name="google_play">"Play Store"</string>
   <string name="settings_rate_subline">"Puntúa en"</string>

@@ -32,7 +32,7 @@
   <string name="toast_delete_failed">"O ficheiro não foi apagado :\'("</string>
   <string name="toast_delete_successful">"Apagado com sucesso :)"</string>
   <string name="toast_no_hashtags_selected">"Por favor, selecione hashtags primeiro :)"</string>
-  <string name="toast_hashtags_hidden">"%1$s está oculto porque se encontra no modo gratuito :\'("</string>
+  <string name="toast_hashtags_hidden">"Hashtag está oculto porque se encontra no modo gratuito"</string>
   <string name="app_store">"App Store"</string>
   <string name="google_play">"Play Store"</string>
   <string name="settings_rate_subline">"Avalie na"</string>
