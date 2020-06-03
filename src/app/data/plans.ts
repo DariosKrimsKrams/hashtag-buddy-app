@@ -12,7 +12,8 @@ export const PLANS: Plan[] = [
         amount: 5,
         tipstrick: false,
         hashtagInspector: false,
-        category: 0
+        category: 0,
+        consumable: true
     },
     {
         id: 'medium',
@@ -25,7 +26,8 @@ export const PLANS: Plan[] = [
         amount: 15,
         tipstrick: false,
         hashtagInspector: true,
-        category: 0
+        category: 0,
+        consumable: true
     },
     {
         id: 'large',
@@ -38,7 +40,8 @@ export const PLANS: Plan[] = [
         amount: 30,
         tipstrick: true,
         hashtagInspector: true,
-        category: 0
+        category: 0,
+        consumable: true
     },
     {
         id: 'tipstricks',
@@ -51,7 +54,8 @@ export const PLANS: Plan[] = [
         amount: 0,
         tipstrick: true,
         hashtagInspector: false,
-        category: 1
+        category: 1,
+        consumable: false
     },
     {
         id: 'hashtagsunlimited',
@@ -64,6 +68,7 @@ export const PLANS: Plan[] = [
         amount: 0,
         tipstrick: false,
         hashtagInspector: true,
-        category: 1
+        category: 1,
+        consumable: false
     }
 ];

@@ -82,12 +82,13 @@
 "faq_locked" = "gesperrt";
 "faq_premium" = "Premium";
 "iap_restored_successful_btn" = "Perfekt";
-"iap_restored_successful_msg" = "Produkt '%1$@' wurde wiederhergestellt :)";
+"iap_restored_successful_msg" = "Paket '%1$@' wurde wiederhergestellt :)";
 "iap_restored_successful_title" = "Wiederherstellen";
 "iap_purchase_successful_btn" = "OK";
 "iap_purchase_successful_msg" = "Von nun an kannst du die volle Pracht deines neuen Buddy genießen. Du hast erfolgreich %1$@ erworben :)";
 "iap_purchase_successful_title" = "Herzlichen Glückwunsch! Gute Wahl.";
 "iap_purchase_failed" = "Kauf wurde abgebrochen";
+"store_bought" = "Im Besitz";
 "store_buy_separatly" = "Erwerbe einzeln";
 "store_buy_photo" = "Erwerbe Foto Uploads";
 "store_buy_failed" = "Schade, dein Konto scheint nicht für Zahlungen berechtigt zu sein :(";

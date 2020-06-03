@@ -118,6 +118,17 @@ export class UserService {
     return this.getExistingPurchases().length !== 0;
   }
 
+  public hasPurchaseWithId(id: string): boolean {
+    const purchases = this.getExistingPurchases();
+    for (let i = 0; i < purchases.length; i++) {
+      const tx = purchases[i];
+      if (tx.productIdentifier === id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   private getExistingPurchases(): Transaction[] {
     const json = this.localStorageService.get(this.keyPurchases) || undefined;
     if (json === undefined) {
@@ -158,11 +169,11 @@ export class UserService {
     return this.localStorageService.get(this.keyHashtagInspector) === 'true' || undefined;
   }
 
-  public unlockedTipsTricks(): void {
+  public unlockTipsTricks(): void {
     this.localStorageService.set(this.keyTipsTricks, 'true');
   }
 
-  public unlockedHashtagInspector(): void {
+  public unlockHashtagInspector(): void {
     this.localStorageService.set(this.keyHashtagInspector, 'true');
   }
 

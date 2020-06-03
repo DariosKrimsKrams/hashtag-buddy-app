@@ -24,16 +24,23 @@
 		padding: 5pt 0 0 5pt;
 		
 		Label {
-			color: #fff;
-
 			&.discount {
 				text-decoration: line-through;
 				font-size: 18pt;
+				color: #fff;
+			}
+			&.bought {
+				font-size: 20pt;
+				color: rgb(70, 70, 70);
 			}
 		}
 		Button {
 			color: #fff;
 		}
+	}
+
+	&.bought .plan-footer {
+		background: linear-gradient(to bottom, #fff, rgb(55, 177, 55));
 	}
 }
 

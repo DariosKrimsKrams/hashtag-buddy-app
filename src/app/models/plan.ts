@@ -11,12 +11,14 @@ export class Plan {
   public tipstrick: boolean;
   public hashtagInspector: boolean;
   public category: number;
+  public consumable: boolean;
 
   public product?: Product;
   public discount?: string;
   public pricePerPhoto?: number;
   public priceFallback: string;
   public priceShort: string;
+  public bought?: boolean;
 
   public constructor(init?: Partial<Plan>) {
     Object.assign(this, init);

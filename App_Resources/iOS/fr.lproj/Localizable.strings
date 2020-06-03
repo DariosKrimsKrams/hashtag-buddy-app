@@ -88,7 +88,8 @@
 "iap_purchase_successful_msg" = "Désormais, vous pourrez profiter pleinement de la beauté de votre nouveau Buddy. Vous avez acquis %1$@ :)";
 "iap_purchase_successful_title" = " Félicitations! Vous avez bien choisi.";
 "iap_purchase_failed" = "L'achat a été annulé";
-"store_buy_separatly" = "Acquérir des trucs et astuces";
+"store_bought" = "En possession";
+"store_buy_separatly" = "Acquérir séparément";
 "store_buy_photo" = "Acquérir des chargements de photos";
 "store_buy_failed" = "Malheureusement, votre compte semble ne pas être éligible pour effectuer des paiements :(";
 "store_save" = "Sauvegarder";

@@ -260,7 +260,7 @@ export class AppComponent implements OnInit, OnDestroy {
           .then((products: Array<Product>) => {
             products.forEach((product: Product) => {
               let plan = this.getPlanById(product.productIdentifier);
-              if (plan !== undefined) {
+              if (!!plan) {
                 plan.product = product;
               } else {
                 plan = new Plan({
@@ -269,13 +269,11 @@ export class AppComponent implements OnInit, OnDestroy {
                 });
                 this.plans.push(plan);
               }
-              if (!!product.localizedTitle) {
-                plan.title = product.localizedTitle.split(' (')[0];
-              }
               plan.priceShort = this.minifyPrice(plan.product.priceFormatted);
             });
             this.calcDiscount();
-            // this.calcLocas();
+            this.calcLocas();
+            this.calcBought();
           })
           .catch(err => {
             console.error(err);
@@ -333,13 +331,35 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
+  private calcLocas(): void {
+    this.plans.forEach(plan => {
+      if (!!plan.product) {
+        if (!!plan.product.localizedTitle) {
+          plan.title = plan.product.localizedTitle.split(' (')[0];
+        }
+        if (!!plan.product.localizedDescription) {
+          plan.desc = plan.product.localizedDescription;
+        }
+      }
+    });
+  }
+
+  private calcBought(): void {
+    this.plans.forEach(plan => {
+      if (true) {
+        // plan.bought = true;
+        plan.bought = this.userService.hasPurchaseWithId(plan.id);
+      }
+    });
+  }
+
   private getDiscountPrice(product: Product): string {
     if (!product) {
       return '';
     }
     let currencyCode = 'EUR';
-    const lastPrice = product.priceAmount * 1.3;
-    const diff = lastPrice % 0.50;
+    const lastPrice = product.priceAmount * 1.4;
+    const diff = lastPrice % 1;
     const newPrice = lastPrice - diff + 0.49;
     currencyCode = product.priceCurrencyCode;
     return this.currencyPipe.transform(newPrice, currencyCode);
@@ -410,15 +430,16 @@ export class AppComponent implements OnInit, OnDestroy {
   private savePurchase(transaction: Transaction): void {
     this.userService.addPurchase(transaction);
     const plan = this.getPlanById(transaction.productIdentifier);
+    plan.bought = true;
     console.log('Product bought: ' + plan.product.productIdentifier);
-    if (plan.amount !== 0) {
+    if (plan.amount > 0) {
       this.photosCountService.addPayedPhotos(plan.amount);
     }
     if (plan.tipstrick) {
-      this.userService.unlockedTipsTricks();
+      this.userService.unlockTipsTricks();
     }
     if (plan.hashtagInspector) {
-      this.userService.unlockedHashtagInspector();
+      this.userService.unlockHashtagInspector();
     }
   }
 
