@@ -21,7 +21,6 @@ import { Plan } from '~/app/models/plan';
 import { StoreService } from '../storages/store.service';
 import { PLANS } from '../data/plans';
 import { CurrencyPipe } from '@angular/common';
-import { ɵangular_packages_platform_browser_platform_browser_k } from '@angular/platform-browser';
 
 @Component({
   moduleId: module.id,
@@ -325,22 +324,25 @@ export class AppComponent implements OnInit, OnDestroy {
     this.plans.forEach((plan) => {
       switch (plan.id) {
         case 'medium':
-          plan.discount = '4.50';
+          plan.discount = this.getDiscountPrice(plan.product);
           break;
-          case 'large':
-          let newPrice = 6.5;
-          let currencyCode = 'EUR';
-          if (!!plan.product) {
-            const lastPrice = plan.product.priceAmount * 1.3;
-            const diff = lastPrice % 0.5;
-            newPrice = lastPrice - diff + 0.5;
-            currencyCode = plan.product.priceCurrencyCode;
-          }
-          const formattedPrice = this.currencyPipe.transform(newPrice, currencyCode, true, '2', 'de-de');
-          plan.discount = formattedPrice;
+        case 'large':
+          plan.discount = this.getDiscountPrice(plan.product);
           break;
       }
     });
+  }
+
+  private getDiscountPrice(product: Product): string {
+    if (!product) {
+      return '';
+    }
+    let currencyCode = 'EUR';
+    const lastPrice = product.priceAmount * 1.3;
+    const diff = lastPrice % 0.50;
+    const newPrice = lastPrice - diff + 0.49;
+    currencyCode = product.priceCurrencyCode;
+    return this.currencyPipe.transform(newPrice, currencyCode);
   }
 
   private onTransactionFailed(transaction: Transaction): void {
