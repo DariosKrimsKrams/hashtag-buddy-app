@@ -43,6 +43,7 @@
   <string name="settings_legal">"Política de Privacidade"</string>
   <string name="settings_about">"Sobre"</string>
   <string name="selection_suggestions">"Sugestões (com base na minha seleção)"</string>
+  <string name="search_buy">"Unlock hashtags"</string>
   <string name="search_iap_desc">"Hashtag Inspector won\'t show hidden hashtags anymore. All hashtags will be visible."</string>
   <string name="search_not_found">"Infelizmente, nada foi encontrado. Por favor, tente outra palavra."</string>
   <string name="search_results">"Hashtags semelhantes (com base na minha pesquisa)"</string>
@@ -89,7 +90,8 @@
   <string name="iap_purchase_successful_msg">"Comprou com sucesso %1$s :)"</string>
   <string name="iap_purchase_successful_title">"Parabéns"</string>
   <string name="iap_purchase_failed">"A compra foi cancelada"</string>
-  <string name="store_buy_separatly">"Acquire tips &amp; tricks"</string>
+  <string name="store_bought">"Em posse"</string>
+  <string name="store_buy_separatly">"Adquirir separadamente"</string>
   <string name="store_buy_photo">"Acquire photo uploads"</string>
   <string name="store_buy_failed">"Infelizmente a sua conta parece não ser eligível para fazer pagamentos :("</string>
   <string name="store_save">"Salvar"</string>
@@ -124,7 +126,7 @@
   <string name="about_credits_1">"Dario D. Mueller (Hamburg, Alemanha)"</string>
   <string name="about_headline_credits">"Criado por"</string>
   <string name="about_desc_3">"Ajude-nos a melhorar esta aplicação! Por favor, contribua deixando um feedback sobre os hashtags ou diga-nos o que gostou e o que pode ser melhorado..."</string>
-  <string name="about_desc_2">"Eu acredito que é possível melhorar o método de procurar para o hashtag perfeito e por isso quero oferecer uma aplicação que o ajuda a encontrar esse hashtag. Para encontrar o hashtag perfeito para cada situação o software por trás desta aplicação recolhe e analisa milhares de fotos no Instagram."</string>
+  <string name="about_desc_2">"Eu isso quero oferecer uma aplicação que o ajuda a encontrar esse hashtag. Para encontrar o hashtag perfeito para cada situação o software por trás desta aplicação recolhe e analisa milhares de fotos no Instagram."</string>
   <string name="about_desc_1">"Obrigado por usar esta aplicação"</string>
   <string name="about_title">"Sobre Hashtag Buddy"</string>
   <string name="settings_footer_title_fallback">"Partilhar"</string>

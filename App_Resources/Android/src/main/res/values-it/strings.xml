@@ -43,6 +43,7 @@
   <string name="settings_legal">"Privacy Policy"</string>
   <string name="settings_about">"Su di me"</string>
   <string name="selection_suggestions">"Suggerimenti (in base alla mia selezione)"</string>
+  <string name="search_buy">"Unlock hashtags"</string>
   <string name="search_iap_desc">"Hashtag Inspector won\'t show hidden hashtags anymore. All hashtags will be visible."</string>
   <string name="search_not_found">"Purtroppo, non è stato trovato nulla. Per favore, prova un\'altra parola."</string>
   <string name="search_results">"Hashtag simili (basato sulla mia ricerca)"</string>
@@ -89,7 +90,8 @@
   <string name="iap_purchase_successful_msg">"D\'ora in poi potrai godere appieno del tuo nuovo Buddy. %1$s acquistato con successo:)"</string>
   <string name="iap_purchase_successful_title">"Congratulazioni! Hai fatto una buona scelta."</string>
   <string name="iap_purchase_failed">"L’acquisto è stato annullato"</string>
-  <string name="store_buy_separatly">"Acquista i tips &amp; tricks"</string>
+  <string name="store_bought">"In possesso"</string>
+  <string name="store_buy_separatly">"Acquisire separatamente"</string>
   <string name="store_buy_photo">"Acquista caricamenti foto"</string>
   <string name="store_buy_failed">"Sfortunatamente, sembra che il tuo account non sia abilitato a fare pagamenti :("</string>
   <string name="store_save">"Salva"</string>
@@ -124,7 +126,7 @@
   <string name="about_credits_1">"Dario D. Mueller di Amburgo, Germania"</string>
   <string name="about_headline_credits">"Sviluppata da"</string>
   <string name="about_desc_3">"Miglioriamo quest’app insieme! Contribuisci inviandomi il tuo feedback per hashtags o dimmi che cosa ti piace o non ti piace."</string>
-  <string name="about_desc_2">"Credo che ci sia ancora del potenziale per migliorare il modo in cui gli hashtag più appropriati e rilevanti vengono trovati. Vorrei fornire un\'app che aiuti tutti a trovare gli hashtag più rilevanti. Per trovarli, il software che si cela dietro quest\'app raccolgie e analizza migliaia di foto presenti su Instagram."</string>
+  <string name="about_desc_2">"Vorrei fornire un\'app che aiuti tutti a trovare gli hashtag più rilevanti. Per trovarli, il software che si cela dietro quest\'app raccolgie e analizza migliaia di foto presenti su Instagram."</string>
   <string name="about_desc_1">"Grazie per utilizzare quest’app :)"</string>
   <string name="about_title">"Su di Hashtag Buddy"</string>
   <string name="settings_footer_title_fallback">"Condividi"</string>

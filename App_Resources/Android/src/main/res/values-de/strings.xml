@@ -43,6 +43,7 @@
   <string name="settings_legal">"Datenschutzerklärung"</string>
   <string name="settings_about">"Über mich"</string>
   <string name="selection_suggestions">"Empfehlungen (basierend auf meiner Auswahl)"</string>
+  <string name="search_buy">"Hashtags freischalten"</string>
   <string name="search_iap_desc">"Hashtag Inspector won\'t show hidden hashtags anymore. All hashtags will be visible."</string>
   <string name="search_not_found">"Sadly, Nothing found. Please try another word."</string>
   <string name="search_results">"Ähnliche Hashtags (basierend auf meiner Suche)"</string>
@@ -55,7 +56,7 @@
   <string name="faq_buy_cta">"Jetzt kaufen"</string>
   <string name="faq_buy_desc">"Schalte jetzt alle Tipps &amp; Tricks Texte für nur %1$s frei :)"</string>
   <string name="faq_buy_headline">"Freischalten von %1$s"</string>
-  <string name="faq_buy">"Freischalten"</string>
+  <string name="faq_buy">"Text freischalten"</string>
   <string name="faq_outro">"Verbessere diese Seite: Ideen? Gib mir Feedback und Vorschläge per Feedback Formular."</string>
   <string name="faq_11_desc">"Wenn Dein Profil wächst, werden früher oder später Anfragen von Firmen auf Dich zukommen. Dabei geht es darum, dass Du deiner Community Produkte und Dienstleistungen empfiehlst. Die Firmen erhoffen sich dadurch wie auch bei klassischer Werbung Aufmerksamkeit und zusätzliche Verkäufe. Bei kleineren Profilen geht es meistens darum, dass Dir ein Produkt oder eine Dienstleistung zur kostenlos Verfügung gestellt wird und Du dieses dann mit Deiner Community teilst. Wenn Dein Profil etwas größer ist oder andere Alleinstellungsmerkmale hat, die für die Marke besonders interessant sind, wird auch eine Vergütung vereinbart. Wenn Du Werbung für eine Marke machst, achte aber darauf, dass sie zu den Merkmalen Deines Profils passen. Wenn es bei dir um gesunde Ernährung geht, kommt es komisch rüber, wenn Du auf einmal Werbung für eine Fast Food Kette machst. Wähle Deine Partner danach aus, was zu Deinen Inhalten passt und was auch für Deine Community interessant ist. Auch wenn die Angebote gerade am Anfang verführerisch sein können, überlege vorher was Dir auch langfristig hilft, um Deine Glaubwürdigkeit zu unterstützen.\n\nAuch außerhalb von Werbung ist es sinnvoll, mit anderen Profilen deiner Zielgruppe zu kooperieren, sogenannte Shout-Outs. Das heißt, du kannst deiner Community über Posts und Stories andere Instagram Profile empfehlen, oder jemand empfiehlt Dich. Es gibt auch immer wieder Themenprofile, die Shoutouts verkaufen. Oft bringen diese aber nicht so viel Reichweite wie erhofft. Was besser funktioniert, ist, sich mit ähnlichen Profilen zusammen zu tun und sich gegenseitig ein Shout-Out zu geben. Du kannst aber auch einfach persönliche Profile empfehlen, die dir sowieso gefallen. Vielleicht freut sich die Person darüber und teilt es in der eigenen Story, oder deine und seine Follower finden dich dadurch noch sympathischer und empfehlen dich weiter.\n\nWenn Du Werbung machst solltest Du diese in jeden Fall als solche kennzeichnen. Auch wenn die Produkte vielleicht ohnehin nutzen würdest, ist es wichtig, dass Deine Follower einordnen können, ob du das Produkt selbst gekauft hast, oder ob es dir kostenfrei zugeschickt wurde. Zudem gehst Du so der Gefahr einer Abmahnung aus dem Weg."</string>
   <string name="faq_11_headline">"Kooperationen und Authentizität"</string>
@@ -83,12 +84,13 @@
   <string name="faq_locked">"gesperrt"</string>
   <string name="faq_premium">"Premium"</string>
   <string name="iap_restored_successful_btn">"Perfekt"</string>
-  <string name="iap_restored_successful_msg">"Produkt \'%1$s\' wurde wiederhergestellt :)"</string>
+  <string name="iap_restored_successful_msg">"Paket \'%1$s\' wurde wiederhergestellt :)"</string>
   <string name="iap_restored_successful_title">"Wiederherstellen"</string>
   <string name="iap_purchase_successful_btn">"OK"</string>
   <string name="iap_purchase_successful_msg">"Von nun an kannst du die volle Pracht deines neuen Buddy genießen. Du hast erfolgreich %1$s erworben :)"</string>
   <string name="iap_purchase_successful_title">"Herzlichen Glückwunsch! Gute Wahl."</string>
   <string name="iap_purchase_failed">"Kauf wurde abgebrochen"</string>
+  <string name="store_bought">"Im Besitz"</string>
   <string name="store_buy_separatly">"Erwerbe einzeln"</string>
   <string name="store_buy_photo">"Erwerbe Foto Uploads"</string>
   <string name="store_buy_failed">"Schade, dein Konto scheint nicht für Zahlungen berechtigt zu sein :("</string>
@@ -123,8 +125,8 @@
   <string name="about_headline_support">"Unterstützung von"</string>
   <string name="about_credits_1">"Dario D. Müller aus Hamburg, Deutschland"</string>
   <string name="about_headline_credits">"Entwickelt von"</string>
-  <string name="about_desc_3">"Lass uns diese Idee gemeinsam verbessern, indem du mir Feedback, z.B. zu Funktionen oder Verbesserungsmöglichkeiten, gibst."</string>
-  <string name="about_desc_2">"Ich glaube daran, dass es Verbesserungspotential gibt, wie wir derzeit die besten und relevantesten Hashtags für unsere Fotos finden. Mit dieser App möchte ich es jedem ermöglichen, die relevantesten Hashtags zu finden, um besser auf Instagram gefunden zu werden. Um dies zu erreichen, sammelt diese App riesige Datenmengen Instagram\'s neuster und erfolgreichster Fotos, und analysiert diese, um so die besten Hashtags liefern zu können."</string>
+  <string name="about_desc_3">"Lass uns diese App gemeinsam verbessern, indem du mir Feedback zu Funktionen oder Verbesserungsmöglichkeiten gibst."</string>
+  <string name="about_desc_2">"Mit dieser App möchte ich es jedem ermöglichen, die besten Instagram Hashtags zu finden, um mehr Reichweite zu erhalten und die Community besser ansprechen zu können. Um dies zu erreichen, durchsucht die App Instagram\'s neuste und erfolgreichste Fotos, und analysiert diese, um so die besten Hashtags für deine Fotos liefern zu können."</string>
   <string name="about_desc_1">"Danke, dass du Hashtag Buddy verwendest :)"</string>
   <string name="about_title">"Über Hashtag Buddy"</string>
   <string name="settings_footer_title_fallback">"Teilen"</string>
