@@ -17,7 +17,6 @@ import { isIOS, isAndroid } from 'tns-core-modules/platform';
 const permissions = require('nativescript-permissions');
 
 @Component({
-  selector: 'Home',
   moduleId: module.id,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],

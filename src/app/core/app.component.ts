@@ -24,7 +24,6 @@ import { CurrencyPipe } from '@angular/common';
 
 @Component({
   moduleId: module.id,
-  selector: 'ns-app',
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit, OnDestroy {
@@ -244,14 +243,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private configureIap(): void {
     this.calcDiscount();
-    const products = [
+    const productIds = [
       'tipstricks',
       'small',
       'medium',
       'large',
       'hashtagsunlimited'
     ];
-    (global as any).purchaseInitPromise = purchase.init(products);
+    (global as any).purchaseInitPromise = purchase.init(productIds);
 
     (global as any).purchaseInitPromise
       .then(() => {

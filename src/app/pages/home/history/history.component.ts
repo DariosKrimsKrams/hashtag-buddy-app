@@ -100,7 +100,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
       return;
     }
     const successful = this.userService.deletePhoto(photo);
-    this.deviceService.deletePhoto(photo.image);
     let toastText = '';
     if (successful) {
       this.photosReverse.splice(this.selected, 1);

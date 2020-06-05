@@ -90,7 +90,7 @@ module.exports = env => {
     const areCoreModulesExternal = Array.isArray(env.externals) && env.externals.some(e => e.indexOf("tns-core-modules") > -1);
     if (platform === "ios" && !areCoreModulesExternal) {
         entries["tns_modules/tns-core-modules/inspector_modules"] = "inspector_modules";
-    };
+    }
 
     const ngCompilerTransformers = [];
     const additionalLazyModuleResources = [];

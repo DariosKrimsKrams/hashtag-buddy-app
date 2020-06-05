@@ -3,8 +3,7 @@ import { Hashtag } from '~/app/models/hashtag';
 
 @Component({
   selector: 'ns-insert-hashtags-form',
-  templateUrl: './insert-hashtags-form.component.html',
-  styleUrls: ['./insert-hashtags-form.component.scss']
+  templateUrl: './insert-hashtags-form.component.html'
 })
 export class InsertHashtagsFormComponent implements OnInit {
 

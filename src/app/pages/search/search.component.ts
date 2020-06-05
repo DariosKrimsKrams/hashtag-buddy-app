@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, ViewContainerRef, OnDestroy } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page/page';
-import { isIOS, isAndroid } from 'tns-core-modules/platform';
+import { isIOS } from 'tns-core-modules/platform';
 import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import * as frame from 'tns-core-modules/ui/frame';
@@ -23,7 +23,6 @@ import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
   moduleId: module.id
 })
 export class SearchComponent implements OnInit, OnDestroy {

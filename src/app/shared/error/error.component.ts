@@ -4,7 +4,6 @@ import { RouterExtensions } from 'nativescript-angular/router';
 import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
-  selector: 'ns-error',
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.scss'],
   moduleId: module.id,

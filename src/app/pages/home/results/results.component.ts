@@ -11,13 +11,10 @@ import { isIOS, isAndroid } from 'tns-core-modules/platform';
 import * as frame from 'tns-core-modules/ui/frame';
 import { UserService } from '../../../storages/user.service';
 import { Photo } from '../../../models/photo';
-import { ToastDuration, Toasty } from 'nativescript-toasty';
-import { localize } from 'nativescript-localize/angular';
 import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
 
 @Component({
-  selector: 'ns-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss'],
   moduleId: module.id

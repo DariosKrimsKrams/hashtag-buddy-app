@@ -15,7 +15,6 @@ import { PLANS } from '~/app/data/plans';
 import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
-  selector: 'ns-faq',
   templateUrl: './faq.component.html',
   styleUrls: ['./faq.component.scss'],
   moduleId: module.id,

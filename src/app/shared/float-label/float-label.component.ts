@@ -5,8 +5,7 @@ import { Subscription } from 'rxjs';
 @Component({
     selector: 'FloatLabel',
     moduleId: module.id,
-    templateUrl: './float-label.component.html',
-    styleUrls: ['./float-label.component.scss']
+    templateUrl: './float-label.component.html'
 })
 export class FloatLabelComponent implements OnInit, OnDestroy {
   private resetSubscription: Subscription;

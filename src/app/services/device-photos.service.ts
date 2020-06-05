@@ -42,9 +42,5 @@ export class DeviceService {
       }
     });
   }
-
-  public deletePhoto(path: string): void {
-    // const tempPath = knownFolders.documents().path;
-    // ToDo remove image from disk
-  }
+  
 }

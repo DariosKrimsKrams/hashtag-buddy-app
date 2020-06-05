@@ -5,7 +5,6 @@ import { CustomerService } from '~/app/storages/customer.service';
 import { isIOS } from 'tns-core-modules/platform';
 
 @Component({
-  selector: 'ns-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
   moduleId: module.id,

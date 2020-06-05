@@ -11,7 +11,6 @@ import { CustomerService } from '~/app/storages/customer.service';
 import { FeedbackRepository } from '~/app/services/repositories/feedback-repository.service';
 
 @Component({
-  selector: 'ns-feedback',
   templateUrl: './feedback.component.html',
   styleUrls: ['./feedback.component.scss'],
   moduleId: module.id
@@ -45,9 +44,7 @@ export class FeedbackComponent implements OnInit {
       email: this.email,
       message: this.message
     });
-    this.feedbackRepositoryService.sendAppFeedback(feedback)
-    .subscribe(feedback => {
-    });
+    this.feedbackRepositoryService.sendAppFeedback(feedback);
 
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
