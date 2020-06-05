@@ -33,32 +33,17 @@ export class EvaluationRepository {
   }
 
   public search(data: SearchRequest): Observable<IHttpResponse> {
-    return new Observable<IHttpResponse>(observer => {
-      request({
-        url: this.searchUrl,
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        content: JSON.stringify(data)
-      }).then((response) => {
-        if (response.statusCode !== 200) {
-          console.error('reponse error ' + response.statusCode + ': ' + response.content);
-          observer.error(response);
-        } else {
-          const result = response.content.toJSON();
-          observer.next(result);
-        }
-        observer.complete();
-      }, (e) => {
-        console.error('error search: ' + e);
-        observer.complete();
-      });
-    });
+    return this.doRequest(this.searchUrl, data);
   }
 
   public searchMultiple(data: SearchMultipleRequest): Observable<IHttpResponse> {
+    return this.doRequest(this.searchMultipleUrl, data);
+  }
+
+  private doRequest(url: string, data: SearchRequest|SearchMultipleRequest): Observable<IHttpResponse> {
     return new Observable<IHttpResponse>(observer => {
       request({
-        url: this.searchMultipleUrl,
+        url,
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         content: JSON.stringify(data)
@@ -72,7 +57,7 @@ export class EvaluationRepository {
         }
         observer.complete();
       }, (e) => {
-        console.error('error searchMultiple: ' + e);
+        console.error('error doRequest: ' + e);
         observer.complete();
       });
     });
