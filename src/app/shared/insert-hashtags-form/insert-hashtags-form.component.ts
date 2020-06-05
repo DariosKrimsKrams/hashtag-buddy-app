@@ -22,9 +22,9 @@ export class InsertHashtagsFormComponent implements OnInit {
       console.error('error: addCustomHashtags triggered with text=undefined');
       return;
     }
-    input.split(' ').map(word => {
+    input.split(' ').forEach((word) => {
       if (word.length !== 0) {
-        word.split('#').map(word2 => {
+        word.split('#').forEach((word2) => {
           if (word2.length !== 0) {
             this.hashtagAdded.emit(new Hashtag(word2));
           }

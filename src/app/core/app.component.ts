@@ -230,7 +230,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public closeMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
+    const sideDrawer = app.getRootView() as RadSideDrawer;
     sideDrawer.closeDrawer();
   }
 
@@ -319,13 +319,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private calcDiscount(): void {
     this.plans.forEach((plan) => {
-      switch (plan.id) {
-        case 'medium':
-          plan.discount = this.getDiscountPrice(plan.product);
-          break;
-        case 'large':
-          plan.discount = this.getDiscountPrice(plan.product);
-          break;
+      if (plan.id === 'medium' || plan.id === 'large') {
+        plan.discount = this.getDiscountPrice(plan.product);
       }
     });
   }

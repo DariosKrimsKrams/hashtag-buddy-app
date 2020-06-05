@@ -106,7 +106,7 @@ export class ResultsComponent implements OnInit {
   }
 
   public selectAll(category: HashtagCategory): void {
-    category.tags.map(hashtag => {
+    category.tags.forEach((hashtag) => {
       if (!this.isHashtagSelected(hashtag.title)) {
         this.selectHashtag(hashtag.title);
       }
@@ -116,7 +116,9 @@ export class ResultsComponent implements OnInit {
   }
 
   public deselectAll(category: HashtagCategory): void {
-    category.tags.map((tag) => { this.deselectHashtag(tag.title); });
+    category.tags.forEach((tag) => {
+      this.deselectHashtag(tag.title);
+    });
     this.saveSelection();
   }
 
