@@ -230,7 +230,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public closeMenu(): void {
-    const sideDrawer = app.getRootView() as RadSideDrawer;
+    const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.closeDrawer();
   }
 
@@ -340,10 +340,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private calcBought(): void {
     this.plans.forEach(plan => {
-      if (true) {
-        // plan.bought = true;
-        plan.bought = this.userService.hasPurchaseWithId(plan.id);
-      }
+      plan.bought = this.userService.hasPurchaseWithId(plan.id);
     });
   }
 
@@ -351,11 +348,10 @@ export class AppComponent implements OnInit, OnDestroy {
     if (!product) {
       return '';
     }
-    let currencyCode = 'EUR';
     const lastPrice = product.priceAmount * 1.4;
     const diff = lastPrice % 1;
     const newPrice = lastPrice - diff + 0.49;
-    currencyCode = product.priceCurrencyCode;
+    const currencyCode = product.priceCurrencyCode;
     return this.currencyPipe.transform(newPrice, currencyCode);
   }
 
