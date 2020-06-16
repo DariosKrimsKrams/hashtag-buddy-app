@@ -25,7 +25,7 @@
   <string name="progressbar_results_freemode">"Some hashtags are hidden. If you want to support Hashtag Buddy, you can unlock hashtags in store."</string>
   <string name="progressbar_confirm_iapmode">"You used %1$s of %2$s photo uploads with all hashtags visible."</string>
   <string name="progressbar_confirm_freemode">"You can upload infinite photos, but sometimes some hashtags will be censored."</string>
-  <string name="Toast_imagepicker_failed">"Non sono riuscito a recuperare le foto. Per favore, controlla il permesso di lettura."</string>
+  <string name="toast_imagepicker_failed">"Non sono riuscito a recuperare le foto. Per favore, controlla il permesso di lettura."</string>
   <string name="toast_create_customer_at_upload_failed">"Richiesta fallita! Connessione interrotta :’("</string>
   <string name="toast_create_customer_failed">"Offline. Riprova a connetterti a internet :)"</string>
   <string name="toast_upload_failed">"Caricamento non riuscito! Connessione interrotta :’("</string>
@@ -197,7 +197,7 @@
   <string name="results_select_all">"Tutto"</string>
   <string name="results_category_location_based_hashtags">"In base alla posizione"</string>
   <string name="results_category_favorites">"I miei hashtag"</string>
-  <string name="results_category_upcoming_has">"Hashtag di tendenza"</string>
+  <string name="results_category_upcoming_hashtags">"Hashtag di tendenza"</string>
   <string name="results_category_generic_hashtags">"Hashtag generici"</string>
   <string name="results_category_niche_hashtags">"hashtag di nicchia"</string>
   <string name="results_category_user_hashtags">"Gli hashatag che ho selezionato"</string>
@@ -216,6 +216,4 @@
   <string name="_app_name_1k3Sbz">"Hashtag Buddy"</string>
   <string name="app_name">"Hashtag Buddy"</string>
   <string name="title_activity_kimera">"Hashtag Buddy"</string>
-  <string name="toast_imagepicker_failed">"Picking Photos failed. Please check read permission."</string>
-  <string name="results_category_upcoming_hashtags">"Trending hashtags"</string>
 </resources>

@@ -197,7 +197,7 @@
   <string name="results_select_all">"Todas"</string>
   <string name="results_category_location_based_hashtags">"Com base na localização"</string>
   <string name="results_category_favorites">"As minhas hashtags"</string>
-  <string name="results_category_upcoming_has">"Hashtags em alta"</string>
+  <string name="results_category_upcoming_hashtags">"Hashtags em alta"</string>
   <string name="results_category_generic_hashtags">"Hashtags genéricas"</string>
   <string name="results_category_niche_hashtags">"Hashtags de nicho"</string>
   <string name="results_category_user_hashtags">"As minhas hashtags selecionadas"</string>
@@ -216,6 +216,4 @@
   <string name="_app_name_1k3Sbz">"Hashtag Buddy"</string>
   <string name="app_name">"Hashtag Buddy"</string>
   <string name="title_activity_kimera">"Hashtag Buddy"</string>
-  <string name="results_category_upcoming_hashtags">"Trending hashtags"</string>
-  <string name="Toast_imagepicker_failed">"Toast_imagepicker_failed"</string>
 </resources>

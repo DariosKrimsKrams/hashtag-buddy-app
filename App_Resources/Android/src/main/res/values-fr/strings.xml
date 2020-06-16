@@ -118,7 +118,7 @@
   <string name="about_headline_infos">"Infos"</string>
   <string name="about_made_in_hh_2">"à Hambourg"</string>
   <string name="about_made_in_hh_1">"Fait avec amour"</string>
-  <string name="about_support_others">"Tous les autres pour les traductions, les retours d\'expérience et les trucs et astuces "</string>
+  <string name="about_support_others">"Tous les autres pour les traductions, les retours d\'expérience et les trucs et astuces"</string>
   <string name="about_support_4">"Nazar Nastin (Design)"</string>
   <string name="about_support_2">"Andreas Sefzig (Feedback)"</string>
   <string name="about_support_1">"Tim Wiesenmüller (Feedback)"</string>
@@ -197,7 +197,7 @@
   <string name="results_select_all">"Tous"</string>
   <string name="results_category_location_based_hashtags">"Selon la Localisation"</string>
   <string name="results_category_favorites">"Mes hashtags"</string>
-  <string name="results_category_upcoming_has">"Hashtags Tendances "</string>
+  <string name="results_category_upcoming_hashtags">"Hashtags Tendances"</string>
   <string name="results_category_generic_hashtags">"Hashtags Génériques"</string>
   <string name="results_category_niche_hashtags">"Hashtags Niche"</string>
   <string name="results_category_user_hashtags">"Mes hashtags sélectionnés"</string>
@@ -216,6 +216,4 @@
   <string name="_app_name_1k3Sbz">"Hashtag Buddy"</string>
   <string name="app_name">"Hashtag Buddy"</string>
   <string name="title_activity_kimera">"Hashtag Buddy"</string>
-  <string name="results_category_upcoming_hashtags">"Trending hashtags"</string>
-  <string name="Toast_imagepicker_failed">"Toast_imagepicker_failed"</string>
 </resources>
