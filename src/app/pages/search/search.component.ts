@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, ViewContainerRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewContainerRef, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Page } from 'tns-core-modules/ui/page/page';
 import { isIOS } from 'tns-core-modules/platform';
 import * as app from 'tns-core-modules/application';
@@ -23,11 +23,13 @@ import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
   moduleId: module.id
 })
 export class SearchComponent implements OnInit, OnDestroy {
 
   @Output() public hashtagsChanged: EventEmitter<void> = new EventEmitter();
+  @ViewChild('textField', { read: ElementRef, static: false }) public textField: ElementRef;
   public headerHeight: number = 0;
   public headerTop: number = 0;
   public isIOS: boolean;
@@ -42,6 +44,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   public hasUnlocked: boolean;
   private price: string = '1,09 €';
   private purchaseSuccessfulSub: Subscription;
+  private intervalId: number = 0;
+  private placeholder: string[] = [];
+  private placeholderIndex: number = 0;
 
   constructor(
     private readonly page: Page,
@@ -64,9 +69,11 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.purchaseSuccessfulSub = this.storeService.onPurchasedSuccessful.subscribe((item: string) => {
       this.hasUnlocked = true;
     });
+    this.initAnimatedPlaceholder();
   }
 
   public ngOnDestroy(): void {
+    clearInterval(this.intervalId);
     if (!!this.purchaseSuccessfulSub) {
       this.purchaseSuccessfulSub.unsubscribe();
     }
@@ -197,6 +204,35 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.modalService.showModal(ModalComponent, options);
   }
 
+  public onTextFieldChange(): void {
+    this.searchInput = this.textField.nativeElement.text;
+  }
+
+  // Prevent the first textfield from receiving focus on Android
+  // See http://stackoverflow.com/questions/5056734/android-force-edittext-to-remove-focus
+  public handleAndroidFocus(textField: any, container: any): void {
+    if (!!container.android) {
+      container.android.setFocusableInTouchMode(true);
+      container.android.setFocusable(true);
+      textField.android.clearFocus();
+    }
+  }
+
+  public onTextFieldFocus(): void {
+    // on click
+    this.setTextAreaText('');
+  }
+
+  public onTextFieldBlur(): void {
+    // back
+    this.setTextAreaText('Bla');
+  }
+
+  private setTextAreaText(text: string): void {
+    this.textField.nativeElement.text = text;
+
+  }
+
   private calcHeader(): void {
     const data = this.userService.calcHeader(1080, 416, 140);
     this.headerHeight = data.height;
@@ -209,6 +245,21 @@ export class SearchComponent implements OnInit, OnDestroy {
       this.excludedHashtags.push(tag.title);
     });
     this.excludedHashtags.push(this.searchInput);
+  }
+
+  private initAnimatedPlaceholder(): void {
+    this.placeholder = ['summer', 'travel', 'couple', 'food', 'girl', 'cats', 'friends', 'dogs', 'festival'];
+    setTimeout.bind(this)(() => {
+      this.setTextAreaText(this.placeholder[0]);
+      this.placeholderIndex++;
+    });
+    this.intervalId = setInterval.bind(this)(() => {
+      this.setTextAreaText(this.placeholder[this.placeholderIndex]);
+      this.placeholderIndex++;
+      if (this.placeholderIndex === this.placeholder.length) {
+        this.placeholderIndex = 0;
+      }
+    }, 2000);
   }
 
 }

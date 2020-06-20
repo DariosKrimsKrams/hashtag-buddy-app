@@ -73,7 +73,7 @@ export class FloatLabelComponent implements OnInit, OnDestroy {
   // See http://stackoverflow.com/questions/5056734/android-force-edittext-to-remove-focus
   public handleAndroidFocus(textField: any, container: any): void {
     // ToDo container needs to be a more outer GridLayout element
-    if (container.android) {
+    if (!!container.android) {
       container.android.setFocusableInTouchMode(true);
       container.android.setFocusable(true);
       textField.android.clearFocus();

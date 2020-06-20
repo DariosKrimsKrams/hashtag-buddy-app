@@ -19,6 +19,7 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
 
   private tipTimeSec: number = 7;
   private intervalId: number;
+  private intervalId2: number;
   private timeoutId: number;
   private subscription1: Subscription;
   private subscription2: Subscription;
@@ -54,6 +55,7 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     clearInterval(this.intervalId);
+    clearInterval(this.intervalId2);
     if (!!this.subscription1) {
       this.subscription1.unsubscribe();
     }
@@ -70,7 +72,7 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
 
   private animateTips(): void {
     this.tipNo = this.getRandom();
-    setInterval.bind(this)(() => {
+    this.intervalId2 = setInterval.bind(this)(() => {
       this.tipNo = this.getRandom();
     }, this.tipTimeSec * 1000);
   }

@@ -1,0 +1,18 @@
+
+.item {
+	border-radius: 8pt;
+  padding: 3pt;
+  margin: 50pt 20pt 20pt 20pt;
+
+  GridLayout {
+		border-radius: 5pt;
+    background-color: #fff;
+    padding: 0 0 0 10pt;
+    height: 60pt;
+
+    TextField {
+      color: #000;
+      font-size: 20pt;
+    }
+  }
+}

@@ -1,13 +1,39 @@
-<GridLayout tkMainContent (tap)="dismissSoftKeyboard()">
+<GridLayout tkMainContent (tap)="dismissSoftKeyboard()" #container>
 
   <!-- CONTENT -->
   <ScrollView  [style.margin-top]="headerHeight + headerTop - (headerHeight / 2)" sdkExampleTitle sdkToggleNavButton>
     <StackLayout [style.padding-top]="headerHeight / 2" class="p-l-20 p-r-20 m-t-25 p-b-40" (tap)="dismissSoftKeyboard()">
-      <Label [text]="introText | L" class="font-reg-s m-b-10" textWrap="true"></Label>
-      <GridLayout class="m-b-20" columns="*,80">
-        <FloatLabel col="0" [placeholder]="'search_input' | L" (userTextEmitter)="searchInput = $event" (onSubmit)="search()"></FloatLabel>
-        <Button col="1" [text]="'search_button' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-add" [class.active]="searchInput !== ''" (tap)="search()" *ngIf="searchInput !== ''" verticalAlignment="bottom" horizontalAlignment="right"></Button>
-      </GridLayout>
+
+      <Label [text]="introText | L" class="font-reg-s m-b-10 m-l-20 m-r-20" textWrap="true"></Label>
+
+      <StackLayout class="item gradient" >
+        <GridLayout row="0" verticalAlignment="top" columns="*,85">
+          
+            <TextField
+            #textField
+            [secure]="secure"
+            row="0"
+            (focus)="onTextFieldFocus()"
+            (blur)="onTextFieldBlur()"
+            (textChange)="onTextFieldChange()"
+            (loaded)="handleAndroidFocus(textField, container)"
+            returnKeyType="done" 
+            (returnPress)="search()"
+            borderBottomWidth="2"
+            borderBottomColor="#fff"
+            padding="2"
+          ></TextField>
+
+          <Button
+            col="1"
+            [text]="'search_button' | L"
+            class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-search"
+            [class.active]="!!searchInput"
+            (tap)="search()"
+            ></Button>
+        </GridLayout>
+      </StackLayout>
+
       <ns-selection
         *ngIf="!!hashtagCategory"
         [selectedHashtags]="selectedHashtags"
@@ -16,7 +42,9 @@
         [hashtagsChanged]="hashtagsChanged"
         [excludedHashtags]="excludedHashtags"
         ></ns-selection>
+
       <Label [text]="'search_results' | L" class="font-demi-bold m-t-20 m-l-5 m-b-5" textWrap="true" *ngIf="!!hashtagCategory"></Label>
+
       <WrapLayout class="m-b-10 tag-title" *ngIf="!!hashtagCategory">
         <ns-hashtag
         *ngFor="let tag of hashtagCategory.tags; let j = index;"
@@ -26,12 +54,14 @@
         [censored]="tag.isCensored && !hasUnlocked"
         ></ns-hashtag>
       </WrapLayout>
+
       <Button [text]="'search_buy' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal" verticalAlignment="middle" *ngIf="!!hashtagCategory && !hasUnlocked" (tap)="openUnlockModal()"></Button>
       <circularProgressBar *ngIf="isLoading" size="small"></circularProgressBar>
-      <Label [text]="'search_not_found' | L" class="font-reg-s " textWrap="true" *ngIf="nothingFound"></Label>
+      <Label [text]="'search_not_found' | L" class="font-reg-s m-l-30 m-r-30 m-t-30" textWrap="true" *ngIf="nothingFound"></Label>
       <Label [text]="'error_desc' | L" class="font-medium-l m-t-10 m-b-20" textWrap="true" *ngIf="isError"></Label>
       <Label [text]="'error_desc2' | L" class="font-reg-s" textWrap="true" *ngIf="isError"></Label>
     </StackLayout>
+
   </ScrollView>
 
   <!-- HEADER -->
