@@ -5,12 +5,12 @@
         <StackLayout [style.padding-top]="headerHeight / 2" class="p-l-40 p-r-40 p-b-30">
             <Label textWrap="true" [text]="'store_intro' | L" class="p-b-10"></Label>
 
-            <Label [text]="'store_buy_photo' | L" class="headline p-t-10 p-b-10"></Label>
+            <Label [text]="'store_buy_photo' | L" class="headline p-t-10 p-b-10" textWrap="true"></Label>
             <StackLayout *ngFor="let plan of plans; let i = index;">
                 <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plan}" *ngIf="i < 3"></ng-container>
             </StackLayout>
             
-            <Label [text]="'store_buy_separatly' | L" class="headline p-t-10 p-b-10"></Label>
+            <Label [text]="'store_buy_separatly' | L" class="headline p-t-10 p-b-10" textWrap="true"></Label>
             <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plans[3]}"></ng-container>
             <ng-container [ngTemplateOutlet]="entry" [ngTemplateOutletContext]="{plan:plans[4]}"></ng-container>
 
