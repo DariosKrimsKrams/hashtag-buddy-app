@@ -69,11 +69,12 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.purchaseSuccessfulSub = this.storeService.onPurchasedSuccessful.subscribe((item: string) => {
       this.hasUnlocked = true;
     });
-    this.initAnimatedPlaceholder();
+    this.placeholder = ['summer', 'travel', 'couple', 'food', 'girl', 'cats', 'friends', 'dogs', 'festival'];
+    this.startAnimatedPlaceholder();
   }
 
   public ngOnDestroy(): void {
-    clearInterval(this.intervalId);
+    this.stopAnimatedPlaceholder();
     if (!!this.purchaseSuccessfulSub) {
       this.purchaseSuccessfulSub.unsubscribe();
     }
@@ -219,13 +220,16 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   public onTextFieldFocus(): void {
-    // on click
-    this.setTextAreaText('');
+    if (this.placeholder.indexOf(this.textField.nativeElement.text) !== -1) {
+      this.setTextAreaText('');
+    }
+    this.stopAnimatedPlaceholder();
   }
 
   public onTextFieldBlur(): void {
-    // back
-    this.setTextAreaText('Bla');
+    if (!this.textField.nativeElement.text) {
+      this.startAnimatedPlaceholder();
+    }
   }
 
   private setTextAreaText(text: string): void {
@@ -247,19 +251,21 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.excludedHashtags.push(this.searchInput);
   }
 
-  private initAnimatedPlaceholder(): void {
-    this.placeholder = ['summer', 'travel', 'couple', 'food', 'girl', 'cats', 'friends', 'dogs', 'festival'];
+  private startAnimatedPlaceholder(): void {
     setTimeout.bind(this)(() => {
-      this.setTextAreaText(this.placeholder[0]);
-      this.placeholderIndex++;
+      this.setTextAreaText(this.placeholder[this.placeholderIndex]);
     });
     this.intervalId = setInterval.bind(this)(() => {
-      this.setTextAreaText(this.placeholder[this.placeholderIndex]);
       this.placeholderIndex++;
       if (this.placeholderIndex === this.placeholder.length) {
         this.placeholderIndex = 0;
       }
+      this.setTextAreaText(this.placeholder[this.placeholderIndex]);
     }, 2000);
+  }
+
+  private stopAnimatedPlaceholder(): void {
+    clearInterval(this.intervalId);
   }
 
 }
