@@ -40,8 +40,7 @@ export class FloatLabelComponent implements OnInit, OnDestroy {
       .animate({
         translate: { x: 0, y: -25 },
         opacity: 1
-      })
-      .then(() => {}, () => {});
+      });
 
     textField.borderBottomColor = new Color('#FFB184');
   }
@@ -55,8 +54,7 @@ export class FloatLabelComponent implements OnInit, OnDestroy {
         .animate({
           translate: { x: 0, y: 0 },
           opacity: 0.6
-        })
-        .then(() => {}, () => {});
+        });
     }
     textField.borderBottomColor = new Color('#cec8c8');
   }

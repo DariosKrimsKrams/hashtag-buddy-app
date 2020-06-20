@@ -30,6 +30,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   @Output() public hashtagsChanged: EventEmitter<void> = new EventEmitter();
   @ViewChild('textField', { read: ElementRef, static: false }) public textField: ElementRef;
+  @ViewChild('searchContainer', { read: ElementRef, static: false }) public searchContainer: ElementRef;
   public headerHeight: number = 0;
   public headerTop: number = 0;
   public isIOS: boolean;
@@ -69,7 +70,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.purchaseSuccessfulSub = this.storeService.onPurchasedSuccessful.subscribe((item: string) => {
       this.hasUnlocked = true;
     });
-    this.placeholder = ['summer', 'travel', 'couple', 'food', 'girl', 'cats', 'friends', 'dogs', 'festival'];
+    this.placeholder = ['summer', 'couple', 'pizza', 'girlfriend', 'cats', 'vegan', 'festival', 'travel', 'sports'];
     this.startAnimatedPlaceholder();
   }
 
@@ -115,6 +116,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       customerId,
       keyword: this.searchInput
     };
+    this.stopAnimatedPlaceholder();
     this.evaluationRepository.search(data).subscribe((httpResponse: IHttpResponse) => {
       const response = httpResponse as any;
       const hashtags = response.hashtags as HashtagResult[];
@@ -136,6 +138,10 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.hashtagCategory.censorHashtags();
       }
       this.setExcludedHashtags();
+      this.searchContainer.nativeElement.animate({
+        translate: { x: 0, y: 10 },
+        height: 50
+      });
     }, (_error: IHttpResponse) => {
       this.isError = true;
       this.isLoading = false;

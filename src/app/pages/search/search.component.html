@@ -6,10 +6,9 @@
 
       <Label [text]="introText | L" class="font-reg-s m-b-10 m-l-20 m-r-20" textWrap="true"></Label>
 
-      <StackLayout class="item gradient" >
+      <StackLayout class="item gradient" #searchContainer>
         <GridLayout row="0" verticalAlignment="top" columns="*,85">
-          
-            <TextField
+          <TextField
             #textField
             [secure]="secure"
             row="0"
@@ -23,7 +22,6 @@
             borderBottomColor="#fff"
             padding="2"
           ></TextField>
-
           <Button
             col="1"
             [text]="'search_button' | L"
@@ -47,16 +45,18 @@
 
       <WrapLayout class="m-b-10 tag-title" *ngIf="!!hashtagCategory">
         <ns-hashtag
-        *ngFor="let tag of hashtagCategory.tags; let j = index;"
-        [name]="'#' + tag.title"
-        (onClick)="toggleHashtag(tag.title)"
-        [isActive]="selectedHashtags.indexOf(tag.title) > -1"
-        [censored]="tag.isCensored && !hasUnlocked"
-        ></ns-hashtag>
+          *ngFor="let tag of hashtagCategory.tags; let j = index;"
+          [name]="'#' + tag.title"
+          (onClick)="toggleHashtag(tag.title)"
+          [isActive]="selectedHashtags.indexOf(tag.title) > -1"
+          [censored]="tag.isCensored && !hasUnlocked"
+          ></ns-hashtag>
       </WrapLayout>
 
       <Button [text]="'search_buy' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal" verticalAlignment="middle" *ngIf="!!hashtagCategory && !hasUnlocked" (tap)="openUnlockModal()"></Button>
-      <circularProgressBar *ngIf="isLoading" size="small"></circularProgressBar>
+      <WrapLayout class="m-t-100" horizontalAlignment="center" *ngIf="isLoading">
+        <circularProgressBar size="small"></circularProgressBar>
+      </WrapLayout>
       <Label [text]="'search_not_found' | L" class="font-reg-s m-l-30 m-r-30 m-t-30" textWrap="true" *ngIf="nothingFound"></Label>
       <Label [text]="'error_desc' | L" class="font-medium-l m-t-10 m-b-20" textWrap="true" *ngIf="isError"></Label>
       <Label [text]="'error_desc2' | L" class="font-reg-s" textWrap="true" *ngIf="isError"></Label>

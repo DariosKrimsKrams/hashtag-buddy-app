@@ -2,7 +2,8 @@
 .item {
 	border-radius: 8pt;
   padding: 3pt;
-  margin: 50pt 20pt 20pt 20pt;
+  margin: 0 20pt 20pt 20pt;
+  transform: translate(0, 70pt);
 
   GridLayout {
 		border-radius: 5pt;
