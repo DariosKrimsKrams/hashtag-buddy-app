@@ -3,8 +3,8 @@ import { Plan } from '../models/plan';
 export const PLANS: Plan[] = [
     {
         id: 'small',
-        title: 'Professional',
-        desc: '+ Unlock hashtags of 5 photo uploads',
+        title: 'iap_small_title',
+        desc: 'iap_photos_desc',
         desc2: '',
         desc3: '',
         priceFallback: '2.29',
@@ -17,9 +17,9 @@ export const PLANS: Plan[] = [
     },
     {
         id: 'medium',
-        title: 'Business',
-        desc: '+ Unlock hashtags of 15 photo uploads',
-        desc2: '+ Hashtag Inspector Unlimited',
+        title: 'iap_medium_title',
+        desc: 'iap_photos_desc',
+        desc2: 'iap_search_desc',
         desc3: '',
         priceFallback: '3.49',
         priceShort: '',
@@ -31,10 +31,10 @@ export const PLANS: Plan[] = [
     },
     {
         id: 'large',
-        title: 'Enterprise',
-        desc: '+ Unlock hashtags of 30 photo uploads',
-        desc2: '+ Tips & Tricks',
-        desc3: '+ Hashtag Inspector Unlimited',
+        title: 'iap_large_title',
+        desc: 'iap_photos_desc',
+        desc2: 'iap_tipstricks_desc',
+        desc3: 'iap_search_desc',
         priceFallback: '5.49',
         priceShort: '',
         amount: 30,
@@ -45,8 +45,8 @@ export const PLANS: Plan[] = [
     },
     {
         id: 'tipstricks',
-        title: 'Tips & Tricks',
-        desc: '+ Read all Tips & Tricks',
+        title: 'iap_tipstricks_title',
+        desc: 'iap_tipstricks_desc2',
         desc2: '',
         desc3: '',
         priceFallback: '1.09',
@@ -60,7 +60,7 @@ export const PLANS: Plan[] = [
     {
         id: 'hashtagsunlimited',
         title: 'Hashtag Inspector Unlimited',
-        desc: '+ Unlock all Hashtag Inspector hashtags',
+        desc: 'iap_search_desc2',
         desc2: '',
         desc3: '',
         priceFallback: '1.09',

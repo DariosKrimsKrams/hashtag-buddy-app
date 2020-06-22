@@ -271,7 +271,7 @@ export class AppComponent implements OnInit, OnDestroy {
               plan.priceShort = this.minifyPrice(plan.product.priceFormatted);
             });
             this.calcDiscount();
-            this.calcLocas();
+            // this.calcLocas();
             this.calcBought();
           })
           .catch(err => {
@@ -325,18 +325,18 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  private calcLocas(): void {
-    this.plans.forEach(plan => {
-      if (!!plan.product) {
-        if (!!plan.product.localizedTitle) {
-          plan.title = plan.product.localizedTitle.split(' (')[0];
-        }
-        if (!!plan.product.localizedDescription) {
-          plan.desc = plan.product.localizedDescription;
-        }
-      }
-    });
-  }
+  // private calcLocas(): void {
+  //   this.plans.forEach(plan => {
+  //     if (!!plan.product) {
+  //       if (!!plan.product.localizedTitle) {
+  //         plan.title = plan.product.localizedTitle;
+  //       }
+  //       if (!!plan.product.localizedDescription) {
+  //         plan.desc = plan.product.localizedDescription;
+  //       }
+  //     }
+  //   });
+  // }
 
   private calcBought(): void {
     this.plans.forEach(plan => {

@@ -39,10 +39,10 @@
 <ng-template #entry let-plan="plan">
     <GridLayout rows="85,55" [class]="'item gradient ' + (!!plan.bought ? 'bought' : '')">
         <GridLayout row="0" verticalAlignment="top" class="plan-header">
-            <Label [text]="plan.title" verticalAlignment="top" class="plan-title font-demi-bold"></Label>
-            <Label [text]="plan.desc" verticalAlignment="top" class="m-t-20 plan-content font-reg-s"></Label>
-            <Label [text]="plan.desc2" verticalAlignment="top" class="m-t-40 plan-content font-reg-s" *ngIf="!!plan.desc2"></Label>
-            <Label [text]="plan.desc3" verticalAlignment="top" class="m-t-60 plan-content font-reg-s" *ngIf="!!plan.desc3"></Label>
+            <Label [text]="plan.title | L" verticalAlignment="top" class="plan-title font-demi-bold"></Label>
+            <Label text="+ {{plan.desc | L:plan.amount}}" verticalAlignment="top" class="m-t-20 plan-content font-reg-s" textWrap="true"></Label>
+            <Label text="+ {{plan.desc2 | L}}" verticalAlignment="top" class="m-t-40 plan-content font-reg-s" *ngIf="!!plan.desc2"></Label>
+            <Label text="+ {{plan.desc3 | L}}" verticalAlignment="top" class="m-t-60 plan-content font-reg-s" *ngIf="!!plan.desc3"></Label>
         </GridLayout>
         <GridLayout row="1" columns="*,150" class="plan-footer">
             <Label col="0" text=" {{plan.discount}} " *ngIf="!!plan.discount && !plan.bought" class="font-demi-bold m-l-10 m-b-10 discount" verticalAlignment="bottom"></Label>

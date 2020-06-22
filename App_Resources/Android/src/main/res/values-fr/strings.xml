@@ -90,6 +90,16 @@
   <string name="iap_purchase_successful_msg">"Désormais, vous pourrez profiter pleinement de la beauté de votre nouveau Buddy. Vous avez acquis %1$s :)"</string>
   <string name="iap_purchase_successful_title">"Félicitations ! Vous avez bien choisi."</string>
   <string name="iap_purchase_failed">"L\'achat a été annulé"</string>
+  <string name="iap_tipstricks_desc2">"Lire tous les trucs et astuces"</string>
+  <string name="iap_tipstricks_desc">"Trucs et astuces"</string>
+  <string name="iap_search_desc2">"Débloquer tous les hashtags de Hashtag Inspector"</string>
+  <string name="iap_search_desc">"Hashtag Inspector Unlimited"</string>
+  <string name="iap_photos_desc">"Hashtags pour %1$s téléchargements"</string>
+  <string name="iap_search_title">"Hashtag Inspector Unlimited"</string>
+  <string name="iap_tipstricks_title">"Trucs et astuces"</string>
+  <string name="iap_large_title">"Entreprise"</string>
+  <string name="iap_medium_title">"Affaires"</string>
+  <string name="iap_small_title">"Professionnel"</string>
   <string name="store_bought">"En possession"</string>
   <string name="store_buy_separatly">"Acquérir séparément"</string>
   <string name="store_buy_photo">"Acquérir des chargements de photos"</string>
