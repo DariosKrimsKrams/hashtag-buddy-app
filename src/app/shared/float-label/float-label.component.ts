@@ -11,7 +11,6 @@ export class FloatLabelComponent implements OnInit, OnDestroy {
   private resetSubscription: Subscription;
 
   @Input() public placeholder: string;
-  @Input() public secure: boolean;
   @Input() public reset: EventEmitter<void>;
   @ViewChild('label', { read: ElementRef, static: false }) public label: ElementRef;
   @ViewChild('textField', { read: ElementRef, static: false }) public textField: ElementRef;
