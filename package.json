@@ -1,7 +1,7 @@
 {
   "nativescript": {
     "id": {
-      "android": "com.innocliq.instaq",
+      "android": "com.hashtagbuddy.instagramtipstricks",
       "ios": "com.hashtagbuddy.instagramtipstricks"
     },
     "tns-android": {
