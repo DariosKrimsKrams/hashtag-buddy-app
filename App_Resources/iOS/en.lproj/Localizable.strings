@@ -88,6 +88,16 @@
 "iap_purchase_successful_msg" = "From now on you'll be able to enjoy the full beauty of your new Buddy. You successfully acquired %1$@ :)";
 "iap_purchase_successful_title" = "Congratulations! You chose well.";
 "iap_purchase_failed" = "Purchase was canceled";
+"iap_tipstricks_desc2" = "Read all Tips & Tricks";
+"iap_tipstricks_desc" = "Tips & Tricks";
+"iap_search_desc2" = "Unlock all Hashtag Inspector hashtags";
+"iap_search_desc" = "Hashtag Inspector Unlimited";
+"iap_photos_desc" = "Unlock hashtags of %1$@ photo uploads";
+"iap_search_title" = "Hashtag Inspector Unlimited";
+"iap_tipstricks_title" = "Tips & Tricks";
+"iap_large_title" = "Enterprise";
+"iap_medium_title" = "Business";
+"iap_small_title" = "Professional";
 "store_bought" = "In possession";
 "store_buy_separatly" = "Acquire separatly";
 "store_buy_photo" = "Acquire photo uploads";
@@ -119,7 +129,6 @@
 "about_support_others" = "All other People for Translations, Feedback and Tips & Tricks";
 "about_support_4" = "Nazar Nastin (Design)";
 "about_support_2" = "Andreas Sefzig (Feedback)";
-"about_support_1" = "Tim Wiesenmüller (Feedback)";
 "about_headline_support" = "Supported by";
 "about_credits_1" = "Dario D. Mueller from Hamburg, Germany";
 "about_headline_credits" = "Developed by";
@@ -212,5 +221,3 @@
 "home_desc_2" = "#hashtags for your photos";
 "home_desc_1" = "Discover the best Instagram";
 "_app_name_1k3Sbz" = "Hashtag Buddy";
-"results_category_upcoming_has" = "results_category_upcoming_has";
-"Toast_imagepicker_failed" = "Toast_imagepicker_failed";
