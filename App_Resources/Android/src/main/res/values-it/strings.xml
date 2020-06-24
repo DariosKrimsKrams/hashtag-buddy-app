@@ -2,7 +2,7 @@
 <resources>
   <string name="email">"dario@innocliq.de"</string>
   <string name="link_appstore">"https://apps.apple.com/de/app/hashtag-buddy/id1504694810"</string>
-  <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.innocliq.instaq"</string>
+  <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.hashtagbuddy.instagramtipstricks"</string>
   <string name="error_button_back">"Vai alla pagina principale"</string>
   <string name="error_button_try_again">"Riprova"</string>
   <string name="error_desc2">"Qualcosa è andato storto e l\'app non ha potuto gestire la tua richiesta in modo corretto."</string>

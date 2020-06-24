@@ -12,7 +12,7 @@
 android {  
   defaultConfig {  
     generatedDensities = []
-    applicationId = "com.innocliq.instaq"
+    applicationId = "com.hashtagbuddy.instagramtipstricks"
   }  
   aaptOptions {  
     additionalParameters "--no-version-vectors"  

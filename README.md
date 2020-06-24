@@ -7,7 +7,7 @@
 Welcome to the repository of the Hashtag Buddy App for **Android** & **iOS**. This app help you to find the most relevant **Instagram hashtags**. It's a Mobile App build with Nativescript to run cross-platform.
 
 ## Links 
-  * [Play Store](https://play.google.com/store/apps/details?id=com.innocliq.instaq)
+  * [Play Store](https://play.google.com/store/apps/details?id=com.hashtagbuddy.instagramtipstricks)
   * [App Store](https://apps.apple.com/app/hashtag-buddy/id1504694810)
   * [Website](https://hashtagbuddy.app)
   * [Code Quality](https://sonarcloud.io/dashboard?id=DarioDomiDE_hashtag-buddy-app)

@@ -4,6 +4,10 @@ node_modules/
 platforms/
 .update_backup
 
+# Custom
+*.apk
+*.aab
+
 
 # NativeScript Template
 *.js.map
