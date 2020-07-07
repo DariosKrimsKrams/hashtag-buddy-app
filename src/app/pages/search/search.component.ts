@@ -20,6 +20,7 @@ import { StoreService } from '~/app/storages/store.service';
 import { PLANS } from '~/app/data/plans';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
 import { Subscription } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Component({
   templateUrl: './search.component.html',
@@ -267,7 +268,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.placeholderIndex = 0;
       }
       this.setTextAreaText(this.placeholder[this.placeholderIndex]);
-    }, 2000);
+    }, environment.searchIntervalTime);
   }
 
   private stopAnimatedPlaceholder(): void {

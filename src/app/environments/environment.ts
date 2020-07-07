@@ -6,4 +6,5 @@ export const environment = {
     freePhotosIncreatingTime: 0,
     freePhotosIncreasingAmount: 0,
     loadingTimeSec: 15,
+    searchIntervalTime: 1000
 };

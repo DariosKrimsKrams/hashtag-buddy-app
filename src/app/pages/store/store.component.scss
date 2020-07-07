@@ -24,10 +24,11 @@
 		padding: 5pt 0 0 5pt;
 		
 		Label {
+			color: #fff;
+			
 			&.discount {
 				text-decoration: line-through;
 				font-size: 18pt;
-				color: #fff;
 			}
 			&.bought {
 				font-size: 20pt;
