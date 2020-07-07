@@ -350,7 +350,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
     const lastPrice = product.priceAmount * 1.4;
     const diff = lastPrice % 1;
-    const newPrice = lastPrice - diff + 0.49;
+    const newPrice = lastPrice - diff + (isIOS ? 0.49 : 0.5);
     const currencyCode = product.priceCurrencyCode;
     return this.currencyPipe.transform(newPrice, currencyCode);
   }
