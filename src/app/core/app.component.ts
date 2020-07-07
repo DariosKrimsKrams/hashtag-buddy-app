@@ -51,7 +51,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.menus = ['home', 'faq', 'search', 'myhashtags', 'store', 'settings'];
+    this.menus = ['home', 'search', 'faq', 'store', 'settings'];
     if (isIOS) {
       this.menus.splice(1, 0, 'history');
     }
@@ -135,7 +135,6 @@ export class AppComponent implements OnInit, OnDestroy {
     const isResults = path.substring(0, 13) === '/home/results';
     console.log('path', path, isResults);
     if (path === '/') {
-      // otherwise it would result in a crash if no "return"
       return;
     }
     if (isResults) {
@@ -146,16 +145,12 @@ export class AppComponent implements OnInit, OnDestroy {
       this.ngZone.run(() => {
         this.userService.androidBackTriggered.emit(path);
       });
-    } else if (path === '/home/loading-hashtags') {
-      // do nothing
-    } else {
+    } else if (path !== '/home/loading-hashtags') {
       if (this.router.canGoBack()) {
         this.router.back();
       }
       // update SideMenu curStatus
     }
-    // if old=results and before=home & before != "loading" -> open home History
-    // this.userService.onAndroidBackTriggered(path);
   }
 
   private showRateAppModal(): void {
@@ -234,7 +229,6 @@ export class AppComponent implements OnInit, OnDestroy {
     sideDrawer.closeDrawer();
   }
 
-
   /************* SHOP LOGIC IAP **************/
 
   private getPlanById(id: string): Plan {
@@ -271,7 +265,6 @@ export class AppComponent implements OnInit, OnDestroy {
               plan.priceShort = this.minifyPrice(plan.product.priceFormatted);
             });
             this.calcDiscount();
-            // this.calcLocas();
             this.calcBought();
           })
           .catch(err => {
@@ -324,19 +317,6 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
   }
-
-  // private calcLocas(): void {
-  //   this.plans.forEach(plan => {
-  //     if (!!plan.product) {
-  //       if (!!plan.product.localizedTitle) {
-  //         plan.title = plan.product.localizedTitle;
-  //       }
-  //       if (!!plan.product.localizedDescription) {
-  //         plan.desc = plan.product.localizedDescription;
-  //       }
-  //     }
-  //   });
-  // }
 
   private calcBought(): void {
     this.plans.forEach(plan => {

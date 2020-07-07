@@ -241,7 +241,6 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   private setTextAreaText(text: string): void {
     this.textField.nativeElement.text = text;
-
   }
 
   private calcHeader(): void {
