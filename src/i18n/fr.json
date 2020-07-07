@@ -134,7 +134,7 @@
   "iap_tipstricks_desc2": "Lire tous les trucs et astuces",
   "iap_purchase_failed": "L'achat a été annulé",
   "iap_purchase_successful_title": "Félicitations ! Vous avez bien choisi.",
-  "iap_purchase_successful_msg": "Désormais, vous pourrez profiter pleinement de la beauté de votre nouveau Buddy. Vous avez acquis %s :)",
+  "iap_purchase_successful_msg": "Vous avez acquis \"%s\". Désormais, vous pourrez profiter pleinement de la beauté de Hashtag Buddy :)",
   "iap_purchase_successful_btn": "Sympa",
   "iap_restored_successful_title": "Restauré",
   "iap_restored_successful_msg": "Le paquet '%s' a été rétabli :)",

@@ -60,7 +60,7 @@ export class FaqComponent implements OnInit, OnDestroy {
 
     this.hasTipsTricksUnlocked = this.userService.hasTipsTricksUnlocked();
 
-    this.purchaseSuccessfulSub = this.storeService.onPurchasedSuccessful.subscribe((item: string) => {
+    this.purchaseSuccessfulSub = this.storeService.onPurchasedSuccessful.subscribe(() => {
       this.hasTipsTricksUnlocked = true;
     });
 

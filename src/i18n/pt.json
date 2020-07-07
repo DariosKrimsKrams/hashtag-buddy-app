@@ -134,7 +134,7 @@
   "iap_tipstricks_desc2": "Lê todos os Truques & Dicas",
   "iap_purchase_failed": "A compra foi cancelada",
   "iap_purchase_successful_title": "Parabéns! Fizeste uma boa escolha.",
-  "iap_purchase_successful_msg": "A partir de agora, podes desfrutar do teu novo Buddy na totalidade. Adquiriste %s com êxito. :)",
+  "iap_purchase_successful_msg": "Adquiriste \"%s\" acquistato con successo com êxito. A partir de agora, podes desfrutar do teu novo Buddy na totalidade :)",
   "iap_purchase_successful_btn": "Boa",
   "iap_restored_successful_title": "Recuperado",
   "iap_restored_successful_msg": "O produto '%s' foi recuperado :)",

@@ -134,7 +134,7 @@
   "iap_tipstricks_desc2": "Ließ alle Tripps & Tricks",
   "iap_purchase_failed": "Kauf wurde abgebrochen",
   "iap_purchase_successful_title": "Herzlichen Glückwunsch! Gute Wahl.",
-  "iap_purchase_successful_msg": "Von nun an kannst du die volle Pracht deines neuen Buddy genießen. Du hast erfolgreich %s erworben :)",
+  "iap_purchase_successful_msg": "Du hast erfolgreich \"%s\" erworben. Genieße von nun an die volle Pracht von Hashtag Buddy :)",
   "iap_purchase_successful_btn": "OK",
   "iap_restored_successful_title": "Wiederherstellen",
   "iap_restored_successful_msg": "Paket '%s' wurde wiederhergestellt :)",

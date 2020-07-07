@@ -67,7 +67,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.price = PLANS.find(x => x.id === 'hashtagsunlimited').priceShort;
     this.hasUnlocked = this.userService.hasHashtagInspectorUnlocked();
-    this.purchaseSuccessfulSub = this.storeService.onPurchasedSuccessful.subscribe((item: string) => {
+    this.purchaseSuccessfulSub = this.storeService.onPurchasedSuccessful.subscribe(() => {
       this.hasUnlocked = true;
     });
     this.placeholder = ['summer', 'couple', 'pizza', 'girlfriend', 'cats', 'vegan', 'festival', 'travel', 'sports'];

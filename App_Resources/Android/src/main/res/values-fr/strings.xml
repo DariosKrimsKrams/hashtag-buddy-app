@@ -87,7 +87,7 @@
   <string name="iap_restored_successful_msg">"Le paquet \'%1$s\' a été rétabli :)"</string>
   <string name="iap_restored_successful_title">"Restauré"</string>
   <string name="iap_purchase_successful_btn">"Sympa"</string>
-  <string name="iap_purchase_successful_msg">"Désormais, vous pourrez profiter pleinement de la beauté de votre nouveau Buddy. Vous avez acquis %1$s :)"</string>
+  <string name="iap_purchase_successful_msg">"Vous avez acquis \"%1$s\". Désormais, vous pourrez profiter pleinement de la beauté de Hashtag Buddy :)"</string>
   <string name="iap_purchase_successful_title">"Félicitations ! Vous avez bien choisi."</string>
   <string name="iap_purchase_failed">"L\'achat a été annulé"</string>
   <string name="iap_tipstricks_desc2">"Lire tous les trucs et astuces"</string>

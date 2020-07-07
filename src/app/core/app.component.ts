@@ -404,8 +404,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.savePurchase(transaction);
     const plan = this.getPlanById(transaction.productIdentifier);
     this.ngZone.run(() => {
-      this.showBoughtPopup(plan.title);
-      this.storeService.onPurchasedSuccessful.emit(plan.title);
+      const title = localize(plan.title);
+      this.showBoughtPopup(title);
+      this.storeService.onPurchasedSuccessful.emit();
     });
   }
 

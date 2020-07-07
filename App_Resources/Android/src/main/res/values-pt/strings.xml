@@ -87,7 +87,7 @@
   <string name="iap_restored_successful_msg">"O produto \'%1$s\' foi recuperado :)"</string>
   <string name="iap_restored_successful_title">"Recuperado"</string>
   <string name="iap_purchase_successful_btn">"Boa"</string>
-  <string name="iap_purchase_successful_msg">"A partir de agora, podes desfrutar do teu novo Buddy na totalidade. Adquiriste %1$s com êxito. :)"</string>
+  <string name="iap_purchase_successful_msg">"Adquiriste \"%1$s\" acquistato con successo com êxito. A partir de agora, podes desfrutar do teu novo Buddy na totalidade :)"</string>
   <string name="iap_purchase_successful_title">"Parabéns! Fizeste uma boa escolha."</string>
   <string name="iap_purchase_failed">"A compra foi cancelada"</string>
   <string name="iap_tipstricks_desc2">"Lê todos os Truques &amp; Dicas"</string>

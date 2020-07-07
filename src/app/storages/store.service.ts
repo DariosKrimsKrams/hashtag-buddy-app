@@ -7,7 +7,7 @@ export class StoreService {
 
   @Output() public onBuyProduct: EventEmitter<string> = new EventEmitter<string>();
   @Output() public onRestorePurchases: EventEmitter<void> = new EventEmitter<void>();
-  @Output() public onPurchasedSuccessful: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public onPurchasedSuccessful: EventEmitter<void> = new EventEmitter<void>();
 
 
 }
