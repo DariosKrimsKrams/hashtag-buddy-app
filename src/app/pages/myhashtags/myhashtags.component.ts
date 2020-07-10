@@ -10,6 +10,7 @@ import { MyHashtag } from '~/app/models/my-hashtag';
 import { UserService } from '~/app/storages/user.service';
 import { Photo } from '~/app/models/photo';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 @Component({
   selector: 'ns-myhashtags',
@@ -27,6 +28,7 @@ export class MyhashtagsComponent implements OnInit {
 
   constructor(
     private readonly page: Page,
+    private readonly router: RouterExtensions,
     private readonly userService: UserService
   ) {
     this.page.actionBarHidden = true;
@@ -58,9 +60,10 @@ export class MyhashtagsComponent implements OnInit {
     });
   }
 
-  public openMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.showDrawer();
+  public goPrevPage(): void {
+    if (this.router.canGoBack()) {
+      this.router.back();
+    }
   }
 
   public dismissSoftKeyboard(): void {
