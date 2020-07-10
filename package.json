@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "com.hashtagbuddy.instagramtipstricks",
+    "id": "com.softwarekstatt.hashtagbuddy",
     "tns-android": {
       "version": "6.5.1"
     },
