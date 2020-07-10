@@ -44,8 +44,8 @@
   <string name="settings_about">"Über mich"</string>
   <string name="selection_suggestions">"Empfehlungen (basierend auf meiner Auswahl)"</string>
   <string name="search_buy">"Hashtags freischalten"</string>
-  <string name="search_iap_desc">"Hashtag Inspector won\'t show hidden hashtags anymore. All hashtags will be visible."</string>
-  <string name="search_not_found">"Sadly, Nothing found. Please try another word."</string>
+  <string name="search_iap_desc">"Alle Hashtags werden für immer sichtbar sein."</string>
+  <string name="search_not_found">"Leider nichts passendes gefunden. Versuche es mit einem ähnlichen Begriff erneut."</string>
   <string name="search_results">"Ähnliche Hashtags (basierend auf meiner Suche)"</string>
   <string name="search_button">"Suchen"</string>
   <string name="search_input">"Thema oder Stichwort"</string>
@@ -194,7 +194,7 @@
   <string name="copy_failed">"Kopieren fehlgeschlagen"</string>
   <string name="copy_please_give_feedback">"Bitte bewerte die Hashtag Ergebnisse auf der nächsten Seite:"</string>
   <string name="copy_successful">"In Zwischenablage kopiert"</string>
-  <string name="results_made_with_app">"erstellt mit #hashtagBuddyApp @hashtagBuddyApp"</string>
+  <string name="results_made_with_app">"erstellt mit #hashtagBuddyApp @hashtagBuddyApp "</string>
   <string name="results_copy_to_instagram">"Transferiere zu Instagram"</string>
   <string name="results_copy_selected">"Hashtags kopieren"</string>
   <string name="results_copy_top">"Kopiere Top 20"</string>

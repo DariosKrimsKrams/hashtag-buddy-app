@@ -194,7 +194,7 @@
   <string name="copy_failed">"A cópia falhou"</string>
   <string name="copy_please_give_feedback">"Por favor, avalia os resultados de hashtags na seguinte página..."</string>
   <string name="copy_successful">"Copiadas para a área de transferência"</string>
-  <string name="results_made_with_app">"criado com #hashtagBuddyApp @hashtagBuddyApp"</string>
+  <string name="results_made_with_app">"criado com #hashtagBuddyApp @hashtagBuddyApp "</string>
   <string name="results_copy_to_instagram">"Transferir para o Instagram"</string>
   <string name="results_copy_selected">"Copiar as selecionadas"</string>
   <string name="results_copy_top">"Copiar o Top 20"</string>

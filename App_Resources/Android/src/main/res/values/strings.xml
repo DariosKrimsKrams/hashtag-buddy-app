@@ -45,7 +45,7 @@
   <string name="selection_suggestions">"Suggestions (based on my selection)"</string>
   <string name="search_buy">"Unlock hashtags"</string>
   <string name="search_iap_desc">"Hashtag Inspector won\'t show hidden hashtags anymore. All hashtags will be visible."</string>
-  <string name="search_not_found">"Sadly, Nothing found. Please try another word."</string>
+  <string name="search_not_found">"Sorry, nothing found. Try with a similar term."</string>
   <string name="search_results">"Similar Hashtags (based on my search)"</string>
   <string name="search_button">"Search"</string>
   <string name="search_input">"Topic or keyword"</string>
@@ -194,7 +194,7 @@
   <string name="copy_failed">"Copy Failed"</string>
   <string name="copy_please_give_feedback">"Please rate the hashtag results on the next page:"</string>
   <string name="copy_successful">"Copied to clipboard"</string>
-  <string name="results_made_with_app">"made with #hashtagBuddyApp @hashtagBuddyApp"</string>
+  <string name="results_made_with_app">"made with #hashtagBuddyApp @hashtagBuddyApp "</string>
   <string name="results_copy_to_instagram">"Transfer to Instagram"</string>
   <string name="results_copy_selected">"Copy selected"</string>
   <string name="results_copy_top">"Copy Top 20"</string>
