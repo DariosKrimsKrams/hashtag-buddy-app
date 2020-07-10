@@ -91,16 +91,16 @@ export class AppComponent implements OnInit, OnDestroy {
       switch (page) {
         case 'tipstricks':
           if (isIOS) {
-            this.selected[2] = true;
+            this.selected[3] = true;
           } else {
-            this.selected[1] = true;
+            this.selected[2] = true;
           }
           break;
         case 'search':
           if (isIOS) {
-            this.selected[3] = true;
-          } else {
             this.selected[2] = true;
+          } else {
+            this.selected[1] = true;
           }
           break;
       }
