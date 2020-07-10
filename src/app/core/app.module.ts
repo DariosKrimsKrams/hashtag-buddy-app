@@ -10,7 +10,6 @@ import { DeviceService } from '~/app/services/device-photos.service';
 import { ApplicationPipesModule } from '~/app/pipes/application-pipes.module';
 import { ModalModule } from '~/app/shared/modal/modal.module';
 import { LocalStorageService } from '~/app/storages/local-storage.service';
-import { MyhashtagsModule } from '~/app/pages/myhashtags/myhashtags.module';
 import { SearchModule } from '~/app/pages/search/search.module';
 import { FaqModule } from '~/app/pages/faq/faq.module';
 import { FeedbackModule } from '~/app/pages/feedback/feedback.module';
@@ -29,7 +28,6 @@ import { HistoryoverviewModule } from '../pages/historyoverview/historyoverview.
     HistoryModule,
     ApplicationPipesModule,
     ModalModule,
-    MyhashtagsModule,
     SearchModule,
     FaqModule,
     FeedbackModule,
