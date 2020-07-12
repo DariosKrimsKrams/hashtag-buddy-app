@@ -156,6 +156,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private showRateAppModal(): void {
     const okFunc = () => {
       this.userService.saveRateAppStatus('rated');
+      this.userService.unlockHashtagInspector();
       this.userService.appRatedTriggered.emit();
       const text = localize('feedback_successful_headline');
       new Toasty({ text: text })
