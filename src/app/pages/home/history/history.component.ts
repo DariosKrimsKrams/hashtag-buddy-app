@@ -135,6 +135,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   public getHashtags(photo: Photo): Hashtag[] {
+    const limit = 13;
     let count = this.hashtagAmount;
     const hashtags: Hashtag[] = [];
     if (
@@ -147,7 +148,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
           : photo.selectedHashtags.length;
       for (let i = 0; i < selectedAmount; i++) {
         hashtags.push(photo.selectedHashtags[i]);
-        if (photo.selectedHashtags[i].title.length > 10) {
+        if (photo.selectedHashtags[i].title.length > limit) {
           count--;
           selectedAmount--;
         }
@@ -166,7 +167,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
           }
         } else {
           hashtags.push(tag);
-          if (tag.title.length > 10) {
+          if (tag.title.length > limit) {
             count--;
             categoriesAmount--;
           }

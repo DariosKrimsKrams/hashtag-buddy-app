@@ -103,6 +103,7 @@ export class ResultsComponent implements OnInit {
     if (index > -1) {
       this.selectedHashtags.splice(index, 1);
     }
+    this.saveSelection();
   }
 
   public selectAll(category: HashtagCategory): void {
