@@ -180,8 +180,8 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   public get introText(): string {
     let text = localize('search_intro');
-    const hasPurchase = this.userService.hasPurchase();
-    if (!hasPurchase) {
+    const hasUnlocked = this.userService.hasHashtagInspectorUnlocked();
+    if (!hasUnlocked) {
       text += ' ' + localize('search_paywall_locked');
     } else {
       text += ' ' + localize('search_paywall_unlocked');
