@@ -3,7 +3,6 @@ import { Photo } from '~/app/models/photo';
 import { UserService } from '../../../storages/user.service';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { Hashtag } from '~/app/models/hashtag';
-import { DeviceService } from '~/app/services/device-photos.service';
 import { Subscription } from 'rxjs';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { localize } from 'nativescript-localize/angular';
@@ -25,7 +24,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   public isIOS: boolean;
   public isOpened: boolean = false;
 
-  private hashtagAmount: number = 7;
+  private hashtagAmount: number = 6;
   private photoAddedSubscription: Subscription;
   private photoUpdatedSubscription: Subscription;
   private historyOpenChangedSubscription: Subscription;
@@ -38,7 +37,6 @@ export class HistoryComponent implements OnInit, OnDestroy {
   constructor(
     private readonly userService: UserService,
     private readonly router: RouterExtensions,
-    private readonly deviceService: DeviceService,
     private readonly cd: ChangeDetectorRef
   ) {
     this.isIOS = isIOS;
@@ -137,18 +135,22 @@ export class HistoryComponent implements OnInit, OnDestroy {
   }
 
   public getHashtags(photo: Photo): Hashtag[] {
-    const count = this.hashtagAmount;
+    let count = this.hashtagAmount;
     const hashtags: Hashtag[] = [];
     if (
       photo.selectedHashtags !== undefined &&
       photo.selectedHashtags.length !== 0
     ) {
-      const selectedAmount =
+      let selectedAmount =
         photo.selectedHashtags.length >= count
           ? count
           : photo.selectedHashtags.length;
       for (let i = 0; i < selectedAmount; i++) {
         hashtags.push(photo.selectedHashtags[i]);
+        if (photo.selectedHashtags[i].title.length > 10) {
+          count--;
+          selectedAmount--;
+        }
       }
     }
     if (photo.categories !== undefined && photo.categories.length !== 0) {
@@ -164,25 +166,29 @@ export class HistoryComponent implements OnInit, OnDestroy {
           }
         } else {
           hashtags.push(tag);
+          if (tag.title.length > 10) {
+            count--;
+            categoriesAmount--;
+          }
         }
       }
     }
     return hashtags;
   }
 
-  public countFurtherHashtags(photo: Photo): number {
-    if (photo.categories === undefined) {
-      return 0;
-    }
-    let amount = 0;
-    for (let i = 0; i < photo.categories.length; i++) {
-      const category = photo.categories[i];
-      amount += category.tags.length;
-    }
-    const count = this.hashtagAmount;
-    const result = amount - count;
-    return result >= 0 ? result : 0;
-  }
+  // public countFurtherHashtags(photo: Photo): number {
+  //   if (photo.categories === undefined) {
+  //     return 0;
+  //   }
+  //   let amount = 0;
+  //   for (let i = 0; i < photo.categories.length; i++) {
+  //     const category = photo.categories[i];
+  //     amount += category.tags.length;
+  //   }
+  //   const count = this.hashtagAmount;
+  //   const result = amount - count;
+  //   return result >= 0 ? result : 0;
+  // }
 
   private setPhotos(photos: Photo[]): void {
     this.photosReverse = photos.slice().reverse();
