@@ -44,7 +44,7 @@
   <string name="settings_about">"Sobre"</string>
   <string name="selection_suggestions">"Sugestões (com base na minha seleção)"</string>
   <string name="search_buy">"Desbloquear hashtags"</string>
-  <string name="search_iap_desc">"O Hashtag Inspector já não vai ocultar hashtags. Todas as hashtags serão visíveis."</string>
+  <string name="search_iap_desc">"Para %1$s o Hashtag Inspector já não vai ocultar hashtags. Todas as hashtags serão visíveis."</string>
   <string name="search_not_found">"Infelizmente, nada foi encontrado. Por favor, tenta outra palavra."</string>
   <string name="search_results">"Hashtags semelhantes (com base na minha pesquisa)"</string>
   <string name="search_button">"Procurar"</string>
@@ -56,6 +56,7 @@
   <string name="faq_buy_cta">"Comprar agora"</string>
   <string name="faq_buy_desc">"Desbloquear agora todas as Dicas por apenas %1$s :)"</string>
   <string name="faq_buy_headline">"Desbloquear %1$s?"</string>
+  <string name="faq_buy2">"Desbloquear"</string>
   <string name="faq_buy">"Desbloquear texto"</string>
   <string name="faq_outro">"Melhore esta página: Ideias? Dê-nos o seu feedback? Use o formulário de feedback."</string>
   <string name="faq_11_desc">"Com o crescimento da tua página, mais tarde ou mais cedo receberás convites de empresas. Isto para recomendar produtos e serviços à tua comunidade. As empresas esperam receber atenção e vendas, como no marketing clássico. Com páginas pequenas, as empresas oferecem o produto ou o serviço de graça para experimentar e partilhar com a comunidade. Se a tua página for maior ou tiver outros pontos fortes que são de interesse para a marca, uma remuneração será acordada. Se publicitares uma marca, certifica-te que combina com as características da tua página. Se falas de comida saudável, seria engraçado e irónico publicitares uma empresa de fast food. Escolhe os teus parceiros de acordo com os conteúdos da tua página. Mesmo que no início as ofertas sejam tentadoras, pensa a longo prazo na tua credibilidade.\n\nPara além da publicidade, faz sentido cooperar com outras páginas com o mesmo público alvo. Isto significa que podes recomendar outras páginas do Instagram à tua comunidade através de publicações e de histórias, ou alguém pode recomendar-te a ti. Também existem páginas temáticas que te divulgam, mas normalmente não têm tanta força como poderás estar à espera. O que funciona melhor é a reciprocidade com outras páginas similares. Podes também apenas recomendar páginas pessoais. Talvez a pessoa fique feliz e te partilhe numa história, ou os teus seguidores que o encontrem estejam mais à vontade para o recomendar.\n\nSe publicitares, deves dizer que é publicidade. Mesmo que uses o produto, é importante que os seguidores saibam se compraste o produto ou se o recebeste de graça. Para além disso, evita avisos."</string>

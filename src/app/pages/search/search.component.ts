@@ -44,7 +44,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   public selectedHashtags: string[] = [];
   public excludedHashtags: string[] = [];
   public hasUnlocked: boolean;
-  private price: string = '1,09 €';
+  private price: string = '1,00 €';
   private purchaseSuccessfulSub: Subscription;
   private intervalId: number = 0;
   private placeholder: string[] = [];
@@ -204,7 +204,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         icon: 'cart',
         headline: headline,
         desc: desc,
-        buttonOk: 'faq_buy_cta',
+        buttonOk: 'faq_buy2',
         buttonCancel: 'faq_buy_cancel',
         okFunc: okFunc
       }
