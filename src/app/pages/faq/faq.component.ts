@@ -125,7 +125,7 @@ export class FaqComponent implements OnInit, OnDestroy {
         icon: 'cart',
         headline: headline,
         desc: desc,
-        buttonOk: 'faq_buy_cta',
+        buttonOk: 'faq_buy2',
         buttonCancel: 'faq_buy_cancel',
         okFunc: okFunc
       }

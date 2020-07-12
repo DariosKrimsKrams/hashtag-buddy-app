@@ -19,7 +19,7 @@
   <string name="rate_headline">"Reach for the Stars"</string>
   <string name="share">"Hey, I would like to recommend this app: It helps to find the most relevant Instagram hashtags for photos. Let it help you too :)"</string>
   <string name="myhashtags_all">"Hashtags from photos"</string>
-  <string name="myhashtags_other">"Hashtags you like"</string>
+  <string name="myhashtags_other">"Hashtags you liked"</string>
   <string name="myhashtags_your">"Added by you"</string>
   <string name="myhashtags_intro">"Save your favorite hashtags here. You can access them directly from the photos-selection."</string>
   <string name="progressbar_results_freemode">"Some hashtags are hidden. If you want to support Hashtag Buddy, you can unlock hashtags in store."</string>
@@ -220,6 +220,7 @@
   <string name="history_no_content">"You haven\'t uploaded any photos yet."</string>
   <string name="history_title">"History"</string>
   <string name="home_upload">"Select a photo"</string>
+  <string name="home_desc_4">"Become Instagram famous by using the perfect hashtags!"</string>
   <string name="home_desc_3">"Upload a photo to discover matching Instagram hashtags:"</string>
   <string name="home_desc_2">"#hashtags for your photos"</string>
   <string name="home_desc_1">"Discover the best Instagram"</string>

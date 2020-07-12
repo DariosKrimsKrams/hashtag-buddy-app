@@ -19,7 +19,7 @@
   <string name="rate_headline">"Greife nach den Sternen"</string>
   <string name="share">"Hey, ich möchte dir diese App empfehlen: Sie hilft, die passendsten Instagram Hashtags für Fotos zu finden. Probiere sie doch gleich mal aus :)"</string>
   <string name="myhashtags_all">"Hashtags von Fotos"</string>
-  <string name="myhashtags_other">"Hashtags, die dir gefallen"</string>
+  <string name="myhashtags_other">"Hashtags, die dir gefallen haben"</string>
   <string name="myhashtags_your">"Von dir hinzugefügt"</string>
   <string name="myhashtags_intro">"Speichere hier deine Lieblings-Hashtags. Du kannst dann direkt aus der Foto-Auswahl darauf zugreifen."</string>
   <string name="progressbar_results_freemode">"Einige hashtags sind versteckt. Unterstützte Hashtag Buddy, und schalte die Hashtags im Store frei."</string>
@@ -220,6 +220,7 @@
   <string name="history_no_content">"Du hast bisher keine Fotos hochgeladen."</string>
   <string name="history_title">"Historie"</string>
   <string name="home_upload">"Wähle ein Foto"</string>
+  <string name="home_desc_4">"Werde Instagram famous, mit den perfekten Hashtags: Erhalte so mehr Likes und Follower auf deine Fotos!"</string>
   <string name="home_desc_3">"Lade ein Foto hoch, um passende Instagram Hashtags zu entdecken:"</string>
   <string name="home_desc_2">"#hashtags für deine Fotos"</string>
   <string name="home_desc_1">"Entdecke die besten Instagram"</string>
