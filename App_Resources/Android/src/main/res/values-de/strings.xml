@@ -90,7 +90,7 @@
   <string name="iap_purchase_successful_msg">"Du hast erfolgreich \"%1$s\" erworben. Genieße von nun an die volle Pracht von Hashtag Buddy :)"</string>
   <string name="iap_purchase_successful_title">"Herzlichen Glückwunsch! Gute Wahl."</string>
   <string name="iap_purchase_failed">"Kauf wurde abgebrochen"</string>
-  <string name="iap_tipstricks_desc2">"Ließ alle Tripps &amp; Tricks"</string>
+  <string name="iap_tipstricks_desc2">"Ließ alle Tipps &amp; Tricks"</string>
   <string name="iap_tipstricks_desc">"Tipps &amp; Tricks"</string>
   <string name="iap_search_desc2">"Freischalten aller Hashtag Inspector Hashtags"</string>
   <string name="iap_search_desc">"Hashtag Inspector Unlimited"</string>
@@ -112,7 +112,7 @@
   <string name="store_outro">"Bitte bedenke, dass %1$s bei jeder Transaktion 30 %% einbehält. Vielen Dank für deine Unterstützung :)"</string>
   <string name="store_headline_abo">"Abonnements"</string>
   <string name="store_headline_once">"Einmal-Käufe"</string>
-  <string name="store_intro">"Erwerbe Fotos Uploads, um weiterhin die besten Hashtags zu erhalten. Diese Umsätze bringen mir keinen Gewinn, aber unterstützen mich der Kostendeckung dieser App."</string>
+  <string name="store_intro">"Erwerbe Fotos Uploads, um weiterhin die besten Hashtags zu erhalten. Diese Umsätze bringen mir keinen Gewinn, aber unterstützen mich bei der Kostendeckung dieser App."</string>
   <string name="menu_search">"Hashtag Inspector"</string>
   <string name="menu_feedback">"Feedback"</string>
   <string name="menu_settings">"Mehr"</string>
