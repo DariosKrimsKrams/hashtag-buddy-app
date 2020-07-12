@@ -25,14 +25,14 @@
                             ></ns-selection>
                         <ns-insert-hashtags-form (hashtagAdded)="addHashtag($event)"></ns-insert-hashtags-form>
                     </StackLayout>
-                    <StackLayout orientation="vertical" class="list-group-item m-b-20" *ngFor="let category of categories">
+                    <StackLayout orientation="vertical" class="list-group-item m-b-10" *ngFor="let category of categories">
                         <GridLayout columns="*,90" class="hash-title m-l-10 m-r-20" *ngIf="category.tags.length !== 0">
                             <Label [text]="category.title | L" class="font-demi-bold" col="0"></Label>
                             <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category)" *ngIf="!areAllHashtagSelected(category)"></Button>
                             <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="deselectAll(category)" *ngIf="areAllHashtagSelected(category)"></Button>
                         </GridLayout>
                         <Label text="{{ 'results_recommented_amount' | L }} {{ getRecommendedAmount(category.title) }}" class="font-reg-xs m-l-10 m-r-5" *ngIf="getRecommendedAmount(category.title) !== 0 && category.tags.length !== 0"></Label>
-                        <WrapLayout class="m-t-5 m-l-5 m-b-20 tag-title" *ngIf="category.tags.length !== 0">
+                        <WrapLayout class="m-t-5 m-l-5 p-b-20 tag-title" *ngIf="category.tags.length !== 0">
                             <ns-hashtag *ngFor="let tag of category.tags"
                             (onClick)="toggleHashtag(tag.title)"
                             [name]="'#' + tag.title"
