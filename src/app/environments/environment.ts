@@ -5,6 +5,6 @@ export const environment = {
     freePhotosRateApp: 3,
     freePhotosIncreatingTime: 0,
     freePhotosIncreasingAmount: 0,
-    loadingTimeSec: 25,
+    loadingTimeSec: 20,
     searchIntervalTime: 1500
 };
