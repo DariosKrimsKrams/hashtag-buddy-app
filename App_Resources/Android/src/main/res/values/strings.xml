@@ -220,11 +220,12 @@
   <string name="history_no_content">"You haven\'t uploaded any photos yet."</string>
   <string name="history_title">"History"</string>
   <string name="home_upload">"Select a photo"</string>
-  <string name="home_desc_4">"Become Instagram famous by using the perfect hashtags!"</string>
+  <string name="home_desc_4">"Become Instagram famous by using the perfect hashtags: Get more likes and follower for your photos!"</string>
   <string name="home_desc_3">"Upload a photo to discover matching Instagram hashtags:"</string>
   <string name="home_desc_2">"#hashtags for your photos"</string>
   <string name="home_desc_1">"Discover the best Instagram"</string>
   <string name="_app_name_1k3Sbz">"Hashtag Buddy"</string>
   <string name="app_name">"Hashtag Buddy"</string>
   <string name="title_activity_kimera">"Hashtag Buddy"</string>
+  <string name="about_support_1">"about_support_1"</string>
 </resources>
