@@ -23,7 +23,8 @@ export class HashtagCategory {
 
   public censorHashtags(): void {
     for (let i = 0; i < this.tags.length; i++) {
-      if (i < 10 && i * 2 < this.tags.length - 1) {
+      if ((i <= 16 && (i % 4 === 0 || i % 4 === 3))
+      || (i > 16 && (i % 5 === 0 || i % 5 === 3))) {
         this.tags[i].isCensored = true;
       }
     }
