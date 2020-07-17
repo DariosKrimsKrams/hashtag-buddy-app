@@ -197,6 +197,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     };
     const headline = PLANS.find(x => x.id === 'hashtagsunlimited').title;
     const desc = localize('search_iap_desc', this.price);
+    const buttonOk = localize('faq_buy2') + ' ' + this.price;
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
@@ -204,7 +205,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         icon: 'cart',
         headline: headline,
         desc: desc,
-        buttonOk: 'faq_buy2',
+        buttonOk: buttonOk,
         buttonCancel: 'faq_buy_cancel',
         okFunc: okFunc
       }

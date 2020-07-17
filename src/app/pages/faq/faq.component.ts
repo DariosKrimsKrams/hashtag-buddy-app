@@ -118,6 +118,7 @@ export class FaqComponent implements OnInit, OnDestroy {
     };
     const headline = localize('faq_buy_headline', faq.title);
     const desc = localize('faq_buy_desc', this.price);
+    const buttonOk = localize('faq_buy2') + ' ' + this.price;
     const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
@@ -125,7 +126,7 @@ export class FaqComponent implements OnInit, OnDestroy {
         icon: 'cart',
         headline: headline,
         desc: desc,
-        buttonOk: 'faq_buy2',
+        buttonOk: buttonOk,
         buttonCancel: 'faq_buy_cancel',
         okFunc: okFunc
       }
