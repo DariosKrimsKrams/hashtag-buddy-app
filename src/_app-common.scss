@@ -5,8 +5,6 @@ Label, Button, Span {
   font-size: 14pt;
 }
 
-.btn { font-size: 18pt; }
-
 .p-t-40 { padding-top: 40pt; }
 .p-t-50 { padding-top: 50pt; }
 .p-t-60 { padding-top: 60pt; }
@@ -67,6 +65,10 @@ Label, Button, Span {
 }
 .gradientTrans {
   background: linear-gradient(to right, $color_pink_transparent, $color_orange_transparent);
+}
+.btn {
+  font-family: "AvenirNext-DemiBold", "Avenir Next Demi Bold";
+  font-size: 18pt;
 }
 .btn-normal {
   color: #fff;
