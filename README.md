@@ -60,6 +60,8 @@ npm i tns-core-modules@latest
 tns update
 tns platform clean android
 tns plugin update
+tns plugin remove nativescript-theme-core
+tns plugin add nativescript-theme-core@1.0.6
 npm i nativescript-dev-webpack@latest --save-dev
 ./node_modules/.bin/update-ns-webpack --deps --configs
 npm i nativescript-angular@latest --save
