@@ -33,7 +33,7 @@
     "@angular/router": "~8.2.0",
     "codelyzer": "^5.2.2",
     "nativescript": "^6.7.4",
-    "nativescript-angular": "^8.21.0",
+    "nativescript-angular": "^10.0.0",
     "nativescript-background-http": "^4.2.1",
     "nativescript-clipboard": "^1.2.0",
     "nativescript-exit": "^1.0.1",
