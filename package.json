@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "~8.2.0",
-    "@nativescript/schematics": "^1.0.0",
+    "@nativescript/schematics": "^10.0.2",
     "@ngtools/webpack": "~8.2.0",
     "nativescript-dev-webpack": "^1.5.1",
     "node-sass": "4.14.1",
