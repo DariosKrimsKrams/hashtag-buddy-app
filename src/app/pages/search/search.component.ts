@@ -191,8 +191,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   public openUnlockModal(): void {
     const okFunc = () => {
-      console.log('openUnlockModal');
-      const item = 'tipstricks';
+      const item = 'hashtagsunlimited';
       this.storeService.onBuyProduct.emit(item);
     };
     const headline = PLANS.find(x => x.id === 'hashtagsunlimited').title;
