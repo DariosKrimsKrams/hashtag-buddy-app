@@ -51,7 +51,7 @@
   <string name="search_input">"Sujet ou mot-clé"</string>
   <string name="search_paywall_unlocked">"Tous les hashtags seront affichés. Profitez de toute cette beauté :)"</string>
   <string name="search_paywall_locked">"Certains hashtags seront cachés."</string>
-  <string name="search_intro">"Trouvez des hashtags similaires à partir de vos mots-clés de recherche."</string>
+  <string name="search_intro">"Entrez un ou plusieurs mots clés séparés par une virgule \",\" pour trouver des hashtags similaires. Utilisez des mots anglais."</string>
   <string name="faq_buy_cancel">"Annuler"</string>
   <string name="faq_buy_cta">"Acheter maintenant"</string>
   <string name="faq_buy_desc">"Débloquer tous les trucs et astuces pour seulement %1$s :)"</string>

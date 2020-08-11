@@ -4,7 +4,7 @@
   <ScrollView  [style.margin-top]="headerHeight + headerTop - (headerHeight / 2)" sdkExampleTitle sdkToggleNavButton>
     <StackLayout [style.padding-top]="headerHeight / 2" class="p-l-20 p-r-20 m-t-25 p-b-40" (tap)="dismissSoftKeyboard()">
 
-      <Label [text]="introText | L" class="font-reg-s m-b-10 m-l-20 m-r-20" textWrap="true"></Label>
+      <Label [text]="introText | L" class="font-reg-s m-b-10 m-l-20 m-r-20" class="intro" textWrap="true"></Label>
 
       <StackLayout class="item gradient" #searchContainer>
         <GridLayout row="0" verticalAlignment="top" columns="*,85">

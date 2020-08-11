@@ -71,7 +71,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.purchaseSuccessfulSub = this.storeService.onPurchasedSuccessful.subscribe(() => {
       this.hasUnlocked = true;
     });
-    this.placeholder = ['summergirl', 'puppy', 'travel', 'vegan', 'cats', 'pizza', 'couple', 'festival', 'fitness'];
+    this.placeholder = ['Summer,Girl', 'Puppy,Dog', 'Travel', 'Vegan,Burger', 'Cat,White', 'Pizza', 'Couple,Love', 'Paris', 'Fitness', 'Beer,Wine', 'Fitness'];
     this.startAnimatedPlaceholder();
   }
 

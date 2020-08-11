@@ -172,7 +172,7 @@
   "faq_buy_desc": "Schalte jetzt alle Tipps & Tricks Texte für nur %s frei :)",
   "faq_buy_cta": "Jetzt kaufen",
   "faq_buy_cancel": "Abbrechen",
-  "search_intro": "Finde ähnliche Hashtags basierend auf deiner Sucheingabe.",
+  "search_intro": "Gib ein oder mehrere Keywords getrennt mit Komma \",\" ein, um ähnliche Hashtags zu finden. Benutze englische Wörter.",
   "search_paywall_locked": "Einige Hashtags werden versteckt.",
   "search_paywall_unlocked": "Alle hashtags werden angezeigt. Genieße das volle Erlebnis :)",
   "search_input": "Thema oder Stichwort",

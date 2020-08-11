@@ -172,7 +172,7 @@
   "faq_buy_desc": "Desbloquear ahora todos los Consejos & Trucos por solo %s :)",
   "faq_buy_cta": "Comprar ahora",
   "faq_buy_cancel": "Cancelar",
-  "search_intro": "Encuentra hashtags similares en función de tus palabras clave de búsqueda.",
+  "search_intro": "Ingrese una o varias palabras clave divididas por comas \",\" para encontrar hashtags similares. Usa palabras en inglés.",
   "search_paywall_locked": "Algunos hashtags estarán ocultos.",
   "search_paywall_unlocked": "Se mostrarán todos los hashtags. Disfruta de todo el atractivo :)",
   "search_input": "Tema o palabra clave",
