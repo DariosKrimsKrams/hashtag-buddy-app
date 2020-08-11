@@ -90,6 +90,16 @@
   <string name="iap_purchase_successful_msg">"D\'ora in poi potrai godere appieno del tuo nuovo Buddy. %1$s acquistato con successo:)"</string>
   <string name="iap_purchase_successful_title">"Complimenti per la scelta!"</string>
   <string name="iap_purchase_failed">"L’acquisto è stato annullato"</string>
+  <string name="iap_tipstricks_desc2">"Leggi tutte le Tips &amp; Tricks"</string>
+  <string name="iap_tipstricks_desc">"Tips &amp; Tricks"</string>
+  <string name="iap_search_desc2">"Vedi tutti gli hashtag di Hashtag Inspector"</string>
+  <string name="iap_search_desc">"Hashtag Inspector Unlimited"</string>
+  <string name="iap_photos_desc">"Sblocca hashtag per %1$s caricamenti foto"</string>
+  <string name="iap_search_title">"Hashtag Inspector Unlimited"</string>
+  <string name="iap_tipstricks_title">"Tips &amp; Tricks"</string>
+  <string name="iap_large_title">"Enterprise"</string>
+  <string name="iap_medium_title">"Business"</string>
+  <string name="iap_small_title">"Professional"</string>
   <string name="store_bought">"Acquistati"</string>
   <string name="store_buy_separatly">"Acquista separatamente"</string>
   <string name="store_buy_photo">"Acquista caricamenti foto"</string>
@@ -218,14 +228,4 @@
   <string name="app_name">"Hashtag Buddy"</string>
   <string name="title_activity_kimera">"Hashtag Buddy"</string>
   <string name="faq_buy2">"Unlock"</string>
-  <string name="iap_tipstricks_desc2">"Read all Tips &amp; Tricks"</string>
-  <string name="iap_tipstricks_desc">"Tips &amp; Tricks"</string>
-  <string name="iap_search_desc2">"Unlock all Hashtag Inspector hashtags"</string>
-  <string name="iap_search_desc">"Hashtag Inspector Unlimited"</string>
-  <string name="iap_photos_desc">"Unlock hashtags of %1$s photo uploads"</string>
-  <string name="iap_search_title">"Hashtag Inspector Unlimited"</string>
-  <string name="iap_tipstricks_title">"Tips &amp; Tricks"</string>
-  <string name="iap_large_title">"Enterprise"</string>
-  <string name="iap_medium_title">"Business"</string>
-  <string name="iap_small_title">"Professional"</string>
 </resources>
