@@ -36,6 +36,7 @@
         [selectedHashtags]="selectedHashtags"
         (onCopied)="copyToClipboard()"
         (onDeselect)="deselectHashtag($event)"
+        (onClickCensoredHashtag)="clickCensoredHashtag()"
         [hashtagsChanged]="hashtagsChanged"
         [excludedHashtags]="excludedHashtags"
         ></ns-selection>
@@ -49,6 +50,7 @@
           (onClick)="toggleHashtag(tag.title)"
           [isActive]="selectedHashtags.indexOf(tag.title) > -1"
           [censored]="tag.isCensored && !hasUnlocked"
+          (onClickCensored)="clickCensoredHashtag()"
           ></ns-hashtag>
       </WrapLayout>
 

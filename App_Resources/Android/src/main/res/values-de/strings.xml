@@ -44,7 +44,8 @@
   <string name="settings_about">"Über mich"</string>
   <string name="selection_suggestions">"Empfehlungen (basierend auf meiner Auswahl)"</string>
   <string name="search_buy">"Hashtags freischalten"</string>
-  <string name="search_iap_desc">"Für %1$s wird der Hashtag Inspector dir immer alle Hashtag anzeigen."</string>
+  <string name="search_iap_headline">"Unlimited hashtags"</string>
+  <string name="search_iap_desc">"Für %1$s wird der Hashtag Inspector dir alle Hashtag anzeigen. Für mich."</string>
   <string name="search_not_found">"Leider nichts passendes gefunden. Versuche es mit einem ähnlichen Begriff erneut."</string>
   <string name="search_results">"Ähnliche Hashtags (basierend auf meiner Suche)"</string>
   <string name="search_button">"Suchen"</string>

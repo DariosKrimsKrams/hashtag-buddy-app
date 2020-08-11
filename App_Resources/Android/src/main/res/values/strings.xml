@@ -44,7 +44,8 @@
   <string name="settings_about">"About me"</string>
   <string name="selection_suggestions">"Suggestions (based on my selection)"</string>
   <string name="search_buy">"Unlock hashtags"</string>
-  <string name="search_iap_desc">"For %1$s Hashtag Inspector won\'t show hidden hashtags anymore. All hashtags will be visible."</string>
+  <string name="search_iap_headline">"Unlimited hashtags"</string>
+  <string name="search_iap_desc">"For %1$s Hashtag Inspector won\'t show hidden hashtags anymore. All hashtags will be visible. Forever."</string>
   <string name="search_not_found">"Sorry, nothing found. Try with a similar term."</string>
   <string name="search_results">"Similar Hashtags (based on my search)"</string>
   <string name="search_button">"Search"</string>

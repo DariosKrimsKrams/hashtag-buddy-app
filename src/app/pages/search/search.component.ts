@@ -194,7 +194,6 @@ export class SearchComponent implements OnInit, OnDestroy {
       const item = 'hashtagsunlimited';
       this.storeService.onBuyProduct.emit(item);
     };
-    const headline = PLANS.find(x => x.id === 'hashtagsunlimited').title;
     const desc = localize('search_iap_desc', this.price);
     const buttonOk = localize('faq_buy2') + ' ' + this.price;
     const options: ModalDialogOptions = {
@@ -202,7 +201,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       fullscreen: false,
       context: {
         icon: 'cart',
-        headline: headline,
+        headline: 'search_iap_headline',
         desc: desc,
         buttonOk: buttonOk,
         buttonCancel: 'faq_buy_cancel',
@@ -237,6 +236,10 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (!this.textField.nativeElement.text) {
       this.startAnimatedPlaceholder();
     }
+  }
+
+  public clickCensoredHashtag(): void {
+    this.openUnlockModal();
   }
 
   private setTextAreaText(text: string): void {

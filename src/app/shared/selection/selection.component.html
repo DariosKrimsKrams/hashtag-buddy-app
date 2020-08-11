@@ -23,6 +23,7 @@
   <ns-hashtag
     *ngFor="let tag of suggestedHashtags.tags"
     (onClick)="toggleHashtag(tag.title)"
+    (onClickCensored)="clickCensoredHashtag()"
     [name]="'#' + tag.title"
     [isActive]="selectedHashtags.indexOf(tag.title) > -1"
     [censored]="tag.isCensored"

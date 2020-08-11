@@ -18,7 +18,8 @@ export class HashtagComponent implements OnInit {
   @Input() public name: string;
   @Input() public isActive: boolean;
   @Input() public censored: boolean;
-  @Output() public onClick = new EventEmitter<void>();
+  @Output() public onClick: EventEmitter<void> = new EventEmitter<void>();
+  @Output() public onClickCensored: EventEmitter<void> = new EventEmitter<void>();
   public isIOS: boolean;
 
   constructor(
@@ -57,14 +58,11 @@ export class HashtagComponent implements OnInit {
     if (!this.censored) {
       this.onClick.emit();
     } else {
-      this.clickedCensoredHashtag();
+      this.onClickCensored.emit();
+      // new Toasty({ text: localize('toast_hashtags_hidden') })
+      //   .setToastDuration(ToastDuration.LONG)
+      //   .show();
     }
-  }
-
-  public clickedCensoredHashtag(): void {
-    new Toasty({ text: localize('toast_hashtags_hidden') })
-      .setToastDuration(ToastDuration.LONG)
-      .show();
   }
 
 }

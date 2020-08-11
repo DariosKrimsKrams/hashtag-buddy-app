@@ -21,8 +21,9 @@ export class SelectionComponent implements OnInit, OnDestroy {
   @Input() public selectedHashtags: string[];
   @Input() public excludedHashtags: string[];
   @Input() public hashtagsChanged: EventEmitter<void>;
-  @Output() public onCopied: EventEmitter<void> = new EventEmitter();
+  @Output() public onCopied: EventEmitter<void> = new EventEmitter<void>();
   @Output() public onDeselect: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public onClickCensoredHashtag: EventEmitter<void> = new EventEmitter<void>();
   public suggestedHashtags: HashtagCategory = undefined;
   private subscription: Subscription;
 
@@ -76,6 +77,10 @@ export class SelectionComponent implements OnInit, OnDestroy {
       this.selectedHashtags.push(title);
     }
     this.doAutoSuggestion();
+  }
+
+  public clickCensoredHashtag(): void {
+    this.onClickCensoredHashtag.emit();
   }
 
   private showToastIfHasNoSelectedHashtags(): boolean {
