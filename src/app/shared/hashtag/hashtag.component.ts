@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Color } from 'tns-core-modules/color';
 import { isIOS } from 'tns-core-modules/platform';
-import { Toasty, ToastDuration } from 'nativescript-toasty';
-import { localize } from 'nativescript-localize/angular';
 declare var CGSizeMake: any;
 declare var UIColor: any;
 
@@ -59,9 +57,6 @@ export class HashtagComponent implements OnInit {
       this.onClick.emit();
     } else {
       this.onClickCensored.emit();
-      // new Toasty({ text: localize('toast_hashtags_hidden') })
-      //   .setToastDuration(ToastDuration.LONG)
-      //   .show();
     }
   }
 

@@ -22,7 +22,7 @@
   <string name="myhashtags_other">"Hashtags, die dir gefallen haben"</string>
   <string name="myhashtags_your">"Von dir hinzugefügt"</string>
   <string name="myhashtags_intro">"Speichere hier deine Lieblings-Hashtags. Du kannst dann direkt aus der Foto-Auswahl darauf zugreifen."</string>
-  <string name="progressbar_results_freemode">"Einige hashtags sind versteckt. Unterstützte Hashtag Buddy, und schalte die Hashtags im Store frei."</string>
+  <string name="progressbar_results_freemode">"Es scheint, einige hashtags sind versteckt. Schalte Hashtags frei, um Hashtag Buddy zu supporten."</string>
   <string name="progressbar_confirm_iapmode">"Du hast %1$s von %2$s Foto Uploads mit freigeschalteten Hashtags verwendet."</string>
   <string name="progressbar_confirm_freemode">"Du kannst so viele Fotos hochladen, wie du möchtest. Aber manchmal werden einige Hashtags ausgeblendet."</string>
   <string name="toast_imagepicker_failed">"Foto auswählen fehlgeschlagen. Bitte Berechtigung prüfen."</string>

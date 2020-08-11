@@ -22,7 +22,7 @@
   <string name="myhashtags_other">"Hashtags you liked"</string>
   <string name="myhashtags_your">"Added by you"</string>
   <string name="myhashtags_intro">"Save your favorite hashtags here. You can access them directly from the photos-selection."</string>
-  <string name="progressbar_results_freemode">"Some hashtags are hidden. If you want to support Hashtag Buddy, you can unlock hashtags in store."</string>
+  <string name="progressbar_results_freemode">"It seems, some hashtags are hidden. Unlock hashtags to support Hashtag Buddy."</string>
   <string name="progressbar_confirm_iapmode">"You used %1$s of %2$s photo uploads with all hashtags visible."</string>
   <string name="progressbar_confirm_freemode">"You can upload as much photos as you want, but sometimes some hashtags will be censored."</string>
   <string name="toast_imagepicker_failed">"Picking Photos failed. Please check read permission."</string>

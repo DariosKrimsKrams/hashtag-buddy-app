@@ -13,6 +13,8 @@ import { UserService } from '../../../storages/user.service';
 import { Photo } from '../../../models/photo';
 import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
+import { Toasty, ToastDuration } from 'nativescript-toasty';
+import { localize } from 'nativescript-localize/angular';
 
 @Component({
   templateUrl: './results.component.html',
@@ -188,6 +190,12 @@ export class ResultsComponent implements OnInit {
       default:
         return 0;
     }
+  }
+
+  public clickCensoredHashtag(): void {
+      new Toasty({ text: localize('toast_hashtags_hidden') })
+        .setToastDuration(ToastDuration.LONG)
+        .show();
   }
 
   private selectHashtag(title: string): void {
