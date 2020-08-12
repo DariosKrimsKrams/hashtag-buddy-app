@@ -221,6 +221,7 @@
   "error_headline": "Ooops...",
   "error_desc": "Something went wrong :(",
   "error_desc2": "Something went wrong and the app couldn't handle your request correctly.",
+  "error_desc3": "Connection issue: Restarting the app and be online.",
   "error_button_try_again": "Try again",
   "error_button_back": "Go to main page",
   "link_playstore": "http://play.google.com/store/apps/details?id=com.softwarekstatt.hashtagbuddy",

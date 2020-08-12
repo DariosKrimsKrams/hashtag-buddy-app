@@ -5,6 +5,7 @@
   <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.softwarekstatt.hashtagbuddy"</string>
   <string name="error_button_back">"Geh zur Home-Seite"</string>
   <string name="error_button_try_again">"Erneut versuchen"</string>
+  <string name="error_desc3">"Verbindungs-Problem: Starte die App neu und sei online."</string>
   <string name="error_desc2">"Leider konnte das Hochladen nicht korrekt abgeschlossen werden."</string>
   <string name="error_desc">"Etwas lief schief :("</string>
   <string name="error_headline">"Ooops..."</string>

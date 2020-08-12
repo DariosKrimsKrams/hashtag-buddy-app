@@ -86,8 +86,7 @@ export class SelectionComponent implements OnInit, OnDestroy {
   private showToastIfHasNoSelectedHashtags(): boolean {
     const hasSelectedHashtags = this.selectedHashtags.length > 0;
     if (!hasSelectedHashtags) {
-      const text = localize('toast_no_hashtags_selected');
-      new Toasty({ text: text })
+      new Toasty({ text: localize('toast_no_hashtags_selected') })
         .setToastDuration(ToastDuration.LONG)
         .show();
     }
@@ -109,7 +108,7 @@ export class SelectionComponent implements OnInit, OnDestroy {
     }
     const customerId = this.customerService.getCustomerId();
     if (!customerId) {
-      new Toasty({ text: 'Customer error. Try restarting the app and be online.' })
+      new Toasty({ text: localize('error_desc3') })
       .setToastDuration(ToastDuration.LONG)
       .show();
     }

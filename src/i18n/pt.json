@@ -221,6 +221,7 @@
   "error_headline": "Ups...",
   "error_desc": "Algo correu mal :(",
   "error_desc2": "Algo correu mal e de momento não podemos concretizar o teu pedido",
+  "error_desc3": "Connection issue. Restarting the app and be online.",
   "error_button_try_again": "Tenta novamente",
   "error_button_back": "Início",
   "link_playstore": "http://play.google.com/store/apps/details?id=com.softwarekstatt.hashtagbuddy",

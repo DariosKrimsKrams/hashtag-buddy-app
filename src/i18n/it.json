@@ -221,6 +221,7 @@
   "error_headline": "Ooops...",
   "error_desc": "Qualcosa è andato storto :(",
   "error_desc2": "Qualcosa è andato storto e l'app non ha potuto gestire la tua richiesta in modo corretto.",
+  "error_desc3": "Connection issue. Restarting the app and be online.",
   "error_button_try_again": "Riprova",
   "error_button_back": "Vai alla pagina principale",
   "link_playstore": "http://play.google.com/store/apps/details?id=com.softwarekstatt.hashtagbuddy",

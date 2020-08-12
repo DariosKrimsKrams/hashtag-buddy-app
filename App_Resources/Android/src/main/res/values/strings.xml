@@ -5,6 +5,7 @@
   <string name="link_playstore">"http://play.google.com/store/apps/details?id=com.softwarekstatt.hashtagbuddy"</string>
   <string name="error_button_back">"Go to main page"</string>
   <string name="error_button_try_again">"Try again"</string>
+  <string name="error_desc3">"Connection issue: Restarting the app and be online."</string>
   <string name="error_desc2">"Something went wrong and the app couldn\'t handle your request correctly."</string>
   <string name="error_desc">"Something went wrong :("</string>
   <string name="error_headline">"Ooops..."</string>

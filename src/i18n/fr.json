@@ -221,6 +221,7 @@
   "error_headline": "Oups...",
   "error_desc": "Quelque chose a mal tourné :(",
   "error_desc2": "Quelque chose a mal tourné et l'application n'a pas pu traiter correctement votre demande.",
+  "error_desc3": "Connection issue. Restarting the app and be online.",
   "error_button_try_again": "Essayer encore",
   "error_button_back": "Aller à la page principale",
   "link_playstore": "http://play.google.com/store/apps/details?id=com.softwarekstatt.hashtagbuddy",
