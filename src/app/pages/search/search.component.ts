@@ -9,7 +9,6 @@ import { UserService } from '~/app/storages/user.service';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { CustomerService } from '~/app/storages/customer.service';
 import { EvaluationRepository } from '~/app/services/repositories/evaluation-repository.service';
-import { SearchRequest } from '~/app/models/request/search-request';
 import { IHttpResponse } from '~/app/models/request/http-response';
 import { Toasty, ToastDuration } from 'nativescript-toasty';
 import { HashtagResult } from '~/app/models/hashtag-result';
@@ -21,6 +20,7 @@ import { PLANS } from '~/app/data/plans';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
 import { Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { SearchMultipleRequest } from '~/app/models/request/search-multiple-request';
 
 @Component({
   templateUrl: './search.component.html',
@@ -97,7 +97,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   public search(): void {
-    this.searchInput = this.searchInput.replace(/[^a-zA-Z ]/g, '').toLowerCase();
+    this.searchInput = this.searchInput.replace(/[^a-zA-Z,]/g, '').toLowerCase();
     if (!this.searchInput || this.searchInput === this.lastSearch) {
       return;
     }
@@ -114,12 +114,13 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.hashtagCategory = undefined;
     this.selectedHashtags = [];
     this.excludedHashtags = [];
-    const data: SearchRequest = {
+    const data: SearchMultipleRequest = {
       customerId,
-      keyword: this.searchInput
+      keywords: this.searchInput.split(','),
+      excludeHashtags: []
     };
     this.stopAnimatedPlaceholder();
-    this.evaluationRepository.search(data).subscribe((httpResponse: IHttpResponse) => {
+    this.evaluationRepository.searchMultiple(data).subscribe((httpResponse: IHttpResponse) => {
       const response = httpResponse as any;
       const hashtags = response.hashtags as HashtagResult[];
       if (hashtags.length === 0) {
