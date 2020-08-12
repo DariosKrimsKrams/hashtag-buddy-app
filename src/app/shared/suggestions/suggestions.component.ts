@@ -57,7 +57,7 @@ export class SuggestionsComponent implements OnInit, OnDestroy {
   }
 
   private doAutoSuggestion(): void {
-    if (this.selectedHashtags.length < 3) {
+    if (this.selectedHashtags.length < 5) {
       this.suggestedHashtags = undefined;
       return;
     }

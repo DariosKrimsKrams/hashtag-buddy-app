@@ -43,7 +43,9 @@
   <string name="settings_terms">"Geschäftsbedingungen"</string>
   <string name="settings_legal">"Datenschutzerklärung"</string>
   <string name="settings_about">"Über mich"</string>
-  <string name="selection_suggestions">"Empfehlungen (basierend auf meiner Auswahl)"</string>
+  <string name="suggestions_desc">"Wähle zuerst mind. 5 Hashtags aus, um noch Weitere basierend auf deiner Auswahl zu erhalten."</string>
+  <string name="selection_suggestions2">"basierend auf meiner Auswahl"</string>
+  <string name="selection_suggestions">"Empfehlungen"</string>
   <string name="search_buy">"Hashtags freischalten"</string>
   <string name="search_iap_headline">"Unlimited hashtags"</string>
   <string name="search_iap_desc">"Für %1$s wird der Hashtag Inspector dir alle Hashtag anzeigen. Für mich."</string>

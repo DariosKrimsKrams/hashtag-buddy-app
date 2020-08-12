@@ -43,7 +43,9 @@
   <string name="settings_terms">"Termos e Condições"</string>
   <string name="settings_legal">"Política de Privacidade"</string>
   <string name="settings_about">"Sobre"</string>
-  <string name="selection_suggestions">"Sugestões (com base na minha seleção)"</string>
+  <string name="suggestions_desc">"Escolha pelo menos 5 hashtags para obter ainda mais hashtags com base em sua seleção."</string>
+  <string name="selection_suggestions2">"com base na minha seleção"</string>
+  <string name="selection_suggestions">"Sugestões"</string>
   <string name="search_buy">"Desbloquear hashtags"</string>
   <string name="search_iap_headline">"Unlimited hashtags"</string>
   <string name="search_iap_desc">"Para %1$s o Hashtag Inspector já não vai ocultar hashtags. Todas as hashtags serão visíveis. Para sempre."</string>

@@ -1,60 +1,62 @@
 <StackLayout tkMainContent>
-    <GridLayout rows="{{isIOS ? '50' : '70'}},*" class="page">
-        <GridLayout id="header" [class.gradient]="currentScrollingY >= parallaxHeight" row="0" columns="60,*,60">
-            <StackLayout col="0" (tap)="redirectToHome()" horizontalAlignment="left" verticalAlignment="top" height="60" width="70">
-                <Image [src]="parallaxHeight > currentScrollingY ? '~/app/assets/images/icons/arrowLeft.png' : '~/app/assets/images/icons/arrowLeft_white.png'" height="20" width="20" class="m-t-{{isIOS ? '15' : '20'}} p-l-25 p-r-25 p-b-20 p-t-10"></Image>
-            </StackLayout>
-            <GridLayout col="1" horizontalAlignment="center" verticalAlignment="middle">
-                <Label [text]="'results_headline' | L"  class="text-center font-medium-l" class="title" [class.isBlack]="parallaxHeight > currentScrollingY"></Label>
-            </GridLayout>
-        </GridLayout>
-        <GridLayout row="1" tkMainContent>
-            <ScrollView #scrollView (scroll)="onScroll($event, scrollView, topView)" (tap)="dismissSoftKeyboard()">
-                <StackLayout>
-                    <GridLayout id="preview-image" [height]="parallaxHeight" #topView>
-                        <Image [src]="photo.image" stretch="aspectFill"></Image>
-                    </GridLayout>
-                    
-                    <StackLayout id="user-selection" class="p-l-5 p-r-5 p-b-10 p-t-10">
-                        <ProgressBar page="results" *ngIf="!photo.proMode"></ProgressBar>
-                        <ns-selection
-                            [selectedHashtags]="selectedHashtags"
-                            (onCopied)="copyToClipboard()"
-                            (onDeselect)="deselectHashtag($event)"
-                            (onHashtagToggled)="hashtagToggled($event)"
-                            [excludedHashtags]="excludedHashtags"
-                            ></ns-selection>
-                        <ns-insert-hashtags-form (hashtagAdded)="addHashtag($event)"></ns-insert-hashtags-form>
-                    </StackLayout>
-
-                    <StackLayout orientation="vertical" class="list-group-item m-b-10" *ngFor="let category of categories">
-                        <GridLayout columns="*,90" class="hash-title m-l-10 m-r-20" *ngIf="category.tags.length !== 0">
-                            <Label [text]="category.title | L" class="font-demi-bold" col="0"></Label>
-                            <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category)" *ngIf="!areAllHashtagSelected(category)"></Button>
-                            <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="deselectAll(category)" *ngIf="areAllHashtagSelected(category)"></Button>
-                        </GridLayout>
-                        <Label text="{{ 'results_recommented_amount' | L }} {{ getRecommendedAmount(category.title) }}" class="font-reg-xs m-l-10 m-r-5" *ngIf="getRecommendedAmount(category.title) !== 0 && category.tags.length !== 0"></Label>
-                        <WrapLayout class="m-t-5 m-l-5 p-b-20 tag-title" *ngIf="category.tags.length !== 0">
-                            <ns-hashtag *ngFor="let tag of category.tags"
-                            (onClick)="toggleHashtag(tag.title)"
-                            (onClickCensored)="clickCensoredHashtag()"
-                            [name]="'#' + tag.title"
-                            [isActive]="selectedHashtags.indexOf(tag.title) > -1"
-                            [censored]="tag.isCensored"
-                            ></ns-hashtag>
-                        </WrapLayout>
-                    </StackLayout>
-
-                    <ns-suggestions
-                        [selectedHashtags]="selectedHashtags"
-                        [hashtagsChanged]="hashtagsChanged"
-                        [excludedHashtags]="excludedHashtags"
-                        (onClickCensoredHashtag)="clickCensoredHashtag()"
-                        ></ns-suggestions>
-
-                </StackLayout>
-            </ScrollView>
-            <StackLayout class="top-shadow" isUserInteractionEnabled="false" *ngIf="currentScrollingY >= parallaxHeight - 3"></StackLayout>
-        </GridLayout>                         
+  <GridLayout rows="{{isIOS ? '50' : '70'}},*" class="page">
+    <GridLayout id="header" [class.gradient]="currentScrollingY >= parallaxHeight" row="0" columns="60,*,60">
+      <StackLayout col="0" (tap)="redirectToHome()" horizontalAlignment="left" verticalAlignment="top" height="60" width="70">
+        <Image [src]="parallaxHeight > currentScrollingY ? '~/app/assets/images/icons/arrowLeft.png' : '~/app/assets/images/icons/arrowLeft_white.png'" height="20" width="20" class="m-t-{{isIOS ? '15' : '20'}} p-l-25 p-r-25 p-b-20 p-t-10"></Image>
+      </StackLayout>
+      <GridLayout col="1" horizontalAlignment="center" verticalAlignment="middle">
+        <Label [text]="'results_headline' | L"  class="text-center font-medium-l" class="title" [class.isBlack]="parallaxHeight > currentScrollingY"></Label>
+      </GridLayout>
     </GridLayout>
+    <GridLayout row="1" tkMainContent>
+      <ScrollView #scrollView (scroll)="onScroll($event, scrollView, topView)" (tap)="dismissSoftKeyboard()">
+        <StackLayout>
+          <GridLayout id="preview-image" [height]="parallaxHeight" #topView>
+            <Image [src]="photo.image" stretch="aspectFill"></Image>
+          </GridLayout>
+            
+          <StackLayout id="user-selection" class="p-l-5 p-r-5 p-b-30 p-t-10">
+            <ProgressBar page="results" *ngIf="!photo.proMode"></ProgressBar>
+            <ns-selection
+              [selectedHashtags]="selectedHashtags"
+              (onCopied)="copyToClipboard()"
+              (onDeselect)="deselectHashtag($event)"
+              (onHashtagToggled)="hashtagToggled($event)"
+              [excludedHashtags]="excludedHashtags"
+              ></ns-selection>
+            <ns-insert-hashtags-form (hashtagAdded)="addHashtag($event)"></ns-insert-hashtags-form>
+          </StackLayout>
+
+          <StackLayout orientation="vertical" class="list-group-item" *ngFor="let category of categories">
+            <GridLayout columns="*,90" class="hash-title m-l-10 m-r-20" *ngIf="category.tags.length !== 0">
+              <Label [text]="category.title | L" class="font-demi-bold" col="0"></Label>
+              <Button col="1" [text]="'results_select_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="selectAll(category)" *ngIf="!areAllHashtagSelected(category)"></Button>
+              <Button col="1" [text]="'results_deselect_all' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal btn-selectall" (tap)="deselectAll(category)" *ngIf="areAllHashtagSelected(category)"></Button>
+            </GridLayout>
+            <Label text="{{ 'results_recommented_amount' | L }} {{ getRecommendedAmount(category.title) }}" class="font-reg-xs m-l-10 m-r-5" *ngIf="getRecommendedAmount(category.title) !== 0 && category.tags.length !== 0"></Label>
+            <WrapLayout class="m-t-5 m-l-5 p-b-20 tag-title" *ngIf="category.tags.length !== 0">
+            <ns-hashtag *ngFor="let tag of category.tags"
+              (onClick)="toggleHashtag(tag.title)"
+              (onClickCensored)="clickCensoredHashtag()"
+              [name]="'#' + tag.title"
+              [isActive]="selectedHashtags.indexOf(tag.title) > -1"
+              [censored]="tag.isCensored"
+              ></ns-hashtag>
+            </WrapLayout>
+          </StackLayout>
+
+          <StackLayout id="user-selection" class="p-l-5 p-b-30">
+            <ns-suggestions
+                [selectedHashtags]="selectedHashtags"
+                [hashtagsChanged]="hashtagsChanged"
+                [excludedHashtags]="excludedHashtags"
+                (onClickCensoredHashtag)="clickCensoredHashtag()"
+                ></ns-suggestions>
+          </StackLayout>
+            
+        </StackLayout>
+      </ScrollView>
+      <StackLayout class="top-shadow" isUserInteractionEnabled="false" *ngIf="currentScrollingY >= parallaxHeight - 3"></StackLayout>
+    </GridLayout>                         
+  </GridLayout>
 </StackLayout>

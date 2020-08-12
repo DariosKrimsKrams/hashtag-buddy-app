@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   @Output() public hashtagsChanged: EventEmitter<void> = new EventEmitter();
   @ViewChild('textField', { read: ElementRef, static: false }) public textField: ElementRef;
   @ViewChild('searchContainer', { read: ElementRef, static: false }) public searchContainer: ElementRef;
+  @ViewChild('introLabel', { read: ElementRef, static: false }) public introLabel: ElementRef;
   public headerHeight: number = 0;
   public headerTop: number = 0;
   public isIOS: boolean;
@@ -140,8 +141,11 @@ export class SearchComponent implements OnInit, OnDestroy {
       }
       this.setExcludedHashtags();
       this.searchContainer.nativeElement.animate({
-        translate: { x: 0, y: 10 },
+        translate: { x: 0, y: -30 },
         height: 50
+      });
+      this.introLabel.nativeElement.animate({
+        translate: { x: 0, y: -80 }
       });
     }, (_error: IHttpResponse) => {
       this.isError = true;

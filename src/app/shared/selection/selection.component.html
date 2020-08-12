@@ -18,3 +18,4 @@
   verticalAlignment="middle"
   *ngIf="selectedHashtags.length !== 0"
   ></Button>
+  <Label class="m-r-10 m-l-5 m-b-5" [text]="'results_no_hashtags_selected' | L" textWrap="true" *ngIf="selectedHashtags.length == 0"></Label>

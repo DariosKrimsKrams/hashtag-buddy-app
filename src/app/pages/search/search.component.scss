@@ -2,13 +2,12 @@ Label.intro {
   text-align: center;
   font-size: 16pt;
   color: #202020;
-  margin: 0 10pt;
+  transform: translate(0, 70pt);
 }
 .item {
 	border-radius: 8pt;
   padding: 2pt;
-  margin: 0 10pt 20pt 10pt;
-  transform: translate(0, 70pt);
+  transform: translate(0, 130pt);
 
   GridLayout {
 		border-radius: 7pt;

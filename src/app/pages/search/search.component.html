@@ -2,9 +2,9 @@
 
   <!-- CONTENT -->
   <ScrollView  [style.margin-top]="headerHeight + headerTop - (headerHeight / 2)" sdkExampleTitle sdkToggleNavButton>
-    <StackLayout [style.padding-top]="headerHeight / 2" class="p-l-20 p-r-20 m-t-25 p-b-40" (tap)="dismissSoftKeyboard()">
+    <StackLayout [style.padding-top]="headerHeight / 2" class="p-l-20 p-r-20 p-b-60" (tap)="dismissSoftKeyboard()">
 
-      <Label [text]="introText | L" class="font-reg-s m-b-10 m-l-20 m-r-20" class="intro" textWrap="true"></Label>
+      <Label #introLabel [text]="introText | L" class="font-reg-s m-b-10" class="intro" textWrap="true"></Label>
 
       <StackLayout class="item gradient" #searchContainer>
         <GridLayout row="0" verticalAlignment="top" columns="*,85">
@@ -44,7 +44,7 @@
 
       <Label [text]="'search_results' | L" class="font-demi-bold m-t-20 m-l-5 m-b-5" textWrap="true" *ngIf="!!hashtagCategory"></Label>
 
-      <WrapLayout class="p-b-10 tag-title" *ngIf="!!hashtagCategory">
+      <WrapLayout class="m-b-20 tag-title" *ngIf="!!hashtagCategory">
         <ns-hashtag
           *ngFor="let tag of hashtagCategory.tags; let j = index;"
           [name]="'#' + tag.title"
@@ -56,14 +56,15 @@
       </WrapLayout>
       
       <ns-suggestions
-          [selectedHashtags]="selectedHashtags"
-          [hashtagsChanged]="hashtagsChanged"
-          [excludedHashtags]="excludedHashtags"
-          (onClickCensoredHashtag)="clickCensoredHashtag()"
-          ></ns-suggestions>
+        *ngIf="!!hashtagCategory"
+        [selectedHashtags]="selectedHashtags"
+        [hashtagsChanged]="hashtagsChanged"
+        [excludedHashtags]="excludedHashtags"
+        (onClickCensoredHashtag)="clickCensoredHashtag()"
+        ></ns-suggestions>
 
       <Button [text]="'search_buy' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal m-t-10" verticalAlignment="middle" *ngIf="!!hashtagCategory && !hasUnlocked" (tap)="openUnlockModal()"></Button>
-      <WrapLayout class="m-t-100" horizontalAlignment="center" *ngIf="isLoading">
+      <WrapLayout class="m-t-150" horizontalAlignment="center" *ngIf="isLoading">
         <circularProgressBar size="small"></circularProgressBar>
       </WrapLayout>
       <Label [text]="'search_not_found' | L" class="font-reg-s m-l-30 m-r-30 m-t-30" textWrap="true" *ngIf="nothingFound"></Label>
