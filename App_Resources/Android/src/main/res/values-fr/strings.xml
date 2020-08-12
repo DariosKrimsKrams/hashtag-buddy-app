@@ -44,7 +44,7 @@
   <string name="settings_legal">"Politique de confidentialité"</string>
   <string name="settings_about">"A propos de moi"</string>
   <string name="suggestions_desc">"Choisissez au moins 5 hashtags pour obtenir encore plus de hashtags en fonction de votre sélection."</string>
-  <string name="selection_suggestions2">"en fonction de ma sélection"</string>
+  <string name="selection_suggestions2">"En fonction de ma sélection"</string>
   <string name="selection_suggestions">"Suggestions"</string>
   <string name="search_buy">"Déverrouiller les hashtags"</string>
   <string name="search_iap_headline">"Unlimited hashtags"</string>

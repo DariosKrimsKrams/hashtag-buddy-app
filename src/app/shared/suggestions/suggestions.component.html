@@ -1,6 +1,6 @@
 <Label [text]="'selection_suggestions' | L" class="font-demi-bold m-l-5 m-b-5" textWrap="true"></Label>
 <Label [text]="'selection_suggestions2' | L" class="font-reg-xs m-l-5 m-r-5" *ngIf="selectedHashtags.length !== 0"></Label>
-<WrapLayout class="m-t-5 m-b-20" *ngIf="!!suggestedHashtags">
+<WrapLayout class="m-t-5 m-b-20" *ngIf="suggestedHashtags.tags.length !== 0">
   <ns-hashtag
     *ngFor="let tag of suggestedHashtags.tags"
     (onClick)="toggleHashtag(tag.title)"

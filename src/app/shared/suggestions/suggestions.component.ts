@@ -21,7 +21,7 @@ export class SuggestionsComponent implements OnInit, OnDestroy {
   @Input() public excludedHashtags: string[];
   @Input() public hashtagsChanged: EventEmitter<void>;
   @Output() public onClickCensoredHashtag: EventEmitter<void> = new EventEmitter<void>();
-  public suggestedHashtags: HashtagCategory = undefined;
+  public suggestedHashtags: HashtagCategory = new HashtagCategory();
   private subscription: Subscription;
 
   constructor(
@@ -58,7 +58,7 @@ export class SuggestionsComponent implements OnInit, OnDestroy {
 
   private doAutoSuggestion(): void {
     if (this.selectedHashtags.length < 5) {
-      this.suggestedHashtags = undefined;
+      this.suggestedHashtags.tags = [];
       return;
     }
     const customerId = this.customerService.getCustomerId();
@@ -85,22 +85,20 @@ export class SuggestionsComponent implements OnInit, OnDestroy {
       return;
     }
     hashtags = hashtags.slice(0, 15);
-    this.suggestedHashtags = HashtagCategory.fromHashtagResult(hashtags, 'search');
+    const newSuggestions = HashtagCategory.fromHashtagResult(hashtags, 'search');
 
-    const selectedHashtags: Hashtag[] = [];
-    this.selectedHashtags.forEach(selectedHashtag => {
-      if (this.excludedHashtags.indexOf(selectedHashtag) === -1) {
-        const exist = this.suggestedHashtags.tags.filter(x => x.title === selectedHashtag).length[0] !== undefined;
-        if (!exist) {
-          selectedHashtags.push(new Hashtag(selectedHashtag));
-        }
+    newSuggestions.tags.forEach(tag => {
+      const exist = this.suggestedHashtags.tags.filter(x => x.title === tag.title)[0] !== undefined;
+      const limit = 20;
+      if (!exist && this.suggestedHashtags.tags.length < limit) {
+        this.suggestedHashtags.tags.push(tag);
       }
     });
+
     const hasPurchase = this.userService.hasPurchase();
     if (!hasPurchase) {
       this.suggestedHashtags.censorHashtags();
     }
-    this.suggestedHashtags.tags = selectedHashtags.concat(this.suggestedHashtags.tags);
   }
 
 }
