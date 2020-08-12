@@ -78,15 +78,31 @@ export class FaqComponent implements OnInit, OnDestroy {
   }
 
   public openModal(): void {
-    const entry = this.faqs[this.current];
-    if (entry.locked && !this.hasTipsTricksUnlocked) {
-      this.openUnlockModal(entry);
+    const faq = this.faqs[this.current];
+    if (this.isTextCensored(faq) && !this.hasTipsTricksUnlocked) {
+      this.openUnlockModal(faq);
     }
   }
 
   public openMenu(): void {
     const sideDrawer = <RadSideDrawer>app.getRootView();
     sideDrawer.showDrawer();
+  }
+
+  public getText(faq: TipsAndTricks): string {
+    if (faq.locked && !this.hasTipsTricksUnlocked) {
+      return faq.content.substring(0, 250) + '...';
+    } else if (!faq.locked && !this.hasTipsTricksUnlocked) {
+      const index = faq.content.indexOf('\n\n');
+      const additionalLength = 50;
+      return index !== -1 && faq.content.length >= index + additionalLength ? faq.content.substring(0, index + additionalLength) + '...' : faq.content;
+    } else {
+      return faq.content;
+    }
+  }
+
+  public isTextCensored(faq: TipsAndTricks): boolean {
+    return faq.locked || faq.content.indexOf('\n\n') !== -1;
   }
 
   private toogle(index: number, entry: TipsAndTricks): void {
@@ -116,7 +132,6 @@ export class FaqComponent implements OnInit, OnDestroy {
       const item = 'tipstricks';
       this.storeService.onBuyProduct.emit(item);
     };
-    const headline = localize('faq_buy_headline', faq.title);
     const desc = localize('faq_buy_desc', this.price);
     const buttonOk = localize('faq_buy2') + ' ' + this.price;
     const options: ModalDialogOptions = {
@@ -124,7 +139,7 @@ export class FaqComponent implements OnInit, OnDestroy {
       fullscreen: false,
       context: {
         icon: 'cart',
-        headline: headline,
+        headline: 'faq_buy_headline2',
         desc: desc,
         buttonOk: buttonOk,
         buttonCancel: 'btn_later',
