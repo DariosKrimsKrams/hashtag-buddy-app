@@ -242,6 +242,10 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.openUnlockModal();
   }
 
+  public hashtagToggled(tag: string): void {
+    this.hashtagsChanged.emit();
+  }
+
   private setTextAreaText(text: string): void {
     this.textField.nativeElement.text = text;
   }

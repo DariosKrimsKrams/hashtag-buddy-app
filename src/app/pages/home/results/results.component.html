@@ -14,17 +14,19 @@
                     <GridLayout id="preview-image" [height]="parallaxHeight" #topView>
                         <Image [src]="photo.image" stretch="aspectFill"></Image>
                     </GridLayout>
+                    
                     <StackLayout id="user-selection" class="p-l-5 p-r-5 p-b-10 p-t-10">
                         <ProgressBar page="results" *ngIf="!photo.proMode"></ProgressBar>
                         <ns-selection
                             [selectedHashtags]="selectedHashtags"
                             (onCopied)="copyToClipboard()"
                             (onDeselect)="deselectHashtag($event)"
-                            [hashtagsChanged]="hashtagsChanged"
+                            (onHashtagToggled)="hashtagToggled($event)"
                             [excludedHashtags]="excludedHashtags"
                             ></ns-selection>
                         <ns-insert-hashtags-form (hashtagAdded)="addHashtag($event)"></ns-insert-hashtags-form>
                     </StackLayout>
+
                     <StackLayout orientation="vertical" class="list-group-item m-b-10" *ngFor="let category of categories">
                         <GridLayout columns="*,90" class="hash-title m-l-10 m-r-20" *ngIf="category.tags.length !== 0">
                             <Label [text]="category.title | L" class="font-demi-bold" col="0"></Label>
@@ -42,6 +44,14 @@
                             ></ns-hashtag>
                         </WrapLayout>
                     </StackLayout>
+
+                    <ns-suggestions
+                        [selectedHashtags]="selectedHashtags"
+                        [hashtagsChanged]="hashtagsChanged"
+                        [excludedHashtags]="excludedHashtags"
+                        (onClickCensoredHashtag)="clickCensoredHashtag()"
+                        ></ns-suggestions>
+
                 </StackLayout>
             </ScrollView>
             <StackLayout class="top-shadow" isUserInteractionEnabled="false" *ngIf="currentScrollingY >= parallaxHeight - 3"></StackLayout>

@@ -13,20 +13,8 @@
     ></ns-hashtag>
 </WrapLayout>
 <Button [text]="'results_copy_selected' | L"
-    (tap)="copyToClipboard()"
-    class="btn btn-rounded-lg btn-outline border-color-normal color-normal"
-    verticalAlignment="middle"
-    *ngIf="selectedHashtags.length !== 0"
-    ></Button>
-<Label [text]="'selection_suggestions' | L" class="font-demi-bold m-t-10 m-l-5 m-b-5" textWrap="true" *ngIf="!!suggestedHashtags && suggestedHashtags.tags.length > 0"></Label>
-<WrapLayout class="m-t-5" *ngIf="!!suggestedHashtags">
-  <ns-hashtag
-    *ngFor="let tag of suggestedHashtags.tags"
-    (onClick)="toggleHashtag(tag.title)"
-    (onClickCensored)="clickCensoredHashtag()"
-    [name]="'#' + tag.title"
-    [isActive]="selectedHashtags.indexOf(tag.title) > -1"
-    [censored]="tag.isCensored"
-    ></ns-hashtag>
-</WrapLayout>
-<Label class="m-r-10 m-l-5 m-b-5" text="{{ 'results_no_hashtags_selected' | L }}" textWrap="true" *ngIf="selectedHashtags.length == 0"></Label>
+  (tap)="copyToClipboard()"
+  class="btn btn-rounded-lg btn-outline border-color-normal color-normal"
+  verticalAlignment="middle"
+  *ngIf="selectedHashtags.length !== 0"
+  ></Button>

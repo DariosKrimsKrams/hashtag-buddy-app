@@ -36,6 +36,7 @@
         [selectedHashtags]="selectedHashtags"
         (onCopied)="copyToClipboard()"
         (onDeselect)="deselectHashtag($event)"
+        (onHashtagToggled)="hashtagToggled($event)"
         (onClickCensoredHashtag)="clickCensoredHashtag()"
         [hashtagsChanged]="hashtagsChanged"
         [excludedHashtags]="excludedHashtags"
@@ -43,7 +44,7 @@
 
       <Label [text]="'search_results' | L" class="font-demi-bold m-t-20 m-l-5 m-b-5" textWrap="true" *ngIf="!!hashtagCategory"></Label>
 
-      <WrapLayout class="p-b-20 tag-title" *ngIf="!!hashtagCategory">
+      <WrapLayout class="p-b-10 tag-title" *ngIf="!!hashtagCategory">
         <ns-hashtag
           *ngFor="let tag of hashtagCategory.tags; let j = index;"
           [name]="'#' + tag.title"
@@ -53,8 +54,15 @@
           (onClickCensored)="clickCensoredHashtag()"
           ></ns-hashtag>
       </WrapLayout>
+      
+      <ns-suggestions
+          [selectedHashtags]="selectedHashtags"
+          [hashtagsChanged]="hashtagsChanged"
+          [excludedHashtags]="excludedHashtags"
+          (onClickCensoredHashtag)="clickCensoredHashtag()"
+          ></ns-suggestions>
 
-      <Button [text]="'search_buy' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal" verticalAlignment="middle" *ngIf="!!hashtagCategory && !hasUnlocked" (tap)="openUnlockModal()"></Button>
+      <Button [text]="'search_buy' | L" class="btn btn-rounded-lg btn-outline border-color-normal color-normal m-t-10" verticalAlignment="middle" *ngIf="!!hashtagCategory && !hasUnlocked" (tap)="openUnlockModal()"></Button>
       <WrapLayout class="m-t-100" horizontalAlignment="center" *ngIf="isLoading">
         <circularProgressBar size="small"></circularProgressBar>
       </WrapLayout>

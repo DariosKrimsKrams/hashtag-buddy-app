@@ -198,6 +198,10 @@ export class ResultsComponent implements OnInit {
         .show();
   }
 
+  public hashtagToggled(tag: string): void {
+    this.hashtagsChanged.emit();
+  }
+
   private selectHashtag(title: string): void {
     this.selectedHashtags.push(title);
     this.hasAnyInteraction = true;
