@@ -204,7 +204,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         headline: 'search_iap_headline',
         desc: desc,
         buttonOk: buttonOk,
-        buttonCancel: 'faq_buy_cancel',
+        buttonCancel: 'btn_later',
         okFunc: okFunc
       }
     };

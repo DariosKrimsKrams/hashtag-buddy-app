@@ -13,7 +13,7 @@
   <string name="offer_headline">"Offre spéciale"</string>
   <string name="rate_yes">"Évaluez maintenant"</string>
   <string name="rate_no">"Jamais"</string>
-  <string name="rate_later">"Plus tard"</string>
+  <string name="btn_later">"Plus tard"</string>
   <string name="rate_desc">"Vous êtes une star du Hashtag ! Donnez un avis à Hashtag Buddy et recevez 3 chargements de photos et Hashtag Inspector Unlimited ! :)"</string>
   <string name="rate_stars">"☆ ☆ ☆ ☆ ☆"</string>
   <string name="rate_headline">"Viser les étoiles"</string>
@@ -221,7 +221,7 @@
   <string name="history_no_content">"Vous n\'avez pas encore chargé de photos."</string>
   <string name="history_title">"Historique"</string>
   <string name="home_upload">"Choisissez une photo"</string>
-  <string name="home_desc_4">"Téléchargez une photo pour découvrir les hashtags Instagram correspondants:"</string>
+  <string name="home_desc_4">"Devenez Instagram famous en utilisant les hashtags parfaits: obtenez plus de likes et d\'abonnés pour vos photos!"</string>
   <string name="home_desc_3">"Téléchargez une photo pour découvrir les hashtags Instagram correspondants:"</string>
   <string name="home_desc_2">"#hashtags pour vos photos"</string>
   <string name="home_desc_1">"Découvrez le meilleur Instagram"</string>

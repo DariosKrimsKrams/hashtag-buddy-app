@@ -173,7 +173,7 @@ export class AppComponent implements OnInit, OnDestroy {
         headline2: 'rate_stars',
         desc: 'rate_desc',
         buttonOk: 'rate_yes',
-        buttonCancel: 'rate_later',
+        buttonCancel: 'btn_later',
         okFunc: okFunc
       }
     };
