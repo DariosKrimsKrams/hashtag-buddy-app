@@ -13,6 +13,7 @@ import { openUrl } from 'tns-core-modules/utils/utils';
 import { Subscription } from 'rxjs';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { isIOS, isAndroid } from 'tns-core-modules/platform';
+import { environment } from '../environments/environment';
 // IAP
 import * as purchase from 'nativescript-purchase';
 import { Product } from 'nativescript-purchase/product';
@@ -165,13 +166,14 @@ export class AppComponent implements OnInit, OnDestroy {
       const link = isAndroid ? localize('link_playstore') : localize('link_appstore');
       openUrl(link);
     };
-    const options: ModalDialogOptions = {
+      const desc = localize('rate_desc', environment.freePhotosRateApp.toString());
+      const options: ModalDialogOptions = {
       viewContainerRef: this.viewContainerRef,
       fullscreen: false,
       context: {
         headline: 'rate_headline',
         headline2: 'rate_stars',
-        desc: 'rate_desc',
+        desc: desc,
         buttonOk: 'rate_yes',
         buttonCancel: 'btn_later',
         okFunc: okFunc

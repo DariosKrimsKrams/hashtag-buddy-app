@@ -213,7 +213,7 @@
   "share": "Olá, Eu gostaria de recomendar esta aplicação: Ela ajuda-te a encontrar as melhores e as mais relevante hashtags do Instagram para as tuas fotos. Experimenta! :)",
   "rate_headline": "Alcança as Estrelas",
   "rate_stars": "☆ ☆ ☆ ☆ ☆",
-  "rate_desc": "És uma Estrela das Hashtags! Dê uma avaliação do Hashtag Buddy e receba 3 envios de fotos e Hashtag Inspector Unlimited :)",
+  "rate_desc": "És uma Estrela das Hashtags! Dê uma avaliação do Hashtag Buddy e receba %s envios de fotos :)",
   "btn_later": "Mais tarde",
   "rate_no": "Nunca",
   "rate_yes": "Avaliar agora!",

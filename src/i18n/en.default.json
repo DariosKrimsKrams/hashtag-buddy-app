@@ -213,7 +213,7 @@
   "share": "Hey, I would like to recommend this app: It helps to find the most relevant Instagram hashtags for photos. Let it help you too :)",
   "rate_headline": "Reach for the Stars",
   "rate_stars": "☆ ☆ ☆ ☆ ☆",
-  "rate_desc": "You're a Hashtag Star! Give Hashtag Buddy a review and receive 3 uncensored photo uploads and Hashtag Inspector Unlimited :)",
+  "rate_desc": "You're a Hashtag Star! Give Hashtag Buddy a review to receive %s uncensored photo uploads :)",
   "btn_later": "Later",
   "rate_no": "Never",
   "rate_yes": "Rate now",
