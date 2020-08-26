@@ -72,7 +72,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.purchaseSuccessfulSub = this.storeService.onPurchasedSuccessful.subscribe(() => {
       this.hasUnlocked = true;
     });
-    this.placeholder = ['Summer,Girl', 'Puppy,Dog', 'Travel', 'Vegan,Burger', 'Cat,White', 'Pizza', 'Couple,Love', 'Paris', 'Fitness', 'Beer,Wine', 'Fitness'];
+    this.placeholder = ['Girl', 'Travel', 'Puppy,Dog', 'Vegan,Burger', 'Cat,White', 'Couple,Love', 'Pizza', 'Paris', 'Fitness', 'Beer,Wine', 'Fitness'];
     this.startAnimatedPlaceholder();
   }
 
@@ -146,8 +146,11 @@ export class SearchComponent implements OnInit, OnDestroy {
         height: 50
       });
       this.introLabel.nativeElement.animate({
-        translate: { x: 0, y: -80 }
+        translate: { x: 0, y: -70 }
       });
+      this.introLabel.nativeElement.text = '                                         '
+        + '                                                                          '
+        + '                                                                          ';
     }, (_error: IHttpResponse) => {
       this.isError = true;
       this.isLoading = false;

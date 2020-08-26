@@ -1,7 +1,7 @@
 <GridLayout tkMainContent #mainContainer>
     
     <!-- CONTENT -->
-    <GridLayout rows="120,*,130" class="Home">
+    <GridLayout [rows]="!isIOS ? '120,*,130' : '150,*'" class="Home">
         <StackLayout row="1" verticalAlignment="middle">
             <Label [text]="'home_desc_4' | L" class="font-medium-small intro" textWrap="true"></Label>
             <Button class="btn btn-rounded-lg btn-active font-demi-bold gradient home-button" color="#fff" text="{{ 'home_upload' | L }}" (tap)="clickSelectPhoto()"></Button>

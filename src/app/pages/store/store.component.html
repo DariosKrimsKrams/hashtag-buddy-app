@@ -3,7 +3,7 @@
     <!-- CONTENT -->
     <ScrollView [style.margin-top]="headerHeight + headerTop - (headerHeight / 2)" sdkExampleTitle sdkToggleNavButton>
         <StackLayout [style.padding-top]="headerHeight / 2" class="p-l-40 p-r-40 p-b-30">
-            <Label textWrap="true" [text]="'store_intro' | L" class="p-b-10"></Label>
+            <Label textWrap="true" [text]="'store_intro' | L" class="p-b-10 p-t-10"></Label>
 
             <Label [text]="'store_buy_photo' | L" class="headline p-t-10 p-b-10" textWrap="true"></Label>
             <StackLayout *ngFor="let plan of plans; let i = index;">
