@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone, ViewContainerRef, OnDestroy } from '@angular/core';
-import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from 'nativescript-ui-sidedrawer';
+// import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from 'nativescript-ui-sidedrawer';
 import { PhotosCountService } from '../storages/photos-count.service';
 import { CustomerService, CustomerCreateStatus } from '../storages/customer.service';
 import { UserService } from '../storages/user.service';
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public selected: boolean[] = [];
   public plans: Plan[] = PLANS;
 
-  private _sideDrawerTransition: DrawerTransitionBase;
+  // private _sideDrawerTransition: DrawerTransitionBase;
   private createUserFailedSubscription: Subscription;
   private openFeedbackModalSubscription: Subscription;
   private openPageSubscription: Subscription;
@@ -54,7 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.menus.splice(1, 0, 'history');
     }
 
-    this._sideDrawerTransition = new SlideInOnTopTransition();
+    // this._sideDrawerTransition = new SlideInOnTopTransition();
     this.selected[0] = true;
     this.createUserFailedSubscription = this.customerService.createUserIdIfNotExist().subscribe(status => {
       if (status === CustomerCreateStatus.Failed) {
@@ -203,9 +203,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.userService.saveRateAppStatus('later');
   }
 
-  public get sideDrawerTransition(): DrawerTransitionBase {
-    return this._sideDrawerTransition;
-  }
+  // public get sideDrawerTransition(): DrawerTransitionBase {
+  //   return this._sideDrawerTransition;
+  // }
 
   public openPage(index: number): void {
     this.selected = [];
@@ -225,8 +225,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public closeMenu(): void {
-    const sideDrawer = <RadSideDrawer>Application.getRootView();
-    sideDrawer.closeDrawer();
+    // const sideDrawer = <RadSideDrawer>Application.getRootView();
+    // sideDrawer.closeDrawer();
   }
 
   /************* SHOP LOGIC IAP **************/

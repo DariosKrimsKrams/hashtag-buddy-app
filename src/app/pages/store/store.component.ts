@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PLANS } from '~/app/data/plans';
-import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+// import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { Plan } from '~/app/models/plan';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { StoreService } from '~/app/storages/store.service';
@@ -34,8 +34,8 @@ export class StoreComponent implements OnInit {
   }
 
   public openMenu(): void {
-    const sideDrawer = <RadSideDrawer>Application.getRootView();
-    sideDrawer.showDrawer();
+    // const sideDrawer = <RadSideDrawer>Application.getRootView();
+    // sideDrawer.showDrawer();
   }
 
   public buyProduct(plan: Plan): void {

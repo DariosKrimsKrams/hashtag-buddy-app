@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
-import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+// import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { SelectPhotoService } from '../../services/business-logic/select-photo.service';
 import { UserService } from '~/app/storages/user.service';
 import { Photo } from '~/app/models/photo';
@@ -132,9 +132,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   public openMenu(): void {
     // timeout needed or sidemenu will be visible for one frame before fading in
     setTimeout(() => {
-      const sideDrawer = <RadSideDrawer>Application.getRootView();
-      sideDrawer.showDrawer();
-      sideDrawer.drawerContentSize = 250;
+      // const sideDrawer = <RadSideDrawer>Application.getRootView();
+      // sideDrawer.showDrawer();
+      // sideDrawer.drawerContentSize = 250;
     }, 10);
     this.backTriggeredForExit = false;
   }

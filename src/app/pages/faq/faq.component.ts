@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewContainerRef, ViewChild, ElementRef, OnDestroy } from '@angular/core';
-import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+// import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { TipsAndTricks } from '~/app/models/tips-and-tricks';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
@@ -82,8 +82,8 @@ export class FaqComponent implements OnInit, OnDestroy {
   }
 
   public openMenu(): void {
-    const sideDrawer = <RadSideDrawer>Application.getRootView();
-    sideDrawer.showDrawer();
+    // const sideDrawer = <RadSideDrawer>Application.getRootView();
+    // sideDrawer.showDrawer();
   }
 
   public getText(faq: TipsAndTricks): string {

@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, ViewContainerRef, OnDestroy, ViewChild, ElementRef } from '@angular/core';
-import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+// import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { UserService } from '~/app/storages/user.service';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { CustomerService } from '~/app/storages/customer.service';
@@ -80,8 +80,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   public openMenu(): void {
-    const sideDrawer = <RadSideDrawer>Application.getRootView();
-    sideDrawer.showDrawer();
+    // const sideDrawer = <RadSideDrawer>Application.getRootView();
+    // sideDrawer.showDrawer();
   }
 
   public dismissSoftKeyboard(): void {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+// import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { UserService } from '~/app/storages/user.service';
 import { isIOS, Application, Page } from '@nativescript/core';
@@ -28,8 +28,8 @@ export class HistoryoverviewComponent implements OnInit {
   }
 
   public openMenu(): void {
-    const sideDrawer = <RadSideDrawer>Application.getRootView();
-    sideDrawer.showDrawer();
+    // const sideDrawer = <RadSideDrawer>Application.getRootView();
+    // sideDrawer.showDrawer();
   }
 
   private calcHeader(): void {
