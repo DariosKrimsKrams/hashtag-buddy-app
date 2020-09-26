@@ -1,13 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { Photo } from '~/app/models/photo';
 import { UserService } from '../../../storages/user.service';
-import { RouterExtensions } from 'nativescript-angular/router';
 import { Hashtag } from '~/app/models/hashtag';
 import { Subscription } from 'rxjs';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
-import { localize } from 'nativescript-localize/angular';
-import { isIOS } from 'tns-core-modules/platform';
-import { ScrollView } from 'tns-core-modules/ui/scroll-view/scroll-view';
+import { RouterExtensions } from '@nativescript/angular';
+import { isIOS, ScrollView } from '@nativescript/core';
+import { localize } from '@nativescript/localize';
 
 @Component({
   selector: 'ns-history',

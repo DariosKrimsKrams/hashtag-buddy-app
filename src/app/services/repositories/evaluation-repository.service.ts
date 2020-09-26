@@ -4,7 +4,7 @@ import { Observable, Subscriber } from 'rxjs';
 import * as bgHttp from 'nativescript-background-http';
 import { IHttpResponse } from '../../models/request/http-response';
 import { SearchRequest } from '~/app/models/request/search-request';
-import { request } from 'tns-core-modules/http';
+import { Http } from '@nativescript/core';
 import { SearchMultipleRequest } from '~/app/models/request/search-multiple-request';
 
 @Injectable({
@@ -42,7 +42,7 @@ export class EvaluationRepository {
 
   private doRequest(url: string, data: SearchRequest|SearchMultipleRequest): Observable<IHttpResponse> {
     return new Observable<IHttpResponse>(observer => {
-      request({
+      Http.request({
         url,
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

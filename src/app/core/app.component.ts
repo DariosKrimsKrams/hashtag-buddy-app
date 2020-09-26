@@ -1,19 +1,16 @@
 import { Component, OnInit, NgZone, ViewContainerRef, OnDestroy } from '@angular/core';
-import * as app from 'tns-core-modules/application';
-import { RouterExtensions } from 'nativescript-angular/router';
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from 'nativescript-ui-sidedrawer';
 import { PhotosCountService } from '../storages/photos-count.service';
 import { CustomerService, CustomerCreateStatus } from '../storages/customer.service';
-import { localize } from 'nativescript-localize/angular';
-import * as application from 'tns-core-modules/application';
 import { UserService } from '../storages/user.service';
-import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '../shared/modal/modal.component';
-import { openUrl } from 'tns-core-modules/utils/utils';
 import { Subscription } from 'rxjs';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
-import { isIOS, isAndroid } from 'tns-core-modules/platform';
 import { environment } from '../environments/environment';
+import { ModalDialogOptions, ModalDialogService, RouterExtensions } from '@nativescript/angular';
+import { isAndroid, isIOS, Application, AndroidApplication } from '@nativescript/core';
+import { localize } from '@nativescript/localize';
+import { openUrl } from '@nativescript/core/utils';
 // IAP
 import * as purchase from 'nativescript-purchase';
 import { Product } from 'nativescript-purchase/product';
@@ -84,7 +81,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     if (isAndroid) {
-      application.android.on(application.AndroidApplication.activityBackPressedEvent, this.handleBackButtonPressed, this);
+      Application.android.on(AndroidApplication.activityBackPressedEvent, this.handleBackButtonPressed, this);
     }
 
     this.openPageSubscription = this.userService.openPage.subscribe((page: string) => {
@@ -126,7 +123,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.buyProductSubscription.unsubscribe();
     }
     if (isAndroid) {
-      application.android.off(application.AndroidApplication.activityBackPressedEvent, this.handleBackButtonPressed, this);
+      Application.android.off(AndroidApplication.activityBackPressedEvent, this.handleBackButtonPressed, this);
     }
   }
 
@@ -157,6 +154,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private showRateAppModal(): void {
     const okFunc = () => {
       this.userService.saveRateAppStatus('rated');
+      this.userService.unlockHashtagInspector();
       this.userService.appRatedTriggered.emit();
       const text = localize('feedback_successful_headline');
       new Toasty({ text: text })
@@ -227,7 +225,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public closeMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
+    const sideDrawer = <RadSideDrawer>Application.getRootView();
     sideDrawer.closeDrawer();
   }
 
@@ -396,8 +394,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.savePurchase(transaction);
     const plan = this.getPlanById(transaction.productIdentifier);
     this.ngZone.run(() => {
-      const title = localize(plan.title);
-      this.showRestorePopup(title);
+      this.showRestorePopup(plan.title);
     });
   }
 

@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Page } from 'tns-core-modules/ui/page';
 import { UserService } from '~/app/storages/user.service';
 import { Subscription } from 'rxjs';
-import { RouterExtensions } from 'nativescript-angular/router';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
-import * as frame from 'tns-core-modules/ui/frame';
 import { environment } from '../../../environments/environment';
+import { RouterExtensions } from '@nativescript/angular';
+import { Page } from '@nativescript/core';
 
 @Component({
   templateUrl: './loading-hashtags.component.html',
@@ -45,7 +44,7 @@ export class LoadingHashtagsComponent implements OnInit, OnDestroy {
 
     this.animateDots();
     this.animateTips();
-    disableIosSwipe(this.page, frame);
+    disableIosSwipe(this.page);
 
     this.timeoutId = setTimeout.bind(this)(() => {
       this.uploadFailed();

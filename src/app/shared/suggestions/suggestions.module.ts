@@ -1,6 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
-import { NativeScriptCommonModule } from 'nativescript-angular/common';
+import { NativeScriptLocalizeModule } from '@nativescript/localize/angular';
+import { NativeScriptCommonModule } from '@nativescript/angular';
 import { SuggestionsComponent } from './suggestions.component';
 import { HashtagModule } from '../hashtag/hashtag.module';
 

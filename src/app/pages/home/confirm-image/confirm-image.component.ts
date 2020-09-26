@@ -1,14 +1,12 @@
 import { Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, NgZone } from '@angular/core';
-import { RouterExtensions } from 'nativescript-angular/router';
 import { DeviceService } from '~/app/services/device-photos.service';
-import { ImageAsset } from 'tns-core-modules/image-asset/image-asset';
-import { Page } from 'tns-core-modules/ui/page/page';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
-import { localize } from 'nativescript-localize/angular';
 import { SelectPhotoService } from '~/app/services/business-logic/select-photo.service';
 import { UserService } from '~/app/storages/user.service';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
-import * as frame from 'tns-core-modules/ui/frame';
+import { ImageAsset, Page } from '@nativescript/core';
+import { RouterExtensions } from '@nativescript/angular';
+import { localize } from '@nativescript/localize';
 
 @Component({
   selector: 'ns-confirm-image',
@@ -33,7 +31,7 @@ export class ConfirmImageComponent implements OnInit {
   ) {
     this.cd.detach();
     this.page.actionBarHidden = true;
-    disableIosSwipe(this.page, frame);
+    disableIosSwipe(this.page);
   }
 
   public ngOnInit(): void {

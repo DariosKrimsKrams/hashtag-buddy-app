@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { request } from 'tns-core-modules/http';
 import { AppFeedback } from '~/app/models/app-feedback';
 import { environment } from '../../environments/environment';
 import { ResultFeedbackRequest } from '../../models/request/result-feedback-request';
 import { Observable } from 'rxjs/internal/Observable';
+import { Http } from '@nativescript/core';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class FeedbackRepository {
 
   public sendAppFeedback(feedback: AppFeedback): Observable<any> {
     return new Observable<any>(observer => {
-      request({
+      Http.request({
         url: this.appFeedbackUrl,
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -35,7 +35,7 @@ export class FeedbackRepository {
   }
 
   public sendResultFeedback(feedback: ResultFeedbackRequest): void {
-    request({
+    Http.request({
       url: this.resultFeedbackUrl,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, ViewChild, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { Color } from 'tns-core-modules/color';
+import { Color } from '@nativescript/core';
 import { Subscription } from 'rxjs';
 
 @Component({

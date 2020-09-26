@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
-import { isIOS } from 'tns-core-modules/platform';
+import { ModalDialogParams } from '@nativescript/angular';
+import { isIOS } from '@nativescript/core';
 
 @Component({
   templateUrl: './modal.component.html',

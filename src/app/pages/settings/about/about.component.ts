@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterExtensions } from 'nativescript-angular/router';
-import { Page } from 'tns-core-modules/ui/page';
 import { CustomerService } from '~/app/storages/customer.service';
-import { isIOS } from 'tns-core-modules/platform';
+import { RouterExtensions } from '@nativescript/angular';
+import { isIOS, Page } from '@nativescript/core';
 
 @Component({
   templateUrl: './about.component.html',

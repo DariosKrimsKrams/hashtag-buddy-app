@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { PhotosCountService } from '../../storages/photos-count.service';
 import { Subscription } from 'rxjs';
-import { localize } from 'nativescript-localize/angular';
+import { localize } from '@nativescript/localize';
 import { UserService } from '~/app/storages/user.service';
 
 @Component({

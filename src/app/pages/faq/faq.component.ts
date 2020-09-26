@@ -1,18 +1,15 @@
 import { Component, OnInit, ViewContainerRef, ViewChild, ElementRef, OnDestroy } from '@angular/core';
-import { Page } from 'tns-core-modules/ui/page';
-import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { TipsAndTricks } from '~/app/models/tips-and-tricks';
-import { localize } from 'nativescript-localize/angular';
-import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
-import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
 import { UserService } from '~/app/storages/user.service';
 import { Subscription } from 'rxjs';
 import { StoreService } from '~/app/storages/store.service';
 import { PLANS } from '~/app/data/plans';
-import { isIOS } from 'tns-core-modules/platform';
+import { Page, isIOS, Application } from '@nativescript/core';
+import { ModalDialogOptions, ModalDialogService } from '@nativescript/angular';
+import { localize } from '@nativescript/localize';
 
 @Component({
   templateUrl: './faq.component.html',
@@ -40,7 +37,7 @@ export class FaqComponent implements OnInit, OnDestroy {
   ) {
     this.page.actionBarHidden = true;
     this.isIOS = isIOS;
-    disableIosSwipe(this.page, frame);
+    disableIosSwipe(this.page);
     this.calcHeader();
   }
 
@@ -85,7 +82,7 @@ export class FaqComponent implements OnInit, OnDestroy {
   }
 
   public openMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
+    const sideDrawer = <RadSideDrawer>Application.getRootView();
     sideDrawer.showDrawer();
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input, OnDestroy } from '@angular/core';
-import { localize } from 'nativescript-localize/angular';
+import { localize } from '@nativescript/localize';
 import { UserService } from '~/app/storages/user.service';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
 import { EvaluationRepository } from '~/app/services/repositories/evaluation-repository.service';

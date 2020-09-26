@@ -1,15 +1,13 @@
-import * as application from 'tns-core-modules/application';
-import * as platform from 'tns-core-modules/platform';
-import { Page } from 'tns-core-modules/ui/page';
+import { Application, Page, Device, Frame, isIOS } from '@nativescript/core';
 
 declare var android: any;
 
 export function setStatusBarColors(): void {
-    if (!!application.android) {
-        application.android.on('activityStarted', function(): void {
-            if (application.android && platform.device.sdkVersion >= '21') {
+    if (!!Application.android) {
+        Application.android.on('activityStarted', function(): void {
+            if (Application.android && Device.sdkVersion >= '21') {
                 const View = android.view.View;
-                const window = application.android.startActivity.getWindow();
+                const window = Application.android.startActivity.getWindow();
                 window.setStatusBarColor(0x000000);
 
                 const decorView = window.getDecorView();
@@ -26,9 +24,9 @@ export function setStatusBarColors(): void {
     }
 }
 
-export function disableIosSwipe(page: Page, frame: any): void {
-    if (!!application.ios) {
-        const controller = frame.Frame.topmost().ios.controller;
+export function disableIosSwipe(page: Page): void {
+    if (isIOS) {
+        const controller = Frame.topmost().ios.controller;
         const navigationItem = controller.visibleViewController.navigationItem;
         navigationItem.setHidesBackButtonAnimated(true, false);
         page.enableSwipeBackNavigation = false;

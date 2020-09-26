@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Page } from 'tns-core-modules/ui/page';
-import { RouterExtensions } from 'nativescript-angular/router';
-import { isIOS } from 'tns-core-modules/platform';
+import { RouterExtensions } from '@nativescript/angular';
+import { Page } from '@nativescript/core';
+import { isIOS } from '@nativescript/core';
 
 @Component({
   templateUrl: './error.component.html',

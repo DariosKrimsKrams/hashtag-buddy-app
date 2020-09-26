@@ -1,20 +1,15 @@
 import { Component, OnInit, ViewChild, ElementRef, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
-import { Page } from 'tns-core-modules/ui/page';
-import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
-import { screen } from 'tns-core-modules/platform';
 import { SelectPhotoService } from '../../services/business-logic/select-photo.service';
 import { UserService } from '~/app/storages/user.service';
 import { Photo } from '~/app/models/photo';
 import { Subscription } from 'rxjs';
 import { exit } from 'nativescript-exit';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
-import { localize } from 'nativescript-localize/angular';
-// import * as frame from 'tns-core-modules/ui/frame';
-// import { disableIosSwipe } from '~/app/shared/status-bar-util';
-import { RouterExtensions } from 'nativescript-angular/router';
-import { isIOS, isAndroid } from 'tns-core-modules/platform';
 const permissions = require('nativescript-permissions');
+import { RouterExtensions } from '@nativescript/angular';
+import { isAndroid, isIOS, Application, Page, Screen } from '@nativescript/core';
+import { localize } from '@nativescript/localize';
 
 @Component({
   moduleId: module.id,
@@ -55,11 +50,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.isIOS = isIOS;
     this.calcHeader();
     // leads to Crash in NativeScript 6.2 etc.
-    // disableIosSwipe(this.page, frame);
+    // disableIosSwipe(this.page);
   }
 
   public ngOnInit(): void {
-    this.historyHeight = screen.mainScreen.heightDIPs - 90;
+    this.historyHeight = Screen.mainScreen.heightDIPs - 90;
     this.historyDefaultTransform = this.historyHeight - 140;
     this.headerDefaultTransform = -50;
 
@@ -137,7 +132,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public openMenu(): void {
     // timeout needed or sidemenu will be visible for one frame before fading in
     setTimeout(() => {
-      const sideDrawer = <RadSideDrawer>app.getRootView();
+      const sideDrawer = <RadSideDrawer>Application.getRootView();
       sideDrawer.showDrawer();
       sideDrawer.drawerContentSize = 250;
     }, 10);

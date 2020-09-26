@@ -1,20 +1,14 @@
 import { Component, OnInit, ViewContainerRef, EventEmitter, Output } from '@angular/core';
-import { ScrollView, ScrollEventData } from 'tns-core-modules/ui/scroll-view';
-import { RouterExtensions } from 'nativescript-angular/router';
 import { HashtagCategory } from '~/app/models/hashtag-category';
-import { View } from 'tns-core-modules/ui/core/view';
-import { Page } from 'tns-core-modules/ui/page';
 import { ActivatedRoute } from '@angular/router';
 import { Hashtag } from '~/app/models/hashtag';
-import * as utils from 'tns-core-modules/utils/utils';
-import { isIOS, isAndroid } from 'tns-core-modules/platform';
-import * as frame from 'tns-core-modules/ui/frame';
 import { UserService } from '../../../storages/user.service';
 import { Photo } from '../../../models/photo';
-import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
 import { Toasty, ToastDuration } from 'nativescript-toasty';
-import { localize } from 'nativescript-localize/angular';
+import { ModalDialogOptions, ModalDialogService, RouterExtensions } from '@nativescript/angular';
+import { isAndroid, isIOS, Page, Frame, Utils, ScrollEventData, ScrollView, View } from '@nativescript/core';
+import { localize } from '@nativescript/localize';
 
 @Component({
   templateUrl: './results.component.html',
@@ -174,10 +168,10 @@ export class ResultsComponent implements OnInit {
 
   public dismissSoftKeyboard(): void {
     if (isIOS) {
-      frame.Frame.topmost().nativeView.endEditing(true);
+      Frame.topmost().nativeView.endEditing(true);
     }
     if (isAndroid) {
-      utils.ad.dismissSoftInput();
+      Utils.ad.dismissSoftInput();
     }
   }
 

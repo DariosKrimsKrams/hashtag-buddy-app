@@ -1,18 +1,16 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { RouterExtensions } from 'nativescript-angular/router';
-import { Page } from 'tns-core-modules/ui/page';
 import { UserService } from '~/app/storages/user.service';
 import { Hashtag } from '~/app/models/hashtag';
 import { ResultFeedback } from '~/app/models/result-feedback';
 import { Photo } from '~/app/models/photo';
 import { ActivatedRoute } from '@angular/router';
 import { ResultFeedbackRequest } from '~/app/models/request/result-feedback-request';
-import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
 import { CustomerService } from '~/app/storages/customer.service';
 import { FeedbackRepository } from '~/app/services/repositories/feedback-repository.service';
 import { Rating } from '~/app/models/rating';
-import { isIOS } from 'tns-core-modules/platform';
+import { ModalDialogOptions, ModalDialogService, RouterExtensions } from '@nativescript/angular';
+import { isIOS, Page } from '@nativescript/core';
 
 @Component({
   templateUrl: './leave-feedback.component.html',

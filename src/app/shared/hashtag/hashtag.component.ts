@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { Color } from 'tns-core-modules/color';
-import { isIOS } from 'tns-core-modules/platform';
+import { Color, isIOS } from '@nativescript/core';
 declare var CGSizeMake: any;
 declare var UIColor: any;
 

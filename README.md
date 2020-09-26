@@ -87,6 +87,16 @@ rm -rf platforms
 rm package-lock.json
 npm i
 ns plugin remove nativescript-imagepicker
-ns plugin add nativescript-imagepicker
+ns plugin add @nativescript/imagepicker
 npm dedupe
+```
+
+### Update all dependencies
+
+```
+npm install -g npm-check-updates
+ncu
+ncu -u
+npm update
+npm i
 ```

@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Page } from 'tns-core-modules/ui/page';
 import { PLANS } from '~/app/data/plans';
-import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { Plan } from '~/app/models/plan';
-import { localize } from 'nativescript-localize/angular';
-import { isAndroid } from 'tns-core-modules/platform';
-import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { StoreService } from '~/app/storages/store.service';
 import { UserService } from '~/app/storages/user.service';
-import { isIOS } from 'tns-core-modules/platform';
+import { isAndroid, isIOS, Application, Page } from '@nativescript/core';
+import { localize } from '@nativescript/localize';
 
 @Component({
   templateUrl: './store.component.html',
@@ -30,7 +26,7 @@ export class StoreComponent implements OnInit {
   ) {
     this.page.actionBarHidden = true;
     this.isIOS = isIOS;
-    disableIosSwipe(this.page, frame);
+    disableIosSwipe(this.page);
     this.calcHeader();
   }
 
@@ -38,7 +34,7 @@ export class StoreComponent implements OnInit {
   }
 
   public openMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
+    const sideDrawer = <RadSideDrawer>Application.getRootView();
     sideDrawer.showDrawer();
   }
 

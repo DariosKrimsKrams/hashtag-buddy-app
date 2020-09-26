@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 const clipboard = require('nativescript-clipboard');
-import { localize } from 'nativescript-localize/angular';
+import { localize } from '@nativescript/localize';
 import { UserService } from '~/app/storages/user.service';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
 

@@ -1,16 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterExtensions } from 'nativescript-angular/router';
-import { Page } from 'tns-core-modules/ui/page';
-import { openUrl } from 'tns-core-modules/utils/utils';
-import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
-import * as SocialShare from 'nativescript-social-share';
-import { localize } from 'nativescript-localize/angular';
-import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
-import { isAndroid } from 'tns-core-modules/platform';
 import { UserService } from '~/app/storages/user.service';
-import { isIOS } from 'tns-core-modules/platform';
+import * as SocialShare from '@nativescript/social-share';
+import { RouterExtensions } from '@nativescript/angular';
+import { Application, isAndroid, isIOS, Page, Utils } from '@nativescript/core';
+import { localize } from '@nativescript/localize';
 
 @Component({
   templateUrl: './settings.component.html',
@@ -29,7 +24,7 @@ export class SettingsComponent implements OnInit {
   ) {
     this.page.actionBarHidden = true;
     this.isIOS = isIOS;
-    disableIosSwipe(this.page, frame);
+    disableIosSwipe(this.page);
     this.calcHeader();
   }
 
@@ -37,7 +32,7 @@ export class SettingsComponent implements OnInit {
   }
 
   public openMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
+    const sideDrawer = <RadSideDrawer>Application.getRootView();
     sideDrawer.showDrawer();
   }
 
@@ -49,7 +44,7 @@ export class SettingsComponent implements OnInit {
 
   public goNextPage(route: string): void {
     if (route === 'legal') {
-      openUrl('https://hashtagbuddy.app/legal-privacy.html');
+      Utils.openUrl('https://hashtagbuddy.app/legal-privacy.html');
     } else {
       this.router.navigate(['/settings/' + route], {
         transition: {
@@ -70,7 +65,7 @@ export class SettingsComponent implements OnInit {
 
   public rate(): void {
     const text = isAndroid ? localize('link_playstore') : localize('link_appstore');
-    openUrl(text);
+    Utils.openUrl(text);
   }
 
   private calcHeader(): void {

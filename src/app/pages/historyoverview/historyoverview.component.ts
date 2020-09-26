@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
-import { Page } from 'tns-core-modules/ui/page/page';
-import * as frame from 'tns-core-modules/ui/frame';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { UserService } from '~/app/storages/user.service';
-import { isIOS } from 'tns-core-modules/platform';
+import { isIOS, Application, Page } from '@nativescript/core';
 
 @Component({
   templateUrl: './historyoverview.component.html',
@@ -23,7 +20,7 @@ export class HistoryoverviewComponent implements OnInit {
   ) {
     this.page.actionBarHidden = true;
     this.isIOS = isIOS;
-    disableIosSwipe(this.page, frame);
+    disableIosSwipe(this.page);
     this.calcHeader();
   }
 
@@ -31,7 +28,7 @@ export class HistoryoverviewComponent implements OnInit {
   }
 
   public openMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
+    const sideDrawer = <RadSideDrawer>Application.getRootView();
     sideDrawer.showDrawer();
   }
 

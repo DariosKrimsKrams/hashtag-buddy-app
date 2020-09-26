@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FloatLabelModule } from '../float-label/float-label.module';
-import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
-import { NativeScriptCommonModule } from 'nativescript-angular/common';
+import { NativeScriptLocalizeModule } from '@nativescript/localize/angular';
+import { NativeScriptCommonModule } from '@nativescript/angular';
 import { InsertHashtagsFormComponent } from './insert-hashtags-form.component';
 
 @NgModule({

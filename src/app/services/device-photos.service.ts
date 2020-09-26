@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ImageAsset } from 'tns-core-modules/image-asset/image-asset';
-import { ImageSource } from 'tns-core-modules/image-source';
-import { knownFolders, path } from 'tns-core-modules/file-system/file-system';
+import { ImageAsset, ImageSource, knownFolders, path } from '@nativescript/core';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({

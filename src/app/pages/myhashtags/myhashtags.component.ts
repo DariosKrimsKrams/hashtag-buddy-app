@@ -1,16 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Page } from 'tns-core-modules/ui/page/page';
-import { isIOS, isAndroid } from 'tns-core-modules/platform';
-import * as app from 'tns-core-modules/application';
-import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import { Hashtag } from '~/app/models/hashtag';
-import * as frame from 'tns-core-modules/ui/frame';
-import * as utils from 'tns-core-modules/utils/utils';
 import { MyHashtag } from '~/app/models/my-hashtag';
 import { UserService } from '~/app/storages/user.service';
 import { Photo } from '~/app/models/photo';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
-import { RouterExtensions } from 'nativescript-angular/router';
+import { RouterExtensions } from '@nativescript/angular';
+import { isAndroid, isIOS, Page, Frame, Utils } from '@nativescript/core';
 
 @Component({
   selector: 'ns-myhashtags',
@@ -33,7 +28,7 @@ export class MyhashtagsComponent implements OnInit {
   ) {
     this.page.actionBarHidden = true;
     this.isIOS = isIOS;
-    disableIosSwipe(this.page, frame);
+    disableIosSwipe(this.page);
     this.calcHeader();
   }
 
@@ -44,8 +39,8 @@ export class MyhashtagsComponent implements OnInit {
 
   private loadOwnHashtags(): void {
     const favorites = this.userService.getFavorites();
-    favorites.forEach(favorit => {
-      this.hashtagsOwn.push(favorit);
+    favorites.forEach(favorite => {
+      this.hashtagsOwn.push(favorite);
     });
   }
 
@@ -68,10 +63,10 @@ export class MyhashtagsComponent implements OnInit {
 
   public dismissSoftKeyboard(): void {
     if (isIOS) {
-      frame.Frame.topmost().nativeView.endEditing(true);
+      Frame.topmost().nativeView.endEditing(true);
     }
     if (isAndroid) {
-      utils.ad.dismissSoftInput();
+      Utils.ad.dismissSoftInput();
     }
   }
 

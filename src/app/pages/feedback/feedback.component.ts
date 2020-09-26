@@ -1,14 +1,10 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { RouterExtensions } from 'nativescript-angular/router';
-import { Page } from 'tns-core-modules/ui/page';
-import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
-import * as utils from 'tns-core-modules/utils/utils';
-import { isIOS, isAndroid } from 'tns-core-modules/platform';
-import * as frame from 'tns-core-modules/ui/frame';
 import { AppFeedback } from '~/app/models/app-feedback';
 import { CustomerService } from '~/app/storages/customer.service';
 import { FeedbackRepository } from '~/app/services/repositories/feedback-repository.service';
+import { ModalDialogOptions, ModalDialogService, RouterExtensions } from '@nativescript/angular';
+import { isAndroid, isIOS, Page, Frame, Utils } from '@nativescript/core';
 
 @Component({
   templateUrl: './feedback.component.html',
@@ -61,10 +57,10 @@ export class FeedbackComponent implements OnInit {
 
   public dismissSoftKeyboard(): void {
     if (isIOS) {
-      frame.Frame.topmost().nativeView.endEditing(true);
+      Frame.topmost().nativeView.endEditing(true);
     }
     if (isAndroid) {
-      utils.ad.dismissSoftInput();
+      Utils.ad.dismissSoftInput();
     }
   }
 

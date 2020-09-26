@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@nativescript/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { request } from 'tns-core-modules/http';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class CustomerRepository {
 
   public createCustomer(): Observable<any> {
     return new Observable<any>(observer => {
-      request({
+      Http.request({
         url: this.createCustomerUrl,
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

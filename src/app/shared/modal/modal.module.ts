@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { NativeScriptCommonModule } from 'nativescript-angular/common';
 import { ModalComponent } from './modal.component';
-import { NativeScriptLocalizeModule } from 'nativescript-localize/angular';
+import { NativeScriptLocalizeModule } from '@nativescript/localize/angular';
+import { NativeScriptCommonModule } from '@nativescript/angular';
 
 @NgModule({
   declarations: [

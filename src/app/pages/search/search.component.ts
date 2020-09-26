@@ -1,10 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, ViewContainerRef, OnDestroy, ViewChild, ElementRef } from '@angular/core';
-import { Page } from 'tns-core-modules/ui/page/page';
-import { isIOS } from 'tns-core-modules/platform';
-import * as app from 'tns-core-modules/application';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
-import * as frame from 'tns-core-modules/ui/frame';
-import * as utils from 'tns-core-modules/utils/utils';
 import { UserService } from '~/app/storages/user.service';
 import { disableIosSwipe } from '~/app/shared/status-bar-util';
 import { CustomerService } from '~/app/storages/customer.service';
@@ -13,14 +8,15 @@ import { IHttpResponse } from '~/app/models/request/http-response';
 import { Toasty, ToastDuration } from 'nativescript-toasty';
 import { HashtagResult } from '~/app/models/hashtag-result';
 import { HashtagCategory } from '~/app/models/hashtag-category';
-import { localize } from 'nativescript-localize/angular';
-import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/common';
 import { StoreService } from '~/app/storages/store.service';
 import { PLANS } from '~/app/data/plans';
 import { ModalComponent } from '~/app/shared/modal/modal.component';
 import { Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { SearchMultipleRequest } from '~/app/models/request/search-multiple-request';
+import { ModalDialogOptions, ModalDialogService } from '@nativescript/angular';
+import { isIOS, Application, Page, Frame, Utils } from '@nativescript/core';
+import { localize } from '@nativescript/localize';
 
 @Component({
   templateUrl: './search.component.html',
@@ -62,7 +58,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   ) {
     this.page.actionBarHidden = true;
     this.isIOS = isIOS;
-    disableIosSwipe(this.page, frame);
+    disableIosSwipe(this.page);
     this.calcHeader();
   }
 
@@ -84,15 +80,15 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   public openMenu(): void {
-    const sideDrawer = <RadSideDrawer>app.getRootView();
+    const sideDrawer = <RadSideDrawer>Application.getRootView();
     sideDrawer.showDrawer();
   }
 
   public dismissSoftKeyboard(): void {
     if (isIOS) {
-      frame.Frame.topmost().nativeView.endEditing(true);
+      Frame.topmost().nativeView.endEditing(true);
     } else {
-      utils.ad.dismissSoftInput();
+      Utils.ad.dismissSoftInput();
     }
   }
 

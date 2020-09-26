@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import * as imagepicker from 'nativescript-imagepicker';
+import * as imagepicker from '@nativescript/imagepicker';
 import { ToastDuration, Toasty } from 'nativescript-toasty';
-import { localize } from 'nativescript-localize/angular';
 import { DeviceService } from '../device-photos.service';
 import { CustomerService, CustomerCreateStatus } from '../../storages/customer.service';
 import { UserService } from '~/app/storages/user.service';
@@ -13,6 +12,7 @@ import { IHttpResponse } from '~/app/models/request/http-response';
 import { HashtagCategory } from '~/app/models/hashtag-category';
 import { Subscriber } from 'rxjs';
 import { HashtagResult } from '~/app/models/hashtag-result';
+import { localize } from '@nativescript/localize';
 
 @Injectable({
   providedIn: 'root',
