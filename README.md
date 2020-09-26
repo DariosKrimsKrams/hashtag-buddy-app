@@ -38,10 +38,10 @@ Follow [NativeScript Setup Guide](https://docs.nativescript.org/start/ns-setup-w
 ```
 npm i -g nativescript@latest
 npm i tns-core-modules@latest
-tns platform remove android
-tns platform add android@latest
-tns platform remove ios
-tns platform add ios@latest
+ns platform remove android
+ns platform add android@latest
+ns platform remove ios
+ns platform add ios@latest
 ```
 
 To ensure code quality, run tslint using following command:
@@ -53,15 +53,15 @@ npm run tslint
 ### Update
 
 ```
-tns info
-tns doctor
+ns info
+ns doctor
 npm i -g nativescript@latest
 npm i tns-core-modules@latest
-tns update
-tns platform clean android
-tns plugin update
-tns plugin remove nativescript-theme-core
-tns plugin add nativescript-theme-core@1.0.6
+ns update
+ns platform clean android
+ns plugin update
+ns plugin remove nativescript-theme-core
+ns plugin add nativescript-theme-core@1.0.6
 npm i nativescript-dev-webpack@latest --save-dev
 ./node_modules/.bin/update-ns-webpack --deps --configs
 npm i nativescript-angular@latest --save
@@ -77,16 +77,16 @@ More detailed infos on [NativeScript Upgrade Instructions](https://docs.nativesc
 ns clean
 npm rebuild node-sass
 npm i nativescript-dev-webpack --save-dev
-tns update
+ns update
 pod repo update
 sudo gem install cocopods
-tns platform clean ios
-tns plugin update
+ns platform clean ios
+ns plugin update
 rm -rf node_modules
 rm -rf platforms
 rm package-lock.json
 npm i
-tns plugin remove nativescript-imagepicker
-tns plugin add nativescript-imagepicker
+ns plugin remove nativescript-imagepicker
+ns plugin add nativescript-imagepicker
 npm dedupe
 ```
