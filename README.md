@@ -74,6 +74,7 @@ More detailed infos on [NativeScript Upgrade Instructions](https://docs.nativesc
 ### Troubleshooting
 
 ```
+ns clean
 npm rebuild node-sass
 npm i nativescript-dev-webpack --save-dev
 tns update
