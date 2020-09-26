@@ -1,4 +1,4 @@
-import { NativeScriptConfig } from '@nativescript/core'
+import { NativeScriptConfig } from '@nativescript/core';
 
 export default {
   id: 'org.nativescript.app',
@@ -12,4 +12,4 @@ export default {
     id: 'com.hashtagbuddy.instagramtipstricks',
   },
   appPath: 'src',
-} as NativeScriptConfig
+} as NativeScriptConfig;

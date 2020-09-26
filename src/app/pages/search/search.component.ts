@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { SearchMultipleRequest } from '~/app/models/request/search-multiple-request';
 import { ModalDialogOptions, ModalDialogService } from '@nativescript/angular';
-import { isIOS, Application, Page, Frame, Utils } from '@nativescript/core';
+import { isIOS, Page, Frame, Utils } from '@nativescript/core';
 import { localize } from '@nativescript/localize';
 
 @Component({
