@@ -9,7 +9,8 @@ Welcome to the repository of the Hashtag Buddy App for **Android** & **iOS**. Th
 ## Links 
   * [Play Store](https://play.google.com/store/apps/details?id=com.softwarekstatt.hashtagbuddy)
   * [App Store](https://apps.apple.com/app/hashtag-buddy/id1504694810)
-  * [Website](https://hashtagbuddy.app)
+  * [App-Website](https://hashtagbuddy.app)
+  * [Developed by Softwerkstatt](https://softwerkstatt.de)
   * [Code Quality](https://sonarcloud.io/dashboard?id=DarioDomiDE_hashtag-buddy-app)
 
 ## Technical Details
