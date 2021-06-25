@@ -1,0 +1,27 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "08:00"
+    timezone: Europe/Berlin
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: tns-core-modules
+    versions:
+    - 6.5.24
+    - 6.5.25
+    - 6.5.26
+  - dependency-name: nativescript
+    versions:
+    - 7.1.2
+    - 7.2.0
+    - 7.2.1
+  - dependency-name: rxjs
+    versions:
+    - 6.6.3
+    - 6.6.6
+  - dependency-name: "@nativescript/schematics"
+    versions:
+    - 11.0.0
