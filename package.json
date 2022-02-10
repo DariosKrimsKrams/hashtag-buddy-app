@@ -67,7 +67,7 @@
     "@nativescript/schematics": "^1.0.0",
     "@ngtools/webpack": "~8.2.0",
     "nativescript-dev-webpack": "^1.5.1",
-    "node-sass": "4.14.1",
+    "node-sass": "7.0.0",
     "typescript": "~3.5.3"
   },
   "readme": "Instaq"
